@@ -139,6 +139,12 @@ def evaluate_gate(policy: M10ActorCritic, scenarios: Iterable[M10Scenario], conf
             "expired": int(counts["expired"]), "return": total_reward,
             "steps": steps, "actor_calls": actor_calls, "audit": audit,
             "active_leases": len(env.execution.leases),
+            "execution_log": list(env.execution.log),
+            "commands": {key: asdict(value) for key, value in env.execution.commands.items()},
+            "clock_log": list(env.clock.log),
+            "tasks": {key: {"state": value.state.value, "service": float(value.service),
+                             "completed_at": value.completed_at}
+                      for key, value in env.clock.tasks.items()},
             "valid_candidate_steps": sum(int(np.asarray(row["mask"][:-1]).sum() > 0)
                                           for row in getattr(env, "_step_records", [])),
         })

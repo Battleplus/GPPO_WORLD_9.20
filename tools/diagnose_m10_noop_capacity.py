@@ -98,6 +98,7 @@ def run_controller(scenario: M10Scenario, config: M10Config, mode: str) -> dict[
             "expired": sum(t.state.value == "expired" for t in env.clock.tasks.values()),
             "accepted_commands": len(accepted), "reward_components": totals,
             "rows": rows, "execution_log": list(env.execution.log), "clock_log": list(env.clock.log),
+            "commands": {key: vars(value) for key, value in env.execution.commands.items()},
             "tasks": {k: {"state": v.state.value, "service": float(v.service), "deadline": float(v.deadline)}
                       for k, v in env.clock.tasks.items()}}
 
