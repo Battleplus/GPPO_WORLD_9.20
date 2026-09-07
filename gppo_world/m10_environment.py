@@ -705,7 +705,8 @@ class M10Environment:
             "lease_renewal_delivery_results": renewal_delivery_results,
             "active_continuations": [
                 {"command_id": command.command_id, "task_id": command.task_id,
-                 "uav_id": command.uav_id, "token": command.token}
+                 "uav_id": command.uav_id, "token": command.token,
+                 "action": self._active_actions[command.command_id]}
                 for command in self._active_commands.values()
             ],
             "step": self._step_index,

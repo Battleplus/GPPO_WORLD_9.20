@@ -66,18 +66,20 @@ def reward_totals(env: M10Environment) -> dict[str, float]:
 def run_controller(scenario: M10Scenario, config: M10Config, mode: str) -> dict[str, Any]:
     env = M10Environment(config, scenario)
     obs = env.reset()
-    active: int | None = None
+    active_actions: set[int] = set()
     done = False
     rows = []
     totals = {"completion": 0.0, "expiry": 0.0, "energy": 0.0, "rejection": 0.0, "total": 0.0}
     while not done and len(rows) < int(config.horizon / config.decision_interval) + 3:
         if mode == NOOP:
             action, submit, control = config.action_count - 1, True, "always_noop"
-        elif active is not None and env._active_command is not None:
-            action, submit, control = active, False, "continue_existing_lease"
+        elif int(np.asarray(obs["mask"][:-1]).sum()) > 0:
+            action, submit, control = deadline_distance_action(env, obs), True, "deadline_distance_priority"
+        elif active_actions:
+            action, submit, control = min(active_actions), False, "continue_existing_leases"
         else:
             action, submit, control = deadline_distance_action(env, obs), True, "deadline_distance_priority"
-            active = action if action != config.action_count - 1 else None
+            active_actions = set()
         execution_before = len(env.execution.log)
         obs, reward, done, info = env.step(action, submit_command=submit)
         components = dict(info.get("reward_components", {"total": float(reward)}))
@@ -86,10 +88,11 @@ def run_controller(scenario: M10Scenario, config: M10Config, mode: str) -> dict[
         rows.append({"step": len(rows), "time": float(info["time"]), "action": int(action),
                      "submit": submit, "control": control, "feedback": info["feedback"],
                      "mask_candidates": int(np.asarray(obs["mask"][:-1]).sum()),
+                     "active_continuations": list(info.get("active_continuations", [])),
+                     "lease_renewals": dict(info.get("lease_renewals", {})),
                      "execution_delta": list(env.execution.log[execution_before:]),
                      "reward_components": components})
-        if env._active_command is None:
-            active = None
+        active_actions = {int(item["action"]) for item in info.get("active_continuations", [])}
     accepted = [x for x in env.execution.log if x.get("result") == "accepted"]
     return {"mode": mode, "completed": sum(t.state.value == "completed" for t in env.clock.tasks.values()),
             "expired": sum(t.state.value == "expired" for t in env.clock.tasks.values()),
@@ -193,7 +196,10 @@ def run_policy(policy_path: Path, world: Any, scenarios: list[M10Scenario], conf
                           "replan": should, "reason": reason, "risk": float(risk),
                           "noop_probability": noop_probs[-1] if should else None,
                           "entropy": entropies[-1] if should else None,
-                          "feedback": info["feedback"], "accepted_delta": list(env.execution.log[before_exec:])})
+                          "feedback": info["feedback"],
+                          "active_continuations": list(info.get("active_continuations", [])),
+                          "lease_renewals": dict(info.get("lease_renewals", {})),
+                          "accepted_delta": list(env.execution.log[before_exec:])})
         if used_fallback_components:
             # Reconcile the residual with the environment's exact scalar
             # return because historical server source omitted component info.
