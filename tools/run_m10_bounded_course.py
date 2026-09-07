@@ -195,21 +195,26 @@ def train_seed(seed: int, output: Path, config: M10Config, ppo: PPOConfig,
             )
             update = update_policy(policy, transitions, ppo=rollout_config, device=torch.device(device))
             total_steps += len(transitions)
-            checkpoint = output / "checkpoints" / f"seed-{seed}" / f"step-{total_steps}.pt"
-            metadata = {
-                "variant": "graph-5-base-course", "encoder": "graph", "type_count": 5,
-                "history": False, "fusion": "base", "seed": seed, "steps": total_steps,
-                "stage": stage_name, "rollout_steps": len(transitions),
-                "optimizer_updates": int(update.get("optimizer_steps", 0)),
-                "actor_decisions": int(sum(t.actor_decision for t in transitions)),
-                "continuation_steps": int(sum(not t.actor_decision for t in transitions)),
-                "environment_steps": len(transitions), "ppo_config": asdict(rollout_config),
-                "env_config": asdict(config), "update": update,
-            }
-            save_policy(checkpoint, policy, metadata)
-            metrics = evaluate_bundle(policy, validation_tapes, config, device)
-            records.append({"stage": stage_name, "steps": total_steps, "checkpoint": str(checkpoint),
-                            "update": update, "metrics": metrics})
+            # PPO updates remain 256-step chunks, but the frozen evaluation
+            # protocol is exactly every 2048 environment steps.  Evaluating
+            # each optimizer chunk would both violate the protocol and turn
+            # validation into an unintended training-time cost.
+            if total_steps % EVAL_INTERVAL == 0:
+                checkpoint = output / "checkpoints" / f"seed-{seed}" / f"step-{total_steps}.pt"
+                metadata = {
+                    "variant": "graph-5-base-course", "encoder": "graph", "type_count": 5,
+                    "history": False, "fusion": "base", "seed": seed, "steps": total_steps,
+                    "stage": stage_name, "rollout_steps": len(transitions),
+                    "optimizer_updates": int(update.get("optimizer_steps", 0)),
+                    "actor_decisions": int(sum(t.actor_decision for t in transitions)),
+                    "continuation_steps": int(sum(not t.actor_decision for t in transitions)),
+                    "environment_steps": len(transitions), "ppo_config": asdict(rollout_config),
+                    "env_config": asdict(config), "update": update,
+                }
+                save_policy(checkpoint, policy, metadata)
+                metrics = evaluate_bundle(policy, validation_tapes, config, device)
+                records.append({"stage": stage_name, "steps": total_steps, "checkpoint": str(checkpoint),
+                                "update": update, "metrics": metrics})
     final = evaluate_bundle(policy, validation_tapes, config, device)
     return {"seed": seed, "records": records, "final": final,
             "elapsed_seconds": time.perf_counter() - started,
