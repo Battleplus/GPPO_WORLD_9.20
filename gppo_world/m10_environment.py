@@ -276,6 +276,11 @@ class M10Environment:
         # (semantic kind, telemetry, delivery ordinal).  A duplicated packet
         # keeps the same message_id but has a distinct delivery ordinal.
         self._pending_messages: list[tuple[str, Telemetry, int]] = []
+        # (delivery time, renewal id, command id, delivery ordinal, send time). Renewal
+        # delivery is ordered by its scheduled transport time, not by the
+        # order in which requests were created.
+        self._pending_renewals: list[tuple[float, str, str, int, float]] = []
+        self._lease_renewal_results: dict[str, str] = {}
         self._public_event_records: list[dict[str, Any]] = []
         self._last_public_event_values: dict[tuple[str, str], float] = {}
         self._public_task_entities: set[str] = set()
@@ -286,10 +291,117 @@ class M10Environment:
             "completion_or_invalidation": False,
             "safety_forced": False,
         }
-        self._active_command: TaskCommand | None = None
-        self._active_action: int | None = None
+        # Control-side continuation knowledge is a set.  TaskExecution owns
+        # one fenced lease per command; retaining only one handle drops the
+        # other acknowledged UAV/task executions on the next step.
+        self._active_commands: dict[str, TaskCommand] = {}
+        self._active_actions: dict[str, int] = {}
         self._deliver_observations()
         self._flush_messages()
+
+    @property
+    def _active_command(self) -> TaskCommand | None:
+        """Compatibility view for older diagnostics; not a control path."""
+        return next(iter(self._active_commands.values()), None)
+
+    @property
+    def _active_action(self) -> int | None:
+        """Compatibility view for older diagnostics; not a control path."""
+        return next(iter(self._active_actions.values()), None)
+
+    def _remember_active(self, command: TaskCommand, action: int) -> None:
+        self._active_commands[command.command_id] = command
+        self._active_actions[command.command_id] = int(action)
+
+    def _forget_active(self, command_id: str) -> None:
+        self._active_commands.pop(command_id, None)
+        self._active_actions.pop(command_id, None)
+
+    def _apply_renewal(self, renewal_id: str, command_id: str, ordinal: int) -> str:
+        command = self._active_commands.get(command_id)
+        if command is None:
+            return "unknown_control_handle"
+        execution_result = self.execution.renew(
+            command.command_id, command.uav_id, command.token,
+        )
+        ack_delivered = self.communication.ack_delivered(
+            seed=self.scenario.seed, identity=f"{renewal_id}|ack|{ordinal}",
+        )
+        self._communication_log.append({
+            "link": "ack", "kind": "lease_renewal",
+            "status": "received" if ack_delivered else "dropped",
+            "command_id": command_id, "renewal_id": renewal_id,
+            "delivery_ordinal": ordinal, "result": execution_result,
+            "time": self.clock.time,
+        })
+        if not ack_delivered:
+            result = "ack_lost"
+        else:
+            result = str(execution_result)
+            if execution_result != "renewed":
+                # Only a response delivered to the controller can retire its
+                # known handle; executor truth is never polled directly.
+                self._forget_active(command_id)
+        self._lease_renewal_results[command_id] = result
+        return result
+
+    def _deliver_pending_renewals(self, now: float) -> None:
+        ready = [item for item in self._pending_renewals if item[0] <= now]
+        self._pending_renewals = [item for item in self._pending_renewals if item[0] > now]
+        for delivery_time, renewal_id, command_id, ordinal, sent_time in sorted(ready):
+            self._communication_log.append({
+                "link": "command", "kind": "lease_renewal",
+                "status": "received" if ordinal == 0 else "duplicate_received",
+                "command_id": command_id, "renewal_id": renewal_id,
+                "delivery_ordinal": ordinal, "sent_time": sent_time,
+                "time": now,
+            })
+            self._apply_renewal(renewal_id, command_id, ordinal)
+
+    def _advance_execution(self, end: float) -> None:
+        while self._pending_renewals:
+            delivery_time = min(item[0] for item in self._pending_renewals)
+            if delivery_time > end:
+                break
+            self.execution.advance(delivery_time)
+            self._deliver_pending_renewals(delivery_time)
+        self.execution.advance(end)
+
+    def _renew_active_leases(self, *, skip: set[str] | None = None) -> dict[str, str]:
+        """Schedule one renewal per ACK-known lease through the command link."""
+        skipped = skip or set()
+        results: dict[str, str] = {}
+        for command_id in sorted(tuple(self._active_commands)):
+            if command_id in skipped:
+                continue
+            command = self._active_commands.get(command_id)
+            if command is None:
+                continue
+            renewal_id = f"{command_id}|renew|{self._step_index + 1:05d}"
+            fate = self.communication.renewal(
+                seed=self.scenario.seed, identity=renewal_id,
+            )
+            self._communication_log.append({
+                "link": "command", "kind": "lease_renewal",
+                "status": "dropped" if fate["dropped"] else "sent",
+                "command_id": command_id, "renewal_id": renewal_id,
+                "time": self.clock.time, "delay": fate["delay"],
+            })
+            if fate["dropped"]:
+                results[command_id] = "command_lost"
+                continue
+            ordinals = (0, 1) if fate["duplicate"] else (0,)
+            for ordinal in ordinals:
+                self._pending_renewals.append((
+                    self.clock.time + float(fate["delay"]),
+                    renewal_id, command_id, ordinal, self.clock.time,
+                ))
+            if fate["delay"] <= 0:
+                self._deliver_pending_renewals(self.clock.time)
+                results[command_id] = self._lease_renewal_results.get(command_id, "queued")
+            else:
+                results[command_id] = "queued"
+        return results
 
     def reset(self, *, seed: int | None = None) -> dict[str, Any]:
         if seed is not None and seed != self.config.seed:
@@ -490,6 +602,7 @@ class M10Environment:
             # stale allocation candidate without exposing execution truth in
             # the learned feature vector.
             "continuation_action": self._active_action,
+            "continuation_actions": tuple(sorted(self._active_actions.values())),
         }
         if clear_trigger:
             self._trigger_flags = {key: False for key in self._trigger_flags}
@@ -516,11 +629,18 @@ class M10Environment:
     def step(self, action: int, *, submit_command: bool = True) -> tuple[dict[str, Any], float, bool, dict[str, Any]]:
         if type(action) is not int or not 0 <= action < self.config.action_count:
             raise ValueError("action outside fixed M10 action space")
+        self._lease_renewal_results = {}
+        # Deliver requests whose transport delay has elapsed before creating
+        # the next public snapshot.  No executor lease table is inspected.
+        self._deliver_pending_renewals(self.clock.time)
+        renewal_delivery_results = dict(self._lease_renewal_results)
         obs = self._observation()
         communication_start = len(self._communication_log)
         event_log_before = len(self.clock.log)
         command_id: str | None = None
-        lease_renewal = "not_applicable"
+        lease_renewal: str | dict[str, str] = "not_applicable"
+        lease_renewals: dict[str, str] = {}
+        newly_accepted: str | None = None
         if submit_command:
             self._command_index += 1
             command_id = f"{self._episode_id}-cmd-{self._command_index:05d}"
@@ -533,50 +653,44 @@ class M10Environment:
             if isinstance(feedback, TaskCommand):
                 ack_result = self.execution.acknowledge(feedback.command_id, feedback.uav_id, feedback.token)
                 if ack_result == "accepted":
-                    self._active_command = feedback
-                    self._active_action = action
                     ack_delivered = self.communication.ack_delivered(seed=self.scenario.seed, identity=command_identity)
                     self._communication_log.append({"link": "ack", "status": "received" if ack_delivered else "dropped",
                                                     "command_id": command_id, "time": self.clock.time})
-                    if not ack_delivered:
+                    if ack_delivered:
+                        # The control side may maintain only an ACK-confirmed
+                        # handle. An execution-side acceptance with a lost ACK
+                        # is intentionally not converted into hidden control
+                        # knowledge.
+                        self._remember_active(feedback, action)
+                        newly_accepted = command_id
+                    else:
                         feedback = "ack_lost_after_accept"
                 else:
-                    self._active_command = None
-                    self._active_action = None
                     feedback = ack_result
             elif feedback == "noop":
                 ack_result = "noop"
-                self._active_command = None
-                self._active_action = None
             else:
                 ack_result = str(feedback)
-                self._active_command = None
-                self._active_action = None
         else:
-            # A non-replanning interval is continuation of the already ACKed
-            # lease.  It never creates a new allocation command or bypasses
-            # TaskExecution: the executor renews the same fenced lease.
+            # A non-replanning interval creates no allocation command. Lease
+            # maintenance below renews every already ACKed continuation.
             feedback = "reuse_existing"
             ack_result = "reuse_existing"
-            if self._active_command is not None:
-                lease_renewal = self.execution.renew(
-                    self._active_command.command_id,
-                    self._active_command.uav_id,
-                    self._active_command.token,
-                )
-                if lease_renewal != "renewed":
-                    self._active_command = None
-                    self._active_action = None
+        # Existing tasks continue even when this step submits a new task or a
+        # NOOP. The new lease receives its first renewal on the next cycle.
+        lease_renewals = self._renew_active_leases(
+            skip={newly_accepted} if newly_accepted is not None else set(),
+        )
+        if lease_renewals:
+            lease_renewal = (next(iter(lease_renewals.values()))
+                             if len(lease_renewals) == 1 else dict(lease_renewals))
         self._feedback_log.append({"command_id": command_id, "result": str(ack_result), "time": self.clock.time})
         target_time = min(self.config.horizon, self.clock.time + self.config.decision_interval)
-        self.execution.advance(target_time)
+        self._advance_execution(target_time)
         self._deliver_observations()
         self._flush_messages()
         self._step_index += 1
         next_obs = self._observation(clear_trigger=True)
-        if self._active_command is not None and self._active_command.command_id not in self.execution.leases:
-            self._active_command = None
-            self._active_action = None
         reward, counts = self._reward_and_counts(feedback)
         task_terminal = self._all_terminal_or_future_empty()
         time_limit = self.clock.time >= self.config.horizon
@@ -587,6 +701,13 @@ class M10Environment:
             "command_submitted": bool(submit_command),
             "command_id": command_id,
             "lease_renewal": lease_renewal,
+            "lease_renewals": dict(lease_renewals),
+            "lease_renewal_delivery_results": renewal_delivery_results,
+            "active_continuations": [
+                {"command_id": command.command_id, "task_id": command.task_id,
+                 "uav_id": command.uav_id, "token": command.token}
+                for command in self._active_commands.values()
+            ],
             "step": self._step_index,
             "time": self.clock.time,
             "counts": counts,

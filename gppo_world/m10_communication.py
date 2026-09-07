@@ -25,16 +25,26 @@ class CommunicationProfile:
     telemetry_outage_intervals: tuple[tuple[float, float], ...] = ()
     command_loss_probability: float = 0.0
     ack_loss_probability: float = 0.0
+    # Lease-renewal requests use the command link's loss budget.  These
+    # optional fields model renewal-only transport delay/duplication/reorder;
+    # defaults preserve the existing M-10 tapes byte-for-byte.
+    renewal_extra_delay: float = 0.0
+    renewal_duplicate_probability: float = 0.0
+    renewal_reorder_window: float = 0.0
 
     def __post_init__(self) -> None:
         probabilities = (self.telemetry_loss_probability, self.telemetry_duplicate_probability,
-                         self.command_loss_probability, self.ack_loss_probability)
+                         self.command_loss_probability, self.ack_loss_probability,
+                         self.renewal_duplicate_probability)
         if any(not math.isfinite(float(x)) or not 0 <= float(x) <= 1 for x in probabilities):
             raise ValueError("link probabilities must be in [0, 1]")
         if not math.isfinite(self.telemetry_extra_delay) or self.telemetry_extra_delay < 0:
             raise ValueError("telemetry extra delay must be nonnegative")
         if not math.isfinite(self.telemetry_reorder_window) or self.telemetry_reorder_window < 0:
             raise ValueError("reorder window must be nonnegative")
+        if (not math.isfinite(self.renewal_extra_delay) or self.renewal_extra_delay < 0 or
+                not math.isfinite(self.renewal_reorder_window) or self.renewal_reorder_window < 0):
+            raise ValueError("renewal delay/reorder parameters must be nonnegative")
         for start, end in self.telemetry_outage_intervals:
             if not math.isfinite(start) or not math.isfinite(end) or start < 0 or end <= start:
                 raise ValueError("outage intervals must be finite and increasing")
@@ -49,6 +59,9 @@ class CommunicationProfile:
             "telemetry_outage_intervals": [list(interval) for interval in self.telemetry_outage_intervals],
             "command_loss_probability": self.command_loss_probability,
             "ack_loss_probability": self.ack_loss_probability,
+            "renewal_extra_delay": self.renewal_extra_delay,
+            "renewal_duplicate_probability": self.renewal_duplicate_probability,
+            "renewal_reorder_window": self.renewal_reorder_window,
         }
 
     @classmethod
@@ -65,6 +78,9 @@ class CommunicationProfile:
                                               for interval in payload.get("telemetry_outage_intervals", ())),
             command_loss_probability=float(payload.get("command_loss_probability", 0.0)),
             ack_loss_probability=float(payload.get("ack_loss_probability", 0.0)),
+            renewal_extra_delay=float(payload.get("renewal_extra_delay", 0.0)),
+            renewal_duplicate_probability=float(payload.get("renewal_duplicate_probability", 0.0)),
+            renewal_reorder_window=float(payload.get("renewal_reorder_window", 0.0)),
         )
 
     def _uniform(self, seed: int, link: str, identity: str) -> float:
@@ -90,6 +106,14 @@ class CommunicationProfile:
 
     def ack_delivered(self, *, seed: int, identity: str) -> bool:
         return self._uniform(seed, "ack", identity) >= self.ack_loss_probability
+
+    def renewal(self, *, seed: int, identity: str) -> dict[str, Any]:
+        """Return deterministic transport fate for one lease renewal request."""
+        dropped = self._uniform(seed, "renewal-loss", identity) < self.command_loss_probability
+        delay = self.renewal_extra_delay + self._uniform(seed, "renewal-order", identity) * self.renewal_reorder_window
+        duplicate = (not dropped and self._uniform(seed, "renewal-duplicate", identity)
+                     < self.renewal_duplicate_probability)
+        return {"dropped": bool(dropped), "delay": float(delay), "duplicate": bool(duplicate)}
 
 
 def weak_communication_profile(level: str) -> CommunicationProfile:
