@@ -56,12 +56,13 @@ The fixed world model's recorded historical test metrics remain: reward RMSE `3.
 
 The pilot wrapper recorded a raw `rollout-ledger.jsonl`. The formal runner recorded per-seed JSON records and checkpoints but did not emit a formal raw rollout ledger. This report therefore does not claim a formal event-level training ledger; the missing artifact is a reproducibility limitation, not silently reconstructed data.
 
-Downloaded archive: `archive-m10-authorized-resume-fix-v1-20260908/`. Remote and local SHA-256 matched for all 23 formal files and the pilot key artifacts. Representative hashes:
+Downloaded archive: `archive-m10-authorized-resume-fix-v1-20260908/`. Remote and local SHA-256 matched for all 23 formal files, the post-fix pilot key artifacts, and the original failed pilot ledger/model. The original failed pilot intentionally has no complete `pilot-results.json` or `run-complete.json`. Representative hashes:
 
 - `formal-fix-v1/formal-results.json`: `b3502ac0da90c3b80ad8b41239c7b4d50c41297986d3a3ab8c5441de831ac35b`
 - `formal-fix-v1/trigger-threshold-selection.json`: `2267740a8c2a2a37e2594f5e3b68284e9dd8abe15cda6278c9d1135d162cc135`
 - `pilot-fix-v1/pilot-results.json`: `a1bb4718ab82458521a3484711ba58129be42154e47b50ab58e801d8fd1d9199`
 - `pilot-fix-v1/world-model.pt`: `e31968ebe328b2deef46c8ba9d4150bf79e3a85d5aae5e293d391b9f84105ed3`
+- `original-pilot/rollout-ledger.jsonl`: `737b5adb30c7b4be188ceeeb68e11ac6ffedc4ebc13b1674975af299cebbdbc8`
 
 ## Conclusion and limits
 
