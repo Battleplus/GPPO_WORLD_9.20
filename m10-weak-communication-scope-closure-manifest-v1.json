@@ -19,8 +19,8 @@
   "files": {
     "tools/summarize_m10_weak_comm_scope.py": "ed2010412b203e31ea1780fb4824997833332455ce2de368e865385e2c6ec0b0",
     "tests/test_m10_weak_comm_scope.py": "7dadcb1b7a6d08ee599d0193e4d52cb7b869063715b5e85cc9b94e477d159b17",
-    "nodes/M-10/m10-weak-communication-scope-closure-report.md": "9c7af50c87f179dcbc76d9135dc45920d79afc771353072942364f1c2021e254",
-    "nodes/M-10/status.json": "55c9632b80fbf880ef6705d0c493534b9f8df1eb9c537219e16627409a532a84",
+    "nodes/M-10/m10-weak-communication-scope-closure-report.md": "d6dc0e96b969316ec904e1180cdd4ef800d91ca64d8b92e306edb7e0c2965218",
+    "nodes/M-10/status.json": "22dc2639ff54d9f4812cc6893a5abdf450f4ffbfad1711e52ba5be467d95c126",
     "m10-weak-communication-scope-summary-v1.json": "c9180609882f3cb12c31369bd4687cdcfe99bd991750de2b8f0dd2a1ab032334"
   },
   "results": {
@@ -48,5 +48,5 @@
     "next_action": "stop_without_training_until_real_requirements_or_new_research_question"
   },
   "release": "https://github.com/Battleplus/GPPO-WORLD-9.2/releases/tag/m10-weak-communication-scope-closure-v1-20260908",
-  "release_asset": "m10-weak-communication-scope-closure-v1-20260908-final2.zip"
+  "release_asset": "m10-weak-communication-scope-closure-v1-20260908-final3.zip"
 }

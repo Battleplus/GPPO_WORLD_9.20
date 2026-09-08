@@ -318,7 +318,7 @@
       "weak_communication_availability": "not_passed",
       "archive_status": "small closure package published; reuses existing large audit assets",
       "release": "https://github.com/Battleplus/GPPO-WORLD-9.2/releases/tag/m10-weak-communication-scope-closure-v1-20260908",
-      "release_asset": "m10-weak-communication-scope-closure-v1-20260908-final2.zip",
+      "release_asset": "m10-weak-communication-scope-closure-v1-20260908-final3.zip",
       "release_asset_sha256": "verified_after_upload_via_release_api"
     }
   },
