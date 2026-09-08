@@ -658,13 +658,21 @@ def collect_rollout(policy: M10ActorCritic, *, config: PPOConfig, env_config: M1
             vector = decision_vector
             actor_decision = True
         else:
+            # A triggered policy still owns a context-sized critic input while
+            # it continues an accepted command.  The gated vector intentionally
+            # omits model context when risk is below threshold, but passing that
+            # shorter vector to value_only would make the context projection see
+            # a zero-width tensor.  Reuse the already computed context from this
+            # snapshot; do not run another model inference or submit a command.
+            value_vector = full_vector if policy.context_dim else vector
             value_tensor, hidden = policy.value_only(
-                torch.tensor(vector, dtype=torch.float32, device=device)[None, :], hidden,
+                torch.tensor(value_vector, dtype=torch.float32, device=device)[None, :], hidden,
             )
             action = int(last_action)  # guarded by _trigger_decision's safety condition
             log_prob = 0.0
             value = float(value_tensor.item())
             actor_decision = False
+            vector = value_vector
         last_action = action
         steps_since_replan = 0 if should_replan else steps_since_replan + 1
         next_obs, reward, done, info = env.step(action, submit_command=should_replan)
@@ -683,12 +691,13 @@ def collect_rollout(policy: M10ActorCritic, *, config: PPOConfig, env_config: M1
         if terminated:
             next_value = 0.0
         else:
-            next_vector, _, _, _ = _policy_input_bundle(
+            next_vector, _, _, next_full_vector = _policy_input_bundle(
                 env, next_obs, model, fusion=fusion, device=device,
                 trigger_threshold=trigger_threshold,
             )
+            next_value_vector = next_full_vector if policy.context_dim else next_vector
             next_value_tensor, _ = policy.value_only(
-                torch.tensor(next_vector, dtype=torch.float32, device=device)[None, :], hidden,
+                torch.tensor(next_value_vector, dtype=torch.float32, device=device)[None, :], hidden,
             )
             next_value = float(next_value_tensor.item())
         transitions.append(Transition(
@@ -868,7 +877,12 @@ def evaluate_policy(policy: M10ActorCritic, *, model: M10WorldModel | None, fusi
                 vector = decision_vector
                 actor_calls += 1
             else:
-                _, hidden = policy.value_only(torch.tensor(vector, dtype=torch.float32, device=device_obj)[None, :], hidden)
+                # Keep the critic input compatible with the context-enabled
+                # triggered policy while preserving the no-actor/no-submit
+                # continuation semantics.
+                value_vector = full_vector if policy.context_dim else vector
+                _, hidden = policy.value_only(torch.tensor(value_vector, dtype=torch.float32, device=device_obj)[None, :], hidden)
+                vector = value_vector
                 action = int(last_action)
                 continuation_steps += 1
             last_action = action
