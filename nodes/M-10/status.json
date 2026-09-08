@@ -322,6 +322,28 @@
       "release_asset_sha256": "verified_after_upload_via_release_api"
     }
   },
-  "completion_boundary": "weak communication protocol, pilot, formal A/B/C matrix and detailed audit completed; availability diagnosis found current frozen policy unusable on the traced tape and the full weak-communication availability gate is not passed; independent diagnostic archive publication, user-confirmed return/charging scope, real control cycle, real deployment validation and human review remain open",
+  "weak_communication_stage_closure": {
+    "one_page": "nodes/M-10/m10-weak-communication-stage-closure-one-page.md",
+    "result_ledger": "nodes/M-10/m10-weak-communication-result-ledger.md",
+    "requirements_handoff": "nodes/M-10/m10-weak-communication-requirements-handoff.md",
+    "historical_weak_comm_ABC_training": "completed_and_archived",
+    "parallel_lease_bounded_course": "A_only_completed; weak_comm_recovery_gate_failed",
+    "bounded_course_BC": "not_started",
+    "recovery_action_selection_route": "stopped_start_condition_unmet",
+    "full_goal_complete": false,
+    "new_training": false,
+    "new_scan": false,
+    "old_diagnostic_rerun": false,
+    "reference_event_metrics": "187 interrupted, 170 service recovered, 166 deadline-completed",
+    "historical_pressure_policy_recovery": "1/96",
+    "selected_strict_reference_recovery": "26/32",
+    "boundary_strict_reference_recovery": "27/29 interrupted events",
+    "candidate_visible_old_policy_failures": 0,
+    "training_recovery_samples": "unknown_training_rollout_not_exported",
+    "weak_communication_availability": "not_passed",
+    "real_requirements_adaptation": "pending_user_inputs",
+    "archive": "associated_with_m10-weak-communication-scope-closure-v1-20260908_and_existing_artifact_indexes"
+  },
+  "completion_boundary": "weak communication protocol, pilot, formal historical A/B/C matrix, parallel-lease A-only bounded course, event-level boundary audit and requirements handoff completed; full weak-communication availability remains not passed; user-confirmed communication requirements, task scale, control cycle, return/charging scope, real deployment validation and human review remain open",
   "review_status": "not_held"
 }
