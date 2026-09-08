@@ -1,0 +1,2113 @@
+{
+  "format": "m10-weak-communication-scope-summary/1.0.0",
+  "source": {
+    "audit_format": "m10-recovery-boundary/1.0.0",
+    "audit_scope": {
+      "B_started": false,
+      "C_started": false,
+      "final_test_used_for_selection": false,
+      "full_course_rerun": false,
+      "old_pressure_tape_modified": false,
+      "training_started": false
+    },
+    "server_audit_sha256": "fddf511dc182cc86c881779d060eb08a70e4e838816b415de60473b4df0793cd",
+    "server_root": "/home/user1/m10-runs/20260908-recovery-boundary-v3",
+    "rerun": false,
+    "training_started": false,
+    "B_started": false,
+    "C_started": false
+  },
+  "definitions": {
+    "strict_recovery": "interrupted task + legal post-fault knowledge + public candidate + post-event alternate service + completion before deadline + zero security rejection",
+    "information_missing_or_stale": "no legal knowledge or no public candidate after legal knowledge; this is not a claim that every such row has a publisher bug",
+    "time_or_physical_budget_insufficient_after_knowledge": "a legal candidate existed, but the row did not complete before deadline; positive slack at knowledge is retained and does not prove zero time",
+    "information_present_but_execution_or_resource_not_successful": "legal candidate existed but no post-event alternate service was recorded, without a separate deadline failure reason",
+    "not_an_interrupted_recovery_event": "episode completed or failed without the reference execution being interrupted; excluded from event-recovery denominators"
+  },
+  "full_pool": {
+    "rows": 256,
+    "four_way_episode_counts": {
+      "both_failure": 53,
+      "both_success": 172,
+      "old_success_reference_failure": 5,
+      "reference_success_old_failure": 26
+    },
+    "interrupted_event_metrics": {
+      "interrupted_events": 187,
+      "legal_knowledge": 187,
+      "public_candidate": 172,
+      "service_recovered": 170,
+      "deadline_completed": 166,
+      "task_completed_anyway": 182,
+      "security_rejection_rows": 0
+    },
+    "scope_classes": {
+      "information_and_execution_sufficient": 166,
+      "information_missing_or_stale": 15,
+      "information_present_but_execution_or_resource_not_successful": 1,
+      "time_or_physical_budget_insufficient_after_knowledge": 5
+    },
+    "by_split": {
+      "recovery-opportunity-ood": {
+        "metrics": {
+          "interrupted_events": 44,
+          "legal_knowledge": 44,
+          "public_candidate": 42,
+          "service_recovered": 42,
+          "deadline_completed": 41,
+          "task_completed_anyway": 43,
+          "security_rejection_rows": 0
+        },
+        "scope_classes": {
+          "information_and_execution_sufficient": 41,
+          "information_missing_or_stale": 2,
+          "time_or_physical_budget_insufficient_after_knowledge": 1
+        }
+      },
+      "recovery-opportunity-test": {
+        "metrics": {
+          "interrupted_events": 48,
+          "legal_knowledge": 48,
+          "public_candidate": 43,
+          "service_recovered": 41,
+          "deadline_completed": 39,
+          "task_completed_anyway": 45,
+          "security_rejection_rows": 0
+        },
+        "scope_classes": {
+          "information_and_execution_sufficient": 39,
+          "information_missing_or_stale": 5,
+          "information_present_but_execution_or_resource_not_successful": 1,
+          "time_or_physical_budget_insufficient_after_knowledge": 3
+        }
+      },
+      "recovery-opportunity-train": {
+        "metrics": {
+          "interrupted_events": 45,
+          "legal_knowledge": 45,
+          "public_candidate": 42,
+          "service_recovered": 42,
+          "deadline_completed": 41,
+          "task_completed_anyway": 44,
+          "security_rejection_rows": 0
+        },
+        "scope_classes": {
+          "information_and_execution_sufficient": 41,
+          "information_missing_or_stale": 3,
+          "time_or_physical_budget_insufficient_after_knowledge": 1
+        }
+      },
+      "recovery-opportunity-validation": {
+        "metrics": {
+          "interrupted_events": 50,
+          "legal_knowledge": 50,
+          "public_candidate": 45,
+          "service_recovered": 45,
+          "deadline_completed": 45,
+          "task_completed_anyway": 50,
+          "security_rejection_rows": 0
+        },
+        "scope_classes": {
+          "information_and_execution_sufficient": 45,
+          "information_missing_or_stale": 5
+        }
+      }
+    }
+  },
+  "boundary_scan": {
+    "rows": 34,
+    "interrupted_event_metrics": {
+      "interrupted_events": 29,
+      "legal_knowledge": 28,
+      "public_candidate": 28,
+      "service_recovered": 27,
+      "deadline_completed": 27,
+      "task_completed_anyway": 27,
+      "security_rejection_rows": 0
+    },
+    "scope_classes": {
+      "information_and_execution_sufficient": 27,
+      "information_missing_or_stale": 1,
+      "time_or_physical_budget_insufficient_after_knowledge": 1
+    },
+    "by_factor": {
+      "alternate_distance_service": {
+        "metrics": {
+          "interrupted_events": 15,
+          "legal_knowledge": 15,
+          "public_candidate": 15,
+          "service_recovered": 15,
+          "deadline_completed": 15,
+          "task_completed_anyway": 15,
+          "security_rejection_rows": 0
+        },
+        "scope_classes": {
+          "information_and_execution_sufficient": 15
+        },
+        "rows": [
+          {
+            "split": null,
+            "tape_id": "boundary-distance-0.8-service-1.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 0.8,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-0.8-service-2.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 2.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 0.8,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-0.8-service-3.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 3.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 0.8,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-1.2-service-1.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.2,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-1.2-service-2.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 2.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.2,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-1.2-service-3.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 3.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.2,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-1.6-service-1.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.6,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-1.6-service-2.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 2.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.6,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-1.6-service-3.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 3.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.6,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-2.0-service-1.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 2.0,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-2.0-service-2.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 2.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 2.0,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-2.0-service-3.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 3.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 2.0,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-2.4-service-1.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 2.4,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-2.4-service-2.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 2.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 2.4,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-distance-2.4-service-3.5",
+            "category": "both_success",
+            "factor": "alternate_distance_service",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 3.5,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 2.4,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          }
+        ]
+      },
+      "disconnect_duration": {
+        "metrics": {
+          "interrupted_events": 5,
+          "legal_knowledge": 5,
+          "public_candidate": 5,
+          "service_recovered": 5,
+          "deadline_completed": 5,
+          "task_completed_anyway": 5,
+          "security_rejection_rows": 0
+        },
+        "scope_classes": {
+          "information_and_execution_sufficient": 5
+        },
+        "rows": [
+          {
+            "split": null,
+            "tape_id": "boundary-outage-2.0",
+            "category": "both_success",
+            "factor": "disconnect_duration",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "boundary-outage-2.0",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    5.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 5.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 5.0,
+            "deadline_slack_at_knowledge": 9.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-outage-3.0",
+            "category": "both_success",
+            "factor": "disconnect_duration",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "boundary-outage-3.0",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-outage-4.0",
+            "category": "both_success",
+            "factor": "disconnect_duration",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "boundary-outage-4.0",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    7.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 7.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 7.0,
+            "deadline_slack_at_knowledge": 7.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-outage-5.0",
+            "category": "both_success",
+            "factor": "disconnect_duration",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "boundary-outage-5.0",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    8.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 8.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 8.0,
+            "deadline_slack_at_knowledge": 6.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-outage-6.0",
+            "category": "both_success",
+            "factor": "disconnect_duration",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "boundary-outage-6.0",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    9.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 9.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 9.0,
+            "deadline_slack_at_knowledge": 5.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          }
+        ]
+      },
+      "parallel_task_competition": {
+        "metrics": {
+          "interrupted_events": 0,
+          "legal_knowledge": 0,
+          "public_candidate": 0,
+          "service_recovered": 0,
+          "deadline_completed": 0,
+          "task_completed_anyway": 0,
+          "security_rejection_rows": 0
+        },
+        "scope_classes": {},
+        "rows": []
+      },
+      "post_knowledge_deadline_slack": {
+        "metrics": {
+          "interrupted_events": 5,
+          "legal_knowledge": 4,
+          "public_candidate": 4,
+          "service_recovered": 3,
+          "deadline_completed": 3,
+          "task_completed_anyway": 3,
+          "security_rejection_rows": 0
+        },
+        "scope_classes": {
+          "information_and_execution_sufficient": 3,
+          "information_missing_or_stale": 1,
+          "time_or_physical_budget_insufficient_after_knowledge": 1
+        },
+        "rows": [
+          {
+            "split": null,
+            "tape_id": "boundary-slack-2.0",
+            "category": "both_failure",
+            "factor": "post_knowledge_deadline_slack",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 4.212079878530561,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": null,
+            "knowledge_basis": null,
+            "has_legal_knowledge": false,
+            "first_public_candidate_time": null,
+            "deadline_slack_at_knowledge": null,
+            "accepted_alternate_count": 0,
+            "service_recovered": false,
+            "task_completed": false,
+            "strict_recovery_completion": false,
+            "failure_reasons": [
+              "no_legal_post_fault_telemetry",
+              "no_post_event_alternate_service",
+              "not_completed_before_deadline"
+            ],
+            "security_rejections": [],
+            "scope_class": "information_missing_or_stale"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-slack-4.0",
+            "category": "both_failure",
+            "factor": "post_knowledge_deadline_slack",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 6.212079878530561,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 0.21207987853056132,
+            "accepted_alternate_count": 1,
+            "service_recovered": false,
+            "task_completed": false,
+            "strict_recovery_completion": false,
+            "failure_reasons": [
+              "no_post_event_alternate_service",
+              "not_completed_before_deadline"
+            ],
+            "security_rejections": [],
+            "scope_class": "time_or_physical_budget_insufficient_after_knowledge"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-slack-6.0",
+            "category": "both_success",
+            "factor": "post_knowledge_deadline_slack",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 8.212079878530561,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 2.2120798785305613,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-slack-8.0",
+            "category": "both_success",
+            "factor": "post_knowledge_deadline_slack",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 10.212079878530561,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 4.212079878530561,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-slack-10.0",
+            "category": "both_success",
+            "factor": "post_knowledge_deadline_slack",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 12.212079878530561,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 6.212079878530561,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          }
+        ]
+      },
+      "telemetry_delay_vs_max_age": {
+        "metrics": {
+          "interrupted_events": 4,
+          "legal_knowledge": 4,
+          "public_candidate": 4,
+          "service_recovered": 4,
+          "deadline_completed": 4,
+          "task_completed_anyway": 4,
+          "security_rejection_rows": 0
+        },
+        "scope_classes": {
+          "information_and_execution_sufficient": 4
+        },
+        "rows": [
+          {
+            "split": null,
+            "tape_id": "boundary-delay-0.0-age-2.5",
+            "category": "both_success",
+            "factor": "telemetry_delay_vs_max_age",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 6.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 6.0,
+            "deadline_slack_at_knowledge": 8.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-delay-0.5-age-2.5",
+            "category": "both_success",
+            "factor": "telemetry_delay_vs_max_age",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 7.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 7.0,
+            "deadline_slack_at_knowledge": 7.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-delay-1.0-age-2.5",
+            "category": "both_success",
+            "factor": "telemetry_delay_vs_max_age",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 7.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 7.0,
+            "deadline_slack_at_knowledge": 7.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          },
+          {
+            "split": null,
+            "tape_id": "boundary-delay-1.5-age-2.5",
+            "category": "both_success",
+            "factor": "telemetry_delay_vs_max_age",
+            "scenario": {
+              "communication": {
+                "ack_loss_probability": 0.0,
+                "command_loss_probability": 0.0,
+                "name": "recovery",
+                "renewal_duplicate_probability": 0.0,
+                "renewal_extra_delay": 0.0,
+                "renewal_reorder_window": 0.0,
+                "telemetry_duplicate_probability": 0.0,
+                "telemetry_extra_delay": 0.0,
+                "telemetry_loss_probability": 0.0,
+                "telemetry_outage_intervals": [
+                  [
+                    3.0,
+                    6.0
+                  ]
+                ],
+                "telemetry_reorder_window": 0.0
+              },
+              "events": [
+                {
+                  "kind": "damage",
+                  "resource": "uav-0",
+                  "time": 2.2120798785305618
+                }
+              ],
+              "tasks": [
+                {
+                  "arrival": 0.0,
+                  "deadline": 14.975035119940383,
+                  "priority": 1.5,
+                  "region_id": 0,
+                  "service": 1.8613835182167549,
+                  "target_id": 0,
+                  "task_id": "task-0",
+                  "x": 1.0029145792987626,
+                  "y": 0.0
+                }
+              ]
+            },
+            "event": {
+              "kind": "damage",
+              "resource": "uav-0",
+              "time": 2.2120798785305618
+            },
+            "affected_task": "task-0",
+            "interrupted": true,
+            "knowledge_time": 8.0,
+            "knowledge_basis": "task-0:pending",
+            "has_legal_knowledge": true,
+            "first_public_candidate_time": 8.0,
+            "deadline_slack_at_knowledge": 6.975035119940383,
+            "accepted_alternate_count": 1,
+            "service_recovered": true,
+            "task_completed": true,
+            "strict_recovery_completion": true,
+            "failure_reasons": [],
+            "security_rejections": [],
+            "scope_class": "information_and_execution_sufficient"
+          }
+        ]
+      }
+    }
+  },
+  "learning_decision": {
+    "candidate_visible_old_policy_failures": 0,
+    "training_recovery_samples": "unknown_training_rollout_not_exported",
+    "A_only": "stopped_start_condition_unmet",
+    "B_C": "not_started"
+  }
+}

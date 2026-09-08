@@ -1,0 +1,52 @@
+{
+  "format": "m10-weak-communication-scope-closure-manifest/1.0.0",
+  "scope": {
+    "training_started": false,
+    "A_only_started": false,
+    "B_started": false,
+    "C_started": false,
+    "old_diagnostic_rerun": false,
+    "new_boundary_scan": false,
+    "old_pressure_tape_modified": false,
+    "historical_releases_overwritten": false,
+    "force_push": false
+  },
+  "source_base_remote_branch": "8a2022366e5949b5e3c36619563075651efa09da",
+  "server_root": "/home/user1/m10-runs/20260908-recovery-boundary-v3",
+  "server_audit_sha256": "fddf511dc182cc86c881779d060eb08a70e4e838816b415de60473b4df0793cd",
+  "server_boundary_tapes_sha256": "d81a6c90abeff713689982b483c33ef4b7057275e8c39a07439637c592a0fc37",
+  "reuses_existing_large_assets": true,
+  "files": {
+    "tools/summarize_m10_weak_comm_scope.py": "ed2010412b203e31ea1780fb4824997833332455ce2de368e865385e2c6ec0b0",
+    "tests/test_m10_weak_comm_scope.py": "7dadcb1b7a6d08ee599d0193e4d52cb7b869063715b5e85cc9b94e477d159b17",
+    "nodes/M-10/m10-weak-communication-scope-closure-report.md": "9c7af50c87f179dcbc76d9135dc45920d79afc771353072942364f1c2021e254",
+    "nodes/M-10/status.json": "55c9632b80fbf880ef6705d0c493534b9f8df1eb9c537219e16627409a532a84",
+    "m10-weak-communication-scope-summary-v1.json": "c9180609882f3cb12c31369bd4687cdcfe99bd991750de2b8f0dd2a1ab032334"
+  },
+  "results": {
+    "full_pool_episode_four_way": {
+      "both_success": 172,
+      "reference_success_old_failure": 26,
+      "old_success_reference_failure": 5,
+      "both_failure": 53
+    },
+    "full_pool_interrupted_events": 187,
+    "full_pool_legal_knowledge": 187,
+    "full_pool_public_candidate": 172,
+    "full_pool_service_recovered": 170,
+    "full_pool_deadline_completed": 166,
+    "boundary_scan_rows": 34,
+    "boundary_scan_interrupted": 29,
+    "boundary_scan_strict_recovery": 27,
+    "candidate_visible_old_policy_failures": 0,
+    "training_recovery_samples": "unknown_training_rollout_not_exported",
+    "weak_communication_availability": "not_passed"
+  },
+  "decision": {
+    "recovery_action_selection_route": "stopped_start_condition_unmet",
+    "communication_fix": "not_supported_by_current_evidence",
+    "next_action": "stop_without_training_until_real_requirements_or_new_research_question"
+  },
+  "release": "https://github.com/Battleplus/GPPO-WORLD-9.2/releases/tag/m10-weak-communication-scope-closure-v1-20260908",
+  "release_asset": "m10-weak-communication-scope-closure-v1-20260908-final2.zip"
+}
