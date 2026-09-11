@@ -8,6 +8,12 @@ from .contracts import (
     WorldModelInput,
 )
 from .registry import FEATURE_REGISTRY, SCHEMA_VERSION
+from .consequence_model import (
+    ActionConsequenceWorldModel,
+    ConsequenceModelConfig,
+    ConsequenceTarget,
+    consequence_loss,
+)
 
 __all__ = [
     "EvidenceItem",
@@ -17,4 +23,8 @@ __all__ = [
     "SCHEMA_VERSION",
     "Transition",
     "WorldModelInput",
+    "ActionConsequenceWorldModel",
+    "ConsequenceModelConfig",
+    "ConsequenceTarget",
+    "consequence_loss",
 ]

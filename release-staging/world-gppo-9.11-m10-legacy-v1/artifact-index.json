@@ -1,0 +1,60 @@
+{
+  "schema": "world-gppo-9.11-provenance/1",
+  "generated_for": "WORLD-GPPO_9.11",
+  "generated_on": "2026-09-11",
+  "source_repositories": [
+    {
+      "repository": "Battleplus/GPPO-WORLD-9.2",
+      "local_path": "E:\\Z博士\\9.2日\\GPPO-WORLD-9.2-lease-fix",
+      "commit": "05702ae861e460e667acf8f0184e9a3709ef6fd4",
+      "worktree_note": "source worktree had uncommitted changes; only this committed snapshot was cloned"
+    },
+    {
+      "repository": "Battleplus/GPPO-WORLD-9.2",
+      "local_path": "E:\\Z博士\\9.2日\\GPPO-WORLD-9.2",
+      "commit": "117652e264a08f05a580e672e0a8755c6f4d422b",
+      "role": "clean handoff reference"
+    }
+  ],
+  "target_repository": {
+    "repository": "Battleplus/WORLD-GPPO_9.11",
+    "branch": "world-model-consequence-v1",
+    "remote_probe": "2026-09-11 connection reset before HEAD/Release could be read"
+  },
+  "protocols": {
+    "legacy_transition": "gppo-world-transition/0.1.0",
+    "m10_weak_communication": "m10-training-protocol/0.1.0",
+    "new_design": "world-gppo-9.11-consequence/0.1.0",
+    "task_semantics": "continuous_service_until_deadline; arrival_is_not_completion"
+  },
+  "historical_training_artifacts": {
+    "source_release": "m10-r3-prediction-trigger-learning-v1-20260907",
+    "replay_release": "m10-local-cpu-replay-20260910-v1",
+    "artifact_policy": "large files remain referenced by existing archive/Release until new repository Release is reachable",
+    "world_model": {
+      "path_in_legacy_archive": "inputs/pilot-fix-v1/world-model.pt",
+      "bytes": 1459414,
+      "sha256": "e31968ebe328b2deef46c8ba9d4150bf79e3a85d5aae5e293d391b9f84105ed3"
+    },
+    "policy_checkpoints": [
+      {"variant": "A-graph5-base", "seed": 1101, "path": "formal/checkpoints/A-graph5-base/seed-1101.pt", "bytes": 511186, "sha256": "d87427d19016c63a4e1e2c9c1b2807ea970fda5b0f49c2fcdaa6fe46fcb5f146"},
+      {"variant": "A-graph5-base", "seed": 2203, "path": "formal/checkpoints/A-graph5-base/seed-2203.pt", "bytes": 511186, "sha256": "11d3c7000ed08c5833913a5af1ee2499527240882882b4c67899530a9ed9792b"},
+      {"variant": "A-graph5-base", "seed": 3307, "path": "formal/checkpoints/A-graph5-base/seed-3307.pt", "bytes": 511186, "sha256": "4b8f658beb82e82cf327e19c044a45d237ed98a9c6898fae2aed296785d3d16b"},
+      {"variant": "B-graph5-world", "seed": 1101, "path": "formal/checkpoints/B-graph5-world/seed-1101.pt", "bytes": 528202, "sha256": "507bce8e6ca85680ce145deb700fe02f50d2cd78baa0b5996e06bf7e3c9da1a4"},
+      {"variant": "B-graph5-world", "seed": 2203, "path": "formal/checkpoints/B-graph5-world/seed-2203.pt", "bytes": 528202, "sha256": "8aacabb0c615b6c14c934311307a2588a33df4d571979110dff4902b80dc53f3"},
+      {"variant": "B-graph5-world", "seed": 3307, "path": "formal/checkpoints/B-graph5-world/seed-3307.pt", "bytes": 528202, "sha256": "14d083cb6a0c81e66a573e6498374134bdbba812c716949046351b85ae397a16"},
+      {"variant": "C-graph5-triggered", "seed": 1101, "path": "formal/checkpoints/C-graph5-triggered/seed-1101.pt", "bytes": 528394, "sha256": "cbeb5fc2332a0df5f866ff891ef8dd99067ebb8cf4f24555c2f59b3e9e44263f"},
+      {"variant": "C-graph5-triggered", "seed": 2203, "path": "formal/checkpoints/C-graph5-triggered/seed-2203.pt", "bytes": 528394, "sha256": "df6c141d61c4020e36d329eaab6cc82c09ad69456a2254946effb42f6b843c9c"},
+      {"variant": "C-graph5-triggered", "seed": 3307, "path": "formal/checkpoints/C-graph5-triggered/seed-3307.pt", "bytes": 528394, "sha256": "f168f3a616f39858a666b5ef1deb4267ae08f5191c32cf88ce9a427d26977876"}
+    ],
+    "state_policy": {
+      "optimizer_state_dict_field_present": true,
+      "recovery_state_field_present": true,
+      "restore_validation_performed": false
+    }
+  },
+  "historical_results": {
+    "weak_communication_completion": {"A_gppo": "84/288", "B_gppo_world": "82/288", "C_gppo_world_triggered": "49/288"},
+    "interpretation": "B has no improvement evidence; C reduces actor calls but harms task completion; historical raw training ledger is missing"
+  }
+}
