@@ -90,6 +90,11 @@
       "sha256": "d5aa4c3d0b201d10cbd17c76e99fa5c7fab62100c2ffc7ae5d2b4828b38fe251"
     },
     {
+      "path": "docs/verification/server-pilot-blocked-20260912.md",
+      "bytes": 2345,
+      "sha256": "37f8e49a59f73f6d245c838b8885a7e1ac9ea78ef688719d22e44b744fcd79cd"
+    },
+    {
       "path": "docs/verification/training-chain-status-20260912.md",
       "bytes": 2578,
       "sha256": "441f03874e132ca88489f7f3473a065556ff451ef8e2738b1e37b533afb68569"
