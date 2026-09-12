@@ -4,6 +4,8 @@
 
 当前阶段主题是“无人机弱通信任务调度中的世界模型优化”：首轮保持周期决策，新增候选 UAV–Task 后果预测设计与实现，但尚未启动新训练。请先阅读 [迁移来源](docs/transition/legacy-provenance.md)、[任务合同](docs/contracts/world-gppo-9.11-task-contract.md)、[后果模型设计](docs/world-model/action-consequence-design.md) 和 [实验计划](docs/plans/EXPERIMENT_PLAN.md)。
 
+候选后果标签校验入口为 `gppo_world/consequence_data.py`，服务器训练入口为 `tools/train_m10_consequence_model.py`；当前仅完成接口与测试，未执行训练。
+
 新仓库远端在 2026-09-11 探测时连接被重置；大型 checkpoint、optimizer/recovery state、训练日志和数据仅在 `release-staging/` 中登记，待远端可达后上传独立 Release 并回读核验。
 
 本仓库用于把“事件感知世界模型”迁移到 GPPO 动态任务分配系统，并保存从设计、数据、模型、联调到实验验收的完整证据。
