@@ -9,7 +9,20 @@
 3. 检查是否已有同一 run-id 存活进程或完整输出；确认同一 run 没有存活进程后才可 resume。
 4. 先跑数据/合同/模型加载 gate，再跑小预算 sanity；任何泄漏、非法动作、非有限损失、安全违规或预算超限立即停止。
 
-## 计划入口
+## 数据生成与计划入口
+
+运行检查数据（`horizon_steps=1`）只用于加载/CUDA smoke；开发检查表明正式候选窗口应使用版本化的 6 步协议，不得混用 manifest：
+
+```powershell
+python tools/generate_m10_consequence_dataset.py `
+  --out <frozen-consequence-data> `
+  --count-per-split 4 `
+  --prefix-steps 2 `
+  --horizon-steps 6 `
+  --protocol <exact-protocol-string>
+```
+
+生成后先运行 `tools/audit_m10_consequence_data.py`，确认实际文件、身份、mask 和 split 审计通过。
 
 ```powershell
 python tools/train_m10_consequence_model.py `

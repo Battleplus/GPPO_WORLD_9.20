@@ -91,7 +91,7 @@ def example_from_dict(
     target = ConsequenceTarget(**dict(record["target"]))
     target.validate(expected_horizon_steps=expected_horizon_steps)
     if target.action >= graph.num_actions or not bool(graph.action_mask[target.action].item()):
-        raise ValueError("counterfactual action must be legal in graph_t")
+        raise ValueError("counterfactual action must be legal in the public graph snapshot")
     history_value = record.get("history")
     history = None
     if history_value is not None:

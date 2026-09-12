@@ -46,8 +46,10 @@ def state(env: M10Environment) -> tuple[float, dict[str, float], dict[str, str]]
     )
 
 
-def branch(scenario: M10Scenario, prefix_actions: list[int], action: int, horizon: int, parent_id: str, prefix_id: str) -> tuple[dict[str, Any], dict[str, Any]]:
-    exogenous_key = f"{scenario.tape_id}|{parent_id}|{prefix_id}"
+def branch(scenario: M10Scenario, prefix_actions: list[int], action: int, horizon: int, parent_id: str, prefix_id: str, exogenous_key: str | None = None) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Run one branch from a prefix under the caller-selected random stream."""
+
+    exogenous_key = exogenous_key or f"{scenario.tape_id}|{parent_id}|{prefix_id}"
     env = M10Environment(scenario=scenario, exogenous_key=exogenous_key)
     obs = env.reset()
     prefix_trace: list[dict[str, Any]] = []
@@ -122,7 +124,8 @@ def make_split(split: str, count: int, base_seed: int, prefix_steps: int, horizo
         parent_id = f"{split}:{scenario.tape_id}"
         prefix_id = f"{parent_id}:prefix-{prefix_steps}"
         prefix_actions = [M10Environment(scenario=scenario).config.action_count - 1] * prefix_steps
-        probe = M10Environment(scenario=scenario, exogenous_key=f"probe|{parent_id}|{prefix_id}")
+        shared_key = f"{scenario.tape_id}|{parent_id}|{prefix_id}"
+        probe = M10Environment(scenario=scenario, exogenous_key=shared_key)
         obs = probe.reset()
         for prefix_action in prefix_actions:
             obs, _, done, _ = probe.step(prefix_action)
@@ -130,7 +133,7 @@ def make_split(split: str, count: int, base_seed: int, prefix_steps: int, horizo
                 raise RuntimeError("fixed prefix terminated before candidate branching")
         legal_actions = [index for index, allowed in enumerate(np.asarray(obs["mask"], dtype=bool)) if allowed]
         for action in legal_actions:
-            row, branch_ledger = branch(scenario, prefix_actions, action, horizon, parent_id, prefix_id)
+            row, branch_ledger = branch(scenario, prefix_actions, action, horizon, parent_id, prefix_id, shared_key)
             rows.append(row)
             ledger.append(branch_ledger)
     return rows, ledger
@@ -143,6 +146,7 @@ def main() -> int:
     parser.add_argument("--base-seed", type=int, default=91011)
     parser.add_argument("--prefix-steps", type=int, default=2)
     parser.add_argument("--horizon-steps", type=int, default=1)
+    parser.add_argument("--protocol", default="world-gppo-9.11-consequence/0.1.0")
     args = parser.parse_args()
     if min(args.count_per_split, args.prefix_steps, args.horizon_steps) < 1:
         parser.error("count-per-split, prefix-steps, and horizon-steps must be positive")
@@ -159,7 +163,7 @@ def main() -> int:
         ledger_text = "".join(json.dumps(item, sort_keys=True, separators=(",", ":")) + "\n" for item in ledger)
         ledger_path.write_bytes(ledger_text.encode("utf-8"))
         ledgers[split] = {"path": ledger_path.name, "sha256": hashlib.sha256(ledger_text.encode()).hexdigest(), "records": len(ledger)}
-    manifest = {"schema": "gppo-consequence-dataset/v2", "protocol": "world-gppo-9.11-consequence/0.1.0", "observation_contract": "m10-graph5-5type-25action", "prediction_horizon_steps": args.horizon_steps, "files": files, "branch_ledgers": ledgers, "generation": {"generator": "tools/generate_m10_consequence_dataset.py", "prefix_steps": args.prefix_steps, "count_per_split": args.count_per_split, "base_seed": args.base_seed, "shared_exogenous_randomness": True, "hidden_state_online": False}}
+    manifest = {"schema": "gppo-consequence-dataset/v2", "protocol": args.protocol, "observation_contract": "m10-graph5-5type-25action", "prediction_horizon_steps": args.horizon_steps, "files": files, "branch_ledgers": ledgers, "generation": {"generator": "tools/generate_m10_consequence_dataset.py", "prefix_steps": args.prefix_steps, "count_per_split": args.count_per_split, "base_seed": args.base_seed, "shared_exogenous_randomness": True, "hidden_state_online": False}}
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return 0
 

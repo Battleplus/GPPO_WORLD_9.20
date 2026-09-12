@@ -229,6 +229,8 @@ def main() -> int:
             "target observation contract is not implemented by this entry: "
             f"{observation_contract!r}"
         )
+    if manifest.get("protocol") != protocol.get("protocol"):
+        raise RuntimeError("dataset and protocol versions differ; regenerate the dataset with the exact protocol")
     if observation_contract == "gppo-graph-3type-17action" and not args.base_world_model:
         parser.error("--base-world-model is required for the legacy Graph-3/17-action contract")
     if args.base_world_model and not args.base_world_model.is_file():
