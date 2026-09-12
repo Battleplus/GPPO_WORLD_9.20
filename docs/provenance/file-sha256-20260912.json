@@ -16,8 +16,8 @@
     },
     {
       "path": "MANIFEST.md",
-      "bytes": 1633,
-      "sha256": "af657482144e669c185c06aaed6afb07559ec04362e5de83a98341e0bb497169"
+      "bytes": 1675,
+      "sha256": "aebc29f7d64514f4d61eabe01c1ba7e2e037ea7c1f47cd677009e7eb78fe8c33"
     },
     {
       "path": "configs/world-gppo-9.11-consequence-v0.1.0.json",
