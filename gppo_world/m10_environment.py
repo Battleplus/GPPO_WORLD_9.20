@@ -214,10 +214,14 @@ def scenario_from_dict(payload: dict[str, Any]) -> M10Scenario:
 class M10Environment:
     """Gym-like environment with a fixed global assignment action space."""
 
-    def __init__(self, config: M10Config | None = None, scenario: M10Scenario | None = None):
+    def __init__(self, config: M10Config | None = None, scenario: M10Scenario | None = None, *, exogenous_key: str | None = None):
         self.config = config or M10Config()
         self.scenario = scenario or default_scenario(seed=self.config.seed)
         self.communication = self.scenario.communication
+        # Counterfactual branches may opt into a shared random stream.  The
+        # key is only used by the simulator-side label generator; it is never
+        # exposed through the public observation.
+        self._exogenous_key = exogenous_key
         if len(self.scenario.tasks) > self.config.task_capacity:
             raise ValueError("scenario exceeds public task capacity")
         self.uav_ids = tuple(f"uav-{i}" for i in range(self.config.uav_count))
@@ -226,6 +230,11 @@ class M10Environment:
         self._last_visible_states: dict[str, str] = {}
         self._event_cursor = 0
         self._reset_state()
+
+    def _random_identity(self, identity: str) -> str:
+        if self._exogenous_key is None:
+            return identity
+        return f"{self._exogenous_key}|{identity.split('|')[0]}"
 
     def _reset_state(self) -> None:
         tasks = {
@@ -325,7 +334,7 @@ class M10Environment:
             command.command_id, command.uav_id, command.token,
         )
         ack_delivered = self.communication.ack_delivered(
-            seed=self.scenario.seed, identity=f"{renewal_id}|ack|{ordinal}",
+            seed=self.scenario.seed, identity=self._random_identity(f"{renewal_id}|ack|{ordinal}"),
         )
         self._communication_log.append({
             "link": "ack", "kind": "lease_renewal",
@@ -379,7 +388,7 @@ class M10Environment:
                 continue
             renewal_id = f"{command_id}|renew|{self._step_index + 1:05d}"
             fate = self.communication.renewal(
-                seed=self.scenario.seed, identity=renewal_id,
+                seed=self.scenario.seed, identity=self._random_identity(renewal_id),
             )
             self._communication_log.append({
                 "link": "command", "kind": "lease_renewal",
@@ -425,7 +434,7 @@ class M10Environment:
         now = self.clock.time
         sequence = self._next_sequence(entity, field)
         identity = f"{kind}|{entity}|{field}|{sequence}|{now:.9f}"
-        impairment = self.communication.telemetry(seed=self.scenario.seed, identity=identity, now=now)
+        impairment = self.communication.telemetry(seed=self.scenario.seed, identity=self._random_identity(identity), now=now)
         if impairment["dropped"]:
             self._communication_log.append({"link": "telemetry", "status": "dropped", "identity": identity,
                                             "message_id": identity, "delivery_ordinal": 0,
@@ -645,7 +654,7 @@ class M10Environment:
             self._command_index += 1
             command_id = f"{self._episode_id}-cmd-{self._command_index:05d}"
             command_identity = f"{command_id}|{obs['version']}|{action}"
-            command_delivered = self.communication.command_delivered(seed=self.scenario.seed, identity=command_identity)
+            command_delivered = self.communication.command_delivered(seed=self.scenario.seed, identity=self._random_identity(command_identity))
             self._communication_log.append({"link": "command", "status": "sent" if command_delivered else "dropped",
                                             "command_id": command_id, "time": self.clock.time})
             feedback = (self.bridge.submit(action, version=obs["version"], command_id=command_id)
@@ -653,7 +662,7 @@ class M10Environment:
             if isinstance(feedback, TaskCommand):
                 ack_result = self.execution.acknowledge(feedback.command_id, feedback.uav_id, feedback.token)
                 if ack_result == "accepted":
-                    ack_delivered = self.communication.ack_delivered(seed=self.scenario.seed, identity=command_identity)
+                    ack_delivered = self.communication.ack_delivered(seed=self.scenario.seed, identity=self._random_identity(command_identity))
                     self._communication_log.append({"link": "ack", "status": "received" if ack_delivered else "dropped",
                                                     "command_id": command_id, "time": self.clock.time})
                     if ack_delivered:

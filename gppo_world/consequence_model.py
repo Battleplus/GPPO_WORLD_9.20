@@ -15,7 +15,13 @@ from torch import nn
 from torch.nn import functional as F
 
 from .contracts import GraphSnapshot
+from .graph5 import Graph5Snapshot, GRAPH5_ACTION_COUNT
 from .model import GraphWorldModel
+
+
+def graph_to_device(graph: GraphSnapshot, device: torch.device | str) -> GraphSnapshot:
+    """Copy every graph component to one device before model execution."""
+    return graph.to(torch.device(device))
 
 
 CONTINUOUS_TARGETS = ("travel_time", "service_progress", "energy_delta")
@@ -196,6 +202,20 @@ class ActionConsequenceWorldModel(nn.Module):
         if any(action < 0 or action >= graph.num_actions for action in actions):
             raise ValueError("legal action is outside the frozen action contract")
         device = graph.nodes["uav"].device
+        parameter_device = next(self.parameters()).device
+        if device != parameter_device:
+            raise RuntimeError(
+                f"graph/model device mismatch: graph={device}, model={parameter_device}; "
+                "move graph, history, targets, and model together"
+            )
+        for name, value in graph.nodes.items():
+            if value.device != device:
+                raise RuntimeError(f"graph node {name} is on {value.device}, expected {device}")
+        for relation, value in graph.edge_index.items():
+            if value.device != device or graph.edge_attr[relation].device != device:
+                raise RuntimeError(f"graph relation {relation} is not on {device}")
+        if graph.candidate_edges.device != device or graph.action_mask.device != device:
+            raise RuntimeError("graph action tensors are not on the model device")
         graph_embedding = self.base_world_model.graph_encoder(graph)
         action_embeddings = self._candidate_embeddings(graph, actions)
         rows = [graph_embedding.expand(len(actions), -1), action_embeddings]
@@ -243,6 +263,73 @@ class ActionConsequenceWorldModel(nn.Module):
         return policy_scores + float(coefficient) * self.auxiliary_score(prediction)
 
 
+class Graph5ActionConsequenceWorldModel(nn.Module):
+    """Candidate consequence model for the public M-10 Graph-5 contract.
+
+    This is a separate architecture, not a renamed legacy checkpoint.  Each
+    candidate keeps its own relation row and action embedding; NOOP receives a
+    zero relation row and its own action embedding.
+    """
+
+    format_version = "gppo-m10-graph5-action-consequence-v1"
+
+    def __init__(self, config: ConsequenceModelConfig | None = None) -> None:
+        super().__init__()
+        self.config = config or ConsequenceModelConfig()
+        c = self.config
+        action_dim = max(16, c.hidden_dim // 2)
+        self.node_encoders = nn.ModuleDict({
+            name: nn.Sequential(nn.Linear(32, c.hidden_dim), nn.LayerNorm(c.hidden_dim), nn.SiLU())
+            for name in ("uav", "region", "target", "task", "event")
+        })
+        self.graph_projection = nn.Sequential(nn.Linear(5 * c.hidden_dim, c.hidden_dim), nn.LayerNorm(c.hidden_dim), nn.SiLU())
+        self.relation_encoder = nn.Sequential(nn.Linear(4, action_dim), nn.LayerNorm(action_dim), nn.SiLU())
+        self.action_embedding = nn.Embedding(GRAPH5_ACTION_COUNT, action_dim)
+        input_dim = c.hidden_dim + action_dim + action_dim
+        if c.history_dim:
+            self.history_encoder = nn.Sequential(nn.Linear(c.history_dim, c.hidden_dim), nn.LayerNorm(c.hidden_dim), nn.SiLU())
+            input_dim += c.hidden_dim
+        else:
+            self.history_encoder = None
+        self.trunk = nn.Sequential(nn.Linear(input_dim, c.hidden_dim), nn.LayerNorm(c.hidden_dim), nn.SiLU())
+        self.continuous_mean = nn.Linear(c.hidden_dim, len(CONTINUOUS_TARGETS))
+        self.continuous_logvar = nn.Linear(c.hidden_dim, len(CONTINUOUS_TARGETS))
+        self.deadline_logit = nn.Linear(c.hidden_dim, 1)
+
+    def predict_candidates(self, graph: Graph5Snapshot, legal_actions: Iterable[int] | None = None, *, history: torch.Tensor | None = None) -> ConsequencePrediction:
+        actions = [action for action, allowed in enumerate(graph.action_mask.tolist()) if allowed] if legal_actions is None else [int(action) for action in legal_actions]
+        if len(actions) != len(set(actions)) or any(action < 0 or action >= GRAPH5_ACTION_COUNT for action in actions):
+            raise ValueError("legal_actions must be unique and inside the Graph-5 action contract")
+        device = graph.nodes["uav"].device
+        if next(self.parameters()).device != device:
+            raise RuntimeError("Graph-5 graph/model device mismatch")
+        pooled = [self.node_encoders[name](graph.nodes[name]).mean(dim=0) for name in ("uav", "region", "target", "task", "event")]
+        graph_embedding = self.graph_projection(torch.cat(pooled, dim=-1))
+        if actions:
+            relation_rows = [graph.candidate_features[action] if action < GRAPH5_ACTION_COUNT - 1 else torch.zeros(4, device=device) for action in actions]
+            features = torch.cat((graph_embedding.expand(len(actions), -1), self.relation_encoder(torch.stack(relation_rows)), self.action_embedding(torch.tensor(actions, device=device))), dim=-1)
+        else:
+            features = torch.empty((0, self.trunk[0].in_features), device=device)
+        if self.history_encoder is not None:
+            if history is None or history.ndim != 1 or history.shape[0] != self.config.history_dim:
+                raise ValueError("history is missing or has the wrong visible dimension")
+            history_features = self.history_encoder(history.to(device)).expand(len(actions), -1)
+            features = torch.cat((features, history_features), dim=-1)
+        elif history is not None:
+            raise ValueError("history was supplied but history_dim is zero")
+        hidden = self.trunk(features)
+        return ConsequencePrediction(torch.tensor(actions, dtype=torch.long, device=device), self.continuous_mean(hidden), self.continuous_logvar(hidden).clamp(-8.0, 4.0), self.deadline_logit(hidden).squeeze(-1))
+
+    def auxiliary_score(self, prediction: ConsequencePrediction) -> torch.Tensor:
+        c = self.config
+        return c.service_weight * prediction.means[:, 1] - c.travel_weight * prediction.means[:, 0] - c.energy_weight * prediction.means[:, 2] - c.deadline_weight * prediction.deadline_risk
+
+    def combine_policy_scores(self, policy_scores: torch.Tensor, prediction: ConsequencePrediction, coefficient: float) -> torch.Tensor:
+        if policy_scores.shape != prediction.actions.shape or not torch.isfinite(policy_scores).all():
+            raise ValueError("policy scores must be finite and candidate aligned")
+        return policy_scores + float(coefficient) * self.auxiliary_score(prediction)
+
+
 def consequence_loss(
     prediction: ConsequencePrediction,
     targets: Mapping[str, torch.Tensor],
@@ -261,18 +348,23 @@ def consequence_loss(
         if target.shape != prediction.means[:, index].shape:
             raise ValueError(f"target shape mismatch for {name}")
         mask = masks.get(name, torch.ones_like(target, dtype=torch.bool)).to(torch.bool)
-        if mask.shape != target.shape or not mask.any():
-            raise ValueError(f"at least one valid target is required for {name}")
+        if mask.shape != target.shape:
+            raise ValueError(f"target mask shape mismatch for {name}")
+        if not mask.any():
+            continue
         error = target - prediction.means[:, index]
         nll = 0.5 * (torch.exp(-prediction.logvars[:, index]) * error.square() + prediction.logvars[:, index])
         losses[f"{name}_nll"] = nll[mask].mean()
     risk_target = targets["deadline_risk"].to(prediction.deadline_logits.device, dtype=prediction.deadline_logits.dtype)
     risk_mask = masks.get("deadline_risk", torch.ones_like(risk_target, dtype=torch.bool)).to(torch.bool)
-    if risk_target.shape != prediction.deadline_logits.shape or risk_mask.shape != risk_target.shape or not risk_mask.any():
+    if risk_target.shape != prediction.deadline_logits.shape or risk_mask.shape != risk_target.shape:
         raise ValueError("deadline_risk target/mask shape is invalid")
-    losses["deadline_risk_bce"] = F.binary_cross_entropy_with_logits(
-        prediction.deadline_logits[risk_mask], risk_target[risk_mask]
-    )
+    if risk_mask.any():
+        losses["deadline_risk_bce"] = F.binary_cross_entropy_with_logits(
+            prediction.deadline_logits[risk_mask], risk_target[risk_mask]
+        )
+    if not losses:
+        raise ValueError("at least one valid consequence target is required")
     losses["total"] = torch.stack(tuple(losses.values())).mean()
     if not torch.isfinite(losses["total"]):
         raise FloatingPointError("non-finite consequence loss")

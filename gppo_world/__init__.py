@@ -12,8 +12,10 @@ from .consequence_model import (
     ActionConsequenceWorldModel,
     ConsequenceModelConfig,
     ConsequenceTarget,
+    Graph5ActionConsequenceWorldModel,
     consequence_loss,
 )
+from .graph5 import Graph5Snapshot
 
 __all__ = [
     "EvidenceItem",
@@ -26,5 +28,7 @@ __all__ = [
     "ActionConsequenceWorldModel",
     "ConsequenceModelConfig",
     "ConsequenceTarget",
+    "Graph5Snapshot",
+    "Graph5ActionConsequenceWorldModel",
     "consequence_loss",
 ]

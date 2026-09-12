@@ -20,6 +20,13 @@ python tools/train_m10_consequence_model.py `
   --run-id <unique-run-id>
 ```
 
+The checked-in configuration declares `m10-graph5-5type-25action`.  The entry
+uses the explicit `Graph5Snapshot`/Graph-5 consequence model for that protocol;
+the older `gppo-graph-3type-17action` path remains a separate compatibility
+mode and requires a compatible base checkpoint.  Do not change the protocol
+string to force a run.  A resumed run must reuse the same inputs and run id and
+add `--resume`; the entry refuses a live or identity-mismatched run.
+
 该入口在本阶段尚未启动；正式实现必须保存逐事件 rollout ledger、逐分支标签 provenance、optimizer/recovery state、runtime、run-status、停止原因及输入哈希。不得把规划文件当作已有训练结果。
 
 ## 结果归档

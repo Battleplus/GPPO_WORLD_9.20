@@ -5,11 +5,6 @@
   "commit": "recorded by Git; intentionally not embedded to avoid self-referential hashing",
   "files": [
     {
-      "path": "README.md",
-      "bytes": 21361,
-      "sha256": "889fc36dd9d6413977af38c12d6aeb3646dbbad63c643efaad3607c6faa704f1"
-    },
-    {
       "path": ".gitignore",
       "bytes": 465,
       "sha256": "9a919db1a174004f869ad1bc2c232c3a7ed3bf6c225673080423a4b6277c8a0a"
@@ -20,44 +15,14 @@
       "sha256": "aebc29f7d64514f4d61eabe01c1ba7e2e037ea7c1f47cd677009e7eb78fe8c33"
     },
     {
+      "path": "README.md",
+      "bytes": 21528,
+      "sha256": "706cb2617cf6148264dc9efd5fd21941bb319296767c91739809c92bcde8bbfa"
+    },
+    {
       "path": "configs/world-gppo-9.11-consequence-v0.1.0.json",
-      "bytes": 814,
-      "sha256": "a769b07f203dec3ed967ff426d82ed1749382b4b3d5b08609bdfcab49c6d54dd"
-    },
-    {
-      "path": "gppo_world/__init__.py",
-      "bytes": 669,
-      "sha256": "91db3f7f5c49575b64559ac14a95d0aadcf43fbc9b323298b603bbfded56aa6b"
-    },
-    {
-      "path": "gppo_world/consequence_model.py",
-      "bytes": 12136,
-      "sha256": "c34509fa209ad8b24d74f2b9d984de34ae4028ce6bab5760c93ce5cab81136c7"
-    },
-    {
-      "path": "gppo_world/consequence_data.py",
-      "bytes": 5142,
-      "sha256": "5a4488d2d1e2bc9c2408de9535c32d9e107d2824cea3e8b351e1e7ed2ccaad40"
-    },
-    {
-      "path": "tools/train_m10_consequence_model.py",
-      "bytes": 9082,
-      "sha256": "e4895e868e5912b2fd05ca402945cd2638acaddcdfa0d17c8e8b1e393001760f"
-    },
-    {
-      "path": "tests/test_consequence_model.py",
-      "bytes": 3589,
-      "sha256": "1c7c9efe6a897f1c5c3b58fb542c5ad3806b448eca2d9146d45b44fd094ec9ff"
-    },
-    {
-      "path": "tests/test_consequence_data.py",
-      "bytes": 2302,
-      "sha256": "bcea4d834fa9070fffc133301cdccbb32a2d126eaa2280ef1f6776fae0fe248b"
-    },
-    {
-      "path": "docs/transition/legacy-provenance.md",
-      "bytes": 1647,
-      "sha256": "a2bebae0ff2652f2ffe3050fd39a9821c025747c861458f2277a544e244fd086"
+      "bytes": 1098,
+      "sha256": "3e083489a35187b560986ec7af9588796375eea599b12db9acf9ce4d58378c69"
     },
     {
       "path": "docs/contracts/world-gppo-9.11-task-contract.md",
@@ -65,19 +30,9 @@
       "sha256": "5d3e64cf4d465b51211773f41c140b5bbdc5da01e3677a30544a366e5f9b7b45"
     },
     {
-      "path": "docs/world-model/action-consequence-design.md",
-      "bytes": 2564,
-      "sha256": "e81e5e4137332df91a4bb8691863208f8b4d0f1aced65f2f3b9ff62116f50a49"
-    },
-    {
-      "path": "docs/results/historical-evidence.md",
-      "bytes": 2263,
-      "sha256": "f627682924ced6ac3be746b0ad64c9e027b19b65dfa8e98d9f8a3f0df2ed14ed"
-    },
-    {
-      "path": "docs/reproduction/server-runbook.md",
-      "bytes": 1672,
-      "sha256": "4d7f6ec7227cb40ad8e3c4da3e958d296ea46a697d863b1fd1e857b6e00e1464"
+      "path": "docs/plans/EXPERIMENT_PLAN.md",
+      "bytes": 6296,
+      "sha256": "07a3797b552483d2dd7c93a7202466dc89988d9a6f5ea6457113e15ed975fa12"
     },
     {
       "path": "docs/plans/EXPERIMENT_PLAN_20260911.md",
@@ -85,17 +40,12 @@
       "sha256": "07a3797b552483d2dd7c93a7202466dc89988d9a6f5ea6457113e15ed975fa12"
     },
     {
-      "path": "docs/plans/EXPERIMENT_PLAN.md",
-      "bytes": 6296,
-      "sha256": "07a3797b552483d2dd7c93a7202466dc89988d9a6f5ea6457113e15ed975fa12"
-    },
-    {
-      "path": "docs/plans/EXPERIMENT_TRACKER_20260911.md",
+      "path": "docs/plans/EXPERIMENT_TRACKER.md",
       "bytes": 1154,
       "sha256": "34b58ea785862420f3dfe8fa6a6bbafb13fb811ff92a01de4dbefa17ef26d1d8"
     },
     {
-      "path": "docs/plans/EXPERIMENT_TRACKER.md",
+      "path": "docs/plans/EXPERIMENT_TRACKER_20260911.md",
       "bytes": 1154,
       "sha256": "34b58ea785862420f3dfe8fa6a6bbafb13fb811ff92a01de4dbefa17ef26d1d8"
     },
@@ -110,14 +60,69 @@
       "sha256": "5388bd42c2219c62ea5ae93aef943f3bb62adbe0038629d9eb3eb65c15d3f622"
     },
     {
-      "path": "docs/verification/local-tests-20260911.md",
-      "bytes": 1115,
-      "sha256": "24f35e2df95e563a0cab8ef34163061d6e0eac84814e6c386191032b2f0a89f4"
+      "path": "docs/reproduction/server-runbook.md",
+      "bytes": 2132,
+      "sha256": "98b4349349c9943f9debe7d4b41257ec283059b11fbc957bf989a57609dafb2e"
+    },
+    {
+      "path": "docs/results/historical-evidence.md",
+      "bytes": 2263,
+      "sha256": "f627682924ced6ac3be746b0ad64c9e027b19b65dfa8e98d9f8a3f0df2ed14ed"
+    },
+    {
+      "path": "docs/transition/legacy-provenance.md",
+      "bytes": 1647,
+      "sha256": "a2bebae0ff2652f2ffe3050fd39a9821c025747c861458f2277a544e244fd086"
     },
     {
       "path": "docs/verification/consequence-tool-tests-20260912.md",
       "bytes": 872,
       "sha256": "5b95b97b209389f55eb2b9012dd269def46525629998cd05e88fed96d9e02493"
+    },
+    {
+      "path": "docs/verification/local-tests-20260911.md",
+      "bytes": 1115,
+      "sha256": "24f35e2df95e563a0cab8ef34163061d6e0eac84814e6c386191032b2f0a89f4"
+    },
+    {
+      "path": "docs/verification/training-chain-status-20260912.md",
+      "bytes": 2578,
+      "sha256": "441f03874e132ca88489f7f3473a065556ff451ef8e2738b1e37b533afb68569"
+    },
+    {
+      "path": "docs/world-model/action-consequence-design.md",
+      "bytes": 3003,
+      "sha256": "dc7767d36c713ce3a1140ea53bf4c74ff06a920a0f9cfe7ac211ddf74bb7a64e"
+    },
+    {
+      "path": "gppo_world/__init__.py",
+      "bytes": 806,
+      "sha256": "9eb204702c8b42620a8e1e3d253ddea17be00b14c408305f97f5c6e3d65cc225"
+    },
+    {
+      "path": "gppo_world/consequence_data.py",
+      "bytes": 11021,
+      "sha256": "7489e9101c877b593dbc1e7ae87679812cb4a626cf217ecb034a207ef16b4901"
+    },
+    {
+      "path": "gppo_world/consequence_model.py",
+      "bytes": 18096,
+      "sha256": "66be8bd4d797d58dc927367548e6e1389a3090862bab3ee15f3d55a5c6f0a9c0"
+    },
+    {
+      "path": "gppo_world/contracts.py",
+      "bytes": 10929,
+      "sha256": "193fb93a78e29de5060c0a49c456118dead3ad17e3e9cb1cc354c8b48eba22df"
+    },
+    {
+      "path": "gppo_world/graph5.py",
+      "bytes": 4854,
+      "sha256": "352fda3c943592693dae4c4a741052c8999333e9a7dd4363f628d2dd86fb07fc"
+    },
+    {
+      "path": "gppo_world/m10_environment.py",
+      "bytes": 39832,
+      "sha256": "9ed0189ffce29e6a54d45c589b0b08ed9e8029fd8acd92c77a8c3e96bb050735"
     },
     {
       "path": "release-staging/world-gppo-9.11-m10-legacy-v1/README.md",
@@ -128,6 +133,31 @@
       "path": "release-staging/world-gppo-9.11-m10-legacy-v1/artifact-index.json",
       "bytes": 4006,
       "sha256": "aa7cb6bfb5c5a214ca5424a558e687a48d633eba2bf378a23551661228f25ef8"
+    },
+    {
+      "path": "tests/test_consequence_data.py",
+      "bytes": 2302,
+      "sha256": "bcea4d834fa9070fffc133301cdccbb32a2d126eaa2280ef1f6776fae0fe248b"
+    },
+    {
+      "path": "tests/test_consequence_model.py",
+      "bytes": 3589,
+      "sha256": "1c7c9efe6a897f1c5c3b58fb542c5ad3806b448eca2d9146d45b44fd094ec9ff"
+    },
+    {
+      "path": "tests/test_graph5_consequence.py",
+      "bytes": 1114,
+      "sha256": "ba3903a0926aafcb04f37ff1634191dafd33b60dab6c716d5f4fa681b3ed077a"
+    },
+    {
+      "path": "tools/generate_m10_consequence_dataset.py",
+      "bytes": 8645,
+      "sha256": "325a6b4c665fa54ffc6c3c7f88f7ec02075de2c96bc0a807691b3565a741cc15"
+    },
+    {
+      "path": "tools/train_m10_consequence_model.py",
+      "bytes": 19680,
+      "sha256": "8084c05d777a596cfa93c8a0177512d8fe66e77e93458ca95acfce89a580577d"
     }
   ]
 }

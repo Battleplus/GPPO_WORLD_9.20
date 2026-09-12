@@ -2,9 +2,9 @@
 
 本仓库是后续研究的唯一归档入口（目标远端：`Battleplus/WORLD-GPPO_9.11`）。内容从旧项目 `GPPO-WORLD-9.2` 的提交 `05702ae861e460e667acf8f0184e9a3709ef6fd4` 迁移而来；旧仓库、旧 Release、失败记录和负结果不被覆盖，且不跨协议混合统计。
 
-当前阶段主题是“无人机弱通信任务调度中的世界模型优化”：首轮保持周期决策，新增候选 UAV–Task 后果预测设计与实现，但尚未启动新训练。请先阅读 [迁移来源](docs/transition/legacy-provenance.md)、[任务合同](docs/contracts/world-gppo-9.11-task-contract.md)、[后果模型设计](docs/world-model/action-consequence-design.md) 和 [实验计划](docs/plans/EXPERIMENT_PLAN.md)。
+当前阶段主题是“无人机弱通信任务调度中的世界模型优化”：首轮保持周期决策，已落地候选 UAV–Task 后果预测、Graph-5 公共观测适配器、反事实标签生成器和有界服务器训练入口；正式训练仍需服务器 pilot。请先阅读 [迁移来源](docs/transition/legacy-provenance.md)、[任务合同](docs/contracts/world-gppo-9.11-task-contract.md)、[后果模型设计](docs/world-model/action-consequence-design.md) 和 [实验计划](docs/plans/EXPERIMENT_PLAN.md)。
 
-候选后果标签校验入口为 `gppo_world/consequence_data.py`，服务器训练入口为 `tools/train_m10_consequence_model.py`；当前仅完成接口与测试，未执行训练。
+候选后果标签生成入口为 `tools/generate_m10_consequence_dataset.py`，校验入口为 `gppo_world/consequence_data.py`，服务器训练入口为 `tools/train_m10_consequence_model.py`；本机只完成冒烟生成与前向/回归测试，未执行训练。
 
 新仓库远端在 2026-09-11 探测时连接被重置；大型 checkpoint、optimizer/recovery state、训练日志和数据仅在 `release-staging/` 中登记，待远端可达后上传独立 Release 并回读核验。
 

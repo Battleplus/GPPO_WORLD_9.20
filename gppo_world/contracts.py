@@ -89,6 +89,19 @@ class GraphSnapshot:
     def num_actions(self) -> int:
         return self.noop_action + 1
 
+    def to(self, device: torch.device | str) -> "GraphSnapshot":
+        """Return a detached device-local copy for batched model execution."""
+
+        moved = object.__new__(GraphSnapshot)
+        object.__setattr__(moved, "nodes", MappingProxyType({key: value.to(device) for key, value in self.nodes.items()}))
+        object.__setattr__(moved, "edge_index", MappingProxyType({key: value.to(device) for key, value in self.edge_index.items()}))
+        object.__setattr__(moved, "edge_attr", MappingProxyType({key: value.to(device) for key, value in self.edge_attr.items()}))
+        object.__setattr__(moved, "candidate_edges", self.candidate_edges.to(device))
+        object.__setattr__(moved, "action_mask", self.action_mask.to(device))
+        object.__setattr__(moved, "graph_version", self.graph_version)
+        moved.validate()
+        return moved
+
     def validate(self) -> None:
         expected_nodes = FEATURE_REGISTRY.node_dimensions
         if set(self.nodes) != set(expected_nodes):

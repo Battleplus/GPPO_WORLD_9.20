@@ -21,6 +21,8 @@
 
 `ConsequenceTarget` 只记录 episode/decision/action、预测窗口、共享外生随机流标识和后果标签。隐藏状态可以用于仿真分支生成标签及离线核验，但不进入线上特征。事实与反事实分支复用同一外生随机条件，并分别记录 `source=simulator-counterfactual`；模型预测不能回写为监督标签。
 
+新阶段的线上输入采用 `m10-graph5-5type-25action`：UAV、Region、Target、Task、Event 五类公共节点，24 个 UAV–Task 候选和 NOOP。`gppo_world/graph5.py` 是独立适配器；旧 `GraphSnapshot` 的 3 类节点/17 动作接口及 checkpoint 不可直接复用。观察窗口未覆盖完整到达或 deadline 时，对应连续/风险标签通过 `label_masks` 标为删失，不把删失当作完成或零风险。
+
 数据分为 episode-disjoint 的 train/validation/test/OOD。test/OOD 不用于选择阈值、权重或 checkpoint。损坏、错误、泄漏、协议不兼容样本隔离并记录原因；真实超时、损毁、能量不足仍保留为负样本。
 
 ## 损失与质量检查

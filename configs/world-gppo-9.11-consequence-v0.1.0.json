@@ -1,5 +1,8 @@
 {
   "protocol": "world-gppo-9.11-consequence/0.1.0",
+  "observation_contract": "m10-graph5-5type-25action",
+  "legacy_compatibility_contract": "gppo-graph-3type-17action",
+  "compatibility_status": "blocked_until_explicit_graph5_adapter_and_dataset",
   "task_semantics": "continuous_service_until_deadline",
   "arrival_is_completion": false,
   "decision_mode": "periodic",
@@ -16,6 +19,8 @@
   "ppo_updates_per_seed_max": 128,
   "world_model_pretrain_epochs_max": 30,
   "world_model_pretrain_patience": 5,
+  "world_model_max_optimizer_updates": 10000,
+  "world_model_max_wall_seconds": 7200,
   "event_trigger": false,
   "reward_shaping": false,
   "threshold_search": false,
