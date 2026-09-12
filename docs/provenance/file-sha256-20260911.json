@@ -1,13 +1,13 @@
 {
   "schema": "world-gppo-9.11-file-sha256/1",
-  "generated_on": "2026-09-11",
+  "generated_on": "2026-09-12",
   "branch": "world-model-consequence-v1",
   "commit": "recorded by Git; intentionally not embedded to avoid self-referential hashing",
   "files": [
     {
       "path": "README.md",
-      "bytes": 21173,
-      "sha256": "6724b2e3ac1ca15404967d0c67173173bfef2d0dc2abbbd1a05b060b2ee9640e"
+      "bytes": 21361,
+      "sha256": "889fc36dd9d6413977af38c12d6aeb3646dbbad63c643efaad3607c6faa704f1"
     },
     {
       "path": ".gitignore",
@@ -16,8 +16,8 @@
     },
     {
       "path": "MANIFEST.md",
-      "bytes": 1356,
-      "sha256": "b3cfbe512af87ca1019ea7a798ae135e804aea22375c7f51997d59013f957f80"
+      "bytes": 1576,
+      "sha256": "4d2caf4ae86e6420d6fc528d8270932e9330dd42833d4a93a1ee2c1e6469a5bc"
     },
     {
       "path": "configs/world-gppo-9.11-consequence-v0.1.0.json",
@@ -35,9 +35,24 @@
       "sha256": "c34509fa209ad8b24d74f2b9d984de34ae4028ce6bab5760c93ce5cab81136c7"
     },
     {
+      "path": "gppo_world/consequence_data.py",
+      "bytes": 5142,
+      "sha256": "5a4488d2d1e2bc9c2408de9535c32d9e107d2824cea3e8b351e1e7ed2ccaad40"
+    },
+    {
+      "path": "tools/train_m10_consequence_model.py",
+      "bytes": 9082,
+      "sha256": "e4895e868e5912b2fd05ca402945cd2638acaddcdfa0d17c8e8b1e393001760f"
+    },
+    {
       "path": "tests/test_consequence_model.py",
       "bytes": 3589,
       "sha256": "1c7c9efe6a897f1c5c3b58fb542c5ad3806b448eca2d9146d45b44fd094ec9ff"
+    },
+    {
+      "path": "tests/test_consequence_data.py",
+      "bytes": 2302,
+      "sha256": "bcea4d834fa9070fffc133301cdccbb32a2d126eaa2280ef1f6776fae0fe248b"
     },
     {
       "path": "docs/transition/legacy-provenance.md",
@@ -98,6 +113,11 @@
       "path": "docs/verification/local-tests-20260911.md",
       "bytes": 1115,
       "sha256": "24f35e2df95e563a0cab8ef34163061d6e0eac84814e6c386191032b2f0a89f4"
+    },
+    {
+      "path": "docs/verification/consequence-tool-tests-20260912.md",
+      "bytes": 792,
+      "sha256": "eb43eb7b88abc3606cfb7493554f200e44a97c3b47420ec8de778f59deda7c5b"
     },
     {
       "path": "release-staging/world-gppo-9.11-m10-legacy-v1/README.md",

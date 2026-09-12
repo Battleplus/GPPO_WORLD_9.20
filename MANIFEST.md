@@ -14,7 +14,7 @@
 - 历史结果与制品索引：`docs/results/historical-evidence.md`、`docs/provenance/artifact-index.json`
 - 大文件 Release staging：`release-staging/world-gppo-9.11-m10-legacy-v1/`
 
-逐文件 SHA-256：`docs/provenance/file-sha256-20260912.json`；前一版清单 `docs/provenance/file-sha256-20260911.json` 保留。该清单不包含 pytest 临时目录或 Python 缓存；大 checkpoint、world model、optimizer/recovery state、训练日志和数据仍关联旧项目已核验归档，待新远端可达后以独立 Release 上传。
+逐文件 SHA-256：`docs/provenance/file-sha256-20260912.json`；`docs/provenance/file-sha256-20260911.json` 作为兼容索引保留，最新清单以 20260912 文件为准。该清单不包含 pytest 临时目录或 Python 缓存；大 checkpoint、world model、optimizer/recovery state、训练日志和数据仍关联旧项目已核验归档，待新远端可达后以独立 Release 上传。
 
 ## 当前状态
 
