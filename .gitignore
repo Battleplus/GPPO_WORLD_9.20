@@ -23,3 +23,5 @@ __pycache__/
 .pytest-local-20260911-full/
 .pytest-local-20260911-*/
 .pytest-local-20260912-*/
+.pytest-local-20260913-*/
+.aris/

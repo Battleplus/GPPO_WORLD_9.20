@@ -1,0 +1,178 @@
+{
+  "schema": "world-gppo-9.11-file-sha256/1",
+  "generated_on": "2026-09-13",
+  "branch": "world-model-consequence-v1",
+  "commit": "recorded by Git; intentionally not embedded to avoid self-referential hashing",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 498,
+      "sha256": "01fcf9e98a9501d801b221beaf8bf3c82b7df564896330f22fabea4abf712a89"
+    },
+    {
+      "path": "MANIFEST.md",
+      "bytes": 1675,
+      "sha256": "aebc29f7d64514f4d61eabe01c1ba7e2e037ea7c1f47cd677009e7eb78fe8c33"
+    },
+    {
+      "path": "README.md",
+      "bytes": 21528,
+      "sha256": "706cb2617cf6148264dc9efd5fd21941bb319296767c91739809c92bcde8bbfa"
+    },
+    {
+      "path": "configs/world-gppo-9.11-consequence-v0.1.0.json",
+      "bytes": 1098,
+      "sha256": "3e083489a35187b560986ec7af9588796375eea599b12db9acf9ce4d58378c69"
+    },
+    {
+      "path": "docs/contracts/world-gppo-9.11-task-contract.md",
+      "bytes": 1969,
+      "sha256": "5d3e64cf4d465b51211773f41c140b5bbdc5da01e3677a30544a366e5f9b7b45"
+    },
+    {
+      "path": "docs/plans/EXPERIMENT_PLAN.md",
+      "bytes": 6296,
+      "sha256": "07a3797b552483d2dd7c93a7202466dc89988d9a6f5ea6457113e15ed975fa12"
+    },
+    {
+      "path": "docs/plans/EXPERIMENT_PLAN_20260911.md",
+      "bytes": 6296,
+      "sha256": "07a3797b552483d2dd7c93a7202466dc89988d9a6f5ea6457113e15ed975fa12"
+    },
+    {
+      "path": "docs/plans/EXPERIMENT_TRACKER.md",
+      "bytes": 1154,
+      "sha256": "34b58ea785862420f3dfe8fa6a6bbafb13fb811ff92a01de4dbefa17ef26d1d8"
+    },
+    {
+      "path": "docs/plans/EXPERIMENT_TRACKER_20260911.md",
+      "bytes": 1154,
+      "sha256": "34b58ea785862420f3dfe8fa6a6bbafb13fb811ff92a01de4dbefa17ef26d1d8"
+    },
+    {
+      "path": "docs/provenance/artifact-index.json",
+      "bytes": 4006,
+      "sha256": "aa7cb6bfb5c5a214ca5424a558e687a48d633eba2bf378a23551661228f25ef8"
+    },
+    {
+      "path": "docs/provenance/release-sync-pending.md",
+      "bytes": 747,
+      "sha256": "5388bd42c2219c62ea5ae93aef943f3bb62adbe0038629d9eb3eb65c15d3f622"
+    },
+    {
+      "path": "docs/reproduction/server-runbook.md",
+      "bytes": 2646,
+      "sha256": "8509fac34d542171be1d3abf49d919abc93c596c53d73e92345aa4e88ff777a2"
+    },
+    {
+      "path": "docs/results/historical-evidence.md",
+      "bytes": 2263,
+      "sha256": "f627682924ced6ac3be746b0ad64c9e027b19b65dfa8e98d9f8a3f0df2ed14ed"
+    },
+    {
+      "path": "docs/transition/legacy-provenance.md",
+      "bytes": 1647,
+      "sha256": "a2bebae0ff2652f2ffe3050fd39a9821c025747c861458f2277a544e244fd086"
+    },
+    {
+      "path": "docs/verification/consequence-tool-tests-20260912.md",
+      "bytes": 872,
+      "sha256": "5b95b97b209389f55eb2b9012dd269def46525629998cd05e88fed96d9e02493"
+    },
+    {
+      "path": "docs/verification/local-tests-20260911.md",
+      "bytes": 1115,
+      "sha256": "24f35e2df95e563a0cab8ef34163061d6e0eac84814e6c386191032b2f0a89f4"
+    },
+    {
+      "path": "docs/verification/pilot-data-window-check-20260912.md",
+      "bytes": 1728,
+      "sha256": "d5aa4c3d0b201d10cbd17c76e99fa5c7fab62100c2ffc7ae5d2b4828b38fe251"
+    },
+    {
+      "path": "docs/verification/server-pilot-blocked-20260912.md",
+      "bytes": 2345,
+      "sha256": "37f8e49a59f73f6d245c838b8885a7e1ac9ea78ef688719d22e44b744fcd79cd"
+    },
+    {
+      "path": "docs/verification/training-chain-status-20260912.md",
+      "bytes": 2578,
+      "sha256": "441f03874e132ca88489f7f3473a065556ff451ef8e2738b1e37b533afb68569"
+    },
+    {
+      "path": "docs/world-model/action-consequence-design.md",
+      "bytes": 3003,
+      "sha256": "dc7767d36c713ce3a1140ea53bf4c74ff06a920a0f9cfe7ac211ddf74bb7a64e"
+    },
+    {
+      "path": "gppo_world/__init__.py",
+      "bytes": 806,
+      "sha256": "9eb204702c8b42620a8e1e3d253ddea17be00b14c408305f97f5c6e3d65cc225"
+    },
+    {
+      "path": "gppo_world/consequence_data.py",
+      "bytes": 11039,
+      "sha256": "1506732b3d93bdea9ca3454b7ef6dd7222126a5a72c2e552999dd0186fa5b448"
+    },
+    {
+      "path": "gppo_world/consequence_model.py",
+      "bytes": 18096,
+      "sha256": "66be8bd4d797d58dc927367548e6e1389a3090862bab3ee15f3d55a5c6f0a9c0"
+    },
+    {
+      "path": "gppo_world/contracts.py",
+      "bytes": 10929,
+      "sha256": "193fb93a78e29de5060c0a49c456118dead3ad17e3e9cb1cc354c8b48eba22df"
+    },
+    {
+      "path": "gppo_world/graph5.py",
+      "bytes": 4854,
+      "sha256": "352fda3c943592693dae4c4a741052c8999333e9a7dd4363f628d2dd86fb07fc"
+    },
+    {
+      "path": "gppo_world/m10_environment.py",
+      "bytes": 39832,
+      "sha256": "9ed0189ffce29e6a54d45c589b0b08ed9e8029fd8acd92c77a8c3e96bb050735"
+    },
+    {
+      "path": "release-staging/world-gppo-9.11-m10-legacy-v1/README.md",
+      "bytes": 775,
+      "sha256": "5cc4c2d2f7b71931563c710b36d02575733e5fd7067035ffd3b1dff69a024c73"
+    },
+    {
+      "path": "release-staging/world-gppo-9.11-m10-legacy-v1/artifact-index.json",
+      "bytes": 4006,
+      "sha256": "aa7cb6bfb5c5a214ca5424a558e687a48d633eba2bf378a23551661228f25ef8"
+    },
+    {
+      "path": "tests/test_consequence_data.py",
+      "bytes": 2302,
+      "sha256": "bcea4d834fa9070fffc133301cdccbb32a2d126eaa2280ef1f6776fae0fe248b"
+    },
+    {
+      "path": "tests/test_consequence_model.py",
+      "bytes": 3589,
+      "sha256": "1c7c9efe6a897f1c5c3b58fb542c5ad3806b448eca2d9146d45b44fd094ec9ff"
+    },
+    {
+      "path": "tests/test_graph5_consequence.py",
+      "bytes": 1585,
+      "sha256": "e39f0f0c3c2042082a407a1a8fda4456103e32ea1819f484a107e972af3a8ba8"
+    },
+    {
+      "path": "tools/audit_m10_consequence_data.py",
+      "bytes": 2455,
+      "sha256": "9690b600ebb72f4ac09fc1d33b1345656b4960f362571801e80f9f3aca01a9d5"
+    },
+    {
+      "path": "tools/generate_m10_consequence_dataset.py",
+      "bytes": 8895,
+      "sha256": "8fdd4db68229e785335e1756822b9f11399f7d339e55263d0a0d737cd172a653"
+    },
+    {
+      "path": "tools/train_m10_consequence_model.py",
+      "bytes": 22069,
+      "sha256": "6e643f1541ee486c54068faa972e18c8f3e2d8ce63c69270610f17bcf59d9d2a"
+    }
+  ]
+}

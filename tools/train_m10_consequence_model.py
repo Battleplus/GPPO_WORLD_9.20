@@ -51,6 +51,12 @@ def write_json(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + "\n", encoding="utf-8")
 
 
+def append_jsonl(path: Path, value: object) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8", newline="") as stream:
+        stream.write(json.dumps(value, sort_keys=True, allow_nan=False) + "\n")
+
+
 def seed_everything(seed: int) -> None:
     """Seed every available RNG before constructing the trainable model."""
 
@@ -59,6 +65,9 @@ def seed_everything(seed: int) -> None:
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
+    torch.use_deterministic_algorithms(True)
+    if torch.backends.cudnn.is_available():
+        torch.backends.cudnn.benchmark = False
 
 
 def capture_rng_state() -> dict[str, Any]:
@@ -129,10 +138,11 @@ def evaluate(model: ActionConsequenceWorldModel, examples: list[Any], device: to
     return {name: float(np.mean(values)) for name, values in totals.items()}
 
 
-def recovery_payload(model: torch.nn.Module, optimizer: torch.optim.Optimizer, identity: dict[str, Any], *, epoch: int, next_index: int, order: list[int], steps: int, best_score: float, stale: int, history: list[dict[str, Any]], stop_reason: str | None) -> dict[str, Any]:
+def recovery_payload(model: torch.nn.Module, optimizer: torch.optim.Optimizer, identity: dict[str, Any], *, model_config: ConsequenceModelConfig, epoch: int, next_index: int, order: list[int], steps: int, best_score: float, stale: int, history: list[dict[str, Any]], elapsed_seconds: float, stop_reason: str | None) -> dict[str, Any]:
     payload = {
         "format": "gppo-action-consequence-recovery/v2",
         "run_identity": identity,
+        "model_config": asdict(model_config),
         "model_state_dict": model.state_dict(),
         "optimizer_state_dict": optimizer.state_dict(),
         "recovery_state": {
@@ -143,6 +153,7 @@ def recovery_payload(model: torch.nn.Module, optimizer: torch.optim.Optimizer, i
             "best_validation_total": best_score,
             "stale": stale,
             "history": history,
+            "elapsed_seconds": elapsed_seconds,
             "stop_reason": stop_reason,
             "rng_state": capture_rng_state(),
         },
@@ -158,10 +169,11 @@ def save_recovery(path: Path, *args: Any, **kwargs: Any) -> None:
     temporary.replace(path)
 
 
-def save_best(path: Path, model: torch.nn.Module, identity: dict[str, Any], epoch: int, score: float) -> None:
+def save_best(path: Path, model: torch.nn.Module, model_config: ConsequenceModelConfig, identity: dict[str, Any], epoch: int, score: float) -> None:
     payload = {
         "format": "gppo-action-consequence-inference/v2",
         "run_identity": identity,
+        "model_config": asdict(model_config),
         "epoch": epoch,
         "validation_total": score,
         "model_state_dict": {key: value.detach().cpu().clone() for key, value in model.state_dict().items()},
@@ -205,6 +217,7 @@ def main() -> int:
     parser.add_argument("--history-dim", type=int, default=0)
     parser.add_argument("--max-updates", type=int, default=None)
     parser.add_argument("--max-wall-seconds", type=float, default=None)
+    parser.add_argument("--stop-after-updates", type=int, default=None, help="planned interruption point; excluded from run identity")
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     if min(args.epochs, args.patience, args.threads) < 1 or args.history_dim < 0:
@@ -239,6 +252,8 @@ def main() -> int:
     max_wall = args.max_wall_seconds if args.max_wall_seconds is not None else float(protocol.get("world_model_max_wall_seconds", 7200.0))
     if max_updates < 1 or max_wall <= 0:
         parser.error("max-updates and max-wall-seconds must be positive")
+    if args.stop_after_updates is not None and not 1 <= args.stop_after_updates <= max_updates:
+        parser.error("stop-after-updates must be within the frozen max-updates budget")
     identity = {
         "run_id": args.run_id,
         "protocol_sha256": sha256_file(args.protocol),
@@ -247,6 +262,13 @@ def main() -> int:
         "observation_contract": observation_contract,
         "seed": args.seed,
         "history_dim": args.history_dim,
+        "device": args.device,
+        "threads": args.threads,
+        "epochs": args.epochs,
+        "patience": args.patience,
+        "max_updates": max_updates,
+        "max_wall_seconds": max_wall,
+        "deterministic_algorithms": True,
     }
     checkpoints = output / "checkpoints"
     checkpoints.mkdir(parents=True, exist_ok=True)
@@ -305,6 +327,7 @@ def main() -> int:
         optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3, weight_decay=1e-5)
         history: list[dict[str, Any]] = []
         best_score, stale, epoch, next_index, steps = float("inf"), 0, 0, 0, 0
+        elapsed_before = 0.0
         order: list[int] = []
         if args.resume:
             payload = torch.load(recovery_path, map_location=device, weights_only=False)
@@ -320,6 +343,7 @@ def main() -> int:
             best_score = float(recovery["best_validation_total"])
             stale = int(recovery["stale"])
             history = list(recovery["history"])
+            elapsed_before = float(recovery.get("elapsed_seconds", 0.0))
             restore_rng_state(recovery["rng_state"])
             if order and (sorted(order) != list(range(len(train))) or not 0 <= next_index <= len(order)):
                 raise RuntimeError("recovery data order is invalid for the audited train split")
@@ -331,9 +355,12 @@ def main() -> int:
             model.train()
             train_losses: list[float] = []
             while next_index < len(order):
+                elapsed_total = elapsed_before + time.monotonic() - started_clock
+                if args.stop_after_updates is not None and steps >= args.stop_after_updates:
+                    raise TrainingStop("planned_interruption")
                 if steps >= max_updates:
                     raise TrainingStop("max_optimizer_updates")
-                if time.monotonic() - started_clock >= max_wall:
+                if elapsed_total >= max_wall:
                     raise TrainingStop("max_wall_seconds")
                 example = train[order[next_index]]
                 optimizer.zero_grad(set_to_none=True)
@@ -351,26 +378,29 @@ def main() -> int:
                 train_losses.append(float(losses["total"].detach().cpu()))
                 steps += 1
                 next_index += 1
-                save_recovery(recovery_path, model, optimizer, identity, epoch=epoch, next_index=next_index, order=order, steps=steps, best_score=best_score, stale=stale, history=history, stop_reason=None)
+                elapsed_total = elapsed_before + time.monotonic() - started_clock
+                append_jsonl(output / "updates.jsonl", {"optimizer_step": steps, "epoch": epoch, "data_index": order[next_index - 1], "parent_episode_id": example.parent_episode_id, "prefix_id": example.prefix_id, "action": example.target.action, "total_loss": train_losses[-1], "gradient_norm": float(norm.detach().cpu()), "elapsed_seconds": elapsed_total})
+                save_recovery(recovery_path, model, optimizer, identity, model_config=model_config, epoch=epoch, next_index=next_index, order=order, steps=steps, best_score=best_score, stale=stale, history=history, elapsed_seconds=elapsed_total, stop_reason=None)
             validation_metrics = evaluate(model, validation, device)
             score = validation_metrics["total"]
-            history.append({"epoch": epoch + 1, "train_total": float(np.mean(train_losses)), "validation": validation_metrics, "optimizer_steps": steps, "elapsed_seconds": time.monotonic() - started_clock})
+            elapsed_total = elapsed_before + time.monotonic() - started_clock
+            history.append({"epoch": epoch + 1, "train_total": float(np.mean(train_losses)), "validation": validation_metrics, "optimizer_steps": steps, "elapsed_seconds": elapsed_total})
             if score < best_score - 1e-8:
                 best_score, stale = score, 0
-                save_best(best_path, model, identity, epoch + 1, score)
+                save_best(best_path, model, model_config, identity, epoch + 1, score)
             else:
                 stale += 1
             epoch += 1
             order, next_index = [], 0
             stop_reason = "early_stopping" if stale >= args.patience else None
-            save_recovery(recovery_path, model, optimizer, identity, epoch=epoch, next_index=0, order=[], steps=steps, best_score=best_score, stale=stale, history=history, stop_reason=stop_reason)
+            save_recovery(recovery_path, model, optimizer, identity, model_config=model_config, epoch=epoch, next_index=0, order=[], steps=steps, best_score=best_score, stale=stale, history=history, elapsed_seconds=elapsed_total, stop_reason=stop_reason)
             write_json(output / "training-history.json", history)
             if stop_reason:
                 break
         if not best_path.is_file():
             raise RuntimeError("no finite validation checkpoint was produced")
         stop_reason = "early_stopping" if stale >= args.patience else "epoch_budget"
-        result = {"status": "complete", "run_id": args.run_id, "runtime": runtime_record(device, args.threads, started), "protocol": protocol, "input_audit": audit, "train_examples": len(train), "validation_examples": len(validation), "epochs_completed": len(history), "actual_optimizer_steps": steps, "best_validation_total": best_score, "stop_reason": stop_reason, "checkpoints": {"best_inference": {"path": str(best_path), "sha256": sha256_file(best_path)}, "last_recovery": {"path": str(recovery_path), "sha256": sha256_file(recovery_path)}}, "base_world_model_extra": base_extra}
+        result = {"status": "complete", "run_id": args.run_id, "runtime": runtime_record(device, args.threads, started), "protocol": protocol, "input_audit": audit, "train_examples": len(train), "validation_examples": len(validation), "epochs_completed": len(history), "actual_optimizer_steps": steps, "elapsed_seconds": elapsed_before + time.monotonic() - started_clock, "best_validation_total": best_score, "stop_reason": stop_reason, "checkpoints": {"best_inference": {"path": str(best_path), "sha256": sha256_file(best_path)}, "last_recovery": {"path": str(recovery_path), "sha256": sha256_file(recovery_path)}}, "base_world_model_extra": base_extra}
         write_json(output / "metrics.json", result)
         write_json(status_path, {"run_id": args.run_id, "status": "complete", "pid": os.getpid(), "host": socket.gethostname(), "started_at": started, "finished_at": datetime.now(timezone.utc).isoformat(), "stop_reason": stop_reason})
         write_json(output / "run-complete.json", result)
