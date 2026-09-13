@@ -1,7 +1,8 @@
 """Task accounting for the new M-10 environment, not the frozen GPPO baseline.
 
-Assignment is a reservation, not task completion. Time units and service rates
-are supplied by the environment; this module does not model flight physics.
+Assignment is a reservation, not task completion under the historical service
+contract. The optional arrival contract records physical region entry as the
+completion event while keeping the historical default unchanged.
 """
 from dataclasses import dataclass
 from enum import Enum
@@ -29,6 +30,8 @@ class TaskLifecycle:
     service: float = 0.0
     completed_at: float | None = None
     last_time: float = -math.inf
+    completion_mode: str = "continuous_service_until_deadline"
+    completion_radius: float = 0.0
 
     def __post_init__(self):
         if not all(math.isfinite(x) for x in
@@ -38,6 +41,10 @@ class TaskLifecycle:
             raise ValueError("Invalid release/deadline interval")
         if self.required_service <= 0 or self.priority <= 0:
             raise ValueError("Service and priority must be positive")
+        if self.completion_mode not in ("continuous_service_until_deadline", "arrival_to_region"):
+            raise ValueError("Unsupported task completion mode")
+        if not math.isfinite(self.completion_radius) or self.completion_radius < 0:
+            raise ValueError("Completion radius must be finite and nonnegative")
         if (self.state != TaskState.UNRELEASED or self.assigned_uav is not None
                 or self.service != 0 or self.completed_at is not None
                 or self.last_time != -math.inf):
@@ -69,6 +76,19 @@ class TaskLifecycle:
         if self.state in (TaskState.ASSIGNED, TaskState.SERVING):
             self.assigned_uav = None
             self.state = TaskState.PENDING
+
+    def arrive(self, uav: str, now: float):
+        """Complete an arrival-contract task on physical target-region entry."""
+        if self.completion_mode != "arrival_to_region":
+            raise ValueError("arrive is only valid for arrival_to_region tasks")
+        if not math.isfinite(now):
+            raise ValueError("Arrival time must be finite")
+        self.advance(now)
+        if self.assigned_uav != uav or self.state not in (TaskState.ASSIGNED, TaskState.SERVING):
+            raise ValueError("Arrival requires the assigned UAV")
+        self.completed_at = now
+        self.state = TaskState.COMPLETED
+        self.assigned_uav = None
 
     def provide_service(self, uav: str, start: float, end: float, rate: float):
         """Environment must certify uninterrupted, energy-feasible service.

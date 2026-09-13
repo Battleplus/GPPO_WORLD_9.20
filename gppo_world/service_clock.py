@@ -101,6 +101,18 @@ class ServiceClock:
         if not math.isfinite(end) or end < self.time:
             raise ValueError("Clock cannot regress")
         while self.time < end:
+            # A task may be assigned while its UAV is already inside the
+            # configured target region. Record that physical completion at
+            # the current clock time before calculating the next boundary.
+            for task_id, task in self.tasks.items():
+                if task.assigned_uav is None or task.completion_mode != "arrival_to_region":
+                    continue
+                if math.dist(self.resources[task.assigned_uav].position, self.task_positions[task_id]) <= task.completion_radius + 1e-12:
+                    uid = task.assigned_uav
+                    task.arrive(uid, self.time)
+                    self.log.append({"kind": "arrival", "task": task_id, "resource": uid,
+                                     "time": self.time, "target": self.task_positions[task_id],
+                                     "radius": task.completion_radius})
             stop = end
             occupied = {t.assigned_uav: key for key, t in self.tasks.items()
                         if t.assigned_uav is not None}
@@ -113,10 +125,13 @@ class ServiceClock:
                 if task.assigned_uav is not None:
                     resource = self.resources[task.assigned_uav]
                     distance = math.dist(resource.position, self.task_positions[task_id])
-                    moving = distance > 1e-12
+                    radius = float(task.completion_radius) if task.completion_mode == "arrival_to_region" else 0.0
+                    moving = distance > radius + 1e-12
                     power = resource.travel_power if moving else resource.service_power
                     duration = (distance / resource.speed if moving else
                                 (task.required_service - task.service) / resource.service_rate)
+                    if moving and task.completion_mode == "arrival_to_region":
+                        duration = max(0.0, (distance - radius) / resource.speed)
                     stop = min(stop, self.time + resource.energy / power, self.time + duration)
             for uid, resource in self.resources.items():
                 if uid not in occupied and resource.alive and resource.energy > 0 and resource.idle_power > 0:
@@ -139,7 +154,14 @@ class ServiceClock:
                         resource.position = (destination if fraction >= 1.0 - 1e-12 else
                                              tuple(a + fraction * (b - a)
                                                    for a, b in zip(resource.position, destination)))
-                        task.advance(stop)
+                        entered = task.completion_mode == "arrival_to_region" and distance - (stop - self.time) * resource.speed <= task.completion_radius + 1e-12
+                        if entered:
+                            task.arrive(uid, stop)
+                            self.log.append({"kind": "arrival", "task": task_id, "resource": uid,
+                                             "time": stop, "target": destination,
+                                             "radius": task.completion_radius})
+                        else:
+                            task.advance(stop)
                     else:
                         task.provide_service(uid, self.time, stop, resource.service_rate)
                     used = (stop - self.time) * (resource.travel_power if moving else resource.service_power)

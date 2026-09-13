@@ -52,6 +52,9 @@ class M10Config:
     penalty_rejected: float = 0.25
     energy_cost_weight: float = 0.08
     seed: int = 0
+    task_completion_mode: str = "continuous_service_until_deadline"
+    deadline_basis: str = "physical_service"
+    arrival_radius: float = 0.0
 
     def __post_init__(self) -> None:
         if self.uav_count <= 0 or self.task_capacity <= 0 or self.region_count <= 0 or self.target_count <= 0 or self.event_capacity <= 0:
@@ -64,6 +67,12 @@ class M10Config:
             raise ValueError("telemetry delay must be nonnegative")
         if self.task_capacity > 32:
             raise ValueError("task capacity is intentionally bounded")
+        if self.task_completion_mode not in ("continuous_service_until_deadline", "arrival_to_region"):
+            raise ValueError("Unsupported task completion mode")
+        if self.deadline_basis not in ("physical_service", "physical_arrival", "host_confirmation"):
+            raise ValueError("Unsupported deadline basis")
+        if not math.isfinite(self.arrival_radius) or self.arrival_radius < 0:
+            raise ValueError("arrival_radius must be finite and nonnegative")
 
     @property
     def action_count(self) -> int:
@@ -244,6 +253,8 @@ class M10Environment:
                 deadline=spec.deadline,
                 required_service=spec.service,
                 priority=spec.priority,
+                completion_mode=self.config.task_completion_mode,
+                completion_radius=self.config.arrival_radius,
             )
             for spec in self.scenario.tasks
         }
@@ -305,6 +316,9 @@ class M10Environment:
         # other acknowledged UAV/task executions on the next step.
         self._active_commands: dict[str, TaskCommand] = {}
         self._active_actions: dict[str, int] = {}
+        self._completion_records: dict[str, dict[str, Any]] = {}
+        self._completion_notice_ids: set[str] = set()
+        self._emitted_arrival_events: set[tuple[str, float]] = set()
         self._deliver_observations()
         self._flush_messages()
 
@@ -374,7 +388,40 @@ class M10Environment:
                 break
             self.execution.advance(delivery_time)
             self._deliver_pending_renewals(delivery_time)
+            self._emit_completion_notices()
         self.execution.advance(end)
+        self._emit_completion_notices()
+
+    def _emit_completion_notices(self) -> None:
+        """Emit one public completion notice for each physical arrival."""
+        if self.config.task_completion_mode != "arrival_to_region":
+            return
+        for event in self.clock.log:
+            if event.get("kind") != "arrival":
+                continue
+            key = (str(event["task"]), float(event["time"]))
+            if key in self._emitted_arrival_events:
+                continue
+            self._emitted_arrival_events.add(key)
+            task_id = str(event["task"])
+            task = self.clock.tasks[task_id]
+            record = {
+                "task_id": task_id,
+                "uav_id": str(event["resource"]),
+                "physical_arrival_time": float(event["time"]),
+                "deadline": float(task.deadline),
+                "completion_message_id": None,
+                "completion_message_send_time": None,
+                "host_confirmation_time": None,
+                "physical_arrival_before_deadline": bool(float(event["time"]) <= float(task.deadline)),
+                "host_confirmation_before_deadline": None,
+            }
+            self._completion_records[task_id] = record
+            identity = self._send("task", task_id, "pending", 0.0, message_kind="completion", completion_task_id=task_id)
+            record["completion_message_id"] = identity
+            record["completion_message_send_time"] = float(event["time"])
+            if identity is not None:
+                self._completion_notice_ids.add(identity)
 
     def _renew_active_leases(self, *, skip: set[str] | None = None) -> dict[str, str]:
         """Schedule one renewal per ACK-known lease through the command link."""
@@ -430,27 +477,30 @@ class M10Environment:
         self._sequence[key] = self._sequence.get(key, 0) + 1
         return self._sequence[key]
 
-    def _send(self, kind: str, entity: str, field: str, value: float) -> None:
+    def _send(self, kind: str, entity: str, field: str, value: float, *, message_kind: str = "telemetry", completion_task_id: str | None = None) -> str | None:
         now = self.clock.time
         sequence = self._next_sequence(entity, field)
         identity = f"{kind}|{entity}|{field}|{sequence}|{now:.9f}"
+        if completion_task_id is not None:
+            self._completion_notice_ids.add(identity)
         impairment = self.communication.telemetry(seed=self.scenario.seed, identity=self._random_identity(identity), now=now)
         if impairment["dropped"]:
             self._communication_log.append({"link": "telemetry", "status": "dropped", "identity": identity,
                                             "message_id": identity, "delivery_ordinal": 0,
                                             "time": now, "reason": "outage" if impairment["outage"] else "random_loss"})
-            return
+            return None
         received_at = now + self.config.telemetry_delay + self.communication.telemetry_extra_delay + impairment["jitter"]
         message = Telemetry(entity, field, float(value), now, received_at, sequence, identity)
-        self._communication_log.append({"link": "telemetry", "status": "sent", "identity": identity,
+        self._communication_log.append({"link": "telemetry", "message_kind": message_kind, "status": "sent", "identity": identity,
                                         "message_id": message.message_id, "delivery_ordinal": 0,
                                         "time": now, "received_at": received_at})
         if message.received_at > now:
             self._pending_messages.append((kind, message, 0))
             if impairment["duplicate"]:
                 self._pending_messages.append((kind, message, 1))
-            return
+            return identity
         self._accept_message(kind, message, now)
+        return identity
 
     def _accept_message(self, kind: str, message: Telemetry, now: float, *, delivery_ordinal: int = 0) -> bool:
         accepted = self.view.receive(kind, message, now)
@@ -466,6 +516,11 @@ class M10Environment:
                                         "delivery_ordinal": delivery_ordinal, "time": now,
                                         "measured_at": message.measured_at,
                                         "received_at": message.received_at})
+        if message.message_id in self._completion_notice_ids:
+            record = self._completion_records.get(str(message.entity))
+            if record is not None and record["host_confirmation_time"] is None:
+                record["host_confirmation_time"] = float(now)
+                record["host_confirmation_before_deadline"] = bool(float(now) <= float(record["deadline"]))
         self._delivered_messages.append({"kind": kind, "entity": message.entity, "field": message.field,
                                          "message_id": message.message_id,
                                          "delivery_ordinal": delivery_ordinal,
@@ -621,8 +676,22 @@ class M10Environment:
         return all(task.state in (TaskState.COMPLETED, TaskState.EXPIRED) for task in self.clock.tasks.values()) and self.clock.cursor >= len(self.clock.events)
 
     def _reward_and_counts(self, feedback: str | TaskCommand) -> tuple[float, dict[str, int]]:
-        completed = sum(task.state == TaskState.COMPLETED for task in self.clock.tasks.values())
-        expired = sum(task.state == TaskState.EXPIRED for task in self.clock.tasks.values())
+        if self.config.task_completion_mode == "arrival_to_region":
+            completed = 0
+            expired = 0
+            for task_id, task in self.clock.tasks.items():
+                record = self._completion_records.get(task_id)
+                if self.config.deadline_basis == "host_confirmation":
+                    success = bool(record and record.get("host_confirmation_before_deadline"))
+                else:
+                    success = bool(record and record.get("physical_arrival_before_deadline"))
+                if success:
+                    completed += 1
+                elif task.state == TaskState.EXPIRED or (task.state == TaskState.COMPLETED and self.clock.time >= task.deadline):
+                    expired += 1
+        else:
+            completed = sum(task.state == TaskState.COMPLETED for task in self.clock.tasks.values())
+            expired = sum(task.state == TaskState.EXPIRED for task in self.clock.tasks.values())
         rejected = sum(item.get("result") not in ("accepted", "awaiting_ack", "noop", "reuse_existing") for item in self._feedback_log)
         energy_now = sum(resource.energy for resource in self.clock.resources.values())
         energy_used = max(0.0, self._last_energy - energy_now)
@@ -735,6 +804,9 @@ class M10Environment:
             "terminated": terminated,
             "truncated": truncated,
             "episode_end_reason": "terminated" if terminated else "time_limit" if truncated else None,
+            "deadline_basis": self.config.deadline_basis,
+            "task_completion_mode": self.config.task_completion_mode,
+            "completion_records": {key: dict(value) for key, value in self._completion_records.items()},
         }
         return next_obs, float(reward), bool(terminated or truncated), info
 
