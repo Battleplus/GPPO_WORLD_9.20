@@ -104,6 +104,11 @@ def main() -> int:
             name: [float(getattr(example.target, name)) for example in examples]
             for name in ("travel_time", "service_progress", "energy_delta", "deadline_risk")
         }
+        valid_deadline = [
+            float(example.target.deadline_risk)
+            for example in examples
+            if bool(example.masks["deadline_risk"])
+        ]
         report["splits"][split] = {
             "records": len(examples),
             "parent_episode_count": len({example.parent_episode_id for example in examples}),
@@ -112,7 +117,10 @@ def main() -> int:
             "candidate_counts_per_prefix": sorted(Counter(candidate_counts.values()).items()),
             "label_masks": {name: int(sum(bool(example.masks[name]) for example in examples)) for name in values},
             "label_ranges": {name: [min(items), max(items)] for name, items in values.items()},
-            "deadline_risk_positive_negative": {"positive": sum(value > 0.5 for value in values["deadline_risk"]), "negative": sum(value <= 0.5 for value in values["deadline_risk"])},
+            "deadline_risk_valid_positive_negative": {
+                "positive": sum(value > 0.5 for value in valid_deadline),
+                "negative": sum(value <= 0.5 for value in valid_deadline),
+            },
         }
         report["branch_ledgers"][split] = audit_branch_ledger(data, manifest, split)
     text = json.dumps(report, indent=2, sort_keys=True) + "\n"

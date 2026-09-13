@@ -246,13 +246,15 @@ def main() -> int:
     protocol = json.loads(args.protocol.read_text(encoding="utf-8"))
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
     observation_contract = str(protocol.get("observation_contract", ""))
-    if observation_contract not in {"gppo-graph-3type-17action", "m10-graph5-5type-25action"}:
+    if observation_contract not in {"gppo-graph-3type-17action", "m10-graph5-5type-25action", "m10-graph5-5type-25action-global27"}:
         raise RuntimeError(
             "target observation contract is not implemented by this entry: "
             f"{observation_contract!r}"
         )
     if manifest.get("protocol") != protocol.get("protocol"):
         raise RuntimeError("dataset and protocol versions differ; regenerate the dataset with the exact protocol")
+    if manifest.get("observation_contract") != observation_contract:
+        raise RuntimeError("dataset and protocol observation contracts differ")
     if observation_contract == "gppo-graph-3type-17action" and not args.base_world_model:
         parser.error("--base-world-model is required for the legacy Graph-3/17-action contract")
     if args.base_world_model and not args.base_world_model.is_file():
@@ -265,6 +267,11 @@ def main() -> int:
         parser.error("stop-after-updates must be within the frozen max-updates budget")
     identity = {
         "run_id": args.run_id,
+        "source_sha256": {
+            "training_entry": sha256_file(Path(__file__)),
+            "consequence_model": sha256_file(PROJECT_ROOT / "gppo_world" / "consequence_model.py"),
+            "consequence_data": sha256_file(PROJECT_ROOT / "gppo_world" / "consequence_data.py"),
+        },
         "protocol_sha256": sha256_file(args.protocol),
         "manifest_sha256": sha256_file(args.manifest),
         "base_world_model_sha256": sha256_file(args.base_world_model) if args.base_world_model else None,

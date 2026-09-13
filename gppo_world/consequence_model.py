@@ -15,7 +15,7 @@ from torch import nn
 from torch.nn import functional as F
 
 from .contracts import GraphSnapshot
-from .graph5 import Graph5Snapshot, GRAPH5_ACTION_COUNT
+from .graph5 import Graph5Snapshot, GRAPH5_ACTION_COUNT, GRAPH5_GLOBAL_DIM
 from .model import GraphWorldModel
 
 
@@ -283,9 +283,10 @@ class Graph5ActionConsequenceWorldModel(nn.Module):
             for name in ("uav", "region", "target", "task", "event")
         })
         self.graph_projection = nn.Sequential(nn.Linear(5 * c.hidden_dim, c.hidden_dim), nn.LayerNorm(c.hidden_dim), nn.SiLU())
+        self.global_encoder = nn.Sequential(nn.Linear(GRAPH5_GLOBAL_DIM, c.hidden_dim), nn.LayerNorm(c.hidden_dim), nn.SiLU())
         self.relation_encoder = nn.Sequential(nn.Linear(4, action_dim), nn.LayerNorm(action_dim), nn.SiLU())
         self.action_embedding = nn.Embedding(GRAPH5_ACTION_COUNT, action_dim)
-        input_dim = c.hidden_dim + action_dim + action_dim
+        input_dim = 2 * c.hidden_dim + action_dim + action_dim
         if c.history_dim:
             self.history_encoder = nn.Sequential(nn.Linear(c.history_dim, c.hidden_dim), nn.LayerNorm(c.hidden_dim), nn.SiLU())
             input_dim += c.hidden_dim
@@ -305,9 +306,10 @@ class Graph5ActionConsequenceWorldModel(nn.Module):
             raise RuntimeError("Graph-5 graph/model device mismatch")
         pooled = [self.node_encoders[name](graph.nodes[name]).mean(dim=0) for name in ("uav", "region", "target", "task", "event")]
         graph_embedding = self.graph_projection(torch.cat(pooled, dim=-1))
+        global_embedding = self.global_encoder(graph.global_features)
         if actions:
             relation_rows = [graph.candidate_features[action] if action < GRAPH5_ACTION_COUNT - 1 else torch.zeros(4, device=device) for action in actions]
-            features = torch.cat((graph_embedding.expand(len(actions), -1), self.relation_encoder(torch.stack(relation_rows)), self.action_embedding(torch.tensor(actions, device=device))), dim=-1)
+            features = torch.cat((graph_embedding.expand(len(actions), -1), global_embedding.expand(len(actions), -1), self.relation_encoder(torch.stack(relation_rows)), self.action_embedding(torch.tensor(actions, device=device))), dim=-1)
         else:
             features = torch.empty((0, self.trunk[0].in_features), device=device)
         if self.history_encoder is not None:

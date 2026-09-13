@@ -46,6 +46,41 @@ def state(env: M10Environment) -> tuple[float, dict[str, float], dict[str, str]]
     )
 
 
+def compact_transition(action: int, reward: float, done: bool, info: dict[str, Any]) -> dict[str, Any]:
+    """Keep replay-relevant deltas without duplicating cumulative logs each step."""
+
+    return {
+        "action": action,
+        "reward": reward,
+        "done": done,
+        "info": {
+            key: info[key]
+            for key in (
+                "feedback",
+                "command_submitted",
+                "command_id",
+                "lease_renewal",
+                "lease_renewals",
+                "lease_renewal_delivery_results",
+                "active_continuations",
+                "step",
+                "time",
+                "counts",
+                "energy",
+                "tasks",
+                "task_service",
+                "new_events",
+                "communication_delta",
+                "policy_version",
+                "trigger_flags",
+                "terminated",
+                "truncated",
+                "episode_end_reason",
+            )
+        },
+    }
+
+
 def branch(scenario: M10Scenario, prefix_actions: list[int], action: int, horizon: int, parent_id: str, prefix_id: str, exogenous_key: str | None = None) -> tuple[dict[str, Any], dict[str, Any]]:
     """Run one branch from a prefix under the caller-selected random stream."""
 
@@ -55,7 +90,7 @@ def branch(scenario: M10Scenario, prefix_actions: list[int], action: int, horizo
     prefix_trace: list[dict[str, Any]] = []
     for prefix_action in prefix_actions:
         obs, reward, done, info = env.step(prefix_action)
-        prefix_trace.append({"action": prefix_action, "reward": reward, "done": done, "info": info})
+        prefix_trace.append(compact_transition(prefix_action, reward, done, info))
         if done:
             raise RuntimeError("prefix reached terminal state; choose a shorter fixed prefix")
     graph = graph5_from_m10_observation(obs).as_dict()
@@ -65,7 +100,7 @@ def branch(scenario: M10Scenario, prefix_actions: list[int], action: int, horizo
     for step_index in range(horizon):
         selected = action if step_index == 0 else env.config.action_count - 1
         obs, reward, done, info = env.step(selected)
-        trace.append({"action": selected, "reward": reward, "done": done, "info": info})
+        trace.append(compact_transition(selected, reward, done, info))
         if done and step_index + 1 < horizon:
             break
     after_time, after_service, after_states = state(env)
@@ -220,7 +255,7 @@ def main() -> int:
     manifest = {
         "schema": "gppo-consequence-dataset/v2",
         "protocol": args.protocol,
-        "observation_contract": "m10-graph5-5type-25action",
+        "observation_contract": "m10-graph5-5type-25action-global27",
         "prediction_horizon_steps": args.horizon_steps,
         "files": files,
         "branch_ledgers": ledgers,

@@ -11,6 +11,8 @@ def test_m10_public_observation_is_explicit_graph5_contract():
     graph = graph5_from_m10_observation(observation)
     assert tuple(graph.nodes) == ("uav", "region", "target", "task", "event")
     assert graph.num_actions == 25
+    assert graph.global_features.shape == (27,)
+    assert graph.global_features[0].item() == 0.0
     model = Graph5ActionConsequenceWorldModel(ConsequenceModelConfig())
     legal = [index for index, allowed in enumerate(graph.action_mask.tolist()) if allowed]
     prediction = model.predict_candidates(graph, legal)
@@ -60,3 +62,4 @@ def test_generator_supports_grouped_public_prefixes_and_scoped_noop_labels():
         "energy_delta": True,
         "deadline_risk": False,
     }
+    assert len(noop[0]["graph5_t"]["global_features"]) == 27

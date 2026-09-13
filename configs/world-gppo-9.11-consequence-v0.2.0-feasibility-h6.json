@@ -1,7 +1,7 @@
 {
   "protocol": "world-gppo-9.11-consequence/0.2.0-feasibility-h6",
   "parent_protocol": "world-gppo-9.11-consequence/0.1.1-dev-window6",
-  "observation_contract": "m10-graph5-5type-25action",
+  "observation_contract": "m10-graph5-5type-25action-global27",
   "task_semantics": "continuous_service_until_deadline",
   "arrival_is_completion": false,
   "deadline_basis": "simulator task lifecycle at the end of the six-step observation window",
@@ -29,5 +29,12 @@
   "world_model_max_wall_seconds": 14400,
   "selection_splits": ["train", "validation"],
   "evaluation_splits_after_freeze": ["test", "ood"],
+  "prediction_gate": {
+    "continuous_heads_beating_best_simple_baseline_min": 2,
+    "deadline_brier_better_than_train_event_rate": true,
+    "ranking_heads_with_pairwise_accuracy_at_least": 2,
+    "pairwise_accuracy_threshold": 0.55,
+    "required_for_policy_fusion": "all three conditions"
+  },
   "status": "frozen_local_feasibility_protocol"
 }
