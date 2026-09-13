@@ -384,7 +384,10 @@ def main() -> int:
         order: list[int] = []
         if args.resume:
             payload = torch.load(recovery_path, map_location=device, weights_only=False)
-            if payload.get("run_identity") != identity:
+            payload_identity = payload.get("run_identity")
+            if payload_identity != identity and not (
+                resume_source_compatibility is not None and payload_identity == stored_identity
+            ):
                 raise RuntimeError("recovery checkpoint identity mismatch")
             model.load_state_dict(payload["model_state_dict"])
             optimizer.load_state_dict(payload["optimizer_state_dict"])
