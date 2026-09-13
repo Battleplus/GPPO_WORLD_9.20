@@ -19,6 +19,11 @@ import sys
 import time
 from typing import Any
 
+# PyTorch requires this to be present before the first CUDA/cuBLAS operation
+# when deterministic algorithms are enforced.  Keep the value explicit in the
+# run identity/runtime record so a resumed run cannot silently change it.
+os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
+
 import numpy as np
 import torch
 
@@ -194,6 +199,7 @@ def runtime_record(device: torch.device, threads: int, started_at: str) -> dict[
         "host": socket.gethostname(),
         "device_requested": str(device),
         "threads": threads,
+        "cublas_workspace_config": os.environ.get("CUBLAS_WORKSPACE_CONFIG"),
         "started_at": started_at,
     }
     if device.type == "cuda":
@@ -269,6 +275,7 @@ def main() -> int:
         "max_updates": max_updates,
         "max_wall_seconds": max_wall,
         "deterministic_algorithms": True,
+        "cublas_workspace_config": os.environ.get("CUBLAS_WORKSPACE_CONFIG"),
     }
     checkpoints = output / "checkpoints"
     checkpoints.mkdir(parents=True, exist_ok=True)
