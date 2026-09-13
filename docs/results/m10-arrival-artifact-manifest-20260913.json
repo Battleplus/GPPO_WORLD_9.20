@@ -1,0 +1,35 @@
+{
+  "source_head": "f34743f3ab376f5cddd977861c83eb6cf10d5f64",
+  "protocol": "world-gppo-9.11-arrival/0.1.0",
+  "formal_data_root": "E:\\Z博士\\9.2日\\m10-arrival-consequence-formal-20260913-v2",
+  "formal_data": {
+    "manifest.json": "00fa37338185581803ba9c81c26534ab2e830186ef69da4873c5575e175c8e47",
+    "train.jsonl": "3b22ed91f1dde18b1a0031c119208378e900a23c96706b1222e593100afb6d60",
+    "validation.jsonl": "da1547175e25216a436e6363983335ede145c8c68ded5e1b4c5abbd16e3655dd",
+    "test.jsonl": "066287060f67adc8aa96b2733ad2a2caa5883e8f276b6d4c76ab37b9b82884bc",
+    "ood.jsonl": "fdf57466c12be69c5d2e7e84956baea12e7f4d42880ffa2c30b2e83148065a85"
+  },
+  "outcome_audit_root": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-local-runs\\m10-arrival-outcome-audit-20260913-v3",
+  "outcome_audit": {
+    "summary.json": "25189a84866d8a6c345954627f0274800bc5bf9c2d369fc7501c828d06c80f61",
+    "task-outcomes.jsonl": "bb98c4bc576f6c3966217e60a04472109c11616b67803453620532c58dec43bf",
+    "manifest.json": "0ab035ed1a9bf7eb14685444a7b2ea205224348b167cf0694ed3c86fe1cb3803"
+  },
+  "training_root": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-local-runs\\arrival-consequence-formal-train-20260913-v2",
+  "training": {
+    "run-identity.json": "5d170e71e9346edb9f128fe005fdfbab54d394b69f65bd973c18b85faf3cd65d",
+    "runtime.json": "41610ca7fb9e4e9f482f7589d33974e01f19ceef8c169eb8234616d065021570",
+    "updates.jsonl": "a55a0ea8589b8f1b5ec78f3dfe44e0dad68f64ddd74b7369490a2547f9878d78",
+    "checkpoints/best-inference.pt": "a5acd173b3c57301fd744cb1e6105789278de8f58438f0e42e7535a23e500b86",
+    "checkpoints/last-recovery.pt": "f7309f41d1c56a749a90fe89a96d11057034ac309e6d5545a089090895bf557"
+  },
+  "evaluation": {
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-local-runs\\arrival-consequence-evaluation-20260913-v1.json",
+    "sha256": "3d22e064cba201896c859019c8e710cd53cb33a1e2d7d6058ac02dc6e8499b70",
+    "test_ood_used_for_selection": false
+  },
+  "notes": [
+    "Large data and checkpoints remain external to Git and are release candidates; these hashes are the authoritative local associations.",
+    "No strategy fusion run was started because stable candidate decision value was not established."
+  ]
+}

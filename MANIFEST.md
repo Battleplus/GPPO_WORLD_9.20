@@ -8,6 +8,9 @@
 - 新协议规则基线：`tools/run_m10_arrival_rule_baseline.py`
 - 新阶段计划与 tracker：`docs/plans/m10-arrival-world-model-plan-20260913.md`、`refine-logs/EXPERIMENT_PLAN-20260913.md`、`refine-logs/EXPERIMENT_TRACKER-20260913.md`
 - 会议纪要草稿：`docs/meeting/无人机调度模型优化-会议纪要草稿-20260913.md`
+- 新到达协议结局核对与后果模型报告：`docs/results/m10-arrival-protocol-outcome-and-model-20260913.md`、对应 JSON
+- 新到达后果模型代码：`gppo_world/arrival_consequence_model.py`、`gppo_world/arrival_consequence_data.py`
+- 正式数据生成、结局审计与 test/OOD 评估入口：`tools/generate_m10_arrival_consequence_dataset.py`、`tools/audit_m10_arrival_outcomes.py`、`tools/evaluate_m10_arrival_consequence.py`
 
 - 来源迁移与版本边界：`docs/transition/legacy-provenance.md`
 - 任务合同差异：`docs/contracts/world-gppo-9.11-task-contract.md`
@@ -27,7 +30,8 @@
 
 - 新仓库远端：`world-model-consequence-v1` 已 push；基础对照 Release `m10-baseline-stage-20260913-v1` 已创建并独立下载核验。
 - 本地新仓库分支：`world-model-consequence-v1`。
-- 新到达协议：功能测试与规则基线已完成；新后果模型训练未启动。
+- 新到达协议：16 episode/96 task 旧账本核对完成；物理到达为研发主口径，主机确认独立报告。
+- 新后果模型：正式数据 v2 已冻结；单 seed CPU 有界训练 670 updates 后因 validation patience 停止；test/OOD 局部预测改善但候选调度价值未建立，融合未启动。
 - 基础对照训练：已完成 49152 环境步；融合矩阵未启动。
 - 旧服务器：未连接，历史中断状态不变。
 - 历史负结果：保留，不改写。

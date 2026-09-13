@@ -1,0 +1,19 @@
+{
+  "source_head": "f34743f3ab376f5cddd977861c83eb6cf10d5f64",
+  "protocol": "world-gppo-9.11-arrival/0.1.0",
+  "task_outcome_audit": {
+    "episodes": 16,
+    "tasks": 96,
+    "physical_arrival": {"arrival_events": 48, "completed_before_deadline": 48, "expired_aggregate": 48},
+    "host_confirmation": {"confirmation_events": 10, "completed_before_deadline": 9, "expired_aggregate": 76, "state_not_recorded_aggregate": 11, "late_confirmation_events": 1}
+  },
+  "formal_data": {
+    "path": "E:\\Z博士\\9.2日\\m10-arrival-consequence-formal-20260913-v2",
+    "manifest_sha256": "00fa37338185581803ba9c81c26534ab2e830186ef69da4873c5575e175c8e47",
+    "splits": {"train": {"parents": 64, "records": 1521, "sha256": "3b22ed91f1dde18b1a0031c119208378e900a23c96706b1222e593100afb6d60"}, "validation": {"parents": 32, "records": 815, "sha256": "da1547175e25216a436e6363983335ede145c8c68ded5e1b4c5abbd16e3655dd"}, "test": {"parents": 64, "records": 1562, "sha256": "066287060f67adc8aa96b2733ad2a2caa5883e8f276b6d4c76ab37b9b82884bc"}, "ood": {"parents": 32, "records": 812, "sha256": "fdf57466c12be69c5d2e7e84956baea12e7f4d42880ffa2c30b2e83148065a85"}}
+  },
+  "training": {"run_id": "arrival-consequence-formal-train-20260913-v2", "device": "cpu", "threads": 4, "seed": 1101, "optimizer_steps": 670, "epochs_completed": 7, "elapsed_seconds": 70.344, "stop_reason": "validation_patience", "best_sha256": "a5acd173b3c57301fd744cb1e6105789278de8f58438f0e42e7535a23e500b86", "last_recovery_sha256": "f7309f41d1c56a749a90fe89a96d11057034ac309e6d5545a089090895bf557"},
+  "decision_value": {"status": "not_established", "reason": "local improvements in arrival/failure prediction did not yield stable deadline candidate-selection improvement on OOD"},
+  "strategy_fusion_started": false,
+  "weak_communication_usable": false
+}

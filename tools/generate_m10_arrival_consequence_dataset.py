@@ -32,10 +32,23 @@ def arrival_config() -> M10Config:
 
 
 def compact(action: int, reward: float, done: bool, info: dict[str, Any]) -> dict[str, Any]:
+    communication = info["communication_delta"]
+    # Keep the branch trace auditable without copying the simulator's entire
+    # telemetry payload into every candidate row.  The exact event payload is
+    # committed in the digest; these counters preserve the observable result.
+    statuses: dict[str, int] = {}
+    links: dict[str, int] = {}
+    for event in communication:
+        status = str(event.get("status", "unknown"))
+        link = str(event.get("link", "unknown"))
+        statuses[status] = statuses.get(status, 0) + 1
+        links[link] = links.get(link, 0) + 1
     return {"action": action, "reward": float(reward), "done": bool(done), "time": float(info["time"]),
             "feedback": info["feedback"], "new_events": info["new_events"],
-            "communication_delta": info["communication_delta"], "counts": info["counts"],
-            "energy": info["energy"], "completion_records": info["completion_records"]}
+            "communication_delta": {"count": len(communication), "status_counts": statuses,
+                                     "link_counts": links, "sha256": digest(communication)},
+            "counts": info["counts"], "energy": info["energy"],
+            "completion_records": info["completion_records"]}
 
 
 def branch(scenario: M10Scenario, prefix_actions: list[int], action: int, horizon: int, parent: str, prefix: str, key: str) -> dict[str, Any]:
@@ -98,7 +111,7 @@ def branch(scenario: M10Scenario, prefix_actions: list[int], action: int, horizo
         "target": target,
         "label_masks": {"arrival_time": arrival is not None, "arrival_before_deadline_physical": deadline_observed,
                          "arrival_before_deadline_host": record is not None and record.get("host_confirmation_time") is not None,
-                         "execution_or_energy_failure": bool(not is_noop and deadline_observed)},
+                         "execution_or_energy_failure": bool(not is_noop and (deadline_observed or failure == "execution_or_energy_failure"))},
         "label_provenance": {"hidden_state_online": False, "shared_exogenous_key": key,
                               "prefix_trace_sha256": digest(prefix_trace), "branch_trace_sha256": digest(branch_trace),
                               "post_branch_control": "selected action once then periodic NOOP", "deadline_observed_through": after_time},
@@ -107,52 +120,79 @@ def branch(scenario: M10Scenario, prefix_actions: list[int], action: int, horizo
     }
 
 
-def make_split(split: str, count: int, base_seed: int, prefix_steps: int, horizon: int, max_candidates: int) -> list[dict[str, Any]]:
+def make_split(split: str, count: int, base_seed: int, prefix_steps: list[int], horizon: int,
+               max_candidates: int, scenario_name: str) -> list[dict[str, Any]]:
     rows = []
     config = arrival_config()
-    for scenario in weak_communication_tape(split, count=count, base_seed=base_seed, level="composite"):
+    for scenario in weak_communication_tape(split, count=count, base_seed=base_seed, level="composite", name=scenario_name):
         parent = f"{split}:{scenario.tape_id}"
-        prefix = f"{parent}:prefix-{prefix_steps}-public-hash-legal"
-        key = f"{scenario.tape_id}|{parent}|{prefix}"
-        probe = M10Environment(config=config, scenario=scenario, exogenous_key=key)
-        obs = probe.reset()
-        actions = []
-        for index in range(prefix_steps):
+        for prefix_length in prefix_steps:
+            prefix = f"{parent}:prefix-{prefix_length}-public-hash-legal"
+            key = f"{scenario.tape_id}|{parent}|{prefix}"
+            probe = M10Environment(config=config, scenario=scenario, exogenous_key=key)
+            obs = probe.reset()
+            actions = []
+            for index in range(prefix_length):
+                legal = [i for i, allowed in enumerate(np.asarray(obs["mask"], dtype=bool)) if allowed]
+                chosen = legal[int(digest({"parent": parent, "prefix": prefix, "step": index})[:16], 16) % len(legal)]
+                actions.append(chosen)
+                obs, _, done, _ = probe.step(chosen)
+                if done:
+                    raise RuntimeError("prefix terminated")
             legal = [i for i, allowed in enumerate(np.asarray(obs["mask"], dtype=bool)) if allowed]
-            chosen = legal[int(digest({"parent": parent, "prefix": prefix, "step": index})[:16], 16) % len(legal)]
-            actions.append(chosen)
-            obs, _, done, _ = probe.step(chosen)
-            if done:
-                raise RuntimeError("prefix terminated")
-        legal = [i for i, allowed in enumerate(np.asarray(obs["mask"], dtype=bool)) if allowed]
-        legal = sorted(legal, key=lambda value: digest({"parent": parent, "prefix": prefix, "action": int(value)}))[:max_candidates]
-        rows.extend(branch(scenario, actions, int(action), horizon, parent, prefix, key) for action in legal)
+            legal = sorted(legal, key=lambda value: digest({"parent": parent, "prefix": prefix, "action": int(value)}))[:max_candidates]
+            rows.extend(branch(scenario, actions, int(action), horizon, parent, prefix, key) for action in legal)
     return rows
+
+
+def identity_sha256(rows: list[dict[str, Any]]) -> str:
+    identities = sorted(json.dumps({"parent_episode_id": row["parent_episode_id"], "prefix_id": row["prefix_id"], "action": row["target"]["action"]}, sort_keys=True, separators=(",", ":")) for row in rows)
+    if len(identities) != len(set(identities)):
+        raise ValueError("duplicate parent/prefix/action identity")
+    return hashlib.sha256("\n".join(identities).encode()).hexdigest()
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", type=Path, required=True)
-    parser.add_argument("--count-per-split", type=int, default=2)
+    parser.add_argument("--count-per-split", type=int, default=None, help="legacy shorthand for train/validation only")
+    parser.add_argument("--train-count", type=int, default=64)
+    parser.add_argument("--validation-count", type=int, default=32)
+    parser.add_argument("--test-count", type=int, default=64)
+    parser.add_argument("--ood-count", type=int, default=32)
     parser.add_argument("--base-seed", type=int, default=93001)
-    parser.add_argument("--prefix-steps", type=int, default=2)
+    parser.add_argument("--prefix-steps", type=int, nargs="+", default=[1, 2, 3, 4])
     parser.add_argument("--horizon-steps", type=int, default=6)
     parser.add_argument("--max-candidates-per-prefix", type=int, default=25)
     args = parser.parse_args()
     if args.out.exists() and any(args.out.iterdir()):
         raise SystemExit(f"refusing non-empty output: {args.out}")
     args.out.mkdir(parents=True, exist_ok=True)
+    counts = {"train": args.train_count, "validation": args.validation_count, "test": args.test_count, "ood": args.ood_count}
+    if args.count_per_split is not None:
+        counts["train"] = counts["validation"] = args.count_per_split
+    if any(value < 1 for value in counts.values()) or any(value < 1 or value > 4 for value in args.prefix_steps):
+        raise SystemExit("counts and prefix steps must be positive; prefix steps are capped at 4")
     manifest = {"schema": "gppo-arrival-consequence/v1", "protocol": "world-gppo-9.11-arrival/0.1.0",
                 "task_completion_mode": "arrival_to_region", "deadline_basis_labels": ["physical_arrival", "host_confirmation"],
+                "observation_contract": "m10-graph5-5type-25action-global27",
                 "prediction_horizon_steps": args.horizon_steps, "shared_exogenous_randomness": True,
-                "splits": {}, "generation": vars(args) | {"out": str(args.out)}}
-    for split, seed in (("train", args.base_seed), ("validation", args.base_seed + 1000)):
-        rows = make_split(split, args.count_per_split, seed, args.prefix_steps, args.horizon_steps, args.max_candidates_per_prefix)
+                "files": {}, "splits": {}, "episodes": [],
+                "generation": {"base_seed": args.base_seed, "counts": counts, "prefix_steps": args.prefix_steps,
+                                "horizon_steps": args.horizon_steps, "max_candidates_per_prefix": args.max_candidates_per_prefix,
+                                "out": str(args.out)}}
+    for split, seed, scenario_name in (("train", args.base_seed, "mixed"), ("validation", args.base_seed + 1000, "mixed"),
+                                       ("test", args.base_seed + 2000, "mixed"), ("ood", args.base_seed + 3000, "energy_insufficient")):
+        rows = make_split(split, counts[split], seed, args.prefix_steps, args.horizon_steps, args.max_candidates_per_prefix, scenario_name)
         path = args.out / f"{split}.jsonl"
         path.write_text("".join(json.dumps(row, sort_keys=True, separators=(",", ":")) + "\n" for row in rows), encoding="utf-8")
-        manifest["splits"][split] = {"path": path.name, "records": len(rows), "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
-                                      "parents": len({row["parent_episode_id"] for row in rows}),
-                                      "prefixes": len({(row["parent_episode_id"], row["prefix_id"]) for row in rows})}
+        spec = {"path": path.name, "records": len(rows), "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                "identity_sha256": identity_sha256(rows), "parents": len({row["parent_episode_id"] for row in rows}),
+                "prefixes": len({(row["parent_episode_id"], row["prefix_id"]) for row in rows}),
+                "max_candidates_per_prefix": max(len([r for r in rows if r["parent_episode_id"] == parent and r["prefix_id"] == prefix]) for parent, prefix in {(r["parent_episode_id"], r["prefix_id"]) for r in rows})}
+        manifest["files"][split] = spec
+        manifest["splits"][split] = spec.copy()
+        manifest["episodes"].extend({"split": split, "scenario_id": scenario_name, "tape_id": row["parent_episode_id"].split(":", 1)[1], "seed": int(row["parent_episode_id"].rsplit("-", 1)[-1])} for row in rows if row["prefix_id"].endswith(f"prefix-{args.prefix_steps[0]}-public-hash-legal") and row["target"]["action"] == min(r["target"]["action"] for r in rows if r["parent_episode_id"] == row["parent_episode_id"] and r["prefix_id"] == row["prefix_id"]))
     (args.out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({"out": str(args.out), "splits": manifest["splits"]}, sort_keys=True))
     return 0
