@@ -89,11 +89,14 @@ def capture_rng_state() -> dict[str, Any]:
 def restore_rng_state(state: dict[str, Any]) -> None:
     random.setstate(state["python"])
     np.random.set_state(state["numpy"])
-    torch.set_rng_state(state["torch_cpu"])
+    # A recovery payload loaded with map_location="cuda" also moves these
+    # ByteTensors.  Generator state APIs require CPU ByteTensors even when the
+    # generator itself belongs to CUDA.
+    torch.set_rng_state(state["torch_cpu"].detach().cpu())
     if "torch_cuda" in state:
         if not torch.cuda.is_available():
             raise RuntimeError("recovery contains CUDA RNG state but CUDA is unavailable")
-        torch.cuda.set_rng_state_all(state["torch_cuda"])
+        torch.cuda.set_rng_state_all([value.detach().cpu() for value in state["torch_cuda"]])
 
 
 def assert_finite(value: Any, label: str) -> None:
