@@ -1,0 +1,27 @@
+{
+  "repository_commit": "9785cdf8c9c49ba7dc674973ba6d14311a4062cc",
+  "files": {
+    "tools/train_m10_consequence_model.py": "a1e3565c90a51f4e222130cce23544578dc1c9398c867c3b23e5ba165eb7166a",
+    "tools/generate_m10_consequence_dataset.py": "dd1352eba5839cd0fb34635ac0173fd8af294acab6603df42fec586944ed1612",
+    "tools/audit_m10_consequence_data.py": "f12a8edc0d35131f917d2e840b2ac3e963d555f8b583ce5f942a8b3983ba5ebd",
+    "tools/evaluate_m10_consequence_quality.py": "0bb562ff538c241e62f0cdfeff01891a7a890ecbf025e64eb20ddd3394b61b4a",
+    "tools/verify_m10_consequence_pilot.py": "20b07913350413bd50aba2a4dba60ba0733c085c690deca460a2f2c5e878e1de",
+    "gppo_world/graph5.py": "5f5ebc951c1c69752b62f087261e5fd530f2c876f45ee7c91f7279eca47615e2",
+    "gppo_world/consequence_model.py": "6476f3e22100242a2dade7d78053fc4c6273a2198d13d5d6082dbfb0be1c140e",
+    "configs/world-gppo-9.11-consequence-v0.2.0-feasibility-h6.json": "85cc383f87f0fa164609772744888db1b9d6f5d63fb9c7642722c2b16ed2df0d",
+    "data/manifest.json": "10348cf61ed7d75e20ff61b6df52366ef466d2e04d2dd4dc6c17a519291505a3",
+    "checkpoints/best-inference.pt": "847f430408626cec14ee606fedca2cd09d78c1aa3c76e53107a21d0ec75686ac",
+    "checkpoints/last-recovery.pt": "6fb0eb179eb4152047129b10c2d128191a6a139a766f05114ce4caafe79d0cd3",
+    "reports/quality-validation.json": "700aa357661edfc8a559ec3d27f789f0a070cda0d6a4069ad03728284f9102d4",
+    "reports/quality-test-ood.json": "32feb7908f7b69f4be395180ad2665dca9a8e619cb9233d23d197c4b39106d52",
+    "reports/resume-verification.json": "a195865e9392594deab2bec23a0ff92d29a36b241ee3120fc89965547716bcfb",
+    "reports/full-data-audit.json": "39b2439d83201b7e09fe1c3ceb8db325f5cb558c04fa85ec1956a600409b5b0e"
+  },
+  "data_file_sha256": {
+    "train.jsonl": "b69819788a41c3443d434b0b2afbf0932325f8594d2c4ff33d716797109a65dd",
+    "validation.jsonl": "8ccd737f58367554306c32972d51c78f295e880017f072c48eebd12fac374be4",
+    "test.jsonl": "530e526cbe95f338f9aefee35257eb8484e1bcbb1722627cc5e84288a6d17d5b",
+    "ood.jsonl": "236be11ea2f3552bd6073ef44124ebd4adab695ca39a8836e56816a2f7d9eaf0"
+  },
+  "status": "local_only; not uploaded to GitHub in this turn"
+}
