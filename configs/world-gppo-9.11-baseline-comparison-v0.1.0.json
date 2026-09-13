@@ -1,0 +1,43 @@
+{
+  "protocol": "world-gppo-9.11-baseline-comparison/0.1.0",
+  "observation_contract": "m10-graph5-5type-25action",
+  "task_semantics": "continuous_service_until_deadline",
+  "arrival_is_completion": false,
+  "decision_mode": "periodic",
+  "communication": "same composite weak-communication tape for every method",
+  "public_information_only": true,
+  "traditional_scheduler": {
+    "name": "legal-public-urgency-distance",
+    "score": "2*normalized_distance + remaining_service/max(deadline-now,0.1) - 0.25*priority",
+    "tie_break": "lowest action index",
+    "no_op": "only when no legal UAV-task action exists"
+  },
+  "learning_groups": ["GPPO-Graph5", "GPPO-History-Graph5"],
+  "pilot": {
+    "seed": 1101,
+    "environment_steps_per_group": 512,
+    "validation_episodes": 16
+  },
+  "formal": {
+    "seeds": [1101, 2203, 3307],
+    "environment_steps_per_group_seed": 8192,
+    "total_learning_environment_step_cap": 49152,
+    "rollout_steps": 256,
+    "update_epochs": 4,
+    "wall_clock_cap_seconds": 28800
+  },
+  "evaluation": {
+    "training_tape_count": 32,
+    "validation_tape_count": 16,
+    "final_test_tape_count": 16,
+    "base_seed": 93001,
+    "selection": "pilot is runtime/safety validation only; formal test is read after training and never used for selection"
+  },
+  "cost_definitions": {
+    "actor_decisions": "policy action-logit evaluations that submit a command",
+    "world_model_calls": "zero for all groups in this baseline completion",
+    "communication_bytes": "canonical JSON UTF-8 audit serialization proxy, not real wire traffic",
+    "latency": "local CUDA wall time per complete periodic decision chain, including environment advance and audit capture"
+  },
+  "status": "frozen_baseline_comparison_protocol"
+}

@@ -20,3 +20,18 @@ def test_public_physics_baseline_uses_only_serialized_graph_context():
     assert all(math.isfinite(value) for value in prediction.values())
     assert prediction["travel_time"] >= 0
     assert 0 <= prediction["deadline_risk"] <= 1
+
+
+def test_counterfactual_energy_scope_is_system_wide():
+    rows, _ = make_split(
+        "train",
+        1,
+        92001,
+        2,
+        6,
+        prefix_policy="public-hash-legal",
+    )
+    candidate = next(row for row in rows if row["target"]["action"] != 24)
+    noop = next(row for row in rows if row["target"]["action"] == 24)
+    assert candidate["label_provenance"]["outcome_scope"] == "selected-uav-task + system-energy"
+    assert noop["label_provenance"]["outcome_scope"] == "system-energy-only"

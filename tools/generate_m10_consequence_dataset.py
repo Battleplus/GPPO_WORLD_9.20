@@ -145,7 +145,11 @@ def branch(scenario: M10Scenario, prefix_actions: list[int], action: int, horizo
             "prefix_trace_sha256": digest(prefix_trace),
             "task_id": task_id,
             "uav_id": uav_id,
-            "outcome_scope": "system-energy-only" if is_noop else "selected-uav-task",
+            # The energy target is always the sum of all UAV resources over
+            # the branch window.  Candidate task/UAV outcomes are separate
+            # scopes; do not describe a candidate row's energy as local UAV
+            # energy merely because its travel/service labels are local.
+            "outcome_scope": "system-energy-only" if is_noop else "selected-uav-task + system-energy",
             "deadline_observed_through": after_time,
         },
     }
