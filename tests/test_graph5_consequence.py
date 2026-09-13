@@ -33,3 +33,30 @@ def test_counterfactual_generator_reuses_prefix_random_stream():
     assert len({row["prefix_id"] for row in rows}) == 1
     assert len({row["target"]["exogenous_key"] for row in rows}) == 1
     assert all(item["trace"] for item in ledgers)
+    assert len({item["prefix_trace_sha256"] for item in ledgers}) == 1
+    assert len({tuple(item["prefix_actions"]) for item in ledgers}) == 1
+
+
+def test_generator_supports_grouped_public_prefixes_and_scoped_noop_labels():
+    rows, ledgers = make_split(
+        "train",
+        1,
+        92001,
+        [1, 2],
+        2,
+        prefix_policy="public-hash-legal",
+    )
+    assert len({row["prefix_id"] for row in rows}) == 2
+    for prefix_id in {row["prefix_id"] for row in rows}:
+        members = [item for item in ledgers if item["prefix_id"] == prefix_id]
+        assert len({item["exogenous_key"] for item in members}) == 1
+        assert len({item["prefix_trace_sha256"] for item in members}) == 1
+        assert len({tuple(item["prefix_actions"]) for item in members}) == 1
+    noop = [row for row in rows if row["target"]["action"] == 24]
+    assert noop
+    assert noop[0]["label_masks"] == {
+        "travel_time": False,
+        "service_progress": False,
+        "energy_delta": True,
+        "deadline_risk": False,
+    }

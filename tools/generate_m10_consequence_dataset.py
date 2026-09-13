@@ -13,7 +13,7 @@ import hashlib
 import json
 from pathlib import Path
 import sys
-from typing import Any
+from typing import Any, Sequence
 
 import numpy as np
 
@@ -70,13 +70,14 @@ def branch(scenario: M10Scenario, prefix_actions: list[int], action: int, horizo
             break
     after_time, after_service, after_states = state(env)
     after_energy = sum(float(resource.energy) for resource in env.clock.resources.values())
-    task_index = action % env.config.task_capacity
-    task_id = f"task-{task_index}"
-    uav_id = f"uav-{action // env.config.task_capacity}" if action < env.config.action_count - 1 else None
+    is_noop = action == env.config.action_count - 1
+    task_index = None if is_noop else action % env.config.task_capacity
+    task_id = None if task_index is None else f"task-{task_index}"
+    uav_id = None if is_noop else f"uav-{action // env.config.task_capacity}"
     branch_travel = [item for item in env.clock.log if item.get("kind") == "travel" and item.get("task") == task_id and item.get("resource") == uav_id]
     travel_time = float(sum(float(item["end"]) - float(item["start"]) for item in branch_travel))
-    deadline = float(env.clock.tasks[task_id].deadline)
-    deadline_observed = after_time >= deadline
+    deadline = None if task_id is None else float(env.clock.tasks[task_id].deadline)
+    deadline_observed = deadline is not None and after_time >= deadline
     arrived = bool(branch_travel) and after_time >= float(branch_travel[-1]["end"])
     record = {
         "parent_episode_id": parent_id,
@@ -89,15 +90,15 @@ def branch(scenario: M10Scenario, prefix_actions: list[int], action: int, horizo
             "horizon_steps": horizon,
             "exogenous_key": exogenous_key,
             "travel_time": travel_time,
-            "service_progress": float(after_service[task_id] - before_service[task_id]),
+            "service_progress": 0.0 if task_id is None else float(after_service[task_id] - before_service[task_id]),
             "energy_delta": float(before_energy - after_energy),
-            "deadline_risk": float(after_states[task_id] != "completed"),
+            "deadline_risk": 0.0 if task_id is None else float(after_states[task_id] != "completed"),
             "source": "simulator-counterfactual",
             "hidden_state_used_for_label": True,
         },
         "label_masks": {
             "travel_time": arrived,
-            "service_progress": True,
+            "service_progress": not is_noop,
             "energy_delta": True,
             "deadline_risk": deadline_observed,
         },
@@ -109,33 +110,73 @@ def branch(scenario: M10Scenario, prefix_actions: list[int], action: int, horizo
             "prefix_trace_sha256": digest(prefix_trace),
             "task_id": task_id,
             "uav_id": uav_id,
+            "outcome_scope": "system-energy-only" if is_noop else "selected-uav-task",
             "deadline_observed_through": after_time,
         },
     }
-    ledger = {"parent_episode_id": parent_id, "prefix_id": prefix_id, "action": action, "exogenous_key": exogenous_key, "trace": trace}
+    ledger = {
+        "parent_episode_id": parent_id,
+        "prefix_id": prefix_id,
+        "action": action,
+        "exogenous_key": exogenous_key,
+        "prefix_steps": len(prefix_actions),
+        "prefix_actions": prefix_actions,
+        "prefix_trace_sha256": digest(prefix_trace),
+        "trace": trace,
+    }
     return record, ledger
 
 
-def make_split(split: str, count: int, base_seed: int, prefix_steps: int, horizon: int) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    scenarios = weak_communication_tape(split, count=count, base_seed=base_seed, level="composite")
+def make_split(
+    split: str,
+    count: int,
+    base_seed: int,
+    prefix_steps: int | Sequence[int],
+    horizon: int,
+    *,
+    max_candidates_per_prefix: int = 25,
+    prefix_policy: str = "noop",
+    scenario_name: str = "mixed",
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    prefixes = [prefix_steps] if isinstance(prefix_steps, int) else [int(value) for value in prefix_steps]
+    if not prefixes or min(prefixes) < 1 or len(prefixes) != len(set(prefixes)):
+        raise ValueError("prefix_steps must contain unique positive values")
+    if max_candidates_per_prefix < 1:
+        raise ValueError("max_candidates_per_prefix must be positive")
+    if prefix_policy not in {"noop", "public-hash-legal"}:
+        raise ValueError("unknown prefix policy")
+    scenarios = weak_communication_tape(split, count=count, base_seed=base_seed, level="composite", name=scenario_name)
     rows: list[dict[str, Any]] = []
     ledger: list[dict[str, Any]] = []
     for scenario in scenarios:
         parent_id = f"{split}:{scenario.tape_id}"
-        prefix_id = f"{parent_id}:prefix-{prefix_steps}"
-        prefix_actions = [M10Environment(scenario=scenario).config.action_count - 1] * prefix_steps
-        shared_key = f"{scenario.tape_id}|{parent_id}|{prefix_id}"
-        probe = M10Environment(scenario=scenario, exogenous_key=shared_key)
-        obs = probe.reset()
-        for prefix_action in prefix_actions:
-            obs, _, done, _ = probe.step(prefix_action)
-            if done:
-                raise RuntimeError("fixed prefix terminated before candidate branching")
-        legal_actions = [index for index, allowed in enumerate(np.asarray(obs["mask"], dtype=bool)) if allowed]
-        for action in legal_actions:
-            row, branch_ledger = branch(scenario, prefix_actions, action, horizon, parent_id, prefix_id, shared_key)
-            rows.append(row)
-            ledger.append(branch_ledger)
+        for prefix_count in prefixes:
+            prefix_id = f"{parent_id}:prefix-{prefix_count}-{prefix_policy}"
+            shared_key = f"{scenario.tape_id}|{parent_id}|{prefix_id}"
+            probe = M10Environment(scenario=scenario, exogenous_key=shared_key)
+            obs = probe.reset()
+            prefix_actions: list[int] = []
+            for step_index in range(prefix_count):
+                legal = [index for index, allowed in enumerate(np.asarray(obs["mask"], dtype=bool)) if allowed]
+                if prefix_policy == "noop":
+                    prefix_action = probe.config.action_count - 1
+                else:
+                    selector = digest({"tape_id": scenario.tape_id, "prefix_steps": prefix_count, "step": step_index})
+                    prefix_action = legal[int(selector[:16], 16) % len(legal)]
+                prefix_actions.append(prefix_action)
+                obs, _, done, _ = probe.step(prefix_action)
+                if done:
+                    raise RuntimeError("fixed prefix terminated before candidate branching")
+            legal_actions = [index for index, allowed in enumerate(np.asarray(obs["mask"], dtype=bool)) if allowed]
+            if len(legal_actions) > max_candidates_per_prefix:
+                legal_actions = sorted(
+                    legal_actions,
+                    key=lambda action: digest({"parent": parent_id, "prefix": prefix_id, "action": action}),
+                )[:max_candidates_per_prefix]
+            for action in legal_actions:
+                row, branch_ledger = branch(scenario, prefix_actions, action, horizon, parent_id, prefix_id, shared_key)
+                rows.append(row)
+                ledger.append(branch_ledger)
     return rows, ledger
 
 
@@ -144,11 +185,14 @@ def main() -> int:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--count-per-split", type=int, default=4)
     parser.add_argument("--base-seed", type=int, default=91011)
-    parser.add_argument("--prefix-steps", type=int, default=2)
+    parser.add_argument("--prefix-steps", type=int, nargs="+", default=[2])
     parser.add_argument("--horizon-steps", type=int, default=1)
+    parser.add_argument("--max-candidates-per-prefix", type=int, default=25)
+    parser.add_argument("--prefix-policy", choices=("noop", "public-hash-legal"), default="noop")
+    parser.add_argument("--ood-scenario", choices=("mixed", "energy_insufficient", "uav_damage", "communication_interrupt"), default="mixed")
     parser.add_argument("--protocol", default="world-gppo-9.11-consequence/0.1.0")
     args = parser.parse_args()
-    if min(args.count_per_split, args.prefix_steps, args.horizon_steps) < 1:
+    if min(args.count_per_split, min(args.prefix_steps), args.horizon_steps, args.max_candidates_per_prefix) < 1:
         parser.error("count-per-split, prefix-steps, and horizon-steps must be positive")
     out = args.out.resolve()
     if out.exists() and any(out.iterdir()):
@@ -157,13 +201,43 @@ def main() -> int:
     files: dict[str, Any] = {}
     ledgers: dict[str, Any] = {}
     for split in ("train", "validation", "test", "ood"):
-        rows, ledger = make_split(split, args.count_per_split, args.base_seed, args.prefix_steps, args.horizon_steps)
+        scenario_name = args.ood_scenario if split == "ood" else "mixed"
+        rows, ledger = make_split(
+            split,
+            args.count_per_split,
+            args.base_seed,
+            args.prefix_steps,
+            args.horizon_steps,
+            max_candidates_per_prefix=args.max_candidates_per_prefix,
+            prefix_policy=args.prefix_policy,
+            scenario_name=scenario_name,
+        )
         files[split] = dump_jsonl(out / f"{split}.jsonl", rows)
         ledger_path = out / f"{split}.branches.jsonl"
         ledger_text = "".join(json.dumps(item, sort_keys=True, separators=(",", ":")) + "\n" for item in ledger)
         ledger_path.write_bytes(ledger_text.encode("utf-8"))
         ledgers[split] = {"path": ledger_path.name, "sha256": hashlib.sha256(ledger_text.encode()).hexdigest(), "records": len(ledger)}
-    manifest = {"schema": "gppo-consequence-dataset/v2", "protocol": args.protocol, "observation_contract": "m10-graph5-5type-25action", "prediction_horizon_steps": args.horizon_steps, "files": files, "branch_ledgers": ledgers, "generation": {"generator": "tools/generate_m10_consequence_dataset.py", "prefix_steps": args.prefix_steps, "count_per_split": args.count_per_split, "base_seed": args.base_seed, "shared_exogenous_randomness": True, "hidden_state_online": False}}
+    manifest = {
+        "schema": "gppo-consequence-dataset/v2",
+        "protocol": args.protocol,
+        "observation_contract": "m10-graph5-5type-25action",
+        "prediction_horizon_steps": args.horizon_steps,
+        "files": files,
+        "branch_ledgers": ledgers,
+        "generation": {
+            "generator": "tools/generate_m10_consequence_dataset.py",
+            "prefix_steps": args.prefix_steps,
+            "prefix_policy": args.prefix_policy,
+            "count_per_split": args.count_per_split,
+            "max_candidates_per_prefix": args.max_candidates_per_prefix,
+            "base_seed": args.base_seed,
+            "in_distribution_scenario": "mixed",
+            "ood_scenario": args.ood_scenario,
+            "shared_exogenous_randomness": True,
+            "hidden_state_online": False,
+            "noop_labels": "task-specific travel/service/deadline masked; system energy observed",
+        },
+    }
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return 0
 
