@@ -49,6 +49,7 @@ class TrainingStop(RuntimeError):
 
     def __init__(self, reason: str) -> None:
         super().__init__(reason)
+        self.reason = reason
 
 
 def process_is_alive(pid: int) -> bool:
@@ -71,7 +72,6 @@ def process_is_alive(pid: int) -> bool:
     except PermissionError:
         return True
     return True
-        self.reason = reason
 
 
 def write_json(path: Path, value: object) -> None:
