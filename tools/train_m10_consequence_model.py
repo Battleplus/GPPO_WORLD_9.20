@@ -15,6 +15,7 @@ from pathlib import Path
 import platform
 import random
 import socket
+import subprocess
 import sys
 import time
 from typing import Any
@@ -48,6 +49,28 @@ class TrainingStop(RuntimeError):
 
     def __init__(self, reason: str) -> None:
         super().__init__(reason)
+
+
+def process_is_alive(pid: int) -> bool:
+    """Check a local PID without relying on POSIX-only signal semantics."""
+
+    if pid <= 0:
+        return False
+    if os.name == "nt":
+        result = subprocess.run(
+            ["tasklist", "/FI", f"PID eq {pid}", "/NH"],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        return any(line.lstrip().startswith(str(pid) + " ") for line in result.stdout.splitlines())
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    return True
         self.reason = reason
 
 
@@ -309,13 +332,7 @@ def main() -> int:
         if old_status.get("status") == "running" and old_status.get("host") == socket.gethostname():
             pid = int(old_status.get("pid", 0))
             if pid > 0:
-                try:
-                    os.kill(pid, 0)
-                except ProcessLookupError:
-                    pass
-                except PermissionError as exc:
-                    raise RuntimeError("run status is uncertain; verify the process before --resume") from exc
-                else:
+                if process_is_alive(pid):
                     raise RuntimeError(f"run appears alive with pid {pid}; do not duplicate it")
     else:
         write_json(identity_path, identity)
