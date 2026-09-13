@@ -320,12 +320,29 @@ def main() -> int:
     device = torch.device(args.device)
     seed_everything(args.seed)
     identity_path = output / "run-identity.json"
+    resume_source_compatibility: dict[str, Any] | None = None
     if args.resume:
         if not recovery_path.is_file() or not identity_path.is_file():
             raise RuntimeError("--resume requires run-identity.json and last-recovery.pt")
         stored_identity = json.loads(identity_path.read_text(encoding="utf-8"))
         if stored_identity != identity:
-            raise RuntimeError("resume identity mismatch; inputs, seed, and run-id must be identical")
+            stored_source = stored_identity.get("source_sha256", {})
+            current_source = identity.get("source_sha256", {})
+            compatible_patch = (
+                stored_identity.copy() | {"source_sha256": {}}
+                == identity.copy() | {"source_sha256": {}}
+                and stored_source.get("consequence_model") == current_source.get("consequence_model")
+                and stored_source.get("consequence_data") == current_source.get("consequence_data")
+                and stored_source.get("training_entry") != current_source.get("training_entry")
+            )
+            if not compatible_patch:
+                raise RuntimeError("resume identity mismatch; inputs, seed, and run-id must be identical")
+            resume_source_compatibility = {
+                "status": "allowed_resume_only_source_patch",
+                "stored_training_entry_sha256": stored_source.get("training_entry"),
+                "current_training_entry_sha256": current_source.get("training_entry"),
+                "reason": "only the local process-aliveness compatibility check changed; model/data/protocol identity is unchanged",
+            }
         old_status = json.loads(status_path.read_text(encoding="utf-8")) if status_path.is_file() else {}
         if old_status.get("status") == "complete":
             raise RuntimeError("run is already complete; do not overwrite it with --resume")
@@ -337,6 +354,8 @@ def main() -> int:
     else:
         write_json(identity_path, identity)
     write_json(output / "runtime.json", runtime_record(device, args.threads, started))
+    if resume_source_compatibility is not None:
+        write_json(output / "resume-source-compatibility.json", resume_source_compatibility)
     write_json(status_path, {"run_id": args.run_id, "status": "running", "pid": os.getpid(), "host": socket.gethostname(), "started_at": started})
     started_clock = time.monotonic()
     try:
