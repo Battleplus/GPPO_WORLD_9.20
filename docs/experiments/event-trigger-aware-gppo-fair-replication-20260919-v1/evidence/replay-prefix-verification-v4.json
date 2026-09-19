@@ -1,0 +1,191 @@
+{
+  "checkpoint": "..\\formal-v3-continuation-v4-run-20260918\\training\\seed-1101\\T_train\\transactions\\txn-step-00000128-policy-000000-world-000000.pt",
+  "checkpoint_sha256": "8cc5dc446dd9588400eb9495e715c00a13b5b9da1be2b519b61595c14477f0b8",
+  "decision_type_rows": 15,
+  "discrete_contract_exact": true,
+  "environment_steps": 0,
+  "episode_index": 8,
+  "hidden_tolerance": 1e-06,
+  "invalid_new_mask_valid_continuation_steps": [
+    3,
+    12
+  ],
+  "ledger": "..\\formal-v3-continuation-v4-run-20260918\\training\\seed-1101\\T_train\\training-ledger.jsonl",
+  "ledger_sha256": "b6034c9f738288d3dbe36fae0c8a68c4ad52cb3ab82048d5c521aa5610b0b9e8",
+  "optimizer_calls": 0,
+  "prefix_steps": 15,
+  "replay_forward_calls": 15,
+  "rows": [
+    {
+      "action": 24,
+      "actor_decision": true,
+      "continuation_actions": [],
+      "continuation_legal": false,
+      "feedback": null,
+      "new_command_mask_legal": true,
+      "step": 0,
+      "submit_command": true
+    },
+    {
+      "action": 24,
+      "actor_decision": true,
+      "continuation_actions": [],
+      "continuation_legal": false,
+      "feedback": null,
+      "new_command_mask_legal": true,
+      "step": 1,
+      "submit_command": true
+    },
+    {
+      "action": 1,
+      "actor_decision": true,
+      "continuation_actions": [],
+      "continuation_legal": false,
+      "feedback": null,
+      "new_command_mask_legal": true,
+      "step": 2,
+      "submit_command": true
+    },
+    {
+      "action": 1,
+      "actor_decision": false,
+      "continuation_actions": [
+        1
+      ],
+      "continuation_legal": true,
+      "feedback": null,
+      "new_command_mask_legal": false,
+      "step": 3,
+      "submit_command": false
+    },
+    {
+      "action": 24,
+      "actor_decision": true,
+      "continuation_actions": [
+        1
+      ],
+      "continuation_legal": false,
+      "feedback": null,
+      "new_command_mask_legal": true,
+      "step": 4,
+      "submit_command": true
+    },
+    {
+      "action": 24,
+      "actor_decision": true,
+      "continuation_actions": [
+        1
+      ],
+      "continuation_legal": false,
+      "feedback": null,
+      "new_command_mask_legal": true,
+      "step": 5,
+      "submit_command": true
+    },
+    {
+      "action": 12,
+      "actor_decision": true,
+      "continuation_actions": [
+        1
+      ],
+      "continuation_legal": false,
+      "feedback": null,
+      "new_command_mask_legal": true,
+      "step": 6,
+      "submit_command": true
+    },
+    {
+      "action": 15,
+      "actor_decision": true,
+      "continuation_actions": [
+        12
+      ],
+      "continuation_legal": false,
+      "feedback": null,
+      "new_command_mask_legal": true,
+      "step": 7,
+      "submit_command": true
+    },
+    {
+      "action": 24,
+      "actor_decision": true,
+      "continuation_actions": [],
+      "continuation_legal": false,
+      "feedback": null,
+      "new_command_mask_legal": true,
+      "step": 8,
+      "submit_command": true
+    },
+    {
+      "action": 24,
+      "actor_decision": true,
+      "continuation_actions": [],
+      "continuation_legal": false,
+      "feedback": null,
+      "new_command_mask_legal": true,
+      "step": 9,
+      "submit_command": true
+    },
+    {
+      "action": 5,
+      "actor_decision": true,
+      "continuation_actions": [],
+      "continuation_legal": false,
+      "feedback": null,
+      "new_command_mask_legal": true,
+      "step": 10,
+      "submit_command": true
+    },
+    {
+      "action": 22,
+      "actor_decision": true,
+      "continuation_actions": [
+        5
+      ],
+      "continuation_legal": false,
+      "feedback": null,
+      "new_command_mask_legal": true,
+      "step": 11,
+      "submit_command": true
+    },
+    {
+      "action": 22,
+      "actor_decision": false,
+      "continuation_actions": [
+        5,
+        22
+      ],
+      "continuation_legal": true,
+      "feedback": null,
+      "new_command_mask_legal": false,
+      "step": 12,
+      "submit_command": false
+    },
+    {
+      "action": 24,
+      "actor_decision": true,
+      "continuation_actions": [
+        22
+      ],
+      "continuation_legal": false,
+      "feedback": null,
+      "new_command_mask_legal": true,
+      "step": 13,
+      "submit_command": true
+    },
+    {
+      "action": 24,
+      "actor_decision": true,
+      "continuation_actions": [],
+      "continuation_legal": false,
+      "feedback": null,
+      "new_command_mask_legal": true,
+      "step": 14,
+      "submit_command": true
+    }
+  ],
+  "scenario_id": "train-mixed-seed-851003-W2",
+  "status": "passed",
+  "stored_vs_rebuilt_policy_hidden_max_abs": 0.0,
+  "stored_vs_rebuilt_world_hidden_max_abs": 0.0
+}
