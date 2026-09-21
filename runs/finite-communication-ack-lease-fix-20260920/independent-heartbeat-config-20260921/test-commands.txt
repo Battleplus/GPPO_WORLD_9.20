@@ -1,0 +1,3 @@
+python -m pytest tests/test_independent_heartbeat_config.py tests/test_m10_uav_state_coalescing.py -q
+python -m pytest tests/test_m10_contract_v1.py -q -k "roundtrip or priority or emergency_entry or budget or control_reserve or send_loss"
+python -m pytest tests/test_completion_control_eligibility_candidate.py tests/test_completion_control_eligibility_integration.py -q

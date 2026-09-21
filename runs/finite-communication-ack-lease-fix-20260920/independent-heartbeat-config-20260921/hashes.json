@@ -1,0 +1,122 @@
+[
+  {
+    "path": "budget-readonly.json",
+    "bytes": 1464,
+    "sha256": "9cff170603c13c4b914c621f67c3fc9f0734c1e10675ac10ec11c1b711911458"
+  },
+  {
+    "path": "evidence.json",
+    "bytes": 2261,
+    "sha256": "0cb3d7f5b2bbfc48be896f8917d3fb8d53e144b7145416bbe9cd8e560b3c1127"
+  },
+  {
+    "path": "git-status-after.txt",
+    "bytes": 3139,
+    "sha256": "4dc6e3853796a6d35119a65649989438f6d091c10a1f929e2f1c60d3ae85282b"
+  },
+  {
+    "path": "git-status-before.txt",
+    "bytes": 3092,
+    "sha256": "de9dc4b45e303365e5045767a3015cccccbed83a49f7ce63851f905c35206155"
+  },
+  {
+    "path": "m10_contract_v1.diff",
+    "bytes": 6314,
+    "sha256": "2c6ab2cf2632188ebe49f439242ae185e4b772a73d14a813fba83f5fa9a02845"
+  },
+  {
+    "path": "m10_environment.diff",
+    "bytes": 6087,
+    "sha256": "549e973852b8187774aa1433b9c4216d8699b10ed3c0e97b6530d9a72618f8a2"
+  },
+  {
+    "path": "protocol.json",
+    "bytes": 2249,
+    "sha256": "b9bcbd3a7b4cc2752673b823efa1e97d7db39a4e08961923e471bd7e261b7d68"
+  },
+  {
+    "path": "report.md",
+    "bytes": 3834,
+    "sha256": "b39a8fcb856915f688cc36f7689416ecce005a8b6415e86f898fbd426b5ae5b5"
+  },
+  {
+    "path": "runtime-identity.json",
+    "bytes": 409,
+    "sha256": "974c6ad4195b834942048980ddf430d91f06652ebae628820677a6b43685f974"
+  },
+  {
+    "path": "source-after\\gppo_world\\m10_contract_v1.py",
+    "bytes": 18910,
+    "sha256": "ce9ba291fcd1b1a53dafbc82b378b38f73ac4f94879b1527ae641cb7506e5731"
+  },
+  {
+    "path": "source-after\\gppo_world\\m10_environment.py",
+    "bytes": 71530,
+    "sha256": "26a4b185951565b7d636fbb74eefc2b5e2dbea0217f98e1ed6f72c33c7fe35c0"
+  },
+  {
+    "path": "source-after\\tests\\test_independent_heartbeat_config.py",
+    "bytes": 7866,
+    "sha256": "08ca580159c67d1e2fe9f826a340666f334fb6b4907a756be0bbdb7528e903b9"
+  },
+  {
+    "path": "source-after\\tests\\test_m10_uav_state_coalescing.py",
+    "bytes": 8883,
+    "sha256": "1de52c1eae49bc20be7e08912f7ef3cd9b4192b262fda953db636b9bbb95c5d0"
+  },
+  {
+    "path": "source-before-manifest.json",
+    "bytes": 657,
+    "sha256": "6b256c8720b7280c7d78bb627e23d74542b51c7990e07e110dce98d1a2783061"
+  },
+  {
+    "path": "source-before\\gppo_world\\m10_contract_v1.py",
+    "bytes": 16721,
+    "sha256": "87389e82a69d108e28f77e36d4e06fecde607f932f244882c71357c9dd1cab54"
+  },
+  {
+    "path": "source-before\\gppo_world\\m10_environment.py",
+    "bytes": 70710,
+    "sha256": "f939a7c4697fc64a14c99f5640b1cb34fd422dcdc3e39e6e76dfba73c368c3d4"
+  },
+  {
+    "path": "source-before\\tests\\test_m10_contract_v1.py",
+    "bytes": 12024,
+    "sha256": "c132f670626e8b54e56c99714cd8d7e7ef8f620bd464e9ffd1bca7b2bbe293b8"
+  },
+  {
+    "path": "source-before\\tests\\test_m10_uav_state_coalescing.py",
+    "bytes": 8883,
+    "sha256": "1de52c1eae49bc20be7e08912f7ef3cd9b4192b262fda953db636b9bbb95c5d0"
+  },
+  {
+    "path": "source-diff.patch",
+    "bytes": 12401,
+    "sha256": "0932d11c44a60b59c33399bc81bea6cb88193ffb8aa3fa6459c2e23f1a2e718e"
+  },
+  {
+    "path": "test_uav_state_coalescing.diff",
+    "bytes": 124,
+    "sha256": "f8482f93b34752ad9f8e8d3597f2a76e520063e8ec2cf5a953f06ba71cd79a02"
+  },
+  {
+    "path": "test-commands.txt",
+    "bytes": 375,
+    "sha256": "04228963d2bc1e9f9e33008989859ccac285405c2e98570396da4d42555f2226"
+  },
+  {
+    "path": "test-completion-targeted.txt",
+    "bytes": 101,
+    "sha256": "15947a38ae5bf4f40c02325f4dfe3371e6a3945aed5081334bb950366f98ed70"
+  },
+  {
+    "path": "test-contract-targeted.txt",
+    "bytes": 114,
+    "sha256": "b8b1c985ee05305df8f4bcc0d4fbcf4a4050d7d9461e1d01b19e8e1c88504ee5"
+  },
+  {
+    "path": "test-independent-heartbeat-and-uav-coalescing.txt",
+    "bytes": 101,
+    "sha256": "53080204e86db20f6cf8c6e3fff21782bedea8dad4c2048faeedb594b54b005d"
+  }
+]

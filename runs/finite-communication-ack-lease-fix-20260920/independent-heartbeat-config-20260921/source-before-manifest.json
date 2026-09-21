@@ -1,0 +1,22 @@
+[
+  {
+    "path": "gppo_world\\m10_contract_v1.py",
+    "sha256": "87389e82a69d108e28f77e36d4e06fecde607f932f244882c71357c9dd1cab54",
+    "bytes": 16721
+  },
+  {
+    "path": "gppo_world\\m10_environment.py",
+    "sha256": "f939a7c4697fc64a14c99f5640b1cb34fd422dcdc3e39e6e76dfba73c368c3d4",
+    "bytes": 70710
+  },
+  {
+    "path": "tests\\test_m10_contract_v1.py",
+    "sha256": "c132f670626e8b54e56c99714cd8d7e7ef8f620bd464e9ffd1bca7b2bbe293b8",
+    "bytes": 12024
+  },
+  {
+    "path": "tests\\test_m10_uav_state_coalescing.py",
+    "sha256": "1de52c1eae49bc20be7e08912f7ef3cd9b4192b262fda953db636b9bbb95c5d0",
+    "bytes": 8883
+  }
+]

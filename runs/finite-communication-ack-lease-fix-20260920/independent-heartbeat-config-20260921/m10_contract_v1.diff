@@ -1,0 +1,91 @@
+warning: in the working copy of 'E:\Z博士\9.2日\WORLD-GPPO_9.11-replan-value-20260919-wt\runs\finite-communication-ack-lease-fix-20260920\independent-heartbeat-config-20260921\source-before\gppo_world\m10_contract_v1.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'E:\Z博士\9.2日\WORLD-GPPO_9.11-replan-value-20260919-wt\runs\finite-communication-ack-lease-fix-20260920\independent-heartbeat-config-20260921\source-after\gppo_world\m10_contract_v1.py', LF will be replaced by CRLF the next time Git touches it
+diff --git "a/E:\\Z\345\215\232\345\243\253\\9.2\346\227\245\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\independent-heartbeat-config-20260921\\source-before\\gppo_world\\m10_contract_v1.py" "b/E:\\Z\345\215\232\345\243\253\\9.2\346\227\245\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\independent-heartbeat-config-20260921\\source-after\\gppo_world\\m10_contract_v1.py"
+index 690f75b..182a21c 100644
+--- "a/E:\\Z\345\215\232\345\243\253\\9.2\346\227\245\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\independent-heartbeat-config-20260921\\source-before\\gppo_world\\m10_contract_v1.py"
++++ "b/E:\\Z\345\215\232\345\243\253\\9.2\346\227\245\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\independent-heartbeat-config-20260921\\source-after\\gppo_world\\m10_contract_v1.py"
+@@ -100,6 +100,10 @@ class ContractV1Config:
+     version: str = "finite-communication-emergency-v1"
+     reporting_mode: str = "periodic"
+     heartbeat_interval: float = 2.0
++    # Optional stream-specific overrides.  ``None`` preserves the legacy
++    # heartbeat_interval value for that stream.
++    uav_heartbeat_interval: float | None = None
++    task_telemetry_heartbeat_interval: float | None = None
+     low_energy_threshold: float = 1.0
+     budget: ContractBudgetConfig = field(default_factory=ContractBudgetConfig)
+     enable_emergency_announcements: bool = True
+@@ -120,18 +124,37 @@ class ContractV1Config:
+             raise ValueError("reporting_mode must be periodic or event")
+         if self.queue_admission_policy not in ("fifo", "priority_replace_merge"):
+             raise ValueError("unsupported queue admission policy")
+-        if not math.isfinite(self.heartbeat_interval) or self.heartbeat_interval <= 0:
+-            raise ValueError("heartbeat_interval must be positive")
++        intervals = (self.heartbeat_interval, self.uav_heartbeat_interval,
++                     self.task_telemetry_heartbeat_interval)
++        if any(value is not None and
++               (not math.isfinite(float(value)) or float(value) <= 0)
++               for value in intervals):
++            raise ValueError("heartbeat intervals must be positive")
+         if not math.isfinite(self.low_energy_threshold) or self.low_energy_threshold < 0:
+             raise ValueError("low_energy_threshold must be finite and nonnegative")
+         if self.enable_task_preemption:
+             raise ValueError("preemption is intentionally disabled in v1")
+ 
+     def to_dict(self) -> dict[str, Any]:
++        uav_interval = self.effective_uav_heartbeat_interval
++        task_interval = self.effective_task_telemetry_heartbeat_interval
+         return {
+             "version": self.version,
+             "reporting_mode": self.reporting_mode,
+             "heartbeat_interval": self.heartbeat_interval,
++            "uav_heartbeat_interval": self.uav_heartbeat_interval,
++            "task_telemetry_heartbeat_interval": self.task_telemetry_heartbeat_interval,
++            "effective_uav_heartbeat_interval": uav_interval,
++            "effective_task_telemetry_heartbeat_interval": task_interval,
++            "heartbeat_interval_sources": {
++                "uav": "uav_heartbeat_interval" if self.uav_heartbeat_interval is not None
++                else "heartbeat_interval",
++                "task_telemetry": (
++                    "task_telemetry_heartbeat_interval"
++                    if self.task_telemetry_heartbeat_interval is not None
++                    else "heartbeat_interval"
++                ),
++            },
+             "low_energy_threshold": self.low_energy_threshold,
+             "budget": self.budget.to_dict(),
+             "enable_emergency_announcements": self.enable_emergency_announcements,
+@@ -142,6 +165,18 @@ class ContractV1Config:
+             "enable_completion_control_eligibility": self.enable_completion_control_eligibility,
+         }
+ 
++    @property
++    def effective_uav_heartbeat_interval(self) -> float:
++        return float(self.uav_heartbeat_interval
++                     if self.uav_heartbeat_interval is not None
++                     else self.heartbeat_interval)
++
++    @property
++    def effective_task_telemetry_heartbeat_interval(self) -> float:
++        return float(self.task_telemetry_heartbeat_interval
++                     if self.task_telemetry_heartbeat_interval is not None
++                     else self.heartbeat_interval)
++
+     @classmethod
+     def from_dict(cls, payload: dict[str, Any] | None) -> "ContractV1Config | None":
+         if not payload:
+@@ -150,6 +185,14 @@ class ContractV1Config:
+             version=str(payload.get("version", "finite-communication-emergency-v1")),
+             reporting_mode=str(payload.get("reporting_mode", "periodic")),
+             heartbeat_interval=float(payload.get("heartbeat_interval", 2.0)),
++            uav_heartbeat_interval=(
++                float(payload["uav_heartbeat_interval"])
++                if payload.get("uav_heartbeat_interval") is not None else None
++            ),
++            task_telemetry_heartbeat_interval=(
++                float(payload["task_telemetry_heartbeat_interval"])
++                if payload.get("task_telemetry_heartbeat_interval") is not None else None
++            ),
+             low_energy_threshold=float(payload.get("low_energy_threshold", 1.0)),
+             budget=ContractBudgetConfig.from_dict(payload.get("budget")),
+             enable_emergency_announcements=bool(payload.get("enable_emergency_announcements", True)),

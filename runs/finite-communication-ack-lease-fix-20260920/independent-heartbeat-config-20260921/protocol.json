@@ -1,0 +1,53 @@
+{
+  "schema": "finite-communication-independent-heartbeat-config/1.0.0",
+  "experiment_id": "finite-communication-independent-heartbeat-config-20260921",
+  "status": "component_validation_passed",
+  "scope": "zero-environment-step compatibility validation",
+  "requested_next_configuration": {
+    "reporting_mode": "event",
+    "uav_heartbeat_interval": 4.0,
+    "task_telemetry_heartbeat_interval": 2.0
+  },
+  "environment_execution": {
+    "env_steps": 0,
+    "optimizer_calls": 0,
+    "world_optimizer_updates": 0,
+    "offline_supervised_updates": 0,
+    "step_guard": "pytest autouse fixture raises if M10Environment.step is called"
+  },
+  "compatibility_rules": {
+    "legacy_field": "heartbeat_interval",
+    "uav_override": "uav_heartbeat_interval",
+    "task_override": "task_telemetry_heartbeat_interval",
+    "missing_override": "inherit heartbeat_interval",
+    "serialization": "stores raw overrides, effective values, and inheritance sources",
+    "legacy_protocol_read": true
+  },
+  "frozen_boundaries": [
+    "rate",
+    "capacity",
+    "reserve",
+    "message cost",
+    "queue and priority",
+    "TTL and max_age",
+    "UAV state coalescing",
+    "task telemetry/completion isolation",
+    "completion control eligibility",
+    "ACK/lease/fencing",
+    "mask/deadline/scenario/controller/model/preference"
+  ],
+  "tests": {
+    "independent_heartbeat_and_uav_coalescing": "17 passed",
+    "contract_targeted": "9 passed, 3 deselected",
+    "completion_targeted": "16 passed",
+    "all_zero_step": true
+  },
+  "source_hashes": {
+    "before_gppo_world/m10_contract_v1.py": "87389e82a69d108e28f77e36d4e06fecde607f932f244882c71357c9dd1cab54",
+    "after_gppo_world/m10_contract_v1.py": "ce9ba291fcd1b1a53dafbc82b378b38f73ac4f94879b1527ae641cb7506e5731",
+    "before_gppo_world/m10_environment.py": "f939a7c4697fc64a14c99f5640b1cb34fd422dcdc3e39e6e76dfba73c368c3d4",
+    "after_gppo_world/m10_environment.py": "26a4b185951565b7d636fbb74eefc2b5e2dbea0217f98e1ed6f72c33c7fe35c0",
+    "after_tests/test_independent_heartbeat_config.py": "08ca580159c67d1e2fe9f826a340666f334fb6b4907a756be0bbdb7528e903b9"
+  },
+  "budget_policy": "No environment budget created, modified, or reserved. Related SQLite databases were read-only inspected."
+}

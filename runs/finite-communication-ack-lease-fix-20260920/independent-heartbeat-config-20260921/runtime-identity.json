@@ -1,0 +1,11 @@
+{
+  "env_steps": 0,
+  "offline_supervised_updates": 0,
+  "optimizer_calls": 0,
+  "platform": "Windows-11-10.0.26100-SP0",
+  "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+  "python": "3.14.4 (tags/v3.14.4:23116f9, Apr  7 2026, 14:10:54) [MSC v.1944 64 bit (AMD64)]",
+  "python_executable": "C:\\Python314\\python.exe",
+  "torch": "2.13.0+cpu",
+  "world_optimizer_updates": 0
+}

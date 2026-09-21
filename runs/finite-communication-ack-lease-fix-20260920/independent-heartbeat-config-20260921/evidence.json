@@ -1,0 +1,62 @@
+{
+  "schema": "finite-communication-independent-heartbeat-evidence/1.0.0",
+  "experiment_id": "finite-communication-independent-heartbeat-config-20260921",
+  "status": "passed_zero_step",
+  "existing_same_task_result": false,
+  "existing_heartbeat_directories_checked": [
+    "small-multiscene-baseline-20260920",
+    "uplink-rate-sensitivity-20260920",
+    "heartbeat-interval-sensitivity-20260921"
+  ],
+  "implementation": {
+    "config_fields": [
+      "heartbeat_interval",
+      "uav_heartbeat_interval",
+      "task_telemetry_heartbeat_interval"
+    ],
+    "effective_source_recorded": true,
+    "separate_last_heartbeat_markers": [
+      "_contract_last_uav_heartbeat",
+      "_contract_last_task_telemetry_heartbeat"
+    ],
+    "heartbeat_due_uses": {
+      "uav": "effective_uav_heartbeat_interval",
+      "task_telemetry": "effective_task_telemetry_heartbeat_interval"
+    },
+    "completion_path_changed": false,
+    "communication_transport_changed": false
+  },
+  "independent_reference": {
+    "type": "pre-change shared-marker reference logic",
+    "source_before_snapshot": "source-before/gppo_world/m10_environment.py",
+    "default_event_by_event_equivalence": true,
+    "tested_times": [0.0, 1.0, 2.0, 3.0, 4.0],
+    "reference_behavior": "one heartbeat_interval and one shared last marker drive both streams"
+  },
+  "stream_trigger_evidence": {
+    "uav_4_task_2": {
+      "t0": {"uav_messages": 12, "task_messages": 8},
+      "t2": {"uav_messages": 0, "task_messages": 8},
+      "t4": {"uav_messages": 12, "task_messages": 8}
+    },
+    "uav_2_task_4": {
+      "t0": {"uav_messages": 12, "task_messages": 8},
+      "t2": {"uav_messages": 12, "task_messages": 0},
+      "t4": {"uav_messages": 12, "task_messages": 8}
+    },
+    "fixture_uav_count": 2,
+    "fixture_task_fields": 8
+  },
+  "test_outputs": {
+    "independent-heartbeat-and-uav-coalescing": "17 passed",
+    "contract-targeted": "9 passed, 3 deselected",
+    "completion-targeted": "16 passed"
+  },
+  "environment_steps": 0,
+  "model_updates": 0,
+  "unresolved_limitations": [
+    "No environment-level UAV=4/task=2 episode was run",
+    "No communication feasibility or task completion claim is made",
+    "Existing user worktree modifications remain outside this change"
+  ]
+}

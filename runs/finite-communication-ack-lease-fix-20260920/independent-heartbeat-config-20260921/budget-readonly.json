@@ -1,0 +1,48 @@
+{
+  "databases": [
+    {
+      "integrity": "ok",
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\budget.sqlite3",
+      "stages": [
+        {
+          "limit_amount": 256,
+          "reserved": 246,
+          "stage": "environment_steps",
+          "unknown": 0,
+          "verified": 246
+        }
+      ]
+    },
+    {
+      "integrity": "ok",
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\small-multiscene-baseline-20260920\\stage-budget.sqlite3",
+      "stages": [
+        {
+          "limit_amount": 3072,
+          "reserved": 1408,
+          "stage": "environment_steps",
+          "unknown": 0,
+          "verified": 1408
+        }
+      ]
+    },
+    {
+      "integrity": "ok",
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\uplink-rate-sensitivity-20260920\\stage-budget.sqlite3",
+      "stages": [
+        {
+          "limit_amount": 3072,
+          "reserved": 0,
+          "stage": "environment_steps",
+          "unknown": 0,
+          "verified": 0
+        }
+      ]
+    }
+  ],
+  "env_steps": 0,
+  "offline_supervised_updates": 0,
+  "optimizer_calls": 0,
+  "schema": "independent-heartbeat-config-readonly-budgets/1.0.0",
+  "world_optimizer_updates": 0
+}
