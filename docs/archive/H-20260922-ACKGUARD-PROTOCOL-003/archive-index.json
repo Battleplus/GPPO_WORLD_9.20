@@ -1,0 +1,96 @@
+{
+  "handoff_id": "H-20260922-ACKGUARD-PROTOCOL-003",
+  "scope": "selective docs/diff/tests; original large compatibility report retained locally with hash",
+  "files": [
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/report.md",
+      "bytes": 2725,
+      "sha256": "2ccf7c9d690399962edecbc1c95742e544ba6ea0819f956ff9e24a4c5963405e"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/report-rejected-intermediate.md",
+      "bytes": 1946,
+      "sha256": "05c2156a10ecd94c02950494ef158f735f5c886c4ef2bfde540f43d0d6c200eb"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/protocol.json",
+      "bytes": 6600,
+      "sha256": "2ec8db3415db7239d6d7a089a4841a8fdf12b5622f25c2a804bec0e3b83d1b8f"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/executable-protocol.md",
+      "bytes": 3196,
+      "sha256": "28a4ff37f97503ac2d705015336d07a90436ea57a671dbec4258f0ce70fa6477"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/authorization-template.json",
+      "bytes": 5555,
+      "sha256": "b16a26afa31fefb5c295384a163f1d4c42bb9fb38aa42ce61fe489f162886a1c"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/branch-manifest.json",
+      "bytes": 20127,
+      "sha256": "2b6245b5c0e1a196cbe21ad6472ee15892a10223c525bb209342943f9f906c6b"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/budget-proposal.json",
+      "bytes": 4680,
+      "sha256": "efee269e0e75ef4eef9f527455430dc73047d67e1f0b9e42120f3683e6b9a895"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/source-input-identities.json",
+      "bytes": 10462,
+      "sha256": "cc61e91e172629f62151b7c565aebc72c600e24785ac532cee906ab18c7b5b8d"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/minimal-diff.patch",
+      "bytes": 187282,
+      "sha256": "e6ca2a7676d3300cda10c0e6bc5ac3ab3d4fc607abc8f31a22b8c7c858bb56a2"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/minimal-diff-rejected-outline.txt",
+      "bytes": 3043,
+      "sha256": "52354719f3651446b33b754fd9d793ac09ddeaa221eba5450385c9fb734d6a68"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/test-output.txt",
+      "bytes": 183,
+      "sha256": "ab4d6fd60b6400f7360dc281c7112ac1f4fe883d2852869eb139e0a8b3b9b891"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/evidence-index.json",
+      "bytes": 4686,
+      "sha256": "34a499236f16614fd7984744558a09c7e7a40869b9cc90bbb862fb09b45b21e8"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/evidence-index.sha256",
+      "bytes": 86,
+      "sha256": "b7fbbd8beebe2fe0ad1ebc0ac36c0ede921b7f38cd3d47ebc47078f5e26b879f"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/final-review.md",
+      "bytes": 4698,
+      "sha256": "ecb1a1e00cc1d4adffe875157a79ab3cf6f7e9ba72f221ad3e80837c64742134"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/independent-verification.json",
+      "bytes": 8940,
+      "sha256": "324705653a41f1386c8a3fd2a4b52a5f31d9f5d8ba996f6f1463551d8dd4847b"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/independent-tests-final.txt",
+      "bytes": 183,
+      "sha256": "92f0f77607fb46248306a76c4d254186b3948e01c3f1959a12fc3a9ac01fe3d7"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PROTOCOL-003/historical-R-compatibility-summary.json",
+      "bytes": 49038,
+      "sha256": "31030f115bb07fe45a2a66c1cd5d79a63b2f891e592e734693b70c18ad0c3b8f"
+    },
+    {
+      "path": "docs/RESEARCH_PROGRESS.md",
+      "bytes": 11077,
+      "sha256": "b65b3147dfb61c570d7a82c342d096aed7a29ea00e4aaf145d601919a7cc2e68"
+    }
+  ]
+}

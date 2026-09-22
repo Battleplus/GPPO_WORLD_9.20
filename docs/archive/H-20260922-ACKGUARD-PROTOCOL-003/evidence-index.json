@@ -1,0 +1,86 @@
+{
+  "schema": "ackguard-corrected-evidence-index/1.0.0",
+  "protocol_id": "ackguard-corrected-protocol-20260922-v1",
+  "phase": 1,
+  "dynamic_execution_called": false,
+  "hard_counts": {
+    "environment_steps": 0,
+    "model_forward": 0,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "new_formal_attempt": 0
+  },
+  "budget": {
+    "ledger_sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+    "limit": 384,
+    "reserved": 20,
+    "verified": 20,
+    "unknown": 0,
+    "pending": 0,
+    "available": 364,
+    "required_new_steps": 384,
+    "proposed_total_limit": 404,
+    "proposal_applied": false
+  },
+  "scope": {
+    "new_guard_branches": 24,
+    "matrix": "parent-00..07/W1/seed-1101/prefix-0/repeat-0..2",
+    "historical_R_steps": 299,
+    "historical_R_reexecuted": false,
+    "old_two_guard_branches_reexecuted": false,
+    "validation_or_heldout_read": false
+  },
+  "historical_R_compatibility": {
+    "status": "insufficient_evidence",
+    "pairs": 24,
+    "reusable_R_control_pairs": 23,
+    "insufficient_pairs": 1,
+    "fully_reusable_pairs": 0,
+    "reason": "R control reuse is evaluated from saved matched rows; corrected guard trajectory remains unexecuted and cannot be inferred from R",
+    "mismatch": {
+      "branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "actual_public_observation_sha256": "029fdda5e21097ca33a4fdf738f9a0a5ada2a80d35440e4d3ea9e95100e25a87",
+      "snapshot_prefix_digest": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+      "snapshot_interface_prefix_digest": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f"
+    }
+  },
+  "tests": {
+    "command": "python -m pytest -q -p no:cacheprovider tests/test_ackguard_corrected_protocol_20260922.py tests/test_ack_known_task_guard_v1.py tests/test_ack_known_task_guard_noop_contract_audit_20260922.py tests/test_budget_executor.py tests/test_ack_known_task_guard_resume_v1.py",
+    "result": "81 passed",
+    "real_env_or_model_called": false,
+    "test_only_sqlite": true
+  },
+  "files": {
+    "report.md": "2ccf7c9d690399962edecbc1c95742e544ba6ea0819f956ff9e24a4c5963405e",
+    "executable-protocol.md": "28a4ff37f97503ac2d705015336d07a90436ea57a671dbec4258f0ce70fa6477",
+    "protocol.json": "2ec8db3415db7239d6d7a089a4841a8fdf12b5622f25c2a804bec0e3b83d1b8f",
+    "branch-manifest.json": "2b6245b5c0e1a196cbe21ad6472ee15892a10223c525bb209342943f9f906c6b",
+    "historical-R-compatibility.json": "6e59f8a81d0c1271d4449eebe488fe28fe4c0daf776633cec9790a20fd806700",
+    "source-input-identities.json": "cc61e91e172629f62151b7c565aebc72c600e24785ac532cee906ab18c7b5b8d",
+    "budget-proposal.json": "efee269e0e75ef4eef9f527455430dc73047d67e1f0b9e42120f3683e6b9a895",
+    "run-status.json": "81459ebd560fd9a67ec646dff93e004cf31cdd393eabd71892988faf9bb3b9f6",
+    "test-output.txt": "ab4d6fd60b6400f7360dc281c7112ac1f4fe883d2852869eb139e0a8b3b9b891",
+    "minimal-diff.patch": "e6ca2a7676d3300cda10c0e6bc5ac3ab3d4fc607abc8f31a22b8c7c858bb56a2",
+    "minimal-diff-rejected-outline.txt": "52354719f3651446b33b754fd9d793ac09ddeaa221eba5450385c9fb734d6a68",
+    "runner": "83fead84240311a0518a9b965b06497e553083ee3fa779b38ee3e2f43f328789",
+    "corrected_guard": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
+    "old_runner": "da768e30403c68041c01db1d32f9dd248c03c8f82d200f241506bf629b41c71b",
+    "budget_executor": "d9a39251cba7833ce2f92e06a84522a81c930c9eba706b42de62adab8a003551",
+    "protocol_test": "915e004271c511ad5a62ff7971e7a9b2ec635ce80a0361f841fcbcbc8927fbcb"
+  },
+  "notes": [
+    "The fixed corrected guard was not edited in this recovery.",
+    "No formal authorization file was created; budget extension remains proposal-only.",
+    "No utility, rejection, NOOP, confirmation, or energy conclusion is claimed from phase 1."
+  ],
+  "historical_input_hashes": {
+    "historical_R_branch_manifest": "d0bacd6862933fc90d93396a0bedd5fa4a62a6e144dae142d5272fe0190df7ea",
+    "historical_R_branch_results": "2e0238f08b5c1a48fbf6ff34d238b3ae97190a469127e68e19e90de276c63160",
+    "historical_R_control_reuse": "d9dd07b39e86809e946f28cfbaf9c945d9e46cfed8d062b60cee91332ba470b2",
+    "historical_R_labels": "1114d00f65203d09f4ef3a6617e8db02b1d33d2448c2cc9929e0c30198bff8ec",
+    "historical_R_reproduction": "96003a607bc24eb6be69d94ddc0f7fc1606f86578adf6d39273ab6946e8c1754",
+    "historical_R_snapshot_identity": "8660f59c5d9ca4ed54c05c0f09cd4e02f10fdb37ff4bd4b008c3c7dc6cc71091",
+    "historical_R_source_checkpoint_manifest": "3fd48720dc986f1e5cdeb9bdb6874c293a2c8157299073d695cb1d7b7e484702"
+  }
+}

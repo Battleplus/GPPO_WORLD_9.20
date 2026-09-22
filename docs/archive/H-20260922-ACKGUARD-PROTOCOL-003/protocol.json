@@ -1,0 +1,127 @@
+{
+  "budget": {
+    "new_cap": 384,
+    "offline_updates": 0,
+    "old_consumed": 20,
+    "optimizer_calls": 0,
+    "stage": "environment_steps",
+    "total_after": 404,
+    "unknown_or_pending_stop": true,
+    "world_updates": 0
+  },
+  "cli": {
+    "authorization_file_required": true,
+    "future_run": "python tools/run_ack_known_task_guard_corrected_20260922.py --mode run --authorization <reviewed-authorization.json> --manifest E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ackguard-corrected-protocol-20260922\\branch-manifest.json --out E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ackguard-corrected-protocol-20260922\\authorized-run",
+    "preflight": "python tools/run_ack_known_task_guard_corrected_20260922.py --mode preflight --out E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ackguard-corrected-protocol-20260922"
+  },
+  "current_budget_identity": {
+    "available": 364,
+    "limit": 384,
+    "reserved": 20,
+    "sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223"
+  },
+  "dynamic_execution_called": false,
+  "hard_counts_at_phase1": {
+    "environment_steps": 0,
+    "model_forward": 0,
+    "new_formal_attempt": 0,
+    "offline_updates": 0,
+    "optimizer_updates": 0,
+    "world_updates": 0
+  },
+  "historical_R_compatibility": {
+    "corrected_guard_trajectory_reuse": false,
+    "direct_first_label_snapshot_gate": "R step=1 public_observation_sha256 is compared directly with the immutable snapshot prefix_digest; old guard snapshot output is excluded",
+    "insufficient_pairs": 1,
+    "pairs": 24,
+    "reusable_R_control_pairs": 23,
+    "status": "insufficient_evidence"
+  },
+  "logging_contract": {
+    "before_after": "full env state, queue/resource/RNG graph, public observation, hidden states and probe are hashed before and after; env_state_before is captured before env.step",
+    "files": [
+      "decision-ledger.jsonl",
+      "step-vector-rewards.jsonl",
+      "budget-finalization.jsonl",
+      "branch-results.jsonl",
+      "progress.jsonl",
+      "failure-ledger.jsonl",
+      "run-status.json",
+      "budget-after.json"
+    ],
+    "reward": "vector reward and independently float32 recomputed_vector_reward must agree within 1e-6 and match counts/energy/config",
+    "task_host_confirmation": {
+      "per_branch_source": "branch-results.jsonl last_info.info.completion_records and last_info.info.task_outcome, with final_counts and end_reason",
+      "per_step_source": "step-vector-rewards.jsonl actual_feedback.info.completion_records and actual_feedback.info.task_outcome when present; counts.completed/expired remain the R-compatible task outcome",
+      "postprocessing": "last_info is retained for postprocessing; no task or host outcome is reconstructed from model output",
+      "schema": "native-m10-step-info/1.0.0"
+    }
+  },
+  "metrics": {
+    "no_negative_result_retry": true,
+    "primary": "parent-macro guard-R utility at preference (0.8,0.2); mean 3 repeats within parent then equal-weight 8 parents",
+    "secondary": [
+      "task completion",
+      "energy used",
+      "task_unavailable/rejection",
+      "NOOP count",
+      "guard trigger/action changes",
+      "model forward count"
+    ],
+    "stop_conditions": [
+      "any gate failure",
+      "identity/mask/probability mismatch",
+      "env/model/reward technical error",
+      "unknown or pending budget",
+      "duplicate or partial output"
+    ],
+    "task_host_confirmation": "per branch, task completion and host confirmation come from native info task records/completion_records or native task_outcome, retaining the historical R definition; energy comes from env.clock.resources and final_counts/end_reason from native info",
+    "utility": "0.8*0.5*G_task + 0.2*1.0*G_energy with gamma=0.99"
+  },
+  "phase": 1,
+  "pre_execution_gates": [
+    "explicit authorization status=authorized",
+    "protocol id and pinned protocol SHA-256 match",
+    "corrected runner, guard, native source files, checkpoint, and prefix snapshot hashes match",
+    "branch manifest is exactly 24 unique identities and output directory is fresh",
+    "historical SQLite is read-only inspected, global limit is 404, new-run available credit is at least 384, and unknown/pending are zero",
+    "new run_id and attempt_id are absent from the ledger"
+  ],
+  "protocol_id": "ackguard-corrected-protocol-20260922-v1",
+  "runtime_contract": {
+    "branch_restore": "deep-copy env, public observation, policy hidden, world hidden, and probe per branch; inject branch exogenous key only into the deep copy",
+    "failure": "unknown reservation and immediate terminal stop; no refund, retry, or zero fill",
+    "guard": "gppo_world.ack_known_task_guard.py at fixed corrected SHA-256",
+    "policy": "frozen P_train seed-1101 checkpoint, eval-only, deterministic action, behavior preference (0.8,0.2)",
+    "probability_log": "all action probabilities with legal mask, original argmax, and selected action",
+    "source": "historical native M10 25-action snapshot, isolated from current finite-communication and D-02 code",
+    "step_order": [
+      "capture full env/obs/policy_hidden/world_hidden/probe digest",
+      "model probe",
+      "guard selection",
+      "select by_action[selected_action].hidden",
+      "reserve one environment step",
+      "env.step",
+      "independent float32 reward recheck",
+      "persist full decision/step evidence",
+      "budget verify",
+      "persist finalization"
+    ],
+    "termination": "native terminated/truncated flags; reaching the protocol cap before native done is a technical stop and is never promoted as a complete branch"
+  },
+  "schema": "ackguard-corrected-executable-protocol/1.0.0",
+  "scope": {
+    "historical_R_controls": 24,
+    "historical_R_steps": 299,
+    "later_dynamic_matrix_and_model_comparison": "not authorized in phase 1",
+    "matrix": "parent-00..07 / W1 / seed-1101 / prefix-0 / repeat-0..2",
+    "new_guard_branches": 24,
+    "old_two_guard_branches": "preserved in historical output and excluded from this matrix"
+  },
+  "source_identity_summary": {
+    "checkpoint_sha256": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a",
+    "guard_sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
+    "snapshot_sha256": "c6826f941141d1ae7594c38a3e3465584ae0954158502f19d2f4d8163a18258e"
+  },
+  "status": "rejected_intermediate_corrected_protocol_review_required"
+}

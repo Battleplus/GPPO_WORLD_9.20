@@ -1,0 +1,45 @@
+# ACKGUARD-PROTOCOL-003 recovery minimal-diff record
+#
+# This audit patch records only the bounded recovery changes relative to the
+# inherited corrected-runner draft. The frozen guard has no semantic diff.
+# It is an evidence record; the executable sources are the files named below.
+
+diff --git a/gppo_world/ack_known_task_guard.py b/gppo_world/ack_known_task_guard.py
+--- frozen corrected guard
++++ frozen corrected guard
+# no changes; SHA-256 2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a
+
+diff --git a/tools/run_ack_known_task_guard_corrected_20260922.py b/tools/run_ack_known_task_guard_corrected_20260922.py
+--- inherited corrected runner
++++ recovery runner
+@@
++ make the worktree importable for direct CLI execution
++ quote the JSON example in the budget proposal string
++ record separate env/obs/hidden/cache snapshot semantic summaries
++ persist reserve failures as not_reserved and stop before env.step
++ append verified decisions so trigger/action/NOOP counters are truthful
++ write authorized runs to a fresh authorized-run output directory
++ validate authorization before runtime construction with synthetic identity fixtures for unknown/pending, duplicate, partial, identity, compatibility, hash, and credit failures
++ retain actual reservation state after complete/unknown errors, including verified-after-exception, with failure-time source snapshot summaries and counter deltas
++ report per-branch probe/model/env/budget counters as start/end/delta and reject probe raw_action disagreement with guard original_action
++ restore canonical imports when historical package isolation enter fails midway
++ validate historical R identity fields, step continuity, exogenous key, gamma/gamma_index, preference/scales, terminal flags, independently recomputed float32 rewards, and prefix digest pairs; pin all historical input hashes
++ document original R control reuse separately from corrected guard non-reuse, with task/host confirmation fields and scaled utility
+
+diff --git a/tests/test_ackguard_corrected_protocol_20260922.py b/tests/test_ackguard_corrected_protocol_20260922.py
+--- /dev/null
++++ recovery tests
+@@
++ fixed 24-row manifest and 299-step historical-R compatibility gate
++ complete probability vector and mask ledger
++ deepcopy isolation and verified budget stub branch
++ atomic reserve exhaustion and unknown env failure accounting
++ missing/unapproved authorization rejection before runtime construction
++ independent parameterized authorization-gate fixture for every required rejection case and a full 24-branch valid stub entry
++ append/logging failures, pre/post-commit completion failures, cap-stop, probe pollution, raw-action mismatch, and per-branch counter delta tests
++ historical isolation restore and copy-only budget extension continuation tests
++ runtime setup exception persistence and actual pending finalization tests
+
+# guard, environment, reward, mask, communication, ACK, lease, and model
+# semantics were not modified. No historical R or old two-branch runner was
+# rerun.

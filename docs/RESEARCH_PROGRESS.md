@@ -1,6 +1,18 @@
 # 统一研究进度
 
-## 当前任务：NOOP 合同修正与历史复用审查
+## 当前任务：修正后 guard 可执行评价协议（第一阶段）
+
+- handoff_id：`H-20260922-ACKGUARD-PROTOCOL-003`。**第一阶段交付 CLOSED；第二阶段未获授权且证据门阻断。**
+- 独立runner、固定24新分支方案、完整概率/selected-hidden/快照隔离/预算故障记录已准备；主代理独立复跑 **81 passed**，仅纯函数、stub和测试账本。原guard和旧runner不变。
+- 历史R **23/24可复用，1/24证据不足**：parent-00/W1/seed-1101/prefix-0/repeat-0/R 的pilot首步摘要与登记prefix摘要不同。尚不能区分摘要schema差异与状态差异，完整矩阵禁止启动，不缩为23对。
+- 旧两条guard/20步保留旧规则证据，不纳入新矩阵；本轮真实环境步、模型前向、所有更新、正式attempt均新增0。
+- 同SQLite仍 **20/384**、unknown=pending=0、integrity=ok；剩364不足新矩阵384最坏步数。未来同账本 **404总上限=旧20+新384** 只是提案，未扩额、未新建账本，authorization仍pending。
+- [最终审查](archive/H-20260922-ACKGUARD-PROTOCOL-003/final-review.md)、[可执行协议](archive/H-20260922-ACKGUARD-PROTOCOL-003/executable-protocol.md)、[真实diff](archive/H-20260922-ACKGUARD-PROTOCOL-003/minimal-diff.patch)、[R逐对摘要](archive/H-20260922-ACKGUARD-PROTOCOL-003/historical-R-compatibility-summary.json)、[独立核验](archive/H-20260922-ACKGUARD-PROTOCOL-003/independent-verification.json)、[归档索引](archive/H-20260922-ACKGUARD-PROTOCOL-003/archive-index.json)。
+- 下一步仅建议零步追溯单个pilot复用项的摘要口径及既有等价证据。不开训练，不重跑，不自动进入阶段二/三。
+- 前单归档：[5dc234391ea41ce51c3603aa3874c4217b775a2f](https://github.com/Battleplus/GPPO_WORLD_9.20/commit/5dc234391ea41ce51c3603aa3874c4217b775a2f)，18文件回读一致。本单最终提交另由远端回读记录保存。
+
+
+## 前单：NOOP 合同修正与历史复用审查
 
 - handoff_id：`H-20260922-ACKGUARD-NOOP-AUDIT-002`；状态 **CLOSED**，复用判定 **证据不足**。
 - 用户明确授权零环境步最小guard修正；Luna执行，主代理完成后集中审查。未启动动态实验。

@@ -1,0 +1,1445 @@
+{
+  "schema": "selected-compatibility-review-index/1.0.0",
+  "full_local_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ackguard-corrected-protocol-20260922\\historical-R-compatibility.json",
+  "full_sha256": "6e59f8a81d0c1271d4449eebe488fe28fe4c0daf776633cec9790a20fd806700",
+  "summary": {
+    "direct_first_label_snapshot_gate": {
+      "comparison": "R step=1 public_observation_sha256 == snapshot-identity prefix_digest",
+      "old_guard_snapshot_excluded": true,
+      "snapshot_identity": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\preference-vector-label-train-v1\\snapshot-identity.json",
+      "snapshot_interface_check": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\allocation-branch-preflight-v2\\snapshot-interface-check.json"
+    },
+    "fully_reusable_pairs": 0,
+    "insufficient_pairs": 1,
+    "old_two_guard_branches_excluded": true,
+    "old_two_guard_evidence": {
+      "control_reuse_artifact": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\control-reuse-manifest.json",
+      "reason": "old guard branches are historical treatment evidence and are not silently promoted to the corrected matrix",
+      "status": "not_part_of_R_control_gate"
+    },
+    "pairs": 24,
+    "reason": "R control reuse is evaluated from saved matched rows; corrected guard trajectory remains unexecuted and cannot be inferred from R",
+    "reusable_R_control_pairs": 23
+  },
+  "rows": [
+    {
+      "branch_id": "parent-00|W1|seed-1101|prefix-0|repeat-0|guard-on",
+      "control_branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "reusable_as_R_control": false,
+      "reasons": [
+        "historical R control-reuse or label/reproduction row is not matched",
+        "historical label contract failed: snapshot_initial_digest"
+      ],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": false
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "reused_from_pilot",
+          "prefix_id": "parent-00|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "029fdda5e21097ca33a4fdf738f9a0a5ada2a80d35440e4d3ea9e95100e25a87",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+          "prefix_id": "parent-00|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": false
+      }
+    },
+    {
+      "branch_id": "parent-00|W1|seed-1101|prefix-0|repeat-1|guard-on",
+      "control_branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-00|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+          "prefix_id": "parent-00|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-00|W1|seed-1101|prefix-0|repeat-2|guard-on",
+      "control_branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-00|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+          "prefix_id": "parent-00|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-01|W1|seed-1101|prefix-0|repeat-0|guard-on",
+      "control_branch_key": "parent-01|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-01|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "b8f161e4ff9ccea6649ed1ba67ba369860a85afa5066d3ebf17f988a6beee606",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "b8f161e4ff9ccea6649ed1ba67ba369860a85afa5066d3ebf17f988a6beee606",
+          "prefix_id": "parent-01|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "b8f161e4ff9ccea6649ed1ba67ba369860a85afa5066d3ebf17f988a6beee606",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-01|W1|seed-1101|prefix-0|repeat-1|guard-on",
+      "control_branch_key": "parent-01|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-01|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "b8f161e4ff9ccea6649ed1ba67ba369860a85afa5066d3ebf17f988a6beee606",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "b8f161e4ff9ccea6649ed1ba67ba369860a85afa5066d3ebf17f988a6beee606",
+          "prefix_id": "parent-01|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "b8f161e4ff9ccea6649ed1ba67ba369860a85afa5066d3ebf17f988a6beee606",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-01|W1|seed-1101|prefix-0|repeat-2|guard-on",
+      "control_branch_key": "parent-01|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-01|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "b8f161e4ff9ccea6649ed1ba67ba369860a85afa5066d3ebf17f988a6beee606",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "b8f161e4ff9ccea6649ed1ba67ba369860a85afa5066d3ebf17f988a6beee606",
+          "prefix_id": "parent-01|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "b8f161e4ff9ccea6649ed1ba67ba369860a85afa5066d3ebf17f988a6beee606",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-02|W1|seed-1101|prefix-0|repeat-0|guard-on",
+      "control_branch_key": "parent-02|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-02|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "c9f5247d258e428c8f6a68c60b7dc595f6cc0fc28a76b388e8d87484597c7019",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "c9f5247d258e428c8f6a68c60b7dc595f6cc0fc28a76b388e8d87484597c7019",
+          "prefix_id": "parent-02|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "c9f5247d258e428c8f6a68c60b7dc595f6cc0fc28a76b388e8d87484597c7019",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-02|W1|seed-1101|prefix-0|repeat-1|guard-on",
+      "control_branch_key": "parent-02|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-02|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "c9f5247d258e428c8f6a68c60b7dc595f6cc0fc28a76b388e8d87484597c7019",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "c9f5247d258e428c8f6a68c60b7dc595f6cc0fc28a76b388e8d87484597c7019",
+          "prefix_id": "parent-02|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "c9f5247d258e428c8f6a68c60b7dc595f6cc0fc28a76b388e8d87484597c7019",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-02|W1|seed-1101|prefix-0|repeat-2|guard-on",
+      "control_branch_key": "parent-02|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-02|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "c9f5247d258e428c8f6a68c60b7dc595f6cc0fc28a76b388e8d87484597c7019",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "c9f5247d258e428c8f6a68c60b7dc595f6cc0fc28a76b388e8d87484597c7019",
+          "prefix_id": "parent-02|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "c9f5247d258e428c8f6a68c60b7dc595f6cc0fc28a76b388e8d87484597c7019",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-03|W1|seed-1101|prefix-0|repeat-0|guard-on",
+      "control_branch_key": "parent-03|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-03|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "da9cb334d36a6a73153838cbb6e3843c0c1a971313f24eff9c3f63ba62c8054a",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "da9cb334d36a6a73153838cbb6e3843c0c1a971313f24eff9c3f63ba62c8054a",
+          "prefix_id": "parent-03|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "da9cb334d36a6a73153838cbb6e3843c0c1a971313f24eff9c3f63ba62c8054a",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-03|W1|seed-1101|prefix-0|repeat-1|guard-on",
+      "control_branch_key": "parent-03|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-03|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "da9cb334d36a6a73153838cbb6e3843c0c1a971313f24eff9c3f63ba62c8054a",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "da9cb334d36a6a73153838cbb6e3843c0c1a971313f24eff9c3f63ba62c8054a",
+          "prefix_id": "parent-03|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "da9cb334d36a6a73153838cbb6e3843c0c1a971313f24eff9c3f63ba62c8054a",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-03|W1|seed-1101|prefix-0|repeat-2|guard-on",
+      "control_branch_key": "parent-03|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-03|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "da9cb334d36a6a73153838cbb6e3843c0c1a971313f24eff9c3f63ba62c8054a",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "da9cb334d36a6a73153838cbb6e3843c0c1a971313f24eff9c3f63ba62c8054a",
+          "prefix_id": "parent-03|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "da9cb334d36a6a73153838cbb6e3843c0c1a971313f24eff9c3f63ba62c8054a",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-04|W1|seed-1101|prefix-0|repeat-0|guard-on",
+      "control_branch_key": "parent-04|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-04|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "564237aad741b5774a805d202660ab6c64246d4d2e35fe9f3a5b4a6274c49f13",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "564237aad741b5774a805d202660ab6c64246d4d2e35fe9f3a5b4a6274c49f13",
+          "prefix_id": "parent-04|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "564237aad741b5774a805d202660ab6c64246d4d2e35fe9f3a5b4a6274c49f13",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-04|W1|seed-1101|prefix-0|repeat-1|guard-on",
+      "control_branch_key": "parent-04|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-04|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "564237aad741b5774a805d202660ab6c64246d4d2e35fe9f3a5b4a6274c49f13",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "564237aad741b5774a805d202660ab6c64246d4d2e35fe9f3a5b4a6274c49f13",
+          "prefix_id": "parent-04|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "564237aad741b5774a805d202660ab6c64246d4d2e35fe9f3a5b4a6274c49f13",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-04|W1|seed-1101|prefix-0|repeat-2|guard-on",
+      "control_branch_key": "parent-04|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-04|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "564237aad741b5774a805d202660ab6c64246d4d2e35fe9f3a5b4a6274c49f13",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "564237aad741b5774a805d202660ab6c64246d4d2e35fe9f3a5b4a6274c49f13",
+          "prefix_id": "parent-04|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "564237aad741b5774a805d202660ab6c64246d4d2e35fe9f3a5b4a6274c49f13",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-05|W1|seed-1101|prefix-0|repeat-0|guard-on",
+      "control_branch_key": "parent-05|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-05|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "132028ac216bf8fd3745d74f802b6d349faf813bd95a4f77d502584fe7fb96ed",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "132028ac216bf8fd3745d74f802b6d349faf813bd95a4f77d502584fe7fb96ed",
+          "prefix_id": "parent-05|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "132028ac216bf8fd3745d74f802b6d349faf813bd95a4f77d502584fe7fb96ed",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-05|W1|seed-1101|prefix-0|repeat-1|guard-on",
+      "control_branch_key": "parent-05|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-05|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "132028ac216bf8fd3745d74f802b6d349faf813bd95a4f77d502584fe7fb96ed",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "132028ac216bf8fd3745d74f802b6d349faf813bd95a4f77d502584fe7fb96ed",
+          "prefix_id": "parent-05|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "132028ac216bf8fd3745d74f802b6d349faf813bd95a4f77d502584fe7fb96ed",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-05|W1|seed-1101|prefix-0|repeat-2|guard-on",
+      "control_branch_key": "parent-05|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-05|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "132028ac216bf8fd3745d74f802b6d349faf813bd95a4f77d502584fe7fb96ed",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "132028ac216bf8fd3745d74f802b6d349faf813bd95a4f77d502584fe7fb96ed",
+          "prefix_id": "parent-05|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "132028ac216bf8fd3745d74f802b6d349faf813bd95a4f77d502584fe7fb96ed",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-06|W1|seed-1101|prefix-0|repeat-0|guard-on",
+      "control_branch_key": "parent-06|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-06|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "6e61f9e3eafa06719bc6414183b38ef89b29446ed552f694c38b0f1c54740767",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "6e61f9e3eafa06719bc6414183b38ef89b29446ed552f694c38b0f1c54740767",
+          "prefix_id": "parent-06|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "6e61f9e3eafa06719bc6414183b38ef89b29446ed552f694c38b0f1c54740767",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-06|W1|seed-1101|prefix-0|repeat-1|guard-on",
+      "control_branch_key": "parent-06|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-06|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "6e61f9e3eafa06719bc6414183b38ef89b29446ed552f694c38b0f1c54740767",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "6e61f9e3eafa06719bc6414183b38ef89b29446ed552f694c38b0f1c54740767",
+          "prefix_id": "parent-06|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "6e61f9e3eafa06719bc6414183b38ef89b29446ed552f694c38b0f1c54740767",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-06|W1|seed-1101|prefix-0|repeat-2|guard-on",
+      "control_branch_key": "parent-06|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-06|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "6e61f9e3eafa06719bc6414183b38ef89b29446ed552f694c38b0f1c54740767",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "6e61f9e3eafa06719bc6414183b38ef89b29446ed552f694c38b0f1c54740767",
+          "prefix_id": "parent-06|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "6e61f9e3eafa06719bc6414183b38ef89b29446ed552f694c38b0f1c54740767",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-07|W1|seed-1101|prefix-0|repeat-0|guard-on",
+      "control_branch_key": "parent-07|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-07|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "cf775b0867fbcec80f07130618c5d69184f53c12376d6a720a8c06350f1a8f24",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "cf775b0867fbcec80f07130618c5d69184f53c12376d6a720a8c06350f1a8f24",
+          "prefix_id": "parent-07|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "cf775b0867fbcec80f07130618c5d69184f53c12376d6a720a8c06350f1a8f24",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-07|W1|seed-1101|prefix-0|repeat-1|guard-on",
+      "control_branch_key": "parent-07|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-07|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "cf775b0867fbcec80f07130618c5d69184f53c12376d6a720a8c06350f1a8f24",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "cf775b0867fbcec80f07130618c5d69184f53c12376d6a720a8c06350f1a8f24",
+          "prefix_id": "parent-07|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "cf775b0867fbcec80f07130618c5d69184f53c12376d6a720a8c06350f1a8f24",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    },
+    {
+      "branch_id": "parent-07|W1|seed-1101|prefix-0|repeat-2|guard-on",
+      "control_branch_key": "parent-07|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "reusable_as_R_control": true,
+      "reasons": [],
+      "checks": {
+        "behavior_preference": {
+          "ok": true
+        },
+        "exogenous_key": {
+          "ok": true
+        },
+        "gamma": {
+          "ok": true
+        },
+        "gamma_index": {
+          "ok": true
+        },
+        "identity": {
+          "ok": true
+        },
+        "independent_vector_reward": {
+          "ok": true
+        },
+        "reward_scales": {
+          "ok": true
+        },
+        "snapshot_initial_digest": {
+          "ok": true
+        },
+        "snapshot_schema_equivalence": {
+          "ok": true
+        },
+        "step_sequence": {
+          "ok": true
+        },
+        "terminal_contract": {
+          "ok": true
+        }
+      },
+      "snapshot_initial_digest": {
+        "actual": {
+          "label_source": "new_execution",
+          "prefix_id": "parent-07|W1|seed-1101|prefix-0",
+          "public_observation_sha256": "cf775b0867fbcec80f07130618c5d69184f53c12376d6a720a8c06350f1a8f24",
+          "source": "preference-vector-label-train-v1/step-vector-rewards.jsonl",
+          "step": 1
+        },
+        "expected": {
+          "prefix_digest": "cf775b0867fbcec80f07130618c5d69184f53c12376d6a720a8c06350f1a8f24",
+          "prefix_id": "parent-07|W1|seed-1101|prefix-0",
+          "snapshot_identity_schema": "snapshot-identity/1.0.0",
+          "snapshot_interface_prefix_digest": "cf775b0867fbcec80f07130618c5d69184f53c12376d6a720a8c06350f1a8f24",
+          "snapshot_interface_schema": "allocation-branch-snapshot-interface-check/2.0.0",
+          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest"
+        },
+        "ok": true
+      }
+    }
+  ]
+}
