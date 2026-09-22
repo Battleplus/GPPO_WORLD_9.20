@@ -1,0 +1,28 @@
+{
+  "budget_run_totals": {
+    "pending": 0,
+    "reserved": 20,
+    "unknown": 0,
+    "verified": 20
+  },
+  "checks": {
+    "actual_hidden_present": true,
+    "base_snapshot_unchanged": false,
+    "budget_verified_no_unknown": false,
+    "first_actual_legal": true,
+    "initial_public_present": true,
+    "labels_complete": true,
+    "pair_present": true
+  },
+  "env_step_calls": 10,
+  "pair": [
+    {
+      "branch_id": "parent-00|W1|seed-1101|prefix-0|repeat-0|guard-on",
+      "env_steps": 10,
+      "first_action": 18,
+      "first_feedback": null
+    }
+  ],
+  "passed": false,
+  "schema": "ack-known-task-guard-first-pair-interface-check/1.0.0"
+}

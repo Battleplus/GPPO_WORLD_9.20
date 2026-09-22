@@ -1,0 +1,81 @@
+{
+  "handoff_id": "H-20260922-ACKGUARD-RESUME-001",
+  "phase": "before_repair",
+  "files": [
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\report.md",
+      "bytes": 1488,
+      "sha256": "876218e8deae7e98be33809937c1841786233535f9f0b53d53b89d5d7a4134a8"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\protocol.json",
+      "bytes": 4150,
+      "sha256": "72f3b6a695150baaa82345fc95ed3696021897428af456118b9b77791040c1b1"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\branch-manifest.json",
+      "bytes": 13747,
+      "sha256": "b2f8d1f8350812c99b2dcfa452b5fed6456778e7e3abe6d2e11fb0a6b8261d24"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\control-reuse-manifest.json",
+      "bytes": 16869,
+      "sha256": "d9dd07b39e86809e946f28cfbaf9c945d9e46cfed8d062b60cee91332ba470b2"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\source-checkpoint-manifest.json",
+      "bytes": 6872,
+      "sha256": "d33004aa68b62beb8b83927650003eb925fc42835c7bbb02e4bfc413efcdea25"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\snapshot-identity.json",
+      "bytes": 3032,
+      "sha256": "8660f59c5d9ca4ed54c05c0f09cd4e02f10fdb37ff4bd4b008c3c7dc6cc71091"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\branch-results.jsonl",
+      "bytes": 16888,
+      "sha256": "23c13e22d3cf3c01357154ed648b24e4e022381ba298d5fc52bfa60a98eecad0"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\decision-ledger.jsonl",
+      "bytes": 15286,
+      "sha256": "964f22cad7f5f69dafda1906123f9cc5f0ab483baa54ce5f78c30c0daf6a2671"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\step-vector-rewards.jsonl",
+      "bytes": 730070,
+      "sha256": "00adde88c3e56a9b9369429c82cfefaafbd9948376b59b80eb88007ee0d242fa"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\first-pair-interface-check.json",
+      "bytes": 682,
+      "sha256": "3cf32bdfe02e0c1a41676d4586a391fb6eba9ea1bd40afb9a5c9d018c2b0717d"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget-before.json",
+      "bytes": 899,
+      "sha256": "6e7dc868afa1388ff84e679ed5d03723ce7bc80b40ed89d44083aecbbb1917a4"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget-after.json",
+      "bytes": 13671,
+      "sha256": "9c0d9ee4be91b4f19b12bb8e08a61329d8073d1177a74a158edecc2da1063954"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\hashes.json",
+      "bytes": 3179,
+      "sha256": "f2e93c68aca82585c678b2f79d2d1770a90386638a5297ac6aa2449ab5c4b96e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_baseline_v1.py",
+      "bytes": 57088,
+      "sha256": "ef7698fe8cbfa1fab1ff518459ba6cdbab14e3d44b4ae2371ead374df474d368"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py",
+      "bytes": 6304,
+      "sha256": "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "branch_contract": {
+    "actual_hidden": "advance using final selected action",
+    "first_decision": "natural original policy action then guard",
+    "later_decisions": "same guard from first decision until native termination",
+    "no_reset_or_prefix_replay": true,
+    "no_retry": true,
+    "policy": "same frozen deterministic policy/world and behavior preference (0.8,0.2)",
+    "restore": "independent deepcopy of selected complete snapshot"
+  },
+  "budget": {
+    "control_reexecuted": false,
+    "control_reused_steps": 299,
+    "environment_steps_limit": 384,
+    "independent_ledger": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+    "no_auto_retry": true,
+    "no_old_budget_use": true,
+    "offline_updates": 0,
+    "optimizer_calls": 0,
+    "per_branch_limit": 16,
+    "world_updates": 0
+  },
+  "comparison": {
+    "direction": "guard_on_minus_historical_R",
+    "parent_macro": "average repeats within parent then equal-weight parents",
+    "primary_preference": [
+      0.8,
+      0.2
+    ],
+    "secondary_preferences": [
+      [
+        0.2,
+        0.8
+      ],
+      [
+        0.5,
+        0.5
+      ]
+    ],
+    "tolerance": 1e-06
+  },
+  "hard_counts_before_run": {
+    "env_step": 0,
+    "model_forward": 0,
+    "new_attempt": 0,
+    "offline_update": 0,
+    "old_sqlite_modified": false,
+    "optimizer_update": 0,
+    "world_update": 0
+  },
+  "purpose": "test public continuation identity guard against historical frozen R control",
+  "reward_contract": {
+    "discount_index": "decision step, first branch step k=0, terminal included",
+    "gamma": 0.99,
+    "implementation": "historical gppo_world.joint_training._vector_reward",
+    "prefix_initialization": "restored env counters and current resource energy",
+    "scales": {
+      "energy": 1.0,
+      "task": 0.5
+    },
+    "truncation": "reported separately; no zero fill or critic bootstrap"
+  },
+  "rule": {
+    "default": "off",
+    "exclude_by": "task identity across all UAV allocation actions",
+    "missing_or_contradictory_identity": "technical stop",
+    "no_internal_state": true,
+    "no_memory_after_continuation_disappears": true,
+    "no_observation_or_mask_rewrite": true,
+    "noop": "retain if legal; select NOOP if all allocation candidates are excluded",
+    "online_input": [
+      "public continuation_actions",
+      "public_entity_ids.uavs",
+      "public_entity_ids.tasks",
+      "original legal mask",
+      "original action probabilities"
+    ]
+  },
+  "run_id": "ack-known-task-guard-baseline-v1",
+  "schema": "ack-known-task-guard-baseline-protocol/1.0.0",
+  "scope": {
+    "condition": "W1",
+    "control": "reuse 24 train R branches",
+    "developmental_not_independent_validation": true,
+    "guard_branches": 24,
+    "model_seed": 1101,
+    "parents": [
+      "parent-00",
+      "parent-01",
+      "parent-02",
+      "parent-03",
+      "parent-04",
+      "parent-05",
+      "parent-06",
+      "parent-07"
+    ],
+    "prefix_index": 0,
+    "prefixes": 8,
+    "repeats": 3
+  },
+  "selection_note": "fixed development batch inherited from prior allocation analysis; not an independent validation sample",
+  "source_contract": {
+    "action_count": 25,
+    "checkpoint_group": "P_train",
+    "checkpoint_sha256": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a",
+    "noop_action": 24,
+    "not_current_finite_communication": true,
+    "not_d02_17_action": true,
+    "source_root": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot"
+  },
+  "status": "technical_stop_after_partial_execution",
+  "stop": {
+    "model_forward_calls": 20,
+    "new_environment_steps": 20,
+    "no_matrix_completion": true,
+    "no_retry": true,
+    "offline_updates": 0,
+    "old_budgets_modified": false,
+    "optimizer_updates": 0,
+    "reason": "first_pair_interface_check_failed",
+    "unknown_budget": 0,
+    "world_updates": 0
+  }
+}
