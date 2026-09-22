@@ -1,0 +1,64 @@
+{
+  "schema": "preference-rk-route-closure-allocation-decision/1.0.0",
+  "date": "2026-09-22",
+  "recommendation": "conditional_protocol_review_only",
+  "formal_execution_authorized": false,
+  "preflight_required": true,
+  "research_question": "Under the native M10 25-action contract, do at least two legal non-NOOP UAV-Task allocation actions at the same public decision prefix have repeatable task-energy-deadline consequences, and can public information or a compatible candidate-consequence/world-model feature add predictability?",
+  "route_closure": {
+    "rk_label_contract_reproduced": true,
+    "rk_preference_route_passed_repeat_stability_gate": false,
+    "rk_validation_supplementation": "stopped",
+    "rk_selector_training": "stopped",
+    "hindsight_signal": "retained_as_exploratory_only",
+    "public_predictability": "not_tested"
+  },
+  "evidence_for_new_question": {
+    "task_energy_tradeoff_signal": true,
+    "strict_mean_preference_flip_prefixes": 17,
+    "strict_flip_parent_count": 9,
+    "all_three_repeat_flip_prefixes": 6,
+    "m10_finite_communication_at_least_two_candidate_rows": 0,
+    "m10_finite_communication_w2_public_pending_rows": 0,
+    "interpretation": "R/K evidence establishes a descriptive opportunity but not arbitrary allocation consequences; the candidate gate must be rerun on identity-matched native M10 public prefixes before any formal budget."
+  },
+  "native_contract": {
+    "source_snapshot": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot",
+    "action_count": 25,
+    "noop_index": 24,
+    "allocation_shape": "4 UAV x 6 task slots",
+    "horizon_seconds": 18,
+    "decision_interval_seconds": 1,
+    "forbidden_contract": "D-02/T-05 17-action model or mask"
+  },
+  "gates": [
+    "public legal candidate qualification",
+    "paired real outcome difference",
+    "cross-repeat stability",
+    "public baseline then candidate consequence then compatible world-model increment"
+  ],
+  "suggested_minimum_matrix": {
+    "parent_prefix_units": 8,
+    "exogenous_repeats_per_unit": 3,
+    "first_action_branches_per_repeat": 2,
+    "conservative_steps_if_full_horizon": 864,
+    "budget_status": "proposal_only_not_created"
+  },
+  "accounting": {
+    "env_steps": 0,
+    "model_forward": 0,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "new_attempts": 0,
+    "sqlite_modified": false
+  },
+  "stop_if": [
+    "candidate mask cannot be independently reconstructed",
+    "fewer than two legal non-NOOP allocation actions",
+    "outcome difference requires truth leakage or widened mask",
+    "repeat direction is not stable",
+    "action/hidden/communication/ACK/lease/fencing/completion contract changes",
+    "candidate-consequence or world-model input identity is incompatible"
+  ]
+}

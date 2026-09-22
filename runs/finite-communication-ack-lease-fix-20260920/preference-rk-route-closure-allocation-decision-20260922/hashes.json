@@ -1,0 +1,87 @@
+{
+  "schema": "preference-rk-route-closure-allocation-decision-hashes/1.0.0",
+  "created": "2026-09-22",
+  "note": "Hashes exclude hashes.json itself; input hashes are read-only provenance and output hashes cover this decision package.",
+  "files": [
+    {
+      "path": "runs\\finite-communication-ack-lease-fix-20260920\\preference-rk-route-closure-allocation-decision-20260922\\route-closure.md",
+      "bytes": 2819,
+      "sha256": "441c61d989d034f0faf9d8fe56537517232e50bd8331d28bf5b33ec49962d86e"
+    },
+    {
+      "path": "runs\\finite-communication-ack-lease-fix-20260920\\preference-rk-route-closure-allocation-decision-20260922\\prior-work-difference-table.md",
+      "bytes": 3247,
+      "sha256": "326929d36208770e0e57c3362c83b99a54fe94e51255d5de5799d2a152827e57"
+    },
+    {
+      "path": "runs\\finite-communication-ack-lease-fix-20260920\\preference-rk-route-closure-allocation-decision-20260922\\next-allocation-decision-protocol.md",
+      "bytes": 6883,
+      "sha256": "b9998d1f1e82f6a9e9be715c0d1fb8aff67a796e9fd680e52c21b4c096cad84c"
+    },
+    {
+      "path": "runs\\finite-communication-ack-lease-fix-20260920\\preference-rk-route-closure-allocation-decision-20260922\\decision.json",
+      "bytes": 2832,
+      "sha256": "b9b7ae41eef59fbee1403827e2454f01bb464cf7ed7f0b8eb4f0ca393cca00a7"
+    },
+    {
+      "path": "runs\\finite-communication-ack-lease-fix-20260920\\preference-rk-route-closure-allocation-decision-20260922\\input-index.json",
+      "bytes": 2568,
+      "sha256": "eba3a7f919a32ab652a920efc3398a1caf23d1503b895c29d1181719a46d430b"
+    },
+    {
+      "path": "runs\\finite-communication-ack-lease-fix-20260920\\preference-rk-route-closure-allocation-decision-20260922\\report.md",
+      "bytes": 1744,
+      "sha256": "b587d3578a7635ff2d6fee76bc12edee175a7fc3256e081024b0066e99fa6e54"
+    },
+    {
+      "path": "runs/finite-communication-ack-lease-fix-20260920/preference-branch-evaluation-v1/report.md",
+      "bytes": 5596,
+      "sha256": "351ae330a9addbbcad6f4c46659b574c9342e7c4211b82d14c27019c59ab85ab"
+    },
+    {
+      "path": "runs/finite-communication-ack-lease-fix-20260920/preference-vector-label-pilot-v1/report.md",
+      "bytes": 2021,
+      "sha256": "939ec9be3af382d39b773b64a2c0f0c4221e502d04f4a8717766c798133bc538"
+    },
+    {
+      "path": "runs/finite-communication-ack-lease-fix-20260920/preference-vector-label-train-v1/report.md",
+      "bytes": 2938,
+      "sha256": "dc6699c57ec9c92987084ab5c0759fffaa878a42d2b4621fcebb2865bd612efc"
+    },
+    {
+      "path": "runs/finite-communication-ack-lease-fix-20260920/preference-repeat-stability-audit-v1/report.md",
+      "bytes": 6590,
+      "sha256": "9b89e5b3f1a64b3eec3cb30d9630e64920ad75081e1f723bf42b8dcb34445c42"
+    },
+    {
+      "path": "runs/finite-communication-ack-lease-fix-20260920/legal-candidate-causality-20260921/report.md",
+      "bytes": 4366,
+      "sha256": "24729ed4c381d186d5bf73769fef94cde93740c21c0a4d2183cd3c464a9c048c"
+    },
+    {
+      "path": "runs/finite-communication-ack-lease-fix-20260920/frozen-latent-adapter-offline-diagnostic-20260921/report.md",
+      "bytes": 4586,
+      "sha256": "6875c7e72b79b42ca981290dedf49300adc8e52a77b74a1767c6608d7cea4777"
+    },
+    {
+      "path": "runs/finite-communication-ack-lease-fix-20260920/research-mainline-protocol-closure-20260921/report.md",
+      "bytes": 8401,
+      "sha256": "a5cc979290749f0619034638bc8ebaa065e5c664bb6f830e8f07ed960bc9f96b"
+    },
+    {
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\MANIFEST.md",
+      "bytes": 8624,
+      "sha256": "791df3e5ae070334782462d38328b06a057343376b5c57bd909232df8657e000"
+    },
+    {
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\artifact-manifest.json",
+      "bytes": 4039,
+      "sha256": "011d12816de5c81b28ede67dc865faeea4a4cf0251ad093a04b2559de5e8e7cc"
+    },
+    {
+      "path": "E:\\Z博士\\research-reviews\\research-next-step-20260921\\j02-history.md",
+      "bytes": 4221,
+      "sha256": "5770730459dcd9c81483e0622da47fc4c9810bd951038455a2295a8dde50c1b0"
+    }
+  ]
+}

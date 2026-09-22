@@ -1,0 +1,25 @@
+{
+  "schema": "preference-rk-route-closure-allocation-decision-input-index/1.0.0",
+  "created": "2026-09-22",
+  "purpose": "Read-only evidence index for route closure and the conditional native-M10 allocation decision protocol.",
+  "inputs": [
+    {"path": "runs/finite-communication-ack-lease-fix-20260920/preference-branch-evaluation-v1/report.md", "role": "historical R/K utility and data-boundary report"},
+    {"path": "runs/finite-communication-ack-lease-fix-20260920/preference-vector-label-pilot-v1/report.md", "role": "vector-label recorder, historical reproduction and observer equivalence"},
+    {"path": "runs/finite-communication-ack-lease-fix-20260920/preference-vector-label-train-v1/report.md", "role": "complete train labels and fixed-preference opportunity summary"},
+    {"path": "runs/finite-communication-ack-lease-fix-20260920/preference-repeat-stability-audit-v1/report.md", "role": "leave-one-repeat, parent bootstrap and flip stability"},
+    {"path": "runs/finite-communication-ack-lease-fix-20260920/legal-candidate-causality-20260921/report.md", "role": "finite-communication public candidate and mask evidence"},
+    {"path": "runs/finite-communication-ack-lease-fix-20260920/frozen-latent-adapter-offline-diagnostic-20260921/report.md", "role": "17-action global latent residual identity boundary"},
+    {"path": "runs/finite-communication-ack-lease-fix-20260920/research-mainline-protocol-closure-20260921/report.md", "role": "mainline closure and prior recommendation"},
+    {"path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\MANIFEST.md", "role": "native M10 source snapshot provenance"},
+    {"path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\artifact-manifest.json", "role": "historical artifact hash index"},
+    {"path": "E:\\Z博士\\research-reviews\\research-next-step-20260921\\j02-history.md", "role": "J-02A/J-02B identity and quality-gate history"}
+  ],
+  "excluded": [
+    "heldout/Test records",
+    "current finite-communication environment as a substitute for historical M10",
+    "D-02/T-05 17-action checkpoint as a 25-action model",
+    "future branch outcomes or offline truth as online inputs",
+    "new environment execution, model inference, training or budget ledger changes"
+  ],
+  "source_identity_note": "The source snapshot is recorded as an external historical input; its full artifact identity remains in the referenced manifest. This decision package does not copy or alter that snapshot."
+}
