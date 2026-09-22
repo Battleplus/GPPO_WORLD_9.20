@@ -1,0 +1,64 @@
+{
+  "handoff_id": "H-20260922-ACKGUARD-RESUME-001",
+  "phase": "approval_archive",
+  "method": "GitHub createCommitOnBranch",
+  "repository": "Battleplus/GPPO_WORLD_9.20",
+  "branch": "archive/research-progress",
+  "commit": "d230cb9fd6e0a30df014e6646d4cfb559c545195",
+  "url": "https://github.com/Battleplus/GPPO_WORLD_9.20/commit/d230cb9fd6e0a30df014e6646d4cfb559c545195",
+  "ref_matches": true,
+  "signature_verified": true,
+  "signature_reason": "valid",
+  "files": [
+    {
+      "path": "docs/RESEARCH_PROGRESS.md",
+      "bytes": 3947,
+      "sha256": "8809024a60cec781417b3fd41bed6a4fa0ff6b38dc2100008716fa623ff034ae",
+      "remote_content_matches": true
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-RESUME-001/archive-status.json",
+      "bytes": 768,
+      "sha256": "6b48c32a791416bc43ee785a98b269c9050117eb8df717a925b9299796b82cbe",
+      "remote_content_matches": true
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-RESUME-001/handoff.md",
+      "bytes": 5104,
+      "sha256": "eaa7826009cf444769100cdee54ef4a950934044e87adad1dcfa7672c2582fda",
+      "remote_content_matches": true
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-RESUME-001/input-index.json",
+      "bytes": 4606,
+      "sha256": "794e24fe48e71fd4c7453cacef6729783338d1ebdc32514b84b8b8f9ddd6cd94",
+      "remote_content_matches": true
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-RESUME-001/original-first-pair-interface-check.json",
+      "bytes": 682,
+      "sha256": "3cf32bdfe02e0c1a41676d4586a391fb6eba9ea1bd40afb9a5c9d018c2b0717d",
+      "remote_content_matches": true
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-RESUME-001/original-protocol.json",
+      "bytes": 4150,
+      "sha256": "72f3b6a695150baaa82345fc95ed3696021897428af456118b9b77791040c1b1",
+      "remote_content_matches": true
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-RESUME-001/original-report.md",
+      "bytes": 1488,
+      "sha256": "876218e8deae7e98be33809937c1841786233535f9f0b53d53b89d5d7a4134a8",
+      "remote_content_matches": true
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-RESUME-001/original-source-checkpoint-manifest.json",
+      "bytes": 6872,
+      "sha256": "d33004aa68b62beb8b83927650003eb925fc42835c7bbb02e4bfc413efcdea25",
+      "remote_content_matches": true
+    }
+  ],
+  "credential_persisted": false,
+  "global_git_config_changed": false
+}

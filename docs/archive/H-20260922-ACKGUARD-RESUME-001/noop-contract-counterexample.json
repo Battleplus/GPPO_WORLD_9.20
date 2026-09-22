@@ -1,0 +1,120 @@
+{
+  "handoff_id": "H-20260922-ACKGUARD-RESUME-001",
+  "status": "CONTRACT_COUNTEREXAMPLE_CONFIRMED",
+  "guard_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py",
+  "guard_sha256": "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b",
+  "input": {
+    "observation": {
+      "mask": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "public_entity_ids": {
+        "uavs": [
+          "uav-0",
+          "uav-1",
+          "uav-2",
+          "uav-3"
+        ],
+        "tasks": [
+          "task-0"
+        ]
+      },
+      "continuation_actions": []
+    },
+    "probabilities": [
+      0.1,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.9
+    ],
+    "task_capacity": 6
+  },
+  "disabled": {
+    "original_action": 24,
+    "final_action": 24,
+    "triggered": false,
+    "reason": "disabled",
+    "continuation_task_ids": [],
+    "excluded_actions": [],
+    "candidate_actions": [
+      0,
+      24
+    ],
+    "action_task_ids": []
+  },
+  "enabled": {
+    "original_action": 24,
+    "final_action": 0,
+    "triggered": true,
+    "reason": "no_guard_match",
+    "continuation_task_ids": [],
+    "excluded_actions": [],
+    "candidate_actions": [
+      0
+    ],
+    "action_task_ids": [
+      [
+        0,
+        "task-0"
+      ]
+    ]
+  },
+  "inputs_unchanged": true,
+  "expected_contract": "With no continuation task to exclude, retain the original legal argmax, including legal NOOP.",
+  "observed_violation": "Enabled guard excludes legal NOOP whenever any allocation remains, even with zero task exclusions.",
+  "historical_scope": {
+    "decision_rows": 20,
+    "original_noop_rows": 2,
+    "noop_overrides": []
+  },
+  "decision": "Do not change frozen guard or execute remaining branches under current authorization; runner-only repairs can proceed. Guard contract correction requires a separate explicit scope decision.",
+  "env_steps": 0,
+  "model_forwards": 0,
+  "updates": 0,
+  "sqlite_writes": 0
+}
