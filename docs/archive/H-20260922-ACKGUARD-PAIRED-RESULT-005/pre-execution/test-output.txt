@@ -1,0 +1,19 @@
+{
+  "bridge_qualified_R_pairs": 24,
+  "bridge_statement": "native task bridge is inside historical env.step; audit evaluate_bridge is not a dynamic runner entry",
+  "budget_identity_sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+  "budget_integrity": "ok",
+  "dynamic_execution_called": false,
+  "environment_steps": 0,
+  "handoff_id": "H-20260922-ACKGUARD-PAIRED-RESULT-005",
+  "manifest_rows": 24,
+  "model_forward": 0,
+  "new_formal_attempt": 0,
+  "offline_updates": 0,
+  "optimizer_updates": 0,
+  "runner_sha256": "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e",
+  "schema": "ackguard-matrix-registration-verification/1.0.0",
+  "status": "passed",
+  "strict_R_reusable_pairs": 23,
+  "world_updates": 0
+}

@@ -1,0 +1,102 @@
+{
+  "audit_event": {
+    "attempt_id": "ackguard-corrected-protocol-20260922-attempt-0001",
+    "event": "ackguard_limit_extension_proposal",
+    "new_global_limit": 404,
+    "new_run_cap": 384,
+    "old_pending": 0,
+    "old_reserved": 20,
+    "old_unknown": 0,
+    "old_verified": 20,
+    "original_metadata_run_limits_preserved": {
+      "environment_steps": 384,
+      "offline_updates": 0,
+      "optimizer_calls": 0,
+      "world_updates": 0
+    },
+    "original_sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+    "run_id": "ackguard-corrected-protocol-20260922",
+    "same_sqlite": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+    "write_original_now": false
+  },
+  "current_gate": "blocked: available=364 < required=384 and current limit=384 < proposed total=404",
+  "current_read_only": {
+    "limit": 384,
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+    "pending": 0,
+    "reserved": 20,
+    "sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+    "unknown": 0,
+    "verified": 20
+  },
+  "metadata_migration": {
+    "do_not_overwrite_existing_run_limits_with_global_limit": true,
+    "existing_metadata_run_limits": {
+      "environment_steps": 384,
+      "offline_updates": 0,
+      "optimizer_calls": 0,
+      "world_updates": 0
+    },
+    "new_metadata_key": "run_limits_by_run",
+    "new_metadata_value": {
+      "ackguard-corrected-protocol-20260922": {
+        "environment_steps": 384,
+        "offline_updates": 0,
+        "optimizer_calls": 0,
+        "world_updates": 0
+      }
+    },
+    "preserve_existing_run_limits_key": true,
+    "reason": "metadata.run_limits is legacy executor metadata; global stage limit and this run cap are distinct contracts"
+  },
+  "minimum_migration_design": {
+    "apply_now": false,
+    "approval_required": true,
+    "required_if_schema_cannot_authoritatively_extend_limit": true,
+    "rollback": "ROLLBACK before COMMIT on any assertion failure; never rewrite or copy the formal database",
+    "schema": "persistent-budget-sqlite/1.0.0-compatible",
+    "transaction": [
+      "BEGIN IMMEDIATE",
+      "assert PRAGMA integrity_check = 'ok'",
+      "assert stages.environment_steps has limit=384, reserved=20, verified=20, unknown=0, pending=0",
+      "assert run_id ackguard-corrected-protocol-20260922 and attempt_id ackguard-corrected-protocol-20260922-attempt-0001 are absent",
+      "UPDATE stages SET limit_amount=404 WHERE stage='environment_steps'",
+      "INSERT OR REPLACE INTO metadata(key,value) VALUES ('run_limits_by_run', '<canonical JSON mapping run_id to 384-step cap>')",
+      "INSERT INTO history(event,stage,amount,attempt_id,reservation_id,reservation_index,pid,reason,created_at,run_id) VALUES ('limit_extension_proposal_applied_after_approval','environment_steps',0,'ackguard-corrected-protocol-20260922-attempt-0001',NULL,NULL,<pid>,'preserve old 20; add 404 global / 384 run cap',<time>,'ackguard-corrected-protocol-20260922')",
+      "COMMIT",
+      "reopen read-only, recompute SHA, verify old 20 rows unchanged, verify new run/attempt totals are empty, and record audit evidence"
+    ]
+  },
+  "recommendation": {
+    "global_environment_steps_limit_after": 404,
+    "global_environment_steps_limit_before": 384,
+    "new_attempt_id": "ackguard-corrected-protocol-20260922-attempt-0001",
+    "new_guard_environment_step_cap": 384,
+    "new_run_id": "ackguard-corrected-protocol-20260922",
+    "old_attempts_modified": false,
+    "old_consumed_steps_preserved": 20,
+    "old_results_rerun": false,
+    "same_sqlite": true,
+    "total_after": 404
+  },
+  "schema": "ackguard-corrected-budget-proposal/1.0.0",
+  "status": "proposal_only_not_applied",
+  "test_only_copy_plan": {
+    "assert_source_sha256_unchanged": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+    "copy_source": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+    "copy_target": "temporary test SQLite outside the formal run directory",
+    "expected_after": {
+      "global_limit": 404,
+      "new_run_pending": 0,
+      "new_run_reserved": 0,
+      "new_run_unknown": 0,
+      "new_run_verified": 0,
+      "old_pending": 0,
+      "old_reserved": 20,
+      "old_unknown": 0,
+      "old_verified": 20
+    },
+    "formal_database_write": false,
+    "simulate_transaction": true
+  }
+}

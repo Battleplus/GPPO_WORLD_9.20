@@ -1,0 +1,64 @@
+{
+  "schema": "ackguard-matrix-first-branch-gate/1.0.0",
+  "status": "pending_dynamic_gate",
+  "phase": "registration_only",
+  "target": {
+    "new_branch_id": "parent-00|W1|seed-1101|prefix-0|repeat-0|guard-on",
+    "historical_control_branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R",
+    "prefix_id": "parent-00|W1|seed-1101|prefix-0",
+    "parent_id": "parent-00",
+    "condition": "W1",
+    "model_seed": 1101,
+    "prefix_index": 0,
+    "repeat": 0,
+    "exogenous_key": "replan-feature-v1|parent-00|W1|0|repeat-0"
+  },
+  "static_identity_checks": {
+    "new_guard_is_not_control": true,
+    "control_key_uses_mode_R": true,
+    "prefix_and_repeat_match": true,
+    "exogenous_key_matches": true,
+    "old_two_guard_branches_excluded": true,
+    "manifest_matrix_is_24_rows": true
+  },
+  "historical_R_evidence": {
+    "local_h004_receipt": "E:/Z博士/research-reviews/r-control-digest-audit-004/binding-final-remote-verification.json",
+    "remote_commit": "b83fdb2c4107b0fe343bfb5e0c6a440cc18befe9",
+    "remote_ref_matches": true,
+    "signature_verified": true,
+    "signature_reason": "valid",
+    "strict_compatibility_pairs": 23,
+    "strict_compatibility_insufficient_pairs": 1,
+    "strict_target_status": "insufficient_evidence",
+    "bridge_qualified_pairs": 24,
+    "bridge_qualified_target_status": "reusable_as_R_control",
+    "bridge_qualification_scope": "saved-observation schema, identity, and time binding only; not corrected-guard trajectory reuse"
+  },
+  "runner_static_audit": {
+    "corrected_runner_sha256": "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e",
+    "dynamic_sequence": [
+      "model_probe",
+      "guard_selection",
+      "selected_action_hidden",
+      "budget_reservation",
+      "env.step",
+      "reward_check",
+      "budget_finalization"
+    ],
+    "runner_calls_r_control_audit_evaluate_bridge": true,
+    "native_historical_environment_uses_task_decision_bridge_inside_env_step": true,
+    "saved_observation_audit_is_not_dynamic_entry": false,
+    "bridge_phase": "authorization entry recomputes pinned bridge before runtime/budget construction; dynamic trajectory gate remains pending"
+  },
+  "dynamic_checks_required_before_first_step": [
+    "authorization status is manually changed to authorized after the approved ledger extension",
+    "the exact historical R control row is loaded by control_branch_key",
+    "new guard branch identity and exogenous key match the manifest",
+    "snapshot deep-copy digest is unchanged before model probing",
+    "public mask and original action are checked before guard selection",
+    "selected action hidden is taken from by_action[selected_action]",
+    "continuation does not resubmit a command",
+    "runtime model digest is unchanged and the first branch output is fresh"
+  ],
+  "failure_action": "stop immediately; retain evidence; do not retry, substitute a control, or continue another branch"
+}

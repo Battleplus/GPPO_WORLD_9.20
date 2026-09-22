@@ -1,0 +1,105 @@
+{
+  "schema": "ackguard-matrix-analysis-stop-rules/1.0.0",
+  "status": "pending_authorization",
+  "claim": "Measure whether the corrected ACK-known-task guard changes frozen-policy execution relative to the matched historical R control.",
+  "scope": {
+    "parents": 8,
+    "repeats_per_parent": 3,
+    "new_guard_branches": 24,
+    "historical_R_controls": 24,
+    "condition": "W1",
+    "model_seed": 1101,
+    "prefix_index": 0,
+    "old_guard_branches_included": false
+  },
+  "primary_metric": {
+    "name": "parent_macro_guard_minus_R_utility",
+    "repeat_aggregation": "mean of the three repeats within each parent",
+    "parent_aggregation": "equal-weight mean over eight parents",
+    "utility": "discounted sum of 0.8*0.5*task_vector_component + 0.2*1.0*energy_vector_component",
+    "gamma": 0.99,
+    "confidence_unit": "parent",
+    "confidence_interval": "two-sided 95% parent-cluster bootstrap; resample the eight parent aggregates with replacement",
+    "tie_rule": "abs(raw paired utility difference) <= 1e-6 is a descriptive tie; primary mean and bootstrap retain unrounded values"
+  },
+  "secondary_metrics": [
+    "task completion",
+    "host confirmation",
+    "energy used",
+    "task_unavailable or rejection",
+    "NOOP count",
+    "guard trigger count",
+    "action change count",
+    "model forward count"
+  ],
+  "analysis_implementation": {
+    "path": "analyze_results.py",
+    "inputs": [
+      "future corrected guard branch-results.jsonl",
+      "future corrected guard step-vector-rewards.jsonl",
+      "historical R branch-results.jsonl",
+      "historical R step-vector-rewards.jsonl"
+    ],
+    "outputs": [
+      "three-repeat parent means",
+      "eight-parent macro mean",
+      "two-sided 95% parent-cluster bootstrap CI",
+      "paired secondary metrics and technical-stop accounting"
+    ],
+    "random_seed": 20260922,
+    "bootstrap_replicates": 10000,
+    "execution_contract": "pure standard-library JSONL analysis; no environment, model, checkpoint, or budget writes"
+  },
+  "state_contract": {
+    "public_legal": "action is legal under the current public mask or continuation_actions",
+    "execution_accepted": "native env.step feedback accepts the action",
+    "completed": "native task/completion records and terminal counts report completion",
+    "host_confirmation": "native completion_records or task_outcome only; never reconstructed from model output"
+  },
+  "pre_execution_gates": [
+    "same-ledger limit extension to 404 is approved and verified on the controlled ledger",
+    "old 20 verified steps remain unchanged",
+    "new run and attempt identities are absent",
+    "unknown and pending reservations are zero",
+    "all source, checkpoint, snapshot, manifest, protocol, and control evidence hashes match",
+    "historical R control binding passes the frozen schema/identity/time bridge-qualified policy for all 24 pairs",
+    "output directory is fresh",
+    "no Python or PythonW process is already running for this experiment"
+  ],
+  "runtime_stop_rules": [
+    "any identity, mask, probability, hidden-state, or snapshot digest mismatch",
+    "any invalid action or unlogged continuation submission",
+    "any environment, model, reward, serialization, or budget error",
+    "any unknown or pending reservation",
+    "any duplicate, missing, partial, or nonterminal branch output",
+    "runtime model digest changes",
+    "protocol step cap is reached before native termination"
+  ],
+  "interpretation_limits": [
+    "This is eval-only and does not train GPPO or update the world model.",
+    "A guard-R difference is not an algorithmic gain without the frozen-source and control gates.",
+    "No negative result may be retried or selectively omitted.",
+    "H-004 bridges historical R identity only; current authorization entry now recomputes that bridge. A guard-versus-R result cannot establish an independent GPPO or world-model contribution."
+  ],
+  "required_final_outputs": [
+    "24 new guard branch records paired to 24 trusted historical R control records",
+    "parent-level repeat means and eight-parent macro aggregate",
+    "parent-cluster 95% confidence interval for primary guard-minus-R utility",
+    "secondary paired outcome table and technical-stop accounting",
+    "decision on whether the simple execution-state baseline is fixed for the next study"
+  ],
+  "hard_counts_required_at_registration": {
+    "environment_steps": 0,
+    "model_forward": 0,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "new_formal_attempt": 0
+  },
+  "decision_rule": {
+    "improvement_evidence": "primary parent-bootstrap lower bound > 0; explicitly report whether task_unavailable decreased and task completion/energy tradeoffs",
+    "degradation_evidence": "primary parent-bootstrap upper bound < 0",
+    "uncertain": "primary CI contains zero, including exact null; no post-hoc preference change",
+    "fix_as_required_simple_baseline": "Only if primary improvement is supported, invalid duplicate submissions decrease, and mean task completion does not decline; otherwise retain as tested comparator and do not mandate it as the new baseline. Technical stop never qualifies as a research result."
+  }
+}

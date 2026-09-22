@@ -1,0 +1,44 @@
+{
+  "schema": "ackguard-matrix-registration-hashes/1.0.0",
+  "handoff_id": "H-20260922-ACKGUARD-PAIRED-RESULT-005",
+  "hash_scope": "package files listed below; hashes.json and hashes.json.sha256 are excluded from package_files",
+  "package_files": {
+    "analysis-and-stop-rules.json": "9e3765a13be164ac322076ca1c60b28c4a270d6482d267d9815711b516afc3e4",
+    "analysis-test-output.txt": "c956bbf7f3ce1bc15b5e38a36db7ef06637b95008ec85d62c9ec829341fe6ca7",
+    "analyze_results.py": "c4add12392c8f3ca082e0aaa57224708b24ff0b16ae40eeae95ff65183834ba7",
+    "authorization-request.md": "1fab387bc1d3c5b155e3fe6fb91891395f8b220f12a448b5f41d2f76eb0619d7",
+    "authorization-template.json": "e2cffe69e104676c4f202688cf4f66dcedb3280a24c6b337f0d619b8bf703fc5",
+    "branch-manifest.json": "2b6245b5c0e1a196cbe21ad6472ee15892a10223c525bb209342943f9f906c6b",
+    "budget-proposal.json": "efee269e0e75ef4eef9f527455430dc73047d67e1f0b9e42120f3683e6b9a895",
+    "evidence-index.json": "e624095c9d45bf2bf510724e0959ea35d0512207cdc8c2804ba3d0a73118e95a",
+    "executable-protocol.md": "eaf093045b0fd1143e9c27d997e30f35e93988a73b289b615ddecb8fe3f04de1",
+    "first-branch-gate.json": "978c441f60f76690ae8afd0672c23fe764f52f55013e924affc5635b2d4761f3",
+    "historical-R-compatibility.json": "30b59dbb2fb8c9a693df8214675ef6277333ac9d017b5c7ea471fca9d0715e81",
+    "parent-review.json": "23304456a8f2d01224d2e86d0857faf771787cb680821ba88b69221de1277950",
+    "protocol.json": "a1258ddb208d502f839391a1371da69bcbbd2a8cb7f880bed75a76ee15a74d1b",
+    "registration-verification.json": "4b0b992d97307f787034456b797dc1cdd0038253b8c24e3f5174eb9e772e8c58",
+    "report.md": "23d660004bc9d04038d362bb8c6d3a4aff2882fc072d261001b91a1573cec710",
+    "run-status.json": "81459ebd560fd9a67ec646dff93e004cf31cdd393eabd71892988faf9bb3b9f6",
+    "scope-change-record.json": "95020a921d277900904fca8a0f8f122bf697cf3c14dd07170ebe4a848ddccebe",
+    "source-input-identities.json": "a90ef47da5f984bb148497b90526bef85283e1aaf7aea99cdaa26f571b288277",
+    "test-output.txt": "4b0b992d97307f787034456b797dc1cdd0038253b8c24e3f5174eb9e772e8c58",
+    "test_analysis_results.py": "2472454f10844f1ddb87206865815f9d1a515a8195c471d323d064c4b00ca537",
+    "test_registration.py": "521b2fefcb7583077b1daa51e4c29b0a4ac7a255e060ac015d2b6197373e0892",
+    "verification-summary.txt": "3527575a0a8aab3859df778fa526969b662ec80f31ddeee548d8b19979e113a8",
+    "verify_registration.py": "7324d6bf30976022abfb11bc01817d060f9d9d0bfa161087a076df76e518f75e"
+  },
+  "external_inputs": {
+    "E:/Z博士/research-reviews/r-control-digest-audit-004/binding-final-remote-verification.json": "8158be2b468a3969c02cd45069bcd72be2361c3e9bb74bbd89cd793253a1f32b",
+    "runs/finite-communication-ack-lease-fix-20260920/ack-known-task-guard-baseline-v1/budget.sqlite3": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+    "runs/finite-communication-ack-lease-fix-20260920/r-control-digest-audit-20260922/bridge-evidence.json": "892ffb6049b99ee0ae3f526e450c7f2daa91d7ec8e92a4f01c98c4dfa5666cf3",
+    "runs/finite-communication-ack-lease-fix-20260920/r-control-digest-audit-20260922/compatibility-bridge-qualified.json": "fef8b2efdc1178259142408ff86ba73327bb563a77dd5aaef9622c8b036716fc"
+  },
+  "source_hashes": {
+    "corrected_runner.py": "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e",
+    "ack_known_task_guard.py": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
+    "checkpoint": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a",
+    "prefix_snapshots": "c6826f941141d1ae7594c38a3e3465584ae0954158502f19d2f4d8163a18258e"
+  },
+  "dynamic_execution_called": false,
+  "formal_sqlite_modified": false
+}

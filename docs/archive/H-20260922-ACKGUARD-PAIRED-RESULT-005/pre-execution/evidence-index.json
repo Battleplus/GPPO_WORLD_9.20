@@ -1,0 +1,66 @@
+{
+  "schema": "ackguard-matrix-registration-evidence-index/1.0.0",
+  "handoff_id": "H-20260922-ACKGUARD-PAIRED-RESULT-005",
+  "supersedes_registration_id": "H-20260922-ACKGUARD-MATRIX-REGISTRATION-005",
+  "status": "registration_only_pending_authorization",
+  "local_package": "runs/finite-communication-ack-lease-fix-20260920/ackguard-matrix-registration-20260922",
+  "files": [
+    "analysis-and-stop-rules.json",
+    "analysis-test-output.txt",
+    "analyze_results.py",
+    "authorization-request.md",
+    "authorization-template.json",
+    "branch-manifest.json",
+    "budget-proposal.json",
+    "evidence-index.json",
+    "executable-protocol.md",
+    "first-branch-gate.json",
+    "hashes.json",
+    "hashes.json.sha256",
+    "historical-R-compatibility.json",
+    "parent-review.json",
+    "protocol.json",
+    "registration-verification.json",
+    "report.md",
+    "run-status.json",
+    "scope-change-record.json",
+    "source-input-identities.json",
+    "test-output.txt",
+    "test_analysis_results.py",
+    "test_registration.py",
+    "verification-summary.txt",
+    "verify_registration.py"
+  ],
+  "external_evidence": [
+    {
+      "path": "tests/test_ackguard_bridge_authorization_20260922.py",
+      "purpose": "zero-step bridge authorization, pinning, provenance, ordering, and tamper tests"
+    },
+    {
+      "path": "E:/Z博士/research-reviews/r-control-digest-audit-004/binding-final-remote-verification.json",
+      "purpose": "H-004 remote receipt; signed remote commit and 24 bridge-qualified R rows",
+      "remote_commit": "b83fdb2c4107b0fe343bfb5e0c6a440cc18befe9",
+      "ref_matches": true,
+      "signature_verified": true
+    },
+    {
+      "path": "runs/finite-communication-ack-lease-fix-20260920/ack-known-task-guard-baseline-v1/budget.sqlite3",
+      "purpose": "read-only budget source; 20 verified of limit 384 before any approved extension",
+      "integrity_required": "ok"
+    }
+  ],
+  "hard_counts": {
+    "environment_steps": 0,
+    "model_forward": 0,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "new_formal_attempt": 0
+  },
+  "not_claimed": [
+    "no dynamic branch result",
+    "no GPPO or world-model gain",
+    "no budget extension applied"
+  ],
+  "archive_state": "Pre-execution archive receipt is separate; this index does not assert remote completion."
+}

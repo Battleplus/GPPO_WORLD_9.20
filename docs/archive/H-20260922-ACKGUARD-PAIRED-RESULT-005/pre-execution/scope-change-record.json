@@ -1,0 +1,30 @@
+{
+  "schema": "ackguard-handoff-scope-change/1.0.0",
+  "previous_handoff_id": "H-20260922-ACKGUARD-MATRIX-REGISTRATION-005",
+  "current_handoff_id": "H-20260922-ACKGUARD-PAIRED-RESULT-005",
+  "change_status": "planning_scope_only",
+  "changed_at": "2026-09-22",
+  "old_scope": "prepare a static registration and authorization-pending package for the fixed 24-branch guard matrix",
+  "new_scope": "after explicit approval, obtain 24 new guard versus 24 trusted historical R paired results, parent aggregation, parent-cluster 95% CI, and a simple-baseline decision",
+  "unchanged_matrix": {
+    "parents": 8,
+    "condition": "W1",
+    "model_seed": 1101,
+    "prefix_index": 0,
+    "repeats": [0, 1, 2],
+    "new_guard_branches": 24,
+    "historical_R_controls": 24,
+    "new_step_cap": 384
+  },
+  "unchanged_boundaries": {
+    "authorization_required": true,
+    "budget_extension_required": true,
+    "environment_steps_so_far": 0,
+    "model_forward_so_far": 0,
+    "new_attempt_so_far": 0,
+    "formal_sqlite_modified": false,
+    "dynamic_execution_called": false
+  },
+  "pairing_requirement": "The final analysis must use the exact historical R control identity for each new guard branch; old guard branches are excluded.",
+  "confidence_requirement": "Report a two-sided 95% interval by resampling the eight parent aggregates, not individual steps or model seeds."
+}

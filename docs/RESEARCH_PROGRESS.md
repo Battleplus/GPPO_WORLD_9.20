@@ -90,3 +90,13 @@
 - 本单选择性归档仅包含报告、兼容性摘要、bridge/身份/验证、真实源码补丁和研究进度；不上传权重、pickle、SQLite 或大型原始账本。远端提交和逐文件回读记录另存于本地审查目录，不能把本地完成称为远端完成。
 
 - H-004 集中审查修订：桥接证据现绑定本次读取的 first label、branch identity、snapshot/interface 摘要与时间；过期桥接不能放行已变化记录。新增集成回归后共 54 passed。原归档 e0c30557a8d0608b47fd492f23a46ec8e01d7b7f 保留为前版，本修订远端回读记录独立保存。
+
+## H-005 修正规则配对评价：执行前冻结
+
+目标为 H-20260922-ACKGUARD-PAIRED-RESULT-005。固定8个parent×3个外生repeat，24条新规则分支配对24条历史R，旧两条guard不复用。当前状态为等待明确404步扩额批准，未执行新分支，不能形成研究结果。
+
+动态授权入口已接通 H-004 的当前保存观测/身份/时间桥接重算；历史严格23/24与桥接24/24分开保留。执行前检查63项及分析器10项合成测试通过；原SQLite仍20/384，unknown/pending=0，新增环境步、模型前向和全部更新均0。原账本扩至404（保留20、新矩阵最多384）的提案尚未批准。
+
+主分析固定偏好(0.8,0.2)、任务/能耗尺度(0.5,1.0)、gamma=0.99；先3repeat均值再8parent等权；父级10000次bootstrap、seed20260922、95%区间。规则仅排除公开已知占用任务，不删除合法NOOP。未完成/异常结果不得作为负结果。
+
+[执行授权申请](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/pre-execution/authorization-request.md)；[冻结分析规则](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/pre-execution/analysis-and-stop-rules.json)；[审查记录](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/pre-execution/parent-review.json)。此处归档的是执行前资料，最终结果仍未完成。

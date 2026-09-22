@@ -1,0 +1,36 @@
+{
+  "handoff_id": "H-20260922-ACKGUARD-PAIRED-RESULT-005",
+  "status": "ready_for_budget_approval_not_executed",
+  "matrix": {
+    "guard": 24,
+    "R_reused": 24,
+    "parents": 8,
+    "repeats": 3,
+    "maximum_new_steps": 384
+  },
+  "budget": {
+    "sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+    "old_consumed": 20,
+    "current_limit": 384,
+    "proposed_limit": 404,
+    "approval": "pending"
+  },
+  "runner_sha256": "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e",
+  "analysis_sha256": "c4add12392c8f3ca082e0aaa57224708b24ff0b16ae40eeae95ff65183834ba7",
+  "checks": {
+    "source_and_protocol_pins_match": true,
+    "strict_controls": 23,
+    "bridge_qualified_controls": 24,
+    "registration_and_runner_tests_reported": 63,
+    "analysis_tests_independently_passed": 10,
+    "env_steps": 0,
+    "model_forward": 0,
+    "updates": 0,
+    "new_attempts": 0
+  },
+  "limitations": [
+    "No dynamic result or algorithm benefit is available.",
+    "The 404 same-ledger extension requires explicit user approval.",
+    "Any runtime technical stop preserves costs and does not count as a research result."
+  ]
+}

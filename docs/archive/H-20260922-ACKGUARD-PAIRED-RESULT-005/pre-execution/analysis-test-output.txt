@@ -1,0 +1,6 @@
+Parent independent verification
+Initial default pytest temp directory: 10 setup errors (PermissionError), test bodies not executed.
+Rerun only with a fresh writable --basetemp E:/Z博士/research-reviews/h005-analysis-test-20260922-final; no code changes.
+.......... [100%]
+10 passed in 0.30s
+Environment/model/budget operations: 0.

@@ -1,0 +1,250 @@
+{
+  "dynamic_execution_called": false,
+  "fixed_checkpoint_sha256": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a",
+  "fixed_guard_sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
+  "fixed_old_runner_sha256": "da768e30403c68041c01db1d32f9dd248c03c8f82d200f241506bf629b41c71b",
+  "fixed_snapshot_sha256": "c6826f941141d1ae7594c38a3e3465584ae0954158502f19d2f4d8163a18258e",
+  "historical_environment_contract": "native M10 25-action source snapshot; not current finite-communication and not D-02 17-action",
+  "historical_input_hashes": {
+    "historical_R_branch_manifest": "d0bacd6862933fc90d93396a0bedd5fa4a62a6e144dae142d5272fe0190df7ea",
+    "historical_R_branch_results": "2e0238f08b5c1a48fbf6ff34d238b3ae97190a469127e68e19e90de276c63160",
+    "historical_R_control_reuse": "d9dd07b39e86809e946f28cfbaf9c945d9e46cfed8d062b60cee91332ba470b2",
+    "historical_R_labels": "1114d00f65203d09f4ef3a6617e8db02b1d33d2448c2cc9929e0c30198bff8ec",
+    "historical_R_reproduction": "96003a607bc24eb6be69d94ddc0f7fc1606f86578adf6d39273ab6946e8c1754",
+    "historical_R_snapshot_identity": "d1e9d11fbfc6acae43ebd2ad4748e26cb9c4cd7ee596fc0a9404509e980fe8f1",
+    "historical_R_snapshot_interface_check": "1423980133c1e094ba507cc7240b6e0758f5ae7c5ee154f33afc922154abe0cd",
+    "historical_R_source_checkpoint_manifest": "3fd48720dc986f1e5cdeb9bdb6874c293a2c8157299073d695cb1d7b7e484702"
+  },
+  "historical_inputs": {
+    "checkpoint": {
+      "bytes": 2914437,
+      "exists": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\training\\seed-1101\\P_train\\last-recovery.pt",
+      "sha256": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a"
+    },
+    "frozen_selection": {
+      "bytes": 23988,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\allocation-branch-preflight-v2\\frozen-selection.json",
+      "sha256": "c7e01b6f7d6fc0f45e67b705ff6cd64f591b62dad862d9e5d642abf6cfccd1f5"
+    },
+    "historical_R_labels": {
+      "bytes": 18012432,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\preference-vector-label-train-v1\\step-vector-rewards.jsonl",
+      "sha256": "1114d00f65203d09f4ef3a6617e8db02b1d33d2448c2cc9929e0c30198bff8ec"
+    },
+    "historical_R_manifest": {
+      "bytes": 650978,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\preference-vector-label-train-v1\\branch-manifest.json",
+      "sha256": "d0bacd6862933fc90d93396a0bedd5fa4a62a6e144dae142d5272fe0190df7ea"
+    },
+    "historical_R_protocol": {
+      "bytes": 3137,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\preference-vector-label-train-v1\\protocol.json",
+      "sha256": "2f795feff4808a9026d28301512f9a69e419cd764588bbf7836c7fe224483b32"
+    },
+    "historical_R_reproduction": {
+      "bytes": 216361,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\preference-vector-label-train-v1\\historical-reproduction.json",
+      "sha256": "96003a607bc24eb6be69d94ddc0f7fc1606f86578adf6d39273ab6946e8c1754"
+    },
+    "history_branch_results": {
+      "bytes": 28203242,
+      "exists": true,
+      "path": "E:\\Z博士\\migration-artifacts\\replan-value-feature-collection-20260919-v1\\branch-results.jsonl",
+      "sha256": "0c617777e298e3ea15a6b9801c0849d5bb55e7fa8df199ac5fff3f0917041c0d"
+    },
+    "old_budget": {
+      "bytes": 61440,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+      "sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223"
+    },
+    "prefix_snapshots": {
+      "bytes": 370250186,
+      "exists": true,
+      "path": "E:\\Z博士\\migration-artifacts\\replan-value-feature-collection-20260919-v1\\prefix-snapshots.pkl",
+      "sha256": "c6826f941141d1ae7594c38a3e3465584ae0954158502f19d2f4d8163a18258e"
+    },
+    "repeat_key_manifest": {
+      "bytes": 24484,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\allocation-branch-preflight-v2\\repeat-key-manifest.json",
+      "sha256": "202cde943a450dea4d9461680e8e92b184e7027750413a69a7db210eaee86afb"
+    },
+    "snapshot_interface_check": {
+      "bytes": 49906,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\allocation-branch-preflight-v2\\snapshot-interface-check.json",
+      "sha256": "1423980133c1e094ba507cc7240b6e0758f5ae7c5ee154f33afc922154abe0cd"
+    }
+  },
+  "historical_source": {
+    "budget_executor.py": {
+      "bytes": 22576,
+      "exists": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\budget_executor.py",
+      "sha256": "5a2a7536a0ebb0078638a1fd45491a5d13cd9a719c9f012f158b74f5050fd29b"
+    },
+    "joint_gppo.py": {
+      "bytes": 20878,
+      "exists": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_gppo.py",
+      "sha256": "3c799cfe12050971e1b11da6b2c04fa6a7c244a36935578861c5db533396f55e"
+    },
+    "joint_training.py": {
+      "bytes": 111358,
+      "exists": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_training.py",
+      "sha256": "808b1de65e676ad45480843c152874248be1fe91c1ce56e1a015fddf81bfd4d1"
+    },
+    "m10_communication.py": {
+      "bytes": 9018,
+      "exists": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_communication.py",
+      "sha256": "fcaada4fea48446aae509fb97f4b6b8275d5b6b9dda3bcdef00c5c392e6011ce"
+    },
+    "m10_environment.py": {
+      "bytes": 57320,
+      "exists": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_environment.py",
+      "sha256": "083b4ad3e47d8a44a18e7a25f429bb7c4bba4a6899249404c0842dfdc0f71132"
+    },
+    "task_decision_bridge.py": {
+      "bytes": 1643,
+      "exists": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_decision_bridge.py",
+      "sha256": "dd066a4e1be16607e5005e66eed5b90b1b97b485e57d7c7236b46eb171f8b1fd"
+    },
+    "task_policy_view.py": {
+      "bytes": 6648,
+      "exists": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_policy_view.py",
+      "sha256": "f5877b6582a02a5bb6c9c39b469dd222e9f5727390fd8080c01e160cd7b23317"
+    }
+  },
+  "local_inputs": {
+    "budget_executor": {
+      "bytes": 12468,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\budget_executor.py",
+      "sha256": "d9a39251cba7833ce2f92e06a84522a81c930c9eba706b42de62adab8a003551"
+    },
+    "config": {
+      "bytes": 2410,
+      "exists": true,
+      "path": "E:\\Z博士\\migration-artifacts\\preference-weighted-wm-event-cpu-20260917\\final\\run\\training\\seed-1101\\WD\\resolved-config.json",
+      "sha256": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27"
+    },
+    "corrected_runner": {
+      "bytes": 164712,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_corrected_20260922.py",
+      "sha256": "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e"
+    },
+    "guard": {
+      "bytes": 6518,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py",
+      "sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a"
+    },
+    "old_runner": {
+      "bytes": 91183,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_baseline_v1.py",
+      "sha256": "da768e30403c68041c01db1d32f9dd248c03c8f82d200f241506bf629b41c71b"
+    }
+  },
+  "old_guard_rule_preserved": true,
+  "old_two_guard_branches_reused": false,
+  "protocol_id": "ackguard-corrected-protocol-20260922-v1",
+  "r_control_bridge_hashes": {
+    "audit_loader": "62ddb2f569dacfc3a054d5cea59a97d889a361995c9915d2d1dd5a112cb1ef0a",
+    "bridge_evidence": "892ffb6049b99ee0ae3f526e450c7f2daa91d7ec8e92a4f01c98c4dfa5666cf3",
+    "bridge_qualified_compatibility": "fef8b2efdc1178259142408ff86ba73327bb563a77dd5aaef9622c8b036716fc",
+    "bridge_strict_compatibility": "1fbab168f19b470ab62545a286b441a93f614a8776654b0848d30e61165ba294",
+    "remote_receipt": "8158be2b468a3969c02cd45069bcd72be2361c3e9bb74bbd89cd793253a1f32b",
+    "schema_helper": "5d4635d05024c04b8df2fce3cdb03ce4d19b063578fe81e026c233bcebf9cc28"
+  },
+  "r_control_bridge_inputs": {
+    "audit_loader": {
+      "bytes": 19642,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\audit_r_control_digest_20260922.py",
+      "sha256": "62ddb2f569dacfc3a054d5cea59a97d889a361995c9915d2d1dd5a112cb1ef0a"
+    },
+    "bridge_evidence": {
+      "bytes": 6284,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\r-control-digest-audit-20260922\\bridge-evidence.json",
+      "sha256": "892ffb6049b99ee0ae3f526e450c7f2daa91d7ec8e92a4f01c98c4dfa5666cf3"
+    },
+    "bridge_qualified_compatibility": {
+      "bytes": 1093823,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\r-control-digest-audit-20260922\\compatibility-bridge-qualified.json",
+      "sha256": "fef8b2efdc1178259142408ff86ba73327bb563a77dd5aaef9622c8b036716fc"
+    },
+    "bridge_strict_compatibility": {
+      "bytes": 1079240,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\r-control-digest-audit-20260922\\compatibility-strict.json",
+      "sha256": "1fbab168f19b470ab62545a286b441a93f614a8776654b0848d30e61165ba294"
+    },
+    "remote_receipt": {
+      "bytes": 6141,
+      "exists": true,
+      "path": "E:\\Z博士\\research-reviews\\r-control-digest-audit-004\\binding-final-remote-verification.json",
+      "sha256": "8158be2b468a3969c02cd45069bcd72be2361c3e9bb74bbd89cd793253a1f32b"
+    },
+    "schema_helper": {
+      "bytes": 7890,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\r_control_digest_schema_20260922.py",
+      "sha256": "5d4635d05024c04b8df2fce3cdb03ce4d19b063578fe81e026c233bcebf9cc28"
+    }
+  },
+  "runtime_dependencies": {
+    "budget_executor": {
+      "bytes": 12468,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\budget_executor.py",
+      "sha256": "d9a39251cba7833ce2f92e06a84522a81c930c9eba706b42de62adab8a003551"
+    },
+    "config": {
+      "bytes": 2410,
+      "exists": true,
+      "path": "E:\\Z博士\\migration-artifacts\\preference-weighted-wm-event-cpu-20260917\\final\\run\\training\\seed-1101\\WD\\resolved-config.json",
+      "sha256": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27"
+    },
+    "corrected_runner": {
+      "bytes": 164712,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_corrected_20260922.py",
+      "sha256": "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e"
+    },
+    "guard": {
+      "bytes": 6518,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py",
+      "sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a"
+    },
+    "historical_helper": {
+      "bytes": 33870,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_replan_value_experiment.py",
+      "sha256": "a9ccf1711790c472ededd7666c54c28ca34abffc4a0095d35b300f1297afa965"
+    },
+    "r_control_digest_schema_helper": {
+      "bytes": 7890,
+      "exists": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\r_control_digest_schema_20260922.py",
+      "sha256": "5d4635d05024c04b8df2fce3cdb03ce4d19b063578fe81e026c233bcebf9cc28"
+    }
+  },
+  "schema": "ackguard-corrected-source-input-identities/1.0.0"
+}
