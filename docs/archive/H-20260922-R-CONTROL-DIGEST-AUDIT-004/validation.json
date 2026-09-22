@@ -23,7 +23,7 @@
         ],
         "returncode": 0,
         "stderr": "",
-        "stdout": ".....                                                                    [100%]\n5 passed in 0.14s\n"
+        "stdout": ".....                                                                    [100%]\n5 passed in 0.11s\n"
       },
       {
         "command": [
@@ -35,7 +35,7 @@
         ],
         "returncode": 0,
         "stderr": "",
-        "stdout": ".........................................                                [100%]\n41 passed in 15.87s\n"
+        "stdout": ".................................................                        [100%]\n49 passed in 19.73s\n"
       }
     ]
   }

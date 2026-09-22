@@ -22,6 +22,7 @@
   },
   "identity": {
     "identity_mismatches": [],
+    "binding_mismatches": [],
     "bridge_status": "schema_compatible",
     "exogenous_key": "replan-feature-v1|parent-00|W1|0|repeat-0",
     "mode": "R",
@@ -29,8 +30,8 @@
   },
   "tests": {
     "schema_test_current": "5 passed",
-    "corrected_protocol_test_recorded": "41 passed",
-    "aggregate": "46 passed",
+    "corrected_protocol_test_recorded": "49 passed",
+    "aggregate": "54 passed",
     "env_step_calls": 0,
     "model_forward_calls": 0,
     "optimizer_updates": 0,
@@ -49,12 +50,12 @@
     "attempts": 1
   },
   "source_hashes": {
-    "corrected_runner": "a9ab0eaacc8e61a3ab1bb83c9e8f07efab6f784e3ca05c86e47c10da7e83733c",
+    "corrected_runner": "ef823c2329b9aed8e7422248083e95775d3f5763cc60d7cd98f5e556a723beb5",
     "schema_helper": "5d4635d05024c04b8df2fce3cdb03ce4d19b063578fe81e026c233bcebf9cc28",
     "schema_test": "e93970e51b4bbf4627052f12303bf6641f84f567d7bc0403aef8a627b4f5e920",
     "guard": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
     "old_runner": "da768e30403c68041c01db1d32f9dd248c03c8f82d200f241506bf629b41c71b",
     "budget_sqlite": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
-    "minimal_diff": "bbdb72e48ce9c913d9c11bcfad05e737b5d71e775ed5250d9289c442f7ea6a0a"
+    "minimal_diff": "2c46fc2fc18d83d1b3a9de7db7a963833525f81c2f40a52bafbc260a7e2c0603"
   }
 }

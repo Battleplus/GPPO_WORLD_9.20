@@ -362,10 +362,10 @@
         "sha256": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27"
       },
       "corrected_runner": {
-        "bytes": 142846,
+        "bytes": 149148,
         "exists": true,
         "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_corrected_20260922.py",
-        "sha256": "a9ab0eaacc8e61a3ab1bb83c9e8f07efab6f784e3ca05c86e47c10da7e83733c"
+        "sha256": "ef823c2329b9aed8e7422248083e95775d3f5763cc60d7cd98f5e556a723beb5"
       },
       "guard": {
         "bytes": 6518,
@@ -397,10 +397,10 @@
         "sha256": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27"
       },
       "corrected_runner": {
-        "bytes": 142846,
+        "bytes": 149148,
         "exists": true,
         "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_corrected_20260922.py",
-        "sha256": "a9ab0eaacc8e61a3ab1bb83c9e8f07efab6f784e3ca05c86e47c10da7e83733c"
+        "sha256": "ef823c2329b9aed8e7422248083e95775d3f5763cc60d7cd98f5e556a723beb5"
       },
       "guard": {
         "bytes": 6518,
@@ -441,16 +441,16 @@
       "sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223"
     },
     "corrected_protocol_test": {
-      "bytes": 42917,
+      "bytes": 49549,
       "exists": true,
       "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tests\\test_ackguard_corrected_protocol_20260922.py",
-      "sha256": "915e004271c511ad5a62ff7971e7a9b2ec635ce80a0361f841fcbcbc8927fbcb"
+      "sha256": "ae88a8cf50320dbc6b3c8d7cce746bdc26d2416c9a93ae1bea81bd06010a2c3e"
     },
     "corrected_runner": {
-      "bytes": 142846,
+      "bytes": 149148,
       "exists": true,
       "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_corrected_20260922.py",
-      "sha256": "a9ab0eaacc8e61a3ab1bb83c9e8f07efab6f784e3ca05c86e47c10da7e83733c"
+      "sha256": "ef823c2329b9aed8e7422248083e95775d3f5763cc60d7cd98f5e556a723beb5"
     },
     "pilot_branch_results": {
       "bytes": 180583,

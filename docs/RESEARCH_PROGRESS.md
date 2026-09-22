@@ -85,6 +85,8 @@
 - 状态：**CLOSED（零环境步审计完成）**。目标为 `parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R` 的历史 R 初态摘要溯源；未 reset、replay、环境步、模型前向、参数更新或正式 attempt。
 - 根因分类：**A，schema-only**。同一保存的初始公开观测按两个原始摘要合同重算，pilot 摘要 `029fdda5e21097ca33a4fdf738f9a0a5ada2a80d35440e4d3ea9e95100e25a87` 与 historical 摘要 `969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f` 均分别复现；identity mismatch 为空，观测和 label-before 为 `2.0`，label-after 为 `3.0`。
 - 兼容性必须分开报告：原严格字符串门为 **23/24**，目标对仍保留为 strict insufficient；仅对该保存观测使用带身份/时间校验的 schema bridge 后为 **24/24 bridge-qualified R-control reuse**。这不证明 hidden/cache 无污染、corrected guard 轨迹或算法收益。
-- 本单源码差异仅为 corrected runner bridge hook、`r_control_digest_schema_20260922.py` 及其纯测试；真实补丁和独立复算证据均在本单归档目录。当前 runner SHA-256 为 `a9ab0eaacc8e61a3ab1bb83c9e8f07efab6f784e3ca05c86e47c10da7e83733c`，补丁 SHA-256 为 `bbdb72e48ce9c913d9c11bcfad05e737b5d71e775ed5250d9289c442f7ea6a0a`。
-- 纯测试记录为 schema `5 passed`、corrected protocol `41 passed`；正式账本只读保持 `20/384`，`unknown=0`、`pending=0`、`integrity=ok`，授权仍 pending，404 预算提案未应用。
+- 本单源码差异仅为 corrected runner bridge hook、`r_control_digest_schema_20260922.py` 及其纯测试；真实补丁和独立复算证据均在本单归档目录。当前 runner SHA-256 为 `ef823c2329b9aed8e7422248083e95775d3f5763cc60d7cd98f5e556a723beb5`，补丁 SHA-256 为 `2c46fc2fc18d83d1b3a9de7db7a963833525f81c2f40a52bafbc260a7e2c0603`。
+- 纯测试记录为 schema `5 passed`、corrected protocol `49 passed`；正式账本只读保持 `20/384`，`unknown=0`、`pending=0`、`integrity=ok`，授权仍 pending，404 预算提案未应用。
 - 本单选择性归档仅包含报告、兼容性摘要、bridge/身份/验证、真实源码补丁和研究进度；不上传权重、pickle、SQLite 或大型原始账本。远端提交和逐文件回读记录另存于本地审查目录，不能把本地完成称为远端完成。
+
+- H-004 集中审查修订：桥接证据现绑定本次读取的 first label、branch identity、snapshot/interface 摘要与时间；过期桥接不能放行已变化记录。新增集成回归后共 54 passed。原归档 e0c30557a8d0608b47fd492f23a46ec8e01d7b7f 保留为前版，本修订远端回读记录独立保存。

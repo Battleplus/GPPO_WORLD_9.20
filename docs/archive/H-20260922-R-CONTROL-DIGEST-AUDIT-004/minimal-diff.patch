@@ -1,5 +1,5 @@
 diff --git a/tools/run_ack_known_task_guard_corrected_20260922.py b/tools/run_ack_known_task_guard_corrected_20260922.py
-index 3982570..045dbf6 100644
+index 3982570..d7fdd7d 100644
 --- a/tools/run_ack_known_task_guard_corrected_20260922.py
 +++ b/tools/run_ack_known_task_guard_corrected_20260922.py
 @@ -671,6 +671,7 @@ def _historical_label_contract(
@@ -10,40 +10,148 @@ index 3982570..045dbf6 100644
  ) -> tuple[dict[str, Any], list[str]]:
      """Check the saved R labels against the immutable step contract.
  
-@@ -776,6 +777,32 @@ def _historical_label_contract(
+@@ -776,6 +777,140 @@ def _historical_label_contract(
          "transform": "identity comparison of the R step=1 public_observation_sha256 to the immutable prefix_digest",
      }
      snapshot_ok = bool(first_label) and snapshot_interface_ok and snapshot_actual["public_observation_sha256"] == snapshot_digest
 +    schema_bridge_check: dict[str, Any] = {"status": "not_requested", "ok": True}
 +    if schema_bridge_row is not None:
-+        try:
-+            from tools.r_control_digest_schema_20260922 import evaluate_bridge
++        bridge_identity_fields = ("prefix_id", "parent_id", "condition", "model_seed", "repeat", "mode", "step", "exogenous_key")
++        authoritative_expected_identity = {
++            "prefix_id": str(item["prefix_id"]),
++            "parent_id": str(item["parent_id"]),
++            "condition": str(item["condition"]),
++            "model_seed": int(item["model_seed"]),
++            "repeat": int(item["repeat"]),
++            "mode": "R",
++            "step": 1,
++            "exogenous_key": str(item["historical_exogenous_key"]),
++        }
++        authoritative_label_identity = None
++        current_branch_identity = None
++        if isinstance(first_label, Mapping):
++            current_branch_identity = {
++                field: (output_result.get(field) if isinstance(output_result, Mapping) else None)
++                for field in bridge_identity_fields
++                if field != "step"
++            }
++            authoritative_label_identity = {
++                "prefix_id": first_label.get("prefix_id"),
++                "parent_id": first_label.get("parent_id"),
++                "condition": first_label.get("condition"),
++                "model_seed": first_label.get("model_seed"),
++                "repeat": first_label.get("repeat"),
++                "mode": first_label.get("mode"),
++                "step": first_label.get("step"),
++                "exogenous_key": output_result.get("exogenous_key") if isinstance(output_result, Mapping) else None,
++            }
++        authoritative_prefix_time = None
++        if isinstance(snapshot_interface_row, Mapping):
++            authoritative_prefix_time = snapshot_interface_row.get("prefix_time")
++        if authoritative_prefix_time is None and isinstance(snapshot_row, Mapping):
++            authoritative_prefix_time = snapshot_row.get("prefix_time")
++        authoritative_binding = {
++            "label_identity": authoritative_label_identity,
++            "expected_identity": authoritative_expected_identity,
++            "label_digest": first_label.get("public_observation_sha256") if isinstance(first_label, Mapping) else None,
++            "prefix_digest": snapshot_digest,
++            "prefix_time": authoritative_prefix_time,
++            "label_time_before": first_label.get("time_before") if isinstance(first_label, Mapping) else None,
++            "label_time_after": first_label.get("time_after") if isinstance(first_label, Mapping) else None,
++        }
++        bridge_binding_mismatches: list[str] = []
 +
-+            schema_bridge_check = evaluate_bridge(
-+                schema_bridge_row.get("observation"),
-+                label_identity=schema_bridge_row.get("label_identity"),
-+                expected_identity=schema_bridge_row.get("expected_identity"),
-+                label_digest=schema_bridge_row.get("label_digest"),
-+                prefix_digest=schema_bridge_row.get("prefix_digest"),
-+                prefix_time=schema_bridge_row.get("prefix_time"),
-+                label_time_before=schema_bridge_row.get("label_time_before"),
-+                label_time_after=schema_bridge_row.get("label_time_after"),
-+            )
++        def compare_identity(name: str, actual: Any, expected: Any) -> None:
++            if not isinstance(actual, Mapping):
++                bridge_binding_mismatches.append(f"missing_bridge_identity:{name}")
++                return
++            if not isinstance(expected, Mapping):
++                bridge_binding_mismatches.append(f"missing_authoritative_identity:{name}")
++                return
++            for field in bridge_identity_fields:
++                if field not in actual:
++                    bridge_binding_mismatches.append(f"missing_bridge_identity:{name}.{field}")
++                elif field not in expected or actual[field] != expected[field]:
++                    bridge_binding_mismatches.append(f"bridge_binding_identity:{name}.{field}")
++
++        compare_identity("label_identity", schema_bridge_row.get("label_identity"), authoritative_label_identity)
++        compare_identity("expected_identity", schema_bridge_row.get("expected_identity"), authoritative_expected_identity)
++        if isinstance(first_label, Mapping) and isinstance(output_result, Mapping):
++            for field in bridge_identity_fields:
++                if field == "step":
++                    continue
++                label_value = first_label.get(field)
++                branch_value = output_result.get(field)
++                # Historical step labels do not carry exogenous_key; the
++                # matched branch result is the authoritative source for it.
++                if field == "exogenous_key" and label_value is None:
++                    continue
++                if label_value != branch_value:
++                    bridge_binding_mismatches.append(f"current_branch_identity:{field}")
++        elif not isinstance(first_label, Mapping):
++            bridge_binding_mismatches.append("missing_authoritative_label")
++        elif not isinstance(output_result, Mapping):
++            bridge_binding_mismatches.append("missing_authoritative_branch_result")
++        scalar_bindings = (
++            ("label_digest", schema_bridge_row.get("label_digest"), authoritative_binding["label_digest"]),
++            ("prefix_digest", schema_bridge_row.get("prefix_digest"), authoritative_binding["prefix_digest"]),
++            ("prefix_time", schema_bridge_row.get("prefix_time"), authoritative_binding["prefix_time"]),
++            ("label_time_before", schema_bridge_row.get("label_time_before"), authoritative_binding["label_time_before"]),
++            ("label_time_after", schema_bridge_row.get("label_time_after"), authoritative_binding["label_time_after"]),
++        )
++        for field, actual, expected in scalar_bindings:
++            if expected is None:
++                bridge_binding_mismatches.append(f"missing_authoritative_{field}")
++            elif actual != expected:
++                bridge_binding_mismatches.append(f"bridge_binding:{field}")
++        schema_bridge_check = {
++            "status": "insufficient_evidence",
++            "schema_compatible": False,
++            "reasons": list(bridge_binding_mismatches),
++            "binding_mismatches": list(bridge_binding_mismatches),
++            "authoritative_binding": authoritative_binding,
++            "current_branch_identity": current_branch_identity,
++        }
++        try:
++            if not bridge_binding_mismatches:
++                from tools.r_control_digest_schema_20260922 import evaluate_bridge
++
++                schema_bridge_check = evaluate_bridge(
++                    schema_bridge_row.get("observation"),
++                    label_identity=authoritative_label_identity,
++                    expected_identity=authoritative_expected_identity,
++                    label_digest=authoritative_binding["label_digest"],
++                    prefix_digest=authoritative_binding["prefix_digest"],
++                    prefix_time=authoritative_binding["prefix_time"],
++                    label_time_before=authoritative_binding["label_time_before"],
++                    label_time_after=authoritative_binding["label_time_after"],
++                )
++                schema_bridge_check["binding_mismatches"] = []
++                schema_bridge_check["authoritative_binding"] = authoritative_binding
++                schema_bridge_check["current_branch_identity"] = current_branch_identity
 +        except Exception as exc:
 +            schema_bridge_check = {
 +                "status": "insufficient_evidence",
 +                "schema_compatible": False,
 +                "reasons": [f"bridge_evaluation_failed:{type(exc).__name__}:{exc}"],
++                "binding_mismatches": list(bridge_binding_mismatches),
++                "authoritative_binding": authoritative_binding,
++                "current_branch_identity": current_branch_identity,
 +            }
-+        schema_bridge_check["ok"] = schema_bridge_check.get("schema_compatible") is True
-+        if schema_bridge_check.get("schema_compatible") is True:
++        schema_bridge_check["ok"] = (
++            schema_bridge_check.get("schema_compatible") is True
++            and not schema_bridge_check.get("binding_mismatches")
++        )
++        if schema_bridge_check["ok"]:
 +            snapshot_ok = True
 +            snapshot_actual["schema_bridge"] = schema_bridge_check
 +            snapshot_expected["schema_bridge"] = "schema-compatible saved-observation bridge"
++        else:
++            snapshot_ok = False
      checks = {
          "step_sequence": {"actual": actual_steps, "expected": expected_steps, "ok": actual_steps == expected_steps},
          "gamma_index": {"actual": actual_gamma, "expected": expected_gamma, "ok": actual_gamma == expected_gamma},
-@@ -797,12 +824,33 @@ def _historical_label_contract(
+@@ -797,12 +932,33 @@ def _historical_label_contract(
              "ok": snapshot_interface_ok,
          },
          "snapshot_initial_digest": {"actual": snapshot_actual, "expected": snapshot_expected, "ok": snapshot_ok},
@@ -78,7 +186,7 @@ index 3982570..045dbf6 100644
      """Determine whether historical R rows remain reusable as original controls.
  
      The gate reads the saved control-reuse, protocol, reproduction, source and
-@@ -810,6 +858,7 @@ def historical_compatibility(manifest: Mapping[str, Any]) -> dict[str, Any]:
+@@ -810,6 +966,7 @@ def historical_compatibility(manifest: Mapping[str, Any]) -> dict[str, Any]:
      that would confuse the control contract with the treatment trajectory.
      """
      validate_manifest(manifest)
@@ -86,7 +194,7 @@ index 3982570..045dbf6 100644
      evidence = _historical_control_evidence()
      control = evidence.get("control") if isinstance(evidence.get("control"), Mapping) else {}
      control_rows = {
-@@ -877,6 +926,7 @@ def historical_compatibility(manifest: Mapping[str, Any]) -> dict[str, Any]:
+@@ -877,6 +1034,7 @@ def historical_compatibility(manifest: Mapping[str, Any]) -> dict[str, Any]:
              historical_result,
              snapshot_rows.get(str(item["prefix_id"])),
              snapshot_interface_rows.get(str(item["prefix_id"])),
@@ -94,7 +202,7 @@ index 3982570..045dbf6 100644
          )
          snapshot_row = snapshot_rows.get(str(item["prefix_id"]))
          snapshot_interface_row = snapshot_interface_rows.get(str(item["prefix_id"]))
-@@ -978,6 +1028,7 @@ def historical_compatibility(manifest: Mapping[str, Any]) -> dict[str, Any]:
+@@ -978,6 +1136,7 @@ def historical_compatibility(manifest: Mapping[str, Any]) -> dict[str, Any]:
                  "snapshot_identity": str(PREF_TRAIN / "snapshot-identity.json"),
                  "snapshot_interface_check": str(PREFLIGHT / "snapshot-interface-check.json"),
                  "old_guard_snapshot_excluded": True,
@@ -102,9 +210,205 @@ index 3982570..045dbf6 100644
              },
              "old_two_guard_branches_excluded": True,
              "old_two_guard_evidence": {
+diff --git a/tests/test_ackguard_corrected_protocol_20260922.py b/tests/test_ackguard_corrected_protocol_20260922.py
+index be23f6d..06f24df 100644
+--- a/tests/test_ackguard_corrected_protocol_20260922.py
++++ b/tests/test_ackguard_corrected_protocol_20260922.py
+@@ -14,6 +14,7 @@ from types import SimpleNamespace
+ import pytest
+ 
+ from gppo_world.budget_executor import PersistentBudget
++from tools.r_control_digest_schema_20260922 import digest_pair
+ import tools.run_ack_known_task_guard_corrected_20260922 as RUNNER
+ from tools.run_ack_known_task_guard_corrected_20260922 import (
+     AuthorizationError,
+@@ -141,6 +142,100 @@ def _adapters() -> RuntimeAdapters:
+     )
+ 
+ 
++def _bridge_contract_fixture() -> tuple[list[dict], dict, dict, dict, dict, dict]:
++    obs = {
++        "flat": [0.0, 1.0],
++        "mask": [True, False, True],
++        "version": 4,
++        "time": 2.0,
++        "public_entity_ids": {"uavs": ["uav-0"], "tasks": ["task-0"]},
++        "continuation_actions": [2],
++        "trigger_flags": {"task_arrival": False},
++    }
++    pair = digest_pair(obs)
++    identity = {
++        "prefix_id": "parent-x|W1|seed-1101|prefix-0",
++        "parent_id": "parent-x",
++        "condition": "W1",
++        "model_seed": 1101,
++        "repeat": 0,
++        "mode": "R",
++        "step": 1,
++        "exogenous_key": "history|parent-x|W1|repeat-0",
++    }
++    item = {
++        "prefix_id": identity["prefix_id"],
++        "parent_id": identity["parent_id"],
++        "condition": identity["condition"],
++        "model_seed": identity["model_seed"],
++        "repeat": identity["repeat"],
++        "historical_exogenous_key": identity["exogenous_key"],
++        "historical_step_count": 1,
++        "historical_end_reason": "terminated",
++    }
++    label = {
++        **identity,
++        "gamma_index": 0,
++        "gamma": 0.99,
++        "behavior_preference": [0.8, 0.2],
++        "reward_scales": {"task": 0.5, "energy": 1.0},
++        "task_capacity": 1,
++        "uav_count": 1,
++        "initial_energy": 10.0,
++        "completed_delta": 1,
++        "expired_delta": 0,
++        "energy_used_delta": 0.5,
++        "vector_reward": [1.0, -0.05],
++        "terminated": True,
++        "truncated": False,
++        "public_observation_sha256": pair["pilot"]["sha256"],
++        "label_source": "synthetic-test",
++        "time_before": 2.0,
++        "time_after": 3.0,
++    }
++    output_result = {
++        "prefix_id": identity["prefix_id"],
++        "parent_id": identity["parent_id"],
++        "condition": identity["condition"],
++        "model_seed": identity["model_seed"],
++        "repeat": identity["repeat"],
++        "mode": identity["mode"],
++        "exogenous_key": identity["exogenous_key"],
++        "terminated": True,
++        "truncated": False,
++        "end_reason": "terminated",
++    }
++    snapshot_row = {"prefix_id": identity["prefix_id"], "prefix_digest": pair["historical"]["sha256"]}
++    snapshot_interface_row = {
++        "prefix_id": identity["prefix_id"],
++        "prefix_digest": pair["historical"]["sha256"],
++        "prefix_digest_matches_prefix_index": True,
++        "prefix_time": 2.0,
++    }
++    bridge = {
++        "branch_key": f"{identity['prefix_id']}|repeat-0|mode-R",
++        "observation": obs,
++        "label_identity": copy.deepcopy(identity),
++        "expected_identity": copy.deepcopy(identity),
++        "label_digest": pair["pilot"]["sha256"],
++        "prefix_digest": pair["historical"]["sha256"],
++        "prefix_time": 2.0,
++        "label_time_before": 2.0,
++        "label_time_after": 3.0,
++    }
++    return [label], item, output_result, snapshot_row, snapshot_interface_row, bridge
++
++
++def _bridge_contract_check(*, mutate=None):
++    labels, item, output_result, snapshot_row, snapshot_interface_row, bridge = _bridge_contract_fixture()
++    if mutate is not None:
++        mutate(labels, item, output_result, snapshot_row, snapshot_interface_row, bridge)
++    checks, reasons = RUNNER._historical_label_contract(
++        labels, item, output_result, snapshot_row, snapshot_interface_row, bridge
++    )
++    return checks["schema_bridge"], checks, reasons
++
++
+ @pytest.fixture
+ def test_workspace():
+     path = Path(tempfile.mkdtemp(prefix="ackguard-corrected-test-", dir=Path.cwd()))
+@@ -259,6 +354,82 @@ def test_tampered_historical_r_first_label_digest_rejects_pair(monkeypatch):
+     assert compatibility["summary"]["reusable_R_control_pairs"] == 22
+ 
+ 
++def test_valid_bridge_is_bound_to_current_authoritative_contract():
++    bridge_check, checks, reasons = _bridge_contract_check()
++    assert bridge_check["ok"] is True
++    assert bridge_check["schema_compatible"] is True
++    assert bridge_check["binding_mismatches"] == []
++    assert checks["snapshot_initial_digest"]["ok"] is True
++    assert reasons == []
++
++
++@pytest.mark.parametrize(
++    ("name", "mutate", "expected_reason"),
++    [
++        (
++            "current label digest",
++            lambda labels, *_: labels[0].update(public_observation_sha256="0" * 64),
++            "bridge_binding:label_digest",
++        ),
++        (
++            "current label time",
++            lambda labels, *_: labels[0].update(time_before=1.0),
++            "bridge_binding:label_time_before",
++        ),
++        (
++            "current label repeat identity",
++            lambda labels, *_: labels[0].update(repeat=1),
++            "current_branch_identity:repeat",
++        ),
++        (
++            "current prefix digest",
++            lambda _labels, _item, _output, snapshot, *_: snapshot.update(prefix_digest="1" * 64),
++            "bridge_binding:prefix_digest",
++        ),
++        (
++            "bridge-owned identity",
++            lambda _labels, _item, _output, _snapshot, _interface, bridge: bridge["label_identity"].update(repeat=9),
++            "bridge_binding_identity:label_identity.repeat",
++        ),
++    ],
++)
++def test_bridge_binding_rejects_current_or_bridge_tampering(name, mutate, expected_reason):
++    bridge_check, checks, _ = _bridge_contract_check(mutate=mutate)
++    assert name
++    assert bridge_check["ok"] is False
++    assert bridge_check["schema_compatible"] is False
++    assert expected_reason in bridge_check["binding_mismatches"]
++    assert checks["snapshot_initial_digest"]["ok"] is False
++
++
++def test_missing_authoritative_prefix_time_rejects_bridge():
++    def remove_prefix_time(_labels, _item, _output, snapshot, interface, _bridge):
++        snapshot.pop("prefix_time", None)
++        interface.pop("prefix_time", None)
++
++    bridge_check, _, _ = _bridge_contract_check(mutate=remove_prefix_time)
++    assert bridge_check["ok"] is False
++    assert "missing_authoritative_prefix_time" in bridge_check["binding_mismatches"]
++
++
++def test_saved_bridge_keeps_strict_23_of_24_and_qualifies_24_of_24():
++    from tools.audit_r_control_digest_20260922 import bridge_row, load_target
++
++    snapshot, label, branch, item = load_target()
++    bridge = bridge_row(snapshot, label, branch, item)
++    manifest = build_branch_manifest()
++    strict = historical_compatibility(manifest)
++    qualified = historical_compatibility(manifest, schema_bridge_evidence={"rows": [bridge]})
++    assert strict["summary"]["reusable_R_control_pairs"] == 23
++    assert strict["summary"]["insufficient_pairs"] == 1
++    assert qualified["summary"]["reusable_R_control_pairs"] == 24
++    assert qualified["summary"]["insufficient_pairs"] == 0
++    target = next(row for row in qualified["rows"] if row["control_branch_key"] == bridge["branch_key"])
++    bridge_check = target["actual"]["label_checks"]["schema_bridge"]
++    assert bridge_check["ok"] is True
++    assert bridge_check["binding_mismatches"] == []
++
++
+ def test_manifest_repeat_keys_are_distinct_and_match_historical_controls():
+     rows = [row for row in build_branch_manifest()["rows"] if row["parent_id"] == "parent-00"]
+     assert len({row["historical_exogenous_key"] for row in rows}) == 3
 diff --git a/tools/r_control_digest_schema_20260922.py b/tools/r_control_digest_schema_20260922.py
 new file mode 100644
-index 0000000..f8fc9cc
+index e69de29..f8fc9cc 100644
 --- /dev/null
 +++ b/tools/r_control_digest_schema_20260922.py
 @@ -0,0 +1,210 @@
@@ -320,7 +624,7 @@ index 0000000..f8fc9cc
 +]
 diff --git a/tests/test_r_control_digest_schema_20260922.py b/tests/test_r_control_digest_schema_20260922.py
 new file mode 100644
-index 0000000..040ce41
+index e69de29..040ce41 100644
 --- /dev/null
 +++ b/tests/test_r_control_digest_schema_20260922.py
 @@ -0,0 +1,102 @@
