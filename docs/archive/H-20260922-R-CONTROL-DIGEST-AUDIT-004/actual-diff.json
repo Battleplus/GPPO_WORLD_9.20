@@ -1,0 +1,32 @@
+{
+  "changed_branch_count": 1,
+  "changed_branches": [
+    {
+      "branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "bridge_qualified": {
+        "overall": "reusable_as_R_control",
+        "reasons": [],
+        "reusable": true
+      },
+      "strict": {
+        "overall": "insufficient_evidence",
+        "reasons": [
+          "historical R control-reuse or label/reproduction row is not matched",
+          "historical label contract failed: snapshot_initial_digest"
+        ],
+        "reusable": false
+      }
+    }
+  ],
+  "interpretation": "Only the target row changes; the bridge supplies a validated schema/identity/time check and does not alter historical labels or trajectory data.",
+  "schema": "r-control-digest-audit-actual-diff/1.0.0",
+  "target_digest_diff": {
+    "bridge_reasons": [],
+    "historical_prefix_digest": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+    "historical_recomputed_matches_prefix": true,
+    "identity_mismatches": [],
+    "pilot_label_digest": "029fdda5e21097ca33a4fdf738f9a0a5ada2a80d35440e4d3ea9e95100e25a87",
+    "pilot_recomputed_matches_label": true
+  },
+  "unchanged_branch_count": 23
+}

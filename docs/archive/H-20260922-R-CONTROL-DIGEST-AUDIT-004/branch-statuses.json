@@ -1,0 +1,305 @@
+{
+  "bridge_qualified": [
+    {
+      "branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-01|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-01|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-01|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-02|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-02|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-02|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-03|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-03|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-03|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-04|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-04|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-04|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-05|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-05|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-05|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-06|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-06|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-06|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-07|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-07|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-07|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    }
+  ],
+  "counts": {
+    "bridge_insufficient": 0,
+    "bridge_reusable": 24,
+    "strict_insufficient": 1,
+    "strict_reusable": 23
+  },
+  "schema": "r-control-digest-branch-status/1.0.0",
+  "strict": [
+    {
+      "branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "insufficient_evidence",
+      "strict_reasons": [
+        "historical R control-reuse or label/reproduction row is not matched",
+        "historical label contract failed: snapshot_initial_digest"
+      ],
+      "strict_reusable_as_R_control": false
+    },
+    {
+      "branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-01|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-01|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-01|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-02|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-02|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-02|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-03|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-03|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-03|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-04|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-04|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-04|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-05|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-05|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-05|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-06|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-06|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-06|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-07|W1|seed-1101|prefix-0|repeat-0|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-07|W1|seed-1101|prefix-0|repeat-1|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    },
+    {
+      "branch_key": "parent-07|W1|seed-1101|prefix-0|repeat-2|mode-R",
+      "strict_overall": "reusable_as_R_control",
+      "strict_reasons": [],
+      "strict_reusable_as_R_control": true
+    }
+  ],
+  "target_branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R"
+}

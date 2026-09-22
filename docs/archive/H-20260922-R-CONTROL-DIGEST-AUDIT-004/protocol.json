@@ -1,0 +1,9 @@
+{
+  "authorization": "pending",
+  "budget_sqlite_modified": false,
+  "dynamic_execution": false,
+  "historical_artifacts_modified": false,
+  "schema": "r-control-digest-audit-protocol/1.0.0",
+  "status": "audit_complete",
+  "target": "parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R"
+}

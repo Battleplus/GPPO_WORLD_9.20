@@ -1,0 +1,188 @@
+{
+  "current": {
+    "continuation_actions": [
+      13
+    ],
+    "flat": {
+      "dtype": "float32",
+      "shape": [
+        770
+      ]
+    },
+    "mask": {
+      "dtype": "bool",
+      "shape": [
+        25
+      ]
+    },
+    "projection_fields": [
+      "flat",
+      "mask",
+      "version",
+      "public_entity_ids",
+      "continuation_actions",
+      "trigger_flags",
+      "time"
+    ],
+    "public_entity_ids": {
+      "tasks": [
+        "task-0",
+        "task-1"
+      ],
+      "uavs": [
+        "uav-0",
+        "uav-1",
+        "uav-2",
+        "uav-3"
+      ]
+    },
+    "schema": "ackguard-observation/flat-mask-version-time-ids-continuation-trigger/1.0.0",
+    "sha256": "942a43203c4f1b9c958068f8b3be21e1602a3c2694aa008235ed299125e72c5a",
+    "time": 2.0,
+    "trigger_flags": {
+      "completion_or_invalidation": false,
+      "confirmed_fault": false,
+      "link_recovery": false,
+      "safety_forced": false,
+      "task_arrival": false
+    },
+    "version": 82
+  },
+  "difference": {
+    "common_fields": [
+      "flat",
+      "mask",
+      "version"
+    ],
+    "common_fields_equal": true,
+    "historical_extra_fields": [
+      "public_entity_ids",
+      "continuation_actions",
+      "trigger_flags"
+    ],
+    "pilot_extra_field": "time",
+    "same_observation": true
+  },
+  "historical": {
+    "continuation_actions": [
+      13
+    ],
+    "flat": {
+      "dtype": "float32",
+      "shape": [
+        770
+      ]
+    },
+    "mask": {
+      "dtype": "bool",
+      "shape": [
+        25
+      ]
+    },
+    "projection_fields": [
+      "flat",
+      "mask",
+      "version",
+      "public_entity_ids",
+      "continuation_actions",
+      "trigger_flags"
+    ],
+    "public_entity_ids": {
+      "tasks": [
+        "task-0",
+        "task-1"
+      ],
+      "uavs": [
+        "uav-0",
+        "uav-1",
+        "uav-2",
+        "uav-3"
+      ]
+    },
+    "schema": "replan-value-public/flat-mask-version-ids-continuation-trigger/1.0.0",
+    "sha256": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+    "time": null,
+    "trigger_flags": {
+      "completion_or_invalidation": false,
+      "confirmed_fault": false,
+      "link_recovery": false,
+      "safety_forced": false,
+      "task_arrival": false
+    },
+    "version": 82
+  },
+  "observation": {
+    "continuation_actions": [
+      13
+    ],
+    "flat": {
+      "dtype": "float32",
+      "shape": [
+        770
+      ]
+    },
+    "mask": {
+      "dtype": "bool",
+      "shape": [
+        25
+      ]
+    },
+    "public_entity_ids": {
+      "tasks": [
+        "task-0",
+        "task-1"
+      ],
+      "uavs": [
+        "uav-0",
+        "uav-1",
+        "uav-2",
+        "uav-3"
+      ]
+    },
+    "snapshot_episode_id": "m10-mixed-0",
+    "snapshot_step_index": 2,
+    "time": 2.0,
+    "trigger_flags": {
+      "completion_or_invalidation": false,
+      "confirmed_fault": false,
+      "link_recovery": false,
+      "safety_forced": false,
+      "task_arrival": false
+    },
+    "version": 82
+  },
+  "observed": {
+    "historical_prefix_digest": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+    "pilot_label_digest": "029fdda5e21097ca33a4fdf738f9a0a5ada2a80d35440e4d3ea9e95100e25a87",
+    "train_label_source": "reused_from_pilot"
+  },
+  "pilot": {
+    "continuation_actions": null,
+    "flat": {
+      "dtype": "float32",
+      "shape": [
+        770
+      ]
+    },
+    "mask": {
+      "dtype": "bool",
+      "shape": [
+        25
+      ]
+    },
+    "projection_fields": [
+      "flat",
+      "mask",
+      "version",
+      "time"
+    ],
+    "public_entity_ids": null,
+    "schema": "pilot-observer/flat-mask-version-time/1.0.0",
+    "sha256": "029fdda5e21097ca33a4fdf738f9a0a5ada2a80d35440e4d3ea9e95100e25a87",
+    "time": 2.0,
+    "trigger_flags": null,
+    "version": 82
+  },
+  "schema": "r-control-digest-schema-comparison/1.0.0",
+  "target_branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R"
+}

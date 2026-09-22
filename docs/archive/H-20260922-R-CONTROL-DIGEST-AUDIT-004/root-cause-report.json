@@ -1,0 +1,23 @@
+{
+  "bridge_status": "schema_compatible",
+  "classification": "A",
+  "finding": "schema-only digest mismatch",
+  "historical_protocol_unchanged": true,
+  "label_time_after": 3.0,
+  "label_time_before": 2.0,
+  "no_observation_or_identity_change_found": true,
+  "observation_time": 2.0,
+  "observed_digests": {
+    "historical_prefix": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+    "pilot_label": "029fdda5e21097ca33a4fdf738f9a0a5ada2a80d35440e4d3ea9e95100e25a87"
+  },
+  "qualified_result": "24/24 reusable through the pinned bridge",
+  "recomputed_digests": {
+    "current": "942a43203c4f1b9c958068f8b3be21e1602a3c2694aa008235ed299125e72c5a",
+    "historical": "969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f",
+    "pilot": "029fdda5e21097ca33a4fdf738f9a0a5ada2a80d35440e4d3ea9e95100e25a87"
+  },
+  "schema": "r-control-digest-audit-root-cause/1.0.0",
+  "strict_result": "23/24 reusable; target blocked",
+  "target_branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R"
+}

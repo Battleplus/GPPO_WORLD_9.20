@@ -1,0 +1,9 @@
+{
+  "limitations": [
+    "The bridge proves schema compatibility for the saved initial observation and branch identity/time metadata only.",
+    "It does not execute or certify a corrected guard trajectory.",
+    "It does not provide hidden/cache post-run non-pollution evidence.",
+    "The original strict 23/24 result remains preserved and is reported separately."
+  ],
+  "schema": "r-control-digest-audit-limitations/1.0.0"
+}

@@ -1,0 +1,24 @@
+{
+  "files": [
+    "actual-diff.json",
+    "authorization-template.json",
+    "branch-statuses.json",
+    "bridge-evidence.json",
+    "compatibility-bridge-qualified.json",
+    "compatibility-strict.json",
+    "evidence-index.json",
+    "independent-verification.json",
+    "limitations-and-next-recommendation.md",
+    "limitations.json",
+    "minimal-diff.patch",
+    "protocol.json",
+    "report.md",
+    "root-cause-report.json",
+    "root-cause-report.md",
+    "schema-comparison.json",
+    "source-input-identities.json",
+    "test-output.txt",
+    "validation.json"
+  ],
+  "schema": "r-control-digest-audit-evidence-index/1.0.0"
+}

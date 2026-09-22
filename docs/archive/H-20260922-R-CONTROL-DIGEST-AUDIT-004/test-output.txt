@@ -1,0 +1,8 @@
+$ C:\Python314\python.exe -m pytest -q tests/test_r_control_digest_schema_20260922.py
+.....                                                                    [100%]
+5 passed in 0.14s
+
+
+$ C:\Python314\python.exe -m pytest -q tests/test_ackguard_corrected_protocol_20260922.py
+.........................................                                [100%]
+41 passed in 15.87s

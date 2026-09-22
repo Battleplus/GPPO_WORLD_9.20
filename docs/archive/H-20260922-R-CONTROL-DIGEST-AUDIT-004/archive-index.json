@@ -1,0 +1,119 @@
+{
+  "handoff_id": "H-20260922-R-CONTROL-DIGEST-AUDIT-004",
+  "scope": "selective audit reports, compact full24 status, bridge identity evidence, real source patch, pure tests and research progress",
+  "status": "local archive prepared; remote commit pending",
+  "files": [
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/actual-diff.json",
+      "bytes": 1215,
+      "sha256": "5e07768e8c3b37278114611563ecfa173e52141ad0527be0a893f6390622d858"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/branch-statuses.json",
+      "bytes": 10559,
+      "sha256": "8cd02db1e9c70b80d1a1cf8effc5dfaa87f4217e51287798b2c49460e6f4a12b"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/bridge-evidence.json",
+      "bytes": 6284,
+      "sha256": "892ffb6049b99ee0ae3f526e450c7f2daa91d7ec8e92a4f01c98c4dfa5666cf3"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/evidence-index.json",
+      "bytes": 638,
+      "sha256": "cdc2353d103ccdcc731109eedad2ba784de635ac3828072d9b75e33680d28354"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/evidence-index.sha256",
+      "bytes": 86,
+      "sha256": "9adb79e3f9863ae5740cf968b2fab50251019eeb54c96cce70e611bdb9a242ff"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/hashes.json",
+      "bytes": 2920,
+      "sha256": "4f8a205950d6c107adb0b0e990e36f4d77f82d23972e67733381b7d80e1a220f"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/hashes.json.sha256",
+      "bytes": 78,
+      "sha256": "b841ccbbc8727165cefee0303a40a009c96c14c88568bfe3aec31294d050726d"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/independent-verification.json",
+      "bytes": 2626,
+      "sha256": "686eb50c848499ad02e9f9f62d8e14b1fc5872a56caef46e625085fd318b7128"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/limitations-and-next-recommendation.md",
+      "bytes": 738,
+      "sha256": "7bbfb24692dff415a144d5bc0bcbebaf624c78545aab23dcd403ce0be144929d"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/limitations.json",
+      "bytes": 438,
+      "sha256": "4b432ae24363dc50bc52c3842adebfadff8c4768b23345e40c6779dff47f97fd"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/minimal-diff.patch",
+      "bytes": 17810,
+      "sha256": "bbdb72e48ce9c913d9c11bcfad05e737b5d71e775ed5250d9289c442f7ea6a0a"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/protocol.json",
+      "bytes": 295,
+      "sha256": "15fdc764c896ae399e90bd05e2bb8c89bfe3b65c1dbe4b8877497d66b2501b20"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/report.md",
+      "bytes": 937,
+      "sha256": "b53c9527daf0f9e08ed4a07d17de31be6a16cb81cfd1305fe6c9c9b2fecfb776"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/root-cause-report.json",
+      "bytes": 1045,
+      "sha256": "2b632973265de18bda7500605ca0c899226f3d96a92346bf5ddc579c5f294550"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/root-cause-report.md",
+      "bytes": 1010,
+      "sha256": "b14f43e6b662cb97d798163495493008496cf2643f78b81509ae528a012c7c2d"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/schema-comparison.json",
+      "bytes": 4121,
+      "sha256": "bd7b8a4c73ec6be73e5c1925f39154d375a56c70c565f319aa5a3cd6eca0a002"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/source-input-identities.json",
+      "bytes": 23510,
+      "sha256": "cacdecfd25ae2de94719c2696fe09f23922e9a28deea8bafe509b7175ed6ae66"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/test-output.txt",
+      "bytes": 384,
+      "sha256": "3c005e553c60988759403f0f34dd5db28884a3c959d78d19e133969b33539f83"
+    },
+    {
+      "path": "docs/archive/H-20260922-R-CONTROL-DIGEST-AUDIT-004/validation.json",
+      "bytes": 1162,
+      "sha256": "4089f6bcc328c23d58cc7140051f2bf25dc4bb0b53754aa78e2abec6b3f2490a"
+    },
+    {
+      "path": "docs/RESEARCH_PROGRESS.md",
+      "bytes": 12927,
+      "sha256": "58c27457adbc4a73b687963f886dd3ea5343f25ebcb645ec522b4f81180c2f73"
+    }
+  ],
+  "excluded": {
+    "large_local_only": [
+      "compatibility-strict.json",
+      "compatibility-bridge-qualified.json",
+      "prefix-snapshots.pkl",
+      "step-vector-rewards.jsonl",
+      "branch-results.jsonl",
+      "budget.sqlite3"
+    ],
+    "reason": "retain local with SHA-256; do not upload large raw evidence or weights",
+    "source_worktree": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\r-control-digest-audit-20260922"
+  }
+}
