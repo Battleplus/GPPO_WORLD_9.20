@@ -1,0 +1,299 @@
+{
+  "analysis": {
+    "analyzer_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ackguard-matrix-registration-20260922\\analyze_results.py",
+    "analyzer_sha256": "c4add12392c8f3ca082e0aaa57224708b24ff0b16ae40eeae95ff65183834ba7",
+    "counts": {
+      "R_controls": 24,
+      "expected_pairs": 24,
+      "guard_branches": 24,
+      "ignored_R_rows": 900,
+      "ignored_R_step_rows": 11360,
+      "ignored_guard_rows": 0,
+      "ignored_guard_step_rows": 0,
+      "paired": 24,
+      "parents": 8
+    },
+    "evaluation_status": "evaluation incomplete",
+    "missing_or_rejected_contract": {
+      "R_control_rows_selected": 24,
+      "analyzer_rule": "analyze_results.py _row_error_issues treats budget_status in {unknown,pending,reserved_pending_finalization,pending_before_reserve} as a step error",
+      "guard_rows_selected": 24,
+      "guard_step_rows_with_budget_status_reserved_pending_finalization": 279,
+      "pair_rows_selected": 24
+    },
+    "no_rerun": true,
+    "no_zero_fill_or_resampling": true,
+    "output_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ackguard-matrix-registration-20260922\\paired-analysis.json",
+    "output_sha256": "18a2e1819f791fd1751ab2ec39f6843aaf9801bea16abb74296bdb6750f7d036",
+    "primary": {
+      "gamma": 0.99,
+      "parent_aggregates": [],
+      "parent_cluster_bootstrap": {
+        "ci": [
+          null,
+          null
+        ],
+        "confidence": 0.95,
+        "replicates": 10000,
+        "seed": 20260922
+      },
+      "parent_macro_guard_minus_R_utility": null,
+      "preference": [
+        0.8,
+        0.2
+      ],
+      "reward_scales": {
+        "energy": 1.0,
+        "task": 0.5
+      },
+      "tie_tolerance": 1e-06
+    },
+    "status": "evaluation incomplete",
+    "technical_stop_reasons": {
+      "guard_step_budget_reserved_pending_finalization": 24,
+      "parent_aggregate_count:0": 1
+    },
+    "valid_pairs": 0
+  },
+  "artifact_hashes": {
+    "authorized-run/branch-results.jsonl": "33832d11ecff713511cc0537acbe50bc69d84ef0fe3875d4f89d3967a5d2de78",
+    "authorized-run/budget-after.json": "e8d344664e9e3b84d2a27e53f8bbee6b548978bcbfe38dcf35ba54866ded9cde",
+    "authorized-run/budget-finalization.jsonl": "cce910896d2e40f0f1306ece64f70336a99dd921835e253735d475d22b2d0f61",
+    "authorized-run/decision-ledger.jsonl": "3cfae4c8f52b4b0e3571b2fe8a52209576e8fa2eda7a26066cec31f8f523ec34",
+    "authorized-run/progress.jsonl": "f8fb3d060b20ca80ebd4ecf4e8dbf4587a683df3863e8d458d14b30d4925a7cb",
+    "authorized-run/run-status.json": "6c4b3e40bf8a848204fee4d0e35848085828f8d76a23f3b432bf4d996a42e34c",
+    "authorized-run/step-vector-rewards.jsonl": "2c690d73f7164405c85bedac4061f021da94b22521ba0046c403272a5651ec6a",
+    "branch-manifest.json": "2b6245b5c0e1a196cbe21ad6472ee15892a10223c525bb209342943f9f906c6b",
+    "budget-migration-receipt.json": "3f8ff8de0e05f7ab3b5c7f1dfc9a81a0824db520c22d79180d20f5351972eed2",
+    "paired-analysis.json": "18a2e1819f791fd1751ab2ec39f6843aaf9801bea16abb74296bdb6750f7d036",
+    "pre-migration-budget-backup.sqlite3": "59a72b2ea6f2c2a36668a77a48ea077016c72ae07386ff3111da421fc32f32ff",
+    "pre-migration-budget-summary.json": "3551d5460492bd9a984f8f88395f08e6c0d1d327ebfed0fe38bc0c6f22fc398c",
+    "protocol.json": "a1258ddb208d502f839391a1371da69bcbbd2a8cb7f880bed75a76ee15a74d1b",
+    "reviewed-authorization.json": "48ea21ca103294b675e448b861d14fe169a91b165e87c5c515e34e5dbb25f747"
+  },
+  "authorization": {
+    "approval_record": {
+      "approval_type": "user_reply_after_explicit_parent_request",
+      "approved_scope": {
+        "fixed_guard_matrix_branches": 24,
+        "global_environment_steps_limit": 404,
+        "historical_R_controls_reused": 24,
+        "new_run_cap": 384,
+        "old_verified_steps_preserved": 20,
+        "same_sqlite": true
+      },
+      "request_context": "同意扩额至404并执行固定矩阵",
+      "signature": null,
+      "signature_claimed": false,
+      "user_reply": "继续吧"
+    },
+    "reviewed_authorization_sha256": "48ea21ca103294b675e448b861d14fe169a91b165e87c5c515e34e5dbb25f747",
+    "status": "authorized"
+  },
+  "budget": {
+    "attempt_after_run": {
+      "attempt_id": "ackguard-corrected-protocol-20260922-attempt-0001",
+      "reserved": 279,
+      "run_id": "ackguard-corrected-protocol-20260922",
+      "stage": "environment_steps",
+      "unknown": 0,
+      "verified": 279
+    },
+    "backup_sha256": "59a72b2ea6f2c2a36668a77a48ea077016c72ae07386ff3111da421fc32f32ff",
+    "integrity": "ok",
+    "metadata_run_limits": {
+      "environment_steps": 384,
+      "offline_updates": 0,
+      "optimizer_calls": 0,
+      "world_updates": 0
+    },
+    "metadata_run_limits_by_run": {
+      "ackguard-corrected-protocol-20260922": {
+        "environment_steps": 384,
+        "offline_updates": 0,
+        "optimizer_calls": 0,
+        "world_updates": 0
+      }
+    },
+    "old_record_proof": {
+      "attempts_unchanged": true,
+      "history_seq_1_40_unchanged": true,
+      "legacy_metadata_unchanged": true,
+      "old_pending": 0,
+      "old_reserved": 20,
+      "old_unknown": 0,
+      "old_verified": 20,
+      "reservations_unchanged": true
+    },
+    "pending_or_unknown_count": 0,
+    "post_migration_pre_run_sha256": "1d10c09efd546b5e46d112a681466e9f85b0fdd2ffd6f436b3a08909bff2cfe6",
+    "post_run_sha256": "9ff13f0e18ab8ce56f418f00eac786f08a47e6107a2b8d31f7184b2502c9d420",
+    "pre_migration_sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+    "run_status_totals": [
+      {
+        "amount": 279,
+        "count": 279,
+        "status": "verified"
+      }
+    ],
+    "stage_after_run": {
+      "limit_amount": 404,
+      "reserved": 299,
+      "stage": "environment_steps",
+      "unknown": 0,
+      "verified": 299
+    }
+  },
+  "calls_and_violations": {
+    "action_change_count_branch": 120,
+    "action_change_count_steps": 120,
+    "actual_feedback_direct_rows": 279,
+    "actual_feedback_missing_rows": 0,
+    "branch_actor_forward_calls": 279,
+    "branch_model_forward_calls": 0,
+    "branch_model_forward_calls_field_missing_in_branch_rows": true,
+    "branch_model_forward_calls_field_sum": 0,
+    "branch_probe_calls": 279,
+    "branch_world_forward_calls": 279,
+    "budget_finalization_rows": 279,
+    "command_count_branch": 279,
+    "completion_records_in_actual_feedback_rows": 279,
+    "decision_rows": 279,
+    "deepcopy_isolated_counts": {
+      "True": 24
+    },
+    "feedback_accepted_count": 129,
+    "final_completed_sum": 130,
+    "final_expired_sum": 14,
+    "finalization_actual_status": {
+      "verified": 279
+    },
+    "finalization_status": {
+      "verified": 279
+    },
+    "guard_trigger_count_branch": 120,
+    "guard_trigger_count_branch_source": "branch-results.jsonl.guard_trigger_count",
+    "guard_trigger_count_steps": null,
+    "guard_trigger_count_steps_field_missing": true,
+    "guard_trigger_field_present_rows": 0,
+    "illegal_original_actions": 0,
+    "illegal_selected_actions": 0,
+    "noop_count_branch": 94,
+    "noop_count_steps": 94,
+    "probability_ledger_errors": 0,
+    "rejected_feedback_count": 56,
+    "reward_recomputation_errors": 0,
+    "run_status_model_forward_calls": 279,
+    "source_snapshot_digest_equal_count": 24,
+    "step_budget_status": {
+      "reserved_pending_finalization": 279
+    },
+    "step_rows": 279,
+    "submit_command_count": 279,
+    "successful_env_steps": 279,
+    "task_unavailable_count_branch": 0,
+    "task_unavailable_feedback_count": 0,
+    "unique_reservation_ids": 279,
+    "verified_steps_from_branch_rows": 279
+  },
+  "captured_at_utc": "2026-09-22T14:05:12.238150+00:00",
+  "execution": {
+    "attempt_id": "ackguard-corrected-protocol-20260922-attempt-0001",
+    "branch_id_set_exact": true,
+    "branch_rows": 24,
+    "branch_terminal_counts": {
+      "(True, False, 'terminated')": 24
+    },
+    "branch_unique_ids": 24,
+    "control_key_set_exact": true,
+    "failure_ledger_present": false,
+    "manifest_expected_branches": 24,
+    "max_steps_per_branch": 16,
+    "no_retry": true,
+    "parent_repeat_counts": {
+      "parent-00": 3,
+      "parent-01": 3,
+      "parent-02": 3,
+      "parent-03": 3,
+      "parent-04": 3,
+      "parent-05": 3,
+      "parent-06": 3,
+      "parent-07": 3
+    },
+    "protocol_cap_reached": false,
+    "protocol_new_step_cap": 384,
+    "run_id": "ackguard-corrected-protocol-20260922",
+    "run_status": {
+      "attempt_created": true,
+      "budget_totals": {
+        "environment_steps": {
+          "pending": 0,
+          "reserved": 279,
+          "unknown": 0,
+          "verified": 279
+        }
+      },
+      "finished_at": 1790085493.9890966,
+      "hard_counts": {
+        "actor_forward": 279,
+        "branches_completed": 24,
+        "env_step_calls": 279,
+        "env_steps": 279,
+        "model_forward": 279,
+        "offline_updates": 0,
+        "optimizer_updates": 0,
+        "probe_calls": 279,
+        "successful_env_steps": 279,
+        "verified_steps": 279,
+        "world_forward": 279,
+        "world_updates": 0
+      },
+      "no_retry": true,
+      "runtime_digest_after": "d8630195170e6c244888946fcc78f075689d6f49f89fab76e0fed83542eb0a61",
+      "runtime_digest_before": "d8630195170e6c244888946fcc78f075689d6f49f89fab76e0fed83542eb0a61",
+      "schema": "ackguard-corrected-run-status/1.0.0",
+      "status": "completed"
+    },
+    "total_new_environment_steps": 279
+  },
+  "first_branch_gate": {
+    "control_branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R",
+    "deepcopy_isolated": true,
+    "exogenous_key": "replan-feature-v1|parent-00|W1|0|repeat-0",
+    "first_step": {
+      "action": 18,
+      "action_legal": true,
+      "actual_feedback_present": true,
+      "budget_status_before_finalization": "reserved_pending_finalization",
+      "original_action": 13,
+      "original_action_legal": true,
+      "original_argmax_probability_actions": [
+        13
+      ],
+      "probability_action_count": 25,
+      "probability_actions_complete": true,
+      "reservation_id_present": true,
+      "reward_recomputed": true,
+      "selected_probability_actions": [
+        18
+      ],
+      "step": 1
+    },
+    "manifest_branch_id": "parent-00|W1|seed-1101|prefix-0|repeat-0|guard-on",
+    "observed_branch_id": "parent-00|W1|seed-1101|prefix-0|repeat-0|guard-on",
+    "prefix_exogenous_key_before": "feature-prefix|parent-00|W1|seed-1101",
+    "prefix_id": "parent-00|W1|seed-1101|prefix-0",
+    "source_snapshot_digest_after": "6be6a058718fdc625351f8c5d314eac429bfb6158232da9cd19010df09f8caa8",
+    "source_snapshot_digest_before": "6be6a058718fdc625351f8c5d314eac429bfb6158232da9cd19010df09f8caa8",
+    "status": "passed_by_completed_authorized_run"
+  },
+  "handoff_id": "H-20260922-ACKGUARD-PAIRED-RESULT-005",
+  "research_conclusion": {
+    "baseline_decision": "not_decidable_retain_as_tested_comparator",
+    "category": "technical_stop_evaluation_incomplete",
+    "rule_basis": "analysis-and-stop-rules.json: technical stop never qualifies as a research result; no baseline mandate",
+    "statement": "评价未完成；不能将该结果称为算法正/负结果或目标完成。"
+  },
+  "schema": "ackguard-paired-result-post-run-evidence/1.0.0",
+  "status": "completed_run_evaluation_incomplete"
+}

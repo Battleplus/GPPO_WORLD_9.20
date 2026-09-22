@@ -1,0 +1,31 @@
+{
+  "attempt_created": true,
+  "budget_totals": {
+    "environment_steps": {
+      "pending": 0,
+      "reserved": 279,
+      "unknown": 0,
+      "verified": 279
+    }
+  },
+  "finished_at": 1790085493.9890966,
+  "hard_counts": {
+    "actor_forward": 279,
+    "branches_completed": 24,
+    "env_step_calls": 279,
+    "env_steps": 279,
+    "model_forward": 279,
+    "offline_updates": 0,
+    "optimizer_updates": 0,
+    "probe_calls": 279,
+    "successful_env_steps": 279,
+    "verified_steps": 279,
+    "world_forward": 279,
+    "world_updates": 0
+  },
+  "no_retry": true,
+  "runtime_digest_after": "d8630195170e6c244888946fcc78f075689d6f49f89fab76e0fed83542eb0a61",
+  "runtime_digest_before": "d8630195170e6c244888946fcc78f075689d6f49f89fab76e0fed83542eb0a61",
+  "schema": "ackguard-corrected-run-status/1.0.0",
+  "status": "completed"
+}

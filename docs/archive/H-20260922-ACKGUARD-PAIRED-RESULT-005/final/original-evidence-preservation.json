@@ -1,0 +1,15 @@
+{
+  "reservations": {
+    "old_rows": 20,
+    "unchanged": true
+  },
+  "attempts": {
+    "old_rows": 1,
+    "unchanged": true
+  },
+  "old_history": {
+    "rows": 40,
+    "unchanged": true
+  },
+  "original_post_run_artifacts_unchanged": 14
+}

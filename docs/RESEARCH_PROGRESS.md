@@ -100,3 +100,15 @@
 主分析固定偏好(0.8,0.2)、任务/能耗尺度(0.5,1.0)、gamma=0.99；先3repeat均值再8parent等权；父级10000次bootstrap、seed20260922、95%区间。规则仅排除公开已知占用任务，不删除合法NOOP。未完成/异常结果不得作为负结果。
 
 [执行授权申请](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/pre-execution/authorization-request.md)；[冻结分析规则](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/pre-execution/analysis-and-stop-rules.json)；[审查记录](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/pre-execution/parent-review.json)。此处归档的是执行前资料，最终结果仍未完成。
+
+## H-005 最终结果：固定简单公开执行状态基线
+
+24/24新规则分支完成，24/24历史R按身份复用，旧两guard不计入处理组。主偏好效用guard−R=+0.055815245，父场景bootstrap95%CI=[+0.011451750,+0.095693801]，8parent中6正2负。task_unavailable从109降至0、拒绝139降至56、全部任务完成120增至130；配对已登记48项任务按时物理到达与主机确认均30增至48。能耗138.919078增至145.003675（约+4.38%）。
+
+研究决策：在冻结历史M10 25-action/W1/seed-1101开发合同内，将规则固定为后续模型必须比较并超越的简单基线；不宣称GPPO或世界模型独立收益，不外推heldout/生产或当前有限通信环境。保留两个父场景退化及能耗增加。
+
+用户批准同库扩额后，新矩阵279步全部verified，原20步保留，总账本299/404，unknown=pending=0。actor/world各279次，optimizer/world/offline updates全0；原R299步未重跑。运行24条均native terminated，guard触发/动作变化120次，合法NOOP未删除，无非法动作或状态污染证据。
+
+分析勘误：首轮分析把步骤写入时reserved_pending_finalization误当最终pending。279条均已在finalization和原SQLite verified；只读逐reservation/branch/step关联后，由不变冻结统计脚本得到完整结果。原始数据、首次失败分析与所有预算记录保留；无环境重跑、奖励补填或样本变更。新关联器9项测试通过，独立原始奖励与父级CI复算一致。
+
+[最终报告](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/report.md) · [24对完整结果](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/paired-results.csv) · [逐父场景结果](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/parent-results.csv) · [机器结果与决策](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/result-summary.json)。剩余105步不继续使用，任务完成后停止。

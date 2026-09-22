@@ -1,0 +1,51 @@
+{
+  "status": "matched",
+  "step_rows": 279,
+  "finalization_rows": 279,
+  "SQLite_reservations": 279,
+  "run_id": "ackguard-corrected-protocol-20260922",
+  "attempt_id": "ackguard-corrected-protocol-20260922-attempt-0001",
+  "sqlite_stages": [
+    {
+      "stage": "environment_steps",
+      "limit_amount": 404,
+      "reserved": 299,
+      "verified": 299,
+      "unknown": 0
+    },
+    {
+      "stage": "optimizer_calls",
+      "limit_amount": 0,
+      "reserved": 0,
+      "verified": 0,
+      "unknown": 0
+    },
+    {
+      "stage": "world_updates",
+      "limit_amount": 0,
+      "reserved": 0,
+      "verified": 0,
+      "unknown": 0
+    },
+    {
+      "stage": "offline_updates",
+      "limit_amount": 0,
+      "reserved": 0,
+      "verified": 0,
+      "unknown": 0
+    }
+  ],
+  "raw_files_modified": false,
+  "additional_env_steps": 0,
+  "model_forwards": 0,
+  "updates": 0,
+  "source_hashes": {
+    "runs\\finite-communication-ack-lease-fix-20260920\\ackguard-matrix-registration-20260922\\authorized-run\\step-vector-rewards.jsonl": "2c690d73f7164405c85bedac4061f021da94b22521ba0046c403272a5651ec6a",
+    "runs\\finite-communication-ack-lease-fix-20260920\\ackguard-matrix-registration-20260922\\authorized-run\\budget-finalization.jsonl": "cce910896d2e40f0f1306ece64f70336a99dd921835e253735d475d22b2d0f61",
+    "runs\\finite-communication-ack-lease-fix-20260920\\ackguard-matrix-registration-20260922\\reviewed-authorization.json": "48ea21ca103294b675e448b861d14fe169a91b165e87c5c515e34e5dbb25f747",
+    "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3": "9ff13f0e18ab8ce56f418f00eac786f08a47e6107a2b8d31f7184b2502c9d420"
+  },
+  "derived_view": "runs\\finite-communication-ack-lease-fix-20260920\\ackguard-matrix-registration-20260922\\final-analysis-v2\\step-rewards-with-verified-budget-view.jsonl",
+  "derived_sha256": "848a0b756b88c265b5f971c415936d2ed850f8694d1215a1246e9c4ba0da8d83",
+  "interpretation": "Original step rows were written before complete(); status is resolved from existing finalization and SQLite. Rewards, actions, identities and metrics are unchanged."
+}

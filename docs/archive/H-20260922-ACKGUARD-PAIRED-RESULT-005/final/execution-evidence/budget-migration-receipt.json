@@ -1,0 +1,115 @@
+{
+  "approval_record": {
+    "approval_type": "user_reply_after_explicit_parent_request",
+    "approved_scope": "同一SQLite扩额至404，保留旧20，新增固定run cap384，并执行固定24条guard矩阵",
+    "request_context": "同意扩额至404并执行固定矩阵",
+    "signature": null,
+    "signature_claimed": false,
+    "user_reply": "继续吧"
+  },
+  "artifact_hashes_to_record_after_write": true,
+  "backup_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ackguard-matrix-registration-20260922\\pre-migration-budget-backup.sqlite3",
+  "backup_sha256": "59a72b2ea6f2c2a36668a77a48ea077016c72ae07386ff3111da421fc32f32ff",
+  "formal_sqlite_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+  "handoff_id": "H-20260922-ACKGUARD-PAIRED-RESULT-005",
+  "post_migration_integrity": "ok",
+  "post_migration_sha256": "1d10c09efd546b5e46d112a681466e9f85b0fdd2ffd6f436b3a08909bff2cfe6",
+  "post_read_only": {
+    "new_history_count": 41,
+    "new_run_or_attempt_rows": 0,
+    "old_attempts_digest_matches": true,
+    "old_history_count": 40,
+    "old_metadata_digest_matches": true,
+    "old_reservations_digest_matches": true,
+    "table_counts": {
+      "attempts": 1,
+      "history": 41,
+      "metadata": 4,
+      "reservations": 20,
+      "sqlite_sequence": 1,
+      "stages": 4
+    },
+    "table_digests": {
+      "attempts": "d84b8b905356206c2264ee4cc18af53022de614917a1fbd384f96696ea30eca9",
+      "history": "7453b92cee82f6e8add18e15e0f463dc74824f7e3c16455f83e4d990a43d53c5",
+      "metadata": "98ae9ef32bdadaa49a1ce7a3fa361d06d44f3d8cdccccc68fe86243650de7b5f",
+      "reservations": "86e2e59941947ffcceb2a1ebf37a47fa14226478ea80c6caa082c67d919e5578",
+      "sqlite_sequence": "f6d4da607b80127d08f643e14307d4caca3fa68cf44abef385bb912552854b09",
+      "stages": "de786fda44ed904c413b1b8e0b67533dfdcd2a4c571d7a0b9969f6f2e5af3b59"
+    },
+    "tables": [
+      "attempts",
+      "history",
+      "metadata",
+      "reservations",
+      "sqlite_sequence",
+      "stages"
+    ]
+  },
+  "pre_migration_source_sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+  "pre_migration_summary": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ackguard-matrix-registration-20260922\\pre-migration-budget-summary.json",
+  "schema": "ackguard-budget-migration-receipt/1.0.0",
+  "source_sha256_before_migration": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+  "status": "migration_committed_and_verified",
+  "transaction": {
+    "begin": "BEGIN IMMEDIATE",
+    "global_stage_update": {
+      "limit_after": 404,
+      "limit_before": 384,
+      "pending": 0,
+      "reserved": 20,
+      "stage": "environment_steps",
+      "unknown": 0,
+      "verified": 20
+    },
+    "history_event": {
+      "amount": 0,
+      "attempt_id": "ackguard-corrected-protocol-20260922-attempt-0001",
+      "created_at": 1790085143.9921088,
+      "event": "limit_extension_proposal_applied_after_approval",
+      "pid": 42196,
+      "reason": "preserve old 20; add 404 global / 384 run cap",
+      "reservation_id": null,
+      "reservation_index": null,
+      "run_id": "ackguard-corrected-protocol-20260922",
+      "seq": 41,
+      "stage": "environment_steps"
+    },
+    "legacy_run_limits_preserved": {
+      "environment_steps": 384,
+      "offline_updates": 0,
+      "optimizer_calls": 0,
+      "world_updates": 0
+    },
+    "old_records_preserved": {
+      "attempts": {
+        "after": "d84b8b905356206c2264ee4cc18af53022de614917a1fbd384f96696ea30eca9",
+        "before": "d84b8b905356206c2264ee4cc18af53022de614917a1fbd384f96696ea30eca9",
+        "equal": true
+      },
+      "reservations": {
+        "after": "86e2e59941947ffcceb2a1ebf37a47fa14226478ea80c6caa082c67d919e5578",
+        "before": "86e2e59941947ffcceb2a1ebf37a47fa14226478ea80c6caa082c67d919e5578",
+        "equal": true
+      }
+    },
+    "rollback_on_assertion_failure": true,
+    "run_limits_by_run": {
+      "ackguard-corrected-protocol-20260922": {
+        "environment_steps": 384,
+        "offline_updates": 0,
+        "optimizer_calls": 0,
+        "world_updates": 0
+      }
+    },
+    "target_attempt_present": false,
+    "target_run_totals": {
+      "environment_steps": {
+        "pending": 0,
+        "reserved": 0,
+        "unknown": 0,
+        "verified": 0
+      }
+    }
+  }
+}

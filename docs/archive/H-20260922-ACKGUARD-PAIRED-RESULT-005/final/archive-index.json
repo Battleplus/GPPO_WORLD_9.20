@@ -1,0 +1,111 @@
+{
+  "handoff_id": "H-20260922-ACKGUARD-PAIRED-RESULT-005",
+  "state": "paired_evaluation_complete_final_archive",
+  "pre_execution_commit": "8b76bbaaed27f68f6869a06fa666ff94a4810f70",
+  "final_summary_sha256": "1d2c4d4211e08046996d9f49f4e67c06030419f8b6f6a6fcb043f5ff62c776f4",
+  "files": [
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/report.md",
+      "bytes": 3783,
+      "sha256": "b687588f69193ea5b21e3399c5f43b92e9c098f678bc0f1aa598f876ddea0aba"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/result-summary.json",
+      "bytes": 6821,
+      "sha256": "1d2c4d4211e08046996d9f49f4e67c06030419f8b6f6a6fcb043f5ff62c776f4"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/paired-results.csv",
+      "bytes": 7122,
+      "sha256": "7c1ea6051720460c0ec9129269b760a9125da257b79e560ef8ba5b14d589cb63"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/parent-results.csv",
+      "bytes": 4974,
+      "sha256": "2ee0211b104f6f1720d938a00ed75a80346aee0f0758a29653d4ed667b8b78b2"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/paired-results-compact.json",
+      "bytes": 29825,
+      "sha256": "c781223069abe4d951ec8174e7177a20a932aee3ee7dfe85fae4da0d99a6e534"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/parent-results.json",
+      "bytes": 15469,
+      "sha256": "1bb630c262a9f9b67759cc0b74c33a8262a8f42552c3fa975691cb187e5735ea"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/budget-reconciliation.json",
+      "bytes": 2259,
+      "sha256": "4747f17f0343fc5faddcccfbf1c47f48b960aaaa2c67cae160284628cbe0edd0"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/original-evidence-preservation.json",
+      "bytes": 256,
+      "sha256": "1dfecbdb2ebc68038cd83ffde8134a24b348bd61a4112780e52199df5d45d880"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/final-artifact-manifest.json",
+      "bytes": 8477,
+      "sha256": "0ce93a6a022f81efb948a09d692e0689410937010940e496853b7d518d25390d"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/reconcile_budget_status.py",
+      "bytes": 4297,
+      "sha256": "91d2a4b53f6d735c6d8b008960bf316076eac5d52240017d96e78c9d7a71e10b"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/test_reconcile_budget_status.py",
+      "bytes": 1452,
+      "sha256": "a1cc966cf069407450ac331a90772fb4271a6e9115072b9171bd4958bb96e6d9"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/finalize_results.py",
+      "bytes": 13367,
+      "sha256": "e6d4edad409662ed55eee3a4bfa0d9a6806146dfb02ea16694ab082c5287b905"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/test-output.txt",
+      "bytes": 150,
+      "sha256": "ad40dd90ce63be512923d88f9bb41415411e344d6758d4d22dd1dd2deafcc6b0"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/execution-evidence/budget-migration-receipt.json",
+      "bytes": 4558,
+      "sha256": "3f8ff8de0e05f7ab3b5c7f1dfc9a81a0824db520c22d79180d20f5351972eed2"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/execution-evidence/reviewed-authorization.json",
+      "bytes": 8238,
+      "sha256": "48ea21ca103294b675e448b861d14fe169a91b165e87c5c515e34e5dbb25f747"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/execution-evidence/pre-migration-budget-summary.json",
+      "bytes": 13511,
+      "sha256": "3551d5460492bd9a984f8f88395f08e6c0d1d327ebfed0fe38bc0c6f22fc398c"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/execution-evidence/post-run-evidence.json",
+      "bytes": 11378,
+      "sha256": "da943b829463e30f45f5a2c9440d89de3926fc2120d02d68ec5cac58e946ff05"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/execution-evidence/authorized-run/run-status.json",
+      "bytes": 838,
+      "sha256": "6c4b3e40bf8a848204fee4d0e35848085828f8d76a23f3b432bf4d996a42e34c"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/execution-evidence/authorized-run/budget-after.json",
+      "bytes": 1063,
+      "sha256": "e8d344664e9e3b84d2a27e53f8bbee6b548978bcbfe38dcf35ba54866ded9cde"
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/execution-evidence/authorized-run/budget-finalization.jsonl",
+      "bytes": 90090,
+      "sha256": "cce910896d2e40f0f1306ece64f70336a99dd921835e253735d475d22b2d0f61"
+    }
+  ],
+  "local_raw_evidence_root": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ackguard-matrix-registration-20260922",
+  "large_raw_files": "Retained locally with complete identities in final-artifact-manifest.json; no weights or SQLite uploaded",
+  "correction": "Original failure analysis retained locally; post-run-evidence records the transient-status parse failure. New final report supersedes the analysis conclusion after verified finalization join; the run was never repeated."
+}

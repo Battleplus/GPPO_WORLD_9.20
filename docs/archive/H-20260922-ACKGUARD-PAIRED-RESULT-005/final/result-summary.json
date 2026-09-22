@@ -1,0 +1,238 @@
+{
+  "handoff_id": "H-20260922-ACKGUARD-PAIRED-RESULT-005",
+  "status": "evaluation_complete",
+  "primary": {
+    "gamma": 0.99,
+    "parent_aggregates": [
+      {
+        "guard_minus_R_utility_mean": 0.0072282391582679795,
+        "parent_id": "parent-00",
+        "repeat_count": 3,
+        "repeats": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "guard_minus_R_utility_mean": -0.03284162272467325,
+        "parent_id": "parent-01",
+        "repeat_count": 3,
+        "repeats": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "guard_minus_R_utility_mean": 0.08890043590923058,
+        "parent_id": "parent-02",
+        "repeat_count": 3,
+        "repeats": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "guard_minus_R_utility_mean": -0.034298769389021995,
+        "parent_id": "parent-03",
+        "repeat_count": 3,
+        "repeats": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "guard_minus_R_utility_mean": 0.12397493180807244,
+        "parent_id": "parent-04",
+        "repeat_count": 3,
+        "repeats": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "guard_minus_R_utility_mean": 0.12701290588603423,
+        "parent_id": "parent-05",
+        "repeat_count": 3,
+        "repeats": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "guard_minus_R_utility_mean": 0.08392566628016389,
+        "parent_id": "parent-06",
+        "repeat_count": 3,
+        "repeats": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "guard_minus_R_utility_mean": 0.08262017519969861,
+        "parent_id": "parent-07",
+        "repeat_count": 3,
+        "repeats": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "parent_cluster_bootstrap": {
+      "ci": [
+        0.011451749573532077,
+        0.09569380090105746
+      ],
+      "confidence": 0.95,
+      "replicates": 10000,
+      "seed": 20260922
+    },
+    "parent_macro_guard_minus_R_utility": 0.05581524526597156,
+    "preference": [
+      0.8,
+      0.2
+    ],
+    "reward_scales": {
+      "energy": 1.0,
+      "task": 0.5
+    },
+    "tie_tolerance": 1e-06
+  },
+  "sums": {
+    "guard": {
+      "utility": 6.643701641374254,
+      "completed_delta": 130,
+      "all_task_completed": 130,
+      "on_time_physical": 48,
+      "on_time_host": 48,
+      "energy_used": 145.00367481243035,
+      "accepted_count": 129,
+      "rejected_count": 56,
+      "task_unavailable_count": 0,
+      "submit_count": 279,
+      "noop_count_from_actions": 94,
+      "env_steps": 279,
+      "actor_forward_calls": 279,
+      "world_forward_calls": 279
+    },
+    "R": {
+      "utility": 5.304135754990937,
+      "completed_delta": 120,
+      "all_task_completed": 120,
+      "on_time_physical": 30,
+      "on_time_host": 30,
+      "energy_used": 138.91907802781898,
+      "accepted_count": 106,
+      "rejected_count": 139,
+      "task_unavailable_count": 109,
+      "submit_count": 299,
+      "noop_count_from_actions": 54,
+      "env_steps": 299,
+      "actor_forward_calls": 299,
+      "world_forward_calls": 299
+    }
+  },
+  "branch_means": {
+    "guard": {
+      "utility": 0.27682090172392726,
+      "completed_delta": 5.416666666666667,
+      "all_task_completed": 5.416666666666667,
+      "on_time_physical": 2.0,
+      "on_time_host": 2.0,
+      "energy_used": 6.041819783851264,
+      "accepted_count": 5.375,
+      "rejected_count": 2.3333333333333335,
+      "task_unavailable_count": 0.0,
+      "submit_count": 11.625,
+      "noop_count_from_actions": 3.9166666666666665,
+      "env_steps": 11.625,
+      "actor_forward_calls": 11.625,
+      "world_forward_calls": 11.625
+    },
+    "R": {
+      "utility": 0.2210056564579557,
+      "completed_delta": 5.0,
+      "all_task_completed": 5.0,
+      "on_time_physical": 1.25,
+      "on_time_host": 1.25,
+      "energy_used": 5.788294917825791,
+      "accepted_count": 4.416666666666667,
+      "rejected_count": 5.791666666666667,
+      "task_unavailable_count": 4.541666666666667,
+      "submit_count": 12.458333333333334,
+      "noop_count_from_actions": 2.25,
+      "env_steps": 12.458333333333334,
+      "actor_forward_calls": 12.458333333333334,
+      "world_forward_calls": 12.458333333333334
+    }
+  },
+  "parents_positive": 6,
+  "parents_negative": 2,
+  "cohort_task_evaluations": 48,
+  "baseline_decision": {
+    "adopt_as_required_simple_baseline": true,
+    "scope": "frozen historical M10 25-action W1 development comparison",
+    "classification": "improvement_evidence_sufficient_in_fixed_development_matrix",
+    "limits": [
+      "8 parents, one policy seed, one condition; no heldout/general deployment conclusion",
+      "Energy increased and 2 parent means decreased",
+      "No independent GPPO/world-model contribution is established"
+    ]
+  },
+  "checks": {
+    "independent_raw_reward_utility_recomputation": true,
+    "independent_parent_bootstrap_recomputation": true,
+    "NOOP_removed_from_candidates": 0,
+    "NOOP_original_forced_to_allocation": 0,
+    "runtime_weights_unchanged": true,
+    "source_hashes": {
+      "runner": "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e",
+      "guard": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
+      "analyzer": "c4add12392c8f3ca082e0aaa57224708b24ff0b16ae40eeae95ff65183834ba7"
+    }
+  },
+  "resources": {
+    "new_environment_steps": 279,
+    "old_guard_environment_steps_retained": 20,
+    "formal_sqlite": {
+      "stage": "environment_steps",
+      "limit_amount": 404,
+      "reserved": 299,
+      "verified": 299,
+      "unknown": 0
+    },
+    "new_run_reservations": [
+      {
+        "status": "verified",
+        "rows": 279,
+        "amount": 279
+      }
+    ],
+    "remaining_global_steps": 105,
+    "historical_R_steps_reused": 299,
+    "hard_counts": {
+      "actor_forward": 279,
+      "branches_completed": 24,
+      "env_step_calls": 279,
+      "env_steps": 279,
+      "model_forward": 279,
+      "offline_updates": 0,
+      "optimizer_updates": 0,
+      "probe_calls": 279,
+      "successful_env_steps": 279,
+      "verified_steps": 279,
+      "world_forward": 279,
+      "world_updates": 0
+    },
+    "analysis_correction_new_steps": 0,
+    "SQLite_sha256": "9ff13f0e18ab8ce56f418f00eac786f08a47e6107a2b8d31f7184b2502c9d420"
+  },
+  "analysis_correction": "All 279 immutable pre-finalization step statuses joined one-to-one to finalization and read-only SQLite. Original raw files, initial failed analysis, and frozen metric analyzer are unchanged."
+}

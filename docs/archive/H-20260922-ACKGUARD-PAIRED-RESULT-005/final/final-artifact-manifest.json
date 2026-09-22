@@ -1,0 +1,217 @@
+{
+  "files": {
+    "analysis-and-stop-rules.json": {
+      "bytes": 5318,
+      "sha256": "9e3765a13be164ac322076ca1c60b28c4a270d6482d267d9815711b516afc3e4"
+    },
+    "analysis-test-output.txt": {
+      "bytes": 339,
+      "sha256": "c956bbf7f3ce1bc15b5e38a36db7ef06637b95008ec85d62c9ec829341fe6ca7"
+    },
+    "analyze_results.py": {
+      "bytes": 49031,
+      "sha256": "c4add12392c8f3ca082e0aaa57224708b24ff0b16ae40eeae95ff65183834ba7"
+    },
+    "authorization-request.md": {
+      "bytes": 1899,
+      "sha256": "1fab387bc1d3c5b155e3fe6fb91891395f8b220f12a448b5f41d2f76eb0619d7"
+    },
+    "authorization-template.json": {
+      "bytes": 7554,
+      "sha256": "e2cffe69e104676c4f202688cf4f66dcedb3280a24c6b337f0d619b8bf703fc5"
+    },
+    "authorized-run\\branch-results.jsonl": {
+      "bytes": 11308143,
+      "sha256": "33832d11ecff713511cc0537acbe50bc69d84ef0fe3875d4f89d3967a5d2de78"
+    },
+    "authorized-run\\budget-after.json": {
+      "bytes": 1063,
+      "sha256": "e8d344664e9e3b84d2a27e53f8bbee6b548978bcbfe38dcf35ba54866ded9cde"
+    },
+    "authorized-run\\budget-finalization.jsonl": {
+      "bytes": 90090,
+      "sha256": "cce910896d2e40f0f1306ece64f70336a99dd921835e253735d475d22b2d0f61"
+    },
+    "authorized-run\\decision-ledger.jsonl": {
+      "bytes": 1156641,
+      "sha256": "3cfae4c8f52b4b0e3571b2fe8a52209576e8fa2eda7a26066cec31f8f523ec34"
+    },
+    "authorized-run\\progress.jsonl": {
+      "bytes": 4655,
+      "sha256": "f8fb3d060b20ca80ebd4ecf4e8dbf4587a683df3863e8d458d14b30d4925a7cb"
+    },
+    "authorized-run\\run-status.json": {
+      "bytes": 838,
+      "sha256": "6c4b3e40bf8a848204fee4d0e35848085828f8d76a23f3b432bf4d996a42e34c"
+    },
+    "authorized-run\\step-vector-rewards.jsonl": {
+      "bytes": 79756662,
+      "sha256": "2c690d73f7164405c85bedac4061f021da94b22521ba0046c403272a5651ec6a"
+    },
+    "branch-manifest.json": {
+      "bytes": 20127,
+      "sha256": "2b6245b5c0e1a196cbe21ad6472ee15892a10223c525bb209342943f9f906c6b"
+    },
+    "budget-migration-receipt.json": {
+      "bytes": 4558,
+      "sha256": "3f8ff8de0e05f7ab3b5c7f1dfc9a81a0824db520c22d79180d20f5351972eed2"
+    },
+    "budget-proposal.json": {
+      "bytes": 4680,
+      "sha256": "efee269e0e75ef4eef9f527455430dc73047d67e1f0b9e42120f3683e6b9a895"
+    },
+    "evidence-index.json": {
+      "bytes": 2411,
+      "sha256": "e624095c9d45bf2bf510724e0959ea35d0512207cdc8c2804ba3d0a73118e95a"
+    },
+    "executable-protocol.md": {
+      "bytes": 3674,
+      "sha256": "eaf093045b0fd1143e9c27d997e30f35e93988a73b289b615ddecb8fe3f04de1"
+    },
+    "final-analysis-v2\\budget-reconciliation.json": {
+      "bytes": 2259,
+      "sha256": "4747f17f0343fc5faddcccfbf1c47f48b960aaaa2c67cae160284628cbe0edd0"
+    },
+    "final-analysis-v2\\finalize_results.py": {
+      "bytes": 13367,
+      "sha256": "e6d4edad409662ed55eee3a4bfa0d9a6806146dfb02ea16694ab082c5287b905"
+    },
+    "final-analysis-v2\\paired-analysis.json": {
+      "bytes": 20637450,
+      "sha256": "7299092b2c0a58df94a59906e509e3e4bfca1dc4fe79b2f81b4e87820931188f"
+    },
+    "final-analysis-v2\\paired-results-compact.json": {
+      "bytes": 29825,
+      "sha256": "c781223069abe4d951ec8174e7177a20a932aee3ee7dfe85fae4da0d99a6e534"
+    },
+    "final-analysis-v2\\paired-results.csv": {
+      "bytes": 7122,
+      "sha256": "7c1ea6051720460c0ec9129269b760a9125da257b79e560ef8ba5b14d589cb63"
+    },
+    "final-analysis-v2\\parent-results.csv": {
+      "bytes": 4974,
+      "sha256": "2ee0211b104f6f1720d938a00ed75a80346aee0f0758a29653d4ed667b8b78b2"
+    },
+    "final-analysis-v2\\parent-results.json": {
+      "bytes": 15469,
+      "sha256": "1bb630c262a9f9b67759cc0b74c33a8262a8f42552c3fa975691cb187e5735ea"
+    },
+    "final-analysis-v2\\reconcile_budget_status.py": {
+      "bytes": 4297,
+      "sha256": "91d2a4b53f6d735c6d8b008960bf316076eac5d52240017d96e78c9d7a71e10b"
+    },
+    "final-analysis-v2\\report.md": {
+      "bytes": 3783,
+      "sha256": "b687588f69193ea5b21e3399c5f43b92e9c098f678bc0f1aa598f876ddea0aba"
+    },
+    "final-analysis-v2\\result-summary.json": {
+      "bytes": 6821,
+      "sha256": "1d2c4d4211e08046996d9f49f4e67c06030419f8b6f6a6fcb043f5ff62c776f4"
+    },
+    "final-analysis-v2\\step-rewards-with-verified-budget-view.jsonl": {
+      "bytes": 79796838,
+      "sha256": "848a0b756b88c265b5f971c415936d2ed850f8694d1215a1246e9c4ba0da8d83"
+    },
+    "final-analysis-v2\\test-output.txt": {
+      "bytes": 150,
+      "sha256": "ad40dd90ce63be512923d88f9bb41415411e344d6758d4d22dd1dd2deafcc6b0"
+    },
+    "final-analysis-v2\\test_reconcile_budget_status.py": {
+      "bytes": 1452,
+      "sha256": "a1cc966cf069407450ac331a90772fb4271a6e9115072b9171bd4958bb96e6d9"
+    },
+    "first-branch-gate.json": {
+      "bytes": 2997,
+      "sha256": "978c441f60f76690ae8afd0672c23fe764f52f55013e924affc5635b2d4761f3"
+    },
+    "hashes.json": {
+      "bytes": 3751,
+      "sha256": "1a248ce44f904fb666781bf6009267ae6b24b6ed06e2e201fb8c5c594f338864"
+    },
+    "hashes.json.sha256": {
+      "bytes": 79,
+      "sha256": "ffcba32a9f5ec28c7f282b7bfb4e6ea96a23403bcdbe647d39eb33ea555dc03e"
+    },
+    "historical-R-compatibility.json": {
+      "bytes": 1044147,
+      "sha256": "30b59dbb2fb8c9a693df8214675ef6277333ac9d017b5c7ea471fca9d0715e81"
+    },
+    "paired-analysis.json": {
+      "bytes": 20636899,
+      "sha256": "18a2e1819f791fd1751ab2ec39f6843aaf9801bea16abb74296bdb6750f7d036"
+    },
+    "parent-review.json": {
+      "bytes": 1203,
+      "sha256": "23304456a8f2d01224d2e86d0857faf771787cb680821ba88b69221de1277950"
+    },
+    "post-run-evidence.json": {
+      "bytes": 11378,
+      "sha256": "da943b829463e30f45f5a2c9440d89de3926fc2120d02d68ec5cac58e946ff05"
+    },
+    "pre-migration-budget-backup.sqlite3": {
+      "bytes": 61440,
+      "sha256": "59a72b2ea6f2c2a36668a77a48ea077016c72ae07386ff3111da421fc32f32ff"
+    },
+    "pre-migration-budget-summary.json": {
+      "bytes": 13511,
+      "sha256": "3551d5460492bd9a984f8f88395f08e6c0d1d327ebfed0fe38bc0c6f22fc398c"
+    },
+    "protocol.json": {
+      "bytes": 6858,
+      "sha256": "a1258ddb208d502f839391a1371da69bcbbd2a8cb7f880bed75a76ee15a74d1b"
+    },
+    "registration-verification.json": {
+      "bytes": 776,
+      "sha256": "4b0b992d97307f787034456b797dc1cdd0038253b8c24e3f5174eb9e772e8c58"
+    },
+    "report.md": {
+      "bytes": 4246,
+      "sha256": "23d660004bc9d04038d362bb8c6d3a4aff2882fc072d261001b91a1573cec710"
+    },
+    "reviewed-authorization.json": {
+      "bytes": 8238,
+      "sha256": "48ea21ca103294b675e448b861d14fe169a91b165e87c5c515e34e5dbb25f747"
+    },
+    "run-status.json": {
+      "bytes": 7869,
+      "sha256": "81459ebd560fd9a67ec646dff93e004cf31cdd393eabd71892988faf9bb3b9f6"
+    },
+    "scope-change-record.json": {
+      "bytes": 1373,
+      "sha256": "95020a921d277900904fca8a0f8f122bf697cf3c14dd07170ebe4a848ddccebe"
+    },
+    "source-input-identities.json": {
+      "bytes": 13306,
+      "sha256": "a90ef47da5f984bb148497b90526bef85283e1aaf7aea99cdaa26f571b288277"
+    },
+    "test-output.txt": {
+      "bytes": 776,
+      "sha256": "4b0b992d97307f787034456b797dc1cdd0038253b8c24e3f5174eb9e772e8c58"
+    },
+    "test_analysis_results.py": {
+      "bytes": 13559,
+      "sha256": "2472454f10844f1ddb87206865815f9d1a515a8195c471d323d064c4b00ca537"
+    },
+    "test_registration.py": {
+      "bytes": 1067,
+      "sha256": "521b2fefcb7583077b1daa51e4c29b0a4ac7a255e060ac015d2b6197373e0892"
+    },
+    "verification-summary.txt": {
+      "bytes": 735,
+      "sha256": "3527575a0a8aab3859df778fa526969b662ec80f31ddeee548d8b19979e113a8"
+    },
+    "verify_registration.py": {
+      "bytes": 7184,
+      "sha256": "7324d6bf30976022abfb11bc01817d060f9d9d0bfa161087a076df76e518f75e"
+    },
+    "final-analysis-v2\\original-evidence-preservation.json": {
+      "bytes": 256,
+      "sha256": "1dfecbdb2ebc68038cd83ffde8134a24b348bd61a4112780e52199df5d45d880"
+    }
+  },
+  "formal_SQLite": {
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+    "sha256": "9ff13f0e18ab8ce56f418f00eac786f08a47e6107a2b8d31f7184b2502c9d420"
+  },
+  "note": "Raw large artifacts retained locally; selective remote archive retains these identities."
+}
