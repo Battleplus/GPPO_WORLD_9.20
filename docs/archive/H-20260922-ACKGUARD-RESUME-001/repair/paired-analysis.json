@@ -1,0 +1,14 @@
+{
+  "completed_guard_branches": 2,
+  "control_reuse_steps": 299,
+  "model_or_world_gain_claim": false,
+  "new_environment_steps": 0,
+  "parent_macro_average": null,
+  "public_prediction_claim": false,
+  "reason": "guard_contract_probe_failed_before_resume; no remaining branch executed",
+  "required_guard_branches": 24,
+  "rows": [],
+  "schema": "ack-known-task-guard-paired-analysis/1.1.0",
+  "status": "incomplete_technical_stop",
+  "utility_conclusion": "not_estimable_from_blocked_matrix"
+}

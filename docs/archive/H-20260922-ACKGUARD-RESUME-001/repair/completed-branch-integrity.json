@@ -1,0 +1,66 @@
+{
+  "checks": {
+    "budget_integrity_ok": true,
+    "completed_ids_in_manifest": true,
+    "decision_rows_total_20": true,
+    "exactly_two_completed": true,
+    "independent_saved_audit_passed": true,
+    "no_duplicate_result_ids": true,
+    "step_rows_total_20": true
+  },
+  "completed_branch_count": 2,
+  "decision_rows": 20,
+  "external_saved_audit": {
+    "checks_passed": true,
+    "path": "E:\\Z博士\\research-reviews\\ackguard-resume-review-20260922\\original-two-branch-audit.json",
+    "sha256": "f4116c164241f637b7a640073e5456c7317523e8f32cc6b6aa13eba7d17c4e98"
+  },
+  "limitations": [
+    "No new inference was run for the completed branches.",
+    "Original chosen probabilities do not permit independent reconstruction of the all-candidate argmax.",
+    "Original env_state_before_sha256 values are post-step digests, not pre-step evidence.",
+    "Original safety_violation is only the final info flag, not a per-step proof.",
+    "Original snapshot identity did not persist hidden/cache hashes; current semantic hashes are newly recorded only."
+  ],
+  "passed": true,
+  "rows": [
+    {
+      "branch_id": "parent-00|W1|seed-1101|prefix-0|repeat-0|guard-on",
+      "checks": {
+        "actual_first_feedback_available_in_step_ledger": true,
+        "actual_hidden_digest_chain": true,
+        "all_actions_legal": true,
+        "decision_sequence_identity": true,
+        "decision_step_identity": true,
+        "initial_state_matches_snapshot_identity": true,
+        "manifest_identity": true,
+        "public_digest_chain": true,
+        "step_sequence_identity": true,
+        "ten_steps": true,
+        "terminated_without_truncation": true
+      },
+      "env_state_before_field_note": "the legacy env_state_before_sha256 field is a post-step digest; it is retained only as a labeled legacy field and is not treated as pre-step evidence",
+      "passed": true
+    },
+    {
+      "branch_id": "parent-00|W1|seed-1101|prefix-0|repeat-1|guard-on",
+      "checks": {
+        "actual_first_feedback_available_in_step_ledger": true,
+        "actual_hidden_digest_chain": true,
+        "all_actions_legal": true,
+        "decision_sequence_identity": true,
+        "decision_step_identity": true,
+        "initial_state_matches_snapshot_identity": true,
+        "manifest_identity": true,
+        "public_digest_chain": true,
+        "step_sequence_identity": true,
+        "ten_steps": true,
+        "terminated_without_truncation": true
+      },
+      "env_state_before_field_note": "the legacy env_state_before_sha256 field is a post-step digest; it is retained only as a labeled legacy field and is not treated as pre-step evidence",
+      "passed": true
+    }
+  ],
+  "schema": "ack-known-task-guard-completed-branch-integrity/1.0.0",
+  "step_rows": 20
+}

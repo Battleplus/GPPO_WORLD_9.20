@@ -1,0 +1,345 @@
+{
+  "handoff_id": "H-20260922-ACKGUARD-RESUME-001",
+  "schema": "independent-ackguard-audit-v1",
+  "checks_passed": true,
+  "scope": "saved identity, legal choice, exclusion identity, hidden hash chains, exact float32 reward reconstruction, termination, consumption records; not a model re-execution",
+  "completed_branches": 2,
+  "step_rows": 20,
+  "decision_rows": 20,
+  "matrix_complete": false,
+  "original_env_state_before_field_limit": "Original field was computed after step; never used here as pre-step evidence.",
+  "probability_limit": "Original decisions save chosen probabilities only; all-candidate argmax cannot be independently reconstructed without new inference.",
+  "branch_metrics": [
+    {
+      "branch_id": "parent-00|W1|seed-1101|prefix-0|repeat-0|guard-on",
+      "parent_id": "parent-00",
+      "repeat": 0,
+      "steps": 10,
+      "G": [
+        0.9546413620857889,
+        -0.1653892912019693
+      ],
+      "U_0.8_0.2": 0.34877868659392175,
+      "command_submissions": 10,
+      "noop": 3,
+      "task_unavailable": 0,
+      "action_changes": 6
+    },
+    {
+      "branch_id": "parent-00|W1|seed-1101|prefix-0|repeat-1|guard-on",
+      "parent_id": "parent-00",
+      "repeat": 1,
+      "steps": 10,
+      "G": [
+        0.9546413620857889,
+        -0.1653892912019693
+      ],
+      "U_0.8_0.2": 0.34877868659392175,
+      "command_submissions": 10,
+      "noop": 3,
+      "task_unavailable": 0,
+      "action_changes": 6
+    }
+  ],
+  "inputs": [
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\branch-results.jsonl",
+      "sha256": "23c13e22d3cf3c01357154ed648b24e4e022381ba298d5fc52bfa60a98eecad0"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\step-vector-rewards.jsonl",
+      "sha256": "00adde88c3e56a9b9369429c82cfefaafbd9948376b59b80eb88007ee0d242fa"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\decision-ledger.jsonl",
+      "sha256": "964f22cad7f5f69dafda1906123f9cc5f0ab483baa54ce5f78c30c0daf6a2671"
+    }
+  ],
+  "sqlite_integrity": "ok",
+  "budget": {
+    "stages": [
+      {
+        "stage": "environment_steps",
+        "limit_amount": 384,
+        "reserved": 20,
+        "verified": 20,
+        "unknown": 0
+      },
+      {
+        "stage": "optimizer_calls",
+        "limit_amount": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0
+      },
+      {
+        "stage": "world_updates",
+        "limit_amount": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0
+      },
+      {
+        "stage": "offline_updates",
+        "limit_amount": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0
+      }
+    ],
+    "attempts": [
+      {
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "reserved": 20,
+        "verified": 20,
+        "unknown": 0,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      }
+    ],
+    "reservations": [
+      {
+        "reservation_id": "3afe329d2d0c4aef8b5e29037404eb10",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 1,
+        "created_at": 1790042956.700084,
+        "finished_at": 1790042956.710183,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "466e2efbf80c4621b6ced09163913531",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 3,
+        "created_at": 1790042956.7218196,
+        "finished_at": 1790042956.7325585,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "b36232cb5e1e4ddd95d00f8e1f8df515",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 5,
+        "created_at": 1790042956.7459688,
+        "finished_at": 1790042956.7563891,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "539d13f6f2b447bdb8263f497c30453c",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 7,
+        "created_at": 1790042956.7965937,
+        "finished_at": 1790042956.811762,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "29e73e1e420244448e0fc5227051fc24",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 9,
+        "created_at": 1790042956.8281465,
+        "finished_at": 1790042956.8376613,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "4d8b1092dfcd44428da03f1f4fcf0052",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 11,
+        "created_at": 1790042956.8530402,
+        "finished_at": 1790042956.862308,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "b770a3d2f7d64e59b57ffbd4844786a9",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 13,
+        "created_at": 1790042956.8813353,
+        "finished_at": 1790042956.8910184,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "bf349b93a0af4a11ab4fc310a2a40298",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 15,
+        "created_at": 1790042956.906036,
+        "finished_at": 1790042956.9177547,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "40339b3622cd4f94a46a30170ea40a38",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 17,
+        "created_at": 1790042956.9336617,
+        "finished_at": 1790042956.9439633,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "530eb6c9509b434b954d5ad0128751dc",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 19,
+        "created_at": 1790042956.9577289,
+        "finished_at": 1790042956.9676554,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "d0d0df18d4f04512a10f69d935620f32",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 21,
+        "created_at": 1790042956.99534,
+        "finished_at": 1790042957.0062208,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "e688fa779afd4db8b602019c77aff778",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 23,
+        "created_at": 1790042957.0200028,
+        "finished_at": 1790042957.028749,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "c229c5c56da4461ba67667fa88409f5f",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 25,
+        "created_at": 1790042957.043835,
+        "finished_at": 1790042957.0552027,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "5d108c1f760a4099995a58dae6cc654e",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 27,
+        "created_at": 1790042957.0724711,
+        "finished_at": 1790042957.0834432,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "cb01c7a3078c4a2bbef4dbf97dfc2ee7",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 29,
+        "created_at": 1790042957.0988147,
+        "finished_at": 1790042957.1115317,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "0075ae7d3de945fd9df71d06f848a50c",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 31,
+        "created_at": 1790042957.131514,
+        "finished_at": 1790042957.1412191,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "55cda465af4147e0988c996a05a3db31",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 33,
+        "created_at": 1790042957.1581237,
+        "finished_at": 1790042957.1675556,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "07bea55ff0dc4fa0b14764870176a8ae",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 35,
+        "created_at": 1790042957.1888635,
+        "finished_at": 1790042957.1985457,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "b107d40d555640b59ee6e375aa4ce15d",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 37,
+        "created_at": 1790042957.2132566,
+        "finished_at": 1790042957.2222655,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "reservation_id": "bacfa00ab72543b582bb222b13fb40dd",
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "amount": 1,
+        "status": "verified",
+        "reservation_index": 39,
+        "created_at": 1790042957.237527,
+        "finished_at": 1790042957.2482793,
+        "reason": null,
+        "run_id": "ack-known-task-guard-baseline-v1"
+      }
+    ]
+  },
+  "audit_env_steps": 0,
+  "audit_model_forward": 0
+}

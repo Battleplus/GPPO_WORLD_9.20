@@ -1,0 +1,10 @@
+--- a/gppo_world/ack_known_task_guard.py
++++ b/gppo_world/ack_known_task_guard.py
+@@ -130,4 +130,7 @@
+     candidates = [action for action in allocations if action not in set(excluded)]
+     if candidates:
++        # NOOP has no task identity, so the duplicate-task rule cannot exclude it.
++        if noop in legal:
++            candidates.append(noop)
+         final_action = max(candidates, key=lambda index: (finite[index], -index))
+         reason = "excluded_continuation_task" if excluded else "no_guard_match"

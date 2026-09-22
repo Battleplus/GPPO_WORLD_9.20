@@ -1,0 +1,90 @@
+{
+  "files": {
+    "budget-after.json": {
+      "bytes": 1938,
+      "sha256": "317adaabad67e73e6fb7dd8d940f90ffc25e559a5dea0ab7f9b9e050e57d0607"
+    },
+    "budget-before.json": {
+      "bytes": 1933,
+      "sha256": "c1ffea340d07df20952f6408bb75aa9b6c1df9d3f88f09982919fd05362b503e"
+    },
+    "completed-branch-integrity.json": {
+      "bytes": 2841,
+      "sha256": "4a1b1a9d3163c26ef669f9be0131b6c9120ee998f621ec3959685cea6217b31e"
+    },
+    "final-report.md": {
+      "bytes": 658,
+      "sha256": "a3dca267f3c9d1d192b5afd723ef32fba75e8457eb6457c52301cf6c61c0e97e"
+    },
+    "first-pair-interface-check-erratum.json": {
+      "bytes": 2803,
+      "sha256": "b4e5905443c87dc80024c52f14835f1cc63268fa0cb708ff8eba3541e443b3b2"
+    },
+    "first-pair-interface-check.json": {
+      "bytes": 1193,
+      "sha256": "52e5d3df0c677078f179e41efdcb48603cd175d42b97550078fe065569d9f5e4"
+    },
+    "guard-contract-probe.json": {
+      "bytes": 687,
+      "sha256": "c9ef6db26dcf3b2613812c7e1c096991fc82c155d0ae915312bbb64bde71d29d"
+    },
+    "minimal-diff.patch": {
+      "bytes": 63861,
+      "sha256": "27c8a344f5c08450c6bea0a25dbbe9c89c088ae372625e8287a32deb7a1899c1"
+    },
+    "new-branch-results.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "new-decision-ledger.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "new-progress.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "new-step-vector-rewards.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "paired-analysis.json": {
+      "bytes": 510,
+      "sha256": "34565b49b3cc4c4856b3e21cb150f32ee7a8b5aca271ca028ac11d89a5b7cde0"
+    },
+    "readonly-verification.json": {
+      "bytes": 1768,
+      "sha256": "9ca09b07259838ae7a5ca1805e67f114311eb99798ee2a4d48bb8ee134f05e51"
+    },
+    "repair-report.md": {
+      "bytes": 1377,
+      "sha256": "bbcf7976872f3d9c899b0b84dbe744c8ae7ff6421eaf2eff433011aa4b12d052"
+    },
+    "resume-manifest.json": {
+      "bytes": 5071,
+      "sha256": "fdd1a891c13ec2544a528f7e58225144479ded0bbc29666c62315fd4542c64c3"
+    },
+    "resume-status.json": {
+      "bytes": 237,
+      "sha256": "19d8921f2114fbc20a767e26100d3a3f1b6e9a12fa02b9b203022bd63f69b62f"
+    },
+    "review-erratum.md": {
+      "bytes": 936,
+      "sha256": "9ef1eb438f2ff669d3863466600cfeca11d7ccbb4147ecb1f289538506003733"
+    },
+    "snapshot-identity.json": {
+      "bytes": 8805,
+      "sha256": "c60b6687a0a3dbc774c4cecc05e9506a5cd701b815869d0a2fc830f59789f42e"
+    },
+    "source-identity.json": {
+      "bytes": 15200,
+      "sha256": "d0b2093eb7c132fc79c79294e21420f24872925e938b6f25a90b2f1a6a4defb1"
+    },
+    "test-output.txt": {
+      "bytes": 101,
+      "sha256": "9bfa505614f0118ef91adeeb6652b58ffcd759b4b22ee0b5a84ce398d9665868"
+    }
+  },
+  "schema": "ack-known-task-guard-hashes/1.0.0",
+  "scope": "all output files present when written; hashes are non-recursive"
+}

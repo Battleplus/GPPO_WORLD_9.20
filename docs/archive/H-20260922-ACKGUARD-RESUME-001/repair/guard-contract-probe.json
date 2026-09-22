@@ -1,0 +1,25 @@
+{
+  "blocked_reason": "existing guard selects an allocation when NOOP is the original action and no continuation exists",
+  "contract": "with no continuation, retain the original legal NOOP when it is the original action",
+  "contract_compatible": false,
+  "env_step_calls": 0,
+  "input": {
+    "continuation_actions": [],
+    "legal_actions": [
+      0,
+      24
+    ],
+    "original_probabilities": {
+      "0": 0.1,
+      "24": 0.9
+    }
+  },
+  "model_forward_calls": 0,
+  "observed": {
+    "final_action": 0,
+    "original_action": 24,
+    "reason": "no_guard_match",
+    "triggered": true
+  },
+  "schema": "ack-known-task-guard-noop-contract-probe/1.0.0"
+}

@@ -1,0 +1,54 @@
+{
+  "code_sha256": "da768e30403c68041c01db1d32f9dd248c03c8f82d200f241506bf629b41c71b",
+  "corrected_gate": {
+    "checks": {
+      "actual_hidden_present": true,
+      "base_snapshot_unchanged": null,
+      "budget_verified_no_unknown": true,
+      "first_actual_legal": true,
+      "historical_control_present": true,
+      "initial_public_present": true,
+      "labels_complete": true,
+      "pair_present": true
+    },
+    "checks_known_passed": true,
+    "gate_status": "insufficient_evidence",
+    "historical_base_snapshot_check_status": "not_recorded",
+    "historical_base_snapshot_check_verifiable": false,
+    "passed": false,
+    "reason": "base snapshot mutation proof was not recorded by the historical process; unknown evidence cannot be accepted as a passed gate",
+    "schema": "ack-known-task-guard-first-pair-interface-check/1.1.0"
+  },
+  "execution_counts": {
+    "attempt_created": false,
+    "env_step_calls": 0,
+    "model_forward_calls": 0
+  },
+  "existing_resume_artifacts_preserved": true,
+  "guard_sha256": "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b",
+  "minimal_diff": {
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-resume-20260922\\minimal-diff.patch",
+    "sha256": "27c8a344f5c08450c6bea0a25dbbe9c89c088ae372625e8287a32deb7a1899c1"
+  },
+  "preserved_prior_output": true,
+  "prior_output": {
+    "issue": "prior output encoded checks.base_snapshot_unchanged=true and passed=true while historical_base_snapshot_check_verifiable=false",
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-resume-20260922\\first-pair-interface-check.json",
+    "sha256": "52e5d3df0c677078f179e41efdcb48603cd175d42b97550078fe065569d9f5e4",
+    "status": "not_accepted_by_primary_review"
+  },
+  "resume_prepare_rerun": false,
+  "schema": "ack-known-task-guard-first-pair-interface-erratum/1.0.0",
+  "sqlite_sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+  "status": "primary_review_rejected_prior_output",
+  "test_file": {
+    "new_unknown_evidence_case": true,
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tests\\test_ack_known_task_guard_resume_v1.py",
+    "sha256": "c0bbb1932f7688cc9b9e3f76cadbd50022e9903d9670da51cafb7c5f6cbea81b"
+  },
+  "test_output": {
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-resume-20260922\\test-output.txt",
+    "sha256": "9bfa505614f0118ef91adeeb6652b58ffcd759b4b22ee0b5a84ce398d9665868",
+    "summary": "27 passed"
+  }
+}

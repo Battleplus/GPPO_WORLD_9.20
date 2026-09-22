@@ -1,0 +1,34 @@
+{
+  "budget_run_totals": {
+    "pending": 0,
+    "reserved": 20,
+    "stage": "environment_steps",
+    "unknown": 0,
+    "verified": 20
+  },
+  "checks": {
+    "actual_hidden_present": true,
+    "base_snapshot_unchanged": true,
+    "budget_verified_no_unknown": true,
+    "first_actual_legal": true,
+    "historical_control_present": true,
+    "initial_public_present": true,
+    "labels_complete": true,
+    "pair_present": true
+  },
+  "dynamic_guard_branches_completed": 2,
+  "dynamic_guard_steps_completed": 20,
+  "gate_semantics": "one dynamic guard branch plus one reused historical R control; cumulative dynamic budget checked separately",
+  "historical_base_snapshot_check_status": "not_recorded",
+  "historical_base_snapshot_check_verifiable": false,
+  "pair": {
+    "guard_branch_id": "parent-00|W1|seed-1101|prefix-0|repeat-0|guard-on",
+    "guard_env_steps": 10,
+    "guard_first_action": 18,
+    "guard_first_feedback": "accepted",
+    "historical_control_branch_key": "parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R",
+    "historical_control_steps": 13
+  },
+  "passed": true,
+  "schema": "ack-known-task-guard-first-pair-interface-check/1.1.0"
+}

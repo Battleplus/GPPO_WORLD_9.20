@@ -6,7 +6,7 @@
 - 当前唯一任务：ACK 已知任务基线 runner 修复、原预算有条件续行及证据闭环。
 - handoff_id：`H-20260922-ACKGUARD-RESUME-001`。
 - 规划与审查：主对话当前模型（GPT-6 系列）；执行：自定义 `luna_worker`，`gpt-5.6-luna`，reasoning effort `max`。
-- 状态：**BLOCKED / NEEDS_USER_DECISION**。执行者已获准做 runner 最小修复和零环境步回归；主审发现冻结 guard 的 NOOP 处理违背“只排除重复任务”合同，已明确暂停新增环境及模型执行。最终消费须在执行者交付后复核。
+- 状态：**CLOSED（本单技术阻断交付与审查） / NEEDS_USER_DECISION（下一阶段）**。runner 修复及集中审查已完成，27项测试通过；矩阵仍为2/24，未续行。
 - 授权来源：用户当前活动目标明确授权原合同内修复、核验后续行，并授权本独立进度分支的选择性文档归档。默认同意仅限既有明确范围。
 
 ## 资源边界
@@ -41,3 +41,16 @@
 完成 runner 修复、零环境步测试、独立证据审查和技术阻断报告。剩余22条不执行。是否允许修改guard以保留合法NOOP，属于超出本单“guard不变”的合同决定，须用户另行明确授权。不得通过临时跳过该反例或事后重定义规则续行。
 
 执行者不做 Git 操作。主代理仅在 `archive/research-progress` 归档文档、报告、最小修复 diff、索引和哈希；不修改 main、不 force push、不创建 Release、不上传权重或原始大制品。下一研究阶段需另立执行单。
+
+## 最终集中审查（2026-09-22）
+
+- 执行及审查完成：原制品21项、新证据21项哈希匹配；主代理独立回归27 passed。
+- 原账本保持384上限、reserved=verified=20、unknown=pending=0、integrity=ok；本单新增环境步、模型前向、全部更新和attempt均为0。历史R对照24条/299步未重跑。
+- 阻断一：guard在存在分配候选时排除合法NOOP，超出仅排除已知占用任务的干预合同。guard未修改，修复建议未应用。
+- 阻断二：原运行基础快照结束后hidden/cache摘要未记录，不能补成无污染证明。旧接口检查曾错误报告通过，已保留并更正为null / insufficient_evidence / passed=false。
+- runner增加核验与防重跑保护；动态resume_run禁用，未实现可运行续行循环。剩余22条不执行，无完整矩阵或效用结论。
+- [主代理最终审查](archive/H-20260922-ACKGUARD-RESUME-001/repair/final-review.md)、[执行报告](archive/H-20260922-ACKGUARD-RESUME-001/repair/final-report.md)、[权威接口勘误](archive/H-20260922-ACKGUARD-RESUME-001/repair/first-pair-interface-check-erratum.json)、[勘误说明](archive/H-20260922-ACKGUARD-RESUME-001/repair/review-erratum.md)。
+- [修复差异](archive/H-20260922-ACKGUARD-RESUME-001/repair/minimal-diff.patch)、[测试输出](archive/H-20260922-ACKGUARD-RESUME-001/repair/test-output.txt)、[归档文件索引](archive/H-20260922-ACKGUARD-RESUME-001/repair/archive-file-index.json)。
+- 前次技术停止提交：[40d9dff1bf95d9ced5d95eaedd90a3fae833466f](https://github.com/Battleplus/GPPO_WORLD_9.20/commit/40d9dff1bf95d9ced5d95eaedd90a3fae833466f)，4个文件远端核验及GitHub签名验证通过。最终归档提交在上传后独立记录于本地final-remote-verification.json。
+- 后续需另立执行单批准guard变更，并明确旧分支复用证据边界；不自动启动环境、新预算或训练。
+- 协作方式：子代理运行期间主代理等待完成，之后批量审查，不轮询实验文件、进程和预算。

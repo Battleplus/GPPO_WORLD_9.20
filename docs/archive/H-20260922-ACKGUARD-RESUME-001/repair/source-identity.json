@@ -1,0 +1,293 @@
+{
+  "archived_execution_runner_matches_manifest": false,
+  "archived_execution_runner_present": true,
+  "archived_execution_runner_sha256": "ef7698fe8cbfa1fab1ff518459ba6cdbab14e3d44b4ae2371ead374df474d368",
+  "checkpoint": {
+    "actual_sha256": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a",
+    "expected_sha256": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a",
+    "matches": true,
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\training\\seed-1101\\P_train\\last-recovery.pt"
+  },
+  "current_guard_sha256": "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b",
+  "current_runner_sha256": "aa953bd0090c050901ef8925561e03495bbf53f165902ddb7c5d0388d8346ed7",
+  "files": [
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_environment.py",
+          "sha256": "083b4ad3e47d8a44a18e7a25f429bb7c4bba4a6899249404c0842dfdc0f71132",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "083b4ad3e47d8a44a18e7a25f429bb7c4bba4a6899249404c0842dfdc0f71132",
+      "matched": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_environment.py"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_communication.py",
+          "sha256": "fcaada4fea48446aae509fb97f4b6b8275d5b6b9dda3bcdef00c5c392e6011ce",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "fcaada4fea48446aae509fb97f4b6b8275d5b6b9dda3bcdef00c5c392e6011ce",
+      "matched": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_communication.py"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_gppo.py",
+          "sha256": "3c799cfe12050971e1b11da6b2c04fa6a7c244a36935578861c5db533396f55e",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "3c799cfe12050971e1b11da6b2c04fa6a7c244a36935578861c5db533396f55e",
+      "matched": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_gppo.py"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_training.py",
+          "sha256": "808b1de65e676ad45480843c152874248be1fe91c1ce56e1a015fddf81bfd4d1",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "808b1de65e676ad45480843c152874248be1fe91c1ce56e1a015fddf81bfd4d1",
+      "matched": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_training.py"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_policy_view.py",
+          "sha256": "f5877b6582a02a5bb6c9c39b469dd222e9f5727390fd8080c01e160cd7b23317",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "f5877b6582a02a5bb6c9c39b469dd222e9f5727390fd8080c01e160cd7b23317",
+      "matched": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_policy_view.py"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_decision_bridge.py",
+          "sha256": "dd066a4e1be16607e5005e66eed5b90b1b97b485e57d7c7236b46eb171f8b1fd",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "dd066a4e1be16607e5005e66eed5b90b1b97b485e57d7c7236b46eb171f8b1fd",
+      "matched": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_decision_bridge.py"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\budget_executor.py",
+          "sha256": "5a2a7536a0ebb0078638a1fd45491a5d13cd9a719c9f012f158b74f5050fd29b",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "5a2a7536a0ebb0078638a1fd45491a5d13cd9a719c9f012f158b74f5050fd29b",
+      "matched": true,
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\budget_executor.py"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_replan_value_experiment.py",
+          "sha256": "a9ccf1711790c472ededd7666c54c28ca34abffc4a0095d35b300f1297afa965",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "a9ccf1711790c472ededd7666c54c28ca34abffc4a0095d35b300f1297afa965",
+      "matched": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_replan_value_experiment.py"
+    },
+    {
+      "candidates": [
+        {
+          "matches": false,
+          "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_baseline_v1.py",
+          "sha256": "aa953bd0090c050901ef8925561e03495bbf53f165902ddb7c5d0388d8346ed7",
+          "source": "current"
+        },
+        {
+          "matches": false,
+          "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\failure-archive-20260922\\runner-original.py",
+          "sha256": "ef7698fe8cbfa1fab1ff518459ba6cdbab14e3d44b4ae2371ead374df474d368",
+          "source": "archived_original"
+        }
+      ],
+      "expected_sha256": "f9e379608f37006c5bba2d643795db9277f46d89f5fa68a94063a4d2a0905a04",
+      "matched": false,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_baseline_v1.py"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py",
+          "sha256": "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b",
+          "source": "current"
+        },
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\failure-archive-20260922\\ack_known_task_guard-original.py",
+          "sha256": "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b",
+          "source": "archived_original"
+        }
+      ],
+      "expected_sha256": "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b",
+      "matched": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\migration-artifacts\\preference-weighted-wm-event-cpu-20260917\\final\\run\\training\\seed-1101\\WD\\resolved-config.json",
+          "sha256": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27",
+      "matched": true,
+      "path": "E:\\Z博士\\migration-artifacts\\preference-weighted-wm-event-cpu-20260917\\final\\run\\training\\seed-1101\\WD\\resolved-config.json"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\allocation-branch-preflight-v2\\frozen-selection.json",
+          "sha256": "c7e01b6f7d6fc0f45e67b705ff6cd64f591b62dad862d9e5d642abf6cfccd1f5",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "c7e01b6f7d6fc0f45e67b705ff6cd64f591b62dad862d9e5d642abf6cfccd1f5",
+      "matched": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\allocation-branch-preflight-v2\\frozen-selection.json"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\allocation-branch-preflight-v2\\repeat-key-manifest.json",
+          "sha256": "202cde943a450dea4d9461680e8e92b184e7027750413a69a7db210eaee86afb",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "202cde943a450dea4d9461680e8e92b184e7027750413a69a7db210eaee86afb",
+      "matched": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\allocation-branch-preflight-v2\\repeat-key-manifest.json"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\allocation-branch-preflight-v2\\snapshot-interface-check.json",
+          "sha256": "1423980133c1e094ba507cc7240b6e0758f5ae7c5ee154f33afc922154abe0cd",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "1423980133c1e094ba507cc7240b6e0758f5ae7c5ee154f33afc922154abe0cd",
+      "matched": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\allocation-branch-preflight-v2\\snapshot-interface-check.json"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\preference-vector-label-train-v1\\protocol.json",
+          "sha256": "2f795feff4808a9026d28301512f9a69e419cd764588bbf7836c7fe224483b32",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "2f795feff4808a9026d28301512f9a69e419cd764588bbf7836c7fe224483b32",
+      "matched": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\preference-vector-label-train-v1\\protocol.json"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\preference-vector-label-train-v1\\branch-manifest.json",
+          "sha256": "d0bacd6862933fc90d93396a0bedd5fa4a62a6e144dae142d5272fe0190df7ea",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "d0bacd6862933fc90d93396a0bedd5fa4a62a6e144dae142d5272fe0190df7ea",
+      "matched": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\preference-vector-label-train-v1\\branch-manifest.json"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\preference-vector-label-train-v1\\historical-reproduction.json",
+          "sha256": "96003a607bc24eb6be69d94ddc0f7fc1606f86578adf6d39273ab6946e8c1754",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "96003a607bc24eb6be69d94ddc0f7fc1606f86578adf6d39273ab6946e8c1754",
+      "matched": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\preference-vector-label-train-v1\\historical-reproduction.json"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\preference-vector-label-train-v1\\source-checkpoint-manifest.json",
+          "sha256": "3fd48720dc986f1e5cdeb9bdb6874c293a2c8157299073d695cb1d7b7e484702",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "3fd48720dc986f1e5cdeb9bdb6874c293a2c8157299073d695cb1d7b7e484702",
+      "matched": true,
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\preference-vector-label-train-v1\\source-checkpoint-manifest.json"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\migration-artifacts\\replan-value-feature-collection-20260919-v1\\prefix-snapshots.pkl",
+          "sha256": "c6826f941141d1ae7594c38a3e3465584ae0954158502f19d2f4d8163a18258e",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "c6826f941141d1ae7594c38a3e3465584ae0954158502f19d2f4d8163a18258e",
+      "matched": true,
+      "path": "E:\\Z博士\\migration-artifacts\\replan-value-feature-collection-20260919-v1\\prefix-snapshots.pkl"
+    },
+    {
+      "candidates": [
+        {
+          "matches": true,
+          "path": "E:\\Z博士\\migration-artifacts\\replan-value-feature-collection-20260919-v1\\branch-results.jsonl",
+          "sha256": "0c617777e298e3ea15a6b9801c0849d5bb55e7fa8df199ac5fff3f0917041c0d",
+          "source": "current"
+        }
+      ],
+      "expected_sha256": "0c617777e298e3ea15a6b9801c0849d5bb55e7fa8df199ac5fff3f0917041c0d",
+      "matched": true,
+      "path": "E:\\Z博士\\migration-artifacts\\replan-value-feature-collection-20260919-v1\\branch-results.jsonl"
+    }
+  ],
+  "guard_hash_unchanged": true,
+  "passed": true,
+  "runner_manifest_discrepancy_note": "prepare source manifest records a different runner hash than the archived runner actually used by the failed execution; this is retained as an explicit mismatch",
+  "runner_manifest_expected_sha256": "f9e379608f37006c5bba2d643795db9277f46d89f5fa68a94063a4d2a0905a04",
+  "runner_manifest_matches_current": false,
+  "schema": "ack-known-task-guard-resume-source-check/1.0.0"
+}

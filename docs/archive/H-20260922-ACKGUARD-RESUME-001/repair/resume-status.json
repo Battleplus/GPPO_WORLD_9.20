@@ -1,0 +1,7 @@
+{
+  "attempt_created": false,
+  "env_step_calls": 0,
+  "model_forward_calls": 0,
+  "reason": "existing guard selects an allocation when NOOP is the original action and no continuation exists",
+  "status": "blocked_not_executed"
+}

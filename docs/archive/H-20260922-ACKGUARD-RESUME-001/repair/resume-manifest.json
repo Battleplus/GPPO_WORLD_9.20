@@ -1,0 +1,139 @@
+{
+  "attempt_created": false,
+  "attempt_id": "ack-known-task-guard-resume-20260922",
+  "blocked_reason": "existing guard selects an allocation when NOOP is the original action and no continuation exists",
+  "budget_state": {
+    "attempts": [
+      {
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "reserved": 20,
+        "run_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "unknown": 0,
+        "verified": 20
+      }
+    ],
+    "history_count": 40,
+    "integrity_check": "ok",
+    "metadata": {
+      "json_schema": "persistent-budget/2.0.0",
+      "run_limits": "{\"environment_steps\": 384, \"offline_updates\": 0, \"optimizer_calls\": 0, \"world_updates\": 0}",
+      "schema": "persistent-budget-sqlite/1.0.0"
+    },
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+    "read_only": true,
+    "reservations_by_status": [
+      {
+        "amount": 20,
+        "count": 20,
+        "status": "verified"
+      }
+    ],
+    "run_attempts": [
+      {
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "reserved": 20,
+        "run_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "unknown": 0,
+        "verified": 20
+      }
+    ],
+    "run_totals": [
+      {
+        "pending": 0,
+        "reserved": 20,
+        "stage": "environment_steps",
+        "unknown": 0,
+        "verified": 20
+      }
+    ],
+    "stages": [
+      {
+        "limit_amount": 384,
+        "reserved": 20,
+        "stage": "environment_steps",
+        "unknown": 0,
+        "verified": 20
+      },
+      {
+        "limit_amount": 0,
+        "reserved": 0,
+        "stage": "offline_updates",
+        "unknown": 0,
+        "verified": 0
+      },
+      {
+        "limit_amount": 0,
+        "reserved": 0,
+        "stage": "optimizer_calls",
+        "unknown": 0,
+        "verified": 0
+      },
+      {
+        "limit_amount": 0,
+        "reserved": 0,
+        "stage": "world_updates",
+        "unknown": 0,
+        "verified": 0
+      }
+    ]
+  },
+  "completed_branch_count": 2,
+  "completed_branch_ids": [
+    "parent-00|W1|seed-1101|prefix-0|repeat-0|guard-on",
+    "parent-00|W1|seed-1101|prefix-0|repeat-1|guard-on"
+  ],
+  "completed_environment_steps": 20,
+  "completed_integrity_passed": true,
+  "first_pair_gate_passed": true,
+  "global_environment_step_limit": 384,
+  "guard_contract_compatible": false,
+  "guard_hash_unchanged": true,
+  "handoff_id": "H-20260922-ACKGUARD-RESUME-001",
+  "historical_control_reuse_steps": 299,
+  "model_forward_calls": 0,
+  "new_environment_step_cap": 352,
+  "new_environment_steps": 0,
+  "offline_updates": 0,
+  "old_branches_rerun": false,
+  "old_outputs_read_only": true,
+  "old_steps_refunded": false,
+  "optimizer_updates": 0,
+  "per_branch_step_limit": 16,
+  "remaining_branch_count": 22,
+  "remaining_branch_ids": [
+    "parent-00|W1|seed-1101|prefix-0|repeat-2|guard-on",
+    "parent-01|W1|seed-1101|prefix-0|repeat-0|guard-on",
+    "parent-01|W1|seed-1101|prefix-0|repeat-1|guard-on",
+    "parent-01|W1|seed-1101|prefix-0|repeat-2|guard-on",
+    "parent-02|W1|seed-1101|prefix-0|repeat-0|guard-on",
+    "parent-02|W1|seed-1101|prefix-0|repeat-1|guard-on",
+    "parent-02|W1|seed-1101|prefix-0|repeat-2|guard-on",
+    "parent-03|W1|seed-1101|prefix-0|repeat-0|guard-on",
+    "parent-03|W1|seed-1101|prefix-0|repeat-1|guard-on",
+    "parent-03|W1|seed-1101|prefix-0|repeat-2|guard-on",
+    "parent-04|W1|seed-1101|prefix-0|repeat-0|guard-on",
+    "parent-04|W1|seed-1101|prefix-0|repeat-1|guard-on",
+    "parent-04|W1|seed-1101|prefix-0|repeat-2|guard-on",
+    "parent-05|W1|seed-1101|prefix-0|repeat-0|guard-on",
+    "parent-05|W1|seed-1101|prefix-0|repeat-1|guard-on",
+    "parent-05|W1|seed-1101|prefix-0|repeat-2|guard-on",
+    "parent-06|W1|seed-1101|prefix-0|repeat-0|guard-on",
+    "parent-06|W1|seed-1101|prefix-0|repeat-1|guard-on",
+    "parent-06|W1|seed-1101|prefix-0|repeat-2|guard-on",
+    "parent-07|W1|seed-1101|prefix-0|repeat-0|guard-on",
+    "parent-07|W1|seed-1101|prefix-0|repeat-1|guard-on",
+    "parent-07|W1|seed-1101|prefix-0|repeat-2|guard-on"
+  ],
+  "resume_output": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-resume-20260922",
+  "run_id": "ack-known-task-guard-baseline-v1",
+  "schema": "ack-known-task-guard-resume-manifest/1.0.0",
+  "snapshot_check_passed": true,
+  "snapshot_historical_hidden_cache_directly_saved": false,
+  "snapshot_historical_hidden_cache_status": "not_recorded",
+  "source_check_passed": true,
+  "source_output": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1",
+  "status": "blocked_not_executed",
+  "world_updates": 0
+}

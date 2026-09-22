@@ -1,0 +1,185 @@
+{
+  "historical_hidden_cache_directly_saved": false,
+  "historical_hidden_cache_note": "the original snapshot identity saved only hidden_present; current semantic hidden/cache hashes are newly recorded and do not prove the prior process did not mutate its in-memory snapshot",
+  "historical_hidden_cache_status": "not_recorded",
+  "passed": true,
+  "rows": [
+    {
+      "action_count": 25,
+      "checks": {
+        "env_state_matches_saved_identity": true,
+        "hidden_present": true,
+        "prefix_present": true,
+        "public_observation_matches_saved_identity": true,
+        "runtime_contract": true
+      },
+      "env_state_sha256": "86b9f667db0fa4ae762c726344bcfb097c8c61edb850667b38f027f82ae8896e",
+      "hidden_present": true,
+      "historical_hidden_cache_directly_saved": false,
+      "historical_hidden_cache_status": "not_recorded",
+      "passed": true,
+      "policy_hidden_sha256": "746ac6741457eb5e28929833ddea26420620b0fab36a30bc302e936ad0a6ef9f",
+      "prefix_id": "parent-00|W1|seed-1101|prefix-0",
+      "public_observation_sha256": "942a43203c4f1b9c958068f8b3be21e1602a3c2694aa008235ed299125e72c5a",
+      "semantic_sha256": "01d7ec625a0524b97bd04666224112ec542b17b90828ee461a1fa00d96de80e6",
+      "snapshot_time": 2.0,
+      "step_index": 2,
+      "world_hidden_sha256": "c48008ba4ee3b18456996dd772f515e57167eba1942d80c0b750a9ba8353e314"
+    },
+    {
+      "action_count": 25,
+      "checks": {
+        "env_state_matches_saved_identity": true,
+        "hidden_present": true,
+        "prefix_present": true,
+        "public_observation_matches_saved_identity": true,
+        "runtime_contract": true
+      },
+      "env_state_sha256": "ab845dd55ecc4a48739cde97a947c8f1098c3185ae94e3684921ae6d5bd96098",
+      "hidden_present": true,
+      "historical_hidden_cache_directly_saved": false,
+      "historical_hidden_cache_status": "not_recorded",
+      "passed": true,
+      "policy_hidden_sha256": "c5257efee868cabdd68797edc3c3794f6cacb78013253ee045ccd099d89b6888",
+      "prefix_id": "parent-01|W1|seed-1101|prefix-0",
+      "public_observation_sha256": "af2bb86aa37e73d53f9a6bc45c2e4c969caeb2d94cb38a0e8dcca8db7fad4b15",
+      "semantic_sha256": "ac9f896694bb59d06ffd26c8861507d05b76df01dabe88ad8415e7f268bf9986",
+      "snapshot_time": 2.0,
+      "step_index": 2,
+      "world_hidden_sha256": "da5c2470607037094d334e7841f9581a315cbf4cde249a23523090f47474023e"
+    },
+    {
+      "action_count": 25,
+      "checks": {
+        "env_state_matches_saved_identity": true,
+        "hidden_present": true,
+        "prefix_present": true,
+        "public_observation_matches_saved_identity": true,
+        "runtime_contract": true
+      },
+      "env_state_sha256": "fec899088bf069750065dbeca9ae98f17d2c6698c164b607a698085501165e3e",
+      "hidden_present": true,
+      "historical_hidden_cache_directly_saved": false,
+      "historical_hidden_cache_status": "not_recorded",
+      "passed": true,
+      "policy_hidden_sha256": "300ef66597fd1e6d450402a228ad1bb6587610c721b9365b185c8f451003af9b",
+      "prefix_id": "parent-02|W1|seed-1101|prefix-0",
+      "public_observation_sha256": "bdfa71d4c237bced6a3f444d8d2cbcae9b620d49444c1f1ebd9a626b64c4a7f1",
+      "semantic_sha256": "2c0fb81c3daf2f5e856139acec3d0727cf5f3f07e4fd4a269a3abbeb996a52ef",
+      "snapshot_time": 2.0,
+      "step_index": 2,
+      "world_hidden_sha256": "8c5dd329cd37dfee814f1a2b7405583ff4754fd733638205e581e6fc29737331"
+    },
+    {
+      "action_count": 25,
+      "checks": {
+        "env_state_matches_saved_identity": true,
+        "hidden_present": true,
+        "prefix_present": true,
+        "public_observation_matches_saved_identity": true,
+        "runtime_contract": true
+      },
+      "env_state_sha256": "86b9f667db0fa4ae762c726344bcfb097c8c61edb850667b38f027f82ae8896e",
+      "hidden_present": true,
+      "historical_hidden_cache_directly_saved": false,
+      "historical_hidden_cache_status": "not_recorded",
+      "passed": true,
+      "policy_hidden_sha256": "8f333197ffe1ea49539d0b5639a406f49cc9f6878b0679f9e5a1bc3d6bc78d48",
+      "prefix_id": "parent-03|W1|seed-1101|prefix-0",
+      "public_observation_sha256": "791897e9873f35e841cbc9ecf80772c1277a74efbd5ef18959e0fa3d081d168b",
+      "semantic_sha256": "9d6a7a99503a5de592c773c85d94bb8c6fb1be970166b8b43020102359328ed9",
+      "snapshot_time": 2.0,
+      "step_index": 2,
+      "world_hidden_sha256": "5c6172166bc1a6667d1ae92ed93d37f86ee267e4ad575086f338d795f393e8f4"
+    },
+    {
+      "action_count": 25,
+      "checks": {
+        "env_state_matches_saved_identity": true,
+        "hidden_present": true,
+        "prefix_present": true,
+        "public_observation_matches_saved_identity": true,
+        "runtime_contract": true
+      },
+      "env_state_sha256": "ad3875fd27bedd2a20408ee69dff04168abd160debb28aae0b588e6991b0c5c2",
+      "hidden_present": true,
+      "historical_hidden_cache_directly_saved": false,
+      "historical_hidden_cache_status": "not_recorded",
+      "passed": true,
+      "policy_hidden_sha256": "e396b4b529fe9bb388b31c1b184f26a045d390c077af6c99bf8ffff5f9690964",
+      "prefix_id": "parent-04|W1|seed-1101|prefix-0",
+      "public_observation_sha256": "93b97ca2b75b164c64bf2b3315a7be6751f20dc5d0e0d6e277cd161432bcd59e",
+      "semantic_sha256": "50915145178648783a9a09db67d973f9081fc4bb2c988d292ebbcf1476bef5b4",
+      "snapshot_time": 2.0,
+      "step_index": 2,
+      "world_hidden_sha256": "f1d676e733b18b32750db911d77edc3ac3cd8b14d32adf9198b6d73f3b53d9f4"
+    },
+    {
+      "action_count": 25,
+      "checks": {
+        "env_state_matches_saved_identity": true,
+        "hidden_present": true,
+        "prefix_present": true,
+        "public_observation_matches_saved_identity": true,
+        "runtime_contract": true
+      },
+      "env_state_sha256": "138b01ad7a3f923044ba1211c8b67f4f0732db7a7631d8404f463ae4d6430fe4",
+      "hidden_present": true,
+      "historical_hidden_cache_directly_saved": false,
+      "historical_hidden_cache_status": "not_recorded",
+      "passed": true,
+      "policy_hidden_sha256": "f6f38d47a4b7de31969e99904467ac8977fc8d34f95aa9f28962511381833f2d",
+      "prefix_id": "parent-05|W1|seed-1101|prefix-0",
+      "public_observation_sha256": "43d529844d12788fbe330734986968d555f9943ef2fcd73a77d61b12ca820fac",
+      "semantic_sha256": "20d1baadc284a644fe3cd92a5e0d6b856d0b59047b915a49a7866f829309721c",
+      "snapshot_time": 2.0,
+      "step_index": 2,
+      "world_hidden_sha256": "d1302524ad9337c80c3c7205a38a45cbca272657629987e04126d5c8c90fefab"
+    },
+    {
+      "action_count": 25,
+      "checks": {
+        "env_state_matches_saved_identity": true,
+        "hidden_present": true,
+        "prefix_present": true,
+        "public_observation_matches_saved_identity": true,
+        "runtime_contract": true
+      },
+      "env_state_sha256": "ab845dd55ecc4a48739cde97a947c8f1098c3185ae94e3684921ae6d5bd96098",
+      "hidden_present": true,
+      "historical_hidden_cache_directly_saved": false,
+      "historical_hidden_cache_status": "not_recorded",
+      "passed": true,
+      "policy_hidden_sha256": "dda09fb3cb7848dc6277be1f9c388fb17c903870e2d454582ed02fcf2bf32a4d",
+      "prefix_id": "parent-06|W1|seed-1101|prefix-0",
+      "public_observation_sha256": "bb70faba1d31a3d53cbd4932915c23a1ac71800b9567c6a92fa7625f7cedaa17",
+      "semantic_sha256": "bf92657d07352b7c5b9d756cb38779d4a36dd837f64905aeba2cc2e8fe420814",
+      "snapshot_time": 2.0,
+      "step_index": 2,
+      "world_hidden_sha256": "22466f49308117b0fdda66b2ca72bcbefc0e99d5c5a4788f438262d2e064b163"
+    },
+    {
+      "action_count": 25,
+      "checks": {
+        "env_state_matches_saved_identity": true,
+        "hidden_present": true,
+        "prefix_present": true,
+        "public_observation_matches_saved_identity": true,
+        "runtime_contract": true
+      },
+      "env_state_sha256": "138b01ad7a3f923044ba1211c8b67f4f0732db7a7631d8404f463ae4d6430fe4",
+      "hidden_present": true,
+      "historical_hidden_cache_directly_saved": false,
+      "historical_hidden_cache_status": "not_recorded",
+      "passed": true,
+      "policy_hidden_sha256": "6cd2d9b4c6f8645778030f38fdc0f0891e5afca975e0e7c2cce0e70b0ece03a1",
+      "prefix_id": "parent-07|W1|seed-1101|prefix-0",
+      "public_observation_sha256": "2e8a0cab552212f158fc02b383a8974b18cb89d4c6a6a640645a6a144bf0e40d",
+      "semantic_sha256": "3743b7fe35ca56638df24191e1f27a672780d19c0149a15c2a4f99d605ecbd38",
+      "snapshot_time": 2.0,
+      "step_index": 2,
+      "world_hidden_sha256": "2053709c90f504fe9cb6b80b4245bc09e4859be113a75e21751aebc9c7caec85"
+    }
+  ],
+  "schema": "ack-known-task-guard-resume-snapshot-check/1.0.0"
+}

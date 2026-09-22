@@ -1,0 +1,988 @@
+--- E:\Z博士\9.2日\WORLD-GPPO_9.11-replan-value-20260919-wt\runs\finite-communication-ack-lease-fix-20260920\ack-known-task-guard-baseline-v1\failure-archive-20260922\runner-original.py
++++ E:\Z博士\9.2日\WORLD-GPPO_9.11-replan-value-20260919-wt\tools\run_ack_known_task_guard_baseline_v1.py
+@@ -9,11 +9,13 @@
+ 
+ import argparse
+ import copy
++import difflib
+ import hashlib
+ import importlib.util
+ import json
+ import os
+ import pickle
++import sqlite3
+ import sys
+ import time
+ from pathlib import Path
+@@ -29,9 +31,11 @@
+ PREF_TRAIN = BASE / "preference-vector-label-train-v1"
+ PREFLIGHT = BASE / "allocation-branch-preflight-v2"
+ OUT = BASE / "ack-known-task-guard-baseline-v1"
++RESUME_OUT = BASE / "ack-known-task-guard-resume-20260922"
+ CHECKPOINT = Path(r"E:\Z博士\migration-artifacts\event-trigger-aware-gppo-fair-replication-20260919-v1\training\seed-1101\P_train\last-recovery.pt")
+ CONFIG = Path(r"E:\Z博士\migration-artifacts\preference-weighted-wm-event-cpu-20260917\final\run\training\seed-1101\WD\resolved-config.json")
+ RUN_ID = "ack-known-task-guard-baseline-v1"
++RESUME_ATTEMPT_ID = "ack-known-task-guard-resume-20260922"
+ PREFERENCES = ((0.2, 0.8), (0.5, 0.5), (0.8, 0.2))
+ BEHAVIOR_PREFERENCE = (0.8, 0.2)
+ GAMMA = 0.99
+@@ -138,6 +142,87 @@
+         return None
+     tensor = value.detach().cpu().contiguous()
+     return hashlib.sha256(tensor.numpy().tobytes()).hexdigest()
++
++
++def semantic_state(value: Any, active: set[int] | None = None) -> Any:
++    """Canonicalize saved hidden/cache state without serializing unstable objects."""
++    active = set() if active is None else active
++    if value is None or isinstance(value, (str, int, float, bool)):
++        return value
++    if isinstance(value, bytes):
++        return {"type": "bytes", "sha256": hashlib.sha256(value).hexdigest(), "bytes": len(value)}
++    if isinstance(value, np.ndarray):
++        contiguous = np.ascontiguousarray(value)
++        return {
++            "type": "ndarray",
++            "dtype": str(contiguous.dtype),
++            "shape": list(contiguous.shape),
++            "sha256": hashlib.sha256(contiguous.tobytes()).hexdigest(),
++        }
++    if hasattr(value, "detach") and hasattr(value, "shape"):
++        tensor = value.detach().cpu().contiguous()
++        return {
++            "type": "tensor",
++            "dtype": str(tensor.dtype),
++            "shape": list(tensor.shape),
++            "sha256": hashlib.sha256(tensor.numpy().tobytes()).hexdigest(),
++        }
++    identity = id(value)
++    if identity in active:
++        return {"type": f"{type(value).__module__}.{type(value).__qualname__}", "cycle": True}
++    active.add(identity)
++    try:
++        if isinstance(value, Mapping):
++            return {
++                "type": "mapping",
++                "items": [[str(key), semantic_state(item, active)] for key, item in sorted(value.items(), key=lambda pair: str(pair[0]))],
++            }
++        if isinstance(value, (list, tuple)):
++            return {"type": type(value).__name__, "items": [semantic_state(item, active) for item in value]}
++        if isinstance(value, set):
++            items = [semantic_state(item, active) for item in value]
++            return {"type": "set", "items": sorted(items, key=lambda item: json.dumps(item, sort_keys=True, default=json_default))}
++        state = getattr(value, "__dict__", None)
++        if isinstance(state, Mapping):
++            return {
++                "type": f"{type(value).__module__}.{type(value).__qualname__}",
++                "state": semantic_state(state, active),
++            }
++        return {"type": f"{type(value).__module__}.{type(value).__qualname__}"}
++    finally:
++        active.remove(identity)
++
++
++def snapshot_semantic_digest(snapshot: Mapping[str, Any]) -> str:
++    """Digest the mutable semantic state used by a branch restore."""
++    auxiliary = {
++        str(key): semantic_state(value)
++        for key, value in sorted(snapshot.items(), key=lambda pair: str(pair[0]))
++        if key not in {"env", "obs"}
++    }
++    return canonical_hash({
++        "env_state": env_state_digest(snapshot["env"]),
++        "public_observation": public_digest(snapshot["obs"]),
++        "hidden_and_cache": auxiliary,
++    })
++
++
++def snapshot_semantic_digests(snapshots: Mapping[str, Mapping[str, Any]]) -> dict[str, str]:
++    return {prefix_id: snapshot_semantic_digest(snapshot) for prefix_id, snapshot in sorted(snapshots.items())}
++
++
++def branch_counter_delta(start: Mapping[str, int], end: Mapping[str, int]) -> dict[str, int]:
++    return {key: int(end.get(key, 0)) - int(start.get(key, 0)) for key in ("actor_forward", "world_forward", "probe", "env_steps")}
++
++
++def resume_branch_partition(manifest: list[dict[str, Any]], completed_ids: set[str]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
++    completed = [row for row in manifest if row["branch_id"] in completed_ids]
++    remaining = [row for row in manifest if row["branch_id"] not in completed_ids]
++    if len({row["branch_id"] for row in completed}) != len(completed):
++        raise RuntimeError("duplicate completed branch identity")
++    if len(completed) != len(completed_ids):
++        raise RuntimeError("completed branch identity is not present in manifest")
++    return completed, remaining
+ 
+ 
+ def model_digest(model: Any) -> str:
+@@ -404,8 +489,26 @@
+     return float(preference[0] * 0.5 * vector_return[0] + preference[1] * vector_return[1])
+ 
+ 
+-def run_branch(item: Mapping[str, Any], snapshot: Mapping[str, Any], helper: Any, vector_reward: Any, guard: Any, policy: Any, world: Any, preference: Any, classes: Any, budget: Any, counters: dict[str, int], device: Any) -> dict[str, Any]:
++def run_branch(
++    item: Mapping[str, Any],
++    snapshot: Mapping[str, Any],
++    helper: Any,
++    vector_reward: Any,
++    guard: Any,
++    policy: Any,
++    world: Any,
++    preference: Any,
++    classes: Any,
++    budget: Any,
++    counters: dict[str, int],
++    device: Any,
++    *,
++    out_dir: Path = OUT,
++    log_prefix: str = "",
++    max_total_steps: int | None = None,
++) -> dict[str, Any]:
+     import torch
++    branch_counter_start = {key: int(counters[key]) for key in ("actor_forward", "world_forward", "probe", "env_steps")}
+     env = copy.deepcopy(snapshot["env"])
+     env._exogenous_key = item["historical_exogenous_key"]
+     obs = copy.deepcopy(snapshot["obs"])
+@@ -424,6 +527,8 @@
+     while not done:
+         if steps >= MAX_STEPS_PER_BRANCH:
+             raise RuntimeError(f"branch exceeded cap: {item['branch_id']}")
++        if max_total_steps is not None and int(counters["env_steps"]) >= int(max_total_steps):
++            raise RuntimeError(f"resume budget cap reached before branch step: {item['branch_id']}")
+         probe = helper.probe(policy, world, obs, policy_hidden, world_hidden, preference, classes, device)
+         counters["actor_forward"] += 1; counters["world_forward"] += 1; counters["probe"] += 1
+         probabilities = probe["evaluation"]["distribution"].probs.detach().cpu().numpy().reshape(-1).tolist()
+@@ -448,8 +553,8 @@
+         counters["env_steps"] += 1; steps += 1
+         vector, consequence, current_counts, energy_now = vector_reward(info, previous_counts, previous_energy, env.config)
+         row = {"schema": "ack-known-task-guard-step/1.0.0", "branch_id": item["branch_id"], "control_branch_key": item["control_branch_key"], "prefix_id": item["prefix_id"], "parent_id": item["parent_id"], "condition": "W1", "model_seed": 1101, "repeat": int(item["repeat"]), "exogenous_key": item["historical_exogenous_key"], "step": steps, "gamma_index": steps - 1, "action": action, "original_action": int(raw_action), "submit_command": True, "public_observation_sha256": before_digest, "public_next_observation_sha256": public_digest(next_obs), "legal_mask": mask.astype(int).tolist(), "continuation_actions": list(obs.get("continuation_actions", ())), "time_before": float(obs.get("time", 0.0)), "time_after": float(next_obs.get("time", 0.0)), "completed_before": int(previous_counts["completed"]), "expired_before": int(previous_counts["expired"]), "completed_after": int(current_counts["completed"]), "expired_after": int(current_counts["expired"]), "completed_delta": int(current_counts["completed"] - previous_counts["completed"]), "expired_delta": int(current_counts["expired"] - previous_counts["expired"]), "energy_before": float(previous_energy), "energy_after": float(energy_now), "energy_used_delta": float(max(0.0, previous_energy - energy_now)), "task_capacity": int(env.config.task_capacity), "uav_count": int(env.config.uav_count), "initial_energy": float(env.config.initial_energy), "raw_scalar_reward": float(scalar_reward), "vector_reward": np.asarray(vector, dtype=np.float32).tolist(), "task_consequence": np.asarray(consequence, dtype=np.float32).tolist(), "gamma": GAMMA, "reward_scales": {"task": 0.5, "energy": 1.0}, "behavior_preference": list(BEHAVIOR_PREFERENCE), "terminated": bool(info.get("terminated", done_return)), "truncated": bool(info.get("truncated", False)), "done_return": bool(done_return), "end_reason": info.get("episode_end_reason"), "feedback": info.get("feedback"), "command_id": info.get("command_id"), "communication_delta": info.get("communication_delta", []), "new_events": info.get("new_events", []), "completion_records": info.get("completion_records", {}), "policy_hidden_before_sha256": tensor_hash(policy_hidden), "world_hidden_before_sha256": tensor_hash(world_hidden), "runtime_action_hidden_sha256": tensor_hash(action_hidden), "policy_hidden_after_sha256": tensor_hash(probe["next_policy_hidden"]), "world_hidden_after_sha256": tensor_hash(action_hidden), "env_state_before_sha256": env_state_digest(env), "runtime_probe": True}
+-        append_jsonl(OUT / "step-vector-rewards.jsonl", row)
+-        append_jsonl(OUT / "decision-ledger.jsonl", decisions[-1])
++        append_jsonl(out_dir / f"{log_prefix}step-vector-rewards.jsonl", row)
++        append_jsonl(out_dir / f"{log_prefix}decision-ledger.jsonl", decisions[-1])
+         rows.append(row)
+         previous_counts = current_counts; previous_energy = float(energy_now); last_info = info
+         policy_hidden = probe["next_policy_hidden"]
+@@ -460,25 +565,514 @@
+     command_count = sum(bool(row.get("submit_command")) for row in rows)
+     noop_count = sum(int(row["action"]) == 24 for row in rows)
+     changed = sum(int(row["action"]) != int(row["original_action"]) for row in rows)
+-    result = {"schema": "ack-known-task-guard-branch-result/1.0.0", "branch_id": item["branch_id"], "control_branch_key": item["control_branch_key"], "prefix_id": item["prefix_id"], "parent_id": item["parent_id"], "split": "train", "condition": "W1", "model_seed": 1101, "repeat": int(item["repeat"]), "exogenous_key": item["historical_exogenous_key"], "initial_public_observation": initial_public, "initial_public_observation_sha256": public_digest(initial_public), "initial_env_state_sha256": initial_env_digest, "initial_counts": initial_counts, "final_counts": dict(previous_counts), "initial_energy": initial_energy, "final_energy": float(previous_energy), "energy_used": float(max(0.0, initial_energy - previous_energy)), "all_task_outcome": outcome, "all_completed": sum(value.get("physical_arrival_before_deadline") is True for value in outcome.values()), "all_host_confirmed": sum(value.get("host_confirmation_before_deadline") is True for value in outcome.values()), "env_steps": steps, "terminated": bool(last_info.get("terminated", done)), "truncated": bool(last_info.get("truncated", False)), "end_reason": last_info.get("episode_end_reason"), "final_time": float(last_info.get("time", getattr(env.clock, "time", 0.0))), "final_env_state_sha256": env_state_digest(env), "actor_forward_calls": counters["actor_forward"], "world_forward_calls": counters["world_forward"], "probe_calls": counters["probe"], "task_unavailable_count": task_unavailable, "command_count": command_count, "noop_count": noop_count, "guard_trigger_count": sum(bool(row["triggered"]) for row in decisions), "action_change_count": changed, "illegal_actions": 0, "safety_violation": bool(last_info.get("safety_violation", False)), "rows": len(rows), "first_step": decisions[0], "last_info_feedback": last_info.get("feedback")}
+-    append_jsonl(OUT / "branch-results.jsonl", result)
++    branch_delta = branch_counter_delta(branch_counter_start, counters)
++    result = {"schema": "ack-known-task-guard-branch-result/1.1.0", "branch_id": item["branch_id"], "control_branch_key": item["control_branch_key"], "prefix_id": item["prefix_id"], "parent_id": item["parent_id"], "split": "train", "condition": "W1", "model_seed": 1101, "repeat": int(item["repeat"]), "exogenous_key": item["historical_exogenous_key"], "initial_public_observation": initial_public, "initial_public_observation_sha256": public_digest(initial_public), "initial_env_state_sha256": initial_env_digest, "initial_counts": initial_counts, "final_counts": dict(previous_counts), "initial_energy": initial_energy, "final_energy": float(previous_energy), "energy_used": float(max(0.0, initial_energy - previous_energy)), "all_task_outcome": outcome, "all_completed": sum(value.get("physical_arrival_before_deadline") is True for value in outcome.values()), "all_host_confirmed": sum(value.get("host_confirmation_before_deadline") is True for value in outcome.values()), "env_steps": steps, "terminated": bool(last_info.get("terminated", done)), "truncated": bool(last_info.get("truncated", False)), "end_reason": last_info.get("episode_end_reason"), "final_time": float(last_info.get("time", getattr(env.clock, "time", 0.0))), "final_env_state_sha256": env_state_digest(env), "actor_forward_calls": branch_delta["actor_forward"], "world_forward_calls": branch_delta["world_forward"], "probe_calls": branch_delta["probe"], "branch_counter_start": branch_counter_start, "branch_counter_end": {key: int(counters[key]) for key in ("actor_forward", "world_forward", "probe", "env_steps")}, "task_unavailable_count": task_unavailable, "command_count": command_count, "noop_count": noop_count, "guard_trigger_count": sum(bool(row["triggered"]) for row in decisions), "action_change_count": changed, "illegal_actions": 0, "safety_violation": bool(last_info.get("safety_violation", False)), "rows": len(rows), "first_step": decisions[0], "first_feedback": rows[0].get("feedback") if rows else None, "last_info_feedback": last_info.get("feedback")}
++    append_jsonl(out_dir / f"{log_prefix}branch-results.jsonl", result)
+     return result
+ 
+ 
+-def first_pair_check(results: list[dict[str, Any]], base_digests: Mapping[str, str], budget: Any) -> dict[str, Any]:
++def first_pair_check(
++    results: list[dict[str, Any]],
++    base_digests: Mapping[str, bool] | None,
++    budget: Any | None = None,
++    *,
++    control_labels: Mapping[str, list[dict[str, Any]]] | None = None,
++    guard_steps: Mapping[str, list[dict[str, Any]]] | None = None,
++    budget_totals: Mapping[str, int] | None = None,
++    out_dir: Path = OUT,
++    write_output: bool = True,
++) -> dict[str, Any]:
++    """Validate one dynamic guard branch against its reused historical R control."""
+     pair = [row for row in results if row["parent_id"] == "parent-00" and int(row["repeat"]) == 0]
+-    totals = budget.run_totals(RUN_ID).get("environment_steps", {"reserved": 0, "verified": 0, "unknown": 0, "pending": 0})
+-    checks = {"pair_present": len(pair) == 1, "initial_public_present": len(pair) == 1 and bool(pair[0]["initial_public_observation_sha256"]), "first_actual_legal": len(pair) == 1 and bool(pair[0]["first_step"]["legal_mask"][int(pair[0]["first_step"]["final_action"])]), "actual_hidden_present": len(pair) == 1 and bool(pair[0]["first_step"].get("runtime_action_hidden_sha256")), "labels_complete": len(pair) == 1 and int(pair[0]["rows"]) == int(pair[0]["env_steps"]) > 0, "base_snapshot_unchanged": all(base_digests.values()), "budget_verified_no_unknown": int(totals.get("unknown", -1)) == 0 and int(totals.get("pending", -1)) == 0 and int(totals.get("verified", 0)) == sum(int(row["env_steps"]) for row in pair)}
+-    result = {"schema": "ack-known-task-guard-first-pair-interface-check/1.0.0", "passed": all(checks.values()), "checks": checks, "pair": [{"branch_id": row["branch_id"], "env_steps": row["env_steps"], "first_action": row["first_step"]["final_action"], "first_feedback": row["first_step"].get("feedback")} for row in pair], "budget_run_totals": totals, "env_step_calls": sum(int(row["env_steps"]) for row in pair)}
+-    write_json(OUT / "first-pair-interface-check.json", result)
+-    if not result["passed"]:
++    guard = pair[0] if len(pair) == 1 else None
++    control_key = guard.get("control_branch_key") if guard else None
++    control = sorted((control_labels or {}).get(str(control_key), []), key=lambda row: int(row.get("step", 0)))
++    totals = dict(budget_totals or (budget.run_totals(RUN_ID).get("environment_steps", {}) if budget is not None else {}))
++    dynamic_steps = sum(int(row.get("env_steps", 0)) for row in results)
++    first_step = guard.get("first_step", {}) if guard else {}
++    legal_mask = first_step.get("legal_mask", [])
++    final_action = int(first_step.get("final_action", -1))
++    first_guard_steps = sorted((guard_steps or {}).get(str(guard.get("branch_id")) if guard else "", []), key=lambda row: int(row.get("step", 0)))
++    first_feedback = guard.get("first_feedback") if guard else None
++    if first_feedback is None and guard is not None:
++        first_feedback = first_guard_steps[0].get("feedback") if first_guard_steps else guard.get("first_step", {}).get("feedback")
++    base_snapshot_check_verifiable = base_digests is not None
++    base_snapshot_unchanged = (
++        bool(base_digests) and all(bool(value) for value in base_digests.values())
++        if base_snapshot_check_verifiable
++        else None
++    )
++    checks = {
++        "pair_present": len(pair) == 1,
++        "historical_control_present": bool(control),
++        "initial_public_present": guard is not None and bool(guard.get("initial_public_observation_sha256")),
++        "first_actual_legal": guard is not None and 0 <= final_action < len(legal_mask) and bool(legal_mask[final_action]),
++        "actual_hidden_present": guard is not None and bool(first_step.get("runtime_action_hidden_sha256")),
++        "labels_complete": guard is not None and int(guard.get("rows", -1)) == int(guard.get("env_steps", 0)) > 0,
++        "base_snapshot_unchanged": base_snapshot_unchanged,
++        "budget_verified_no_unknown": int(totals.get("unknown", -1)) == 0 and int(totals.get("pending", -1)) == 0 and int(totals.get("reserved", -1)) == dynamic_steps and int(totals.get("verified", -1)) == dynamic_steps,
++    }
++    checks_known_passed = all(value for value in checks.values() if value is not None)
++    gate_status = (
++        "passed"
++        if checks_known_passed and all(value is not None for value in checks.values())
++        else "insufficient_evidence"
++        if any(value is None for value in checks.values())
++        else "failed"
++    )
++    result = {
++        "schema": "ack-known-task-guard-first-pair-interface-check/1.1.0",
++        "passed": gate_status == "passed",
++        "checks_known_passed": checks_known_passed,
++        "gate_status": gate_status,
++        "checks": checks,
++        "pair": {
++            "guard_branch_id": guard.get("branch_id") if guard else None,
++            "guard_env_steps": int(guard.get("env_steps", 0)) if guard else 0,
++            "guard_first_action": final_action if guard else None,
++            "guard_first_feedback": first_feedback,
++            "historical_control_branch_key": control_key,
++            "historical_control_steps": len(control),
++        },
++        "budget_run_totals": totals,
++        "dynamic_guard_steps_completed": dynamic_steps,
++        "dynamic_guard_branches_completed": len(results),
++        "historical_base_snapshot_check_verifiable": base_snapshot_check_verifiable,
++        "historical_base_snapshot_check_status": "verified" if base_snapshot_check_verifiable else "not_recorded",
++        "gate_semantics": "one dynamic guard branch plus one reused historical R control; cumulative dynamic budget checked separately",
++    }
++    if write_output:
++        write_json(out_dir / "first-pair-interface-check.json", result)
++    if not result["passed"] and result["gate_status"] != "insufficient_evidence":
+         raise RuntimeError(f"first pair interface check failed: {checks}")
+     return result
++
++
++def read_budget_state_readonly(path: Path, run_id: str = RUN_ID) -> dict[str, Any]:
++    """Read the persistent ledger without opening it through a mutating writer."""
++    uri = "file:" + path.as_posix() + "?mode=ro"
++    with sqlite3.connect(uri, uri=True) as con:
++        con.row_factory = sqlite3.Row
++        integrity = con.execute("PRAGMA integrity_check").fetchone()[0]
++        metadata = {str(row[0]): str(row[1]) for row in con.execute("SELECT key,value FROM metadata ORDER BY key")}
++        stages = [dict(row) for row in con.execute("SELECT stage,limit_amount,reserved,verified,unknown FROM stages ORDER BY stage")]
++        attempts = [dict(row) for row in con.execute("SELECT attempt_id,stage,reserved,verified,unknown,run_id FROM attempts ORDER BY attempt_id,stage")]
++        reservations = [dict(row) for row in con.execute("SELECT status,COUNT(*) AS count,SUM(amount) AS amount FROM reservations GROUP BY status ORDER BY status")]
++        run_totals = [dict(row) for row in con.execute(
++            "SELECT stage,COALESCE(SUM(amount),0) AS reserved,COALESCE(SUM(CASE WHEN status='verified' THEN amount ELSE 0 END),0) AS verified,COALESCE(SUM(CASE WHEN status='unknown' THEN amount ELSE 0 END),0) AS unknown FROM reservations WHERE run_id=? GROUP BY stage ORDER BY stage",
++            (run_id,),
++        )]
++        run_attempts = [dict(row) for row in con.execute(
++            "SELECT attempt_id,stage,reserved,verified,unknown,run_id FROM attempts WHERE run_id=? ORDER BY attempt_id,stage",
++            (run_id,),
++        )]
++        history_count = int(con.execute("SELECT COUNT(*) FROM history").fetchone()[0])
++    for row in run_totals:
++        row["pending"] = int(row["reserved"]) - int(row["verified"]) - int(row["unknown"])
++    return {
++        "path": str(path),
++        "integrity_check": integrity,
++        "metadata": metadata,
++        "stages": stages,
++        "attempts": attempts,
++        "reservations_by_status": reservations,
++        "run_totals": run_totals,
++        "run_attempts": run_attempts,
++        "history_count": history_count,
++        "read_only": True,
++    }
++
++
++def guard_contract_probe() -> dict[str, Any]:
++    """Expose the NOOP-highest/no-continuation contract gap without a model call."""
++    guard = load_guard_module()
++    mask = [False] * 25
++    mask[0] = True
++    mask[24] = True
++    obs = {
++        "mask": mask,
++        "public_entity_ids": {"uavs": ("uav-0", "uav-1", "uav-2", "uav-3"), "tasks": ("task-0",)},
++        "continuation_actions": (),
++    }
++    probabilities = [0.0] * 25
++    probabilities[0] = 0.1
++    probabilities[24] = 0.9
++    decision = guard.select_guarded_action(obs, probabilities, task_capacity=6, enabled=True)
++    return {
++        "schema": "ack-known-task-guard-noop-contract-probe/1.0.0",
++        "env_step_calls": 0,
++        "model_forward_calls": 0,
++        "input": {"legal_actions": [0, 24], "continuation_actions": [], "original_probabilities": {"0": 0.1, "24": 0.9}},
++        "observed": {"original_action": int(decision.original_action), "final_action": int(decision.final_action), "triggered": bool(decision.triggered), "reason": decision.reason},
++        "contract": "with no continuation, retain the original legal NOOP when it is the original action",
++        "contract_compatible": int(decision.original_action) == 24 and int(decision.final_action) == 24 and not bool(decision.triggered),
++        "blocked_reason": "existing guard selects an allocation when NOOP is the original action and no continuation exists",
++    }
++
++
++def verify_resume_source_identity() -> dict[str, Any]:
++    """Verify the frozen source set, allowing only the archived original runner copy."""
++    manifest = read_json(OUT / "source-checkpoint-manifest.json")
++    archive = OUT / "failure-archive-20260922"
++    rows = []
++    for entry in manifest.get("files", []):
++        path = Path(entry["path"])
++        expected = str(entry.get("sha256"))
++        candidates = [("current", path)]
++        if path.name == Path(__file__).name:
++            candidates.append(("archived_original", archive / "runner-original.py"))
++        if path.name == "ack_known_task_guard.py":
++            candidates.append(("archived_original", archive / "ack_known_task_guard-original.py"))
++        matches = []
++        for label, candidate in candidates:
++            if candidate.is_file():
++                matches.append({"source": label, "path": str(candidate), "sha256": sha256_file(candidate), "matches": sha256_file(candidate) == expected})
++        rows.append({"path": str(path), "expected_sha256": expected, "candidates": matches, "matched": any(item["matches"] for item in matches)})
++    checkpoint = manifest.get("checkpoint", {})
++    checkpoint_path = Path(checkpoint.get("path", ""))
++    checkpoint_actual = sha256_file(checkpoint_path) if checkpoint_path.is_file() else None
++    checkpoint_check = {"path": str(checkpoint_path), "expected_sha256": checkpoint.get("registered_sha256"), "actual_sha256": checkpoint_actual, "matches": checkpoint_actual == checkpoint.get("registered_sha256")}
++    current_runner = sha256_file(Path(__file__))
++    current_guard = sha256_file(WORKTREE / "gppo_world" / "ack_known_task_guard.py")
++    runner_row = next((row for row in rows if Path(row["path"]).name == Path(__file__).name), {})
++    archived_runner = archive / "runner-original.py"
++    archived_runner_sha256 = sha256_file(archived_runner) if archived_runner.is_file() else None
++    non_runner_rows = [row for row in rows if Path(row["path"]).name != Path(__file__).name]
++    return {
++        "schema": "ack-known-task-guard-resume-source-check/1.0.0",
++        "files": rows,
++        "checkpoint": checkpoint_check,
++        "current_runner_sha256": current_runner,
++        "current_guard_sha256": current_guard,
++        "runner_manifest_expected_sha256": runner_row.get("expected_sha256"),
++        "runner_manifest_matches_current": any(item["matches"] for item in runner_row.get("candidates", []) if item["source"] == "current"),
++        "archived_execution_runner_sha256": archived_runner_sha256,
++        "archived_execution_runner_present": archived_runner_sha256 is not None,
++        "archived_execution_runner_matches_manifest": archived_runner_sha256 == runner_row.get("expected_sha256"),
++        "guard_hash_unchanged": current_guard == next((row["expected_sha256"] for row in rows if Path(row["path"]).name == "ack_known_task_guard.py"), None),
++        "runner_manifest_discrepancy_note": "prepare source manifest records a different runner hash than the archived runner actually used by the failed execution; this is retained as an explicit mismatch",
++        "passed": bool(rows) and all(row["matched"] for row in non_runner_rows) and archived_runner_sha256 is not None and bool(checkpoint_check["matches"]) and current_guard == next((row["expected_sha256"] for row in rows if Path(row["path"]).name == "ack_known_task_guard.py"), None),
++    }
++
++
++def verify_snapshot_identity_for_resume(snapshots: Mapping[str, Mapping[str, Any]]) -> dict[str, Any]:
++    original = {row["prefix_id"]: row for row in read_json(OUT / "snapshot-identity.json")["rows"]}
++    rows = []
++    for prefix_id, snapshot in sorted(snapshots.items()):
++        env = snapshot["env"]
++        current = {
++            "prefix_id": prefix_id,
++            "semantic_sha256": snapshot_semantic_digest(snapshot),
++            "env_state_sha256": env_state_digest(env),
++            "public_observation_sha256": public_digest(snapshot["obs"]),
++            "policy_hidden_sha256": tensor_hash(snapshot.get("policy_hidden")),
++            "world_hidden_sha256": tensor_hash(snapshot.get("world_hidden")),
++            "action_count": int(env.config.action_count),
++            "step_index": int(env._step_index),
++            "snapshot_time": float(env.clock.time),
++            "hidden_present": snapshot.get("policy_hidden") is not None and snapshot.get("world_hidden") is not None,
++        }
++        prior = original.get(prefix_id, {})
++        checks = {
++            "prefix_present": prefix_id in original,
++            "env_state_matches_saved_identity": current["env_state_sha256"] == prior.get("env_state_sha256"),
++            "public_observation_matches_saved_identity": current["public_observation_sha256"] == prior.get("public_observation_sha256"),
++            "runtime_contract": current["action_count"] == 25 and current["step_index"] == 2 and abs(current["snapshot_time"] - 2.0) <= 1e-9,
++            "hidden_present": current["hidden_present"],
++        }
++        rows.append({
++            **current,
++            "checks": checks,
++            "passed": all(checks.values()),
++            "historical_hidden_cache_status": "not_recorded",
++            "historical_hidden_cache_directly_saved": False,
++        })
++    return {
++        "schema": "ack-known-task-guard-resume-snapshot-check/1.0.0",
++        "rows": rows,
++        "passed": len(rows) == len(original) == 8 and all(row["passed"] for row in rows),
++        "historical_hidden_cache_status": "not_recorded",
++        "historical_hidden_cache_directly_saved": False,
++        "historical_hidden_cache_note": "the original snapshot identity saved only hidden_present; current semantic hidden/cache hashes are newly recorded and do not prove the prior process did not mutate its in-memory snapshot",
++    }
++
++
++def audit_completed_branches(
++    manifest: list[dict[str, Any]],
++    results: list[dict[str, Any]],
++    steps: list[dict[str, Any]],
++    decisions: list[dict[str, Any]],
++    budget_state: Mapping[str, Any],
++) -> dict[str, Any]:
++    expected_by_id = {row["branch_id"]: row for row in manifest}
++    result_by_id = {row.get("branch_id"): row for row in results}
++    step_groups: dict[str, list[dict[str, Any]]] = {}
++    decision_groups: dict[str, list[dict[str, Any]]] = {}
++    for row in steps:
++        step_groups.setdefault(str(row.get("branch_id")), []).append(row)
++    for row in decisions:
++        decision_groups.setdefault(str(row.get("branch_id")), []).append(row)
++    completed_ids = sorted(result_by_id)
++    checks: dict[str, bool] = {
++        "exactly_two_completed": len(results) == 2 and len(result_by_id) == 2,
++        "completed_ids_in_manifest": bool(completed_ids) and all(branch_id in expected_by_id for branch_id in completed_ids),
++        "no_duplicate_result_ids": len(result_by_id) == len(results),
++        "step_rows_total_20": len(steps) == 20,
++        "decision_rows_total_20": len(decisions) == 20,
++        "budget_integrity_ok": budget_state.get("integrity_check") == "ok",
++    }
++    rows = []
++    for branch_id in completed_ids:
++        result = result_by_id[branch_id]
++        expected = expected_by_id.get(branch_id, {})
++        branch_steps = sorted(step_groups.get(branch_id, []), key=lambda row: int(row.get("step", 0)))
++        branch_decisions = sorted(decision_groups.get(branch_id, []), key=lambda row: int(row.get("step", 0)))
++        branch_checks = {
++            "manifest_identity": all(result.get(key) == expected.get(key) for key in ("prefix_id", "parent_id", "repeat")) and result.get("exogenous_key") == expected.get("historical_exogenous_key"),
++            "ten_steps": int(result.get("env_steps", -1)) == 10 and len(branch_steps) == 10 and len(branch_decisions) == 10,
++            "step_sequence_identity": [int(row.get("step", -1)) for row in branch_steps] == list(range(1, 11)),
++            "decision_sequence_identity": [int(row.get("step", -1)) for row in branch_decisions] == list(range(1, 11)),
++            "decision_step_identity": all(int(step.get("step", -1)) == int(decision.get("step", -2)) and int(step.get("action", -1)) == int(decision.get("final_action", -2)) and int(step.get("original_action", -1)) == int(decision.get("original_action", -2)) for step, decision in zip(branch_steps, branch_decisions)),
++            "all_actions_legal": all(0 <= int(row.get("action", -1)) < len(row.get("legal_mask", [])) and bool(row.get("legal_mask", [])[int(row.get("action", -1))]) for row in branch_steps),
++            "public_digest_chain": all(step.get("public_observation_sha256") == decision.get("public_observation_sha256") for step, decision in zip(branch_steps, branch_decisions)) and all(branch_steps[index].get("public_next_observation_sha256") == branch_steps[index + 1].get("public_observation_sha256") for index in range(len(branch_steps) - 1)),
++            "actual_hidden_digest_chain": all(bool(decision.get("runtime_action_hidden_sha256")) and decision.get("runtime_action_hidden_sha256") == step.get("runtime_action_hidden_sha256") for step, decision in zip(branch_steps, branch_decisions)) and all(branch_steps[index].get("policy_hidden_after_sha256") == branch_steps[index + 1].get("policy_hidden_before_sha256") and branch_steps[index].get("world_hidden_after_sha256") == branch_steps[index + 1].get("world_hidden_before_sha256") for index in range(len(branch_steps) - 1)),
++            "terminated_without_truncation": result.get("terminated") is True and result.get("truncated") is False,
++            "initial_state_matches_snapshot_identity": result.get("initial_env_state_sha256") == read_json(OUT / "snapshot-identity.json")["rows"][0]["env_state_sha256"] if result.get("prefix_id") == read_json(OUT / "snapshot-identity.json")["rows"][0]["prefix_id"] else True,
++            "actual_first_feedback_available_in_step_ledger": bool(branch_steps) and bool(branch_steps[0].get("feedback")),
++        }
++        rows.append({"branch_id": branch_id, "checks": branch_checks, "passed": all(branch_checks.values()), "env_state_before_field_note": "the legacy env_state_before_sha256 field is a post-step digest; it is retained only as a labeled legacy field and is not treated as pre-step evidence"})
++    external_path = Path(r"E:\Z博士\research-reviews\ackguard-resume-review-20260922\original-two-branch-audit.json")
++    external = read_json(external_path) if external_path.is_file() else None
++    checks["independent_saved_audit_passed"] = bool(external and external.get("checks_passed") is True and external.get("audit_env_steps") == 0 and external.get("audit_model_forward") == 0)
++    return {
++        "schema": "ack-known-task-guard-completed-branch-integrity/1.0.0",
++        "passed": all(checks.values()) and all(row["passed"] for row in rows),
++        "checks": checks,
++        "completed_branch_count": len(results),
++        "step_rows": len(steps),
++        "decision_rows": len(decisions),
++        "rows": rows,
++        "external_saved_audit": {"path": str(external_path), "sha256": sha256_file(external_path), "checks_passed": external.get("checks_passed")} if external else {"path": str(external_path), "available": False},
++        "limitations": [
++            "No new inference was run for the completed branches.",
++            "Original chosen probabilities do not permit independent reconstruction of the all-candidate argmax.",
++            "Original env_state_before_sha256 values are post-step digests, not pre-step evidence.",
++            "Original safety_violation is only the final info flag, not a per-step proof.",
++            "Original snapshot identity did not persist hidden/cache hashes; current semantic hashes are newly recorded only.",
++        ],
++    }
++
++
++def write_minimal_diff(out_dir: Path = RESUME_OUT) -> None:
++    original = OUT / "failure-archive-20260922" / "runner-original.py"
++    current = Path(__file__)
++    if not original.is_file():
++        raise RuntimeError(f"missing archived runner for minimal diff: {original}")
++    runner_diff = difflib.unified_diff(
++        original.read_text(encoding="utf-8").splitlines(keepends=True),
++        current.read_text(encoding="utf-8").splitlines(keepends=True),
++        fromfile=str(original),
++        tofile=str(current),
++    )
++    chunks = ["".join(runner_diff)]
++    tests = WORKTREE / "tests" / "test_ack_known_task_guard_resume_v1.py"
++    if tests.is_file():
++        test_diff = difflib.unified_diff(
++            [],
++            tests.read_text(encoding="utf-8").splitlines(keepends=True),
++            fromfile="/dev/null",
++            tofile=str(tests),
++        )
++        chunks.append("\n" + "".join(test_diff))
++    (out_dir / "minimal-diff.patch").write_text("".join(chunks), encoding="utf-8")
++
++
++def write_resume_blocked_evidence(
++    *,
++    manifest: list[dict[str, Any]],
++    results: list[dict[str, Any]],
++    steps: list[dict[str, Any]],
++    decisions: list[dict[str, Any]],
++    budget_state: dict[str, Any],
++    source_check: dict[str, Any],
++    snapshot_check: dict[str, Any],
++    integrity: dict[str, Any],
++    first_pair: dict[str, Any],
++    guard_probe: dict[str, Any],
++) -> dict[str, Any]:
++    if RESUME_OUT.exists() and any(RESUME_OUT.iterdir()):
++        raise RuntimeError(f"refusing to overwrite existing resume evidence: {RESUME_OUT}")
++    RESUME_OUT.mkdir(parents=True, exist_ok=True)
++    completed_ids = [row["branch_id"] for row in results]
++    _, remaining = resume_branch_partition(manifest, set(completed_ids))
++    for name in ("new-step-vector-rewards.jsonl", "new-branch-results.jsonl", "new-decision-ledger.jsonl", "new-progress.jsonl"):
++        (RESUME_OUT / name).write_text("", encoding="utf-8")
++    budget_before = {**budget_state, "mode": "read_only_preflight", "new_attempt_created": False}
++    write_json(RESUME_OUT / "budget-before.json", budget_before)
++    write_json(RESUME_OUT / "budget-after.json", {**budget_state, "mode": "blocked_before_execution", "new_attempt_created": False})
++    write_json(RESUME_OUT / "completed-branch-integrity.json", integrity)
++    write_json(RESUME_OUT / "first-pair-interface-check.json", first_pair)
++    write_json(RESUME_OUT / "source-identity.json", source_check)
++    write_json(RESUME_OUT / "snapshot-identity.json", snapshot_check)
++    write_json(RESUME_OUT / "guard-contract-probe.json", guard_probe)
++    write_json(RESUME_OUT / "paired-analysis.json", {
++        "schema": "ack-known-task-guard-paired-analysis/1.1.0",
++        "status": "incomplete_technical_stop",
++        "reason": "guard_contract_probe_failed_before_resume; no remaining branch executed",
++        "completed_guard_branches": len(results),
++        "required_guard_branches": len(manifest),
++        "new_environment_steps": 0,
++        "control_reuse_steps": 299,
++        "rows": [],
++        "parent_macro_average": None,
++        "utility_conclusion": "not_estimable_from_blocked_matrix",
++        "model_or_world_gain_claim": False,
++        "public_prediction_claim": False,
++    })
++    resume_manifest = {
++        "schema": "ack-known-task-guard-resume-manifest/1.0.0",
++        "handoff_id": "H-20260922-ACKGUARD-RESUME-001",
++        "status": "blocked_not_executed",
++        "blocked_reason": guard_probe["blocked_reason"],
++        "run_id": RUN_ID,
++        "attempt_id": RESUME_ATTEMPT_ID,
++        "attempt_created": False,
++        "source_output": str(OUT),
++        "resume_output": str(RESUME_OUT),
++        "completed_branch_ids": completed_ids,
++        "completed_branch_count": len(completed_ids),
++        "remaining_branch_ids": [row["branch_id"] for row in remaining],
++        "remaining_branch_count": len(remaining),
++        "completed_environment_steps": len(steps),
++        "new_environment_steps": 0,
++        "new_environment_step_cap": 352,
++        "global_environment_step_limit": MAX_TOTAL_STEPS,
++        "per_branch_step_limit": MAX_STEPS_PER_BRANCH,
++        "historical_control_reuse_steps": 299,
++        "old_outputs_read_only": True,
++        "old_steps_refunded": False,
++        "old_branches_rerun": False,
++        "guard_hash_unchanged": source_check["guard_hash_unchanged"],
++        "model_forward_calls": 0,
++        "optimizer_updates": 0,
++        "world_updates": 0,
++        "offline_updates": 0,
++        "source_check_passed": source_check["passed"],
++        "snapshot_check_passed": snapshot_check["passed"],
++        "snapshot_historical_hidden_cache_status": snapshot_check["historical_hidden_cache_status"],
++        "snapshot_historical_hidden_cache_directly_saved": snapshot_check["historical_hidden_cache_directly_saved"],
++        "completed_integrity_passed": integrity["passed"],
++        "first_pair_gate_passed": first_pair["passed"],
++        "guard_contract_compatible": guard_probe["contract_compatible"],
++        "budget_state": budget_state,
++    }
++    write_json(RESUME_OUT / "resume-manifest.json", resume_manifest)
++    write_json(RESUME_OUT / "resume-status.json", {"status": "blocked_not_executed", "env_step_calls": 0, "model_forward_calls": 0, "attempt_created": False, "reason": guard_probe["blocked_reason"]})
++    (RESUME_OUT / "repair-report.md").write_text("\n".join([
++        "# ACK guard runner repair and resume preflight",
++        "",
++        "The runner repair is static and the resume is blocked before model loading or environment execution.",
++        "",
++        "- The first-pair gate now compares one dynamic guard branch with its reused historical R control while checking cumulative dynamic budget separately.",
++        "- Base snapshot checks use per-prefix semantic digests that include environment state, public observation, hidden state, and auxiliary cache state.",
++        "- Branch forward counters are recorded as per-branch deltas, and the first feedback is taken from the actual first step row.",
++        "- Resume output is isolated from the original run; completed branch IDs are skipped by identity and the original SQLite was opened read-only during preflight.",
++        "- Regression tests cover failed first-pair gates, the ordinary-run freshness gate, and missing/duplicate/corrupted completed-ledger records.",
++        "- Historical hidden/cache mutation proof is explicitly not_recorded because the old snapshot identity did not persist those hashes; current semantic hashes are not treated as historical proof.",
++        "",
++        f"The guard contract probe blocked execution: original action 24 with no continuation and NOOP probability 0.9 produced final action {guard_probe['observed']['final_action']}.",
++        "The guard module was intentionally not changed under this handoff.",
++        "",
++    ]) + "\n", encoding="utf-8")
++    (RESUME_OUT / "final-report.md").write_text("\n".join([
++        "# ACK-Known Task Guard Resume",
++        "",
++        "Technical stop before the remaining 22 branches.",
++        "",
++        f"The existing guard violates the no-continuation NOOP contract: original action {guard_probe['observed']['original_action']} became final action {guard_probe['observed']['final_action']}.",
++        "No model was loaded, no environment step was executed, no new budget attempt was created, and no SQLite row was written.",
++        "The two existing branches remain preserved as prior evidence; no overall paired utility result is estimable.",
++        "This handoff records env=0, model=0, attempt=0. Historical hidden/cache mutation status is not_recorded; the old process did not persist post-run snapshot digests.",
++        "",
++    ]) + "\n", encoding="utf-8")
++    write_minimal_diff(RESUME_OUT)
++    return resume_manifest
++
++
++def resume_prepare() -> dict[str, Any]:
++    manifest = read_json(OUT / "branch-manifest.json")["rows"]
++    results = read_jsonl(OUT / "branch-results.jsonl")
++    steps = read_jsonl(OUT / "step-vector-rewards.jsonl")
++    decisions = read_jsonl(OUT / "decision-ledger.jsonl")
++    budget_state = read_budget_state_readonly(OUT / "budget.sqlite3")
++    source_check = verify_resume_source_identity()
++    snapshots = load_snapshots({row["prefix_id"] for row in manifest})
++    snapshot_check = verify_snapshot_identity_for_resume(snapshots)
++    integrity = audit_completed_branches(manifest, results, steps, decisions, budget_state)
++    control_labels, _ = historical_control_rows(manifest)
++    stage = next((row for row in budget_state["stages"] if row["stage"] == "environment_steps"), {})
++    run_total = next((row for row in budget_state["run_totals"] if row["stage"] == "environment_steps"), {"reserved": 0, "verified": 0, "unknown": 0, "pending": 0})
++    guard_step_groups: dict[str, list[dict[str, Any]]] = {}
++    for step in steps:
++        guard_step_groups.setdefault(str(step.get("branch_id")), []).append(step)
++    first_pair = first_pair_check(
++        results,
++        None,
++        budget_totals=run_total,
++        control_labels=control_labels,
++        guard_steps=guard_step_groups,
++        out_dir=RESUME_OUT,
++        write_output=False,
++    ) if not RESUME_OUT.exists() else {"passed": False, "reason": "resume output already exists"}
++    guard_probe = guard_contract_probe()
++    if RESUME_OUT.exists() and any(RESUME_OUT.iterdir()):
++        raise RuntimeError(f"refusing to overwrite existing resume evidence: {RESUME_OUT}")
++    if int(stage.get("reserved", -1)) != 20 or int(stage.get("verified", -1)) != 20 or int(stage.get("unknown", -1)) != 0:
++        raise RuntimeError(f"unexpected existing environment budget: {stage}")
++    if not source_check["passed"] or not snapshot_check["passed"] or not integrity["passed"]:
++        raise RuntimeError("resume preflight integrity failed")
++    return write_resume_blocked_evidence(
++        manifest=manifest,
++        results=results,
++        steps=steps,
++        decisions=decisions,
++        budget_state=budget_state,
++        source_check=source_check,
++        snapshot_check=snapshot_check,
++        integrity=integrity,
++        first_pair=first_pair,
++        guard_probe=guard_probe,
++    )
++
++
++def resume_run() -> None:
++    payload = read_json(RESUME_OUT / "resume-manifest.json")
++    raise RuntimeError(f"resume execution is intentionally disabled for this handoff: {payload.get('blocked_reason', 'guard contract approval required')}")
++
++
++def resume_finalize() -> None:
++    payload = read_json(RESUME_OUT / "resume-manifest.json")
++    if payload.get("status") != "prepared":
++        return
++    raise RuntimeError("resume finalization requires a completed dynamic matrix")
++
++
++def ensure_fresh_run_output(out_dir: Path = OUT) -> None:
++    existing = [
++        out_dir / "branch-results.jsonl",
++        out_dir / "step-vector-rewards.jsonl",
++        out_dir / "decision-ledger.jsonl",
++        out_dir / "progress.jsonl",
++    ]
++    present = [str(path) for path in existing if path.exists()]
++    if present:
++        raise RuntimeError(f"ordinary run refuses existing branch records; use approved resume path: {present}")
+ 
+ 
+ def run_matrix() -> None:
+     if read_json(OUT / "prepare-status.json").get("status") != "prepared":
+         raise RuntimeError("prepare stage missing")
++    ensure_fresh_run_output(OUT)
+     manifest = read_json(OUT / "branch-manifest.json")["rows"]
+     helper = load_helper()
+     classes = helper.load_modules(SOURCE_ROOT)
+@@ -495,21 +1089,20 @@
+     guard = load_guard_module()
+     vector_reward = __import__("gppo_world.joint_training", fromlist=["_vector_reward"])._vector_reward
+     policy_before, world_before = model_digest(policy), model_digest(world)
+-    base_digests = {}
+-    for prefix_id, snapshot in snapshots.items():
+-        base_digests[prefix_id] = env_state_digest(snapshot["env"])
++    base_digests = snapshot_semantic_digests(snapshots)
+     budget = PersistentBudget(OUT / "budget.sqlite3", limits={"environment_steps": MAX_TOTAL_STEPS, "optimizer_calls": 0, "world_updates": 0, "offline_updates": 0}, attempt_id=RUN_ID, run_id=RUN_ID, run_limits={"environment_steps": MAX_TOTAL_STEPS, "optimizer_calls": 0, "world_updates": 0, "offline_updates": 0}, require_existing=True)
+     counters = {"env_steps": 0, "actor_forward": 0, "world_forward": 0, "probe": 0, "branches_completed": 0}
+     results = []
++    control_labels, _ = historical_control_rows(manifest)
+     write_json(OUT / "run-status.json", {"status": "running", "started_at": time.time(), "counters": counters, "optimizer_updates": 0, "world_updates": 0, "offline_updates": 0, "new_attempt": 1})
+     try:
+         for item in manifest:
+-            result = run_branch(item, snapshots[item["prefix_id"]], helper, vector_reward, guard, policy, world, preference, classes, budget, counters, device)
++            result = run_branch(item, snapshots[item["prefix_id"]], helper, vector_reward, guard, policy, world, preference, classes, budget, counters, device, out_dir=OUT)
+             results.append(result); counters["branches_completed"] += 1
+             append_jsonl(OUT / "progress.jsonl", {"branch_id": item["branch_id"], "branches_completed": counters["branches_completed"], "env_steps": counters["env_steps"], "limit": MAX_TOTAL_STEPS})
+-            if counters["branches_completed"] == 2:
+-                base_unchanged = {prefix_id: env_state_digest(snapshot["env"]) == digest for prefix_id, digest in base_digests.items()}
+-                first_pair_check(results, base_unchanged, budget)
++            if counters["branches_completed"] == 1:
++                base_unchanged = {prefix_id: snapshot_semantic_digest(snapshots[prefix_id]) == digest for prefix_id, digest in base_digests.items()}
++                first_pair_check(results, base_unchanged, budget, control_labels=control_labels, out_dir=OUT)
+         if len(results) != 24 or counters["env_steps"] > MAX_TOTAL_STEPS:
+             raise RuntimeError(f"matrix accounting mismatch: {counters}")
+         if model_digest(policy) != policy_before or model_digest(world) != world_before:
+@@ -675,18 +1268,22 @@
+     if not payload["passed"]: raise RuntimeError(f"post-run validation failed: {checks}")
+ 
+ 
+-def write_hashes() -> None:
+-    files = [path for path in sorted(OUT.iterdir()) if path.is_file() and path.name not in {"hashes.json", "hashes.json.sha256"}]
++def write_hashes(out_dir: Path = OUT) -> None:
++    files = [path for path in sorted(out_dir.iterdir()) if path.is_file() and path.name not in {"hashes.json", "hashes.json.sha256"}]
+     payload = {"schema": "ack-known-task-guard-hashes/1.0.0", "files": {path.name: {"bytes": path.stat().st_size, "sha256": sha256_file(path)} for path in files}, "scope": "all output files present when written; hashes are non-recursive"}
+-    write_json(OUT / "hashes.json", payload)
+-    (OUT / "hashes.json.sha256").write_text(sha256_file(OUT / "hashes.json") + "  hashes.json\n", encoding="utf-8")
++    write_json(out_dir / "hashes.json", payload)
++    (out_dir / "hashes.json.sha256").write_text(sha256_file(out_dir / "hashes.json") + "  hashes.json\n", encoding="utf-8")
+ 
+ 
+ def main() -> int:
+     parser = argparse.ArgumentParser()
+-    parser.add_argument("--mode", choices=("prepare", "run", "analyze", "stop-report", "validate", "hash"), required=True)
++    parser.add_argument("--mode", choices=("prepare", "run", "analyze", "stop-report", "validate", "hash", "resume-prepare", "resume-run", "resume-finalize", "resume"), required=True)
+     args = parser.parse_args()
+-    {"prepare": prepare, "run": run_matrix, "analyze": analyze, "stop-report": stop_report, "validate": validate, "hash": write_hashes}[args.mode]()
++    actions = {"prepare": prepare, "run": run_matrix, "analyze": analyze, "stop-report": stop_report, "validate": validate, "hash": write_hashes, "resume-prepare": resume_prepare, "resume-run": resume_run, "resume-finalize": resume_finalize}
++    if args.mode == "resume":
++        resume_prepare()
++    else:
++        actions[args.mode]()
+     return 0
+ 
+ 
+
+--- /dev/null
++++ E:\Z博士\9.2日\WORLD-GPPO_9.11-replan-value-20260919-wt\tests\test_ack_known_task_guard_resume_v1.py
+@@ -0,0 +1,240 @@
++from __future__ import annotations
++
++import importlib.util
++import copy
++import shutil
++import tempfile
++from pathlib import Path
++from types import SimpleNamespace
++
++import numpy as np
++import pytest
++
++from gppo_world.ack_known_task_guard import PublicIdentityError, select_guarded_action
++
++
++RUNNER_PATH = Path(__file__).parents[1] / "tools" / "run_ack_known_task_guard_baseline_v1.py"
++SPEC = importlib.util.spec_from_file_location("ackguard_resume_runner", RUNNER_PATH)
++assert SPEC is not None and SPEC.loader is not None
++RUNNER = importlib.util.module_from_spec(SPEC)
++SPEC.loader.exec_module(RUNNER)
++
++
++def _branch(branch_id: str, repeat: int, *, first_feedback: str = "accepted") -> dict:
++    decision = {
++        "step": 1,
++        "final_action": 0,
++        "original_action": 1,
++        "legal_mask": [1, 1],
++        "runtime_action_hidden_sha256": "hidden",
++    }
++    return {
++        "branch_id": branch_id,
++        "control_branch_key": f"control-{repeat}",
++        "parent_id": "parent-00",
++        "repeat": repeat,
++        "initial_public_observation_sha256": "public",
++        "env_steps": 10,
++        "rows": 10,
++        "first_step": decision,
++        "first_feedback": first_feedback,
++    }
++
++
++def test_first_pair_is_one_guard_plus_historical_control_and_cumulative_budget():
++    results = [_branch("guard-0", 0), _branch("guard-1", 1)]
++    payload = RUNNER.first_pair_check(
++        results,
++        {"prefix-0": True},
++        control_labels={"control-0": [{"step": index} for index in range(13)]},
++        budget_totals={"reserved": 20, "verified": 20, "unknown": 0, "pending": 0},
++        write_output=False,
++    )
++    assert payload["passed"]
++    assert payload["pair"]["guard_branch_id"] == "guard-0"
++    assert payload["pair"]["historical_control_steps"] == 13
++    assert payload["dynamic_guard_steps_completed"] == 20
++    assert payload["pair"]["guard_first_feedback"] == "accepted"
++
++
++def test_first_pair_unknown_snapshot_evidence_is_not_a_pass():
++    results = [_branch("guard-0", 0), _branch("guard-1", 1)]
++    payload = RUNNER.first_pair_check(
++        results,
++        None,
++        control_labels={"control-0": [{"step": index} for index in range(13)]},
++        budget_totals={"reserved": 20, "verified": 20, "unknown": 0, "pending": 0},
++        write_output=False,
++    )
++    assert payload["checks"]["base_snapshot_unchanged"] is None
++    assert payload["checks_known_passed"] is True
++    assert payload["gate_status"] == "insufficient_evidence"
++    assert payload["passed"] is False
++    assert payload["historical_base_snapshot_check_status"] == "not_recorded"
++
++
++@pytest.mark.parametrize(
++    ("base_digests", "control_labels", "budget_totals", "results"),
++    [
++        ({"prefix-0": False}, {"control-0": [{"step": 1}]}, {"reserved": 20, "verified": 20, "unknown": 0, "pending": 0}, None),
++        ({"prefix-0": True}, {}, {"reserved": 20, "verified": 20, "unknown": 0, "pending": 0}, None),
++        ({"prefix-0": True}, {"control-0": [{"step": 1}]}, {"reserved": 20, "verified": 20, "unknown": 1, "pending": 0}, None),
++        ({"prefix-0": True}, {"control-0": [{"step": 1}]}, {"reserved": 20, "verified": 19, "unknown": 0, "pending": 1}, None),
++        ({"prefix-0": True}, {"control-0": [{"step": 1}]}, {"reserved": 20, "verified": 20, "unknown": 0, "pending": 0}, "duplicate"),
++    ],
++    ids=("snapshot_mismatch", "missing_control", "unknown_budget", "pending_budget", "duplicate_branch"),
++)
++def test_first_pair_rejects_incomplete_or_ambiguous_preflight(
++    base_digests, control_labels, budget_totals, results
++):
++    rows = [_branch("guard-0", 0), _branch("guard-1", 1)]
++    if results == "duplicate":
++        rows.append(_branch("guard-0", 0))
++    with pytest.raises(RuntimeError, match="first pair interface check failed"):
++        RUNNER.first_pair_check(
++            rows,
++            base_digests,
++            control_labels=control_labels,
++            budget_totals=budget_totals,
++            write_output=False,
++        )
++
++
++def test_branch_counter_delta_splits_10_and_20_cumulative_counts():
++    start = {"actor_forward": 0, "world_forward": 0, "probe": 0, "env_steps": 0}
++    first_end = {"actor_forward": 10, "world_forward": 10, "probe": 10, "env_steps": 10}
++    second_end = {"actor_forward": 20, "world_forward": 20, "probe": 20, "env_steps": 20}
++    assert RUNNER.branch_counter_delta(start, first_end) == {"actor_forward": 10, "world_forward": 10, "probe": 10, "env_steps": 10}
++    assert RUNNER.branch_counter_delta(first_end, second_end) == {"actor_forward": 10, "world_forward": 10, "probe": 10, "env_steps": 10}
++
++
++def test_resume_partition_skips_only_the_two_completed_branch_ids():
++    manifest = [{"branch_id": f"branch-{index}"} for index in range(24)]
++    completed, remaining = RUNNER.resume_branch_partition(manifest, {"branch-0", "branch-1"})
++    assert [row["branch_id"] for row in completed] == ["branch-0", "branch-1"]
++    assert len(remaining) == 22
++    assert {row["branch_id"] for row in remaining}.isdisjoint({"branch-0", "branch-1"})
++
++
++def test_ordinary_run_refuses_existing_records_before_model_or_budget_construction(monkeypatch):
++    temp_root = Path(tempfile.mkdtemp(prefix="ackguard-test-", dir=str(RUNNER.WORKTREE)))
++    try:
++        out_dir = temp_root / "run"
++        out_dir.mkdir()
++        (out_dir / "prepare-status.json").write_text('{"status": "prepared"}\n', encoding="utf-8")
++        (out_dir / "branch-results.jsonl").write_text('{"branch_id": "already-there"}\n', encoding="utf-8")
++        events = []
++
++        class Helper:
++            def load_modules(self, *_args, **_kwargs):
++                events.append("load_modules")
++                raise AssertionError("module loading must be gated")
++
++            def load_models(self, *_args, **_kwargs):
++                events.append("load_models")
++                raise AssertionError("model loading must be gated")
++
++        monkeypatch.setattr(RUNNER, "OUT", out_dir)
++        monkeypatch.setattr(RUNNER, "load_helper", lambda: (events.append("load_helper") or Helper()))
++        with pytest.raises(RuntimeError, match="ordinary run refuses existing branch records"):
++            RUNNER.run_matrix()
++        assert events == []
++    finally:
++        shutil.rmtree(temp_root, ignore_errors=True)
++
++
++def test_snapshot_semantic_digest_covers_hidden_and_cache_state():
++    env = SimpleNamespace(
++        clock=SimpleNamespace(time=2.0, tasks={}, resources={}),
++        _step_index=2,
++        _episode_id="episode",
++        _command_index=0,
++        _last_completed=0,
++        _last_expired=0,
++        _last_energy=1.0,
++        _active_actions={},
++        _communication_log=[],
++    )
++    obs = {
++        "flat": np.zeros(2, dtype=np.float32),
++        "mask": np.asarray([True, True], dtype=np.bool_),
++        "version": 1,
++        "time": 2.0,
++        "public_entity_ids": {"uavs": ("uav-0",), "tasks": ("task-0",)},
++        "continuation_actions": (),
++        "trigger_flags": {},
++    }
++    snapshot = {"env": env, "obs": obs, "policy_hidden": np.asarray([1.0], dtype=np.float32), "cache": {"step": 2}}
++    baseline = RUNNER.snapshot_semantic_digest(snapshot)
++    snapshot["policy_hidden"][0] = 2.0
++    hidden_changed = RUNNER.snapshot_semantic_digest(snapshot)
++    snapshot["policy_hidden"][0] = 1.0
++    snapshot["cache"]["step"] = 3
++    cache_changed = RUNNER.snapshot_semantic_digest(snapshot)
++    assert baseline != hidden_changed
++    assert baseline != cache_changed
++
++
++def test_existing_guard_contract_gap_is_exposed_without_changing_guard():
++    payload = RUNNER.guard_contract_probe()
++    assert payload["env_step_calls"] == 0
++    assert payload["model_forward_calls"] == 0
++    assert payload["observed"]["original_action"] == 24
++    assert payload["observed"]["final_action"] == 0
++    assert payload["contract_compatible"] is False
++
++
++def test_duplicate_or_partial_public_identity_stops_before_any_execution():
++    mask = [False] * 25
++    mask[0] = True
++    mask[24] = True
++    bad = {
++        "mask": mask,
++        "public_entity_ids": {"uavs": ("uav-0", "uav-0"), "tasks": ("task-0",)},
++        "continuation_actions": (),
++    }
++    probabilities = [0.0] * 25
++    probabilities[0] = 0.1
++    probabilities[24] = 0.9
++    try:
++        select_guarded_action(bad, probabilities, task_capacity=6)
++    except PublicIdentityError:
++        pass
++    else:
++        raise AssertionError("duplicate public identity must be a technical stop")
++
++
++def _completed_branch_audit_fixture():
++    """Use the preserved two-branch ledger as a compact valid audit fixture."""
++    manifest = RUNNER.read_json(RUNNER.OUT / "branch-manifest.json")["rows"][:2]
++    results = RUNNER.read_jsonl(RUNNER.OUT / "branch-results.jsonl")[:2]
++    branch_ids = {row["branch_id"] for row in results}
++    steps = [row for row in RUNNER.read_jsonl(RUNNER.OUT / "step-vector-rewards.jsonl") if row["branch_id"] in branch_ids]
++    decisions = [row for row in RUNNER.read_jsonl(RUNNER.OUT / "decision-ledger.jsonl") if row["branch_id"] in branch_ids]
++    return manifest, results, steps, decisions, {"integrity_check": "ok"}
++
++
++@pytest.mark.parametrize("mutation", ("missing_step", "duplicate_step", "broken_hash_chain"))
++def test_completed_branch_audit_rejects_partial_or_corrupted_ledgers(mutation):
++    manifest, results, steps, decisions, budget_state = _completed_branch_audit_fixture()
++    steps = copy.deepcopy(steps)
++    decisions = copy.deepcopy(decisions)
++    if mutation == "missing_step":
++        steps.pop()
++    elif mutation == "duplicate_step":
++        branch_steps = [row for row in steps if row["branch_id"] == results[0]["branch_id"]]
++        branch_decisions = [row for row in decisions if row["branch_id"] == results[0]["branch_id"]]
++        branch_steps[1]["step"] = branch_steps[0]["step"]
++        branch_decisions[1]["step"] = branch_decisions[0]["step"]
++    else:
++        branch_steps = [row for row in steps if row["branch_id"] == results[0]["branch_id"]]
++        branch_steps[0]["public_next_observation_sha256"] = "broken-chain"
++    payload = RUNNER.audit_completed_branches(manifest, results, steps, decisions, budget_state)
++    assert payload["passed"] is False
++    if mutation == "missing_step":
++        assert payload["checks"]["step_rows_total_20"] is False
++    elif mutation == "duplicate_step":
++        assert payload["rows"][0]["checks"]["step_sequence_identity"] is False
++        assert payload["rows"][0]["checks"]["decision_sequence_identity"] is False
++    else:
++        assert payload["rows"][0]["checks"]["public_digest_chain"] is False

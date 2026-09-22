@@ -1,0 +1,51 @@
+{
+  "schema": "ack-known-task-guard-readonly-verification/1.0.0",
+  "source_sqlite": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+  "sqlite_sha256_before": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+  "sqlite_sha256_after": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+  "sqlite_sha256_equal": true,
+  "sqlite_bytes_before": 61440,
+  "sqlite_bytes_after": 61440,
+  "sqlite_main_mtime_before_utc": "2026-09-22T02:09:17.2524015Z",
+  "sqlite_main_mtime_after_utc": "2026-09-22T02:09:17.2524015Z",
+  "sqlite_integrity_before": "ok",
+  "sqlite_integrity_after": "ok",
+  "environment_steps_before": {
+    "limit_amount": 384,
+    "reserved": 20,
+    "stage": "environment_steps",
+    "unknown": 0,
+    "verified": 20
+  },
+  "environment_steps_after": {
+    "limit_amount": 384,
+    "reserved": 20,
+    "stage": "environment_steps",
+    "unknown": 0,
+    "verified": 20
+  },
+  "run_totals_before": {
+    "pending": 0,
+    "reserved": 20,
+    "stage": "environment_steps",
+    "unknown": 0,
+    "verified": 20
+  },
+  "run_totals_after": {
+    "pending": 0,
+    "reserved": 20,
+    "stage": "environment_steps",
+    "unknown": 0,
+    "verified": 20
+  },
+  "old_budget_read_only": true,
+  "new_attempt_created": false,
+  "env_step_calls": 0,
+  "model_forward_calls": 0,
+  "optimizer_updates": 0,
+  "world_updates": 0,
+  "offline_updates": 0,
+  "guard_sha256_before": "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b",
+  "guard_sha256_after": "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b",
+  "guard_sha256_equal": true
+}
