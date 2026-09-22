@@ -1,0 +1,30 @@
+{
+  "audit_execution_counts": {
+    "env_step_calls": 0,
+    "model_forward_calls": 0,
+    "new_attempt_created": 0,
+    "offline_updates": 0,
+    "optimizer_updates": 0,
+    "world_updates": 0
+  },
+  "current_sqlite_matches_historical": true,
+  "current_sqlite_sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+  "historical_budget": {
+    "limit": 384,
+    "pending": 0,
+    "reserved": 20,
+    "unknown": 0,
+    "verified": 20
+  },
+  "preserved_readonly_counts": {
+    "env_step_calls": 0,
+    "model_forward_calls": 0,
+    "new_attempt_created": false,
+    "offline_updates": 0,
+    "optimizer_updates": 0,
+    "world_updates": 0
+  },
+  "source_sqlite_equal": true,
+  "source_sqlite_sha256_after": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+  "source_sqlite_sha256_before": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223"
+}

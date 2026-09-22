@@ -1,0 +1,87 @@
+{
+  "expected_old_guard_sha256": "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b",
+  "guard_changed": true,
+  "inputs": {
+    "audit_script": {
+      "bytes": 26095,
+      "path": "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\audit_ack_known_task_guard_noop_contract_20260922.py",
+      "sha256": "36bd1ae7c8c7f0f3dbf9f17e880006351f07b8f9ba8ec00ac741ced7173bb11f"
+    },
+    "branch_manifest": {
+      "bytes": 13747,
+      "path": "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\branch-manifest.json",
+      "sha256": "b2f8d1f8350812c99b2dcfa452b5fed6456778e7e3abe6d2e11fb0a6b8261d24"
+    },
+    "branch_results": {
+      "bytes": 16888,
+      "path": "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\branch-results.jsonl",
+      "sha256": "23c13e22d3cf3c01357154ed648b24e4e022381ba298d5fc52bfa60a98eecad0"
+    },
+    "current_guard": {
+      "bytes": 6518,
+      "path": "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py",
+      "sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a"
+    },
+    "decision_ledger": {
+      "bytes": 15286,
+      "path": "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\decision-ledger.jsonl",
+      "sha256": "964f22cad7f5f69dafda1906123f9cc5f0ab483baa54ce5f78c30c0daf6a2671"
+    },
+    "noop_contract_test": {
+      "bytes": 4694,
+      "path": "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tests\\test_ack_known_task_guard_noop_contract_audit_20260922.py",
+      "sha256": "76f62bb375dc33d836c37a791328837775d2f54301bc9bd220e680c08d1d8d94"
+    },
+    "old_guard_archive": {
+      "bytes": 6304,
+      "path": "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\failure-archive-20260922\\ack_known_task_guard-original.py",
+      "sha256": "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b"
+    },
+    "resume_erratum": {
+      "bytes": 2803,
+      "path": "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-resume-20260922\\first-pair-interface-check-erratum.json",
+      "sha256": "b4e5905443c87dc80024c52f14835f1cc63268fa0cb708ff8eba3541e443b3b2"
+    },
+    "resume_readonly_verification": {
+      "bytes": 1768,
+      "path": "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-resume-20260922\\readonly-verification.json",
+      "sha256": "9ca09b07259838ae7a5ca1805e67f114311eb99798ee2a4d48bb8ee134f05e51"
+    },
+    "resume_snapshot_identity": {
+      "bytes": 8805,
+      "path": "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-resume-20260922\\snapshot-identity.json",
+      "sha256": "c60b6687a0a3dbc774c4cecc05e9506a5cd701b815869d0a2fc830f59789f42e"
+    },
+    "resume_test": {
+      "bytes": 10456,
+      "path": "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tests\\test_ack_known_task_guard_resume_v1.py",
+      "sha256": "36975602ac6963cc339e87aef72b1ebfe516b2a025fa6a939d6d62cf1cb72aaf"
+    },
+    "review_final": {
+      "bytes": 3515,
+      "path": "E:\\Z\u535a\u58eb\\research-reviews\\ackguard-resume-review-20260922\\final-review.md",
+      "sha256": "27b703febedaf8b257fe25e499b29d909c52564124b68349cc1f99e11bce73a8"
+    },
+    "review_scope_decision": {
+      "bytes": 1357,
+      "path": "E:\\Z\u535a\u58eb\\research-reviews\\ackguard-resume-review-20260922\\scope-decision.md",
+      "sha256": "3bd20902da36b15c518297d7f8b2d927297370f1171a131b244398bd5c4060f8"
+    },
+    "sqlite": {
+      "bytes": 61440,
+      "path": "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+      "sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223"
+    },
+    "step_vector_rewards": {
+      "bytes": 730070,
+      "path": "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\step-vector-rewards.jsonl",
+      "sha256": "00adde88c3e56a9b9369429c82cfefaafbd9948376b59b80eb88007ee0d242fa"
+    }
+  },
+  "new_guard_sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
+  "old_guard_matches_expected": true,
+  "old_guard_sha256": "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b",
+  "sqlite_matches_expected": true,
+  "sqlite_sha256_current": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+  "sqlite_sha256_expected": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223"
+}

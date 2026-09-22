@@ -1,0 +1,18 @@
+..................                                                       [100%]
+18 passed in 2.71s
+...........F....                                                         [100%]
+================================== FAILURES ===================================
+_____ test_existing_guard_contract_gap_is_exposed_without_changing_guard ______
+
+    def test_existing_guard_contract_gap_is_exposed_without_changing_guard():
+        payload = RUNNER.guard_contract_probe()
+        assert payload["env_step_calls"] == 0
+        assert payload["model_forward_calls"] == 0
+        assert payload["observed"]["original_action"] == 24
+>       assert payload["observed"]["final_action"] == 0
+E       assert 24 == 0
+
+tests\test_ack_known_task_guard_resume_v1.py:183: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_ack_known_task_guard_resume_v1.py::test_existing_guard_contract_gap_is_exposed_without_changing_guard
+1 failed, 15 passed in 2.24s

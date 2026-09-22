@@ -1,0 +1,61 @@
+{
+  "files": {
+    "budget-readonly-audit.json": {
+      "bytes": 929,
+      "sha256": "e38dc1744aa973129f23d2e3dc109b3c55af92564975571b460c257ad896bf64"
+    },
+    "decision-evidence.json": {
+      "bytes": 24145,
+      "sha256": "fe7cc3d6b31c6af53ec993e1409e34e4422638445c973c7d47411f2b024f1496"
+    },
+    "final-supplement.md": {
+      "bytes": 1241,
+      "sha256": "ac8cb66871f499e5f6267a5f6b6b4d7a8268f6b6bb2e4a1f90cb277c73040464"
+    },
+    "hidden-cache-evidence.json": {
+      "bytes": 863,
+      "sha256": "0051be6c7ceff72bb777730a828fa5ae5e8dfe8b9255009e5c01f65185622034"
+    },
+    "minimal-diff.patch": {
+      "bytes": 44604,
+      "sha256": "32a54ed5918f8218268bbf87e1e5f8ea217ab40a6e2ea5388efec0ebe095b9fd"
+    },
+    "report-initial.md": {
+      "bytes": 3501,
+      "sha256": "732db516e79104f6b8ede164291919cbd40b842e21242706b3759e1f1226fd86"
+    },
+    "report.md": {
+      "bytes": 3991,
+      "sha256": "54f8001b08a832e80af785681cc276403729f9aa6ee0d64d3dd0d46400995432"
+    },
+    "scope-decision.json": {
+      "bytes": 2775,
+      "sha256": "be91e3429ce3652876acb44a1b1fe00b2ea1319dd4c18d43820524beec6b8510"
+    },
+    "source-identity.json": {
+      "bytes": 5341,
+      "sha256": "3987bea57996b1ea6d1054a7d837cf9d86438e2a825fdd0bc6db764dec511756"
+    },
+    "test-output-final.txt": {
+      "bytes": 101,
+      "sha256": "0b0a4933da14d397782c838be71dae2d7b3292381a966309cd5bac06c1d61304"
+    },
+    "test-output-initial-18pass-15pass1fail.txt": {
+      "bytes": 1015,
+      "sha256": "3bb5b913c7e8cddf39b5958044b40d43d88ba3079ebc80141002ff904c30a013"
+    },
+    "test-output.txt": {
+      "bytes": 1015,
+      "sha256": "3bb5b913c7e8cddf39b5958044b40d43d88ba3079ebc80141002ff904c30a013"
+    }
+  },
+  "schema": "ackguard-noop-contract-audit-hashes/1.0.0",
+  "scope": "non-recursive SHA-256 for this audit's generated evidence and source inputs",
+  "source_identities": {
+    "new_guard_sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
+    "old_guard_matches_expected": true,
+    "old_guard_sha256": "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b",
+    "sqlite_matches_expected": true,
+    "sqlite_sha256_current": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223"
+  }
+}

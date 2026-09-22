@@ -1,0 +1,879 @@
+--- a/gppo_world/ack_known_task_guard.py (old SHA256 6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b)
++++ b/gppo_world/ack_known_task_guard.py (new SHA256 2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a)
+@@ -127,13 +127,17 @@
+         if target[1] in continuation_tasks:
+             excluded.append(action)
+ 
+-    candidates = [action for action in allocations if action not in set(excluded)]
++    allocation_candidates = [action for action in allocations if action not in set(excluded)]
++    candidates = list(allocation_candidates)
++    if noop in legal:
++        # NOOP has no task identity and remains a legal original-mask choice.
++        candidates.append(noop)
+     if candidates:
+         final_action = max(candidates, key=lambda index: (finite[index], -index))
+-        reason = "excluded_continuation_task" if excluded else "no_guard_match"
+-    elif noop in legal:
+-        final_action = noop
+-        reason = "no_remaining_allocation_choose_noop"
++        if not allocation_candidates and noop in legal:
++            reason = "no_remaining_allocation_choose_noop"
++        else:
++            reason = "excluded_continuation_task" if excluded else "no_guard_match"
+     else:
+         raise NoLegalActionError("all legal allocation actions were excluded and NOOP is illegal")
+     return GuardDecision(
+--- /dev/null
++++ b/tests/test_ack_known_task_guard_resume_v1.py
+@@ -0,0 +1,240 @@
++from __future__ import annotations
++
++import importlib.util
++import copy
++import shutil
++import tempfile
++from pathlib import Path
++from types import SimpleNamespace
++
++import numpy as np
++import pytest
++
++from gppo_world.ack_known_task_guard import PublicIdentityError, select_guarded_action
++
++
++RUNNER_PATH = Path(__file__).parents[1] / "tools" / "run_ack_known_task_guard_baseline_v1.py"
++SPEC = importlib.util.spec_from_file_location("ackguard_resume_runner", RUNNER_PATH)
++assert SPEC is not None and SPEC.loader is not None
++RUNNER = importlib.util.module_from_spec(SPEC)
++SPEC.loader.exec_module(RUNNER)
++
++
++def _branch(branch_id: str, repeat: int, *, first_feedback: str = "accepted") -> dict:
++    decision = {
++        "step": 1,
++        "final_action": 0,
++        "original_action": 1,
++        "legal_mask": [1, 1],
++        "runtime_action_hidden_sha256": "hidden",
++    }
++    return {
++        "branch_id": branch_id,
++        "control_branch_key": f"control-{repeat}",
++        "parent_id": "parent-00",
++        "repeat": repeat,
++        "initial_public_observation_sha256": "public",
++        "env_steps": 10,
++        "rows": 10,
++        "first_step": decision,
++        "first_feedback": first_feedback,
++    }
++
++
++def test_first_pair_is_one_guard_plus_historical_control_and_cumulative_budget():
++    results = [_branch("guard-0", 0), _branch("guard-1", 1)]
++    payload = RUNNER.first_pair_check(
++        results,
++        {"prefix-0": True},
++        control_labels={"control-0": [{"step": index} for index in range(13)]},
++        budget_totals={"reserved": 20, "verified": 20, "unknown": 0, "pending": 0},
++        write_output=False,
++    )
++    assert payload["passed"]
++    assert payload["pair"]["guard_branch_id"] == "guard-0"
++    assert payload["pair"]["historical_control_steps"] == 13
++    assert payload["dynamic_guard_steps_completed"] == 20
++    assert payload["pair"]["guard_first_feedback"] == "accepted"
++
++
++def test_first_pair_unknown_snapshot_evidence_is_not_a_pass():
++    results = [_branch("guard-0", 0), _branch("guard-1", 1)]
++    payload = RUNNER.first_pair_check(
++        results,
++        None,
++        control_labels={"control-0": [{"step": index} for index in range(13)]},
++        budget_totals={"reserved": 20, "verified": 20, "unknown": 0, "pending": 0},
++        write_output=False,
++    )
++    assert payload["checks"]["base_snapshot_unchanged"] is None
++    assert payload["checks_known_passed"] is True
++    assert payload["gate_status"] == "insufficient_evidence"
++    assert payload["passed"] is False
++    assert payload["historical_base_snapshot_check_status"] == "not_recorded"
++
++
++@pytest.mark.parametrize(
++    ("base_digests", "control_labels", "budget_totals", "results"),
++    [
++        ({"prefix-0": False}, {"control-0": [{"step": 1}]}, {"reserved": 20, "verified": 20, "unknown": 0, "pending": 0}, None),
++        ({"prefix-0": True}, {}, {"reserved": 20, "verified": 20, "unknown": 0, "pending": 0}, None),
++        ({"prefix-0": True}, {"control-0": [{"step": 1}]}, {"reserved": 20, "verified": 20, "unknown": 1, "pending": 0}, None),
++        ({"prefix-0": True}, {"control-0": [{"step": 1}]}, {"reserved": 20, "verified": 19, "unknown": 0, "pending": 1}, None),
++        ({"prefix-0": True}, {"control-0": [{"step": 1}]}, {"reserved": 20, "verified": 20, "unknown": 0, "pending": 0}, "duplicate"),
++    ],
++    ids=("snapshot_mismatch", "missing_control", "unknown_budget", "pending_budget", "duplicate_branch"),
++)
++def test_first_pair_rejects_incomplete_or_ambiguous_preflight(
++    base_digests, control_labels, budget_totals, results
++):
++    rows = [_branch("guard-0", 0), _branch("guard-1", 1)]
++    if results == "duplicate":
++        rows.append(_branch("guard-0", 0))
++    with pytest.raises(RuntimeError, match="first pair interface check failed"):
++        RUNNER.first_pair_check(
++            rows,
++            base_digests,
++            control_labels=control_labels,
++            budget_totals=budget_totals,
++            write_output=False,
++        )
++
++
++def test_branch_counter_delta_splits_10_and_20_cumulative_counts():
++    start = {"actor_forward": 0, "world_forward": 0, "probe": 0, "env_steps": 0}
++    first_end = {"actor_forward": 10, "world_forward": 10, "probe": 10, "env_steps": 10}
++    second_end = {"actor_forward": 20, "world_forward": 20, "probe": 20, "env_steps": 20}
++    assert RUNNER.branch_counter_delta(start, first_end) == {"actor_forward": 10, "world_forward": 10, "probe": 10, "env_steps": 10}
++    assert RUNNER.branch_counter_delta(first_end, second_end) == {"actor_forward": 10, "world_forward": 10, "probe": 10, "env_steps": 10}
++
++
++def test_resume_partition_skips_only_the_two_completed_branch_ids():
++    manifest = [{"branch_id": f"branch-{index}"} for index in range(24)]
++    completed, remaining = RUNNER.resume_branch_partition(manifest, {"branch-0", "branch-1"})
++    assert [row["branch_id"] for row in completed] == ["branch-0", "branch-1"]
++    assert len(remaining) == 22
++    assert {row["branch_id"] for row in remaining}.isdisjoint({"branch-0", "branch-1"})
++
++
++def test_ordinary_run_refuses_existing_records_before_model_or_budget_construction(monkeypatch):
++    temp_root = Path(tempfile.mkdtemp(prefix="ackguard-test-", dir=str(RUNNER.WORKTREE)))
++    try:
++        out_dir = temp_root / "run"
++        out_dir.mkdir()
++        (out_dir / "prepare-status.json").write_text('{"status": "prepared"}\n', encoding="utf-8")
++        (out_dir / "branch-results.jsonl").write_text('{"branch_id": "already-there"}\n', encoding="utf-8")
++        events = []
++
++        class Helper:
++            def load_modules(self, *_args, **_kwargs):
++                events.append("load_modules")
++                raise AssertionError("module loading must be gated")
++
++            def load_models(self, *_args, **_kwargs):
++                events.append("load_models")
++                raise AssertionError("model loading must be gated")
++
++        monkeypatch.setattr(RUNNER, "OUT", out_dir)
++        monkeypatch.setattr(RUNNER, "load_helper", lambda: (events.append("load_helper") or Helper()))
++        with pytest.raises(RuntimeError, match="ordinary run refuses existing branch records"):
++            RUNNER.run_matrix()
++        assert events == []
++    finally:
++        shutil.rmtree(temp_root, ignore_errors=True)
++
++
++def test_snapshot_semantic_digest_covers_hidden_and_cache_state():
++    env = SimpleNamespace(
++        clock=SimpleNamespace(time=2.0, tasks={}, resources={}),
++        _step_index=2,
++        _episode_id="episode",
++        _command_index=0,
++        _last_completed=0,
++        _last_expired=0,
++        _last_energy=1.0,
++        _active_actions={},
++        _communication_log=[],
++    )
++    obs = {
++        "flat": np.zeros(2, dtype=np.float32),
++        "mask": np.asarray([True, True], dtype=np.bool_),
++        "version": 1,
++        "time": 2.0,
++        "public_entity_ids": {"uavs": ("uav-0",), "tasks": ("task-0",)},
++        "continuation_actions": (),
++        "trigger_flags": {},
++    }
++    snapshot = {"env": env, "obs": obs, "policy_hidden": np.asarray([1.0], dtype=np.float32), "cache": {"step": 2}}
++    baseline = RUNNER.snapshot_semantic_digest(snapshot)
++    snapshot["policy_hidden"][0] = 2.0
++    hidden_changed = RUNNER.snapshot_semantic_digest(snapshot)
++    snapshot["policy_hidden"][0] = 1.0
++    snapshot["cache"]["step"] = 3
++    cache_changed = RUNNER.snapshot_semantic_digest(snapshot)
++    assert baseline != hidden_changed
++    assert baseline != cache_changed
++
++
++def test_guard_contract_probe_confirms_noop_fix_without_execution():
++    payload = RUNNER.guard_contract_probe()
++    assert payload["env_step_calls"] == 0
++    assert payload["model_forward_calls"] == 0
++    assert payload["observed"]["original_action"] == 24
++    assert payload["observed"]["final_action"] == 24
++    assert payload["contract_compatible"] is True
++
++
++def test_duplicate_or_partial_public_identity_stops_before_any_execution():
++    mask = [False] * 25
++    mask[0] = True
++    mask[24] = True
++    bad = {
++        "mask": mask,
++        "public_entity_ids": {"uavs": ("uav-0", "uav-0"), "tasks": ("task-0",)},
++        "continuation_actions": (),
++    }
++    probabilities = [0.0] * 25
++    probabilities[0] = 0.1
++    probabilities[24] = 0.9
++    try:
++        select_guarded_action(bad, probabilities, task_capacity=6)
++    except PublicIdentityError:
++        pass
++    else:
++        raise AssertionError("duplicate public identity must be a technical stop")
++
++
++def _completed_branch_audit_fixture():
++    """Use the preserved two-branch ledger as a compact valid audit fixture."""
++    manifest = RUNNER.read_json(RUNNER.OUT / "branch-manifest.json")["rows"][:2]
++    results = RUNNER.read_jsonl(RUNNER.OUT / "branch-results.jsonl")[:2]
++    branch_ids = {row["branch_id"] for row in results}
++    steps = [row for row in RUNNER.read_jsonl(RUNNER.OUT / "step-vector-rewards.jsonl") if row["branch_id"] in branch_ids]
++    decisions = [row for row in RUNNER.read_jsonl(RUNNER.OUT / "decision-ledger.jsonl") if row["branch_id"] in branch_ids]
++    return manifest, results, steps, decisions, {"integrity_check": "ok"}
++
++
++@pytest.mark.parametrize("mutation", ("missing_step", "duplicate_step", "broken_hash_chain"))
++def test_completed_branch_audit_rejects_partial_or_corrupted_ledgers(mutation):
++    manifest, results, steps, decisions, budget_state = _completed_branch_audit_fixture()
++    steps = copy.deepcopy(steps)
++    decisions = copy.deepcopy(decisions)
++    if mutation == "missing_step":
++        steps.pop()
++    elif mutation == "duplicate_step":
++        branch_steps = [row for row in steps if row["branch_id"] == results[0]["branch_id"]]
++        branch_decisions = [row for row in decisions if row["branch_id"] == results[0]["branch_id"]]
++        branch_steps[1]["step"] = branch_steps[0]["step"]
++        branch_decisions[1]["step"] = branch_decisions[0]["step"]
++    else:
++        branch_steps = [row for row in steps if row["branch_id"] == results[0]["branch_id"]]
++        branch_steps[0]["public_next_observation_sha256"] = "broken-chain"
++    payload = RUNNER.audit_completed_branches(manifest, results, steps, decisions, budget_state)
++    assert payload["passed"] is False
++    if mutation == "missing_step":
++        assert payload["checks"]["step_rows_total_20"] is False
++    elif mutation == "duplicate_step":
++        assert payload["rows"][0]["checks"]["step_sequence_identity"] is False
++        assert payload["rows"][0]["checks"]["decision_sequence_identity"] is False
++    else:
++        assert payload["rows"][0]["checks"]["public_digest_chain"] is False
+--- /dev/null
++++ b/tests/test_ack_known_task_guard_noop_contract_audit_20260922.py
+@@ -0,0 +1,121 @@
++from __future__ import annotations
++
++import copy
++
++import pytest
++
++import gppo_world.ack_known_task_guard as guard
++
++
++def make_obs(*, mask: list[bool], tasks: tuple[str, ...] = ("task-0",), uavs: tuple[str, ...] = ("uav-0",), continuation: tuple[int, ...] = ()) -> dict:
++    return {
++        "mask": list(mask),
++        "public_entity_ids": {"uavs": uavs, "tasks": tasks},
++        "continuation_actions": continuation,
++    }
++
++
++def test_no_exclusion_keeps_original_allocation_argmax_and_legal_noop():
++    observation = make_obs(mask=[True, False, True])
++    before = copy.deepcopy(observation)
++    decision = guard.select_guarded_action(observation, [0.8, 0.0, 0.2], task_capacity=2)
++    assert decision.original_action == decision.final_action == 0
++    assert decision.candidate_actions == (0, 2)
++    assert decision.excluded_actions == ()
++    assert observation == before
++
++
++def test_noop_highest_is_retained_and_not_forced_to_allocate():
++    decision = guard.select_guarded_action(
++        make_obs(mask=[True, False, True]), [0.1, 0.0, 0.9], task_capacity=2
++    )
++    assert decision.original_action == decision.final_action == 2
++    assert decision.reason == "no_guard_match"
++    assert decision.candidate_actions == (0, 2)
++
++
++def test_exclusion_keeps_noop_in_probability_order():
++    decision = guard.select_guarded_action(
++        make_obs(mask=[True, True, True], tasks=("task-0", "task-1"), continuation=(0,)),
++        [0.1, 0.2, 0.9],
++        task_capacity=2,
++    )
++    assert decision.original_action == 2
++    assert decision.final_action == 2
++    assert decision.excluded_actions == (0,)
++    assert decision.candidate_actions == (1, 2)
++    assert decision.reason == "excluded_continuation_task"
++
++    allocation_wins = guard.select_guarded_action(
++        make_obs(mask=[True, True, True], tasks=("task-0", "task-1"), continuation=(0,)),
++        [0.1, 0.9, 0.2],
++        task_capacity=2,
++    )
++    assert allocation_wins.original_action == allocation_wins.final_action == 1
++    assert allocation_wins.candidate_actions == (1, 2)
++
++
++def test_excluded_original_argmax_can_fall_to_noop_and_ties_keep_small_index():
++    observation = make_obs(
++        mask=[True, True, True], tasks=("task-0", "task-1"), continuation=(0,)
++    )
++    decision = guard.select_guarded_action(observation, [0.95, 0.2, 0.8], task_capacity=2)
++    assert decision.original_action == 0
++    assert decision.final_action == 2
++    assert decision.excluded_actions == (0,)
++    assert decision.candidate_actions == (1, 2)
++
++    tie = guard.select_guarded_action(observation, [0.95, 0.8, 0.8], task_capacity=2)
++    assert tie.final_action == 1
++    assert tie.candidate_actions == (1, 2)
++
++
++def test_only_noop_is_a_complete_legal_action_set():
++    decision = guard.select_guarded_action(
++        make_obs(mask=[False, False, True]), [0.0, 0.0, 0.3], task_capacity=2
++    )
++    assert decision.original_action == decision.final_action == 2
++    assert decision.candidate_actions == (2,)
++    assert decision.excluded_actions == ()
++
++
++def test_probability_tie_keeps_lowest_action_index():
++    decision = guard.select_guarded_action(
++        make_obs(mask=[True, False, True]), [0.5, 0.0, 0.5], task_capacity=2
++    )
++    assert decision.original_action == decision.final_action == 0
++    assert decision.candidate_actions == (0, 2)
++
++
++def test_existing_continuation_excludes_same_task_across_uavs_but_keeps_noop():
++    observation = make_obs(
++        mask=[True, True, True], uavs=("uav-0", "uav-1"), tasks=("task-0",), continuation=(1,)
++    )
++    decision = guard.select_guarded_action(observation, [0.4, 0.3, 0.5], task_capacity=1)
++    assert decision.continuation_task_ids == ("task-0",)
++    assert decision.excluded_actions == (0, 1)
++    assert decision.candidate_actions == (2,)
++    assert decision.final_action == 2
++    assert decision.reason == "no_remaining_allocation_choose_noop"
++
++
++def test_pure_guard_does_not_touch_stubbed_environment_or_model(monkeypatch: pytest.MonkeyPatch):
++    calls: list[str] = []
++
++    class ForbiddenExecution:
++        def step(self, *_args, **_kwargs):
++            calls.append("env.step")
++            raise AssertionError("guard tests must not execute an environment step")
++
++        def forward(self, *_args, **_kwargs):
++            calls.append("model.forward")
++            raise AssertionError("guard tests must not execute a model forward")
++
++    forbidden = ForbiddenExecution()
++    monkeypatch.setattr(guard, "env", forbidden, raising=False)
++    monkeypatch.setattr(guard, "model", forbidden, raising=False)
++    decision = guard.select_guarded_action(
++        make_obs(mask=[True, False, True]), [0.1, 0.0, 0.9], task_capacity=2
++    )
++    assert decision.final_action == 2
++    assert calls == []
+--- /dev/null
++++ b/tools/audit_ack_known_task_guard_noop_contract_20260922.py
+@@ -0,0 +1,484 @@
++"""Audit the NOOP contract and saved guard-on rows without execution.
++
++This script reads preserved JSON/JSONL artifacts and source identities only. It
++does not import the experiment runner, open SQLite, call an environment, or
++run a model. The output is deliberately an evidence audit rather than a
++replay: historical rows contain selected probabilities, not the full action
++distribution.
++"""
++
++from __future__ import annotations
++
++import difflib
++import hashlib
++import json
++import sys
++from collections import Counter, defaultdict
++from pathlib import Path
++from typing import Any, Iterable
++
++
++ROOT = Path(__file__).resolve().parents[1]
++BASE = ROOT / "runs" / "finite-communication-ack-lease-fix-20260920"
++HISTORICAL = BASE / "ack-known-task-guard-baseline-v1"
++RESUME = BASE / "ack-known-task-guard-resume-20260922"
++OUT = BASE / "ackguard-noop-contract-audit-20260922"
++REVIEW = ROOT.parents[1] / "research-reviews" / "ackguard-resume-review-20260922"
++GUARD = ROOT / "gppo_world" / "ack_known_task_guard.py"
++OLD_GUARD = HISTORICAL / "failure-archive-20260922" / "ack_known_task_guard-original.py"
++SQLITE = HISTORICAL / "budget.sqlite3"
++
++EXPECTED_OLD_GUARD_SHA256 = "6e73323f60647ea48fe05bd841aaa3e0631bd870eb786ad082a07ce007bb207b"
++EXPECTED_SQLITE_SHA256 = "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223"
++
++
++def read_json(path: Path) -> Any:
++    return json.loads(path.read_text(encoding="utf-8"))
++
++
++def read_jsonl(path: Path) -> list[dict[str, Any]]:
++    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
++
++
++def write_json(path: Path, value: Any) -> None:
++    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
++
++
++def sha256(path: Path) -> str:
++    return hashlib.sha256(path.read_bytes()).hexdigest()
++
++
++def jsonable(value: Any) -> Any:
++    if isinstance(value, tuple):
++        return [jsonable(item) for item in value]
++    if isinstance(value, list):
++        return [jsonable(item) for item in value]
++    if isinstance(value, dict):
++        return {str(key): jsonable(item) for key, item in value.items()}
++    return value
++
++
++def old_candidate_set(row: dict[str, Any]) -> tuple[list[int], list[int], list[int]]:
++    mask = [bool(value) for value in row["legal_mask"]]
++    noop = len(mask) - 1
++    legal = [index for index, allowed in enumerate(mask) if allowed]
++    excluded = [int(value) for value in row["excluded_actions"]]
++    allocations = [index for index in legal if index != noop]
++    allocation_candidates = [index for index in allocations if index not in set(excluded)]
++    candidates = allocation_candidates if allocation_candidates else ([noop] if noop in legal else [])
++    return legal, excluded, candidates
++
++
++def audit_decision(row: dict[str, Any]) -> dict[str, Any]:
++    legal, excluded, expected_candidates = old_candidate_set(row)
++    mask = [bool(value) for value in row["legal_mask"]]
++    noop = len(mask) - 1
++    action_task_ids = {int(action): str(task) for action, task in row.get("action_task_ids", [])}
++    continuation_actions = [int(value) for value in row.get("continuation_actions", [])]
++    continuation_tasks = {
++        action_task_ids[action]
++        for action in continuation_actions
++        if action != noop and action in action_task_ids
++    }
++    expected_excluded = sorted(
++        action
++        for action in legal
++        if action != noop and action in action_task_ids and action_task_ids[action] in continuation_tasks
++    )
++    errors: list[str] = []
++    saved_candidates = [int(value) for value in row["candidate_actions"]]
++    saved_excluded = [int(value) for value in row["excluded_actions"]]
++    original_action = int(row["original_action"])
++    final_action = int(row["final_action"])
++    if not legal:
++        errors.append("no_legal_action")
++    if original_action not in legal:
++        errors.append("original_action_not_legal")
++    if final_action not in legal:
++        errors.append("final_action_not_legal")
++    if saved_excluded != expected_excluded:
++        errors.append("excluded_actions_identity_mismatch")
++    if saved_candidates != expected_candidates:
++        errors.append("candidate_actions_old_guard_mismatch")
++    if final_action not in saved_candidates:
++        errors.append("final_action_not_in_saved_candidates")
++    if len(saved_candidates) != len(set(saved_candidates)):
++        errors.append("duplicate_candidate_action")
++    if len(saved_excluded) != len(set(saved_excluded)):
++        errors.append("duplicate_excluded_action")
++    reason = str(row.get("reason", ""))
++    expected_allocation_candidates = [action for action in expected_candidates if action != noop]
++    expected_reason = (
++        "excluded_continuation_task"
++        if expected_allocation_candidates and expected_excluded
++        else "no_guard_match"
++        if expected_allocation_candidates
++        else "no_remaining_allocation_choose_noop"
++        if noop in legal
++        else "no_legal_action"
++    )
++    if reason != expected_reason:
++        errors.append("reason_mismatch")
++
++    # A saved original argmax is enough to prove unchanged when it survived.
++    # When the old guard changed to an allocation and NOOP was legal, its
++    # probability is absent, so the new ordering cannot be reconstructed.
++    if errors:
++        classification = "C"
++        proof = "saved row is internally inconsistent: " + ", ".join(errors)
++    elif original_action == noop and final_action != noop:
++        classification = "C"
++        proof = "saved original NOOP was replaced by an allocation; new guard necessarily retains the original argmax"
++    elif final_action == noop or noop not in legal or final_action == original_action:
++        classification = "A"
++        if final_action == noop:
++            proof = "old guard had no surviving allocation candidate; adding legal NOOP cannot change the selected action"
++        elif noop not in legal:
++            proof = "NOOP was illegal in the saved public mask"
++        else:
++            proof = "saved original argmax survived the old guard; legal NOOP is no higher than that original action"
++    else:
++        classification = "B"
++        proof = "NOOP was legal and old guard changed an allocation; full candidate probabilities omit NOOP, so equality is unproven"
++
++    return {
++        "branch_id": row["branch_id"],
++        "step": int(row["step"]),
++        "classification": classification,
++        "old_original_action": original_action,
++        "old_final_action": final_action,
++        "noop_action": noop,
++        "noop_legal": noop in legal,
++        "continuation_actions": continuation_actions,
++        "continuation_task_ids": list(row.get("continuation_task_ids", [])),
++        "excluded_actions": saved_excluded,
++        "saved_candidate_actions": saved_candidates,
++        "expected_old_candidate_actions": expected_candidates,
++        "original_probability_saved": "original_probability" in row,
++        "final_probability_saved": "final_probability" in row,
++        "all_candidate_probabilities_saved": any(
++            key in row for key in ("probabilities", "action_probabilities", "all_action_probabilities")
++        ),
++        "proof": proof,
++        "errors": errors,
++    }
++
++
++def build_patch() -> str:
++    parts: list[str] = []
++    old_lines = OLD_GUARD.read_text(encoding="utf-8").splitlines(keepends=True)
++    new_lines = GUARD.read_text(encoding="utf-8").splitlines(keepends=True)
++    parts.extend(
++        difflib.unified_diff(
++            old_lines,
++            new_lines,
++            fromfile="a/gppo_world/ack_known_task_guard.py (old SHA256 " + sha256(OLD_GUARD) + ")",
++            tofile="b/gppo_world/ack_known_task_guard.py (new SHA256 " + sha256(GUARD) + ")",
++        )
++    )
++    for relative in (
++        Path("tests/test_ack_known_task_guard_resume_v1.py"),
++        Path("tests/test_ack_known_task_guard_noop_contract_audit_20260922.py"),
++        Path("tools/audit_ack_known_task_guard_noop_contract_20260922.py"),
++    ):
++        lines = (ROOT / relative).read_text(encoding="utf-8").splitlines(keepends=True)
++        parts.extend(difflib.unified_diff([], lines, fromfile="/dev/null", tofile="b/" + relative.as_posix()))
++    return "".join(parts)
++
++
++def main() -> int:
++    OUT.mkdir(parents=True, exist_ok=True)
++    decision_rows = read_jsonl(HISTORICAL / "decision-ledger.jsonl")
++    results = {row["branch_id"]: row for row in read_jsonl(HISTORICAL / "branch-results.jsonl")}
++    expected_branch_ids = {
++        "parent-00|W1|seed-1101|prefix-0|repeat-0|guard-on",
++        "parent-00|W1|seed-1101|prefix-0|repeat-1|guard-on",
++    }
++    actual_branch_ids = {row["branch_id"] for row in decision_rows}
++    if len(decision_rows) != 20 or actual_branch_ids != expected_branch_ids:
++        raise RuntimeError(
++            "ackguard-noop audit scope requires exactly the two preserved branches and 20 decision rows"
++        )
++    if any(sum(row["branch_id"] == branch_id for row in decision_rows) != 10 for branch_id in expected_branch_ids):
++        raise RuntimeError("ackguard-noop audit scope requires exactly 10 decisions per preserved branch")
++    for branch_id in expected_branch_ids:
++        steps = sorted(int(row["step"]) for row in decision_rows if row["branch_id"] == branch_id)
++        if steps != list(range(1, 11)):
++            raise RuntimeError("ackguard-noop audit scope requires unique decision steps 1..10 per branch")
++    if len(results) != 2 or set(results) != expected_branch_ids:
++        raise RuntimeError("branch-results identity does not match the fixed two-branch audit scope")
++    audits = [audit_decision(row) for row in sorted(decision_rows, key=lambda item: (item["branch_id"], item["step"]))]
++    counts = Counter(row["classification"] for row in audits)
++
++    branch_rows: list[dict[str, Any]] = []
++    by_branch: dict[str, list[dict[str, Any]]] = defaultdict(list)
++    for row in audits:
++        by_branch[row["branch_id"]].append(row)
++    for branch_id, rows in sorted(by_branch.items()):
++        result = results.get(branch_id, {})
++        branch_rows.append(
++            {
++                "branch_id": branch_id,
++                "parent_id": result.get("parent_id"),
++                "repeat": result.get("repeat"),
++                "saved_env_steps": result.get("env_steps"),
++                "saved_rows": result.get("rows"),
++                "saved_guard_trigger_count": result.get("guard_trigger_count"),
++                "saved_noop_count": result.get("noop_count"),
++                "decision_counts": dict(Counter(row["classification"] for row in rows)),
++                "decision_steps": [
++                    {"step": row["step"], "classification": row["classification"], "proof": row["proof"]}
++                    for row in rows
++                ],
++                "hidden_cache_historical_status": "not_recorded",
++                "old_new_branch_reuse": "insufficient_evidence",
++                "reuse_reason": "at least one changed allocation has legal NOOP but no saved full candidate probability vector",
++            }
++        )
++
++    source_paths = {
++        "old_guard_archive": OLD_GUARD,
++        "current_guard": GUARD,
++        "sqlite": SQLITE,
++        "decision_ledger": HISTORICAL / "decision-ledger.jsonl",
++        "branch_results": HISTORICAL / "branch-results.jsonl",
++        "step_vector_rewards": HISTORICAL / "step-vector-rewards.jsonl",
++        "branch_manifest": HISTORICAL / "branch-manifest.json",
++        "resume_erratum": RESUME / "first-pair-interface-check-erratum.json",
++        "resume_snapshot_identity": RESUME / "snapshot-identity.json",
++        "resume_readonly_verification": RESUME / "readonly-verification.json",
++        "review_final": REVIEW / "final-review.md",
++        "review_scope_decision": REVIEW / "scope-decision.md",
++        "resume_test": ROOT / "tests" / "test_ack_known_task_guard_resume_v1.py",
++        "noop_contract_test": ROOT / "tests" / "test_ack_known_task_guard_noop_contract_audit_20260922.py",
++        "audit_script": ROOT / "tools" / "audit_ack_known_task_guard_noop_contract_20260922.py",
++    }
++    source_identity = {
++        "old_guard_sha256": sha256(OLD_GUARD),
++        "expected_old_guard_sha256": EXPECTED_OLD_GUARD_SHA256,
++        "old_guard_matches_expected": sha256(OLD_GUARD) == EXPECTED_OLD_GUARD_SHA256,
++        "new_guard_sha256": sha256(GUARD),
++        "guard_changed": sha256(OLD_GUARD) != sha256(GUARD),
++        "sqlite_sha256_current": sha256(SQLITE),
++        "sqlite_sha256_expected": EXPECTED_SQLITE_SHA256,
++        "sqlite_matches_expected": sha256(SQLITE) == EXPECTED_SQLITE_SHA256,
++        "inputs": {
++            key: {"path": str(path), "sha256": sha256(path), "bytes": path.stat().st_size}
++            for key, path in source_paths.items()
++        },
++    }
++    write_json(OUT / "source-identity.json", source_identity)
++
++    readonly = read_json(RESUME / "readonly-verification.json")
++    erratum = read_json(RESUME / "first-pair-interface-check-erratum.json")
++    budget_after = read_json(HISTORICAL / "budget-after.json")
++    budget_stage = budget_after["stages"]["environment_steps"]
++    budget_evidence = {
++        "source_sqlite_sha256_before": readonly.get("sqlite_sha256_before"),
++        "source_sqlite_sha256_after": readonly.get("sqlite_sha256_after"),
++        "source_sqlite_equal": readonly.get("sqlite_sha256_equal"),
++        "current_sqlite_sha256": sha256(SQLITE),
++        "current_sqlite_matches_historical": sha256(SQLITE) == EXPECTED_SQLITE_SHA256,
++        "historical_budget": {
++            "limit": budget_after["limits"]["environment_steps"],
++            "reserved": budget_stage["reserved"],
++            "verified": budget_stage["verified"],
++            "unknown": budget_stage["unknown"],
++            "pending": budget_stage["pending"],
++        },
++        "audit_execution_counts": {
++            "env_step_calls": 0,
++            "model_forward_calls": 0,
++            "optimizer_updates": 0,
++            "world_updates": 0,
++            "offline_updates": 0,
++            "new_attempt_created": 0,
++        },
++        "preserved_readonly_counts": {
++            key: readonly.get(key)
++            for key in (
++                "env_step_calls",
++                "model_forward_calls",
++                "optimizer_updates",
++                "world_updates",
++                "offline_updates",
++                "new_attempt_created",
++            )
++        },
++    }
++    write_json(OUT / "budget-readonly-audit.json", budget_evidence)
++
++    hidden_cache = {
++        "classification": "B",
++        "historical_hidden_cache_directly_saved": False,
++        "historical_hidden_cache_status": "not_recorded",
++        "independent_historical_no_pollution_evidence": False,
++        "evidence": [
++            str(RESUME / "snapshot-identity.json"),
++            str(RESUME / "first-pair-interface-check-erratum.json"),
++            str(REVIEW / "final-review.md"),
++        ],
++        "basis": "snapshot identity recorded presence/current semantic digests, but no post-run comparison of the original in-memory hidden/cache snapshot",
++    }
++    write_json(OUT / "hidden-cache-evidence.json", hidden_cache)
++
++    decision_evidence = {
++        "schema": "ackguard-noop-contract-decision-evidence/1.0.0",
++        "history_scope": {
++            "branches": len(branch_rows),
++            "decision_rows": len(audits),
++            "expected_decision_rows": 20,
++            "expected_branch_ids": sorted(expected_branch_ids),
++            "expected_steps_per_branch": list(range(1, 11)),
++            "scope_assertions": "exact branch IDs, 10 unique steps 1..10 per branch, and matching branch-results identities",
++            "old_guard_rule": "ack-known-task-guard-v1",
++            "new_rule": "retain legal NOOP and rank it with surviving allocation candidates",
++        },
++        "classification_definitions": {
++            "A": "saved old final action is provably unchanged under the new candidate set",
++            "B": "NOOP is legal and old changed allocation, but missing full candidate probabilities prevent equality proof",
++            "C": "saved row is internally inconsistent or records a known original-NOOP replacement",
++        },
++        "counts": dict(counts),
++        "branches": branch_rows,
++        "decisions": audits,
++    }
++    write_json(OUT / "decision-evidence.json", decision_evidence)
++
++    scope = {
++        "schema": "ackguard-noop-contract-scope-decision/1.0.0",
++        "verdict": "insufficient_evidence",
++        "old_action_under_new_guard": {
++            "A_provably_unchanged": counts.get("A", 0),
++            "B_insufficient_probability_evidence": counts.get("B", 0),
++            "C_inconsistent_or_known_mismatch": counts.get("C", 0),
++            "full_two_branch_action_identity_proven": False,
++            "conditional_limit": "A is only a single-action proof from saved observations; a B first step does not prove subsequent new-trajectory state or hidden equality",
++        },
++        "historical_hidden_cache_no_pollution": hidden_cache,
++        "new_old_identity_merge": {
++            "status": "insufficient_evidence",
++            "can_merge_full_branch_analysis": False,
++            "reason": "guard identity changed and eight historical decisions lack saved NOOP/candidate probabilities; hidden/cache non-pollution is also not independently recorded",
++        },
++        "reuse_judgment": {
++            "reusable": [],
++            "not_reusable_as_full_trajectory": [row["branch_id"] for row in branch_rows],
++            "evidence_insufficient": [row["branch_id"] for row in branch_rows],
++            "individual_A_rows_may_be_retained_as_saved-record evidence": True,
++        },
++        "next_stage_recommendation": "Require complete historical candidate probabilities and independently saved hidden/cache snapshots, or obtain explicit authorization for a new corrected-guard execution, before merging B rows or making utility claims.",
++        "guard_contract_probe": {
++            "env_step_calls": 0,
++            "model_forward_calls": 0,
++            "updates": 0,
++            "note": "pure function tests cover the old counterexample and NOOP ordering; no environment/model was invoked",
++        },
++        "erratum_gate": {
++            "base_snapshot_unchanged": erratum["corrected_gate"]["checks"]["base_snapshot_unchanged"],
++            "gate_status": erratum["corrected_gate"]["gate_status"],
++            "passed": erratum["corrected_gate"]["passed"],
++        },
++    }
++    write_json(OUT / "scope-decision.json", scope)
++
++    patch = build_patch()
++    (OUT / "minimal-diff.patch").write_text(patch, encoding="utf-8")
++
++    final_test_output = OUT / "test-output-final.txt"
++    initial_test_output = OUT / "test-output-initial-18pass-15pass1fail.txt"
++    legacy_test_output = OUT / "test-output.txt"
++    test_output = final_test_output if final_test_output.exists() else legacy_test_output
++    test_hash = sha256(test_output) if test_output.exists() else None
++    initial_test_hash = sha256(initial_test_output) if initial_test_output.exists() else None
++    final_test_summary = (
++        "35 passed" if final_test_output.exists() and "35 passed" in final_test_output.read_text(encoding="utf-8") else "not-yet-run"
++    )
++    report = f"""# ACK guard NOOP contract audit
++
++handoff_id: H-20260922-ACKGUARD-NOOP-AUDIT-002
++
++This is a zero-environment-step, zero-model-forward audit. The guard now retains every NOOP that is legal in the original public mask and ranks it with surviving allocation candidates using the existing probability and `(probability, -action_index)` tie-break. Task identity exclusion, continuation handling, the mask, ACK/lease behavior, reward, model, communication, and budget are unchanged.
++
++The preserved initial output is `test-output-initial-18pass-15pass1fail.txt` (SHA-256: `{initial_test_hash or "not-found"}`); it records the focused 18-pass run and the old resume test's 15-pass/1-failure result. The old test is now renamed to `test_guard_contract_probe_confirms_noop_fix_without_execution` and asserts final action 24 plus `contract_compatible=true`.
++
++The final related pure-function suite is recorded in `test-output-final.txt` with summary `{final_test_summary}`. It includes the original guard tests, the updated resume contract, and the NOOP contract tests.
++
++## Historical decisions
++
++The preserved two guard-on branches contain {len(audits)} decisions after fixed-scope assertions for exact branch identities and unique steps 1..10. Classification is A={counts.get("A", 0)} provably unchanged, B={counts.get("B", 0)} insufficient because full candidate probabilities are absent, and C={counts.get("C", 0)} inconsistent or known mismatch. The eight B rows are the changed allocation rows where NOOP was legal; their new action cannot be established from selected probabilities alone. A is only a single-action proof from saved observations: if the first step is B, no later new-trajectory state or hidden equality follows. Therefore neither complete branch can be merged as an unchanged new-rule trajectory.
++
++## Snapshot and identity limits
++
++Historical hidden/cache non-pollution is B / `not_recorded`: snapshot identity confirms presence and current semantic digests, but the old process did not save an independent post-run comparison. The corrected first-pair gate remains `base_snapshot_unchanged=null`, `gate_status=insufficient_evidence`, `passed=false`. New and old guard identities are explicit, but full branch identity cannot be merged because the guard changed and the saved probability vector is incomplete.
++
++## Resources and boundaries
++
++The historical SQLite SHA-256 is `{source_identity["sqlite_sha256_current"]}` and matches the supplied `{EXPECTED_SQLITE_SHA256}`. Historical environment budget remains limit={budget_stage["reserved"] + (budget_after["limits"]["environment_steps"] - budget_stage["reserved"])} reserved={budget_stage["reserved"]} verified={budget_stage["verified"]} unknown={budget_stage["unknown"]} pending={budget_stage["pending"]}; audit calls are env.step=0, model forward=0, optimizer/world/offline updates=0, new attempt=0. Historical artifacts and SQLite were read only.
++
++## Evidence
++
++- Source identity: `source-identity.json`
++- Per-decision and per-branch A/B/C table: `decision-evidence.json`
++- Scope/reuse decision: `scope-decision.json`
++- Hidden/cache evidence: `hidden-cache-evidence.json`
++- Budget read-only audit: `budget-readonly-audit.json`
++- Initial preserved test output: `test-output-initial-18pass-15pass1fail.txt` (SHA-256: `{initial_test_hash or "not-yet-written"}`)
++- Final test output: `test-output-final.txt` (SHA-256: `{sha256(final_test_output) if final_test_output.exists() else "not-yet-written"}`)
++- Final supplement: `final-supplement.md`
++- Minimal diff: `minimal-diff.patch`
++
++The complete result is `insufficient_evidence`; no environment replay, model inference, training, budget reservation, runner change, SQLite write, commit, push, release, or server action was performed.
++
++## Next stage suggestion
++
++If a later stage is explicitly authorized, treat the 12 A rows as saved-record invariants only. Require either complete historical candidate probabilities and independently saved hidden/cache snapshots, or a new guard-on execution with the corrected rule before merging the eight B rows or making any utility claim. This audit does not execute that stage.
++"""
++    (OUT / "report.md").write_text(report, encoding="utf-8")
++
++    supplement = f"""# Final supplement: ACK guard NOOP audit
++
++The original 18-pass focused output and 15-pass/1-failure resume output remain preserved in `test-output-initial-18pass-15pass1fail.txt` with SHA-256 `{initial_test_hash or "not-found"}`. The old failure asserted the pre-fix NOOP bug and was not used as a final contract.
++
++The updated resume test now verifies `original_action=24`, `final_action=24`, `contract_compatible=true`, and zero environment/model execution. The final three-file related suite summary is `{final_test_summary}`.
++
++The new continuation case proves that an original highest allocation excluded by continuation selects a higher-probability legal NOOP, while a tie between the remaining allocation and NOOP keeps the smaller action index. Historical A=12/B=8/C=0 remains conditional on saved observations. A does not establish later state or hidden equality when any earlier step is B; both historical branches remain `insufficient_evidence` and are not certified as corrected-rule trajectories.
++
++Scope guards now reject missing, duplicated, or out-of-scope branch/step rows before producing the fixed two-branch conclusion. No model, environment, update, budget reservation, or new attempt was used.
++"""
++    (OUT / "final-supplement.md").write_text(supplement, encoding="utf-8")
++
++    artifact_paths = [
++        OUT / "report.md",
++        OUT / "minimal-diff.patch",
++        OUT / "decision-evidence.json",
++        OUT / "scope-decision.json",
++        OUT / "hidden-cache-evidence.json",
++        OUT / "budget-readonly-audit.json",
++        OUT / "source-identity.json",
++        OUT / "final-supplement.md",
++    ]
++    for candidate in (final_test_output, initial_test_output, legacy_test_output, OUT / "report-initial.md"):
++        if candidate.exists():
++            artifact_paths.append(candidate)
++    hashes = {
++        "schema": "ackguard-noop-contract-audit-hashes/1.0.0",
++        "scope": "non-recursive SHA-256 for this audit's generated evidence and source inputs",
++        "files": {
++            str(path.relative_to(OUT)): {"bytes": path.stat().st_size, "sha256": sha256(path)}
++            for path in artifact_paths
++        },
++        "source_identities": {
++            key: value
++            for key, value in source_identity.items()
++            if key in ("old_guard_sha256", "new_guard_sha256", "sqlite_sha256_current", "old_guard_matches_expected", "sqlite_matches_expected")
++        },
++    }
++    write_json(OUT / "hashes.json", hashes)
++    (OUT / "hashes.json.sha256").write_text(sha256(OUT / "hashes.json") + "  hashes.json\n", encoding="ascii")
++    print(json.dumps({"output": str(OUT), "decision_counts": dict(counts), "env_step_calls": 0, "model_forward_calls": 0}, indent=2))
++    return 0
++
++
++if __name__ == "__main__":
++    sys.exit(main())

@@ -1,0 +1,12 @@
+{
+  "basis": "snapshot identity recorded presence/current semantic digests, but no post-run comparison of the original in-memory hidden/cache snapshot",
+  "classification": "B",
+  "evidence": [
+    "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-resume-20260922\\snapshot-identity.json",
+    "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-resume-20260922\\first-pair-interface-check-erratum.json",
+    "E:\\Z\u535a\u58eb\\research-reviews\\ackguard-resume-review-20260922\\final-review.md"
+  ],
+  "historical_hidden_cache_directly_saved": false,
+  "historical_hidden_cache_status": "not_recorded",
+  "independent_historical_no_pollution_evidence": false
+}

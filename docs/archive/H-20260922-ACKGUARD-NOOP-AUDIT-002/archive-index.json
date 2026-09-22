@@ -1,0 +1,91 @@
+{
+  "handoff_id": "H-20260922-ACKGUARD-NOOP-AUDIT-002",
+  "files": [
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/budget-readonly-audit.json",
+      "sha256": "e38dc1744aa973129f23d2e3dc109b3c55af92564975571b460c257ad896bf64",
+      "bytes": 929
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/decision-evidence.json",
+      "sha256": "fe7cc3d6b31c6af53ec993e1409e34e4422638445c973c7d47411f2b024f1496",
+      "bytes": 24145
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/final-supplement.md",
+      "sha256": "ac8cb66871f499e5f6267a5f6b6b4d7a8268f6b6bb2e4a1f90cb277c73040464",
+      "bytes": 1241
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/hashes.json",
+      "sha256": "bc43fe6da5dedea12e2c19134345e4bac9606d2c3fc3c5056f8a7d5e8ca0c481",
+      "bytes": 2320
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/hashes.json.sha256",
+      "sha256": "a30ae1ce3cc323a33ea8a3f47bba3f4425812b3466d4da67c46b6b1961a1c17b",
+      "bytes": 79
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/hidden-cache-evidence.json",
+      "sha256": "0051be6c7ceff72bb777730a828fa5ae5e8dfe8b9255009e5c01f65185622034",
+      "bytes": 863
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/minimal-diff.patch",
+      "sha256": "32a54ed5918f8218268bbf87e1e5f8ea217ab40a6e2ea5388efec0ebe095b9fd",
+      "bytes": 44604
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/report-initial.md",
+      "sha256": "732db516e79104f6b8ede164291919cbd40b842e21242706b3759e1f1226fd86",
+      "bytes": 3501
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/report.md",
+      "sha256": "54f8001b08a832e80af785681cc276403729f9aa6ee0d64d3dd0d46400995432",
+      "bytes": 3991
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/scope-decision.json",
+      "sha256": "be91e3429ce3652876acb44a1b1fe00b2ea1319dd4c18d43820524beec6b8510",
+      "bytes": 2775
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/source-identity.json",
+      "sha256": "3987bea57996b1ea6d1054a7d837cf9d86438e2a825fdd0bc6db764dec511756",
+      "bytes": 5341
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/test-output-final.txt",
+      "sha256": "0b0a4933da14d397782c838be71dae2d7b3292381a966309cd5bac06c1d61304",
+      "bytes": 101
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/test-output-initial-18pass-15pass1fail.txt",
+      "sha256": "3bb5b913c7e8cddf39b5958044b40d43d88ba3079ebc80141002ff904c30a013",
+      "bytes": 1015
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/test-output.txt",
+      "sha256": "3bb5b913c7e8cddf39b5958044b40d43d88ba3079ebc80141002ff904c30a013",
+      "bytes": 1015
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/final-review.md",
+      "sha256": "bb4800690e1d78275c7cff16e4557dd00e041bad6c57efdf27d32add22f75d14",
+      "bytes": 2564
+    },
+    {
+      "path": "docs/archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/independent-verification.json",
+      "sha256": "1a3ab435f809be04f379d478fcadc1b02141432f302a927b6381ebe40c601008",
+      "bytes": 1454
+    },
+    {
+      "path": "docs/RESEARCH_PROGRESS.md",
+      "sha256": "f8b5eeb3e6e033a187aaa3ebd3b9bf7bf6c3e07ec7da32d4849476237bf23ea0",
+      "bytes": 9149
+    }
+  ],
+  "scope": "index excludes itself; selective archive"
+}

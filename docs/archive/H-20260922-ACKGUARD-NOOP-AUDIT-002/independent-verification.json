@@ -1,0 +1,56 @@
+{
+  "handoff_id": "H-20260922-ACKGUARD-NOOP-AUDIT-002",
+  "artifact_hash_counts": {
+    "ackguard-noop-contract-audit-20260922": 12,
+    "ack-known-task-guard-baseline-v1": 21
+  },
+  "source_input_hashes_verified": 15,
+  "independent_tests": "35 passed in 4.06s",
+  "decision_counts": {
+    "B": 8,
+    "A": 12
+  },
+  "scope": "conditional single-action identity at saved observation; no trajectory equivalence",
+  "budget": [
+    {
+      "stage": "environment_steps",
+      "limit_amount": 384,
+      "reserved": 20,
+      "verified": 20,
+      "unknown": 0
+    },
+    {
+      "stage": "optimizer_calls",
+      "limit_amount": 0,
+      "reserved": 0,
+      "verified": 0,
+      "unknown": 0
+    },
+    {
+      "stage": "world_updates",
+      "limit_amount": 0,
+      "reserved": 0,
+      "verified": 0,
+      "unknown": 0
+    },
+    {
+      "stage": "offline_updates",
+      "limit_amount": 0,
+      "reserved": 0,
+      "verified": 0,
+      "unknown": 0
+    }
+  ],
+  "attempt_count": 1,
+  "pending": 0,
+  "sqlite_sha256": "700b0c9173c8debd5cacb8066328dd2359bb913a128f3018710c8129de5e6223",
+  "sqlite_integrity": "ok",
+  "runner_unchanged": true,
+  "guard_sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
+  "new_env_steps": 0,
+  "new_model_forward": 0,
+  "new_updates": 0,
+  "new_attempts": 0,
+  "reuse_verdict": "insufficient_evidence",
+  "matrix_not_resumed": true
+}

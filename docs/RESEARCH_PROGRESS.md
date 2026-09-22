@@ -1,6 +1,19 @@
 # 统一研究进度
 
-## 当前任务
+## 当前任务：NOOP 合同修正与历史复用审查
+
+- handoff_id：`H-20260922-ACKGUARD-NOOP-AUDIT-002`；状态 **CLOSED**，复用判定 **证据不足**。
+- 用户明确授权零环境步最小guard修正；Luna执行，主代理完成后集中审查。未启动动态实验。
+- 合法NOOP保留并参与原概率/tie-break排序；三组纯函数及runner回归 **35 passed**，主代理独立复核通过。
+- 20条历史决策为A=12、B=8、C=0；A仅是保存观测下单步证明，两条首步为B；历史hidden/cache无污染仍not_recorded。两条均不能作为已证新规则轨迹合并分析。
+- 原预算保持 **20/384**，unknown=pending=0；本单环境步、模型前向、全部更新、attempt增量均0。runner未修改，22条未续行，2条未重跑。
+- [最终审查](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/final-review.md)、[报告](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/report.md)、[逐决策证据](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/decision-evidence.json)、[最小diff](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/minimal-diff.patch)、[测试](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/test-output-final.txt)、[哈希索引](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/archive-index.json)。
+- 新guard SHA：`2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a`。
+- 下一步建议另立完整新规则开发矩阵协议，先明确身份、原消费保留和预算归属；不按“补22条”合并旧规则。未自动执行。
+- 前单最终归档：[e1599402607efbed916a1dd697aa16e5a04129b2](https://github.com/Battleplus/GPPO_WORLD_9.20/commit/e1599402607efbed916a1dd697aa16e5a04129b2)，31文件远端回读一致。本单远端提交在完成后记入独立final-remote-verification.json。
+
+
+## 前单记录（H-20260922-ACKGUARD-RESUME-001）
 
 - 长期目标：GPPO＋世界模型＋事件预测/触发＋偏好学习，用于弱通信 UAV 任务分配；各机制须相对简单基线证明独立贡献。
 - 当前唯一任务：ACK 已知任务基线 runner 修复、原预算有条件续行及证据闭环。

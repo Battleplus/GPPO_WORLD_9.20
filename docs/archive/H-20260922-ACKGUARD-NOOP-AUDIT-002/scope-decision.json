@@ -1,0 +1,52 @@
+{
+  "erratum_gate": {
+    "base_snapshot_unchanged": null,
+    "gate_status": "insufficient_evidence",
+    "passed": false
+  },
+  "guard_contract_probe": {
+    "env_step_calls": 0,
+    "model_forward_calls": 0,
+    "note": "pure function tests cover the old counterexample and NOOP ordering; no environment/model was invoked",
+    "updates": 0
+  },
+  "historical_hidden_cache_no_pollution": {
+    "basis": "snapshot identity recorded presence/current semantic digests, but no post-run comparison of the original in-memory hidden/cache snapshot",
+    "classification": "B",
+    "evidence": [
+      "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-resume-20260922\\snapshot-identity.json",
+      "E:\\Z\u535a\u58eb\\9.2\u65e5\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-resume-20260922\\first-pair-interface-check-erratum.json",
+      "E:\\Z\u535a\u58eb\\research-reviews\\ackguard-resume-review-20260922\\final-review.md"
+    ],
+    "historical_hidden_cache_directly_saved": false,
+    "historical_hidden_cache_status": "not_recorded",
+    "independent_historical_no_pollution_evidence": false
+  },
+  "new_old_identity_merge": {
+    "can_merge_full_branch_analysis": false,
+    "reason": "guard identity changed and eight historical decisions lack saved NOOP/candidate probabilities; hidden/cache non-pollution is also not independently recorded",
+    "status": "insufficient_evidence"
+  },
+  "next_stage_recommendation": "Require complete historical candidate probabilities and independently saved hidden/cache snapshots, or obtain explicit authorization for a new corrected-guard execution, before merging B rows or making utility claims.",
+  "old_action_under_new_guard": {
+    "A_provably_unchanged": 12,
+    "B_insufficient_probability_evidence": 8,
+    "C_inconsistent_or_known_mismatch": 0,
+    "conditional_limit": "A is only a single-action proof from saved observations; a B first step does not prove subsequent new-trajectory state or hidden equality",
+    "full_two_branch_action_identity_proven": false
+  },
+  "reuse_judgment": {
+    "evidence_insufficient": [
+      "parent-00|W1|seed-1101|prefix-0|repeat-0|guard-on",
+      "parent-00|W1|seed-1101|prefix-0|repeat-1|guard-on"
+    ],
+    "individual_A_rows_may_be_retained_as_saved-record evidence": true,
+    "not_reusable_as_full_trajectory": [
+      "parent-00|W1|seed-1101|prefix-0|repeat-0|guard-on",
+      "parent-00|W1|seed-1101|prefix-0|repeat-1|guard-on"
+    ],
+    "reusable": []
+  },
+  "schema": "ackguard-noop-contract-scope-decision/1.0.0",
+  "verdict": "insufficient_evidence"
+}
