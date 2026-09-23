@@ -1,0 +1,887 @@
+--- dd2a542/tools/run_world_event_feature_pair_20260923.py
++++ corrected/tools/run_world_event_feature_pair_20260923.py
+@@ -77,6 +77,7 @@
+ PREFERENCE = (0.8, 0.2)
+ EVENT_START = 12
+ EVENT_END = 17
++FIRST_PAIR_ID = "parent-00|W1|seed-1101|prefix-0|repeat-0"
+ EXPECTED_H005_RUNNER_SHA256 = "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e"
+ EXPECTED_GUARD_SHA256 = "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a"
+ EXPECTED_CHECKPOINT_SHA256 = "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a"
+@@ -448,9 +449,10 @@
+         for path in source_root.rglob("*")
+         if path.is_file()
+     }
+-    if not manifest_paths.issubset(actual_paths):
++    runtime_paths = {p for p in actual_paths if p.startswith("gppo_world/") and p.endswith(".py")}
++    if runtime_paths != manifest_paths:
+         failures.append(
+-            f"native source manifest paths missing: manifest={len(manifest_paths)} actual={len(actual_paths)}"
++            f"native runtime module set mismatch: manifest={len(manifest_paths)} runtime={len(runtime_paths)}"
+         )
+     return {
+         "ok": not failures,
+@@ -808,6 +810,7 @@
+         hidden_digest_fn: Any = _stable_hidden_digest,
+         timing_totals: dict[str, float] | None = None,
+         diagnostic_first_pair: bool = False,
++        torch_module: Any | None = None,
+     ) -> None:
+         self.item = dict(item)
+         self.arm = arm
+@@ -816,10 +819,14 @@
+         self.hidden_digest_fn = hidden_digest_fn
+         self.timing_totals = timing_totals if timing_totals is not None else defaultdict(float)
+         self.diagnostic_first_pair = bool(diagnostic_first_pair)
++        self.torch_module = torch_module
+         self.records: list[dict[str, Any]] = []
+ 
+     def probe(self, runtime: Mapping[str, Any], obs: Mapping[str, Any], policy_hidden: Any, world_hidden: Any) -> Mapping[str, Any]:
+-        import torch
++        torch = self.torch_module
++        if torch is None:
++            import torch as torch_module
++            torch = torch_module
+ 
+         classes = runtime["classes"]
+         policy = runtime["policy"]
+@@ -891,6 +898,7 @@
+             mask = torch.as_tensor(mask_safe(obs["mask"]), dtype=torch.bool, device=device)[None, :]
+             evaluation, captured, actor_seconds = readout(actor_candidates)
+             main_payload = readout_payload(evaluation, captured, actor_candidates)
++            probabilities = main_payload["probabilities"]
+             extra_payload: dict[str, Any] | None = None
+             extra_actor_seconds = 0.0
+             extra_arm: str | None = None
+@@ -968,9 +976,9 @@
+             "preference_logits": main_payload["preference_logits"],
+             "candidate_logits": main_payload["candidate_logits"],
+             "logits": main_payload["logits"],
+-            "probabilities": _tensor_payload(probabilities[0]),
++            "probabilities": probabilities,
+             "legal_mask": [int(value) for value in mask[0].detach().cpu().tolist()],
+-            "original_action": int(torch.argmax(probabilities, dim=-1).item()),
++            "original_action": int(main_payload["original_action"]),
+             "by_action_hidden_sha256": by_action_hidden,
+             "by_action_output_summary": by_action_summary,
+             "next_policy_hidden_sha256": self.hidden_digest_fn(next_policy_hidden),
+@@ -986,10 +994,18 @@
+                 "extra_actor_readout_seconds": extra_actor_seconds,
+                 "probe_seconds": time.perf_counter() - started,
+             },
+-            "model_calls": {"policy_encode": 1, "world_candidate_batch": 1, "actor_readout": 1},
++            "model_calls": {
++                "policy_encode": 1,
++                "world_candidate_batch": 1,
++                "actor_readout": 1 + int(extra_payload is not None),
++            },
+             "model_call_status": {
+-                name: {"attempted": 1, "completed": 1}
+-                for name in ModelCallCounters.LIMITS
++                "policy_encode": {"attempted": 1, "completed": 1},
++                "world_candidate_batch": {"attempted": 1, "completed": 1},
++                "actor_readout": {
++                    "attempted": 1 + int(extra_payload is not None),
++                    "completed": 1 + int(extra_payload is not None),
++                },
+             },
+             "pair_diagnostic": diagnostic,
+             "intervention": {
+@@ -1001,7 +1017,7 @@
+         }
+         self.records.append(record)
+         return {
+-            "probabilities": _tensor_payload(probabilities[0]),
++            "probabilities": probabilities,
+             "original_action": record["original_action"],
+             "by_action": by_action,
+             "next_policy_hidden": next_policy_hidden,
+@@ -1009,17 +1025,54 @@
+ 
+ 
+ def compare_first_pair(records: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+-    grouped: dict[str, dict[str, Mapping[str, Any]]] = defaultdict(dict)
++    result_base = {
++        "schema": "world-event-feature-first-pair-gate/1.0.0",
++        "pair_id": FIRST_PAIR_ID,
++        "step": 1,
++    }
++    pair_rows: list[Mapping[str, Any]] = []
+     for record in records:
+-        grouped[str(record["pair_id"])][str(record["arm"])] = record
+-    if not grouped:
+-        return {"ok": False, "reason": "no feature rows"}
+-    pair_id = sorted(grouped)[0]
+-    pair = grouped[pair_id]
+-    if set(pair) != {"normal", "event_features_off"}:
+-        return {"ok": False, "pair_id": pair_id, "reason": "first pair is not two distinct arms"}
+-    normal = pair["normal"]
+-    off = pair["event_features_off"]
++        if isinstance(record, Mapping) and record.get("pair_id") == FIRST_PAIR_ID:
++            pair_rows.append(record)
++    if not pair_rows:
++        return {**result_base, "ok": False, "reason": "first pair has no feature rows"}
++
++    allowed_arms = {"normal", "event_features_off"}
++    malformed: list[dict[str, Any]] = []
++    by_arm_step_one: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
++    for index, record in enumerate(pair_rows):
++        if "step" not in record:
++            malformed.append({"index": index, "reason": "missing step"})
++            continue
++        try:
++            step = int(record["step"])
++        except (TypeError, ValueError):
++            malformed.append({"index": index, "reason": "invalid step"})
++            continue
++        if step != 1:
++            continue
++        arm = record.get("arm")
++        if arm not in allowed_arms:
++            malformed.append({"index": index, "reason": f"unknown arm: {arm!r}"})
++            continue
++        missing = required_feature_fields(record)
++        if missing:
++            malformed.append({"index": index, "arm": arm, "reason": "missing fields", "fields": missing})
++        by_arm_step_one[str(arm)].append(record)
++    if malformed:
++        return {**result_base, "ok": False, "reason": "first pair feature rows are malformed", "failures": malformed}
++    if set(by_arm_step_one) != allowed_arms:
++        return {
++            **result_base,
++            "ok": False,
++            "reason": "first pair must contain one normal and one event_features_off step 1 row",
++            "step_one_arms": sorted(by_arm_step_one),
++        }
++    duplicate_arms = {arm: len(rows) for arm, rows in by_arm_step_one.items() if len(rows) != 1}
++    if duplicate_arms:
++        return {**result_base, "ok": False, "reason": "first pair has duplicate or missing step 1 rows", "step_one_counts": duplicate_arms}
++    normal = by_arm_step_one["normal"][0]
++    off = by_arm_step_one["event_features_off"][0]
+     checks = {
+         "same_public_observation": normal.get("public_observation_sha256") == off.get("public_observation_sha256"),
+         "same_policy_hidden": normal.get("policy_hidden_before_sha256") == off.get("policy_hidden_before_sha256"),
+@@ -1031,7 +1084,7 @@
+         "normal_event_projection": normal.get("event_features_after_25x5") == normal.get("event_features_before_25x5"),
+         "off_event_zero": all(abs(float(value)) == 0.0 for row in off.get("event_features_after_25x5", ()) for value in row),
+     }
+-    return {"schema": "world-event-feature-first-pair-gate/1.0.0", "ok": all(checks.values()), "pair_id": pair_id, "checks": checks}
++    return {**result_base, "ok": all(checks.values()), "checks": checks}
+ 
+ 
+ def required_feature_fields(row: Mapping[str, Any]) -> list[str]:
+@@ -1215,6 +1268,8 @@
+         snapshots = base_adapters.load_snapshots(prefix_ids)
+         runtime = base_adapters.load_runtime(snapshots)
+         runtime_before = base_adapters.runtime_digest(runtime)
++        setup_seconds = time.perf_counter() - started
++        execution_timings = []
+         counters = stable.Counters()
+         all_features: list[dict[str, Any]] = []
+         pair_first_seen: dict[str, set[str]] = defaultdict(set)
+@@ -1224,7 +1279,14 @@
+             item = dict(row)
+             item["historical_exogenous_key"] = item["exogenous_key"]
+             item["control_branch_key"] = item["control_branch_key"]
+-            capture = FeatureCapture(item, str(item["arm"]), call_counters)
++            capture = FeatureCapture(
++                item,
++                str(item["arm"]),
++                call_counters,
++                observation_digest_fn=stable.observation_digest,
++                hidden_digest_fn=stable.hidden_digest,
++                diagnostic_first_pair=str(item["pair_id"]) == FIRST_PAIR_ID,
++            )
+             probe_adapter = stable.RuntimeAdapters(
+                 load_snapshots=base_adapters.load_snapshots,
+                 load_runtime=base_adapters.load_runtime,
+@@ -1236,11 +1298,16 @@
+             )
+             staging = output_dir / "runner-staging" / str(item["branch_id"]).replace("|", "__")
+             staging.mkdir(parents=True, exist_ok=False)
++            branch_started = time.perf_counter()
+             try:
+                 result = stable.execute_branch(item, snapshots[item["prefix_id"]], runtime, probe_adapter, budget, counters, staging)
+             except Exception:
+                 merge_staging(staging, output_dir, item, capture, None)
+                 raise
++            branch_seconds = time.perf_counter() - branch_started
++            execution_timings.append({"branch_id":item["branch_id"], "arm":item["arm"], "branch_seconds":branch_seconds,
++                "probe_seconds":capture.timing_totals["probe_seconds"],
++                "environment_and_runner_overhead_seconds":max(0.0, branch_seconds-capture.timing_totals["probe_seconds"])})
+             merge_staging(staging, output_dir, item, capture, result)
+             all_features.extend(capture.records)
+             pair_first_seen[str(item["pair_id"])].add(str(item["arm"]))
+@@ -1271,7 +1338,7 @@
+         model_call_counts = call_counters.as_dict()
+         if any(value > limit for value, limit in zip(model_call_counts["attempted"].values(), model_call_counts["limits"].values())) or any(model_call_counts["completed"][name] > model_call_counts["attempted"][name] for name in model_call_counts["attempted"]):
+             raise TechnicalStop(f"model call accounting mismatch: {model_call_counts}")
+-        write_json(output_dir / "runtime-costs.json", {"schema": "world-event-feature-runtime-cost/1.0.0", "status": "completed", "counters": counters.as_dict(), "model_call_counts": model_call_counts, "limits": {"environment_steps": MAX_TOTAL_STEPS, "policy_encodes": MAX_TOTAL_STEPS, "world_candidate_batches": MAX_TOTAL_STEPS, "actor_readouts": MAX_TOTAL_STEPS + 2, "updates": 0}, "wall_seconds": time.perf_counter() - started, "failure_is_algorithm_result": False, "result_classification": "evaluation_completed"})
++        write_json(output_dir / "runtime-costs.json", {"schema": "world-event-feature-runtime-cost/1.0.0", "status": "completed", "counters": counters.as_dict(), "model_call_counts": model_call_counts, "limits": {"environment_steps": MAX_TOTAL_STEPS, "policy_encodes": MAX_TOTAL_STEPS, "world_candidate_batches": MAX_TOTAL_STEPS, "actor_readouts": MAX_TOTAL_STEPS + 2, "updates": 0}, "wall_seconds": time.perf_counter() - started, "setup_seconds":setup_seconds,"branch_timings":execution_timings,"timing_scope":"non-probe duration combines environment, guard, reward checks, budget and logging; not isolated env.step latency", "failure_is_algorithm_result": False, "result_classification": "evaluation_completed"})
+         budget.export_snapshot(output_dir / "budget-after.json")
+         status = {"schema": "world-event-feature-run-status/1.0.0", "status": "completed", "hard_counts": counters.as_dict(), "model_call_counts": model_call_counts, "runtime_digest_before": runtime_before, "runtime_digest_after": runtime_after, "budget_totals": totals, "no_retry": True, "failure_is_algorithm_result": False, "result_classification": "evaluation_completed"}
+         write_json(output_dir / "run-status.json", status)
+@@ -1305,7 +1372,7 @@
+ 
+ __all__ = [
+     "APPROVED_LIMIT", "APPROVED_NEW_STEPS", "AuthorizationError", "BUDGET", "EXPECTED_BUDGET_SHA256",
+-    "MAX_BRANCHES", "MAX_STEPS_PER_BRANCH", "MAX_TOTAL_STEPS", "MANIFEST", "PACKAGE", "RunnerError",
++    "FIRST_PAIR_ID", "MAX_BRANCHES", "MAX_STEPS_PER_BRANCH", "MAX_TOTAL_STEPS", "MANIFEST", "PACKAGE", "RunnerError",
+     "TechnicalStop", "canonical_hash", "check_package", "compare_first_pair", "expected_arm",
+     "inspect_budget", "json_safe", "ModelCallCounters", "package_validation", "required_feature_fields",
+     "sha256_file", "validate_authorization", "validate_manifest",
+--- dd2a542/tools/analyze_world_event_feature_pair_20260923.py
++++ corrected/tools/analyze_world_event_feature_pair_20260923.py
+@@ -20,6 +20,8 @@
+ BASE = ROOT / "runs/finite-communication-ack-lease-fix-20260920"
+ H005 = BASE / "ackguard-matrix-registration-20260922"
+ ARMS = ("normal", "event_features_off")
++MANIFEST = BASE / "world-event-feature-execution-package-20260923/paired-manifest.json"
++MANIFEST_SHA256 = "445f1c8c021ce625058c293fefbf07947a2d92bc4c4d18259a5b7e76338d5e4b"
+ DEPENDENCIES = {
+     "native_analysis": (H005 / "analyze_results.py", "c4add12392c8f3ca082e0aaa57224708b24ff0b16ae40eeae95ff65183834ba7"),
+     "reconciliation": (H005 / "final-analysis-v2/reconcile_budget_status.py", "91d2a4b53f6d735c6d8b008960bf316076eac5d52240017d96e78c9d7a71e10b"),
+@@ -89,6 +91,11 @@
+         require(pair[0]["exogenous_key"] == pair[1]["exogenous_key"], "unpaired randomness")
+         require(pair[0]["cohort_task_ids"] == pair[1]["cohort_task_ids"], "unpaired cohort")
+     return index
++
++
++def validate_manifest_file(path):
++    require(Path(path).resolve()==MANIFEST.resolve(), "analysis manifest is not canonical")
++    require(sha(path)==MANIFEST_SHA256, "analysis manifest hash mismatch")
+ 
+ 
+ def recompute_reward(row):
+@@ -265,6 +272,23 @@
+         require(feature["by_action_hidden_sha256"][str(dec["final_action"])]==step["selected_action_hidden_sha256"], "selected world output mismatch")
+         require(feature["next_policy_hidden_sha256"]==step["policy_hidden_after_sha256"], "selected policy output mismatch")
+         expected_calls = {"policy_encode":1,"world_candidate_batch":1,"actor_readout":2 if item["pair_id"]==first_pair and key[1]==1 else 1}
++        diag = feature["pair_diagnostic"]
++        extra_required = expected_calls["actor_readout"]==2
++        require(diag["enabled"] is extra_required,"same-input diagnostic coverage mismatch")
++        require(diag["extra_model_call_status"]=={"attempted":int(extra_required),"completed":int(extra_required)},"extra readout incomplete")
++        if extra_required:
++            opposite = "event_features_off" if item["arm"]=="normal" else "normal"
++            require(diag["extra_arm"]==opposite,"wrong extra arm")
++            require(diag["raw_candidate_features_25x17"]==feature["candidate_features_raw_25x17"],"diagnostic raw input mismatch")
++            for field in ("public_observation_sha256","policy_hidden_before_sha256","world_hidden_before_sha256","by_action_hidden_sha256","next_policy_hidden_sha256"):
++                require(diag["immutable_inputs"][field]==feature[field],"diagnostic immutable input mismatch: "+field)
++            extra=diag["extra_actor_readout"]
++            validate_feature_payload(feature["candidate_features_raw_25x17"],extra["candidate_features_actor_25x17"],
++                {k:extra[k+"_logits"] for k in ("base","preference","candidate")},extra["logits"],extra["probabilities"],feature["legal_mask"],opposite)
++            require(extra["base_logits"]==feature["base_logits"] and extra["preference_logits"]==feature["preference_logits"],"noncandidate readout changed")
++            require(extra["original_action"]==max(range(25),key=lambda a:extra["probabilities"][a]),"extra action ranking mismatch")
++        else:
++            require(diag["extra_actor_readout"] is None,"unexpected extra readout")
+         require(feature["model_calls"]==expected_calls,"per-probe call count mismatch")
+         for name,count in expected_calls.items():
+             require(feature["model_call_status"][name]=={"attempted":count,"completed":count},"per-probe incomplete forward")
+@@ -276,7 +300,11 @@
+     for field in ("public_observation_sha256","policy_hidden_before_sha256","world_hidden_before_sha256",
+                   "candidate_features_raw_25x17","by_action_hidden_sha256","next_policy_hidden_sha256"):
+         require(first_rows[0][field]==first_rows[1][field],"first input mismatch: "+field)
+-    require(gate["ok"] is True and gate["pair_id"]==first_pair and gate["checks"] and all(v is True for v in gate["checks"].values()),"first-pair gate incomplete")
++    for source,other in (first_rows, list(reversed(first_rows))):
++        extra=source["pair_diagnostic"]["extra_actor_readout"]
++        for field in ("candidate_features_actor_25x17","base_logits","preference_logits","candidate_logits","logits","probabilities","original_action"):
++            require(extra[field]==other[field],"same-input extra readout cross-check: "+field)
++    require(gate["ok"] is True and gate["pair_id"]==first_pair and gate["step"]==1 and gate["checks"] and all(v is True for v in gate["checks"].values()),"first-pair gate incomplete")
+     for obj in (status,costs):
+         require(obj["status"]=="completed","runtime not completed")
+         require(obj["model_call_counts"]["attempted"]==sums==obj["model_call_counts"]["completed"],"global model call discrepancy")
+@@ -290,7 +318,22 @@
+     require(counters["branches_completed"]==48,"incomplete completed branches")
+     for name in ("optimizer_updates","world_updates","offline_updates"):
+         require(counters[name]==0,"runtime update violation")
+-    return {"model_call_counts":sums,"world_rows_per_batch":25,"per_probe_timing_totals":dict(timing),
++    require(finite(costs["setup_seconds"])>=0,"invalid setup timing")
++    branch_timing_index=index_unique(costs["branch_timings"],("branch_id",))
++    require({k[0] for k in branch_timing_index}==set(by_branch),"branch timing coverage mismatch")
++    arm_timings={arm:dict(branch_seconds=0.0,probe_seconds=0.0,environment_and_runner_overhead_seconds=0.0) for arm in ARMS}
++    for (branch_id,),row in branch_timing_index.items():
++        arm=by_branch[branch_id]["arm"]
++        require(row["arm"]==arm,"timing arm mismatch")
++        for field in arm_timings[arm]:
++            require(finite(row[field])>=0,"invalid branch timing")
++            arm_timings[arm][field]+=row[field]
++        require(close(row["branch_seconds"],row["probe_seconds"]+row["environment_and_runner_overhead_seconds"],1e-5),"timing decomposition mismatch")
++    normal,off=first_rows
++    ranking={"scope":"first pair step1 same-input diagnostic only", "original_action_changed":normal["original_action"]!=off["original_action"],
++             "guard_selected_action_changed":normal["selected_action"]!=off["selected_action"],
++             "probability_total_variation":sum(abs(a-b) for a,b in zip(normal["probabilities"],off["probabilities"]))/2}
++    return {"model_call_counts":sums,"world_rows_per_batch":25,"per_probe_timing_totals":dict(timing),"same_input_ranking":ranking,"setup_seconds":costs["setup_seconds"],"arm_timings":arm_timings,
+             "wall_seconds":finite(costs["wall_seconds"]),"same_input_gate_pair":first_pair,
+             "cost_interpretation":"observed timings include instrumentation; no inference of overall savings from actor call counts"}
+ 
+@@ -307,6 +350,7 @@
+     require(not args.out.exists(), "analysis output exists; preserve old analysis")
+     result = {"status":"incomplete","primary":None}
+     try:
++        validate_manifest_file(args.manifest)
+         before = sha(args.sqlite)
+         with sqlite3.connect(args.sqlite.resolve().as_uri()+"?mode=ro",uri=True) as con:
+             con.row_factory = sqlite3.Row
+--- dd2a542/tests/test_world_event_feature_pair_20260923.py
++++ corrected/tests/test_world_event_feature_pair_20260923.py
+@@ -1,8 +1,11 @@
+ from __future__ import annotations
+ 
++import copy
+ import importlib.util
+ import json
++import math
+ from pathlib import Path
++import tempfile
+ 
+ import pytest
+ 
+@@ -15,7 +18,243 @@
+ spec.loader.exec_module(runner)
+ 
+ 
+-def _feature(arm: str, *, pair: str = "p", hidden: str = "h", off: bool = False) -> dict:
++def _copy_data(value):
++    return copy.deepcopy(value)
++
++
++def _shape(value):
++    if not isinstance(value, list):
++        return ()
++    return (len(value),) + (_shape(value[0]) if value else ())
++
++
++class _FakeTensor:
++    def __init__(self, data):
++        self.data = _copy_data(data)
++
++    @property
++    def shape(self):
++        return _shape(self.data)
++
++    def clone(self):
++        return _FakeTensor(self.data)
++
++    def detach(self):
++        return self
++
++    def cpu(self):
++        return self
++
++    def tolist(self):
++        return _copy_data(self.data)
++
++    def item(self):
++        value = self.data
++        while isinstance(value, list):
++            value = value[0]
++        return value
++
++    def reshape(self, *shape):
++        requested = list(shape)
++        flat = []
++
++        def flatten(value):
++            if isinstance(value, list):
++                for child in value:
++                    flatten(child)
++            else:
++                flat.append(value)
++
++        flatten(self.data)
++        if requested.count(-1) == 1:
++            known = math.prod(value for value in requested if value != -1)
++            requested[requested.index(-1)] = len(flat) // known
++        assert math.prod(requested) == len(flat)
++        cursor = 0
++
++        def build(dim):
++            nonlocal cursor
++            if dim == len(requested):
++                value = flat[cursor]
++                cursor += 1
++                return value
++            return [build(dim + 1) for _ in range(requested[dim])]
++
++        return _FakeTensor(build(0))
++
++    def squeeze(self, dim=-1):
++        dims = self.shape
++        dim = len(dims) + dim if dim < 0 else dim
++        assert dims[dim] == 1
++
++        def remove(value, depth):
++            if depth == dim:
++                return remove(value[0], depth + 1)
++            if not isinstance(value, list):
++                return value
++            return [remove(child, depth + 1) for child in value]
++
++        return _FakeTensor(remove(self.data, 0))
++
++    def __len__(self):
++        return len(self.data)
++
++    def __getitem__(self, index):
++        indices = index if isinstance(index, tuple) else (index,)
++
++        def select(value, remaining):
++            if not remaining:
++                return value
++            head, *tail = remaining
++            if head is None:
++                return [select(value, tuple(tail))]
++            if isinstance(head, slice):
++                return [select(child, tuple(tail)) for child in value[head]]
++            return select(value[head], tuple(tail))
++
++        return _FakeTensor(select(self.data, indices))
++
++    def __setitem__(self, index, value):
++        indices = index if isinstance(index, tuple) else (index,)
++        replacement = value.data if isinstance(value, _FakeTensor) else value
++
++        def assign(target, remaining):
++            head, *tail = remaining
++            if isinstance(head, slice):
++                for offset in range(*head.indices(len(target))):
++                    if tail:
++                        assign(target[offset], tuple(tail))
++                    else:
++                        target[offset] = _copy_data(replacement)
++                return
++            if tail:
++                assign(target[head], tuple(tail))
++            else:
++                target[head] = _copy_data(replacement)
++
++        assign(self.data, indices)
++
++
++class _FakeNoGrad:
++    def __enter__(self):
++        return self
++
++    def __exit__(self, exc_type, exc_value, traceback):
++        return False
++
++
++class _FakeTorch:
++    float32 = object()
++    bool = object()
++
++    @staticmethod
++    def zeros(shape, **_kwargs):
++        def build(dim):
++            if dim == len(shape):
++                return 0.0
++            return [build(dim + 1) for _ in range(shape[dim])]
++
++        return _FakeTensor(build(0))
++
++    @staticmethod
++    def as_tensor(value, **_kwargs):
++        return _FakeTensor(value)
++
++    @staticmethod
++    def cat(values, dim=-1):
++        assert dim in (-1, 1)
++        left, right = (value.data for value in values)
++        return _FakeTensor([left_row + right_row for left_row, right_row in zip(left, right)])
++
++    @staticmethod
++    def argmax(value, dim=-1):
++        assert dim in (-1, 1)
++        rows = value.data
++        return _FakeTensor([max(range(len(row)), key=lambda index: row[index]) for row in rows])
++
++    @staticmethod
++    def no_grad():
++        return _FakeNoGrad()
++
++
++class _FakeHook:
++    def __init__(self, hooks, callback):
++        self._hooks = hooks
++        self._callback = callback
++
++    def remove(self):
++        if self._callback in self._hooks:
++            self._hooks.remove(self._callback)
++
++
++class _FakeModule:
++    def __init__(self, function):
++        self._function = function
++        self._hooks = []
++
++    def register_forward_hook(self, callback):
++        self._hooks.append(callback)
++        return _FakeHook(self._hooks, callback)
++
++    def __call__(self, *args):
++        output = self._function(*args)
++        for callback in list(self._hooks):
++            callback(self, args, output)
++        return output
++
++
++class _FakePolicy:
++    def __init__(self):
++        self.base = type("Base", (), {})()
++        self.base.pair_actor = _FakeModule(lambda _features: _FakeTensor([[0.0] * 24]))
++        self.base.noop_actor = _FakeModule(lambda _features: _FakeTensor([[0.0]]))
++        self.preference_actor = _FakeModule(lambda _features: _FakeTensor([[0.1] * 25]))
++        self.candidate_actor = _FakeModule(
++            lambda candidates: _FakeTensor([[[sum(float(value) for value in row[12:17])] for row in candidates.data[0]]])
++        )
++
++    def encode(self, _obs, _hidden):
++        return _FakeTensor([[0.0]]), _FakeTensor([[0.0]]), _FakeTensor([[[0.0] * 128]])
++
++    def evaluate_encoded(self, features, _pair_messages, _preference, actor_candidates, _mask):
++        pair = self.base.pair_actor(features)
++        noop = self.base.noop_actor(features)
++        preference = self.preference_actor(features)
++        candidate = self.candidate_actor(actor_candidates).squeeze(-1)
++        base = _FakeTorch.cat((pair.reshape(1, -1), noop.reshape(1, -1)), dim=-1).data[0]
++        candidate_values = candidate.data[0]
++        preference_values = preference.data[0]
++        logits = [base[index] + preference_values[index] + candidate_values[index] for index in range(25)]
++        maximum=max(logits)
++        weights = [math.exp(value-maximum) if _mask.data[0][i] else 0.0 for i,value in enumerate(logits)]
++        total = sum(weights)
++        probabilities = [value / total for value in weights]
++        distribution = type("Distribution", (), {"probs": _FakeTensor([probabilities])})()
++        return {"logits": _FakeTensor([logits]), "distribution": distribution}
++
++
++class _FakeWorld:
++    def predict_all_candidates(self, _features, _hidden, _obs, use_events=True):
++        assert use_events is True
++        rows = [[float(action + column + 1) for column in range(17)] for action in range(25)]
++        by_action = {action: {"hidden": _FakeTensor([float(action)])} for action in range(25)}
++        return _FakeTensor([rows]), by_action
++
++
++def _fake_runtime():
++    classes = [None] * 6
++    classes[4] = lambda mask: list(mask)
++    classes[5] = lambda obs, _device: _FakeTensor([[float(value) for value in obs.get("flat", [0.0])]])
++    return {
++        "classes": classes,
++        "policy": _FakePolicy(),
++        "world": _FakeWorld(),
++        "preference": None,
++        "device": "cpu",
++    }
++
++
++def _feature(arm: str, *, pair: str = runner.FIRST_PAIR_ID, hidden: str = "h", off: bool = False, step: int = 1) -> dict:
+     raw = [[float(action + column) for column in range(17)] for action in range(25)]
+     actor = [row[:12] + ([0.0] * 5 if off else row[12:]) for row in raw]
+     return {
+@@ -24,7 +263,7 @@
+         "pair_id": pair,
+         "arm": arm,
+         "exogenous_key": "exo-p",
+-        "step": 1,
++        "step": step,
+         "public_observation_sha256": "obs",
+         "policy_hidden_before_sha256": hidden,
+         "world_hidden_before_sha256": "world",
+@@ -49,6 +288,145 @@
+     }
+ 
+ 
++def _write_jsonl(path: Path, row: dict) -> None:
++    path.parent.mkdir(parents=True, exist_ok=True)
++    with path.open("a", encoding="utf-8", newline="\n") as stream:
++        stream.write(json.dumps(row, sort_keys=True) + "\n")
++
++
++class _FakeCounters:
++    _NAMES = (
++        "probe_calls", "env_step_calls", "env_steps", "verified_steps", "model_forward", "actor_forward",
++        "world_forward", "optimizer_updates", "world_updates", "offline_updates", "branches_completed",
++    )
++
++    def __init__(self):
++        for name in self._NAMES:
++            setattr(self, name, 0)
++
++    def as_dict(self):
++        values = {name: int(getattr(self, name)) for name in self._NAMES}
++        values["successful_env_steps"] = values["env_steps"]
++        return values
++
++
++class _FakeBudget:
++    def __init__(self, *_args, **_kwargs):
++        self.steps = 0
++
++    def run_totals(self, _run_id):
++        return {
++            "environment_steps": {
++                "reserved": self.steps,
++                "verified": self.steps,
++                "unknown": 0,
++                "pending": 0,
++            }
++        }
++
++    def export_snapshot(self, path):
++        path.write_text(json.dumps({"steps": self.steps}) + "\n", encoding="utf-8")
++
++
++class _FakeRuntimeAdapters:
++    def __init__(self, **kwargs):
++        self.__dict__.update(kwargs)
++
++
++class _FakeBaseAdapters:
++    def __init__(self):
++        self.close = None
++
++    def load_snapshots(self, prefix_ids):
++        return {prefix_id: {"prefix_id": prefix_id} for prefix_id in prefix_ids}
++
++    def load_runtime(self, _snapshots):
++        return _fake_runtime()
++
++    def runtime_digest(self, _runtime):
++        return "frozen-runtime"
++
++    def reward(self, *_args):
++        raise AssertionError("fake branch must not call the environment reward adapter")
++
++    def task_capacity(self, _env):
++        return 2
++
++
++def _stub_h005(branch_calls, *, fail_at=None):
++    stable = type("FakeH005", (), {})()
++    stable.PersistentBudget = _FakeBudget
++    stable.RuntimeAdapters = _FakeRuntimeAdapters
++    stable.Counters = _FakeCounters
++    stable.observation_digest = runner._stable_observation_digest
++    stable.hidden_digest = runner._stable_hidden_digest
++    base = _FakeBaseAdapters()
++    stable._default_adapters = lambda: base
++    stable.MAX_TOTAL_STEPS = 0
++    stable.MAX_STEPS_PER_BRANCH = 0
++
++    def execute_branch(item, _snapshot, runtime, adapters, budget, counters, staging):
++        order = int(item["order"])
++        branch_calls.append(order)
++        obs = {
++            "flat": [1.0, 2.0],
++            "mask": [True] * 25,
++            "version": 1,
++            "time": 0,
++            "public_entity_ids": ["entity-0"],
++            "continuation_actions": [],
++            "trigger_flags": {},
++        }
++        probe = adapters.probe(runtime, obs, None, None)
++        counters.probe_calls += 1
++        counters.model_forward += 1
++        counters.actor_forward += 1
++        counters.world_forward += 1
++        counters.env_step_calls += 1
++        counters.env_steps += 1
++        counters.verified_steps += 1
++        budget.steps += 1
++        action = int(probe["original_action"])
++        _write_jsonl(staging / "decision-ledger.jsonl", {
++            "step": 1,
++            "original_action": action,
++            "final_action": action,
++            "candidate_actions": [action],
++            "excluded_actions": [],
++        })
++        _write_jsonl(staging / "step-vector-rewards.jsonl", {"step": 1, "vector_reward": [0.0, 0.0]})
++        _write_jsonl(staging / "budget-finalization.jsonl", {"step": 1, "reservation_id": f"reservation-{order}"})
++        if fail_at is not None and order == fail_at:
++            _write_jsonl(staging / "failure-ledger.jsonl", {"branch_id": item["branch_id"], "step": 1, "reason": "stub failure"})
++            raise RuntimeError(f"stub branch failure at order {order}")
++        return {"branch_id": item["branch_id"], "step_count": 1, "guard_trigger_count": 0}
++
++    stable.execute_branch = execute_branch
++    return stable
++
++
++def _run_stubbed_execute(monkeypatch, output_dir: Path, *, fail_at=None):
++    branch_calls = []
++    stable = _stub_h005(branch_calls, fail_at=fail_at)
++    monkeypatch.setattr(runner, "validate_authorization", lambda *_args, **_kwargs: {
++        "authorization": {"run": {"run_id": "stub-run", "attempt_id": "stub-attempt"}},
++        "budget": {},
++    })
++    monkeypatch.setattr(runner, "_load_h005_runner_from_path", lambda: stable)
++    original_init = runner.FeatureCapture.__init__
++    init_calls = []
++
++    def capture_init(self, item, arm, *args, **kwargs):
++        init_calls.append({"order": int(item["order"]), "diagnostic_first_pair": kwargs.get("diagnostic_first_pair"), "observation_digest_fn": kwargs.get("observation_digest_fn"), "hidden_digest_fn": kwargs.get("hidden_digest_fn")})
++        kwargs["torch_module"] = _FakeTorch()
++        return original_init(self, item, arm, *args, **kwargs)
++
++    monkeypatch.setattr(runner.FeatureCapture, "__init__", capture_init)
++    auth_path = output_dir.parent / "stub-auth.json"
++    auth_path.write_text("{}\n", encoding="utf-8")
++    return runner.execute_authorized(auth_path, manifest_path=runner.MANIFEST, output_dir=output_dir), branch_calls, init_calls
++
++
+ def _template(tmp_path: Path) -> Path:
+     payload = runner.authorization_template(runner.package_validation())
+     payload["status"] = "authorized"
+@@ -89,6 +467,8 @@
+     off = _feature("event_features_off", off=True)
+     gate = runner.compare_first_pair([normal, off])
+     assert gate["ok"] is True
++    assert gate["pair_id"] == runner.FIRST_PAIR_ID
++    assert gate["step"] == 1
+     assert gate["checks"]["same_raw_candidate_features"] is True
+     assert gate["checks"]["same_by_action_hidden"] is True
+     assert gate["checks"]["same_candidate_columns_0_12"] is True
+@@ -96,6 +476,32 @@
+ 
+     broken = _feature("event_features_off", off=True, hidden="different")
+     assert runner.compare_first_pair([normal, broken])["ok"] is False
++
++
++@pytest.mark.parametrize(
++    "mutate",
++    [
++        lambda rows: rows.pop(0),
++        lambda rows: rows.append(_feature("normal")),
++        lambda rows: rows.__setitem__(0, {**rows[0], "arm": "unknown"}),
++        lambda rows: rows[0].pop("candidate_logits"),
++    ],
++)
++def test_first_pair_gate_rejects_missing_duplicate_unknown_or_incomplete_step_one(mutate):
++    rows = [_feature("normal"), _feature("event_features_off", off=True)]
++    mutate(rows)
++    assert runner.compare_first_pair(rows)["ok"] is False
++
++
++def test_first_pair_gate_ignores_later_steps_and_other_pairs():
++    normal = _feature("normal")
++    off = _feature("event_features_off", off=True)
++    later = _feature("normal", step=2)
++    later["arm"] = "fork-record"
++    later["candidate_logits"] = None
++    other = _feature("normal", pair="parent-07|W1|seed-1101|prefix-0|repeat-2")
++    assert runner.compare_first_pair([later, other, normal, off])["ok"] is True
++    assert runner.compare_first_pair([other])["ok"] is False
+ 
+ 
+ def test_feature_schema_detects_missing_required_logs():
+@@ -133,3 +539,65 @@
+     assert counts.as_dict()["completed"]["world_candidate_batch"] == 0
+     counts.finish("world_candidate_batch")
+     assert counts.as_dict()["completed"]["world_candidate_batch"] == 1
++
++
++def test_execute_authorized_stub_runs_all_manifest_rows_and_real_probe(monkeypatch):
++    with tempfile.TemporaryDirectory(dir=ROOT) as temp_dir:
++        output = Path(temp_dir) / "successful-run"
++        status, branch_calls, init_calls = _run_stubbed_execute(monkeypatch, output)
++
++        assert status["status"] == "completed"
++        assert branch_calls == list(range(1, 49))
++        assert len(init_calls) == 48
++        assert [call["order"] for call in init_calls[:2]] == [1, 2]
++        assert all(call["diagnostic_first_pair"] is True for call in init_calls[:2])
++        assert all(call["diagnostic_first_pair"] is False for call in init_calls[2:])
++        assert all(call["observation_digest_fn"] is runner._stable_observation_digest for call in init_calls)
++        assert all(call["hidden_digest_fn"] is runner._stable_hidden_digest for call in init_calls)
++
++        gate = json.loads((output / "first-pair-gate.json").read_text(encoding="utf-8"))
++        assert gate["ok"] is True
++        assert gate["pair_id"] == runner.FIRST_PAIR_ID
++        assert gate["step"] == 1
++        features = [json.loads(line) for line in (output / "feature-ledger.jsonl").read_text(encoding="utf-8").splitlines()]
++        first = [row for row in features if row["pair_id"] == runner.FIRST_PAIR_ID]
++        assert len(first) == 2
++        assert all(row["pair_diagnostic"]["enabled"] is True for row in first)
++        assert all(row["pair_diagnostic"]["extra_actor_readout"] is not None for row in first)
++        assert {row["model_calls"]["actor_readout"] for row in first} == {2}
++        assert all(row["model_calls"]["actor_readout"] == 1 for row in features[2:])
++        assert json.loads((output / "runtime-costs.json").read_text(encoding="utf-8"))["status"] == "completed"
++        assert json.loads((output / "run-status.json").read_text(encoding="utf-8"))["status"] == "completed"
++        # Exercise the real analyzer against records produced by the real probe;
++        # only missing historical step evidence is supplied by this stub.
++        analysis_spec=importlib.util.spec_from_file_location('stub_output_analyzer',ROOT/'tools/analyze_world_event_feature_pair_20260923.py')
++        analysis=importlib.util.module_from_spec(analysis_spec)
++        analysis_spec.loader.exec_module(analysis)
++        decisions,steps=[],[]
++        for feature in features:
++            common={k:feature[k] for k in ('branch_id','step','public_observation_sha256','policy_hidden_before_sha256','world_hidden_before_sha256','legal_mask','original_action')}
++            decisions.append({**common,'probabilities':[{'probability':p} for p in feature['probabilities']],
++                'final_action':feature['selected_action'],'candidate_actions':feature['guard_candidates']})
++            steps.append({**common,'selected_action_hidden_sha256':feature['by_action_hidden_sha256'][str(feature['selected_action'])],
++                'policy_hidden_after_sha256':feature['next_policy_hidden_sha256']})
++        result=analysis.validate_runtime_evidence(features,decisions,steps,json.loads(runner.MANIFEST.read_text(encoding='utf-8')),status,
++            json.loads((output/'runtime-costs.json').read_text(encoding='utf-8')),gate)
++        assert result['model_call_counts']==dict(policy_encode=48,world_candidate_batch=48,actor_readout=50)
++
++
++def test_execute_authorized_stub_retains_failed_staging_and_stops_at_order(monkeypatch):
++    with tempfile.TemporaryDirectory(dir=ROOT) as temp_dir:
++        output = Path(temp_dir) / "failed-run"
++        with pytest.raises(RuntimeError, match="stub branch failure at order 5"):
++            _run_stubbed_execute(monkeypatch, output, fail_at=5)
++
++        assert (output / "runtime-costs.json").is_file()
++        assert (output / "run-status.json").is_file()
++        assert (output / "failure-ledger.jsonl").is_file()
++        assert not (output / "runner-staging" / "parent-00__W1__seed-1101__prefix-0__repeat-2__event_features_off").exists()
++        failure_rows = [json.loads(line) for line in (output / "failure-ledger.jsonl").read_text(encoding="utf-8").splitlines()]
++        assert any(row.get("reason") == "stub failure" for row in failure_rows)
++        costs = json.loads((output / "runtime-costs.json").read_text(encoding="utf-8"))
++        assert costs["status"] == "stopped_on_technical_error"
++        status = json.loads((output / "run-status.json").read_text(encoding="utf-8"))
++        assert status["status"] == "stopped_on_technical_error"
+--- dd2a542/tests/test_analyze_world_event_feature_pair_20260923.py
++++ corrected/tests/test_analyze_world_event_feature_pair_20260923.py
+@@ -133,8 +133,15 @@
+     calls=dict(policy_encode=48,world_candidate_batch=48,actor_readout=50)
+     counts=dict(attempted=calls,completed=calls,limits=dict(policy_encode=768,world_candidate_batch=768,actor_readout=770))
+     status=dict(status='completed',model_call_counts=counts,runtime_digest_before='frozen',runtime_digest_after='frozen',hard_counts={**{k:48 for k in ('env_steps','env_step_calls','successful_env_steps','verified_steps','actor_forward','world_forward','probe_calls','branches_completed')},**{k:0 for k in ('optimizer_updates','world_updates','offline_updates')}})
+-    costs=dict(status='completed',model_call_counts=counts,wall_seconds=1.0)
+-    gate=dict(ok=True,pair_id=manifest[0]['pair_id'],checks={'same_input':True})
++    costs=dict(status='completed',model_call_counts=counts,wall_seconds=1.0,setup_seconds=.01,
++               branch_timings=[dict(branch_id=r['branch_id'],arm=r['arm'],branch_seconds=.02,probe_seconds=.01,environment_and_runner_overhead_seconds=.01) for r in manifest])
++    for feature in features:
++        enabled=feature['model_calls']['actor_readout']==2
++        payload={key:copy.deepcopy(feature[key]) for key in ('base_logits','preference_logits','candidate_logits','logits','probabilities','candidate_features_actor_25x17','event_features_after_25x5','original_action')}
++        feature['pair_diagnostic']=dict(enabled=enabled,extra_arm=('event_features_off' if feature['arm']=='normal' else 'normal') if enabled else None,
++            extra_model_call_status=dict(attempted=int(enabled),completed=int(enabled)),extra_actor_readout=payload if enabled else None,
++            raw_candidate_features_25x17=feature['candidate_features_raw_25x17'],immutable_inputs={key:feature[key] for key in ('public_observation_sha256','policy_hidden_before_sha256','world_hidden_before_sha256','by_action_hidden_sha256','next_policy_hidden_sha256')})
++    gate=dict(ok=True,pair_id=manifest[0]['pair_id'],step=1,checks={'same_input':True})
+     return [features,decisions,steps,manifest,status,costs,gate]
+ 
+ 
+@@ -154,3 +161,20 @@
+     result=m.analyze_core(*fixture())
+     secondary=m.summarize_secondary(result['paired_results'])
+     assert secondary['normal_minus_off_totals']['completed_delta']==24
++
++
++@pytest.mark.parametrize('fault',['extra_missing','extra_logits','extra_hidden','gate_step','duplicate_feature'])
++def test_runtime_diagnostic_corruption_fails(fault):
++    args=runtime_fixture()
++    diag=args[0][0]['pair_diagnostic']
++    if fault=='extra_missing':diag['enabled']=False
++    elif fault=='extra_logits':diag['extra_actor_readout']['logits'][0]=2.0
++    elif fault=='extra_hidden':diag['immutable_inputs']['world_hidden_before_sha256']='wrong'
++    elif fault=='gate_step':args[-1]['step']=2
++    else:args[0].append(copy.deepcopy(args[0][0]))
++    with pytest.raises(ValueError):m.validate_runtime_evidence(*args)
++
++
++def test_manifest_file_binding_rejects_another_path():
++    m.validate_manifest_file(m.MANIFEST)
++    with pytest.raises(ValueError):m.validate_manifest_file(m.MANIFEST.parent/'alternative.json')

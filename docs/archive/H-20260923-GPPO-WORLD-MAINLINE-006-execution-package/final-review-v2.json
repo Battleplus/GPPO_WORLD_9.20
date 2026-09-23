@@ -1,0 +1,34 @@
+{
+  "status": "prepared_pending_user_approval",
+  "goal": "H-20260923-GPPO-WORLD-MAINLINE-006",
+  "prior_commit": "dd2a542fad99a14225ec3faf7416bdb038d85c34",
+  "test_result": {
+    "command": [
+      "C:\\Python314\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--basetemp",
+      "E:\\Z博士\\research-reviews\\world-event-feature-package-006\\pytest-corrected-final2",
+      "tests/test_world_event_feature_pair_20260923.py",
+      "tests/test_analyze_world_event_feature_pair_20260923.py",
+      "tests/test_authorize_world_event_feature_pair_20260923.py"
+    ],
+    "returncode": 0,
+    "stdout": "...........................................                              [100%]\n43 passed in 3.82s\n",
+    "stderr": ""
+  },
+  "sqlite_sha256": "9ff13f0e18ab8ce56f418f00eac786f08a47e6107a2b8d31f7184b2502c9d420",
+  "sqlite_unchanged": true,
+  "env_step": 0,
+  "reset_replay": 0,
+  "model_forward": 0,
+  "all_updates": 0,
+  "new_attempt": 0,
+  "limits_applied": false,
+  "dynamic_success_not_yet_verified": true
+}

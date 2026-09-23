@@ -1,5 +1,7 @@
 {
+  "schema": "world-event-feature-runner-schema/1.0.0",
   "branch_result": {
+    "base": "H-005 ackguard-corrected-branch-result/1.0.0",
     "added": [
       "arm",
       "pair_id",
@@ -7,29 +9,30 @@
       "task_ids",
       "mode",
       "feature_ledger_rows"
-    ],
-    "base": "H-005 ackguard-corrected-branch-result/1.0.0"
-  },
-  "cost_limits": {
-    "actor_readouts": 770,
-    "branches": 48,
-    "environment_steps": 768,
-    "policy_encodes": 768,
-    "updates": 0,
-    "world_candidate_batches": 768
+    ]
   },
   "decision_row": {
+    "base": "H-005 ackguard-corrected-decision/1.0.0",
     "added": [
       "arm",
       "pair_id",
       "cohort_task_ids",
       "task_ids",
       "mode"
-    ],
-    "base": "H-005 ackguard-corrected-decision/1.0.0"
+    ]
+  },
+  "step_row": {
+    "base": "H-005 step-vector-rewards/1.0.0",
+    "added": [
+      "arm",
+      "pair_id",
+      "cohort_task_ids",
+      "task_ids",
+      "mode"
+    ]
   },
   "feature_row": {
-    "event_slice": "columns 12:17; only actor-facing candidate rows change",
+    "schema": "world-event-feature/1.0.0",
     "required": [
       "branch_id",
       "pair_id",
@@ -54,29 +57,26 @@
       "model_calls",
       "model_call_status"
     ],
-    "schema": "world-event-feature/1.0.0"
+    "event_slice": "columns 12:17; only actor-facing candidate rows change"
+  },
+  "cost_limits": {
+    "branches": 48,
+    "environment_steps": 768,
+    "policy_encodes": 768,
+    "world_candidate_batches": 768,
+    "actor_readouts": 770,
+    "updates": 0
   },
   "model_call_accounting": {
+    "fields": [
+      "attempted",
+      "completed"
+    ],
     "calls": [
       "policy_encode",
       "world_candidate_batch",
       "actor_readout"
     ],
-    "fields": [
-      "attempted",
-      "completed"
-    ],
     "technical_stop_is_not_algorithm_result": true
-  },
-  "schema": "world-event-feature-runner-schema/1.0.0",
-  "step_row": {
-    "added": [
-      "arm",
-      "pair_id",
-      "cohort_task_ids",
-      "task_ids",
-      "mode"
-    ],
-    "base": "H-005 step-vector-rewards/1.0.0"
   }
 }

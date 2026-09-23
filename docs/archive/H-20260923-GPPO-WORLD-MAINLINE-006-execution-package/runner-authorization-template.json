@@ -1,47 +1,109 @@
 {
-  "budget": {
-    "baseline_verified": 299,
-    "global_limit": 1067,
-    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
-    "required_new_steps": 768,
-    "run_limit": 768,
-    "sha256": "9ff13f0e18ab8ce56f418f00eac786f08a47e6107a2b8d31f7184b2502c9d420",
-    "updates_cap": 0
+  "schema": "world-event-feature-authorization/1.0.0",
+  "status": "pending_review",
+  "runner_id": "world-event-feature-pair-20260923-v1",
+  "review": {
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "accepted_interpretation": false
   },
-  "interpretation": "event-feature subvector sensitivity only; not a no-world-model or net world-model benefit claim",
+  "protocol": {
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\protocol.json",
+    "sha256": "a83760f242dd252ef841d2ac8674a4e9bf092d0be2236ba8ae73d8f8b78fb122"
+  },
   "manifest": {
     "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\paired-manifest.json",
     "sha256": "445f1c8c021ce625058c293fefbf07947a2d92bc4c4d18259a5b7e76338d5e4b"
   },
-  "no_retry": true,
-  "protocol": {
-    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\protocol.json",
-    "sha256": "b57f1c191497893ee4f55c0244a12b708010c5e408b841de29937c30d3ac93f3"
-  },
-  "review": {
-    "accepted_interpretation": false,
-    "reviewed_at": null,
-    "reviewed_by": null
-  },
-  "run": {
-    "attempt_id": "world-event-feature-pair-20260923-attempt-0001",
-    "run_id": "world-event-feature-pair-20260923"
-  },
-  "runner_id": "world-event-feature-pair-20260923-v1",
-  "schema": "world-event-feature-authorization/1.0.0",
   "source": {
-    "checkpoint_path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\training\\seed-1101\\P_train\\last-recovery.pt",
-    "checkpoint_sha256": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a",
-    "guard_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py",
-    "guard_sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
+    "runner_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_world_event_feature_pair_20260923.py",
+    "runner_sha256": "98ab8744e67c5e050f590a1a57c6fb9b5d2a5df1645534ab1a7d1e8c4251581a",
     "h005_runner_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_corrected_20260922.py",
     "h005_runner_sha256": "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e",
-    "native_source_manifest_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\native-source-manifest.json",
-    "native_source_manifest_sha256": "febbaede7c191b2e1a901de5f2314e3ed9d590ae2f65d508cc482107296da976",
+    "guard_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py",
+    "guard_sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
+    "checkpoint_path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\training\\seed-1101\\P_train\\last-recovery.pt",
+    "checkpoint_sha256": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a",
     "prefix_snapshot_path": "E:\\Z博士\\migration-artifacts\\replan-value-feature-collection-20260919-v1\\prefix-snapshots.pkl",
     "prefix_snapshot_sha256": "c6826f941141d1ae7594c38a3e3465584ae0954158502f19d2f4d8163a18258e",
-    "runner_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_world_event_feature_pair_20260923.py",
-    "runner_sha256": "4ecd9cb25af8e3467c5ad5aaff7239dea3798ea45f21dc9fd59cb2c39ff6057c"
+    "native_source_manifest_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\native-source-manifest.json",
+    "native_source_manifest_sha256": "febbaede7c191b2e1a901de5f2314e3ed9d590ae2f65d508cc482107296da976",
+    "runtime_dependencies": {
+      "h005_runner": {
+        "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_corrected_20260922.py",
+        "canonical": true,
+        "exists": true,
+        "sha256": "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e"
+      },
+      "guard": {
+        "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py",
+        "canonical": true,
+        "exists": true,
+        "sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a"
+      },
+      "budget_executor": {
+        "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\budget_executor.py",
+        "canonical": true,
+        "exists": true,
+        "sha256": "d9a39251cba7833ce2f92e06a84522a81c930c9eba706b42de62adab8a003551"
+      },
+      "historical_helper": {
+        "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_replan_value_experiment.py",
+        "canonical": true,
+        "exists": true,
+        "sha256": "a9ccf1711790c472ededd7666c54c28ca34abffc4a0095d35b300f1297afa965"
+      },
+      "config": {
+        "path": "E:\\Z博士\\migration-artifacts\\preference-weighted-wm-event-cpu-20260917\\final\\run\\training\\seed-1101\\WD\\resolved-config.json",
+        "canonical": true,
+        "exists": true,
+        "sha256": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27"
+      },
+      "analyzer": {
+        "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\analyze_world_event_feature_pair_20260923.py",
+        "canonical": true,
+        "exists": true,
+        "sha256": "7fc1f83081bfa69b9cf15148bf5a11584d26ad29d0dac4abb0f996b309ce824c"
+      },
+      "authorizer": {
+        "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\authorize_world_event_feature_pair_20260923.py",
+        "canonical": true,
+        "exists": true,
+        "sha256": "7d52e52a844a2637ed12bef5af39dd92ab37d15bd2729d499e18b2aba855fe5c"
+      },
+      "analyzer_dependency_native_analysis": {
+        "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ackguard-matrix-registration-20260922\\analyze_results.py",
+        "canonical": true,
+        "exists": true,
+        "sha256": "c4add12392c8f3ca082e0aaa57224708b24ff0b16ae40eeae95ff65183834ba7"
+      },
+      "analyzer_dependency_reconciliation": {
+        "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ackguard-matrix-registration-20260922\\final-analysis-v2\\reconcile_budget_status.py",
+        "canonical": true,
+        "exists": true,
+        "sha256": "91d2a4b53f6d735c6d8b008960bf316076eac5d52240017d96e78c9d7a71e10b"
+      },
+      "analyzer_dependency_public_contract": {
+        "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\analyze_world_increment_preflight_20260923.py",
+        "canonical": true,
+        "exists": true,
+        "sha256": "2f36eec39f0c7c921b8a246a17999870cc31e3203de22606cdc3e3732f3dec64"
+      }
+    }
   },
-  "status": "pending_review"
+  "budget": {
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+    "sha256": "9ff13f0e18ab8ce56f418f00eac786f08a47e6107a2b8d31f7184b2502c9d420",
+    "global_limit": 1067,
+    "baseline_verified": 299,
+    "required_new_steps": 768,
+    "run_limit": 768,
+    "updates_cap": 0
+  },
+  "run": {
+    "run_id": "world-event-feature-pair-20260923",
+    "attempt_id": "world-event-feature-pair-20260923-attempt-0001"
+  },
+  "interpretation": "event-feature subvector sensitivity only; not a no-world-model or net world-model benefit claim",
+  "no_retry": true
 }

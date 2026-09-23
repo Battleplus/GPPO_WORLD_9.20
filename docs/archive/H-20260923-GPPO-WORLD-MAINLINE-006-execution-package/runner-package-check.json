@@ -87,14 +87,14 @@
       "parent-07|W1|seed-1101|prefix-0|repeat-2"
     ]
   },
-  "protocol_sha256": "1aa30618637b938e58c0586cb73a4551750d528ef30438ead27c93d7d67e87e6",
+  "protocol_sha256": "a83760f242dd252ef841d2ac8674a4e9bf092d0be2236ba8ae73d8f8b78fb122",
   "manifest_sha256": "445f1c8c021ce625058c293fefbf07947a2d92bc4c4d18259a5b7e76338d5e4b",
   "source_pins": {
     "runner": {
       "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_world_event_feature_pair_20260923.py",
       "canonical": true,
       "exists": true,
-      "sha256": "1d456297fb420eed0bfbdec44e8f065ad53c7919e6424a0c1daa4ea67051bbbc"
+      "sha256": "98ab8744e67c5e050f590a1a57c6fb9b5d2a5df1645534ab1a7d1e8c4251581a"
     },
     "h005_runner": {
       "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_corrected_20260922.py",
@@ -130,7 +130,7 @@
       "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\protocol.json",
       "canonical": true,
       "exists": true,
-      "sha256": "1aa30618637b938e58c0586cb73a4551750d528ef30438ead27c93d7d67e87e6"
+      "sha256": "a83760f242dd252ef841d2ac8674a4e9bf092d0be2236ba8ae73d8f8b78fb122"
     },
     "manifest": {
       "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\paired-manifest.json",
@@ -166,7 +166,7 @@
       "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\analyze_world_event_feature_pair_20260923.py",
       "canonical": true,
       "exists": true,
-      "sha256": "868c7ae69539b2e97e47a8fa1e51de425df19abf1a9bacd11d63b801ac62ee1d"
+      "sha256": "7fc1f83081bfa69b9cf15148bf5a11584d26ad29d0dac4abb0f996b309ce824c"
     },
     "authorizer": {
       "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\authorize_world_event_feature_pair_20260923.py",

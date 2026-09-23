@@ -35,7 +35,7 @@ H-005 的基线是冻结策略加公开执行状态 guard；并非已证明一�
 5. 原生horizon18、prefix时间2、间隔1，每条最多16步；到cap仍未原生终止则技术停止，不截断补标签。
 6. 分析只读已保存记录；逐reservation/branch/step关联finalization与SQLite再判verified。写入时pending不等同于最终未核销。
 
-最多768次环境步、768次policy encode、768次world候选batch（每batch25行）、770次actor readout（含首对两次额外同输入读出），全部参数更新0。分量logits复用实际forward输出，不额外调用模型获取日志。记录实际setup/model/environment墙钟时间；调用减少不能替代总计算成本结论。运行时长尚未实测，不编造GPU小时。
+最多768次环境步、768次policy encode、768次world候选batch（每batch25行）、770次actor readout（含首对两次额外同输入读出），全部参数更新0。分量logits复用实际forward输出，不额外调用模型获取日志。记录setup/model/probe墙钟时间及分支总时间；分支时间减probe得到环境与runner合计开销（含guard、预算、奖励复算和日志），不当作独立env.step延迟；调用减少不能替代总计算成本结论。运行时长尚未实测，不编造GPU小时。
 
 ## 判定、停止与后续
 

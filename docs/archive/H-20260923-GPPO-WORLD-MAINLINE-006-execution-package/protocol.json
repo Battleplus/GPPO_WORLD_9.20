@@ -87,7 +87,7 @@
     "existing_H005_trajectory_reuse": "not assumed; both arms require new execution unless a separate exact interface/state/randomness compatibility gate is approved",
     "model_forward": {
       "candidate_rows_per_world_batch": 25,
-      "cost": "record actual calls and perf_counter wall time separately for setup/model/environment; calls are not total compute cost",
+      "cost": "Record setup wall time, encode/world/readout/probe time, branch wall time and non-probe environment-plus-runner overhead. The latter includes guard/reward/budget/logging, not isolated env.step latency. Calls are not total compute cost.",
       "gate_detail": "at first decision in each arm reuse same encoded/world output for both actor-facing event settings; no extra hidden advance or env.step",
       "same_input_first_pair_gate_extra_actor_readouts_max": 2,
       "same_input_first_pair_gate_extra_encodes": 0,

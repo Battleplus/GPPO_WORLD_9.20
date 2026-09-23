@@ -77,6 +77,7 @@ APPROVED_NEW_STEPS = 768
 PREFERENCE = (0.8, 0.2)
 EVENT_START = 12
 EVENT_END = 17
+FIRST_PAIR_ID = "parent-00|W1|seed-1101|prefix-0|repeat-0"
 EXPECTED_H005_RUNNER_SHA256 = "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e"
 EXPECTED_GUARD_SHA256 = "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a"
 EXPECTED_CHECKPOINT_SHA256 = "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a"
@@ -448,9 +449,10 @@ def validate_native_source_manifest() -> dict[str, Any]:
         for path in source_root.rglob("*")
         if path.is_file()
     }
-    if not manifest_paths.issubset(actual_paths):
+    runtime_paths = {p for p in actual_paths if p.startswith("gppo_world/") and p.endswith(".py")}
+    if runtime_paths != manifest_paths:
         failures.append(
-            f"native source manifest paths missing: manifest={len(manifest_paths)} actual={len(actual_paths)}"
+            f"native runtime module set mismatch: manifest={len(manifest_paths)} runtime={len(runtime_paths)}"
         )
     return {
         "ok": not failures,
@@ -808,6 +810,7 @@ class FeatureCapture:
         hidden_digest_fn: Any = _stable_hidden_digest,
         timing_totals: dict[str, float] | None = None,
         diagnostic_first_pair: bool = False,
+        torch_module: Any | None = None,
     ) -> None:
         self.item = dict(item)
         self.arm = arm
@@ -816,10 +819,14 @@ class FeatureCapture:
         self.hidden_digest_fn = hidden_digest_fn
         self.timing_totals = timing_totals if timing_totals is not None else defaultdict(float)
         self.diagnostic_first_pair = bool(diagnostic_first_pair)
+        self.torch_module = torch_module
         self.records: list[dict[str, Any]] = []
 
     def probe(self, runtime: Mapping[str, Any], obs: Mapping[str, Any], policy_hidden: Any, world_hidden: Any) -> Mapping[str, Any]:
-        import torch
+        torch = self.torch_module
+        if torch is None:
+            import torch as torch_module
+            torch = torch_module
 
         classes = runtime["classes"]
         policy = runtime["policy"]
@@ -891,6 +898,7 @@ class FeatureCapture:
             mask = torch.as_tensor(mask_safe(obs["mask"]), dtype=torch.bool, device=device)[None, :]
             evaluation, captured, actor_seconds = readout(actor_candidates)
             main_payload = readout_payload(evaluation, captured, actor_candidates)
+            probabilities = main_payload["probabilities"]
             extra_payload: dict[str, Any] | None = None
             extra_actor_seconds = 0.0
             extra_arm: str | None = None
@@ -968,9 +976,9 @@ class FeatureCapture:
             "preference_logits": main_payload["preference_logits"],
             "candidate_logits": main_payload["candidate_logits"],
             "logits": main_payload["logits"],
-            "probabilities": _tensor_payload(probabilities[0]),
+            "probabilities": probabilities,
             "legal_mask": [int(value) for value in mask[0].detach().cpu().tolist()],
-            "original_action": int(torch.argmax(probabilities, dim=-1).item()),
+            "original_action": int(main_payload["original_action"]),
             "by_action_hidden_sha256": by_action_hidden,
             "by_action_output_summary": by_action_summary,
             "next_policy_hidden_sha256": self.hidden_digest_fn(next_policy_hidden),
@@ -986,10 +994,18 @@ class FeatureCapture:
                 "extra_actor_readout_seconds": extra_actor_seconds,
                 "probe_seconds": time.perf_counter() - started,
             },
-            "model_calls": {"policy_encode": 1, "world_candidate_batch": 1, "actor_readout": 1},
+            "model_calls": {
+                "policy_encode": 1,
+                "world_candidate_batch": 1,
+                "actor_readout": 1 + int(extra_payload is not None),
+            },
             "model_call_status": {
-                name: {"attempted": 1, "completed": 1}
-                for name in ModelCallCounters.LIMITS
+                "policy_encode": {"attempted": 1, "completed": 1},
+                "world_candidate_batch": {"attempted": 1, "completed": 1},
+                "actor_readout": {
+                    "attempted": 1 + int(extra_payload is not None),
+                    "completed": 1 + int(extra_payload is not None),
+                },
             },
             "pair_diagnostic": diagnostic,
             "intervention": {
@@ -1001,7 +1017,7 @@ class FeatureCapture:
         }
         self.records.append(record)
         return {
-            "probabilities": _tensor_payload(probabilities[0]),
+            "probabilities": probabilities,
             "original_action": record["original_action"],
             "by_action": by_action,
             "next_policy_hidden": next_policy_hidden,
@@ -1009,17 +1025,54 @@ class FeatureCapture:
 
 
 def compare_first_pair(records: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
-    grouped: dict[str, dict[str, Mapping[str, Any]]] = defaultdict(dict)
+    result_base = {
+        "schema": "world-event-feature-first-pair-gate/1.0.0",
+        "pair_id": FIRST_PAIR_ID,
+        "step": 1,
+    }
+    pair_rows: list[Mapping[str, Any]] = []
     for record in records:
-        grouped[str(record["pair_id"])][str(record["arm"])] = record
-    if not grouped:
-        return {"ok": False, "reason": "no feature rows"}
-    pair_id = sorted(grouped)[0]
-    pair = grouped[pair_id]
-    if set(pair) != {"normal", "event_features_off"}:
-        return {"ok": False, "pair_id": pair_id, "reason": "first pair is not two distinct arms"}
-    normal = pair["normal"]
-    off = pair["event_features_off"]
+        if isinstance(record, Mapping) and record.get("pair_id") == FIRST_PAIR_ID:
+            pair_rows.append(record)
+    if not pair_rows:
+        return {**result_base, "ok": False, "reason": "first pair has no feature rows"}
+
+    allowed_arms = {"normal", "event_features_off"}
+    malformed: list[dict[str, Any]] = []
+    by_arm_step_one: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
+    for index, record in enumerate(pair_rows):
+        if "step" not in record:
+            malformed.append({"index": index, "reason": "missing step"})
+            continue
+        try:
+            step = int(record["step"])
+        except (TypeError, ValueError):
+            malformed.append({"index": index, "reason": "invalid step"})
+            continue
+        if step != 1:
+            continue
+        arm = record.get("arm")
+        if arm not in allowed_arms:
+            malformed.append({"index": index, "reason": f"unknown arm: {arm!r}"})
+            continue
+        missing = required_feature_fields(record)
+        if missing:
+            malformed.append({"index": index, "arm": arm, "reason": "missing fields", "fields": missing})
+        by_arm_step_one[str(arm)].append(record)
+    if malformed:
+        return {**result_base, "ok": False, "reason": "first pair feature rows are malformed", "failures": malformed}
+    if set(by_arm_step_one) != allowed_arms:
+        return {
+            **result_base,
+            "ok": False,
+            "reason": "first pair must contain one normal and one event_features_off step 1 row",
+            "step_one_arms": sorted(by_arm_step_one),
+        }
+    duplicate_arms = {arm: len(rows) for arm, rows in by_arm_step_one.items() if len(rows) != 1}
+    if duplicate_arms:
+        return {**result_base, "ok": False, "reason": "first pair has duplicate or missing step 1 rows", "step_one_counts": duplicate_arms}
+    normal = by_arm_step_one["normal"][0]
+    off = by_arm_step_one["event_features_off"][0]
     checks = {
         "same_public_observation": normal.get("public_observation_sha256") == off.get("public_observation_sha256"),
         "same_policy_hidden": normal.get("policy_hidden_before_sha256") == off.get("policy_hidden_before_sha256"),
@@ -1031,7 +1084,7 @@ def compare_first_pair(records: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
         "normal_event_projection": normal.get("event_features_after_25x5") == normal.get("event_features_before_25x5"),
         "off_event_zero": all(abs(float(value)) == 0.0 for row in off.get("event_features_after_25x5", ()) for value in row),
     }
-    return {"schema": "world-event-feature-first-pair-gate/1.0.0", "ok": all(checks.values()), "pair_id": pair_id, "checks": checks}
+    return {**result_base, "ok": all(checks.values()), "checks": checks}
 
 
 def required_feature_fields(row: Mapping[str, Any]) -> list[str]:
@@ -1215,6 +1268,8 @@ def execute_authorized(auth_path: Path, *, manifest_path: Path = MANIFEST, outpu
         snapshots = base_adapters.load_snapshots(prefix_ids)
         runtime = base_adapters.load_runtime(snapshots)
         runtime_before = base_adapters.runtime_digest(runtime)
+        setup_seconds = time.perf_counter() - started
+        execution_timings = []
         counters = stable.Counters()
         all_features: list[dict[str, Any]] = []
         pair_first_seen: dict[str, set[str]] = defaultdict(set)
@@ -1224,7 +1279,14 @@ def execute_authorized(auth_path: Path, *, manifest_path: Path = MANIFEST, outpu
             item = dict(row)
             item["historical_exogenous_key"] = item["exogenous_key"]
             item["control_branch_key"] = item["control_branch_key"]
-            capture = FeatureCapture(item, str(item["arm"]), call_counters)
+            capture = FeatureCapture(
+                item,
+                str(item["arm"]),
+                call_counters,
+                observation_digest_fn=stable.observation_digest,
+                hidden_digest_fn=stable.hidden_digest,
+                diagnostic_first_pair=str(item["pair_id"]) == FIRST_PAIR_ID,
+            )
             probe_adapter = stable.RuntimeAdapters(
                 load_snapshots=base_adapters.load_snapshots,
                 load_runtime=base_adapters.load_runtime,
@@ -1236,11 +1298,16 @@ def execute_authorized(auth_path: Path, *, manifest_path: Path = MANIFEST, outpu
             )
             staging = output_dir / "runner-staging" / str(item["branch_id"]).replace("|", "__")
             staging.mkdir(parents=True, exist_ok=False)
+            branch_started = time.perf_counter()
             try:
                 result = stable.execute_branch(item, snapshots[item["prefix_id"]], runtime, probe_adapter, budget, counters, staging)
             except Exception:
                 merge_staging(staging, output_dir, item, capture, None)
                 raise
+            branch_seconds = time.perf_counter() - branch_started
+            execution_timings.append({"branch_id":item["branch_id"], "arm":item["arm"], "branch_seconds":branch_seconds,
+                "probe_seconds":capture.timing_totals["probe_seconds"],
+                "environment_and_runner_overhead_seconds":max(0.0, branch_seconds-capture.timing_totals["probe_seconds"])})
             merge_staging(staging, output_dir, item, capture, result)
             all_features.extend(capture.records)
             pair_first_seen[str(item["pair_id"])].add(str(item["arm"]))
@@ -1271,7 +1338,7 @@ def execute_authorized(auth_path: Path, *, manifest_path: Path = MANIFEST, outpu
         model_call_counts = call_counters.as_dict()
         if any(value > limit for value, limit in zip(model_call_counts["attempted"].values(), model_call_counts["limits"].values())) or any(model_call_counts["completed"][name] > model_call_counts["attempted"][name] for name in model_call_counts["attempted"]):
             raise TechnicalStop(f"model call accounting mismatch: {model_call_counts}")
-        write_json(output_dir / "runtime-costs.json", {"schema": "world-event-feature-runtime-cost/1.0.0", "status": "completed", "counters": counters.as_dict(), "model_call_counts": model_call_counts, "limits": {"environment_steps": MAX_TOTAL_STEPS, "policy_encodes": MAX_TOTAL_STEPS, "world_candidate_batches": MAX_TOTAL_STEPS, "actor_readouts": MAX_TOTAL_STEPS + 2, "updates": 0}, "wall_seconds": time.perf_counter() - started, "failure_is_algorithm_result": False, "result_classification": "evaluation_completed"})
+        write_json(output_dir / "runtime-costs.json", {"schema": "world-event-feature-runtime-cost/1.0.0", "status": "completed", "counters": counters.as_dict(), "model_call_counts": model_call_counts, "limits": {"environment_steps": MAX_TOTAL_STEPS, "policy_encodes": MAX_TOTAL_STEPS, "world_candidate_batches": MAX_TOTAL_STEPS, "actor_readouts": MAX_TOTAL_STEPS + 2, "updates": 0}, "wall_seconds": time.perf_counter() - started, "setup_seconds":setup_seconds,"branch_timings":execution_timings,"timing_scope":"non-probe duration combines environment, guard, reward checks, budget and logging; not isolated env.step latency", "failure_is_algorithm_result": False, "result_classification": "evaluation_completed"})
         budget.export_snapshot(output_dir / "budget-after.json")
         status = {"schema": "world-event-feature-run-status/1.0.0", "status": "completed", "hard_counts": counters.as_dict(), "model_call_counts": model_call_counts, "runtime_digest_before": runtime_before, "runtime_digest_after": runtime_after, "budget_totals": totals, "no_retry": True, "failure_is_algorithm_result": False, "result_classification": "evaluation_completed"}
         write_json(output_dir / "run-status.json", status)
@@ -1305,7 +1372,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
 __all__ = [
     "APPROVED_LIMIT", "APPROVED_NEW_STEPS", "AuthorizationError", "BUDGET", "EXPECTED_BUDGET_SHA256",
-    "MAX_BRANCHES", "MAX_STEPS_PER_BRANCH", "MAX_TOTAL_STEPS", "MANIFEST", "PACKAGE", "RunnerError",
+    "FIRST_PAIR_ID", "MAX_BRANCHES", "MAX_STEPS_PER_BRANCH", "MAX_TOTAL_STEPS", "MANIFEST", "PACKAGE", "RunnerError",
     "TechnicalStop", "canonical_hash", "check_package", "compare_first_pair", "expected_arm",
     "inspect_budget", "json_safe", "ModelCallCounters", "package_validation", "required_feature_fields",
     "sha256_file", "validate_authorization", "validate_manifest",

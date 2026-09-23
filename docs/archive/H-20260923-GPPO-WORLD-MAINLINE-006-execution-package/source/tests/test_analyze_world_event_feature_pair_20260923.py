@@ -133,8 +133,15 @@ def runtime_fixture():
     calls=dict(policy_encode=48,world_candidate_batch=48,actor_readout=50)
     counts=dict(attempted=calls,completed=calls,limits=dict(policy_encode=768,world_candidate_batch=768,actor_readout=770))
     status=dict(status='completed',model_call_counts=counts,runtime_digest_before='frozen',runtime_digest_after='frozen',hard_counts={**{k:48 for k in ('env_steps','env_step_calls','successful_env_steps','verified_steps','actor_forward','world_forward','probe_calls','branches_completed')},**{k:0 for k in ('optimizer_updates','world_updates','offline_updates')}})
-    costs=dict(status='completed',model_call_counts=counts,wall_seconds=1.0)
-    gate=dict(ok=True,pair_id=manifest[0]['pair_id'],checks={'same_input':True})
+    costs=dict(status='completed',model_call_counts=counts,wall_seconds=1.0,setup_seconds=.01,
+               branch_timings=[dict(branch_id=r['branch_id'],arm=r['arm'],branch_seconds=.02,probe_seconds=.01,environment_and_runner_overhead_seconds=.01) for r in manifest])
+    for feature in features:
+        enabled=feature['model_calls']['actor_readout']==2
+        payload={key:copy.deepcopy(feature[key]) for key in ('base_logits','preference_logits','candidate_logits','logits','probabilities','candidate_features_actor_25x17','event_features_after_25x5','original_action')}
+        feature['pair_diagnostic']=dict(enabled=enabled,extra_arm=('event_features_off' if feature['arm']=='normal' else 'normal') if enabled else None,
+            extra_model_call_status=dict(attempted=int(enabled),completed=int(enabled)),extra_actor_readout=payload if enabled else None,
+            raw_candidate_features_25x17=feature['candidate_features_raw_25x17'],immutable_inputs={key:feature[key] for key in ('public_observation_sha256','policy_hidden_before_sha256','world_hidden_before_sha256','by_action_hidden_sha256','next_policy_hidden_sha256')})
+    gate=dict(ok=True,pair_id=manifest[0]['pair_id'],step=1,checks={'same_input':True})
     return [features,decisions,steps,manifest,status,costs,gate]
 
 
@@ -154,3 +161,20 @@ def test_secondary_metrics_use_native_summaries():
     result=m.analyze_core(*fixture())
     secondary=m.summarize_secondary(result['paired_results'])
     assert secondary['normal_minus_off_totals']['completed_delta']==24
+
+
+@pytest.mark.parametrize('fault',['extra_missing','extra_logits','extra_hidden','gate_step','duplicate_feature'])
+def test_runtime_diagnostic_corruption_fails(fault):
+    args=runtime_fixture()
+    diag=args[0][0]['pair_diagnostic']
+    if fault=='extra_missing':diag['enabled']=False
+    elif fault=='extra_logits':diag['extra_actor_readout']['logits'][0]=2.0
+    elif fault=='extra_hidden':diag['immutable_inputs']['world_hidden_before_sha256']='wrong'
+    elif fault=='gate_step':args[-1]['step']=2
+    else:args[0].append(copy.deepcopy(args[0][0]))
+    with pytest.raises(ValueError):m.validate_runtime_evidence(*args)
+
+
+def test_manifest_file_binding_rejects_another_path():
+    m.validate_manifest_file(m.MANIFEST)
+    with pytest.raises(ValueError):m.validate_manifest_file(m.MANIFEST.parent/'alternative.json')

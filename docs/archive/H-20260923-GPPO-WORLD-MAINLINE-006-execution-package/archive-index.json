@@ -4,20 +4,32 @@
     "bytes": 991
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/COMMANDS.md": {
-    "sha256": "c38f16f02a015b97c04771ce5ada6b01f830304c5c8c33d82ebd7c2cf1291ff2",
-    "bytes": 672
+    "sha256": "d826b1e6155c6a5b97259ee5980ac0e82dc4bd5a147b3f798f5412f755d46e9b",
+    "bytes": 2929
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/erratum-v2.md": {
+    "sha256": "05c8bd4a65cce1c1714bbe3a66cd10e3f290e80ac732bd7b1690bb8fd5ac2ff8",
+    "bytes": 1338
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/EXPERIMENT_PLAN.md": {
-    "sha256": "7d9f7d625fae7deb0a42bd0df343e813da3864f56dde5fb7b05ae7e8202f30f9",
-    "bytes": 4947
+    "sha256": "7a7f625606610acbfce45658cde7a606a450d2d156a4f339bcb9704f0d53697d",
+    "bytes": 5134
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/EXPERIMENT_TRACKER.md": {
-    "sha256": "39921db362f3e59f7a02cf5747580fa10a6f189d4cc09e2d6cbf4f3ccdb25f98",
-    "bytes": 852
+    "sha256": "da66b0d5068017ec5e92f22b7611d764c5c63ea1c5fd42e9f0144194913b9e8b",
+    "bytes": 548
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/final-review-v2.json": {
+    "sha256": "4001ea1c03173ceade2f761cba93ca810f64f75d00ae3c9b52c39ab398a65400",
+    "bytes": 1128
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/hashes.json": {
-    "sha256": "c6e3767fb09a8d8ffb0d0864a09231fa40024a5e9066bb0ae8487a8c993c3fd0",
-    "bytes": 5993
+    "sha256": "5ef0d32def14fa399e49ea38856b4504de69db48c7cd5f381b6820a576d9c8f3",
+    "bytes": 7194
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/implementation-correction.diff": {
+    "sha256": "94dee6cb187604b844a190c782df490fddc5d5d4260e4f042379e7dc79c394f9",
+    "bytes": 45496
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/native-source-manifest.json": {
     "sha256": "febbaede7c191b2e1a901de5f2314e3ed9d590ae2f65d508cc482107296da976",
@@ -28,67 +40,71 @@
     "bytes": 35514
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/protocol.json": {
-    "sha256": "1aa30618637b938e58c0586cb73a4551750d528ef30438ead27c93d7d67e87e6",
-    "bytes": 8507
+    "sha256": "a83760f242dd252ef841d2ac8674a4e9bf092d0be2236ba8ae73d8f8b78fb122",
+    "bytes": 8623
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/report.md": {
-    "sha256": "d2774ef9a715c52a9873832dfad018cfab0b5ba1f426f30959afe5c700e6600b",
-    "bytes": 1611
+    "sha256": "02dfa8b004175e179232fe39098293e8bd09f3339ef523bbc470d0c58dedf14c",
+    "bytes": 2621
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/runner-authorization-template.json": {
-    "sha256": "f2c9e291d1131ede7c571e6be76434b6bf2a1be67ab86f05a42659dc1fd1d8df",
-    "bytes": 3074
+    "sha256": "d742cdc1ffc2297a3539afef34f867d681b305dc763d1844e1b536a72d064427",
+    "bytes": 6373
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/runner-hashes.json": {
-    "sha256": "f007a1f397da9091a4d425f7cf12e0557b805e0b6d7fccf50c036b7ac98e2087",
-    "bytes": 1896
+    "sha256": "fb3b7894e9a1eb053757091c1b0d8c9a58318e19aa170baa3c271f8c00f7d751",
+    "bytes": 1811
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/runner-package-check.json": {
-    "sha256": "940dc1d9f3260bdd37dd3d401405c685221808b5c99206cc7542b1f355041b94",
-    "bytes": 12947
+    "sha256": "6608a91dc8fd61c65ee581ace98564f6089247af5f82cd9fa89dac28038d1606",
+    "bytes": 12949
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/runner-README.md": {
     "sha256": "3b92d536d6c857d29d3cceb2ccc1291d6950200d0d4709c1b24a910f87dfe2fe",
     "bytes": 186
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/runner-schema.json": {
-    "sha256": "414320a77aba29d4d7500e29a0275d8451c4c2f2a4b0ee2ee6c150cd74a60e0e",
+    "sha256": "ff96284fff7f67ca7b9f00110a49e43509441818ff39f9f01e2b51a48bb49c27",
     "bytes": 1903
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/runtime-metadata.json": {
     "sha256": "1e7542cc63ae88c32f9a308f32230b9f1d521cfe392082cc08c05b1a9cabd9a3",
     "bytes": 413
   },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/test-output-v2.txt": {
+    "sha256": "551c50136bc6298c94632680911f06392140f749d4561c9517e05482b05174c8",
+    "bytes": 101
+  },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/user-approval-PENDING.json": {
     "sha256": "8434c7924de152538c850d94a686f82bd0236b49def90f31e4871ade10397042",
     "bytes": 498
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/source/tools/run_world_event_feature_pair_20260923.py": {
-    "sha256": "1d456297fb420eed0bfbdec44e8f065ad53c7919e6424a0c1daa4ea67051bbbc",
-    "bytes": 66429
+    "sha256": "98ab8744e67c5e050f590a1a57c6fb9b5d2a5df1645534ab1a7d1e8c4251581a",
+    "bytes": 69683
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/source/tools/analyze_world_event_feature_pair_20260923.py": {
-    "sha256": "868c7ae69539b2e97e47a8fa1e51de425df19abf1a9bacd11d63b801ac62ee1d",
-    "bytes": 22577
+    "sha256": "7fc1f83081bfa69b9cf15148bf5a11584d26ad29d0dac4abb0f996b309ce824c",
+    "bytes": 26346
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/source/tools/authorize_world_event_feature_pair_20260923.py": {
     "sha256": "7d52e52a844a2637ed12bef5af39dd92ab37d15bd2729d499e18b2aba855fe5c",
     "bytes": 7004
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/source/tests/test_world_event_feature_pair_20260923.py": {
-    "sha256": "032f18f6ef93c9f9823490a8c373b54c6aa9239ac2e5dbc21d1d5af6e7817751",
-    "bytes": 5847
+    "sha256": "1a882d3c030557372c9c9734db0e543887d7e41fdb54ce1c53a2b52400949344",
+    "bytes": 24028
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/source/tests/test_analyze_world_event_feature_pair_20260923.py": {
-    "sha256": "d60ab76b243dbe9028109bad90a7b56b1bbccc1d7e4852428601744bf9e026f7",
-    "bytes": 10591
+    "sha256": "e057f7bee295c35f8da94dd69c6866aaddeff868395444eb1f809a8ff7eead1d",
+    "bytes": 12484
   },
   "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-execution-package/source/tests/test_authorize_world_event_feature_pair_20260923.py": {
     "sha256": "3ddd206f99bb0e0063a7d935ec0a460ffaa8f2c8509e8fab10e6a0f041ff8037",
     "bytes": 3165
   },
   "docs/RESEARCH_PROGRESS.md": {
-    "sha256": "986f2355c973ee91cb1f6088dc6ab253adbe78a67b528d8d90725d22dff421ac",
-    "bytes": 20285
+    "sha256": "9ae9478982d8ef9d3e8e9e09f7aacd0fc7785a1f2acd3425fbb09c1b15507be6",
+    "bytes": 22416
   }
 }

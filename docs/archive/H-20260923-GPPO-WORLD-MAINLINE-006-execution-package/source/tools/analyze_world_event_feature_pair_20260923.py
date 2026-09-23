@@ -20,6 +20,8 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "runs/finite-communication-ack-lease-fix-20260920"
 H005 = BASE / "ackguard-matrix-registration-20260922"
 ARMS = ("normal", "event_features_off")
+MANIFEST = BASE / "world-event-feature-execution-package-20260923/paired-manifest.json"
+MANIFEST_SHA256 = "445f1c8c021ce625058c293fefbf07947a2d92bc4c4d18259a5b7e76338d5e4b"
 DEPENDENCIES = {
     "native_analysis": (H005 / "analyze_results.py", "c4add12392c8f3ca082e0aaa57224708b24ff0b16ae40eeae95ff65183834ba7"),
     "reconciliation": (H005 / "final-analysis-v2/reconcile_budget_status.py", "91d2a4b53f6d735c6d8b008960bf316076eac5d52240017d96e78c9d7a71e10b"),
@@ -89,6 +91,11 @@ def validate_manifest(rows):
         require(pair[0]["exogenous_key"] == pair[1]["exogenous_key"], "unpaired randomness")
         require(pair[0]["cohort_task_ids"] == pair[1]["cohort_task_ids"], "unpaired cohort")
     return index
+
+
+def validate_manifest_file(path):
+    require(Path(path).resolve()==MANIFEST.resolve(), "analysis manifest is not canonical")
+    require(sha(path)==MANIFEST_SHA256, "analysis manifest hash mismatch")
 
 
 def recompute_reward(row):
@@ -265,6 +272,23 @@ def validate_runtime_evidence(features, decisions, steps, manifest, status, cost
         require(feature["by_action_hidden_sha256"][str(dec["final_action"])]==step["selected_action_hidden_sha256"], "selected world output mismatch")
         require(feature["next_policy_hidden_sha256"]==step["policy_hidden_after_sha256"], "selected policy output mismatch")
         expected_calls = {"policy_encode":1,"world_candidate_batch":1,"actor_readout":2 if item["pair_id"]==first_pair and key[1]==1 else 1}
+        diag = feature["pair_diagnostic"]
+        extra_required = expected_calls["actor_readout"]==2
+        require(diag["enabled"] is extra_required,"same-input diagnostic coverage mismatch")
+        require(diag["extra_model_call_status"]=={"attempted":int(extra_required),"completed":int(extra_required)},"extra readout incomplete")
+        if extra_required:
+            opposite = "event_features_off" if item["arm"]=="normal" else "normal"
+            require(diag["extra_arm"]==opposite,"wrong extra arm")
+            require(diag["raw_candidate_features_25x17"]==feature["candidate_features_raw_25x17"],"diagnostic raw input mismatch")
+            for field in ("public_observation_sha256","policy_hidden_before_sha256","world_hidden_before_sha256","by_action_hidden_sha256","next_policy_hidden_sha256"):
+                require(diag["immutable_inputs"][field]==feature[field],"diagnostic immutable input mismatch: "+field)
+            extra=diag["extra_actor_readout"]
+            validate_feature_payload(feature["candidate_features_raw_25x17"],extra["candidate_features_actor_25x17"],
+                {k:extra[k+"_logits"] for k in ("base","preference","candidate")},extra["logits"],extra["probabilities"],feature["legal_mask"],opposite)
+            require(extra["base_logits"]==feature["base_logits"] and extra["preference_logits"]==feature["preference_logits"],"noncandidate readout changed")
+            require(extra["original_action"]==max(range(25),key=lambda a:extra["probabilities"][a]),"extra action ranking mismatch")
+        else:
+            require(diag["extra_actor_readout"] is None,"unexpected extra readout")
         require(feature["model_calls"]==expected_calls,"per-probe call count mismatch")
         for name,count in expected_calls.items():
             require(feature["model_call_status"][name]=={"attempted":count,"completed":count},"per-probe incomplete forward")
@@ -276,7 +300,11 @@ def validate_runtime_evidence(features, decisions, steps, manifest, status, cost
     for field in ("public_observation_sha256","policy_hidden_before_sha256","world_hidden_before_sha256",
                   "candidate_features_raw_25x17","by_action_hidden_sha256","next_policy_hidden_sha256"):
         require(first_rows[0][field]==first_rows[1][field],"first input mismatch: "+field)
-    require(gate["ok"] is True and gate["pair_id"]==first_pair and gate["checks"] and all(v is True for v in gate["checks"].values()),"first-pair gate incomplete")
+    for source,other in (first_rows, list(reversed(first_rows))):
+        extra=source["pair_diagnostic"]["extra_actor_readout"]
+        for field in ("candidate_features_actor_25x17","base_logits","preference_logits","candidate_logits","logits","probabilities","original_action"):
+            require(extra[field]==other[field],"same-input extra readout cross-check: "+field)
+    require(gate["ok"] is True and gate["pair_id"]==first_pair and gate["step"]==1 and gate["checks"] and all(v is True for v in gate["checks"].values()),"first-pair gate incomplete")
     for obj in (status,costs):
         require(obj["status"]=="completed","runtime not completed")
         require(obj["model_call_counts"]["attempted"]==sums==obj["model_call_counts"]["completed"],"global model call discrepancy")
@@ -290,7 +318,22 @@ def validate_runtime_evidence(features, decisions, steps, manifest, status, cost
     require(counters["branches_completed"]==48,"incomplete completed branches")
     for name in ("optimizer_updates","world_updates","offline_updates"):
         require(counters[name]==0,"runtime update violation")
-    return {"model_call_counts":sums,"world_rows_per_batch":25,"per_probe_timing_totals":dict(timing),
+    require(finite(costs["setup_seconds"])>=0,"invalid setup timing")
+    branch_timing_index=index_unique(costs["branch_timings"],("branch_id",))
+    require({k[0] for k in branch_timing_index}==set(by_branch),"branch timing coverage mismatch")
+    arm_timings={arm:dict(branch_seconds=0.0,probe_seconds=0.0,environment_and_runner_overhead_seconds=0.0) for arm in ARMS}
+    for (branch_id,),row in branch_timing_index.items():
+        arm=by_branch[branch_id]["arm"]
+        require(row["arm"]==arm,"timing arm mismatch")
+        for field in arm_timings[arm]:
+            require(finite(row[field])>=0,"invalid branch timing")
+            arm_timings[arm][field]+=row[field]
+        require(close(row["branch_seconds"],row["probe_seconds"]+row["environment_and_runner_overhead_seconds"],1e-5),"timing decomposition mismatch")
+    normal,off=first_rows
+    ranking={"scope":"first pair step1 same-input diagnostic only", "original_action_changed":normal["original_action"]!=off["original_action"],
+             "guard_selected_action_changed":normal["selected_action"]!=off["selected_action"],
+             "probability_total_variation":sum(abs(a-b) for a,b in zip(normal["probabilities"],off["probabilities"]))/2}
+    return {"model_call_counts":sums,"world_rows_per_batch":25,"per_probe_timing_totals":dict(timing),"same_input_ranking":ranking,"setup_seconds":costs["setup_seconds"],"arm_timings":arm_timings,
             "wall_seconds":finite(costs["wall_seconds"]),"same_input_gate_pair":first_pair,
             "cost_interpretation":"observed timings include instrumentation; no inference of overall savings from actor call counts"}
 
@@ -307,6 +350,7 @@ def main():
     require(not args.out.exists(), "analysis output exists; preserve old analysis")
     result = {"status":"incomplete","primary":None}
     try:
+        validate_manifest_file(args.manifest)
         before = sha(args.sqlite)
         with sqlite3.connect(args.sqlite.resolve().as_uri()+"?mode=ro",uri=True) as con:
             con.row_factory = sqlite3.Row
