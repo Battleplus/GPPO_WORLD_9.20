@@ -1,0 +1,34 @@
+{
+  "artifact-manifest.json": {
+    "sha256": "56745028afcf128a2a013051692cc01aafc8c727b45fe9399d30dac03b7410e0",
+    "bytes": 85280
+  },
+  "input-index.json": {
+    "sha256": "c0d608a4dcffb1eca53141499a160b73acd71cf5d5f4c181a5f9a7d1515df04d",
+    "bytes": 1253
+  },
+  "paired-input-comparison.json": {
+    "sha256": "3ce4bc20715f1fdc56570ac98733d07492f8cb62bb3a71f0e30814c485d7e5b3",
+    "bytes": 97313
+  },
+  "parent-results.json": {
+    "sha256": "f3072e5f1d413d5f861ff001b15cca481b836a99546fff31aed7a07be5d66ab7",
+    "bytes": 2375
+  },
+  "report.md": {
+    "sha256": "6ae77272db9c43510ca3da33737d72cb4025f5507ae0a7a63656ae252b380cfd",
+    "bytes": 7913
+  },
+  "review.json": {
+    "sha256": "b0d92d9f9e38c9bcf91312a3b3b59389fef73a252f6099632adc11ce5291f87f",
+    "bytes": 11418
+  },
+  "review_execution.py": {
+    "sha256": "405b104672a21a32dfbec1c03bcb1df93fb0f0863539e9b0643e2594faf16c81",
+    "bytes": 9285
+  },
+  "sample-index.json": {
+    "sha256": "7b1fa7d505ba67e6e03566b0a4992cad70a889bd0c3c24167231381cd822d1f3",
+    "bytes": 36716
+  }
+}

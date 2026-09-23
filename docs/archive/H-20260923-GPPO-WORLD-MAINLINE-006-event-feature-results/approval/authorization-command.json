@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:\\Python314\\python.exe",
+    "-X",
+    "utf8",
+    "tools/authorize_world_event_feature_pair_20260923.py",
+    "--apply",
+    "--approval",
+    "runs\\finite-communication-ack-lease-fix-20260920/world-event-feature-approval-20260923/user-approval.json",
+    "--authorization-out",
+    "runs\\finite-communication-ack-lease-fix-20260920/world-event-feature-approval-20260923/authorization.json",
+    "--receipt-dir",
+    "runs\\finite-communication-ack-lease-fix-20260920/world-event-feature-approval-20260923/migration"
+  ],
+  "pid": 19552,
+  "session_id": 1,
+  "started_at": "2026-09-23T18:47:06.2635928+08:00",
+  "ended_at": "2026-09-23T18:47:07.1457770+08:00",
+  "exit_code": 0,
+  "stdout_path": "runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\authorization-stdout.log",
+  "stderr_path": "runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\authorization-stderr.log"
+}

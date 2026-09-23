@@ -1,0 +1,43 @@
+{
+  "attempt_id": "world-event-feature-pair-20260923-attempt-0001",
+  "db_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+  "db_schema": "persistent-budget-sqlite/1.0.0",
+  "limits": {
+    "environment_steps": 1067,
+    "offline_updates": 0,
+    "optimizer_calls": 0,
+    "world_updates": 0
+  },
+  "run_id": "world-event-feature-pair-20260923",
+  "schema": "persistent-budget/2.0.0",
+  "stages": {
+    "environment_steps": {
+      "limit": 1067,
+      "pending": 0,
+      "reserved": 857,
+      "unknown": 0,
+      "verified": 857
+    },
+    "offline_updates": {
+      "limit": 0,
+      "pending": 0,
+      "reserved": 0,
+      "unknown": 0,
+      "verified": 0
+    },
+    "optimizer_calls": {
+      "limit": 0,
+      "pending": 0,
+      "reserved": 0,
+      "unknown": 0,
+      "verified": 0
+    },
+    "world_updates": {
+      "limit": 0,
+      "pending": 0,
+      "reserved": 0,
+      "unknown": 0,
+      "verified": 0
+    }
+  }
+}

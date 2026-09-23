@@ -1,0 +1,130 @@
+[
+  {
+    "parent_id": "parent-00",
+    "normal_mean": 0.34877868659392175,
+    "event_features_off_mean": 0.34877868659392175,
+    "repeat_differences": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "macro_difference": 0.0,
+    "repeat_signs": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "parent_id": "parent-01",
+    "normal_mean": 0.18464639530479662,
+    "event_features_off_mean": 0.18464639530479662,
+    "repeat_differences": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "macro_difference": 0.0,
+    "repeat_signs": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "parent_id": "parent-02",
+    "normal_mean": 0.18981556535424712,
+    "event_features_off_mean": 0.18981556535424712,
+    "repeat_differences": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "macro_difference": 0.0,
+    "repeat_signs": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "parent_id": "parent-03",
+    "normal_mean": 0.3076927061159706,
+    "event_features_off_mean": 0.3076927061159706,
+    "repeat_differences": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "macro_difference": 0.0,
+    "repeat_signs": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "parent_id": "parent-04",
+    "normal_mean": 0.34355237972718927,
+    "event_features_off_mean": 0.34355237972718927,
+    "repeat_differences": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "macro_difference": 0.0,
+    "repeat_signs": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "parent_id": "parent-05",
+    "normal_mean": 0.3510200200109261,
+    "event_features_off_mean": 0.3510200200109261,
+    "repeat_differences": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "macro_difference": 0.0,
+    "repeat_signs": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "parent_id": "parent-06",
+    "normal_mean": 0.18722213720390757,
+    "event_features_off_mean": 0.18722213720390757,
+    "repeat_differences": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "macro_difference": 0.0,
+    "repeat_signs": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "parent_id": "parent-07",
+    "normal_mean": 0.3018393234804593,
+    "event_features_off_mean": 0.3018393234804593,
+    "repeat_differences": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "macro_difference": 0.0,
+    "repeat_signs": [
+      0,
+      0,
+      0
+    ]
+  }
+]

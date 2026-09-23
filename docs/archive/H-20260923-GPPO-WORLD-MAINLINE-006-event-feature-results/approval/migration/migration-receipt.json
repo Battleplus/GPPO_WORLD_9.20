@@ -1,0 +1,16 @@
+{
+  "status": "applied",
+  "database": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+  "before_sha256": "9ff13f0e18ab8ce56f418f00eac786f08a47e6107a2b8d31f7184b2502c9d420",
+  "after_sha256": "74fc6b6d6a9a13fe2ea78335a431fcde550ec6f9f592b36b151f9549e3300af9",
+  "backup": "runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\migration\\pre-extension.sqlite3",
+  "backup_sha256": "16d8a961548f1c20ac87bf6c9df3651b9e62555da2e9fac439ba7832e82dc5b9",
+  "approval_sha256": "67f1c4b80faa92fb048a0659fda6dac2252e2d4708cf6ba167e68ed2dcbd5f1d",
+  "only_change": "environment_steps limit404->1067",
+  "old_history_preserved": true,
+  "historical_reserved_verified": 299,
+  "new_attempt": 0,
+  "env_step": 0,
+  "model_forward": 0,
+  "all_updates": 0
+}

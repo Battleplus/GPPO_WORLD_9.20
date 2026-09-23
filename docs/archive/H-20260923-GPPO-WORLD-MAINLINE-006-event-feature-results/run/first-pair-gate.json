@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "normal_event_projection": true,
+    "off_event_zero": true,
+    "same_by_action_hidden": true,
+    "same_candidate_columns_0_12": true,
+    "same_next_policy_hidden": true,
+    "same_policy_hidden": true,
+    "same_public_observation": true,
+    "same_raw_candidate_features": true,
+    "same_world_hidden": true
+  },
+  "ok": true,
+  "pair_id": "parent-00|W1|seed-1101|prefix-0|repeat-0",
+  "schema": "world-event-feature-first-pair-gate/1.0.0",
+  "step": 1
+}

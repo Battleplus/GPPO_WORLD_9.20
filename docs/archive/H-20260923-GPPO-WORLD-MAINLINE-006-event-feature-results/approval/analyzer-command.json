@@ -1,0 +1,28 @@
+{
+  "command": [
+    "C:\\Python314\\python.exe",
+    "-X",
+    "utf8",
+    "tools/analyze_world_event_feature_pair_20260923.py",
+    "--manifest",
+    "runs\\finite-communication-ack-lease-fix-20260920/world-event-feature-execution-package-20260923/paired-manifest.json",
+    "--run",
+    "runs\\finite-communication-ack-lease-fix-20260920/world-event-feature-authorized-run-20260923",
+    "--sqlite",
+    "runs\\finite-communication-ack-lease-fix-20260920/ack-known-task-guard-baseline-v1/budget.sqlite3",
+    "--run-id",
+    "world-event-feature-pair-20260923",
+    "--attempt-id",
+    "world-event-feature-pair-20260923-attempt-0001",
+    "--out",
+    "runs\\finite-communication-ack-lease-fix-20260920/world-event-feature-authorized-run-20260923/analysis.json"
+  ],
+  "pid": 23712,
+  "session_id": 1,
+  "started_at": "2026-09-23T18:51:54.9551458+08:00",
+  "stdout_path": "runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\analyzer-stdout.log",
+  "stderr_path": "runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\analyzer-stderr.log",
+  "status": "finished",
+  "ended_at": "2026-09-23T18:51:58.7590041+08:00",
+  "exit_code": 0
+}

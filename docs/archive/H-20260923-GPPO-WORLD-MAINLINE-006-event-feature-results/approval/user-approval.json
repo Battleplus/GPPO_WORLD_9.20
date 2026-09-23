@@ -1,0 +1,18 @@
+{
+  "status": "approved",
+  "handoff_id": "H-20260923-GPPO-WORLD-MAINLINE-006",
+  "package_hashes_sha256": "5ef0d32def14fa399e49ea38856b4504de69db48c7cd5f381b6820a576d9c8f3",
+  "approved_by": "user",
+  "user_message_reference": "latest explicit user authorization in this thread (parent-agent relay), goal H-20260923-GPPO-WORLD-MAINLINE-006, correction package v2",
+  "approved_at": "2026-09-23T18:46:14.0378049+08:00",
+  "accepted_event_sensitivity_only": true,
+  "old_limit": 404,
+  "new_limit": 1067,
+  "new_step_cap": 768,
+  "model_call_caps": {
+    "policy_encode": 768,
+    "world_candidate_batch": 768,
+    "actor_readout": 770
+  },
+  "all_updates": 0
+}

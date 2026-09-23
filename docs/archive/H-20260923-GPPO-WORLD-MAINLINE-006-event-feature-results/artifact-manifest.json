@@ -1,0 +1,1100 @@
+{
+  "files": [
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\analysis.json",
+      "bytes": 113890,
+      "sha256": "076c4a263905c33e3ef73ed026aa4943d9a8594378414c4f9a51e654435fb245"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\branch-results.jsonl",
+      "bytes": 22626460,
+      "sha256": "782cf961063691d4180b6befcb684f2412ce526fd5e70a05915007a329a4e09f"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\budget-after.json",
+      "bytes": 1059,
+      "sha256": "3ef52d48ab45646a9527a6c603feb82b3a3867903cc4206104266c6d3dcb5cd3"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\budget-finalization.jsonl",
+      "bytes": 313542,
+      "sha256": "5b0da1ba2cc34d010f63438315dfc403b13ce3d2493a8fd8f5c77c0a62b9f59d"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\decision-ledger.jsonl",
+      "bytes": 2446579,
+      "sha256": "007d601513b0f6e9fb0d3abfa58bba3e57716e0c315664053f4743ea359d1401"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\feature-ledger.jsonl",
+      "bytes": 34860268,
+      "sha256": "76fa1944aa93796b20905c70523e72082e8f226351ddaff2756ca9a82ef5e274"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\first-pair-gate.json",
+      "bytes": 498,
+      "sha256": "cd4500034f525231c6b4ee9afaf9e5ef4e7311030b6966789eda88143549cb27"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\progress.jsonl",
+      "bytes": 9987,
+      "sha256": "df40beaa6ec0c918ab902105118bb3fd1e80bb14fb89e4ffe20e31b782e8f86e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\run-status.json",
+      "bytes": 1351,
+      "sha256": "3c51b1e50bfe9ffd8d297205691a43d32e0028dca83ba9a89399f56afd81f020"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-0__event_features_off\\branch-results.jsonl",
+      "bytes": 426969,
+      "sha256": "7af798458a9269d8c9f67696d7d0f43fcb075480dfb5e09a293caa6670ac60fe"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-0__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3324,
+      "sha256": "b6ab0e3d14f32929908f22e79e5beaee99e9829ceaa9836bd5c73ca50b0c79c3"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-0__event_features_off\\decision-ledger.jsonl",
+      "bytes": 41585,
+      "sha256": "fb697a059df44a8c33e79b0a892cb3cedcb73cbe324ea60ed4122bec041fd0ec"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-0__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 2596607,
+      "sha256": "fad623e4b37c787a05a061cd049834ed413f1ad0200585279daccecc2081bf87"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-0__normal\\branch-results.jsonl",
+      "bytes": 426935,
+      "sha256": "e26ac5721fbe6dd816f1ccb1b8eca7cff6ded06a950898d8ea90c8a8a184070b"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-0__normal\\budget-finalization.jsonl",
+      "bytes": 3204,
+      "sha256": "6747f166702f5430752709d99f7741ae370130df88fc013e430b89df78129786"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-0__normal\\decision-ledger.jsonl",
+      "bytes": 41468,
+      "sha256": "e1f9259d0919896d55b633bd69bedc8abd3654162a669d6058111608a2509062"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-0__normal\\step-vector-rewards.jsonl",
+      "bytes": 2596490,
+      "sha256": "ad6088ebee1e23dc2f9ba1edc2cfc4ec7e3fa88b927994e85ac02f2e3eb5a80d"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-1__event_features_off\\branch-results.jsonl",
+      "bytes": 426969,
+      "sha256": "1739117a2f052b36c7da8c1b552cd7ddedd13e850d3f1b39a2f7a51f033b8120"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-1__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3324,
+      "sha256": "7de07a74b4c51e736dcf9b879da7bdc07300d8d69488836af872018af5767f07"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-1__event_features_off\\decision-ledger.jsonl",
+      "bytes": 41585,
+      "sha256": "89d5d2887593e6627823114fd338878594eb21f9c61dfb6b1f354c8ba19b8c53"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-1__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 2596607,
+      "sha256": "44e74c3e30749f84f385a7c12ad158fa8d6f732336de4a4d3125173614bbeb31"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-1__normal\\branch-results.jsonl",
+      "bytes": 426943,
+      "sha256": "e8afb4e0db90e630d0d18c75d23842eb73027fc8c0f5f349eb24d2cacbbc2f4b"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-1__normal\\budget-finalization.jsonl",
+      "bytes": 3204,
+      "sha256": "2836dca37a1a855aa96c23b36281f4c03c22d2394ceda8facac1f6769860044b"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-1__normal\\decision-ledger.jsonl",
+      "bytes": 41468,
+      "sha256": "8d963ffa30ca7e3a5787224be3fe0982c46b1264b3d64111feabf13420b50e88"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-1__normal\\step-vector-rewards.jsonl",
+      "bytes": 2596490,
+      "sha256": "2995e238b2a34a7576d359af9a938b661a8eb14eed9920ed82115f6b3ff61008"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-2__event_features_off\\branch-results.jsonl",
+      "bytes": 426969,
+      "sha256": "1e85958972e978edf83781ec54a4494e489bb71643139cffdd4a4cf385c93b62"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-2__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3324,
+      "sha256": "345d30009ce76a98b9a54dc2a5b48a58b43684d1ef4cc381b6daee77cc33622f"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-2__event_features_off\\decision-ledger.jsonl",
+      "bytes": 41585,
+      "sha256": "1671f7160cce8041182083f6db059b91c5bb46e2d84fc13fcdabb6d88ca50152"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-2__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 2596607,
+      "sha256": "92fc03810ea59e906c826bceb0650e270ca737d35c1bafe1c660ee583c29a829"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-2__normal\\branch-results.jsonl",
+      "bytes": 426943,
+      "sha256": "39b83dd4ef84e7b451a436cc01221f71070a1dde6cd260c677812040e81b1d13"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-2__normal\\budget-finalization.jsonl",
+      "bytes": 3204,
+      "sha256": "23b1a0af4f744669e0e1e65b77ac6eee6fa4cc0650ebd17d333e97ca3701597a"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-2__normal\\decision-ledger.jsonl",
+      "bytes": 41468,
+      "sha256": "a4f0f38d5c7bd95d2aaa507086b9855ce1dce95cff7ee0be9648c2db54e2bddb"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-00__W1__seed-1101__prefix-0__repeat-2__normal\\step-vector-rewards.jsonl",
+      "bytes": 2596490,
+      "sha256": "b8be01c398252c87aaa2067558c811ded10db14ae9aa8eabe34137e6deec0391"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-0__event_features_off\\branch-results.jsonl",
+      "bytes": 490939,
+      "sha256": "0ccec8390614473236718eee2821e0eeed4388b5327059324693dcdefbde185b"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-0__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3996,
+      "sha256": "f7a3e3370025fcf64fc7eaccbfd4d9104477da94a3b20d1c5e263800e6513aad"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-0__event_features_off\\decision-ledger.jsonl",
+      "bytes": 50128,
+      "sha256": "ac529fe9f2b58a1c7a409b22a8e6a7ebda2be9a9724e05864f1735f40e36ebb1"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-0__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 3492899,
+      "sha256": "28c38d1cfdee8fc683e4004d3ef411ecaca3d16461cf373134b51b0cd1a9e849"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-0__normal\\branch-results.jsonl",
+      "bytes": 490919,
+      "sha256": "856756df9d41bcfdcc07a96edf232b9e8c5c432a68dd133ada13c33560be6d9f"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-0__normal\\budget-finalization.jsonl",
+      "bytes": 3852,
+      "sha256": "6d9ba4abc43969c1e6f1aa86b3f7f9e34e77769f109003eeec2ae176502688f6"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-0__normal\\decision-ledger.jsonl",
+      "bytes": 49989,
+      "sha256": "1c9998485462840bc4f2277a0d26558111b026a75d2b7ad7957d474ffcbbf096"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-0__normal\\step-vector-rewards.jsonl",
+      "bytes": 3492755,
+      "sha256": "07a047142d50974226f8b514840bc358ea95f3738f2adf36f5512fd4318cee67"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-1__event_features_off\\branch-results.jsonl",
+      "bytes": 454414,
+      "sha256": "db28e22956d36f4fdd1758e03198df1bf7eb6592c1772e4ad3f1216b88dd689b"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-1__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3660,
+      "sha256": "4d81863b860b18c3ab75d2c4075d07983008c111dedb41a8e6ca16f7eb9bdb3e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-1__event_features_off\\decision-ledger.jsonl",
+      "bytes": 46385,
+      "sha256": "27cc14f2000237a059b43e46fe55c8783845eada5d4efb5cb6c6254e853800f0"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-1__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 2986279,
+      "sha256": "146674d8b83c6c52d9eaba85f62b3886bdeb54fae2e3f1e337fe02738ac9bd37"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-1__normal\\branch-results.jsonl",
+      "bytes": 454386,
+      "sha256": "1abec1b6c8f5f1e308f0fbf32cea0af7a29b77ba71f7ae0a1d65916e261b6cf6"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-1__normal\\budget-finalization.jsonl",
+      "bytes": 3528,
+      "sha256": "211baf03b4d564fe82480c2cf01a80b07309a7be5bcaf027250379dfb8df0524"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-1__normal\\decision-ledger.jsonl",
+      "bytes": 46262,
+      "sha256": "dc916cea6551206aabf43f1df4826464723e37a527329e2d19fca848a07887cb"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-1__normal\\step-vector-rewards.jsonl",
+      "bytes": 2986148,
+      "sha256": "35407b26def11687f13708973fec960d2d363163a1fb8482b06c71756f3e3e0b"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-2__event_features_off\\branch-results.jsonl",
+      "bytes": 622912,
+      "sha256": "4a4da419cc5e3396255fe32ead3248dfb1cf46879838dde6777fcc8c3649ca57"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-2__event_features_off\\budget-finalization.jsonl",
+      "bytes": 5340,
+      "sha256": "750739f9a02bd72ccf04ca6476f237f28241143dc5f6f8f18fb5c7187a893bed"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-2__event_features_off\\decision-ledger.jsonl",
+      "bytes": 66864,
+      "sha256": "5e6d7ac961acb2760b909b1ab5ab00a65b2881bc2b642f3a83b2e66ecdaed622"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-2__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 5759141,
+      "sha256": "010652a6cae5e81ef36f958a2b6914eb88dad9503b191393dd075e3e68f63ebe"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-2__normal\\branch-results.jsonl",
+      "bytes": 622892,
+      "sha256": "6377c5fe1879027f72afb6ec53818420aebba7d55febb6a4088f730753856235"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-2__normal\\budget-finalization.jsonl",
+      "bytes": 5148,
+      "sha256": "89685788621800d5d1ca1da547c5afb60d01da4247cb3099d5477bad26e458b3"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-2__normal\\decision-ledger.jsonl",
+      "bytes": 66679,
+      "sha256": "5f8b67cb94841ae6342b34323db7ac23e4aa3864469234d62ef86a9dd3c216ea"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-01__W1__seed-1101__prefix-0__repeat-2__normal\\step-vector-rewards.jsonl",
+      "bytes": 5758949,
+      "sha256": "ad87c546aad843727ec6769d53cc9f6b3eb4ba9debfc211a86f235a094882f4e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-0__event_features_off\\branch-results.jsonl",
+      "bytes": 513016,
+      "sha256": "7cf73130ff180dd3594f659125b957db9cc669d85bf6570e00bb9c01c9c143c2"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-0__event_features_off\\budget-finalization.jsonl",
+      "bytes": 5340,
+      "sha256": "e08574a4b24ea7591915159858e7b89bcca43004ebf013d3e833132a516a0626"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-0__event_features_off\\decision-ledger.jsonl",
+      "bytes": 64533,
+      "sha256": "12f6d9e021a10d65e6a02c0b5094202326a18f3ed6b400dbb695b334a62d96c2"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-0__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 4811473,
+      "sha256": "6181619ca7ae02c65f64ed729f9cba42224352708cd6485146aed9913aa7378f"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-0__normal\\branch-results.jsonl",
+      "bytes": 512994,
+      "sha256": "3236a2deecc2d444cb2517d1640a69a669b69ce27db307270ff5d7137c10c55c"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-0__normal\\budget-finalization.jsonl",
+      "bytes": 5148,
+      "sha256": "a1cd3b062b9c5d66cee40df85cf18cd947a4b8c25ff4a602890c029d94893927"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-0__normal\\decision-ledger.jsonl",
+      "bytes": 64342,
+      "sha256": "8a607cc11c0202237bc12a94d09d2074ff05a2ca0da1a0ef2661b4f479220aa4"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-0__normal\\step-vector-rewards.jsonl",
+      "bytes": 4811281,
+      "sha256": "a6814cf0f0018becd1becef43466424a0b2c5a0791e038c1222ef187d7e4578e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-1__event_features_off\\branch-results.jsonl",
+      "bytes": 455806,
+      "sha256": "b97aaa67ffc45840f0009efbc8ba8583c193b84c87085516dc7a55ed3a0f32c1"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-1__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3660,
+      "sha256": "d0c7d070cdde40e1292d4fe4c6ded9cc16073362f6e83f368943e609be0ce48a"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-1__event_features_off\\decision-ledger.jsonl",
+      "bytes": 45780,
+      "sha256": "c0d1e13c59f1e29291d8149ad471a7197d1a52df5777a23a68b2a64f4617fbce"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-1__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 3024483,
+      "sha256": "99f6532c20e23b6cadd9805348afc5f98dd2f83b908492c159c31f12256484da"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-1__normal\\branch-results.jsonl",
+      "bytes": 455784,
+      "sha256": "374092b08538c770d3f2bab1d7bd38297721a40aa9c9f5c9ebe73e5696888f1c"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-1__normal\\budget-finalization.jsonl",
+      "bytes": 3528,
+      "sha256": "d74a95190583ccd6230f1c6bbe01aa71c938d39aeaf4e3a702ffd71077ca9b35"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-1__normal\\decision-ledger.jsonl",
+      "bytes": 45644,
+      "sha256": "9e5fccfc176ed49a754682e078be42aed5da54daee9899943c820b934b2d21d2"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-1__normal\\step-vector-rewards.jsonl",
+      "bytes": 3024349,
+      "sha256": "9943261eb62be4d422f16f54d023bd634834596148715f7e2455c9fa7f7ea6d0"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-2__event_features_off\\branch-results.jsonl",
+      "bytes": 455806,
+      "sha256": "135864b5da72350778392a17ac4b9d5b38bbec8fca0b34552fa4517c1c7b2c3e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-2__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3660,
+      "sha256": "87d59b3ebda9c8c7d105bac85055283b090e680bd41d476fb9f6081b23fb764f"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-2__event_features_off\\decision-ledger.jsonl",
+      "bytes": 45780,
+      "sha256": "77606482c8646e5c7615c64207da63c6c43f3b8a026d1149e5ef64a5182adfa8"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-2__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 3024483,
+      "sha256": "caca032664846ab16b775e0a36d73aa7dd135bb65c537e96822e1c2bdc14bdd1"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-2__normal\\branch-results.jsonl",
+      "bytes": 455784,
+      "sha256": "7d77c8c0c5d0e018303d1fafce7ae36a6a38449904cb72d77e16412d3a09b2bd"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-2__normal\\budget-finalization.jsonl",
+      "bytes": 3528,
+      "sha256": "bc021427fbd23abe2c3d0f98bc23fe1333a9fcc5448481be9dcdde441cead9a6"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-2__normal\\decision-ledger.jsonl",
+      "bytes": 45644,
+      "sha256": "ab536705d8b6005a3612e5cd2143493058d885f822c790247fdf45705393d8bb"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-02__W1__seed-1101__prefix-0__repeat-2__normal\\step-vector-rewards.jsonl",
+      "bytes": 3024349,
+      "sha256": "fec350037fb458b36b0c043ee5094fa5c2c4e1d936aa87a5846019db69a12730"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-0__event_features_off\\branch-results.jsonl",
+      "bytes": 424434,
+      "sha256": "7f5c82c3322712db2c43f156340851c371d5724445c5b11244d502621a806a79"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-0__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3324,
+      "sha256": "3e18c92d953d522680a21de80f08606d07e700144f9d426fd8e3037844c9b625"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-0__event_features_off\\decision-ledger.jsonl",
+      "bytes": 41610,
+      "sha256": "3adc695d0f7d6ac202994bc409477f49010aea72df1639828d768d01acefbb2a"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-0__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 2578954,
+      "sha256": "82e89edc5dd3fe61f7faa168f4bc5635c43833f86a1cb28bc3b92ad63d0ff78e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-0__normal\\branch-results.jsonl",
+      "bytes": 424412,
+      "sha256": "9783d5675d77a900ba4465b362f8761b9c80d1b231885ba9968a85a56966dc50"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-0__normal\\budget-finalization.jsonl",
+      "bytes": 3204,
+      "sha256": "19b13f117de96cdde6839d4efb2a1d4916f0786b2a1a179fa6025a6cbe356f0c"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-0__normal\\decision-ledger.jsonl",
+      "bytes": 41500,
+      "sha256": "5c1e7fec1563953a6d58d39f4a3a8c41138f7ada8466fbd3925469d9f2071569"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-0__normal\\step-vector-rewards.jsonl",
+      "bytes": 2578840,
+      "sha256": "733d849429c13f785be6420f91960f3e4bd499fd60f80f56359a556c8e454900"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-1__event_features_off\\branch-results.jsonl",
+      "bytes": 421496,
+      "sha256": "3445f458f2bc54d51051339e215da2b3546876fcbd0a4249ff44295fac1d6d73"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-1__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3324,
+      "sha256": "f3e17d8de56b9ed502e4d0eb7648fe3859b7c252e3d6daf5472542b3e89229b0"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-1__event_features_off\\decision-ledger.jsonl",
+      "bytes": 41996,
+      "sha256": "91e3813cee9605d0abf7829483a78a7eec485e543d65b12d3a0f17e3a304f382"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-1__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 2557322,
+      "sha256": "63ac9b631aa788ab92724d69a4463ebc7ac22d6d145c726f49d0b4fd915aac81"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-1__normal\\branch-results.jsonl",
+      "bytes": 421474,
+      "sha256": "951b9b9c6339b20c817eda76a9205404e8caa6a95fa3e144db358ad3ddaf097a"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-1__normal\\budget-finalization.jsonl",
+      "bytes": 3204,
+      "sha256": "d1d66ae180cea9d6719106335dd212ce1e9afac2d8cb5c450be4cd1d542893c7"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-1__normal\\decision-ledger.jsonl",
+      "bytes": 41880,
+      "sha256": "6c3e8a1dfd16736014e013abbcdf2a8e4f49c36e59780f8ca206b00af82f83f7"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-1__normal\\step-vector-rewards.jsonl",
+      "bytes": 2557205,
+      "sha256": "3cbd503a7bd1822d7228a661cd8ebd117aaafca4bc0218c32ae9c9ece57cdb66"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-2__event_features_off\\branch-results.jsonl",
+      "bytes": 457846,
+      "sha256": "973b2d3b89172367359fcf00087a22febc46bc6a02bf6533eb20a7f10dc45e51"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-2__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3660,
+      "sha256": "cdd1c50ded34a2d94f06171c4aa2163d9a3468b11af2eb1721a0b482453a480a"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-2__event_features_off\\decision-ledger.jsonl",
+      "bytes": 45685,
+      "sha256": "2a51d91229b277754caf1ba130381749fa91004138653d69286ddc8b0b3ffcc5"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-2__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 3028941,
+      "sha256": "3604c7ee9c3615bbc7ed45875fe484e5699e5de9ba5a08987cff77b3dfdb9801"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-2__normal\\branch-results.jsonl",
+      "bytes": 457824,
+      "sha256": "5cbf3fbacc53e1be0d8d070c127ebf64250503273f066796555a16a70d6d4999"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-2__normal\\budget-finalization.jsonl",
+      "bytes": 3528,
+      "sha256": "af922a49f43185fa3df458035887869832870a407b858845d539d82dc131b9b7"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-2__normal\\decision-ledger.jsonl",
+      "bytes": 45568,
+      "sha256": "ee41adb4acdc11f70dec2d4e7a89722fe5313f803bfbade67323df883649e696"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-03__W1__seed-1101__prefix-0__repeat-2__normal\\step-vector-rewards.jsonl",
+      "bytes": 3028819,
+      "sha256": "8df486fa55b3e7fbcdc004b4af6e9130c792b0515d4c6fcbd59f3cb2a65970c9"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-0__event_features_off\\branch-results.jsonl",
+      "bytes": 461543,
+      "sha256": "55888d5804460732050a8aaf98259a7fd03b940a19c5f0e1d16d275ba9f21b75"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-0__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3660,
+      "sha256": "3accee37f88d5897115e63f1bf9a766cd730eb81f03d03732b12469deef179d6"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-0__event_features_off\\decision-ledger.jsonl",
+      "bytes": 45768,
+      "sha256": "8c83019d3a6c3e1945a5410166689f9795d180285ae0556f47c4dbbb673a3a7b"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-0__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 3065503,
+      "sha256": "9279cc42003dda353a5a5cf150a9dd76fab627966628704af3454a6b6cfe038a"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-0__normal\\branch-results.jsonl",
+      "bytes": 461518,
+      "sha256": "ebff106bb1aedc18c2136f17b5708e4d5cbd166d24dcfa8d4cb956bc15a4cb47"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-0__normal\\budget-finalization.jsonl",
+      "bytes": 3528,
+      "sha256": "f16f30237af96842d539993bbaf087443e42de268d2c528abd1a8b766e3021ca"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-0__normal\\decision-ledger.jsonl",
+      "bytes": 45631,
+      "sha256": "16fade4aee45a41d3455c68221082ad113ceaac50fac7557491914d0dcca2182"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-0__normal\\step-vector-rewards.jsonl",
+      "bytes": 3065367,
+      "sha256": "b09c74e13c11723b2928b8590daf78108fb4cbdadea158c190d24f3b2c2e5f7b"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-1__event_features_off\\branch-results.jsonl",
+      "bytes": 427630,
+      "sha256": "2e04f371326a4c2e9fbd324462fa7e1c23aac6206910c3eb1f67700532e75827"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-1__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3324,
+      "sha256": "eacbc6ecab72e8a8c0d0cc4e45cac7b458366bfb5634ffe5228d9339e4eed5e0"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-1__event_features_off\\decision-ledger.jsonl",
+      "bytes": 41687,
+      "sha256": "4ef1a299ca86cc5dc4db5fbeb517d83fc28578f08a34c5e3a2c8e918f1fdb2da"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-1__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 2612558,
+      "sha256": "840e20b51ecad04bea9cc530021184f1bd2dc570d6e79b3b29bd3b23e488de2c"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-1__normal\\branch-results.jsonl",
+      "bytes": 427605,
+      "sha256": "87dca754187b6e52edfc7e34046dc97ce77679dbf1cdbfbb6f0f036a46f14719"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-1__normal\\budget-finalization.jsonl",
+      "bytes": 3204,
+      "sha256": "5cc24b66faf6580e7bb7267d260664638835248a712d242c363eeb34ff059540"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-1__normal\\decision-ledger.jsonl",
+      "bytes": 41562,
+      "sha256": "ff80af1a4ac47b9786f5466a6f79fb48f5a7e5c91bef983eb332156f59010a18"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-1__normal\\step-vector-rewards.jsonl",
+      "bytes": 2612434,
+      "sha256": "ea4ed1e80f529fa28da3f552d51ba5c612fcc3780cedf83b0e9393b25ba209bb"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-2__event_features_off\\branch-results.jsonl",
+      "bytes": 427628,
+      "sha256": "655b1602d5ef9e40582ea92c95245b76dc6592c4b276cbdfcba0c96c8edf43f3"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-2__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3324,
+      "sha256": "8d1b0e17386e76d31b2ebd1b7d956085000715d7e2dfc58ea3d6b523bc6745ba"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-2__event_features_off\\decision-ledger.jsonl",
+      "bytes": 41687,
+      "sha256": "aaf17ae79cdaa586ed5d0bb093398e17f64f34e77916b08d73b9a9b11420b7b8"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-2__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 2612539,
+      "sha256": "f0382dcc43574125ee6c7db82fb8b619422b211416d4b12d3a02d14d7028e73e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-2__normal\\branch-results.jsonl",
+      "bytes": 427603,
+      "sha256": "92036d9c48fc9d0b39624ed8e56f7d1ab5e3af62793c538f0b81c2d4ff1df51f"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-2__normal\\budget-finalization.jsonl",
+      "bytes": 3204,
+      "sha256": "8c9d877873e5dcaf434419a6285ca44a4e3005f1004343c2ba4e746fffea8456"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-2__normal\\decision-ledger.jsonl",
+      "bytes": 41562,
+      "sha256": "ea2a890937d4d14c17837d9c2526a7f5e39b1bcbd63ad86bb28d6fb4e09ee1ef"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-04__W1__seed-1101__prefix-0__repeat-2__normal\\step-vector-rewards.jsonl",
+      "bytes": 2612415,
+      "sha256": "2d50508e6f86c9d642b60e379bba7c7bbc21c4a51971199011d43f5bf0955b4e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-0__event_features_off\\branch-results.jsonl",
+      "bytes": 461541,
+      "sha256": "62f177ca40afdf690c33cd3ad6f3bfc7c862648b4e243894a533a7798d7fa2b3"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-0__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3660,
+      "sha256": "b4695c797621ba126b01b45f67d426e7dddf1c11c61cf8354f5ccf3c5bc5d056"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-0__event_features_off\\decision-ledger.jsonl",
+      "bytes": 45845,
+      "sha256": "20fd87050d55e9fdabb649dbeea6203746861ee1e852bc0c5f21e3566caabc4c"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-0__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 3089307,
+      "sha256": "e844119f3e1f65f3781c09b656f5c8860c1d1e77036ded3d758e1da660490682"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-0__normal\\branch-results.jsonl",
+      "bytes": 461517,
+      "sha256": "516d7197a189ecd724c0a0ae5439e03785595dede07c5b0b7972eca61f4365e1"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-0__normal\\budget-finalization.jsonl",
+      "bytes": 3528,
+      "sha256": "48b1e16b48e13278d742fc02fd5ce9206cc4f8cb69d942ec70c0ee85a684b3c0"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-0__normal\\decision-ledger.jsonl",
+      "bytes": 45720,
+      "sha256": "095e13d1b841c567e63a224615e99fd04afb54f877383723edb9d9035bc018df"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-0__normal\\step-vector-rewards.jsonl",
+      "bytes": 3089181,
+      "sha256": "770d77e95748f997fe0d9d5d9b96d71a6c380cc445e4d5e1fc71f38947921cb8"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-1__event_features_off\\branch-results.jsonl",
+      "bytes": 461543,
+      "sha256": "c60fa5775d883e402a4bff80959b0d92f27cafe149f58b661252e1a2716b8ea3"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-1__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3660,
+      "sha256": "4d53d797c663fe6cfbcfd6e9bc409d9265ed360c6cb2d782dcf05e3b4d346fbe"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-1__event_features_off\\decision-ledger.jsonl",
+      "bytes": 45845,
+      "sha256": "f312b340d7f7f74a92a855163153bd866648a6bd801a6c7d0fbe9e739ba0d531"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-1__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 3089328,
+      "sha256": "9acc42e981a6e3389d60ca9d23b97a73ff77bdfeae299460a40ae6eed4099c1f"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-1__normal\\branch-results.jsonl",
+      "bytes": 461519,
+      "sha256": "3fb0ee94347175458ddd62d2cca29accb4be11fc36e346cb1cedace89bdf679a"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-1__normal\\budget-finalization.jsonl",
+      "bytes": 3528,
+      "sha256": "837bc3e2126602e74d1bb58cc6f613f28fd0970e8747a69245515ce7783d05ce"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-1__normal\\decision-ledger.jsonl",
+      "bytes": 45720,
+      "sha256": "6a59315c493458395b5ce72669130acdc626da6284de22f62af1ba22b84518ab"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-1__normal\\step-vector-rewards.jsonl",
+      "bytes": 3089202,
+      "sha256": "336860edefbd65b6e30651aa4ede0cfef12f46856abf0f54f5d18046481f8a3f"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-2__event_features_off\\branch-results.jsonl",
+      "bytes": 461541,
+      "sha256": "cb9c0022120d9fadfb5215571c65b8ccc185498b866f3b73f6aba69213b0f75d"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-2__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3660,
+      "sha256": "7d6117fb5b9b5bb6e6e615d27c5587b8a4c81726c4ed796aa9b7b2a7457758b5"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-2__event_features_off\\decision-ledger.jsonl",
+      "bytes": 45845,
+      "sha256": "6d649543648a2e50b2a67d6124f91a3de57fcd202633483ac636bef26f0daf84"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-2__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 3089307,
+      "sha256": "777eba84abd3e51984f2d91e586af7c2717b71d56bf5e8e0e3173dc082dd5d04"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-2__normal\\branch-results.jsonl",
+      "bytes": 461517,
+      "sha256": "f6dc1a33edff670bc7f4e4e1b148802d84b2b529e42365e26f2cf35b9c2ddd39"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-2__normal\\budget-finalization.jsonl",
+      "bytes": 3528,
+      "sha256": "e179f924cfa2a517b737cdfac099587049cb5330117d7dbb6d1f6df875e89cbd"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-2__normal\\decision-ledger.jsonl",
+      "bytes": 45720,
+      "sha256": "bd88d58dc0cbf792ac5a7ff48d76dfdfb5c8225a0231cca040a07acbdc988725"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-05__W1__seed-1101__prefix-0__repeat-2__normal\\step-vector-rewards.jsonl",
+      "bytes": 3089181,
+      "sha256": "447ce128d7a74339c36e8c10c2c8fdfbcf9670b8c7f4dfbea8cc736bbc23b722"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-0__event_features_off\\branch-results.jsonl",
+      "bytes": 488452,
+      "sha256": "64bb4737ae8ab56c514a56109c5d106fcc1a432284814b319cfdee5fcc9912bb"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-0__event_features_off\\budget-finalization.jsonl",
+      "bytes": 5004,
+      "sha256": "fb395f9ad29d0538364b7ad7c25bc24b5d4c60655615a57821efd90d656e68d0"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-0__event_features_off\\decision-ledger.jsonl",
+      "bytes": 60549,
+      "sha256": "2474121cf29c13a8eaeb4c7cbc2b47c904e6fee45c6a152e5bc2def95a2917c5"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-0__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 4342806,
+      "sha256": "c12429544639adc69462d37c68d62cd5382737eb71e75dbe45e94462a6059faf"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-0__normal\\branch-results.jsonl",
+      "bytes": 488429,
+      "sha256": "b3fd16584e86ba0af83746d31a69d895ce98315aadb4bd28d6bead1eb333b8af"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-0__normal\\budget-finalization.jsonl",
+      "bytes": 4824,
+      "sha256": "5e110b4c161e15aeade27a6518aea712952a421cb184a928aa37e527be304787"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-0__normal\\decision-ledger.jsonl",
+      "bytes": 60373,
+      "sha256": "d14a049de093e4ed889e48f51a63aa73019c3a1a93630dc1b91e24af3bb637c3"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-0__normal\\step-vector-rewards.jsonl",
+      "bytes": 4342627,
+      "sha256": "005fbcf49a4bcbce8008614e92c00c521d3223ba44cea15b1ddabdac056a69ff"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-1__event_features_off\\branch-results.jsonl",
+      "bytes": 495476,
+      "sha256": "678628b5bf789e6b249cb13582a32ba126bfe0e245ea90ce909c1a0f3853ca21"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-1__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3996,
+      "sha256": "e43a9207f43fd64068f6f73ca5ec09f212807d7648f3e783834802467c6e7efe"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-1__event_features_off\\decision-ledger.jsonl",
+      "bytes": 49833,
+      "sha256": "ab6757fdc038a9b8b2b31fa4840f2a68de0406a72b409b5cd96a8673e71bdc79"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-1__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 3553854,
+      "sha256": "6b236c4024010d44be51b383ee43a52e6ce260d3a7cdfb1ef3c2a26e85d2da7a"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-1__normal\\branch-results.jsonl",
+      "bytes": 495453,
+      "sha256": "fd8518476a49c737006d8ef9a8b9fc7e33bea9bf6f977c18b863411e0916f6b5"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-1__normal\\budget-finalization.jsonl",
+      "bytes": 3852,
+      "sha256": "db4755c578fb07070733bd36339e536de533b9c08f50c821642fb1274f16ee23"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-1__normal\\decision-ledger.jsonl",
+      "bytes": 49690,
+      "sha256": "438cf3f92ad84b3bfdb098e33587b4ceb859fc83ca2f29cc4a5ce86c583e129b"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-1__normal\\step-vector-rewards.jsonl",
+      "bytes": 3553708,
+      "sha256": "68ce57b6483e9edd035aa532f85829673286bf1838d3e759ef274de045abf056"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-2__event_features_off\\branch-results.jsonl",
+      "bytes": 495474,
+      "sha256": "68b6942481e228729546bb8caf3305d6f11afff299353418b0b58518d1ecac6d"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-2__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3996,
+      "sha256": "c8c9d858173dcedf0ecb68cd77684d15183d67567cec062dfe11e6050e65e674"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-2__event_features_off\\decision-ledger.jsonl",
+      "bytes": 49833,
+      "sha256": "4c5167b67b56d08fe19f5e87925ca75cc650c3bbf996fddb9f0bfbd31d310af4"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-2__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 3553831,
+      "sha256": "35c2557d19edf286e4c8dfa524ca6a129b10aefe5ba8864de01369b93a81f03c"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-2__normal\\branch-results.jsonl",
+      "bytes": 495451,
+      "sha256": "acf7536b0bccf82723c06eb2c0d3092b39d9f1e08114ff7abafa95214d1b4d1e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-2__normal\\budget-finalization.jsonl",
+      "bytes": 3852,
+      "sha256": "63e40b6bb7686f7bd34b5ec2c4dac35bc38ab145876ccdeb3b53068ea17eba4d"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-2__normal\\decision-ledger.jsonl",
+      "bytes": 49690,
+      "sha256": "483b08719ee7f7ef603a55039195fb79dfef4a5e6525aabc335556f24840537e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-06__W1__seed-1101__prefix-0__repeat-2__normal\\step-vector-rewards.jsonl",
+      "bytes": 3553685,
+      "sha256": "d8cbf2866561890316859bb2ce36a9726aba3ee0c679417ca4b617c7e3a90611"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-0__event_features_off\\branch-results.jsonl",
+      "bytes": 560313,
+      "sha256": "fddc9a04b4fa40772ae491d6b6d1d9b9541dd8e9f24e55a762882fc68a9337f8"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-0__event_features_off\\budget-finalization.jsonl",
+      "bytes": 4668,
+      "sha256": "ca14c345ea2f7054e324459aa9bb86ff106ffab91acc7d7fd26df74911edb588"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-0__event_features_off\\decision-ledger.jsonl",
+      "bytes": 58605,
+      "sha256": "9bd0f9bb3c7070160deeee626d4b7ff279e9f868ad3d6376dd1af818ee990f31"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-0__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 4617066,
+      "sha256": "93ca78e99a4be9ac0e8dd9610388c57c87be8433ce0e504ea7985a5ab3eae4dc"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-0__normal\\branch-results.jsonl",
+      "bytes": 560285,
+      "sha256": "b2c48d0663c2d4a4715d69a61a648ccb4c45268f552bfb17b16034546684fca7"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-0__normal\\budget-finalization.jsonl",
+      "bytes": 4500,
+      "sha256": "d21d1bf8b22c0ba7f138807e427942aca9fac598646a54401803271d3f4e1478"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-0__normal\\decision-ledger.jsonl",
+      "bytes": 58442,
+      "sha256": "9e6a869f9fe9f0bd5dcf80aa9f16deba3b0af2e4b772939e794df6fa1790fb92"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-0__normal\\step-vector-rewards.jsonl",
+      "bytes": 4616900,
+      "sha256": "0d96e4c0f0568b19a0a80b51f318ff77307d910e07b139f1932c6e47cf63d4cf"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-1__event_features_off\\branch-results.jsonl",
+      "bytes": 497185,
+      "sha256": "84c4fecf6056a1a6ab02746bc5fd6029fd978efd049e90caef9e04880be2b681"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-1__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3996,
+      "sha256": "d6f130ff27cc9bd39c88c9960f7a7274cb1aad09470fa9d8bfb50d15af42fa40"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-1__event_features_off\\decision-ledger.jsonl",
+      "bytes": 50089,
+      "sha256": "faeb8a63e5da42733b2bb20a00148aef2c287acb5e2526c7093ad56971b6f87e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-1__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 3549119,
+      "sha256": "b359ab8f7d46e0c14591722b96738677b5d5194fb8518c1669f3c1c17bbb2dcf"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-1__normal\\branch-results.jsonl",
+      "bytes": 497157,
+      "sha256": "e5971dbd74ef7c7afd8f9209b6df7359c75a8f0485f2d59b389c2a65956e355b"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-1__normal\\budget-finalization.jsonl",
+      "bytes": 3852,
+      "sha256": "c6511c7008698beb93ad8f2e88e49abb0de5b849d2bcc1cd519cd6b5527b9974"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-1__normal\\decision-ledger.jsonl",
+      "bytes": 49940,
+      "sha256": "c332a7b4c92e1a4668e5995851d44ca90d92f205fefb848e0d1e9aa32ee7cfc0"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-1__normal\\step-vector-rewards.jsonl",
+      "bytes": 3548971,
+      "sha256": "5dc4304b20f9687e319f5189bab207b6b685dbc4f4d1d9387a4be0e4c6f63cc4"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-2__event_features_off\\branch-results.jsonl",
+      "bytes": 492797,
+      "sha256": "a7d204b334e23f14a95c3095cd8549007c9e1badc3d08f4cd31dd70b3a057a60"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-2__event_features_off\\budget-finalization.jsonl",
+      "bytes": 3996,
+      "sha256": "b38cca8b4472d05690d99c7c7a6ffd6537e97b44b64e396da9f61c7a1446f64e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-2__event_features_off\\decision-ledger.jsonl",
+      "bytes": 50264,
+      "sha256": "af8b5ef0804075cb77c727c42440373bf2c27a8925ba33e7743b098b99c4797e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-2__event_features_off\\step-vector-rewards.jsonl",
+      "bytes": 3530411,
+      "sha256": "8891d393c39618225f9358aa82d3704168e7b2f80eac8dec350de588ae4bee18"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-2__normal\\branch-results.jsonl",
+      "bytes": 492769,
+      "sha256": "053ad0b7fd6b14efe782bfb629832c19d31a502c5bd246839226bcdffc59876f"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-2__normal\\budget-finalization.jsonl",
+      "bytes": 3852,
+      "sha256": "2e5144da34566216c46312650e0e50c9643957ceb322d63dc8c71bcbde0a8012"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-2__normal\\decision-ledger.jsonl",
+      "bytes": 50121,
+      "sha256": "1f023159665566900672604b0269d95c6df05eea8c1e1fd209e16c9551573667"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runner-staging\\parent-07__W1__seed-1101__prefix-0__repeat-2__normal\\step-vector-rewards.jsonl",
+      "bytes": 3530268,
+      "sha256": "c4aa6cac11df6c90f2477d67c0df7843b690f4614197c1c3bab29405ad247d7a"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\runtime-costs.json",
+      "bytes": 14880,
+      "sha256": "4a20babc09c453f85cfbc712506dd819761c274285444a6536d7b9d61008452c"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-authorized-run-20260923\\step-vector-rewards.jsonl",
+      "bytes": 159612063,
+      "sha256": "26fd70e1e927ecdf6c9cdaa49edf852ad698722de7300b08e790d222946282bb"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\analyzer-command.json",
+      "bytes": 1241,
+      "sha256": "057899709fc04812f0b7ab0a33a5a606b53e7c8ec0b026fc6a3977b64ee38923"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\analyzer-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\analyzer-stdout.log",
+      "bytes": 147,
+      "sha256": "a9b267b2d3d50e1812fffda873be4ee934a31c6b7675c36a3f0e774970d6d744"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\authorization-command.json",
+      "bytes": 1000,
+      "sha256": "21ed95d96e61a15467ce3380c3cb9598620ecf66a2578ff51e6e3261303a9449"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\authorization-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\authorization-stdout.log",
+      "bytes": 190,
+      "sha256": "2ac8ffa66b79ce058384ad77c784bfa0e4d6d1158284be54049dbe06ebe1b9a2"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\authorization.json",
+      "bytes": 6845,
+      "sha256": "58da3f660df6e3c97f4a78732431c0c24d76123c90215e97b93f31adb8c6cda0"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\migration\\migration-receipt.json",
+      "bytes": 911,
+      "sha256": "ee7918da78902de2791b820088eca7102e4256df861630ed6cc8b15090574e23"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\migration\\pre-extension.sqlite3",
+      "bytes": 290816,
+      "sha256": "16d8a961548f1c20ac87bf6c9df3651b9e62555da2e9fac439ba7832e82dc5b9"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\migration\\pre-extension.sqlite3-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\migration\\pre-extension.sqlite3-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\runner-command.json",
+      "bytes": 1117,
+      "sha256": "fdc4b8a29bcda0ae201351657f44d1df1f8f92431eb3c27c14faa1d7179c4ee6"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\runner-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\runner-stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-approval-20260923\\user-approval.json",
+      "bytes": 673,
+      "sha256": "67f1c4b80faa92fb048a0659fda6dac2252e2d4708cf6ba167e68ed2dcbd5f1d"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+      "bytes": 724992,
+      "sha256": "ea42090b92b9ecea9ab1c487742dbb059d4f95c2087f90f8d66dbfbb6be38d50"
+    }
+  ],
+  "large_artifacts_remain_local": true
+}

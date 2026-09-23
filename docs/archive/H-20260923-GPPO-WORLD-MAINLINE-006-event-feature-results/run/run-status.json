@@ -1,0 +1,50 @@
+{
+  "budget_totals": {
+    "environment_steps": {
+      "pending": 0,
+      "reserved": 558,
+      "unknown": 0,
+      "verified": 558
+    }
+  },
+  "failure_is_algorithm_result": false,
+  "hard_counts": {
+    "actor_forward": 558,
+    "branches_completed": 48,
+    "env_step_calls": 558,
+    "env_steps": 558,
+    "model_forward": 558,
+    "offline_updates": 0,
+    "optimizer_updates": 0,
+    "probe_calls": 558,
+    "successful_env_steps": 558,
+    "verified_steps": 558,
+    "world_forward": 558,
+    "world_updates": 0
+  },
+  "model_call_counts": {
+    "attempted": {
+      "actor_readout": 560,
+      "policy_encode": 558,
+      "world_candidate_batch": 558
+    },
+    "attempted_total": 1676,
+    "completed": {
+      "actor_readout": 560,
+      "policy_encode": 558,
+      "world_candidate_batch": 558
+    },
+    "completed_total": 1676,
+    "limits": {
+      "actor_readout": 770,
+      "policy_encode": 768,
+      "world_candidate_batch": 768
+    }
+  },
+  "no_retry": true,
+  "result_classification": "evaluation_completed",
+  "runtime_digest_after": "d8630195170e6c244888946fcc78f075689d6f49f89fab76e0fed83542eb0a61",
+  "runtime_digest_before": "d8630195170e6c244888946fcc78f075689d6f49f89fab76e0fed83542eb0a61",
+  "schema": "world-event-feature-run-status/1.0.0",
+  "status": "completed"
+}

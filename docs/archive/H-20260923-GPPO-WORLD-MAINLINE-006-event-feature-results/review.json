@@ -1,0 +1,390 @@
+{
+  "status": "complete_review",
+  "identity_files_checked": 25,
+  "analysis_input_hashes_checked": 10,
+  "branches": 48,
+  "pairs": 24,
+  "new_environment_steps": 558,
+  "utilities": {
+    "normal": 0.27682090172392726,
+    "event_features_off": 0.27682090172392726
+  },
+  "primary": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "parents": [
+      {
+        "parent_id": "parent-00",
+        "difference": 0.0
+      },
+      {
+        "parent_id": "parent-01",
+        "difference": 0.0
+      },
+      {
+        "parent_id": "parent-02",
+        "difference": 0.0
+      },
+      {
+        "parent_id": "parent-03",
+        "difference": 0.0
+      },
+      {
+        "parent_id": "parent-04",
+        "difference": 0.0
+      },
+      {
+        "parent_id": "parent-05",
+        "difference": 0.0
+      },
+      {
+        "parent_id": "parent-06",
+        "difference": 0.0
+      },
+      {
+        "parent_id": "parent-07",
+        "difference": 0.0
+      }
+    ],
+    "bootstrap_seed": 20260923,
+    "bootstrap_replicates": 10000,
+    "independent_unit": "parent",
+    "decision": "inconclusive",
+    "claim_limit": "specified event-input sensitivity on observed development data; not net world-model benefit"
+  },
+  "parents": [
+    {
+      "parent_id": "parent-00",
+      "normal_mean": 0.34877868659392175,
+      "event_features_off_mean": 0.34877868659392175,
+      "repeat_differences": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "macro_difference": 0.0,
+      "repeat_signs": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "parent_id": "parent-01",
+      "normal_mean": 0.18464639530479662,
+      "event_features_off_mean": 0.18464639530479662,
+      "repeat_differences": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "macro_difference": 0.0,
+      "repeat_signs": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "parent_id": "parent-02",
+      "normal_mean": 0.18981556535424712,
+      "event_features_off_mean": 0.18981556535424712,
+      "repeat_differences": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "macro_difference": 0.0,
+      "repeat_signs": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "parent_id": "parent-03",
+      "normal_mean": 0.3076927061159706,
+      "event_features_off_mean": 0.3076927061159706,
+      "repeat_differences": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "macro_difference": 0.0,
+      "repeat_signs": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "parent_id": "parent-04",
+      "normal_mean": 0.34355237972718927,
+      "event_features_off_mean": 0.34355237972718927,
+      "repeat_differences": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "macro_difference": 0.0,
+      "repeat_signs": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "parent_id": "parent-05",
+      "normal_mean": 0.3510200200109261,
+      "event_features_off_mean": 0.3510200200109261,
+      "repeat_differences": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "macro_difference": 0.0,
+      "repeat_signs": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "parent_id": "parent-06",
+      "normal_mean": 0.18722213720390757,
+      "event_features_off_mean": 0.18722213720390757,
+      "repeat_differences": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "macro_difference": 0.0,
+      "repeat_signs": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "parent_id": "parent-07",
+      "normal_mean": 0.3018393234804593,
+      "event_features_off_mean": 0.3018393234804593,
+      "repeat_differences": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "macro_difference": 0.0,
+      "repeat_signs": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "secondary": {
+    "arm_totals": {
+      "normal": {
+        "completed_delta": 130.0,
+        "all_task_completed": 130.0,
+        "cohort_on_time_physical": 48.0,
+        "cohort_on_time_host": 48.0,
+        "all_recorded_on_time_physical": 130.0,
+        "all_recorded_on_time_host": 106.0,
+        "energy_used": 145.00367481243035,
+        "accepted_count": 129.0,
+        "rejected_count": 56.0,
+        "task_unavailable_count": 0.0,
+        "submit_count": 279.0,
+        "noop_count_from_actions": 94.0,
+        "guard_trigger_count": 120.0,
+        "action_change_count": 120.0,
+        "env_steps": 279.0
+      },
+      "event_features_off": {
+        "completed_delta": 130.0,
+        "all_task_completed": 130.0,
+        "cohort_on_time_physical": 48.0,
+        "cohort_on_time_host": 48.0,
+        "all_recorded_on_time_physical": 130.0,
+        "all_recorded_on_time_host": 106.0,
+        "energy_used": 145.00367481243035,
+        "accepted_count": 129.0,
+        "rejected_count": 56.0,
+        "task_unavailable_count": 0.0,
+        "submit_count": 279.0,
+        "noop_count_from_actions": 94.0,
+        "guard_trigger_count": 120.0,
+        "action_change_count": 120.0,
+        "env_steps": 279.0
+      }
+    },
+    "normal_minus_off_totals": {
+      "completed_delta": 0.0,
+      "all_task_completed": 0.0,
+      "cohort_on_time_physical": 0.0,
+      "cohort_on_time_host": 0.0,
+      "all_recorded_on_time_physical": 0.0,
+      "all_recorded_on_time_host": 0.0,
+      "energy_used": 0.0,
+      "accepted_count": 0.0,
+      "rejected_count": 0.0,
+      "task_unavailable_count": 0.0,
+      "submit_count": 0.0,
+      "noop_count_from_actions": 0.0,
+      "guard_trigger_count": 0.0,
+      "action_change_count": 0.0,
+      "env_steps": 0.0
+    },
+    "note": "descriptive totals only; primary inference uses8parent macro means, not pooled decisions or tasks"
+  },
+  "feedback_histograms": {
+    "normal": {
+      "accepted": 129,
+      "noop": 94,
+      "resource_busy": 37,
+      "resource_unavailable": 11,
+      "command_lost": 8
+    },
+    "event_features_off": {
+      "accepted": 129,
+      "noop": 94,
+      "resource_busy": 37,
+      "resource_unavailable": 11,
+      "command_lost": 8
+    }
+  },
+  "recorded_input_comparison": {
+    "compared_steps": 279,
+    "identical_recorded_inputs": 279,
+    "original_top1_changed": 0,
+    "selected_action_changed": 0,
+    "full_legal_rank_changed": 7,
+    "probabilities_changed": 230
+  },
+  "same_input_probability_tv": {
+    "mean": 0.002623131772416467,
+    "max": 0.009145542979240417
+  },
+  "descriptive_trajectory_comparison": {
+    "steps_compared": 279,
+    "identical_selected_action_reward_outcome_steps": 279,
+    "note": "post-run descriptive equality on actually recorded input/state hashes; no counterfactual execution or additional inference"
+  },
+  "model_calls": {
+    "attempted": {
+      "actor_readout": 560,
+      "policy_encode": 558,
+      "world_candidate_batch": 558
+    },
+    "attempted_total": 1676,
+    "completed": {
+      "actor_readout": 560,
+      "policy_encode": 558,
+      "world_candidate_batch": 558
+    },
+    "completed_total": 1676,
+    "limits": {
+      "actor_readout": 770,
+      "policy_encode": 768,
+      "world_candidate_batch": 768
+    }
+  },
+  "timing": {
+    "model_call_counts": {
+      "policy_encode": 558,
+      "world_candidate_batch": 558,
+      "actor_readout": 560
+    },
+    "world_rows_per_batch": 25,
+    "per_probe_timing_totals": {
+      "actor_readout_seconds": 0.2947368000241113,
+      "extra_actor_readout_seconds": 0.0013574000004155096,
+      "policy_encode_seconds": 0.5096546999666316,
+      "probe_seconds": 7.877989400036313,
+      "world_candidate_batch_seconds": 0.39809579995198874
+    },
+    "same_input_ranking": {
+      "scope": "first pair step1 same-input diagnostic only",
+      "original_action_changed": false,
+      "guard_selected_action_changed": false,
+      "probability_total_variation": 0.00243583507835865
+    },
+    "setup_seconds": 6.701574700000492,
+    "arm_timings": {
+      "normal": {
+        "branch_seconds": 59.67938749999303,
+        "probe_seconds": 0.7300069000048097,
+        "environment_and_runner_overhead_seconds": 58.94938059998822
+      },
+      "event_features_off": {
+        "branch_seconds": 59.60598820000814,
+        "probe_seconds": 0.6983888999966439,
+        "environment_and_runner_overhead_seconds": 58.9075993000115
+      }
+    },
+    "wall_seconds": 133.93759560000035,
+    "same_input_gate_pair": "parent-00|W1|seed-1101|prefix-0|repeat-0",
+    "cost_interpretation": "observed timings include instrumentation; no inference of overall savings from actor call counts"
+  },
+  "sqlite": {
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+    "sha256": "ea42090b92b9ecea9ab1c487742dbb059d4f95c2087f90f8d66dbfbb6be38d50",
+    "stages": [
+      {
+        "stage": "environment_steps",
+        "limit_amount": 1067,
+        "reserved": 857,
+        "verified": 857,
+        "unknown": 0
+      },
+      {
+        "stage": "optimizer_calls",
+        "limit_amount": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0
+      },
+      {
+        "stage": "world_updates",
+        "limit_amount": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0
+      },
+      {
+        "stage": "offline_updates",
+        "limit_amount": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0
+      }
+    ],
+    "pending": 0,
+    "unknown": 0,
+    "integrity": "ok",
+    "old_299_reservation_rows_unchanged": true,
+    "remaining_global": 210,
+    "remaining_run_cap": 210
+  },
+  "review_resources": {
+    "env_step": 0,
+    "model_forward": 0,
+    "updates": 0,
+    "new_attempt": 0
+  },
+  "technical_anomalies": [
+    "No dynamic technical stop recorded. Timing probe fields use different instrumentation boundaries; see timing note."
+  ],
+  "timing_note": "branch_timings.probe_seconds sums earlier timing_totals (1.4284s), whereas feature-ledger probe_seconds is captured later after tensor/JSON preparation (7.8780s). Non-probe remainder is environment+runner+some instrumentation, not isolated env.step cost. Same-input diagnostics add two actor evaluations; no claim of runtime saving.",
+  "decision": "Close this fixed-development sensitivity experiment: no observed selected-action/utility increment. Preserve normal-feature baseline for comparability; do not infer equivalence or global ineffectiveness and do not train or launch another experiment. Sole proposed next step: define a native25-action public-information model-free rule+guard comparator on paper/code only, separating baseline model contribution from guard; any dynamic comparison requires a new specific protocol and approval.",
+  "claims": [
+    "CI[0,0] is degenerate because all eight observed parent means are zero; frozen rule says inconclusive, not an equivalence bound.",
+    "Input suppression is not proved training-distribution neutral.",
+    "Observed development data/one model seed does not establish generalization.",
+    "H005 guard baseline contains frozen GPPO/world; whole-world independent value remains unresolved."
+  ]
+}

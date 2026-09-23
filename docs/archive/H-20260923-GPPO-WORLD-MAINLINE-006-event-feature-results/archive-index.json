@@ -1,0 +1,122 @@
+{
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/artifact-manifest.json": {
+    "sha256": "56745028afcf128a2a013051692cc01aafc8c727b45fe9399d30dac03b7410e0",
+    "bytes": 85280
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/hashes.json": {
+    "sha256": "7139cc8675892805e3ab551a1582ac1120cf9e994f22f5281ed1e57bb3dacb86",
+    "bytes": 1086
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/input-index.json": {
+    "sha256": "c0d608a4dcffb1eca53141499a160b73acd71cf5d5f4c181a5f9a7d1515df04d",
+    "bytes": 1253
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/paired-input-comparison.json": {
+    "sha256": "3ce4bc20715f1fdc56570ac98733d07492f8cb62bb3a71f0e30814c485d7e5b3",
+    "bytes": 97313
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/parent-results.json": {
+    "sha256": "f3072e5f1d413d5f861ff001b15cca481b836a99546fff31aed7a07be5d66ab7",
+    "bytes": 2375
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/report.md": {
+    "sha256": "6ae77272db9c43510ca3da33737d72cb4025f5507ae0a7a63656ae252b380cfd",
+    "bytes": 7913
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/review.json": {
+    "sha256": "b0d92d9f9e38c9bcf91312a3b3b59389fef73a252f6099632adc11ce5291f87f",
+    "bytes": 11418
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/review_execution.py": {
+    "sha256": "405b104672a21a32dfbec1c03bcb1df93fb0f0863539e9b0643e2594faf16c81",
+    "bytes": 9285
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/sample-index.json": {
+    "sha256": "7b1fa7d505ba67e6e03566b0a4992cad70a889bd0c3c24167231381cd822d1f3",
+    "bytes": 36716
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/run/analysis.json": {
+    "sha256": "076c4a263905c33e3ef73ed026aa4943d9a8594378414c4f9a51e654435fb245",
+    "bytes": 113890
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/run/run-status.json": {
+    "sha256": "3c51b1e50bfe9ffd8d297205691a43d32e0028dca83ba9a89399f56afd81f020",
+    "bytes": 1351
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/run/runtime-costs.json": {
+    "sha256": "4a20babc09c453f85cfbc712506dd819761c274285444a6536d7b9d61008452c",
+    "bytes": 14880
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/run/first-pair-gate.json": {
+    "sha256": "cd4500034f525231c6b4ee9afaf9e5ef4e7311030b6966789eda88143549cb27",
+    "bytes": 498
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/run/budget-after.json": {
+    "sha256": "3ef52d48ab45646a9527a6c603feb82b3a3867903cc4206104266c6d3dcb5cd3",
+    "bytes": 1059
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/run/progress.jsonl": {
+    "sha256": "df40beaa6ec0c918ab902105118bb3fd1e80bb14fb89e4ffe20e31b782e8f86e",
+    "bytes": 9987
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/approval/user-approval.json": {
+    "sha256": "67f1c4b80faa92fb048a0659fda6dac2252e2d4708cf6ba167e68ed2dcbd5f1d",
+    "bytes": 673
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/approval/authorization.json": {
+    "sha256": "58da3f660df6e3c97f4a78732431c0c24d76123c90215e97b93f31adb8c6cda0",
+    "bytes": 6845
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/approval/authorization-command.json": {
+    "sha256": "21ed95d96e61a15467ce3380c3cb9598620ecf66a2578ff51e6e3261303a9449",
+    "bytes": 1000
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/approval/runner-command.json": {
+    "sha256": "fdc4b8a29bcda0ae201351657f44d1df1f8f92431eb3c27c14faa1d7179c4ee6",
+    "bytes": 1117
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/approval/analyzer-command.json": {
+    "sha256": "057899709fc04812f0b7ab0a33a5a606b53e7c8ec0b026fc6a3977b64ee38923",
+    "bytes": 1241
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/approval/authorization-stdout.log": {
+    "sha256": "2ac8ffa66b79ce058384ad77c784bfa0e4d6d1158284be54049dbe06ebe1b9a2",
+    "bytes": 190
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/approval/authorization-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/approval/runner-stdout.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/approval/runner-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/approval/analyzer-stdout.log": {
+    "sha256": "a9b267b2d3d50e1812fffda873be4ee934a31c6b7675c36a3f0e774970d6d744",
+    "bytes": 147
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/approval/analyzer-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/approval/migration/migration-receipt.json": {
+    "sha256": "ee7918da78902de2791b820088eca7102e4256df861630ed6cc8b15090574e23",
+    "bytes": 911
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/protocol/paired-manifest.json": {
+    "sha256": "445f1c8c021ce625058c293fefbf07947a2d92bc4c4d18259a5b7e76338d5e4b",
+    "bytes": 35514
+  },
+  "docs/archive/H-20260923-GPPO-WORLD-MAINLINE-006-event-feature-results/protocol/protocol.json": {
+    "sha256": "a83760f242dd252ef841d2ac8674a4e9bf092d0be2236ba8ae73d8f8b78fb122",
+    "bytes": 8623
+  },
+  "docs/RESEARCH_PROGRESS.md": {
+    "sha256": "951519f75c4d7a15b3ba6315a5deaafbbe0aa50f1a866e92daffe90c11f25d45",
+    "bytes": 24603
+  }
+}
