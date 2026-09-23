@@ -193,7 +193,19 @@ def read_jsonl(path: Path) -> list[dict[str, Any]]:
 
 
 def observation_digest(obs: Mapping[str, Any]) -> str:
-    return canonical_hash(_json_safe(obs))
+    # Match the native branch runtime's public-observation contract. The
+    # selector's richer uavs/tasks payload is separately hashed as
+    # public_rule_input_sha256; it must not silently change the shared digest.
+    selected = {
+        "flat": obs.get("flat"),
+        "mask": obs.get("mask"),
+        "version": obs.get("version"),
+        "time": obs.get("time"),
+        "public_entity_ids": obs.get("public_entity_ids"),
+        "continuation_actions": list(obs.get("continuation_actions", ())),
+        "trigger_flags": obs.get("trigger_flags", {}),
+    }
+    return canonical_hash(selected)
 
 
 def hidden_digest(value: Any) -> str | None:

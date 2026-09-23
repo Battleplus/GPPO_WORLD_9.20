@@ -1,6 +1,6 @@
 {
   "schema": "model-rule-stage1-archive-index/1.0.0",
-  "status": "static-package-only",
+  "status": "static-package-only-correction-v2",
   "excluded": [
     "checkpoint weights",
     "prefix-snapshots.pkl",
@@ -13,8 +13,8 @@
       "sha256": "24f6be7e4059c26d1744f9c9d1d3ab8a9fc9365fa9844bef378270477e5b4cec"
     },
     "docs/archive/model-rule-stage1-execution-package-v1/package/analyzer-source.py": {
-      "bytes": 36058,
-      "sha256": "4958763dd56ffe4cfb2ca3585c547fa3fc95f9630877f369e4292bb47ef8f3c8"
+      "bytes": 36145,
+      "sha256": "a1c36aacc3ff84f33228f17083e9952d394db734a5b428d38894d7963d8d0f15"
     },
     "docs/archive/model-rule-stage1-execution-package-v1/package/authorizer-source.py": {
       "bytes": 7185,
@@ -46,7 +46,7 @@
     },
     "docs/archive/model-rule-stage1-execution-package-v1/package/hashes.json": {
       "bytes": 9826,
-      "sha256": "2c306bfa1a55a71b737e251f1888afc6a4bf2c5799b9b499dc1338f1ec54e3e8"
+      "sha256": "16c925905e6965ab66811057b63a4a994ab9d5bddb551552797cc55da9c1ef58"
     },
     "docs/archive/model-rule-stage1-execution-package-v1/package/MANIFEST.md": {
       "bytes": 1481,
@@ -81,8 +81,8 @@
       "sha256": "4841c802a26262a656f2f9523645a5001f3941a119a5976e2926e3578e9294ad"
     },
     "docs/archive/model-rule-stage1-execution-package-v1/package/runner-source.py": {
-      "bytes": 63896,
-      "sha256": "d854587a0d31c93f0d00977c7591fbc3786b7e7a414bf3fe07744a8db3f72d4f"
+      "bytes": 64458,
+      "sha256": "f8979dacb9e376c6a8a797764a0306c8aec2ee12a13476b7037c2dbd64c3472c"
     },
     "docs/archive/model-rule-stage1-execution-package-v1/package/runtime-source.py": {
       "bytes": 166772,
@@ -94,23 +94,31 @@
     },
     "docs/archive/model-rule-stage1-execution-package-v1/package/source-manifest.json": {
       "bytes": 4114,
-      "sha256": "dd59d6dc5e99b3616f1dd836b9dba393655b0d2672253fb3e2f5f410cc91e61d"
+      "sha256": "32433b5cb8fdacaae922a1751286c3df35790570c4ecc20caaf865d0f0edc198"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/test_analyze_model_rule_pair_v1.py": {
+      "bytes": 8400,
+      "sha256": "e4396da56695e4b4f33a9bc6b212c37d83558a7388414101bc47fdbc638dab66"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/test_model_rule_pair_v1.py": {
+      "bytes": 11500,
+      "sha256": "1e4b029410dcf6b9c9caea94abe53c51f2ff51513fd76e1120edae4e1f241c34"
     },
     "docs/archive/model-rule-stage1-execution-package-v1/package/user-approval-PENDING.json": {
       "bytes": 521,
       "sha256": "80043ba836ac624ebeffd55a5b7dbcf55108915ebbffdf5a4ba0ff70126eb6de"
     },
     "docs/archive/model-rule-stage1-execution-package-v1/source/runner.py": {
-      "bytes": 63896,
-      "sha256": "d854587a0d31c93f0d00977c7591fbc3786b7e7a414bf3fe07744a8db3f72d4f"
+      "bytes": 64458,
+      "sha256": "f8979dacb9e376c6a8a797764a0306c8aec2ee12a13476b7037c2dbd64c3472c"
     },
     "docs/archive/model-rule-stage1-execution-package-v1/source/runtime.py": {
       "bytes": 166772,
       "sha256": "f433b0f7aef246d5bb9ae2fafd9441a5c9b4975628071cf93c70a4362a47341c"
     },
     "docs/archive/model-rule-stage1-execution-package-v1/source/analyzer.py": {
-      "bytes": 36058,
-      "sha256": "4958763dd56ffe4cfb2ca3585c547fa3fc95f9630877f369e4292bb47ef8f3c8"
+      "bytes": 36145,
+      "sha256": "a1c36aacc3ff84f33228f17083e9952d394db734a5b428d38894d7963d8d0f15"
     },
     "docs/archive/model-rule-stage1-execution-package-v1/source/authorizer.py": {
       "bytes": 7185,
@@ -133,8 +141,8 @@
       "sha256": "cbe39290a08466f81cc954ad2c19a0d70ed0f242350eec290b28f7ad4786ceb6"
     },
     "docs/archive/model-rule-stage1-execution-package-v1/source/test_model_rule_pair.py": {
-      "bytes": 9990,
-      "sha256": "df17e39f0e008257ab8fd1e7913528a9094913d97b071ce0d840607f3a4dd80d"
+      "bytes": 11500,
+      "sha256": "1e4b029410dcf6b9c9caea94abe53c51f2ff51513fd76e1120edae4e1f241c34"
     },
     "docs/archive/model-rule-stage1-execution-package-v1/source/test_analyze_model_rule_pair.py": {
       "bytes": 8400,

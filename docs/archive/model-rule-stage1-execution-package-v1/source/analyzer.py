@@ -331,7 +331,7 @@ def validate_runtime_evidence(selector_rows, decisions, steps, manifest, status,
 
     for key, selector in selector_index.items():
         branch_id, step_number = key
-        item = by_branch[branch_id]
+        item = by_branch[(branch_id,)]
         decision = d_index[key]
         step = s_index[key]
         arm = str(item["arm"])
@@ -441,7 +441,7 @@ def validate_runtime_evidence(selector_rows, decisions, steps, manifest, status,
         "branches_completed": len(manifest),
     }
     for obj in (status, costs):
-        hard = obj.get("hard_counts") if isinstance(obj.get("hard_counts"), dict) else {}
+        hard = obj.get("hard_counts") if isinstance(obj.get("hard_counts"), dict) else obj.get("counters") if isinstance(obj.get("counters"), dict) else {}
         require(all(int(hard.get(name, -1)) == value for name, value in expected_hard.items()),
                 "runtime hard counter discrepancy")
 
@@ -482,11 +482,11 @@ def validate_runtime_evidence(selector_rows, decisions, steps, manifest, status,
             "first-pair gate checks failed")
 
     branch_timing_index = index_unique(costs.get("branch_timings", []), ("branch_id",))
-    require(set(key[0] for key in branch_timing_index) == set(by_branch), "branch timing coverage mismatch")
+    require(set(key[0] for key in branch_timing_index) == {key[0] for key in by_branch}, "branch timing coverage mismatch")
     arm_timings = {arm: {"branch_seconds": 0.0, "selector_seconds": 0.0,
                          "environment_and_runner_overhead_seconds": 0.0} for arm in ARMS}
     for (branch_id,), row in branch_timing_index.items():
-        item = by_branch[branch_id]
+        item = by_branch[(branch_id,)]
         require(row.get("pair_id") == item["pair_id"] and row.get("arm") == item["arm"], "branch timing identity mismatch")
         branch_seconds = finite(row.get("branch_seconds"))
         selector_seconds = finite(row.get("selector_seconds"))
