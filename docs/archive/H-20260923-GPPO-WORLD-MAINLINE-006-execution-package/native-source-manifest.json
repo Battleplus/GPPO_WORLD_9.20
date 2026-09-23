@@ -1,0 +1,182 @@
+{
+  "source_root": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot",
+  "files": {
+    "gppo_world/__init__.py": {
+      "sha256": "3883a8ec3d5294cc9348d9cbfa4af625b543def57a0381ba2115e8a4847dfb00",
+      "bytes": 823
+    },
+    "gppo_world/adapter_probe.py": {
+      "sha256": "07d71d87bb04703bb1fb017808956398b59cfd535b75b13270864133d74fe268",
+      "bytes": 3862
+    },
+    "gppo_world/arrival_consequence_data.py": {
+      "sha256": "d4d97ee7a07f7fcb2a5ab4e8fada89001b4f88eb845085b5fa3aa0aca31e21ab",
+      "bytes": 4121
+    },
+    "gppo_world/arrival_consequence_model.py": {
+      "sha256": "0ebfce661f6348e64cfddcdd56fc837de984287a511c1bdb8c8ec1746f69b3a2",
+      "bytes": 5387
+    },
+    "gppo_world/arrival_gppo_fusion.py": {
+      "sha256": "6ea9d60955afd55be818172457a45b74bdb77519382651e389fc4e2f0ba28059",
+      "bytes": 14324
+    },
+    "gppo_world/budget_executor.py": {
+      "sha256": "5a2a7536a0ebb0078638a1fd45491a5d13cd9a719c9f012f158b74f5050fd29b",
+      "bytes": 22576
+    },
+    "gppo_world/calibration.py": {
+      "sha256": "6955676756f8ec2ff1bb937f3f3ded9a037cc38151122a7bfa58d5625ff0e57c",
+      "bytes": 10264
+    },
+    "gppo_world/consequence_data.py": {
+      "sha256": "6bf909c4da3242cafb2af04437be6df6518d195088e407f33c164362b49edfb7",
+      "bytes": 11298
+    },
+    "gppo_world/consequence_model.py": {
+      "sha256": "cdec5ff9b33ec3fc8202c2ebd8f9cc01ac418e4b9b5af349d9a3f97a3e230f12",
+      "bytes": 18732
+    },
+    "gppo_world/contracts.py": {
+      "sha256": "c7a66851e2513524ac17be33a7f96f61b18dca6d7840fdcefda5ac3f6cfbe290",
+      "bytes": 10946
+    },
+    "gppo_world/data.py": {
+      "sha256": "ed45cfab16e08b66bee55839e5c55a1dd711faa5380f4f5643fbd01a86e4b807",
+      "bytes": 11987
+    },
+    "gppo_world/dataset.py": {
+      "sha256": "b296d8ce8aec9a4fff83cd2686d2e147b972a1255f51174479abda53230f4664",
+      "bytes": 3378
+    },
+    "gppo_world/event_training.py": {
+      "sha256": "5f613d40c34fa8381ccd27a36b7048cdb92b53692bb58eebc6f24efb523e2afc",
+      "bytes": 23984
+    },
+    "gppo_world/event_trigger_semimarkov.py": {
+      "sha256": "f348db4e865c945cae90d848bf2d859c443cfdea188f6a9db325a22aa33a25e8",
+      "bytes": 4201
+    },
+    "gppo_world/events.py": {
+      "sha256": "84cc0e1850d2ddb62967df4b96d23def57bf58dad5ab41308bae7167c438b077",
+      "bytes": 17233
+    },
+    "gppo_world/gppo_adapter.py": {
+      "sha256": "ea0b763106cb8c1a45c8cd16fe52307d0a8de4023c69aa550aa14273c62993e3",
+      "bytes": 19252
+    },
+    "gppo_world/gppo_shadow_env.py": {
+      "sha256": "426aeefcbf9f5275dceb8f36959c65d46c17b83d28a4134ee9ec228553ab6bab",
+      "bytes": 12531
+    },
+    "gppo_world/gppo_trainer.py": {
+      "sha256": "ec2c6f0fb8038b9e6ada5247b3b51da5c2eeabd670acabcd6a518ad24e4db2ab",
+      "bytes": 20387
+    },
+    "gppo_world/graph5.py": {
+      "sha256": "a4a2c701d8a36306b4e57eb3d24930bae985dea7d11d95afbcdc08968231af09",
+      "bytes": 6173
+    },
+    "gppo_world/jepa.py": {
+      "sha256": "3c3ce3cc995c1b2a80be2c37107dadd922531116cb8aaaad0f8511760fcfeb54",
+      "bytes": 6202
+    },
+    "gppo_world/jepa_two_stage.py": {
+      "sha256": "15064c42882a37f6e339cbb98a8e18fbac0b81d6ad688cedf28011059d69b0b2",
+      "bytes": 6822
+    },
+    "gppo_world/joint_consequence.py": {
+      "sha256": "34f377abdc5957125727fd71d870243ff273ac9988817beacd6cde6fcfde34ba",
+      "bytes": 11131
+    },
+    "gppo_world/joint_consequence_baseline.py": {
+      "sha256": "38f6740baabcc856c37c3757797b341b4c22b9d94ebafefa24688293e99b2c37",
+      "bytes": 5744
+    },
+    "gppo_world/joint_consequence_data.py": {
+      "sha256": "9e87b21b6cac74e441a0cfafbaffff5eee9085e605e97323fd126ffd902ee5e9",
+      "bytes": 5108
+    },
+    "gppo_world/joint_consequence_model.py": {
+      "sha256": "7588fa49333a3bcf5dcce30cd3411ed7197bde0efae63d3123080e32316a0241",
+      "bytes": 3988
+    },
+    "gppo_world/joint_gppo.py": {
+      "sha256": "3c799cfe12050971e1b11da6b2c04fa6a7c244a36935578861c5db533396f55e",
+      "bytes": 20878
+    },
+    "gppo_world/joint_training.py": {
+      "sha256": "808b1de65e676ad45480843c152874248be1fe91c1ce56e1a015fddf81bfd4d1",
+      "bytes": 111358
+    },
+    "gppo_world/m10_communication.py": {
+      "sha256": "fcaada4fea48446aae509fb97f4b6b8275d5b6b9dda3bcdef00c5c392e6011ce",
+      "bytes": 9018
+    },
+    "gppo_world/m10_environment.py": {
+      "sha256": "083b4ad3e47d8a44a18e7a25f429bb7c4bba4a6899249404c0842dfdc0f71132",
+      "bytes": 57320
+    },
+    "gppo_world/m10_training.py": {
+      "sha256": "20642fde3349692d5f0d48750a04c53a7b4df29f1e1f2830f7fc6bfefae45941",
+      "bytes": 55272
+    },
+    "gppo_world/model.py": {
+      "sha256": "4bfd4deb85165e7eeeb0338beab17d2a1c76582248cb893f76cfd4db73a19ce7",
+      "bytes": 20179
+    },
+    "gppo_world/phase_data.py": {
+      "sha256": "42bf58bcad83e1480ccff80459978a690412175880651e63f58ce7d96b6c35d8",
+      "bytes": 8463
+    },
+    "gppo_world/phase_learning.py": {
+      "sha256": "bce4203320d7b8e184200f78bdb83084bd37d9f1cfcb0cba7800c6f2707d4e20",
+      "bytes": 3251
+    },
+    "gppo_world/recorder.py": {
+      "sha256": "cea67089e9ca7b9d9c5a2415c912840bf33f4cf7c01ccb8857efea8267108023",
+      "bytes": 4057
+    },
+    "gppo_world/registry.py": {
+      "sha256": "516af07f6a7b013f463d0aac4c5606c3925a6089c71327c5f6be478c51940db6",
+      "bytes": 5059
+    },
+    "gppo_world/s1_r_contracts.py": {
+      "sha256": "772f8ba385d3c6ed8dccf8431d1019e506259350b40f40c8dc5970ddca9db719",
+      "bytes": 4727
+    },
+    "gppo_world/service_clock.py": {
+      "sha256": "c5699bd117b442534725a88a0805704a0477217e8b918069152665f4bd1538f3",
+      "bytes": 10947
+    },
+    "gppo_world/shadow.py": {
+      "sha256": "bd81fd1a6289186f0a6c57697159a88c2d0bae07e455fddff9d21c97ec1f970a",
+      "bytes": 13873
+    },
+    "gppo_world/task_decision_bridge.py": {
+      "sha256": "dd066a4e1be16607e5005e66eed5b90b1b97b485e57d7c7236b46eb171f8b1fd",
+      "bytes": 1643
+    },
+    "gppo_world/task_execution.py": {
+      "sha256": "87285ac5a20e761dc9e7c754c0701ba0d2d36725e70ea258343e8e6f7d2dc3ca",
+      "bytes": 6213
+    },
+    "gppo_world/task_lifecycle.py": {
+      "sha256": "50248afa519fd18dbc5995ba0bbf7e58adc0833ae501760ea032ab91fca5ed89",
+      "bytes": 5133
+    },
+    "gppo_world/task_policy_view.py": {
+      "sha256": "f5877b6582a02a5bb6c9c39b469dd222e9f5727390fd8080c01e160cd7b23317",
+      "bytes": 6648
+    },
+    "gppo_world/telemetry.py": {
+      "sha256": "c52f2367c06625dc670f08211dc8e514caf2e005cce7d3b82c2ab1bd7cc556bc",
+      "bytes": 2838
+    },
+    "gppo_world/training.py": {
+      "sha256": "6b358fc686118aaf29b9686ba23871c9565ad783849a012c19bc941ddc700f70",
+      "bytes": 18357
+    }
+  },
+  "reason": "freeze transitive native runtime modules including actor encoder, execution, telemetry and clock; no module import"
+}

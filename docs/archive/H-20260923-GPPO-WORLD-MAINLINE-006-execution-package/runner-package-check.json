@@ -1,0 +1,281 @@
+{
+  "schema": "world-event-feature-package-check/1.0.0",
+  "runner_id": "world-event-feature-pair-20260923-v1",
+  "ok": true,
+  "dynamic_execution_authorized": false,
+  "authorization_required": true,
+  "failures": [],
+  "manifest": {
+    "ok": true,
+    "row_count": 48,
+    "pair_count": 24,
+    "failures": [],
+    "branch_ids": [
+      "parent-00|W1|seed-1101|prefix-0|repeat-0|normal",
+      "parent-00|W1|seed-1101|prefix-0|repeat-0|event_features_off",
+      "parent-00|W1|seed-1101|prefix-0|repeat-1|event_features_off",
+      "parent-00|W1|seed-1101|prefix-0|repeat-1|normal",
+      "parent-00|W1|seed-1101|prefix-0|repeat-2|normal",
+      "parent-00|W1|seed-1101|prefix-0|repeat-2|event_features_off",
+      "parent-01|W1|seed-1101|prefix-0|repeat-0|event_features_off",
+      "parent-01|W1|seed-1101|prefix-0|repeat-0|normal",
+      "parent-01|W1|seed-1101|prefix-0|repeat-1|normal",
+      "parent-01|W1|seed-1101|prefix-0|repeat-1|event_features_off",
+      "parent-01|W1|seed-1101|prefix-0|repeat-2|event_features_off",
+      "parent-01|W1|seed-1101|prefix-0|repeat-2|normal",
+      "parent-02|W1|seed-1101|prefix-0|repeat-0|normal",
+      "parent-02|W1|seed-1101|prefix-0|repeat-0|event_features_off",
+      "parent-02|W1|seed-1101|prefix-0|repeat-1|event_features_off",
+      "parent-02|W1|seed-1101|prefix-0|repeat-1|normal",
+      "parent-02|W1|seed-1101|prefix-0|repeat-2|normal",
+      "parent-02|W1|seed-1101|prefix-0|repeat-2|event_features_off",
+      "parent-03|W1|seed-1101|prefix-0|repeat-0|event_features_off",
+      "parent-03|W1|seed-1101|prefix-0|repeat-0|normal",
+      "parent-03|W1|seed-1101|prefix-0|repeat-1|normal",
+      "parent-03|W1|seed-1101|prefix-0|repeat-1|event_features_off",
+      "parent-03|W1|seed-1101|prefix-0|repeat-2|event_features_off",
+      "parent-03|W1|seed-1101|prefix-0|repeat-2|normal",
+      "parent-04|W1|seed-1101|prefix-0|repeat-0|normal",
+      "parent-04|W1|seed-1101|prefix-0|repeat-0|event_features_off",
+      "parent-04|W1|seed-1101|prefix-0|repeat-1|event_features_off",
+      "parent-04|W1|seed-1101|prefix-0|repeat-1|normal",
+      "parent-04|W1|seed-1101|prefix-0|repeat-2|normal",
+      "parent-04|W1|seed-1101|prefix-0|repeat-2|event_features_off",
+      "parent-05|W1|seed-1101|prefix-0|repeat-0|event_features_off",
+      "parent-05|W1|seed-1101|prefix-0|repeat-0|normal",
+      "parent-05|W1|seed-1101|prefix-0|repeat-1|normal",
+      "parent-05|W1|seed-1101|prefix-0|repeat-1|event_features_off",
+      "parent-05|W1|seed-1101|prefix-0|repeat-2|event_features_off",
+      "parent-05|W1|seed-1101|prefix-0|repeat-2|normal",
+      "parent-06|W1|seed-1101|prefix-0|repeat-0|normal",
+      "parent-06|W1|seed-1101|prefix-0|repeat-0|event_features_off",
+      "parent-06|W1|seed-1101|prefix-0|repeat-1|event_features_off",
+      "parent-06|W1|seed-1101|prefix-0|repeat-1|normal",
+      "parent-06|W1|seed-1101|prefix-0|repeat-2|normal",
+      "parent-06|W1|seed-1101|prefix-0|repeat-2|event_features_off",
+      "parent-07|W1|seed-1101|prefix-0|repeat-0|event_features_off",
+      "parent-07|W1|seed-1101|prefix-0|repeat-0|normal",
+      "parent-07|W1|seed-1101|prefix-0|repeat-1|normal",
+      "parent-07|W1|seed-1101|prefix-0|repeat-1|event_features_off",
+      "parent-07|W1|seed-1101|prefix-0|repeat-2|event_features_off",
+      "parent-07|W1|seed-1101|prefix-0|repeat-2|normal"
+    ],
+    "pair_ids": [
+      "parent-00|W1|seed-1101|prefix-0|repeat-0",
+      "parent-00|W1|seed-1101|prefix-0|repeat-1",
+      "parent-00|W1|seed-1101|prefix-0|repeat-2",
+      "parent-01|W1|seed-1101|prefix-0|repeat-0",
+      "parent-01|W1|seed-1101|prefix-0|repeat-1",
+      "parent-01|W1|seed-1101|prefix-0|repeat-2",
+      "parent-02|W1|seed-1101|prefix-0|repeat-0",
+      "parent-02|W1|seed-1101|prefix-0|repeat-1",
+      "parent-02|W1|seed-1101|prefix-0|repeat-2",
+      "parent-03|W1|seed-1101|prefix-0|repeat-0",
+      "parent-03|W1|seed-1101|prefix-0|repeat-1",
+      "parent-03|W1|seed-1101|prefix-0|repeat-2",
+      "parent-04|W1|seed-1101|prefix-0|repeat-0",
+      "parent-04|W1|seed-1101|prefix-0|repeat-1",
+      "parent-04|W1|seed-1101|prefix-0|repeat-2",
+      "parent-05|W1|seed-1101|prefix-0|repeat-0",
+      "parent-05|W1|seed-1101|prefix-0|repeat-1",
+      "parent-05|W1|seed-1101|prefix-0|repeat-2",
+      "parent-06|W1|seed-1101|prefix-0|repeat-0",
+      "parent-06|W1|seed-1101|prefix-0|repeat-1",
+      "parent-06|W1|seed-1101|prefix-0|repeat-2",
+      "parent-07|W1|seed-1101|prefix-0|repeat-0",
+      "parent-07|W1|seed-1101|prefix-0|repeat-1",
+      "parent-07|W1|seed-1101|prefix-0|repeat-2"
+    ]
+  },
+  "protocol_sha256": "1aa30618637b938e58c0586cb73a4551750d528ef30438ead27c93d7d67e87e6",
+  "manifest_sha256": "445f1c8c021ce625058c293fefbf07947a2d92bc4c4d18259a5b7e76338d5e4b",
+  "source_pins": {
+    "runner": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_world_event_feature_pair_20260923.py",
+      "canonical": true,
+      "exists": true,
+      "sha256": "1d456297fb420eed0bfbdec44e8f065ad53c7919e6424a0c1daa4ea67051bbbc"
+    },
+    "h005_runner": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_corrected_20260922.py",
+      "canonical": true,
+      "exists": true,
+      "sha256": "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e"
+    },
+    "guard": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py",
+      "canonical": true,
+      "exists": true,
+      "sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a"
+    },
+    "checkpoint": {
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\training\\seed-1101\\P_train\\last-recovery.pt",
+      "canonical": true,
+      "exists": true,
+      "sha256": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a"
+    },
+    "prefix_snapshot": {
+      "path": "E:\\Z博士\\migration-artifacts\\replan-value-feature-collection-20260919-v1\\prefix-snapshots.pkl",
+      "canonical": true,
+      "exists": true,
+      "sha256": "c6826f941141d1ae7594c38a3e3465584ae0954158502f19d2f4d8163a18258e"
+    },
+    "budget": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+      "canonical": true,
+      "exists": true,
+      "sha256": "9ff13f0e18ab8ce56f418f00eac786f08a47e6107a2b8d31f7184b2502c9d420"
+    },
+    "protocol": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\protocol.json",
+      "canonical": true,
+      "exists": true,
+      "sha256": "1aa30618637b938e58c0586cb73a4551750d528ef30438ead27c93d7d67e87e6"
+    },
+    "manifest": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\paired-manifest.json",
+      "canonical": true,
+      "exists": true,
+      "sha256": "445f1c8c021ce625058c293fefbf07947a2d92bc4c4d18259a5b7e76338d5e4b"
+    },
+    "native_source_manifest": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\native-source-manifest.json",
+      "canonical": true,
+      "exists": true,
+      "sha256": "febbaede7c191b2e1a901de5f2314e3ed9d590ae2f65d508cc482107296da976"
+    },
+    "budget_executor": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\budget_executor.py",
+      "canonical": true,
+      "exists": true,
+      "sha256": "d9a39251cba7833ce2f92e06a84522a81c930c9eba706b42de62adab8a003551"
+    },
+    "historical_helper": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_replan_value_experiment.py",
+      "canonical": true,
+      "exists": true,
+      "sha256": "a9ccf1711790c472ededd7666c54c28ca34abffc4a0095d35b300f1297afa965"
+    },
+    "config": {
+      "path": "E:\\Z博士\\migration-artifacts\\preference-weighted-wm-event-cpu-20260917\\final\\run\\training\\seed-1101\\WD\\resolved-config.json",
+      "canonical": true,
+      "exists": true,
+      "sha256": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27"
+    },
+    "analyzer": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\analyze_world_event_feature_pair_20260923.py",
+      "canonical": true,
+      "exists": true,
+      "sha256": "868c7ae69539b2e97e47a8fa1e51de425df19abf1a9bacd11d63b801ac62ee1d"
+    },
+    "authorizer": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\authorize_world_event_feature_pair_20260923.py",
+      "canonical": true,
+      "exists": true,
+      "sha256": "7d52e52a844a2637ed12bef5af39dd92ab37d15bd2729d499e18b2aba855fe5c"
+    },
+    "analyzer_dependency_native_analysis": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ackguard-matrix-registration-20260922\\analyze_results.py",
+      "canonical": true,
+      "exists": true,
+      "sha256": "c4add12392c8f3ca082e0aaa57224708b24ff0b16ae40eeae95ff65183834ba7"
+    },
+    "analyzer_dependency_reconciliation": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ackguard-matrix-registration-20260922\\final-analysis-v2\\reconcile_budget_status.py",
+      "canonical": true,
+      "exists": true,
+      "sha256": "91d2a4b53f6d735c6d8b008960bf316076eac5d52240017d96e78c9d7a71e10b"
+    },
+    "analyzer_dependency_public_contract": {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\analyze_world_increment_preflight_20260923.py",
+      "canonical": true,
+      "exists": true,
+      "sha256": "2f36eec39f0c7c921b8a246a17999870cc31e3203de22606cdc3e3732f3dec64"
+    }
+  },
+  "native_source_manifest": {
+    "ok": true,
+    "manifest_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\native-source-manifest.json",
+    "manifest_sha256": "febbaede7c191b2e1a901de5f2314e3ed9d590ae2f65d508cc482107296da976",
+    "source_root": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot",
+    "file_count": 44,
+    "actual_file_count": 296,
+    "failures": []
+  },
+  "budget_readonly": {
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+    "sha256": "9ff13f0e18ab8ce56f418f00eac786f08a47e6107a2b8d31f7184b2502c9d420",
+    "integrity_check": "ok",
+    "stages": {
+      "environment_steps": {
+        "limit": 404,
+        "reserved": 299,
+        "verified": 299,
+        "unknown": 0,
+        "pending": 0
+      },
+      "offline_updates": {
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      "optimizer_calls": {
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      "world_updates": {
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      }
+    },
+    "pending_rows": 0,
+    "attempts": [
+      {
+        "attempt_id": "ack-known-task-guard-baseline-v1",
+        "stage": "environment_steps",
+        "run_id": "ack-known-task-guard-baseline-v1"
+      },
+      {
+        "attempt_id": "ackguard-corrected-protocol-20260922-attempt-0001",
+        "stage": "environment_steps",
+        "run_id": "ackguard-corrected-protocol-20260922"
+      }
+    ],
+    "run_totals": {},
+    "all_run_totals": {
+      "ack-known-task-guard-baseline-v1": {
+        "environment_steps": {
+          "reserved": 20,
+          "verified": 20,
+          "unknown": 0,
+          "pending": 0
+        }
+      },
+      "ackguard-corrected-protocol-20260922": {
+        "environment_steps": {
+          "reserved": 279,
+          "verified": 279,
+          "unknown": 0,
+          "pending": 0
+        }
+      }
+    }
+  },
+  "hard_counts": {
+    "env_step": 0,
+    "reset_replay": 0,
+    "model_forward": 0,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "new_attempt": 0
+  }
+}

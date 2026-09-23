@@ -1,0 +1,122 @@
+{
+  "arms": {
+    "event_features_off": "same frozen world and policy; predict raw candidates once with use_events=True, clone actor-facing features and zero columns12:17 exactly as native use_events=False; raw by_action and hidden unmodified",
+    "normal": "guard enabled, frozen world predict_all_candidates(use_events=True)"
+  },
+  "authorization_pending": [
+    "formal dynamic execution approval",
+    "same SQLite future limit proposal 1067=299 already spent+768 new, increase663; no write in this preflight",
+    "acceptance of event-only sensitivity interpretation and its OOD limitation"
+  ],
+  "budget_proposal": {
+    "current_limit": 404,
+    "current_remaining": 105,
+    "current_verified": 299,
+    "new_database": false,
+    "new_stage_cap": 768,
+    "note": "only explicit later approval may extend same ledger; preserve all old charges and records",
+    "proposed_limit_increase": 663,
+    "proposed_total_limit": 1067,
+    "sqlite": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+    "status": "pending_not_applied",
+    "updates_cap": 0,
+    "use_existing105_now": false
+  },
+  "decision": "A_scoped_event_feature_intervention",
+  "decision_reason": {
+    "A": "The native candidate-conditioned world output is added to actor logits and 185/279 guard decisions retain at least one non-NOOP candidate, including 178/279 with at least two.",
+    "C": "The saved evidence has no candidate feature rows, and the source provides no trained or contract-defined neutral value for the non-event world channels; a zero-all-features arm would be an ungrounded OOD no-world ablation."
+  },
+  "execution_order": {
+    "arm_order": "normal first if (parent index+repeat)%2==0, event_features_off first otherwise;12pairs each order",
+    "gate": "complete both arms of first pair and compare each to its own pre-state and static contract; never compare two same-arm branches as a dynamic control pair",
+    "isolation": "fresh deep copy per branch of same frozen prefix and hidden; same pair exogenous key and native RNG restoration; assert source snapshot digest unchanged",
+    "no_retry": "record any failure and actual cost; no replacement branch, automatic retry or refund",
+    "pair_order": "parent00..07 ascending then repeat0..2",
+    "termination": "native horizon18, prefix time2, interval1, max16steps; cap before native termination is technical stop, not truncated reward"
+  },
+  "held_constant": [
+    "guard source and ACK/continuation public-state rule",
+    "policy and world checkpoint weights",
+    "public mask and action mapping",
+    "communication, ACK, lease, fencing, environment, and reward contracts",
+    "preference (0.8,0.2), reward scales (0.5,1.0), gamma 0.99, termination",
+    "parent/repeat/exogenous keys and deterministic action selection"
+  ],
+  "interpretation_limit": "This is sensitivity to the event-feature subvector, not a no-world-model or net world-model ablation. No justified neutral value exists for the remaining policy_feature/vector_reward/task_consequence channels.",
+  "neutral_value_basis": {
+    "interface": "native predict_all_candidates(use_events=False) zeros columns12:17",
+    "interpretation": "event-feature input suppression sensitivity only; auxiliary training effects and first12 world features remain",
+    "not_claimed": "zero is not a calibrated no-event prediction or training-distribution neutral point",
+    "training_limit": "P_train runner uses use_events=True; no evidence this frozen policy was trained on event-zero candidate rows"
+  },
+  "pre_registered_analysis": {
+    "aggregation": "mean repeats within parent, then equal-weight 8-parent macro mean",
+    "ci": "mean three paired repeats per parent; resample eight parent means with replacement10000 times using random.Random(20260923); percentile0.025/0.975 with linear interpolation",
+    "decision_rule": "CI lower>0 supports normal advantage under this intervention; upper<0 supports degradation; otherwise inconclusive, including exact null",
+    "discount_boundary": "k=0 at first restored decision; no pre-prefix return and no value bootstrap at native termination",
+    "no_selection": "no preference changes, dropping parents/repeats, significance retries or heldout access",
+    "primary": "normal minus event_features_off utility under (0.8,0.2)",
+    "r_energy": "-used_energy/(uav_count*configured_initial_energy); native float32 vector_reward",
+    "r_task": "(new_completed-new_expired)/task_capacity; native float32 vector_reward",
+    "ranking": "compare only on identical saved inputs; dynamic trajectory outcomes paired by parent/repeat, not by post-divergence timepoint",
+    "secondary": [
+      "action ranking/selected action",
+      "command acceptance/rejection/task_unavailable",
+      "on-time physical/host completion",
+      "energy",
+      "NOOP retention",
+      "guard changes",
+      "resource counts"
+    ],
+    "task_cohorts": "report all-task totals and original manifest task_ids cohort separately; physical and host deadlines measured by native outcomes",
+    "tie": "abs(paired difference)<=1e-6 is descriptive only; retain unrounded data in inference",
+    "uncertainty": "parent-cluster bootstrap 10,000 replicates, seed 20260923",
+    "utility": "sum(k=0..T-1) 0.99**k * (0.8*0.5*r_task[k]+0.2*1.0*r_energy[k])"
+  },
+  "required_logs": [
+    "paired identity, input/source/checkpoint hashes, exogenous keys and state/RNG digests",
+    "raw25x17candidate features and actor-facing features, five event columns before/after intervention",
+    "base/preference/candidate component logits, full probabilities, mask, guard candidates, selected action",
+    "selected by_action output and hidden digests, policy hidden, native feedback, ACK/continuation submissions",
+    "per-step vector reward and independent raw increments, termination and native physical/host outcome times",
+    "reservation before env.step, step association and finalization status; final SQLite verified reconciliation"
+  ],
+  "required_new_work": {
+    "branches": 48,
+    "existing_H005_trajectory_reuse": "not assumed; both arms require new execution unless a separate exact interface/state/randomness compatibility gate is approved",
+    "model_forward": {
+      "candidate_rows_per_world_batch": 25,
+      "cost": "record actual calls and perf_counter wall time separately for setup/model/environment; calls are not total compute cost",
+      "gate_detail": "at first decision in each arm reuse same encoded/world output for both actor-facing event settings; no extra hidden advance or env.step",
+      "same_input_first_pair_gate_extra_actor_readouts_max": 2,
+      "same_input_first_pair_gate_extra_encodes": 0,
+      "same_input_first_pair_gate_extra_world_batches": 0,
+      "trajectory_actor_readouts_max": 768,
+      "trajectory_policy_encodes_max": 768,
+      "trajectory_world_candidate_batches_max": 768
+    },
+    "new_environment_step_worst_case": 768,
+    "updates": 0
+  },
+  "research_scope": "H-005 observed W1 development matrix only; no validation/heldout claim",
+  "same_input_invariants": [
+    "identical public obs, preference, policy/world hidden, masks and graph relations",
+    "identical raw world outputs, by_action hidden, next_policy_hidden and candidate columns0:12",
+    "only actor-facing event columns12:17 differ; by_action remains unmodified",
+    "identical guard and deterministic argmax with smallest-action tie break, retaining legal NOOP",
+    "after action divergence later states may legitimately differ; never force cross-trajectory step pairing"
+  ],
+  "schema": "world-event-feature-execution-protocol/1.0.0",
+  "status": "pending_execution_authorization",
+  "stop_conditions": [
+    "identity/hash/config mismatch",
+    "any illegal action, guard/mask mismatch, state contamination, or missing world output",
+    "missing reward/termination/branch identity labels",
+    "budget unknown or unresolved final pending, duplicate/partial branch, or nonzero update counter",
+    "unexpected unresolved pending after finalization; normal in-flight pre-step reservation is not itself a failure"
+  ],
+  "handoff_id": "H-20260923-GPPO-WORLD-MAINLINE-006",
+  "stage": "1 executable package preparation",
+  "prior_preflight_commit": "9f192b0818c032de54194ccf424f6694d6309a1e"
+}

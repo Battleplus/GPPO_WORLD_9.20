@@ -1,0 +1,14 @@
+{
+  "python_executable": "C:\\Python314\\python.exe",
+  "python_version": "3.14.4",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "torch_package_version": "2.13.0",
+  "numpy_package_version": "2.5.0",
+  "device_proposal": "cpu",
+  "processes": 1,
+  "threads_proposal": {
+    "intra": 4,
+    "inter": 1
+  },
+  "inspection": "package metadata only; no torch/numpy import, checkpoint load or inference"
+}

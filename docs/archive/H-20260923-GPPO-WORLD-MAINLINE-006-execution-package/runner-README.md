@@ -1,0 +1,1 @@
+运行器在授权前只执行 package_validation；动态路径延迟加载 H-005 runner。传入 manifest 必须是批准的 canonical path，运行输出目录必须为空且唯一。

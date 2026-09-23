@@ -1,0 +1,89 @@
+{
+  "schema": "world-event-feature-execution-package-hashes/1.0.0",
+  "files": [
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\budget-readonly-check.json",
+      "sha256": "379158f788fd7f3b5af77dd56a6132e066aa64e87b5e517727424f585958e1e4"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\COMMANDS.md",
+      "sha256": "c38f16f02a015b97c04771ce5ada6b01f830304c5c8c33d82ebd7c2cf1291ff2"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\EXPERIMENT_PLAN.md",
+      "sha256": "7d9f7d625fae7deb0a42bd0df343e813da3864f56dde5fb7b05ae7e8202f30f9"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\EXPERIMENT_TRACKER.md",
+      "sha256": "39921db362f3e59f7a02cf5747580fa10a6f189d4cc09e2d6cbf4f3ccdb25f98"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\native-source-manifest.json",
+      "sha256": "febbaede7c191b2e1a901de5f2314e3ed9d590ae2f65d508cc482107296da976"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\paired-manifest.json",
+      "sha256": "445f1c8c021ce625058c293fefbf07947a2d92bc4c4d18259a5b7e76338d5e4b"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\protocol.json",
+      "sha256": "1aa30618637b938e58c0586cb73a4551750d528ef30438ead27c93d7d67e87e6"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\report.md",
+      "sha256": "d2774ef9a715c52a9873832dfad018cfab0b5ba1f426f30959afe5c700e6600b"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\runner-authorization-template.json",
+      "sha256": "f2c9e291d1131ede7c571e6be76434b6bf2a1be67ab86f05a42659dc1fd1d8df"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\runner-hashes.json",
+      "sha256": "f007a1f397da9091a4d425f7cf12e0557b805e0b6d7fccf50c036b7ac98e2087"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\runner-package-check.json",
+      "sha256": "940dc1d9f3260bdd37dd3d401405c685221808b5c99206cc7542b1f355041b94"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\runner-README.md",
+      "sha256": "3b92d536d6c857d29d3cceb2ccc1291d6950200d0d4709c1b24a910f87dfe2fe"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\runner-schema.json",
+      "sha256": "414320a77aba29d4d7500e29a0275d8451c4c2f2a4b0ee2ee6c150cd74a60e0e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\runtime-metadata.json",
+      "sha256": "1e7542cc63ae88c32f9a308f32230b9f1d521cfe392082cc08c05b1a9cabd9a3"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\world-event-feature-execution-package-20260923\\user-approval-PENDING.json",
+      "sha256": "8434c7924de152538c850d94a686f82bd0236b49def90f31e4871ade10397042"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_world_event_feature_pair_20260923.py",
+      "sha256": "1d456297fb420eed0bfbdec44e8f065ad53c7919e6424a0c1daa4ea67051bbbc"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\analyze_world_event_feature_pair_20260923.py",
+      "sha256": "868c7ae69539b2e97e47a8fa1e51de425df19abf1a9bacd11d63b801ac62ee1d"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\authorize_world_event_feature_pair_20260923.py",
+      "sha256": "7d52e52a844a2637ed12bef5af39dd92ab37d15bd2729d499e18b2aba855fe5c"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tests\\test_world_event_feature_pair_20260923.py",
+      "sha256": "032f18f6ef93c9f9823490a8c373b54c6aa9239ac2e5dbc21d1d5af6e7817751"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tests\\test_analyze_world_event_feature_pair_20260923.py",
+      "sha256": "d60ab76b243dbe9028109bad90a7b56b1bbccc1d7e4852428601744bf9e026f7"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tests\\test_authorize_world_event_feature_pair_20260923.py",
+      "sha256": "3ddd206f99bb0e0063a7d935ec0a460ffaa8f2c8509e8fab10e6a0f041ff8037"
+    }
+  ]
+}

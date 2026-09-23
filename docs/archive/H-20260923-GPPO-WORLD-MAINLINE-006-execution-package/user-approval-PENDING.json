@@ -1,0 +1,18 @@
+{
+  "status": "pending",
+  "handoff_id": "H-20260923-GPPO-WORLD-MAINLINE-006",
+  "package_hashes_sha256": "REPLACE_WITH_FINAL_HASH_ONLY_AFTER_USER_APPROVAL",
+  "approved_by": null,
+  "user_message_reference": null,
+  "approved_at": null,
+  "accepted_event_sensitivity_only": false,
+  "old_limit": 404,
+  "new_limit": 1067,
+  "new_step_cap": 768,
+  "model_call_caps": {
+    "policy_encode": 768,
+    "world_candidate_batch": 768,
+    "actor_readout": 770
+  },
+  "all_updates": 0
+}

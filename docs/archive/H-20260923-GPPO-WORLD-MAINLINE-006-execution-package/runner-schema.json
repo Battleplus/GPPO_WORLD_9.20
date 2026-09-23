@@ -1,0 +1,82 @@
+{
+  "branch_result": {
+    "added": [
+      "arm",
+      "pair_id",
+      "cohort_task_ids",
+      "task_ids",
+      "mode",
+      "feature_ledger_rows"
+    ],
+    "base": "H-005 ackguard-corrected-branch-result/1.0.0"
+  },
+  "cost_limits": {
+    "actor_readouts": 770,
+    "branches": 48,
+    "environment_steps": 768,
+    "policy_encodes": 768,
+    "updates": 0,
+    "world_candidate_batches": 768
+  },
+  "decision_row": {
+    "added": [
+      "arm",
+      "pair_id",
+      "cohort_task_ids",
+      "task_ids",
+      "mode"
+    ],
+    "base": "H-005 ackguard-corrected-decision/1.0.0"
+  },
+  "feature_row": {
+    "event_slice": "columns 12:17; only actor-facing candidate rows change",
+    "required": [
+      "branch_id",
+      "pair_id",
+      "arm",
+      "step",
+      "exogenous_key",
+      "public_observation_sha256",
+      "policy_hidden_before_sha256",
+      "world_hidden_before_sha256",
+      "candidate_features_raw_25x17",
+      "candidate_features_actor_25x17",
+      "event_features_before_25x5",
+      "event_features_after_25x5",
+      "base_logits",
+      "preference_logits",
+      "candidate_logits",
+      "logits",
+      "probabilities",
+      "by_action_hidden_sha256",
+      "next_policy_hidden_sha256",
+      "timing",
+      "model_calls",
+      "model_call_status"
+    ],
+    "schema": "world-event-feature/1.0.0"
+  },
+  "model_call_accounting": {
+    "calls": [
+      "policy_encode",
+      "world_candidate_batch",
+      "actor_readout"
+    ],
+    "fields": [
+      "attempted",
+      "completed"
+    ],
+    "technical_stop_is_not_algorithm_result": true
+  },
+  "schema": "world-event-feature-runner-schema/1.0.0",
+  "step_row": {
+    "added": [
+      "arm",
+      "pair_id",
+      "cohort_task_ids",
+      "task_ids",
+      "mode"
+    ],
+    "base": "H-005 step-vector-rewards/1.0.0"
+  }
+}
