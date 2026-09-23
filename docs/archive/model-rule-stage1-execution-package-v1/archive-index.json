@@ -1,0 +1,148 @@
+{
+  "schema": "model-rule-stage1-archive-index/1.0.0",
+  "status": "static-package-only",
+  "excluded": [
+    "checkpoint weights",
+    "prefix-snapshots.pkl",
+    "budget.sqlite3",
+    "resolved-config.json"
+  ],
+  "files": {
+    "docs/archive/model-rule-stage1-execution-package-v1/package/ACCEPTANCE.md": {
+      "bytes": 1482,
+      "sha256": "24f6be7e4059c26d1744f9c9d1d3ab8a9fc9365fa9844bef378270477e5b4cec"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/analyzer-source.py": {
+      "bytes": 36058,
+      "sha256": "4958763dd56ffe4cfb2ca3585c547fa3fc95f9630877f369e4292bb47ef8f3c8"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/authorizer-source.py": {
+      "bytes": 7185,
+      "sha256": "5eee72d54ed616e2ac4ae722fb4887f57459267c6086e9cb305695f6ec3ad0b0"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/budget-readonly.json": {
+      "bytes": 700,
+      "sha256": "6f0535904e3cd6298e8b78bcbb3e2dedb6a4275d31d24d181960cde53bfa4926"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/COMMANDS.md": {
+      "bytes": 2520,
+      "sha256": "609730b019faeb9a010c6d28808246242eaac34bce6e1f4e391b8dd4cb5145b6"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/EXPERIMENT_PLAN-20260923-v1.md": {
+      "bytes": 6939,
+      "sha256": "8ecb483c5e2ecd34ba9e3495a2920c831cbff47f39c76cf149849f477c3efdb3"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/EXPERIMENT_PLAN.md": {
+      "bytes": 6939,
+      "sha256": "8ecb483c5e2ecd34ba9e3495a2920c831cbff47f39c76cf149849f477c3efdb3"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/EXPERIMENT_TRACKER.md": {
+      "bytes": 650,
+      "sha256": "e4b8f054938175334206e8e1e7e171c22824f4c623196cfe459eff0c7d4c28e9"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/guard-source.py": {
+      "bytes": 6518,
+      "sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/hashes.json": {
+      "bytes": 9826,
+      "sha256": "2c306bfa1a55a71b737e251f1888afc6a4bf2c5799b9b499dc1338f1ec54e3e8"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/MANIFEST.md": {
+      "bytes": 1481,
+      "sha256": "9802eba0038e2c8d012af7b5a286f73377b8e6a7a8078b4d0ed2ec347d2c8e21"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/native-source-manifest.json": {
+      "bytes": 7006,
+      "sha256": "febbaede7c191b2e1a901de5f2314e3ed9d590ae2f65d508cc482107296da976"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/paired-manifest.json": {
+      "bytes": 35468,
+      "sha256": "00bfaeeb5ce75d422ba2d0708483a4237b7ede7100702360aaf783a820d1adad"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/protocol.json": {
+      "bytes": 6232,
+      "sha256": "8dc914333d080e65ae9081a1f4cd56ab383a8f8f99fc1c62467b757b85c8e843"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/public-rule-source.py": {
+      "bytes": 21441,
+      "sha256": "c11f7dbc2f4ae6854a5a4c1eb2b7c82a8cc0eb3ce96a8d0acd36a5995dd5b452"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/report.md": {
+      "bytes": 1499,
+      "sha256": "a65b26d9a4e768e2f5481ed18c0385ec62faf6424c01451ed4a679db6331a5f3"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/runner-authorization-template.json": {
+      "bytes": 4319,
+      "sha256": "f6fb7ca9bd915425257712cff826dd03553b7f139fd17b112277de9e1888cba2"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/runner-package-check.json": {
+      "bytes": 12749,
+      "sha256": "4841c802a26262a656f2f9523645a5001f3941a119a5976e2926e3578e9294ad"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/runner-source.py": {
+      "bytes": 63896,
+      "sha256": "d854587a0d31c93f0d00977c7591fbc3786b7e7a414bf3fe07744a8db3f72d4f"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/runtime-source.py": {
+      "bytes": 166772,
+      "sha256": "f433b0f7aef246d5bb9ae2fafd9441a5c9b4975628071cf93c70a4362a47341c"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/schema.json": {
+      "bytes": 2749,
+      "sha256": "9aa515bb0e6a7507e7d7f60b7daeb13da7284eb04d7787b9bceb0fcbda924f7c"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/source-manifest.json": {
+      "bytes": 4114,
+      "sha256": "dd59d6dc5e99b3616f1dd836b9dba393655b0d2672253fb3e2f5f410cc91e61d"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/package/user-approval-PENDING.json": {
+      "bytes": 521,
+      "sha256": "80043ba836ac624ebeffd55a5b7dbcf55108915ebbffdf5a4ba0ff70126eb6de"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/source/runner.py": {
+      "bytes": 63896,
+      "sha256": "d854587a0d31c93f0d00977c7591fbc3786b7e7a414bf3fe07744a8db3f72d4f"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/source/runtime.py": {
+      "bytes": 166772,
+      "sha256": "f433b0f7aef246d5bb9ae2fafd9441a5c9b4975628071cf93c70a4362a47341c"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/source/analyzer.py": {
+      "bytes": 36058,
+      "sha256": "4958763dd56ffe4cfb2ca3585c547fa3fc95f9630877f369e4292bb47ef8f3c8"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/source/authorizer.py": {
+      "bytes": 7185,
+      "sha256": "5eee72d54ed616e2ac4ae722fb4887f57459267c6086e9cb305695f6ec3ad0b0"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/source/public_dispatch_rule.py": {
+      "bytes": 21441,
+      "sha256": "c11f7dbc2f4ae6854a5a4c1eb2b7c82a8cc0eb3ce96a8d0acd36a5995dd5b452"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/source/guard.py": {
+      "bytes": 6518,
+      "sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/source/budget_executor.py": {
+      "bytes": 12468,
+      "sha256": "d9a39251cba7833ce2f92e06a84522a81c930c9eba706b42de62adab8a003551"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/source/test_public_dispatch_rule.py": {
+      "bytes": 13099,
+      "sha256": "cbe39290a08466f81cc954ad2c19a0d70ed0f242350eec290b28f7ad4786ceb6"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/source/test_model_rule_pair.py": {
+      "bytes": 9990,
+      "sha256": "df17e39f0e008257ab8fd1e7913528a9094913d97b071ce0d840607f3a4dd80d"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/source/test_analyze_model_rule_pair.py": {
+      "bytes": 8400,
+      "sha256": "e4396da56695e4b4f33a9bc6b212c37d83558a7388414101bc47fdbc638dab66"
+    },
+    "docs/archive/model-rule-stage1-execution-package-v1/source/test_authorize_model_rule_pair.py": {
+      "bytes": 3222,
+      "sha256": "375e5a07652d45d2a8ad8dbf6ac1417a8e0ae22c4e9d6edeb5d362946a4b95cc"
+    }
+  }
+}

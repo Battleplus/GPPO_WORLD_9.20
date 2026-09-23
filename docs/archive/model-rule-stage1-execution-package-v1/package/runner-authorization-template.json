@@ -1,0 +1,67 @@
+{
+  "budget": {
+    "baseline_verified": 857,
+    "global_limit": 1625,
+    "model_call_caps": {
+      "actor_readout": 384,
+      "policy_encode": 384,
+      "world_candidate_batch": 384
+    },
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+    "required_new_steps": 768,
+    "rule_selector_cap": 384,
+    "run_limit": 768,
+    "sha256": "ea42090b92b9ecea9ab1c487742dbb059d4f95c2087f90f8d66dbfbb6be38d50",
+    "updates_cap": 0
+  },
+  "interpretation": "frozen native model combination versus named public-only rule on observed train prefixes; no isolated component or equivalence claim",
+  "manifest": {
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\paired-manifest.json",
+    "sha256": "00bfaeeb5ce75d422ba2d0708483a4237b7ede7100702360aaf783a820d1adad"
+  },
+  "no_retry": true,
+  "protocol": {
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\protocol.json",
+    "sha256": "8dc914333d080e65ae9081a1f4cd56ab383a8f8f99fc1c62467b757b85c8e843"
+  },
+  "review": {
+    "accepted_interpretation": false,
+    "reviewed_at": null,
+    "reviewed_by": null,
+    "user_message_reference": null
+  },
+  "run": {
+    "attempt_id": "model-rule-stage1-v1-attempt-0001",
+    "run_id": "model-rule-stage1-v1"
+  },
+  "runner_id": "model-rule-stage1-v1",
+  "schema": "model-rule-pair-authorization/1.0.0",
+  "source": {
+    "checkpoint_path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\training\\seed-1101\\P_train\\last-recovery.pt",
+    "checkpoint_sha256": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a",
+    "config_path": "E:\\Z博士\\migration-artifacts\\preference-weighted-wm-event-cpu-20260917\\final\\run\\training\\seed-1101\\WD\\resolved-config.json",
+    "config_sha256": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27",
+    "guard_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py",
+    "guard_sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
+    "native_source_manifest_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\native-source-manifest.json",
+    "native_source_manifest_sha256": "febbaede7c191b2e1a901de5f2314e3ed9d590ae2f65d508cc482107296da976",
+    "prefix_snapshot_path": "E:\\Z博士\\migration-artifacts\\replan-value-feature-collection-20260919-v1\\prefix-snapshots.pkl",
+    "prefix_snapshot_sha256": "c6826f941141d1ae7594c38a3e3465584ae0954158502f19d2f4d8163a18258e",
+    "rule_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\public_dispatch_rule_v1.py",
+    "rule_sha256": "c11f7dbc2f4ae6854a5a4c1eb2b7c82a8cc0eb3ce96a8d0acd36a5995dd5b452",
+    "runner_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_model_rule_pair_v1.py",
+    "runner_sha256": "c81b6d8d172d81118a17910de9160c1a2036add166307a312c70d26a748ec8d1",
+    "runtime_dependency_hashes": {
+      "budget_executor": "d9a39251cba7833ce2f92e06a84522a81c930c9eba706b42de62adab8a003551",
+      "config": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27",
+      "guard": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
+      "h005_runner": "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e",
+      "historical_helper": "a9ccf1711790c472ededd7666c54c28ca34abffc4a0095d35b300f1297afa965",
+      "rule": "c11f7dbc2f4ae6854a5a4c1eb2b7c82a8cc0eb3ce96a8d0acd36a5995dd5b452",
+      "runtime": "f433b0f7aef246d5bb9ae2fafd9441a5c9b4975628071cf93c70a4362a47341c"
+    },
+    "runtime_path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\model_rule_branch_runtime_v1.py",
+    "runtime_sha256": "f433b0f7aef246d5bb9ae2fafd9441a5c9b4975628071cf93c70a4362a47341c"
+  },
+  "status": "pending_review"
+}

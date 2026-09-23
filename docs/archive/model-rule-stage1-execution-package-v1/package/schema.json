@@ -1,0 +1,67 @@
+{
+  "schema": "model-rule-stage1-execution-schema/1.0.0",
+  "runner_id": "model-rule-stage1-v1",
+  "matrix": {
+    "arms": ["frozen_model", "public_rule"],
+    "parents": 8,
+    "repeats_per_parent": 3,
+    "branches": 48,
+    "max_steps_per_branch": 16,
+    "max_environment_steps": 768
+  },
+  "selector_ledger": {
+    "file": "selector-ledger.jsonl",
+    "identity": ["branch_id", "step"],
+    "required": [
+      "branch_id", "pair_id", "arm", "step", "public_observation_sha256",
+      "public_rule_input_sha256", "model_call_status", "model_calls",
+      "rule_selector_calls", "rule_selector_status", "selected_action",
+      "original_action", "legal_mask", "probabilities", "guard_candidates"
+    ],
+    "rule_only": ["public_rule_inputs", "rule_scores", "rule_ranks", "hidden_transition"],
+    "rule_input_whitelist": ["uavs", "tasks", "time", "mask", "public_entity_ids", "continuation_actions"],
+    "model_calls_per_probe": {"frozen_model": 1, "public_rule": 0},
+    "rule_selector_calls_per_probe": {"frozen_model": 0, "public_rule": 1}
+  },
+  "first_pair_gate": {
+    "file": "first-pair-gate.json",
+    "schema": "model-rule-pair-first-gate/1.0.0",
+    "required_checks": [
+      "same_pair_exogenous_key", "same_public_observation", "same_env_state_before",
+      "same_legal_mask", "same_guard_candidates", "same_guard_excluded",
+      "same_guard_trigger", "noop_legal_and_retained", "actual_selected_actions_recorded"
+    ]
+  },
+  "runtime_costs": {
+    "file": "runtime-costs.json",
+    "schema": "model-rule-pair-runtime-cost/1.0.0",
+    "model_call_names": ["policy_encode", "world_candidate_batch", "actor_readout"],
+    "call_count_fields": ["attempted", "completed"],
+    "limits": {
+      "environment_steps": 768,
+      "policy_encode": 384,
+      "world_candidate_batch": 384,
+      "actor_readout": 384,
+      "rule_selector_calls": 384,
+      "updates": 0
+    },
+    "timings": ["setup_seconds", "model_load_seconds", "shared_snapshot_load_seconds", "wall_seconds", "branch_timings"]
+  },
+  "run_status": {
+    "file": "run-status.json",
+    "schema": "model-rule-pair-run-status/1.0.0",
+    "completed_classification": "evaluation_completed",
+    "technical_stop_classification": "technical_stop_not_algorithm_result"
+  },
+  "analysis": {
+    "entry": "tools/analyze_model_rule_pair_v1.py",
+    "required_inputs": [
+      "branch-results.jsonl", "step-vector-rewards.jsonl", "decision-ledger.jsonl",
+      "budget-finalization.jsonl", "selector-ledger.jsonl", "run-status.json",
+      "runtime-costs.json", "first-pair-gate.json"
+    ],
+    "primary_unit": "parent macro mean across three paired repeats",
+    "minimum_meaningful_effect": 0.01,
+    "dynamic_execution": "disabled pending explicit authorization"
+  }
+}

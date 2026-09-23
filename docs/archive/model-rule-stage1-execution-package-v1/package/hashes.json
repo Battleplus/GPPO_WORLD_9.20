@@ -1,0 +1,153 @@
+{
+  "schema": "model-rule-stage1-package-hashes/1.0.0",
+  "files": [
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py",
+      "sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\budget_executor.py",
+      "sha256": "d9a39251cba7833ce2f92e06a84522a81c930c9eba706b42de62adab8a003551"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\public_dispatch_rule_v1.py",
+      "sha256": "c11f7dbc2f4ae6854a5a4c1eb2b7c82a8cc0eb3ce96a8d0acd36a5995dd5b452"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+      "sha256": "ea42090b92b9ecea9ab1c487742dbb059d4f95c2087f90f8d66dbfbb6be38d50"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\ACCEPTANCE.md",
+      "sha256": "24f6be7e4059c26d1744f9c9d1d3ab8a9fc9365fa9844bef378270477e5b4cec"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\COMMANDS.md",
+      "sha256": "609730b019faeb9a010c6d28808246242eaac34bce6e1f4e391b8dd4cb5145b6"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\EXPERIMENT_PLAN-20260923-v1.md",
+      "sha256": "8ecb483c5e2ecd34ba9e3495a2920c831cbff47f39c76cf149849f477c3efdb3"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\EXPERIMENT_PLAN.md",
+      "sha256": "8ecb483c5e2ecd34ba9e3495a2920c831cbff47f39c76cf149849f477c3efdb3"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\EXPERIMENT_TRACKER.md",
+      "sha256": "e4b8f054938175334206e8e1e7e171c22824f4c623196cfe459eff0c7d4c28e9"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\MANIFEST.md",
+      "sha256": "9802eba0038e2c8d012af7b5a286f73377b8e6a7a8078b4d0ed2ec347d2c8e21"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\analyzer-source.py",
+      "sha256": "4958763dd56ffe4cfb2ca3585c547fa3fc95f9630877f369e4292bb47ef8f3c8"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\authorizer-source.py",
+      "sha256": "5eee72d54ed616e2ac4ae722fb4887f57459267c6086e9cb305695f6ec3ad0b0"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\budget-readonly.json",
+      "sha256": "6f0535904e3cd6298e8b78bcbb3e2dedb6a4275d31d24d181960cde53bfa4926"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\guard-source.py",
+      "sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\native-source-manifest.json",
+      "sha256": "febbaede7c191b2e1a901de5f2314e3ed9d590ae2f65d508cc482107296da976"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\paired-manifest.json",
+      "sha256": "00bfaeeb5ce75d422ba2d0708483a4237b7ede7100702360aaf783a820d1adad"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\protocol.json",
+      "sha256": "8dc914333d080e65ae9081a1f4cd56ab383a8f8f99fc1c62467b757b85c8e843"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\public-rule-source.py",
+      "sha256": "c11f7dbc2f4ae6854a5a4c1eb2b7c82a8cc0eb3ce96a8d0acd36a5995dd5b452"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\runner-authorization-template.json",
+      "sha256": "f6fb7ca9bd915425257712cff826dd03553b7f139fd17b112277de9e1888cba2"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\runner-package-check.json",
+      "sha256": "4841c802a26262a656f2f9523645a5001f3941a119a5976e2926e3578e9294ad"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\runner-source.py",
+      "sha256": "d854587a0d31c93f0d00977c7591fbc3786b7e7a414bf3fe07744a8db3f72d4f"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\runtime-source.py",
+      "sha256": "f433b0f7aef246d5bb9ae2fafd9441a5c9b4975628071cf93c70a4362a47341c"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\schema.json",
+      "sha256": "9aa515bb0e6a7507e7d7f60b7daeb13da7284eb04d7787b9bceb0fcbda924f7c"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\source-manifest.json",
+      "sha256": "123cdf8605b893657dee0fab1ea5f9df868661776b7672af69baf4b64f3e2821"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\user-approval-PENDING.json",
+      "sha256": "80043ba836ac624ebeffd55a5b7dbcf55108915ebbffdf5a4ba0ff70126eb6de"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tests\\test_analyze_model_rule_pair_v1.py",
+      "sha256": "e4396da56695e4b4f33a9bc6b212c37d83558a7388414101bc47fdbc638dab66"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tests\\test_authorize_model_rule_pair_v1.py",
+      "sha256": "375e5a07652d45d2a8ad8dbf6ac1417a8e0ae22c4e9d6edeb5d362946a4b95cc"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tests\\test_model_rule_pair_v1.py",
+      "sha256": "df17e39f0e008257ab8fd1e7913528a9094913d97b071ce0d840607f3a4dd80d"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\analyze_model_rule_pair_v1.py",
+      "sha256": "4958763dd56ffe4cfb2ca3585c547fa3fc95f9630877f369e4292bb47ef8f3c8"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\authorize_model_rule_pair_v1.py",
+      "sha256": "5eee72d54ed616e2ac4ae722fb4887f57459267c6086e9cb305695f6ec3ad0b0"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\model_rule_branch_runtime_v1.py",
+      "sha256": "f433b0f7aef246d5bb9ae2fafd9441a5c9b4975628071cf93c70a4362a47341c"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_ack_known_task_guard_corrected_20260922.py",
+      "sha256": "ec1eae6e0f6fff759a391875c2f34878260a85889d97c18c6f991c5f98b0711e"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_model_rule_pair_v1.py",
+      "sha256": "d854587a0d31c93f0d00977c7591fbc3786b7e7a414bf3fe07744a8db3f72d4f"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_replan_value_experiment.py",
+      "sha256": "a9ccf1711790c472ededd7666c54c28ca34abffc4a0095d35b300f1297afa965"
+    },
+    {
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\training\\seed-1101\\P_train\\last-recovery.pt",
+      "sha256": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a"
+    },
+    {
+      "path": "E:\\Z博士\\migration-artifacts\\preference-weighted-wm-event-cpu-20260917\\final\\run\\training\\seed-1101\\WD\\resolved-config.json",
+      "sha256": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27"
+    },
+    {
+      "path": "E:\\Z博士\\migration-artifacts\\replan-value-feature-collection-20260919-v1\\prefix-snapshots.pkl",
+      "sha256": "c6826f941141d1ae7594c38a3e3465584ae0954158502f19d2f4d8163a18258e"
+    }
+  ]
+}

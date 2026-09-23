@@ -1,0 +1,19 @@
+{
+  "status": "pending",
+  "experiment_id": "model-rule-stage1-v1",
+  "approved_by": null,
+  "approved_at": null,
+  "user_message_reference": null,
+  "package_hashes_sha256": "TO_BE_BOUND_AFTER_FREEZE_AND_EXPLICIT_APPROVAL",
+  "accepted_model_rule_development_scope": false,
+  "old_limit": 1067,
+  "new_limit": 1625,
+  "new_step_cap": 768,
+  "model_call_caps": {
+    "policy_encode": 384,
+    "world_candidate_batch": 384,
+    "actor_readout": 384
+  },
+  "rule_selector_cap": 384,
+  "all_updates": 0
+}
