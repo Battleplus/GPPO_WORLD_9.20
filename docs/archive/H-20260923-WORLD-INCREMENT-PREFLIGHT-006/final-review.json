@@ -1,0 +1,22 @@
+{
+  "handoff_id": "H-20260923-WORLD-INCREMENT-PREFLIGHT-006",
+  "decision": "A_event_feature_sensitivity_only",
+  "hash_entries_verified": 14,
+  "input_identity_verified_except_reused_snapshot": true,
+  "snapshot_identity_source": "H005 prior verified identity; no deserialize/rehash",
+  "pure_tests_passed": 10,
+  "decision_contract_rows": 279,
+  "manifest_pairs": 24,
+  "future_branches": 48,
+  "future_budget_pending": 768,
+  "sqlite_sha256": "9ff13f0e18ab8ce56f418f00eac786f08a47e6107a2b8d31f7184b2502c9d420",
+  "sqlite_integrity": "ok",
+  "sqlite_unchanged": true,
+  "env_step": 0,
+  "reset_replay": 0,
+  "model_forward": 0,
+  "all_updates": 0,
+  "new_attempt": 0,
+  "runtime_source_modified": false,
+  "archive_status": "prepared_not_yet_remote_verified"
+}

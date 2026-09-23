@@ -1,0 +1,82 @@
+{
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/authorization-request.md": {
+    "sha256": "bc3ff2df54c8a79899cee72b0d1406c38829acdd09d145c3e8f3e01859fc6b60",
+    "bytes": 1932
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/budget-readonly-check.json": {
+    "sha256": "c889d9cc6a4806687927a5c1c379f225463dc22a3f74b224236546cec578e286",
+    "bytes": 796
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/dataflow.json": {
+    "sha256": "75525505e9a78193082336cd6119b92d8c57f69e6b2b6f12ca58df4c7bc077bf",
+    "bytes": 4122
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/decision-space.json": {
+    "sha256": "8d3ceb4182867200feff842114bcd4bef9f4b6e27789cd37ca6fa8503fc0b6aa",
+    "bytes": 460941
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/decision-space.json.sha256": {
+    "sha256": "e3ef478112efca09aa6fef8ef0f1c3930a4e8ee08f39ab087d3023c33c80b76f",
+    "bytes": 87
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/decision.json": {
+    "sha256": "10f2e6696049cc0cd3f110c22226a90b8dd1495eca9a84daf3c62ece27ee82e6",
+    "bytes": 149
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/evidence-index.json": {
+    "sha256": "d500bc2d400e5ae33aa437826266c49e254ef1c0edda704f014dd62a9b106bdd",
+    "bytes": 13827
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/hashes.json": {
+    "sha256": "87c249cfc657cee87e234cfbe1f8c2dd4500f6482102cf142b0f1b2b99d923c4",
+    "bytes": 1907
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/identity-index.json": {
+    "sha256": "bc3090ca68313337ed89e9e828ef74790a9cb6e284449714a696dbda03c01457",
+    "bytes": 11658
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/input-contract-check.json": {
+    "sha256": "77b047066ad058cd233cc11af46acf6c39e96e8f84c6173beea9f3d4d7c0bf1d",
+    "bytes": 79
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/paired-manifest-proposal.json": {
+    "sha256": "5c693f6631527d8c6cb7ba09252701a2e74eaf87f356454ccef2cd70c4351ff1",
+    "bytes": 22554
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/protocol.json": {
+    "sha256": "4d0df6d085b1cf8c03de5c72de8d50aaa12f84433c3631696f54fb2aa458d767",
+    "bytes": 8305
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/report.md": {
+    "sha256": "c13013fc279da011e61961a1cb1e7054ae3a300caaf15384487aa55276ca2be5",
+    "bytes": 6500
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/source-diff.patch": {
+    "sha256": "448ebf28bcc409ce34e40ef85d6d2e2e8967e2e992bd57085bfc703e3a1d82a5",
+    "bytes": 47897
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/test-output.txt": {
+    "sha256": "310e2759e9bf16d6d8e7a26e9de477f99ff6ca55298ede4c78bf532e21de4c99",
+    "bytes": 371
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/source/tools/analyze_world_increment_preflight_20260923.py": {
+    "sha256": "2f36eec39f0c7c921b8a246a17999870cc31e3203de22606cdc3e3732f3dec64",
+    "bytes": 43552
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/source/tests/test_world_increment_preflight_20260923.py": {
+    "sha256": "72a7dfd3ba3cf8541e322e2bac88fab1d4bf51f299702151c6773bdc83b24b73",
+    "bytes": 3305
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/final-review.json": {
+    "sha256": "a252934323ac637d16716f60376f2ffc9242caa0c4c2b6a1d2114aea1c4ac8da",
+    "bytes": 783
+  },
+  "docs/archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/finalize_archive.py": {
+    "sha256": "0fca1d428ec391ee06f52c5acf14d111f823e0edb2d1303202228dbc1561fef3",
+    "bytes": 7454
+  },
+  "docs/RESEARCH_PROGRESS.md": {
+    "sha256": "2b1bbe246aa24859f18f4527e706cde07f66d3ecf2e83a325eb599fed704d8be",
+    "bytes": 18539
+  }
+}

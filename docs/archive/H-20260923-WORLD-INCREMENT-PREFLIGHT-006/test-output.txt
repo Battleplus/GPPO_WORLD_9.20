@@ -1,0 +1,4 @@
+Command: PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -X utf8 -m pytest -q -p no:cacheprovider --basetemp E:/Z博士/research-reviews/world-increment-preflight-006/pytest-final-v2 tests/test_world_increment_preflight_20260923.py
+.......... [100%]
+10 passed in 0.08s
+Pure standard-library analyzer import and saved JSON fixtures only; no runtime environment/model imports.

@@ -1,0 +1,723 @@
+--- /dev/null
++++ b/tools/analyze_world_increment_preflight_20260923.py
+@@ -0,0 +1,630 @@
++"""Zero-step audit for the frozen world-model decision path.
++
++This script reads immutable H-005 JSONL evidence and source text only.  It
++does not import the historical environment, load a checkpoint, construct a
++model, call reset/step, or touch a budget database.
++"""
++
++from __future__ import annotations
++
++import argparse
++from collections import Counter, defaultdict
++import hashlib
++import json
++import math
++from pathlib import Path
++from typing import Any, Iterable, Mapping
++
++
++WORKTREE = Path(__file__).resolve().parents[1]
++BASE = WORKTREE / "runs" / "finite-communication-ack-lease-fix-20260920"
++H005 = BASE / "ackguard-matrix-registration-20260922"
++RUN = H005 / "authorized-run"
++FINAL = H005 / "final-analysis-v2"
++OUT_DEFAULT = BASE / "world-increment-preflight-20260923"
++
++LEDGER = RUN / "decision-ledger.jsonl"
++STEP_REWARDS = RUN / "step-vector-rewards.jsonl"
++BRANCH_RESULTS = RUN / "branch-results.jsonl"
++BUDGET = H005.parent / "ack-known-task-guard-baseline-v1" / "budget.sqlite3"
++CHECKPOINT = Path(
++    r"E:\Z博士\migration-artifacts\event-trigger-aware-gppo-fair-replication-20260919-v1"
++    r"\training\seed-1101\P_train\last-recovery.pt"
++)
++SOURCE_ROOT = Path(
++    r"E:\Z博士\migration-artifacts\event-trigger-aware-gppo-fair-replication-20260919-v1"
++    r"\source-snapshot"
++)
++RUNNER = WORKTREE / "tools" / "run_ack_known_task_guard_corrected_20260922.py"
++HELPER = WORKTREE / "tools" / "run_replan_value_experiment.py"
++GUARD = WORKTREE / "gppo_world" / "ack_known_task_guard.py"
++
++
++def sha256(path: Path) -> str:
++    digest = hashlib.sha256()
++    with path.open("rb") as stream:
++        for block in iter(lambda: stream.read(1 << 20), b""):
++            digest.update(block)
++    return digest.hexdigest()
++
++
++def read_jsonl(path: Path) -> list[dict[str, Any]]:
++    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
++
++
++def branch_identity(branch_id: str) -> tuple[str, int]:
++    parts = branch_id.split("|")
++    if len(parts) < 6:
++        raise ValueError(f"invalid H-005 branch id: {branch_id}")
++    repeat = int(parts[4].removeprefix("repeat-"))
++    return parts[0], repeat
++
++
++def candidate_class(row: Mapping[str, Any]) -> tuple[str, list[int], list[int], bool]:
++    candidates = sorted({int(value) for value in row.get("candidate_actions", ())})
++    non_noop = [value for value in candidates if value != 24]
++    noop_retained = 24 in candidates
++    if not candidates:
++        category = "empty_anomaly"
++    elif not non_noop:
++        category = "noop_only"
++    elif len(non_noop) == 1:
++        category = "one_non_noop"
++    else:
++        category = "two_or_more_non_noop"
++    return category, candidates, non_noop, noop_retained
++
++
++def decision_projection(row: Mapping[str, Any]) -> dict[str, Any]:
++    category, candidates, non_noop, noop_retained = candidate_class(row)
++    legal = [index for index, value in enumerate(row.get("legal_mask", ())) if bool(value)]
++    parent, repeat = branch_identity(str(row["branch_id"]))
++    original = int(row["original_action"])
++    final = int(row["final_action"])
++    return {
++        "branch_id": row["branch_id"],
++        "parent_id": parent,
++        "repeat": repeat,
++        "condition": "W1",
++        "model_seed": 1101,
++        "prefix": "prefix-0",
++        "step": int(row["step"]),
++        "reason": row.get("reason"),
++        "category": category,
++        "candidate_actions_after_guard": candidates,
++        "non_noop_candidates_after_guard": non_noop,
++        "public_legal_actions_before_guard": legal,
++        "excluded_actions": sorted(int(value) for value in row.get("excluded_actions", ())),
++        "noop_retained": noop_retained,
++        "original_action": original,
++        "final_action": final,
++        "original_vs_final_changed": original != final,
++        "guard_triggered": bool(row.get("triggered", False)),
++        "selected_action_probability": float(row.get("final_probability", 0.0)),
++        "original_action_probability": float(row.get("original_probability", 0.0)),
++        "public_observation_sha256": row.get("public_observation_sha256"),
++        "policy_hidden_before_sha256": row.get("policy_hidden_before_sha256"),
++        "world_hidden_before_sha256": row.get("world_hidden_before_sha256"),
++        "selected_action_hidden_sha256": row.get("selected_action_hidden_sha256"),
++        "evidence_limits": {
++            "candidate_features_saved": False,
++            "world_logits_saved": False,
++            "only_selected_world_hidden_digest_saved": True,
++            "unexecuted_acceptance_or_reward_observed": False,
++        },
++    }
++
++
++def count_map(values: Iterable[str]) -> dict[str, int]:
++    return dict(sorted(Counter(values).items()))
++
++
++def validate_rows(rows: list[dict[str, Any]], manifest: list[dict[str, Any]]) -> dict[str, int]:
++    """Validate saved public decision contracts without importing a runtime."""
++    expected = {row["branch_id"]: row for row in manifest}
++    if len(expected) != len(manifest):
++        raise ValueError("duplicate manifest branch")
++    seen: set[tuple[str, int]] = set()
++    steps: dict[str, list[int]] = defaultdict(list)
++    for row in rows:
++        branch, step = str(row["branch_id"]), int(row["step"])
++        if branch not in expected or (branch, step) in seen:
++            raise ValueError("unknown branch or duplicate decision")
++        seen.add((branch, step))
++        steps[branch].append(step)
++        if row["branch_exogenous_key"] != expected[branch]["historical_exogenous_key"]:
++            raise ValueError("exogenous key mismatch")
++        mask = row["legal_mask"]
++        if len(mask) != 25 or any(x not in (0, 1, False, True) for x in mask):
++            raise ValueError("mask contract")
++        legal = {i for i, value in enumerate(mask) if value}
++        candidates, excluded = row["candidate_actions"], row["excluded_actions"]
++        if len(candidates) != len(set(candidates)) or len(excluded) != len(set(excluded)):
++            raise ValueError("duplicate candidates/exclusions")
++        mappings = row["action_task_ids"]
++        targets = dict(mappings)
++        if len(targets) != len(mappings) or set(targets) != legal - {24}:
++            raise ValueError("public action mapping incomplete")
++        continuation_tasks = set(row["continuation_task_ids"])
++        slot_targets: dict[int, str] = {}
++        for action, task in targets.items():
++            slot = int(action) % 6
++            if slot in slot_targets and slot_targets[slot] != task:
++                raise ValueError("task slot mismatch")
++            slot_targets[slot] = task
++        mapped_continuation = {slot_targets[int(a) % 6] for a in row["continuation_actions"]
++                               if int(a) != 24 and int(a) % 6 in slot_targets}
++        if not mapped_continuation <= continuation_tasks:
++            raise ValueError("continuation identity mismatch")
++        expected_excluded = {a for a, task in targets.items() if task in continuation_tasks}
++        if set(excluded) != expected_excluded or set(candidates) != legal - expected_excluded:
++            raise ValueError("guard candidate mismatch")
++        if 24 not in legal or 24 not in candidates:
++            raise ValueError("NOOP not retained")
++        probs = row["probabilities"]
++        if len(probs) != 25 or [p["action"] for p in probs] != list(range(25)):
++            raise ValueError("probability identity mismatch")
++        values = [float(p["probability"]) for p in probs]
++        if any(not math.isfinite(p) or p < 0 for p in values) or abs(sum(values)-1) > 1e-5:
++            raise ValueError("probability normalization")
++        for i, p in enumerate(probs):
++            if bool(p["legal"]) != bool(mask[i]) or (i not in legal and values[i] != 0):
++                raise ValueError("probability mask mismatch")
++        original = max(legal, key=lambda a: (values[a], -a))
++        final = max(candidates, key=lambda a: (values[a], -a))
++        if (original, final) != (row["original_action"], row["final_action"]):
++            raise ValueError("selection mismatch")
++        if ([p["action"] for p in probs if p["selected"]] != [final]
++                or [p["action"] for p in probs if p["original_argmax"]] != [original]
++                or row["final_probability"] != values[final]
++                or row["original_probability"] != values[original]
++                or bool(row["triggered"]) != (original != final)):
++            raise ValueError("selection metadata mismatch")
++    if set(steps) != set(expected):
++        raise ValueError("missing branch")
++    for branch, numbers in steps.items():
++        if sorted(numbers) != list(range(1, len(numbers)+1)) or len(numbers) > expected[branch]["max_steps"]:
++            raise ValueError("step continuity/cap mismatch")
++    return {"unique_decisions": len(seen), "branches": len(steps), "contract_mismatches": 0}
++
++
++def aggregate(rows: list[dict[str, Any]]) -> dict[str, Any]:
++    projections = [decision_projection(row) for row in rows]
++    by_parent_repeat: dict[tuple[str, int], list[dict[str, Any]]] = defaultdict(list)
++    by_parent: dict[str, list[dict[str, Any]]] = defaultdict(list)
++    for row in projections:
++        by_parent_repeat[(row["parent_id"], row["repeat"])].append(row)
++        by_parent[row["parent_id"]].append(row)
++
++    def summary(items: list[dict[str, Any]]) -> dict[str, Any]:
++        return {
++            "decision_count": len(items),
++            "category_counts": count_map(item["category"] for item in items),
++            "non_noop_candidate_windows": sum(bool(item["non_noop_candidates_after_guard"]) for item in items),
++            "multi_non_noop_windows": sum(item["category"] == "two_or_more_non_noop" for item in items),
++            "one_non_noop_windows": sum(item["category"] == "one_non_noop" for item in items),
++            "noop_only_windows": sum(item["category"] == "noop_only" for item in items),
++            "empty_anomaly_windows": sum(item["category"] == "empty_anomaly" for item in items),
++            "noop_retained_count": sum(item["noop_retained"] for item in items),
++            "original_final_changed_count": sum(item["original_vs_final_changed"] for item in items),
++            "guard_triggered_count": sum(item["guard_triggered"] for item in items),
++        }
++
++    return {
++        "schema": "world-increment-decision-space/1.0.0",
++        "source": {
++            "ledger": str(LEDGER),
++            "ledger_sha256": sha256(LEDGER),
++            "scope": "H-005 observed development data; not validation or heldout",
++        },
++        "all_decisions": summary(projections),
++        "by_parent_repeat": {
++            f"{parent}|repeat-{repeat}": summary(items)
++            for (parent, repeat), items in sorted(by_parent_repeat.items())
++        },
++        "by_parent": {parent: summary(items) for parent, items in sorted(by_parent.items())},
++        "decisions": projections,
++    }
++
++
++def identity_index() -> dict[str, Any]:
++    paths = {
++        "checkpoint": CHECKPOINT,
++        "native_joint_gppo": SOURCE_ROOT / "gppo_world" / "joint_gppo.py",
++        "native_joint_training": SOURCE_ROOT / "gppo_world" / "joint_training.py",
++        "native_m10_training": SOURCE_ROOT / "gppo_world" / "m10_training.py",
++        "native_environment": SOURCE_ROOT / "gppo_world" / "m10_environment.py",
++        "corrected_runner": RUNNER,
++        "historical_probe_helper": HELPER,
++        "guard": GUARD,
++        "decision_ledger": LEDGER,
++        "step_vector_rewards": STEP_REWARDS,
++        "branch_results": BRANCH_RESULTS,
++        "h005_result_summary": FINAL / "result-summary.json",
++        "h005_paired_results_compact": FINAL / "paired-results-compact.json",
++        "h005_parent_results": FINAL / "parent-results.json",
++        "h005_budget_reconciliation": FINAL / "budget-reconciliation.json",
++        "formal_budget_sqlite": BUDGET,
++        "budget_readonly_check": OUT_DEFAULT / "budget-readonly-check.json",
++        "this_analyzer": WORKTREE / "tools" / "analyze_world_increment_preflight_20260923.py",
++        "this_test": WORKTREE / "tests" / "test_world_increment_preflight_20260923.py",
++        "source_diff": OUT_DEFAULT / "source-diff.patch",
++        "native_public_view": SOURCE_ROOT / "gppo_world" / "task_policy_view.py",
++        "native_training_runner": SOURCE_ROOT / "tools" / "run_event_trigger_aware_gppo.py",
++        "h005_source_identities": H005 / "source-input-identities.json",
++        "h005_reviewed_authorization": H005 / "reviewed-authorization.json",
++        "h005_protocol": H005 / "protocol.json",
++        "h005_branch_manifest": H005 / "branch-manifest.json",
++        "h005_analysis_contract": H005 / "analysis-and-stop-rules.json",
++        "h005_final_report": FINAL / "report.md",
++        "h005_reconciliation_source": FINAL / "reconcile_budget_status.py",
++        "h005_final_manifest": FINAL / "final-artifact-manifest.json",
++        "h005_remote_receipt": Path(r"E:\Z博士\research-reviews\ackguard-paired-result-005\final-remote-verification.json"),
++    }
++    result: dict[str, Any] = {"schema": "world-increment-source-identity/1.0.0", "files": {}}
++    for name, path in paths.items():
++        if not path.exists():
++            result["files"][name] = {"path": str(path), "exists": False}
++            continue
++        result["files"][name] = {"path": str(path), "exists": True, "bytes": path.stat().st_size, "sha256": sha256(path)}
++    prior = json.loads((H005 / "source-input-identities.json").read_text(encoding="utf-8"))
++    config = prior["runtime_dependencies"]["config"]
++    config_path = Path(config["path"])
++    if sha256(config_path) != config["sha256"]:
++        raise ValueError("H005 config changed")
++    result["files"]["resolved_config"] = dict(config, verification="current bytes match H005 pinned config")
++    snapshot = prior["historical_inputs"]["prefix_snapshots"]
++    result["files"]["prefix_snapshots"] = dict(snapshot, verification="reused H005 identity; no deserialization or rehash this review")
++    result["checkpoint_contents"] = "policy and world weights share the pinned P_train last-recovery.pt; loader strict-loads both; not a separate latent adapter"
++    for key, expected in prior["runtime_dependencies"].items():
++        if key in ("corrected_runner", "guard", "historical_helper") and sha256(Path(expected["path"])) != expected["sha256"]:
++            raise ValueError("frozen H005 runtime identity changed: " + key)
++    if result["files"]["checkpoint"]["sha256"] != prior["fixed_checkpoint_sha256"]:
++        raise ValueError("checkpoint identity mismatch")
++    return result
++
++
++def static_dataflow() -> dict[str, Any]:
++    return {
++        "schema": "world-increment-dataflow/1.0.0",
++        "architecture": "native historical M10 25-action joint preference policy; frozen P_train seed-1101 checkpoint",
++        "steps": [
++            {
++                "stage": "public_policy_encode",
++                "source": "source-snapshot/gppo_world/joint_gppo.py:100-101,125-128",
++                "inputs": ["public observation tensor", "policy hidden"],
++                "outputs": ["features", "pair_messages", "next_policy_hidden"],
++                "direct_actor_use": "features and pair_messages enter policy logits",
++            },
++            {
++                "stage": "world_candidate_prediction",
++                "source": "source-snapshot/gppo_world/joint_gppo.py:131-185",
++                "inputs": ["policy features", "world hidden", "public graph relations", "public action mask"],
++                "outputs": ["policy_feature", "vector_reward", "task_consequence", "event probabilities", "by_action hidden"],
++                "direct_actor_use": "candidate feature row is assembled for each of 25 actions",
++            },
++            {
++                "stage": "candidate_actor_logit_path",
++                "source": "source-snapshot/gppo_world/joint_gppo.py:103-120",
++                "inputs": ["candidate features [B,25,17]", "policy features", "pair messages", "preference", "public mask"],
++                "outputs": ["masked action distribution", "state value"],
++                "direct_actor_use": "candidate_actor(candidate_features) is added directly to logits before masking",
++            },
++            {
++                "stage": "native_runner_probe",
++                "source": "tools/run_replan_value_experiment.py:205-215",
++                "inputs": ["frozen policy", "frozen world", "saved public observation", "policy/world hidden"],
++                "outputs": ["all-action probabilities", "original action", "by_action", "next policy hidden"],
++                "direct_actor_use": "deterministic action is argmax of evaluation distribution",
++            },
++            {
++                "stage": "selected_action_state_progression",
++                "source": "tools/run_replan_value_experiment.py:218-222; tools/run_ack_known_task_guard_corrected_20260922.py:2221-2222",
++                "inputs": ["selected action", "by_action hidden"],
++                "outputs": ["next policy hidden", "next world hidden"],
++                "direct_actor_use": "future decision state only; not a second same-step action score",
++            },
++        ],
++        "classification": {
++            "global_latent_actor_residual": "not used by this native H-005 joint path; do not substitute T-05 adapter evidence",
++            "candidate_wise_consequence": "yes, native world outputs are action-conditioned and candidate rows enter candidate_actor logits",
++            "world_state_progression": "yes, selected by_action hidden is carried to the next decision",
++            "auxiliary_training": "world heads/losses are training concerns; H-005 runtime was frozen eval-only with world_updates=0",
++        },
++        "saved_evidence_limit": "H-005 stores probabilities and selected hidden digests, but not candidate feature rows or per-component candidate logits; old rows cannot identify the world contribution numerically.",
++        "public_provenance": "native m10_environment._observation:796-864 constructs nodes from bridge.observe public view; graph relations use public positions, visibility, public mask and public task field. Event rows are received public records. Private assignment/lease/future schedule must not enter intervention or guard.",
++        "candidate_column_layout": {"0:8":"policy_feature", "8:10":"vector_reward", "10:12":"task_consequence", "12:17":"sigmoid(event_logits)"},
++        "non_actor_outputs": "next_state is not in the17feature row; state vector critic does not take candidate rows; selected by_action hidden advances future recurrent state",
++        "training_limit": "inference feature suppression cannot remove historical shared representation or auxiliary-loss training effects",
++    }
++
++
++def protocol() -> dict[str, Any]:
++    plan = {
++        "schema": "world-increment-preflight-protocol/1.0.0",
++        "status": "preflight_complete_formal_evaluation_not_authorized",
++        "decision": "A_scoped_event_feature_intervention",
++        "decision_reason": {
++            "A": "The native candidate-conditioned world output is added to actor logits and 185/279 guard decisions retain at least one non-NOOP candidate, including 178/279 with at least two.",
++            "C": "The saved evidence has no candidate feature rows, and the source provides no trained or contract-defined neutral value for the non-event world channels; a zero-all-features arm would be an ungrounded OOD no-world ablation.",
++        },
++        "research_scope": "H-005 observed W1 development matrix only; no validation/heldout claim",
++        "arms": {
++            "normal": "guard enabled, frozen world predict_all_candidates(use_events=True)",
++            "event_features_off": "same frozen world and policy, predict_all_candidates(use_events=False); only five event-probability feature columns are zeroed by the existing API",
++        },
++        "interpretation_limit": "This is sensitivity to the event-feature subvector, not a no-world-model or net world-model ablation. No justified neutral value exists for the remaining policy_feature/vector_reward/task_consequence channels.",
++        "held_constant": [
++            "guard source and ACK/continuation public-state rule",
++            "policy and world checkpoint weights",
++            "public mask and action mapping",
++            "communication, ACK, lease, fencing, environment, and reward contracts",
++            "preference (0.8,0.2), reward scales (0.5,1.0), gamma 0.99, termination",
++            "parent/repeat/exogenous keys and deterministic action selection",
++        ],
++        "required_new_work": {
++            "branches": 48,
++            "new_environment_step_worst_case": 768,
++            "model_forward": "one policy/world probe per decision in each arm; exact count observed at runtime",
++            "updates": 0,
++            "existing_H005_trajectory_reuse": "not assumed; both arms require new execution unless a separate exact interface/state/randomness compatibility gate is approved",
++        },
++        "pre_registered_analysis": {
++            "primary": "normal minus event_features_off utility under (0.8,0.2)",
++            "aggregation": "mean repeats within parent, then equal-weight 8-parent macro mean",
++            "uncertainty": "parent-cluster bootstrap 10,000 replicates, seed 20260923",
++            "secondary": ["action ranking/selected action", "command acceptance/rejection/task_unavailable", "on-time physical/host completion", "energy", "NOOP retention", "guard changes", "resource counts"],
++        },
++        "stop_conditions": [
++            "identity/hash/config mismatch",
++            "any illegal action, guard/mask mismatch, state contamination, or missing world output",
++            "missing reward/termination/branch identity labels",
++            "budget unknown or unresolved final pending, duplicate/partial branch, or nonzero update counter",
++        ],
++        "authorization_pending": [
++            "formal dynamic execution approval",
++            "same SQLite future limit proposal 1067=299 already spent+768 new, increase663; no write in this preflight",
++            "acceptance of event-only sensitivity interpretation and its OOD limitation",
++        ],
++    }
++    plan["neutral_value_basis"] = {
++        "interface": "native predict_all_candidates(use_events=False) zeros columns12:17",
++        "not_claimed": "zero is not a calibrated no-event prediction or training-distribution neutral point",
++        "training_limit": "P_train runner uses use_events=True; no evidence this frozen policy was trained on event-zero candidate rows",
++        "interpretation": "event-feature input suppression sensitivity only; auxiliary training effects and first12 world features remain",
++    }
++    plan["same_input_invariants"] = [
++        "identical public obs, preference, policy/world hidden, masks and graph relations",
++        "identical raw world outputs, by_action hidden, next_policy_hidden and candidate columns0:12",
++        "only actor-facing event columns12:17 differ; by_action remains unmodified",
++        "identical guard and deterministic argmax with smallest-action tie break, retaining legal NOOP",
++        "after action divergence later states may legitimately differ; never force cross-trajectory step pairing",
++    ]
++    plan["pre_registered_analysis"].update({
++        "utility": "sum(k=0..T-1) 0.99**k * (0.8*0.5*r_task[k]+0.2*1.0*r_energy[k])",
++        "r_task": "(new_completed-new_expired)/task_capacity; native float32 vector_reward",
++        "r_energy": "-used_energy/(uav_count*configured_initial_energy); native float32 vector_reward",
++        "discount_boundary": "k=0 at first restored decision; no pre-prefix return and no value bootstrap at native termination",
++        "ci": "mean three paired repeats per parent; resample eight parent means with replacement10000 times using random.Random(20260923); percentile0.025/0.975 with linear interpolation",
++        "decision_rule": "CI lower>0 supports normal advantage under this intervention; upper<0 supports degradation; otherwise inconclusive, including exact null",
++        "tie": "abs(paired difference)<=1e-6 is descriptive only; retain unrounded data in inference",
++        "ranking": "compare only on identical saved inputs; dynamic trajectory outcomes paired by parent/repeat, not by post-divergence timepoint",
++        "task_cohorts": "report all-task totals and original manifest task_ids cohort separately; physical and host deadlines measured by native outcomes",
++        "no_selection": "no preference changes, dropping parents/repeats, significance retries or heldout access",
++    })
++    plan["execution_order"] = {
++        "pair_order": "parent00..07 ascending then repeat0..2",
++        "arm_order": "normal first if (parent index+repeat)%2==0, event_features_off first otherwise;12pairs each order",
++        "isolation": "fresh deep copy per branch of same frozen prefix and hidden; same pair exogenous key and native RNG restoration; assert source snapshot digest unchanged",
++        "gate": "complete both arms of first pair and compare each to its own pre-state and static contract; never compare two same-arm branches as a dynamic control pair",
++        "termination": "native horizon18, prefix time2, interval1, max16steps; cap before native termination is technical stop, not truncated reward",
++        "no_retry": "record any failure and actual cost; no replacement branch, automatic retry or refund",
++    }
++    plan["required_logs"] = [
++        "paired identity, input/source/checkpoint hashes, exogenous keys and state/RNG digests",
++        "raw25x17candidate features and actor-facing features, five event columns before/after intervention",
++        "base/preference/candidate component logits, full probabilities, mask, guard candidates, selected action",
++        "selected by_action output and hidden digests, policy hidden, native feedback, ACK/continuation submissions",
++        "per-step vector reward and independent raw increments, termination and native physical/host outcome times",
++        "reservation before env.step, step association and finalization status; final SQLite verified reconciliation",
++    ]
++    plan["required_new_work"]["model_forward"] = {
++        "trajectory_policy_encodes_max":768, "trajectory_world_candidate_batches_max":768,
++        "candidate_rows_per_world_batch":25, "trajectory_actor_readouts_max":768,
++        "same_input_first_pair_gate_extra_encodes":0,"same_input_first_pair_gate_extra_world_batches":0,
++        "same_input_first_pair_gate_extra_actor_readouts_max":2,
++        "gate_detail":"at first decision in each arm reuse same encoded/world output for both actor-facing event settings; no extra hidden advance or env.step",
++        "cost":"record actual calls and perf_counter wall time separately for setup/model/environment; calls are not total compute cost",
++    }
++    plan["budget_proposal"] = {
++        "status":"pending_not_applied","sqlite":str(BUDGET),"current_limit":404,
++        "current_verified":299,"current_remaining":105,"new_stage_cap":768,
++        "proposed_total_limit":1067,"proposed_limit_increase":663,
++        "new_database":False,"use_existing105_now":False,"updates_cap":0,
++        "note":"only explicit later approval may extend same ledger; preserve all old charges and records",
++    }
++    plan["stop_conditions"].append("unexpected unresolved pending after finalization; normal in-flight pre-step reservation is not itself a failure")
++    plan["status"] = "reviewed_development_protocol_proposal_not_execution_authorization"
++    return plan
++
++
++def report(decision_space: Mapping[str, Any], plan: Mapping[str, Any], identity: Mapping[str, Any]) -> str:
++    all_counts = decision_space["all_decisions"]["category_counts"]
++    sqlite_hash = identity["files"].get("formal_budget_sqlite", {}).get("sha256", "missing")
++    lines = [
++        "# H-20260923 世界模型增量可检验性预检",
++        "",
++        "本轮为零环境步静态审查，范围是 H-005 已观察的 W1 开发矩阵。未加载 checkpoint、未构造环境、未调用 reset/env.step、未进行模型前向或 hidden replay，未修改 SQLite。H-005 数据不是 validation/heldout。",
++        "",
++        "## 判定",
++        "",
++        "判定为 **A（限定为 event-feature 输入关闭敏感性）**，完整 no-world-model 对照仍缺乏依据，不属于该 A 判定的范围。原生 H-005 路径存在可隔离的 candidate-conditioned world 到 actor logits 接口；guard 后仍有足够选择空间。现有保存记录没有逐动作 candidate features 或分量 logits，因此旧记录只能证明选择空间，不能归因旧动作排序。",
++        "",
++        "世界模型不应被称为全局 latent actor residual：H-005 使用 `ActionConditionedTemporalWorldModel` 的 25-action candidate rows，并在 `JointGraphPreferencePolicy.evaluate_encoded` 中直接进入 `candidate_actor`。selected `by_action` hidden 只负责下一决策状态推进。",
++        "",
++        "## 决策空间",
++        "",
++        f"H-005 immutable decision ledger 共 **{decision_space['all_decisions']['decision_count']}** 行、24 个分支。guard 后分类为：仅 NOOP **{all_counts.get('noop_only', 0)}**，恰一个非 NOOP **{all_counts.get('one_non_noop', 0)}**，至少两个非 NOOP **{all_counts.get('two_or_more_non_noop', 0)}**，空集合异常 **{all_counts.get('empty_anomaly', 0)}**。含至少一个非 NOOP 的窗口为 **{decision_space['all_decisions']['non_noop_candidate_windows']}**；NOOP 在 **{decision_space['all_decisions']['noop_retained_count']}/{decision_space['all_decisions']['decision_count']}** 行保留。原始动作与 guard 最终动作不同 **{decision_space['all_decisions']['original_final_changed_count']}** 行，guard 触发 **{decision_space['all_decisions']['guard_triggered_count']}** 行。",
++        "",
++        "| parent | decisions | NOOP-only | one non-NOOP | >=2 non-NOOP | guard changed |",
++        "|---|---:|---:|---:|---:|---:|",
++    ]
++    for parent, summary in sorted(decision_space["by_parent"].items()):
++        counts = summary["category_counts"]
++        lines.append(
++            f"| {parent} | {summary['decision_count']} | {counts.get('noop_only', 0)} | {counts.get('one_non_noop', 0)} | {counts.get('two_or_more_non_noop', 0)} | {summary['original_final_changed_count']} |"
++        )
++    lines.extend([
++        "",
++        "公开合法候选、执行器接受和实际完成是三个不同层次。本表只统计保存的公开 mask 与 guard 候选集合；没有对未执行动作推断 accepted、物理完成或 host confirmation。",
++        "",
++        "## 数据通路",
++        "",
++        "- `joint_gppo.py:100-101,125-128`：public observation 与 policy hidden 产生 actor features、pair messages 和 next policy hidden。",
++        "- `joint_gppo.py:131-185`：world 对每个 action 使用 action embedding、relation 和 world hidden，产生 policy feature、vector reward、task consequence、event probability 与 by-action hidden；17 维 candidate row 由此组成。",
++        "- `joint_gppo.py:103-120`：`candidate_actor(candidate_features)` 直接加到 base/preference logits，再使用公开 mask 得到 action distribution。",
++        "- `run_replan_value_experiment.py:205-215`：probe 执行上述完整路径并记录 probabilities/original action/by_action；`:218-222` 选择 action 对应 hidden。",
++        "- corrected runner `run_ack_known_task_guard_corrected_20260922.py:2221-2222`：selected world hidden 只推进下一决策状态。",
++        "",
++        "## 可登记协议",
++        "",
++        "可登记两个新执行臂：`normal` 使用 `predict_all_candidates(use_events=True)`；`event-features-off` 使用已有 API 的 `use_events=False`，只将五个 event-probability feature 列置零。两臂固定同一 guard、checkpoint、mask、通信/ACK/lease/fencing、奖励、偏好、gamma、终止、父场景和外生 repeat。该干预只能解释为 event-feature 敏感性，不能解释为完整世界模型净收益，因为其余 policy_feature/vector_reward/task_consequence 没有训练定义的中性值。",
++        "",
++        "正式执行提案为 48 个新分支（8 parent × 3 repeat × 2 arm），最坏新增环境步 **768**（每分支16步）；optimizer/world/offline update 必须为0。H-005 的轨迹不自动复用为新臂对照，需另行通过 exact interface/state/randomness gate。permutation 不列入正式臂。",
++        "",
++        "## 资源与停止",
++        "",
++        f"本轮 `env.step=0`、reset/replay=0、model forward=0、optimizer/world/offline update=0、新增 attempt=0。正式账本只读状态为 H-005 总上限404、reserved=verified=299、unknown=0、pending=0，剩余105；`PRAGMA integrity_check=ok`，当前 SQLite SHA-256 为 `{sqlite_hash}`，与 H-005 最终权威摘要一致。本轮不使用剩余额度、不建替代账本。身份不符、非法动作、mask/guard mismatch、状态污染、标签缺失、预算 unknown/pending 或任一更新计数非零时立即停止。",
++        "",
++        "## 证据边界",
++        "",
++        "H-005 的 full probability ledger、public observation digest、policy/world hidden digest 和 selected-action hidden digest 已保留；但没有保存 candidate feature tensor、candidate actor component logits 或未选动作的 outcome。哈希证明身份，不等于可重放 hidden 或 world 归因。",
++        "",
++        "后续方案仍待批准：同一 SQLite 总上限由404提至1067（保留299已用，新增阶段最多768，扩额663），本轮不改库、不使用现有105步。动态执行前仍须完成实施接口检查；A 不证明实际排名改变或收益。",
++    ])
++    return "\n".join(lines) + "\n"
++
++
++def evidence_index(decision_space: Mapping[str, Any], plan: Mapping[str, Any], identity: Mapping[str, Any]) -> dict[str, Any]:
++    return {
++        "schema": "world-increment-preflight-evidence-index/1.0.0",
++        "handoff_id": "H-20260923-WORLD-INCREMENT-PREFLIGHT-006",
++        "status": "preflight_complete_dynamic_not_authorized",
++        "decision": plan["decision"],
++        "resource_counts": {
++            "env_step": 0,
++            "reset_replay": 0,
++            "model_forward": 0,
++            "optimizer_updates": 0,
++            "world_updates": 0,
++            "offline_updates": 0,
++            "new_formal_attempt": 0,
++            "formal_budget_limit": 404,
++            "formal_budget_reserved": 299,
++            "formal_budget_verified": 299,
++            "formal_budget_unknown": 0,
++            "formal_budget_pending": 0,
++            "formal_budget_remaining": 105,
++        },
++        "inputs": identity,
++        "outputs": {
++            "decision_space": "decision-space.json",
++            "dataflow": "dataflow.json",
++            "protocol": "protocol.json",
++            "report": "report.md",
++            "budget_readonly_check": "budget-readonly-check.json",
++            "test_output": "test-output.txt",
++            "source_diff": "source-diff.patch",
++        },
++        "decision_space_summary": decision_space["all_decisions"],
++        "limitations": [
++            "H-005 is observed development data, not validation/heldout.",
++            "No candidate feature rows or per-component world logits are saved.",
++            "No unexecuted action acceptance or outcome is inferred.",
++            "event-features-off is sensitivity analysis, not a total no-world-model baseline.",
++        ],
++    }
++
++
++def authorization_request(plan: Mapping[str, Any], identity: Mapping[str, Any]) -> str:
++    sqlite_hash = identity["files"].get("formal_budget_sqlite", {}).get("sha256", "missing")
++    return "\n".join([
++        "# H-20260923 世界模型增量评价授权申请",
++        "",
++        "本文件只申请后续动态执行，不代表已获批。本轮预检已停止，未调用环境或模型。",
++        "",
++        "申请批准以下固定两臂：",
++        "",
++        "1. `normal`：guard 开启，冻结 world `predict_all_candidates(use_events=True)`。",
++        "2. `event-features-off`：同一冻结 world/policy/guard，调用已有 `use_events=False`，仅将 event-probability 五列置零。该臂是 event-feature 敏感性，不是完整 no-world-model 对照。",
++        "",
++        "两臂均使用 H-005 的 8 个 W1 development parent × 3 个外生 repeat；新执行 48 个分支，最坏 768 个环境步。两臂不自动复用 H-005 轨迹。保持 checkpoint、源码、mask、动作映射、通信/ACK/lease/fencing、奖励、偏好、gamma、终止和外生键完全一致。",
++        "",
++        "主指标为 normal 减 event-features-off 的原登记偏好效用；每 parent 先平均 repeat，再 8 parent 等权；父场景级 bootstrap 10,000 次，seed 20260923。次指标包括动作排序/选择、接受/拒绝/task_unavailable、物理/主机完成、能耗、NOOP、guard 变化和调用计数。",
++        "",
++        "批准前置条件：",
++        "",
++        "- 仅提出同一 SQLite 总上限404→1067（299已用+768新阶段；增加663）的待批准方案，不新建替代账本；本轮不修改 SQLite（当前 SHA-256 `" + sqlite_hash + "`）。",
++        "- 确认 event-only 敏感性解释及其不能代表完整 world-model 净收益的限制。",
++        "- 首分支检查 exact identity、mask、guard、snapshot/hidden 状态隔离和世界模型输出齐全；失败立即停止，不重试、不退款。",
++        "- optimizer/world/offline update 必须为 0；unknown/未能最终核销的pending、非法动作、状态污染、标签缺失或重复/部分分支均立即停止。",
++        "",
++        "不申请 permutation 臂、不申请训练、不申请 validation/heldout、不申请当前剩余额度使用。",
++        "",
++    ])
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--out", type=Path, default=OUT_DEFAULT)
++    args = parser.parse_args()
++    rows = read_jsonl(LEDGER)
++    manifest = json.loads((H005 / "branch-manifest.json").read_text(encoding="utf-8"))["rows"]
++    contract_check = validate_rows(rows, manifest)
++    if len(rows) != 279 or len({row["branch_id"] for row in rows}) != 24:
++        raise SystemExit("H-005 ledger does not contain the expected immutable 279 rows / 24 branches")
++    args.out.mkdir(parents=True, exist_ok=True)
++    decision_space = aggregate(rows)
++    identity = identity_index()
++    dataflow = static_dataflow()
++    plan = protocol()
++    paired_manifest = []
++    for row in sorted(manifest, key=lambda r: (r["parent_id"], r["repeat"])):
++        parent_index = int(row["parent_id"].split("-")[-1])
++        arms = ["normal", "event_features_off"]
++        if (parent_index + row["repeat"]) % 2:
++            arms.reverse()
++        for arm in arms:
++            paired_manifest.append({"order":len(paired_manifest)+1, "pair_id":row["branch_id"].rsplit("|",1)[0],
++                "branch_id":row["branch_id"].rsplit("|",1)[0]+"|"+arm, "arm":arm,
++                "parent_id":row["parent_id"], "repeat":row["repeat"], "condition":"W1", "model_seed":1101,
++                "prefix_id":row["prefix_id"], "exogenous_key":row["historical_exogenous_key"],
++                "max_steps":16,"status":"proposal_not_attempt"})
++    for filename, obj in (("input-contract-check.json", contract_check), ("paired-manifest-proposal.json", paired_manifest),
++                          ("decision.json", {"verdict":"A", "scope":"event-feature input suppression sensitivity", "benefit_demonstrated":False, "execution_authorized":False})):
++        (args.out / filename).write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
++    (args.out / "decision-space.json").write_text(json.dumps(decision_space, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
++    (args.out / "identity-index.json").write_text(json.dumps(identity, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
++    (args.out / "dataflow.json").write_text(json.dumps(dataflow, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
++    (args.out / "protocol.json").write_text(json.dumps(plan, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
++    report_text = report(decision_space, plan, identity)
++    report_text += "\n## 集中审查补充\n\n最终单一判定 A，仅限事件特征关闭敏感性。置零依据是既有接口约定，不是无事件的校准预测，也未证明处于该 checkpoint 的训练分布。P_train 源码使用 use_events=True，须登记分布外风险。其余12维、同输入下原始 world输出、by_action及policy hidden保持相同；后续动作分叉可导致后续hidden正常分叉。next_state不直接进入17维actor特征，辅助训练贡献未被隔离。\n\n本次新增严格输入检查覆盖279个唯一决策、24条登记分支、外生键、mask、候选减排除、公开任务映射、概率及argmax与NOOP保留。保存metadata的一致性不等同于重新证明未保存的公开观测内容。测试不导入模型或环境。\n\n完整两臂清单和顺序见 paired-manifest-proposal.json；主效用为从恢复后首步k=0开始的sum(0.99^k*(0.4*r_task+0.2*r_energy))，原生终止，无终端价值补项。8父场景等权，父级10000次bootstrap，seed20260923，线性分位点0.025/0.975。所有场景已观察，属于开发性敏感性评价。\n\n模型调用提案：每轨迹决策1次policy encode、1次world25候选batch、1次actor readout，各最多768；首对相同输入门复用已有编码/world输出，最多额外2次actor readout。保存完整17维特征、分量logits、概率和hidden摘要；同输入差异与分叉后轨迹比较分开。详细门控、费用计数、停止规则以protocol.json为准，全部尚未执行。\n"
++    (args.out / "report.md").write_text(report_text, encoding="utf-8")
++    (args.out / "evidence-index.json").write_text(json.dumps(evidence_index(decision_space, plan, identity), ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
++    (args.out / "authorization-request.md").write_text(authorization_request(plan, identity), encoding="utf-8")
++    (args.out / "decision-space.json.sha256").write_text(sha256(args.out / "decision-space.json") + "  decision-space.json\n", encoding="ascii")
++    hash_targets = [
++        "report.md", "protocol.json", "dataflow.json", "decision-space.json", "identity-index.json", "evidence-index.json", "authorization-request.md",
++        "decision-space.json.sha256",
++        "input-contract-check.json", "paired-manifest-proposal.json", "decision.json",
++    ]
++    hash_targets.extend(name for name in ("budget-readonly-check.json", "test-output.txt", "source-diff.patch") if (args.out / name).exists())
++    (args.out / "hashes.json").write_text(
++        json.dumps({name: {"bytes": (args.out / name).stat().st_size, "sha256": sha256(args.out / name)} for name in hash_targets}, ensure_ascii=False, indent=2, sort_keys=True),
++        encoding="utf-8",
++    )
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+--- /dev/null
++++ b/tests/test_world_increment_preflight_20260923.py
+@@ -0,0 +1,87 @@
++from __future__ import annotations
++
++import importlib.util
++import copy
++import json
++from pathlib import Path
++import pytest
++
++
++ROOT = Path(__file__).resolve().parents[1]
++SCRIPT = ROOT / "tools" / "analyze_world_increment_preflight_20260923.py"
++spec = importlib.util.spec_from_file_location("world_increment_preflight", SCRIPT)
++assert spec is not None and spec.loader is not None
++module = importlib.util.module_from_spec(spec)
++spec.loader.exec_module(module)
++
++
++def test_candidate_categories_preserve_noop_and_empty_contract():
++    category, candidates, non_noop, noop = module.candidate_class({"candidate_actions": [0, 7, 24]})
++    assert category == "two_or_more_non_noop"
++    assert candidates == [0, 7, 24]
++    assert non_noop == [0, 7]
++    assert noop is True
++    assert module.candidate_class({"candidate_actions": [24]})[0] == "noop_only"
++    assert module.candidate_class({"candidate_actions": []})[0] == "empty_anomaly"
++
++
++def test_identity_and_step_projection_are_read_only_metadata():
++    row = {
++        "branch_id": "parent-00|W1|seed-1101|prefix-0|repeat-0|guard-on",
++        "step": 1,
++        "candidate_actions": [0, 6, 24],
++        "legal_mask": [int(i in (0, 1, 6, 24)) for i in range(25)],
++        "excluded_actions": [1],
++        "original_action": 1,
++        "final_action": 0,
++        "triggered": True,
++        "original_probability": 0.5,
++        "final_probability": 0.4,
++    }
++    projected = module.decision_projection(row)
++    assert projected["parent_id"] == "parent-00"
++    assert projected["repeat"] == 0
++    assert projected["original_vs_final_changed"] is True
++    assert projected["noop_retained"] is True
++    assert projected["evidence_limits"]["candidate_features_saved"] is False
++
++
++def test_protocol_is_event_sensitivity_not_total_world_ablation():
++    plan = module.protocol()
++    assert plan["decision"].startswith("A_scoped_event_feature_intervention")
++    assert plan["required_new_work"]["branches"] == 48
++    assert plan["required_new_work"]["new_environment_step_worst_case"] == 768
++    assert "not a no-world-model" in plan["interpretation_limit"]
++
++
++def saved_fixture():
++    row = json.loads(module.LEDGER.read_text(encoding="utf-8").splitlines()[0])
++    manifest = json.loads((module.H005 / "branch-manifest.json").read_text(encoding="utf-8"))["rows"]
++    return row, [m for m in manifest if m["branch_id"] == row["branch_id"]]
++
++
++def test_saved_public_contract_and_readonly_validation():
++    row, manifest = saved_fixture()
++    original = copy.deepcopy(row)
++    assert module.validate_rows([row], manifest)["contract_mismatches"] == 0
++    assert row == original
++
++
++@pytest.mark.parametrize("fault", ["duplicate", "illegal", "noop", "identity", "selection", "missing"])
++def test_invalid_evidence_fails_closed(fault):
++    row, manifest = saved_fixture()
++    rows = [row]
++    if fault == "duplicate":
++        rows.append(copy.deepcopy(row))
++    elif fault == "illegal":
++        row["candidate_actions"].append(2)
++    elif fault == "noop":
++        row["candidate_actions"].remove(24)
++    elif fault == "identity":
++        row["action_task_ids"][0][1] = "wrong-task"
++    elif fault == "selection":
++        row["final_action"] = 24
++    else:
++        del row["candidate_actions"]
++    with pytest.raises((ValueError, KeyError)):
++        module.validate_rows(rows, manifest)

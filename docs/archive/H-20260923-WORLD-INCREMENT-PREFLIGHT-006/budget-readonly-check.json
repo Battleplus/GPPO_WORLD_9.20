@@ -1,0 +1,34 @@
+{
+  "integrity_check": "ok",
+  "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+  "stages": [
+    {
+      "limit_amount": 404,
+      "reserved": 299,
+      "stage": "environment_steps",
+      "unknown": 0,
+      "verified": 299
+    },
+    {
+      "limit_amount": 0,
+      "reserved": 0,
+      "stage": "offline_updates",
+      "unknown": 0,
+      "verified": 0
+    },
+    {
+      "limit_amount": 0,
+      "reserved": 0,
+      "stage": "optimizer_calls",
+      "unknown": 0,
+      "verified": 0
+    },
+    {
+      "limit_amount": 0,
+      "reserved": 0,
+      "stage": "world_updates",
+      "unknown": 0,
+      "verified": 0
+    }
+  ]
+}

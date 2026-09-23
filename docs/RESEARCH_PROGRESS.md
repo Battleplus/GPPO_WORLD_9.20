@@ -1,114 +1,130 @@
-# 统一研究进度
+# 当前最新状态：H-006 零步可检验性审查完成
 
-## 当前任务：修正后 guard 可执行评价协议（第一阶段）
+最终判定 **A，仅限事件特征关闭敏感性**。原生 M10 25-action world 的17维候选特征进入 actor评分；现有use_events=False仅关闭末5维事件输入。这不是完整no-world对照，未证明实际排名改变、世界模型净收益或辅助训练贡献。置零是接口约定，不能认定为训练分布内中性值。
 
-- handoff_id：`H-20260922-ACKGUARD-PROTOCOL-003`。**第一阶段交付 CLOSED；第二阶段未获授权且证据门阻断。**
-- 独立runner、固定24新分支方案、完整概率/selected-hidden/快照隔离/预算故障记录已准备；主代理独立复跑 **81 passed**，仅纯函数、stub和测试账本。原guard和旧runner不变。
-- 历史R **23/24可复用，1/24证据不足**：parent-00/W1/seed-1101/prefix-0/repeat-0/R 的pilot首步摘要与登记prefix摘要不同。尚不能区分摘要schema差异与状态差异，完整矩阵禁止启动，不缩为23对。
-- 旧两条guard/20步保留旧规则证据，不纳入新矩阵；本轮真实环境步、模型前向、所有更新、正式attempt均新增0。
-- 同SQLite仍 **20/384**、unknown=pending=0、integrity=ok；剩364不足新矩阵384最坏步数。未来同账本 **404总上限=旧20+新384** 只是提案，未扩额、未新建账本，authorization仍pending。
-- [最终审查](archive/H-20260922-ACKGUARD-PROTOCOL-003/final-review.md)、[可执行协议](archive/H-20260922-ACKGUARD-PROTOCOL-003/executable-protocol.md)、[真实diff](archive/H-20260922-ACKGUARD-PROTOCOL-003/minimal-diff.patch)、[R逐对摘要](archive/H-20260922-ACKGUARD-PROTOCOL-003/historical-R-compatibility-summary.json)、[独立核验](archive/H-20260922-ACKGUARD-PROTOCOL-003/independent-verification.json)、[归档索引](archive/H-20260922-ACKGUARD-PROTOCOL-003/archive-index.json)。
-- 下一步仅建议零步追溯单个pilot复用项的摘要口径及既有等价证据。不开训练，不重跑，不自动进入阶段二/三。
-- 前单归档：[5dc234391ea41ce51c3603aa3874c4217b775a2f](https://github.com/Battleplus/GPPO_WORLD_9.20/commit/5dc234391ea41ce51c3603aa3874c4217b775a2f)，18文件回读一致。本单最终提交另由远端回读记录保存。
+同guard后的279决策中：NOOP-only94、单非NOOP7、至少两个非NOOP178；全部保留合法NOOP，候选空集合0。279条公开候选/概率/选择合同核对通过；纯测试10passed。多候选不代表未执行动作会被接受或存在收益权衡。
 
+下一步仅提出48新分支（8parent×3repeat×2arm）、最多768环境步的开发性配对方案。两臂normal/event_features_off，固定同一guard、权重、公开mask、外生键、奖励、偏好和hidden推进合同。原SQLite仍299/404，剩105不用；总上限1067（299+768、增加663）仅待批准提案，未改库、未新建替代账本。
 
-## 前单：NOOP 合同修正与历史复用审查
+本轮env.step、reset/replay、模型前向、全部更新和新增attempt均0。H005简单规则基线结论保留；本轮不执行动态评价、训练、validation/heldout或下一阶段。
 
-- handoff_id：`H-20260922-ACKGUARD-NOOP-AUDIT-002`；状态 **CLOSED**，复用判定 **证据不足**。
-- 用户明确授权零环境步最小guard修正；Luna执行，主代理完成后集中审查。未启动动态实验。
-- 合法NOOP保留并参与原概率/tie-break排序；三组纯函数及runner回归 **35 passed**，主代理独立复核通过。
-- 20条历史决策为A=12、B=8、C=0；A仅是保存观测下单步证明，两条首步为B；历史hidden/cache无污染仍not_recorded。两条均不能作为已证新规则轨迹合并分析。
-- 原预算保持 **20/384**，unknown=pending=0；本单环境步、模型前向、全部更新、attempt增量均0。runner未修改，22条未续行，2条未重跑。
-- [最终审查](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/final-review.md)、[报告](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/report.md)、[逐决策证据](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/decision-evidence.json)、[最小diff](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/minimal-diff.patch)、[测试](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/test-output-final.txt)、[哈希索引](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/archive-index.json)。
-- 新guard SHA：`2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a`。
-- 下一步建议另立完整新规则开发矩阵协议，先明确身份、原消费保留和预算归属；不按“补22条”合并旧规则。未自动执行。
-- 前单最终归档：[e1599402607efbed916a1dd697aa16e5a04129b2](https://github.com/Battleplus/GPPO_WORLD_9.20/commit/e1599402607efbed916a1dd697aa16e5a04129b2)，31文件远端回读一致。本单远端提交在完成后记入独立final-remote-verification.json。
+[报告](archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/report.md) · [协议](archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/protocol.json) · [身份](archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/identity-index.json) · [待批准申请](archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/authorization-request.md) · [审查](archive/H-20260923-WORLD-INCREMENT-PREFLIGHT-006/final-review.json)。远端提交和逐文件核验另存本地receipt，仅成功回读后宣布归档完成。
 
+以下为原样保留的历史进度，历史“当前任务”标题不代表最新状态。
 
-## 前单记录（H-20260922-ACKGUARD-RESUME-001）
+---
 
-- 长期目标：GPPO＋世界模型＋事件预测/触发＋偏好学习，用于弱通信 UAV 任务分配；各机制须相对简单基线证明独立贡献。
-- 当前唯一任务：ACK 已知任务基线 runner 修复、原预算有条件续行及证据闭环。
-- handoff_id：`H-20260922-ACKGUARD-RESUME-001`。
-- 规划与审查：主对话当前模型（GPT-6 系列）；执行：自定义 `luna_worker`，`gpt-5.6-luna`，reasoning effort `max`。
-- 状态：**CLOSED（本单技术阻断交付与审查） / NEEDS_USER_DECISION（下一阶段）**。runner 修复及集中审查已完成，27项测试通过；矩阵仍为2/24，未续行。
-- 授权来源：用户当前活动目标明确授权原合同内修复、核验后续行，并授权本独立进度分支的选择性文档归档。默认同意仅限既有明确范围。
-
-## 资源边界
-
-原阶段 SQLite 总上限 384 环境步；最近停止报告 reserved=verified=20、unknown=pending=0，须在执行前读取原账本核验。历史 R 对照 24 条/299 步仅复用。剩余 22 条 guard 分支每条最多 16 步，新增最多 352；不退款、不重跑、不创建替代预算。optimizer/world/offline update 均为 0。
-
-## 来源及身份
-
-- 工作树：`E:\Z博士\9.2日\WORLD-GPPO_9.11-replan-value-20260919-wt`。
-- 阶段：`runs/finite-communication-ack-lease-fix-20260920/ack-known-task-guard-baseline-v1`。
-- 原源码：`E:\Z博士\migration-artifacts\event-trigger-aware-gppo-fair-replication-20260919-v1\source-snapshot`，历史 M10 25-action；不替换为当前有限通信版本或 D-02 17-action。
-- seed-1101 P_train checkpoint SHA-256：`bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a`；其余身份见归档输入清单。
-- [自包含执行单](archive/H-20260922-ACKGUARD-RESUME-001/handoff.md)。
-- [输入索引和 SHA-256](archive/H-20260922-ACKGUARD-RESUME-001/input-index.json)。
-
-## 结论边界
-
-当前只有两条 guard 分支的技术停止证据，不能报告完整矩阵收益。规则测试通过不能替代运行完整性。即使完成，本批仅为同批 W1 开发性证据，不证明世界模型增量、偏好学习成功、独立验证收益或生产可用性。此前 R/K 选择路线维持封存，不重启。
-
-## 状态记录
-
-- DRAFT：历史 runner 修复续行执行单；曾因跨任务发送能力不可用未能转发。
-- APPROVED（2026-09-22）：当前用户活动目标启动本地 `luna_worker` 闭环；主代理与执行者职责已分离。先归档执行单，再允许修复和条件续行。
-- 归档技术停止（2026-09-22 10:50 +08:00）：独立浅克隆成功，远端 main 为 `6aa16410b0e69aaceb7dee0b4d260eaf76d03e02`，目标进度分支未存在。按既有 SSH 签名配置提交时，当前任务的 `ssh-keygen -Y sign` 持续未返回；主代理停止了该任务独属签名子进程，Git 返回 `fatal: failed to write commit object`。未生成新提交，未 push。根因尚不能区分签名交互、代理或密钥可用性；不称为网络或权限确定故障。不关闭签名，不改全局配置；选择性暂存和本地证据保留，状态 `ARCHIVE_PENDING_SIGNATURE`。
-- APPROVED/RUNNING：执行者只读核验无冲突进程、无完成矩阵，21个原制品哈希匹配；原账本384上限、20已确认、unknown/pending=0、integrity=ok。已下发 runner 修复与条件续行执行单。主代理独立精确重算20条原奖励及合法动作、hidden摘要链均通过。
-- BLOCKED（2026-09-22，零环境步主审反例）：mask仅 action 0 和24合法、continuation为空、概率分别0.1/0.9时，冻结 guard 将原NOOP 24改为分配0，且没有任何任务被排除。原20条决策没有发生该覆盖，但后续矩阵可能混入额外“优先分配”干预。用户禁止修改guard，因此主代理停止新增执行，只继续runner修复和具体阻断交付。
-- 归档恢复（2026-09-22）：用户明确提供GitHub认证用于提交。主代理使用官方 `createCommitOnBranch`，未保存凭据、未关闭本机签名。执行单归档提交 [d230cb9fd6e0a30df014e6646d4cfb559c545195](https://github.com/Battleplus/GPPO_WORLD_9.20/commit/d230cb9fd6e0a30df014e6646d4cfb559c545195)，GitHub返回签名verified=true/reason=valid，8个文件逐一远端回读匹配。本机SSH提交失败仍作为历史记录保留。
-- 归档：当前提交为执行前归档；只有远端提交和文件回读核验后才能声称上传成功。验证记录保存在本地审查目录，后续状态追加，不改写历史报告。
-
-## 下一步与禁止事项
-
-完成 runner 修复、零环境步测试、独立证据审查和技术阻断报告。剩余22条不执行。是否允许修改guard以保留合法NOOP，属于超出本单“guard不变”的合同决定，须用户另行明确授权。不得通过临时跳过该反例或事后重定义规则续行。
-
-执行者不做 Git 操作。主代理仅在 `archive/research-progress` 归档文档、报告、最小修复 diff、索引和哈希；不修改 main、不 force push、不创建 Release、不上传权重或原始大制品。下一研究阶段需另立执行单。
-
-## 最终集中审查（2026-09-22）
-
-- 执行及审查完成：原制品21项、新证据21项哈希匹配；主代理独立回归27 passed。
-- 原账本保持384上限、reserved=verified=20、unknown=pending=0、integrity=ok；本单新增环境步、模型前向、全部更新和attempt均为0。历史R对照24条/299步未重跑。
-- 阻断一：guard在存在分配候选时排除合法NOOP，超出仅排除已知占用任务的干预合同。guard未修改，修复建议未应用。
-- 阻断二：原运行基础快照结束后hidden/cache摘要未记录，不能补成无污染证明。旧接口检查曾错误报告通过，已保留并更正为null / insufficient_evidence / passed=false。
-- runner增加核验与防重跑保护；动态resume_run禁用，未实现可运行续行循环。剩余22条不执行，无完整矩阵或效用结论。
-- [主代理最终审查](archive/H-20260922-ACKGUARD-RESUME-001/repair/final-review.md)、[执行报告](archive/H-20260922-ACKGUARD-RESUME-001/repair/final-report.md)、[权威接口勘误](archive/H-20260922-ACKGUARD-RESUME-001/repair/first-pair-interface-check-erratum.json)、[勘误说明](archive/H-20260922-ACKGUARD-RESUME-001/repair/review-erratum.md)。
-- [修复差异](archive/H-20260922-ACKGUARD-RESUME-001/repair/minimal-diff.patch)、[测试输出](archive/H-20260922-ACKGUARD-RESUME-001/repair/test-output.txt)、[归档文件索引](archive/H-20260922-ACKGUARD-RESUME-001/repair/archive-file-index.json)。
-- 前次技术停止提交：[40d9dff1bf95d9ced5d95eaedd90a3fae833466f](https://github.com/Battleplus/GPPO_WORLD_9.20/commit/40d9dff1bf95d9ced5d95eaedd90a3fae833466f)，4个文件远端核验及GitHub签名验证通过。最终归档提交在上传后独立记录于本地final-remote-verification.json。
-- 后续需另立执行单批准guard变更，并明确旧分支复用证据边界；不自动启动环境、新预算或训练。
-- 协作方式：子代理运行期间主代理等待完成，之后批量审查，不轮询实验文件、进程和预算。
-
-## 当前单：R control digest audit（H-20260922-R-CONTROL-DIGEST-AUDIT-004）
-
-- 状态：**CLOSED（零环境步审计完成）**。目标为 `parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R` 的历史 R 初态摘要溯源；未 reset、replay、环境步、模型前向、参数更新或正式 attempt。
-- 根因分类：**A，schema-only**。同一保存的初始公开观测按两个原始摘要合同重算，pilot 摘要 `029fdda5e21097ca33a4fdf738f9a0a5ada2a80d35440e4d3ea9e95100e25a87` 与 historical 摘要 `969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f` 均分别复现；identity mismatch 为空，观测和 label-before 为 `2.0`，label-after 为 `3.0`。
-- 兼容性必须分开报告：原严格字符串门为 **23/24**，目标对仍保留为 strict insufficient；仅对该保存观测使用带身份/时间校验的 schema bridge 后为 **24/24 bridge-qualified R-control reuse**。这不证明 hidden/cache 无污染、corrected guard 轨迹或算法收益。
-- 本单源码差异仅为 corrected runner bridge hook、`r_control_digest_schema_20260922.py` 及其纯测试；真实补丁和独立复算证据均在本单归档目录。当前 runner SHA-256 为 `ef823c2329b9aed8e7422248083e95775d3f5763cc60d7cd98f5e556a723beb5`，补丁 SHA-256 为 `2c46fc2fc18d83d1b3a9de7db7a963833525f81c2f40a52bafbc260a7e2c0603`。
-- 纯测试记录为 schema `5 passed`、corrected protocol `49 passed`；正式账本只读保持 `20/384`，`unknown=0`、`pending=0`、`integrity=ok`，授权仍 pending，404 预算提案未应用。
-- 本单选择性归档仅包含报告、兼容性摘要、bridge/身份/验证、真实源码补丁和研究进度；不上传权重、pickle、SQLite 或大型原始账本。远端提交和逐文件回读记录另存于本地审查目录，不能把本地完成称为远端完成。
-
-- H-004 集中审查修订：桥接证据现绑定本次读取的 first label、branch identity、snapshot/interface 摘要与时间；过期桥接不能放行已变化记录。新增集成回归后共 54 passed。原归档 e0c30557a8d0608b47fd492f23a46ec8e01d7b7f 保留为前版，本修订远端回读记录独立保存。
-
-## H-005 修正规则配对评价：执行前冻结
-
-目标为 H-20260922-ACKGUARD-PAIRED-RESULT-005。固定8个parent×3个外生repeat，24条新规则分支配对24条历史R，旧两条guard不复用。当前状态为等待明确404步扩额批准，未执行新分支，不能形成研究结果。
-
-动态授权入口已接通 H-004 的当前保存观测/身份/时间桥接重算；历史严格23/24与桥接24/24分开保留。执行前检查63项及分析器10项合成测试通过；原SQLite仍20/384，unknown/pending=0，新增环境步、模型前向和全部更新均0。原账本扩至404（保留20、新矩阵最多384）的提案尚未批准。
-
-主分析固定偏好(0.8,0.2)、任务/能耗尺度(0.5,1.0)、gamma=0.99；先3repeat均值再8parent等权；父级10000次bootstrap、seed20260922、95%区间。规则仅排除公开已知占用任务，不删除合法NOOP。未完成/异常结果不得作为负结果。
-
-[执行授权申请](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/pre-execution/authorization-request.md)；[冻结分析规则](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/pre-execution/analysis-and-stop-rules.json)；[审查记录](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/pre-execution/parent-review.json)。此处归档的是执行前资料，最终结果仍未完成。
-
-## H-005 最终结果：固定简单公开执行状态基线
-
-24/24新规则分支完成，24/24历史R按身份复用，旧两guard不计入处理组。主偏好效用guard−R=+0.055815245，父场景bootstrap95%CI=[+0.011451750,+0.095693801]，8parent中6正2负。task_unavailable从109降至0、拒绝139降至56、全部任务完成120增至130；配对已登记48项任务按时物理到达与主机确认均30增至48。能耗138.919078增至145.003675（约+4.38%）。
-
-研究决策：在冻结历史M10 25-action/W1/seed-1101开发合同内，将规则固定为后续模型必须比较并超越的简单基线；不宣称GPPO或世界模型独立收益，不外推heldout/生产或当前有限通信环境。保留两个父场景退化及能耗增加。
-
-用户批准同库扩额后，新矩阵279步全部verified，原20步保留，总账本299/404，unknown=pending=0。actor/world各279次，optimizer/world/offline updates全0；原R299步未重跑。运行24条均native terminated，guard触发/动作变化120次，合法NOOP未删除，无非法动作或状态污染证据。
-
-分析勘误：首轮分析把步骤写入时reserved_pending_finalization误当最终pending。279条均已在finalization和原SQLite verified；只读逐reservation/branch/step关联后，由不变冻结统计脚本得到完整结果。原始数据、首次失败分析与所有预算记录保留；无环境重跑、奖励补填或样本变更。新关联器9项测试通过，独立原始奖励与父级CI复算一致。
-
-[最终报告](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/report.md) · [24对完整结果](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/paired-results.csv) · [逐父场景结果](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/parent-results.csv) · [机器结果与决策](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/result-summary.json)。剩余105步不继续使用，任务完成后停止。
+# 统一研究进度
+
+## 当前任务：修正后 guard 可执行评价协议（第一阶段）
+
+- handoff_id：`H-20260922-ACKGUARD-PROTOCOL-003`。**第一阶段交付 CLOSED；第二阶段未获授权且证据门阻断。**
+- 独立runner、固定24新分支方案、完整概率/selected-hidden/快照隔离/预算故障记录已准备；主代理独立复跑 **81 passed**，仅纯函数、stub和测试账本。原guard和旧runner不变。
+- 历史R **23/24可复用，1/24证据不足**：parent-00/W1/seed-1101/prefix-0/repeat-0/R 的pilot首步摘要与登记prefix摘要不同。尚不能区分摘要schema差异与状态差异，完整矩阵禁止启动，不缩为23对。
+- 旧两条guard/20步保留旧规则证据，不纳入新矩阵；本轮真实环境步、模型前向、所有更新、正式attempt均新增0。
+- 同SQLite仍 **20/384**、unknown=pending=0、integrity=ok；剩364不足新矩阵384最坏步数。未来同账本 **404总上限=旧20+新384** 只是提案，未扩额、未新建账本，authorization仍pending。
+- [最终审查](archive/H-20260922-ACKGUARD-PROTOCOL-003/final-review.md)、[可执行协议](archive/H-20260922-ACKGUARD-PROTOCOL-003/executable-protocol.md)、[真实diff](archive/H-20260922-ACKGUARD-PROTOCOL-003/minimal-diff.patch)、[R逐对摘要](archive/H-20260922-ACKGUARD-PROTOCOL-003/historical-R-compatibility-summary.json)、[独立核验](archive/H-20260922-ACKGUARD-PROTOCOL-003/independent-verification.json)、[归档索引](archive/H-20260922-ACKGUARD-PROTOCOL-003/archive-index.json)。
+- 下一步仅建议零步追溯单个pilot复用项的摘要口径及既有等价证据。不开训练，不重跑，不自动进入阶段二/三。
+- 前单归档：[5dc234391ea41ce51c3603aa3874c4217b775a2f](https://github.com/Battleplus/GPPO_WORLD_9.20/commit/5dc234391ea41ce51c3603aa3874c4217b775a2f)，18文件回读一致。本单最终提交另由远端回读记录保存。
+
+
+## 前单：NOOP 合同修正与历史复用审查
+
+- handoff_id：`H-20260922-ACKGUARD-NOOP-AUDIT-002`；状态 **CLOSED**，复用判定 **证据不足**。
+- 用户明确授权零环境步最小guard修正；Luna执行，主代理完成后集中审查。未启动动态实验。
+- 合法NOOP保留并参与原概率/tie-break排序；三组纯函数及runner回归 **35 passed**，主代理独立复核通过。
+- 20条历史决策为A=12、B=8、C=0；A仅是保存观测下单步证明，两条首步为B；历史hidden/cache无污染仍not_recorded。两条均不能作为已证新规则轨迹合并分析。
+- 原预算保持 **20/384**，unknown=pending=0；本单环境步、模型前向、全部更新、attempt增量均0。runner未修改，22条未续行，2条未重跑。
+- [最终审查](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/final-review.md)、[报告](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/report.md)、[逐决策证据](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/decision-evidence.json)、[最小diff](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/minimal-diff.patch)、[测试](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/test-output-final.txt)、[哈希索引](archive/H-20260922-ACKGUARD-NOOP-AUDIT-002/archive-index.json)。
+- 新guard SHA：`2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a`。
+- 下一步建议另立完整新规则开发矩阵协议，先明确身份、原消费保留和预算归属；不按“补22条”合并旧规则。未自动执行。
+- 前单最终归档：[e1599402607efbed916a1dd697aa16e5a04129b2](https://github.com/Battleplus/GPPO_WORLD_9.20/commit/e1599402607efbed916a1dd697aa16e5a04129b2)，31文件远端回读一致。本单远端提交在完成后记入独立final-remote-verification.json。
+
+
+## 前单记录（H-20260922-ACKGUARD-RESUME-001）
+
+- 长期目标：GPPO＋世界模型＋事件预测/触发＋偏好学习，用于弱通信 UAV 任务分配；各机制须相对简单基线证明独立贡献。
+- 当前唯一任务：ACK 已知任务基线 runner 修复、原预算有条件续行及证据闭环。
+- handoff_id：`H-20260922-ACKGUARD-RESUME-001`。
+- 规划与审查：主对话当前模型（GPT-6 系列）；执行：自定义 `luna_worker`，`gpt-5.6-luna`，reasoning effort `max`。
+- 状态：**CLOSED（本单技术阻断交付与审查） / NEEDS_USER_DECISION（下一阶段）**。runner 修复及集中审查已完成，27项测试通过；矩阵仍为2/24，未续行。
+- 授权来源：用户当前活动目标明确授权原合同内修复、核验后续行，并授权本独立进度分支的选择性文档归档。默认同意仅限既有明确范围。
+
+## 资源边界
+
+原阶段 SQLite 总上限 384 环境步；最近停止报告 reserved=verified=20、unknown=pending=0，须在执行前读取原账本核验。历史 R 对照 24 条/299 步仅复用。剩余 22 条 guard 分支每条最多 16 步，新增最多 352；不退款、不重跑、不创建替代预算。optimizer/world/offline update 均为 0。
+
+## 来源及身份
+
+- 工作树：`E:\Z博士\9.2日\WORLD-GPPO_9.11-replan-value-20260919-wt`。
+- 阶段：`runs/finite-communication-ack-lease-fix-20260920/ack-known-task-guard-baseline-v1`。
+- 原源码：`E:\Z博士\migration-artifacts\event-trigger-aware-gppo-fair-replication-20260919-v1\source-snapshot`，历史 M10 25-action；不替换为当前有限通信版本或 D-02 17-action。
+- seed-1101 P_train checkpoint SHA-256：`bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a`；其余身份见归档输入清单。
+- [自包含执行单](archive/H-20260922-ACKGUARD-RESUME-001/handoff.md)。
+- [输入索引和 SHA-256](archive/H-20260922-ACKGUARD-RESUME-001/input-index.json)。
+
+## 结论边界
+
+当前只有两条 guard 分支的技术停止证据，不能报告完整矩阵收益。规则测试通过不能替代运行完整性。即使完成，本批仅为同批 W1 开发性证据，不证明世界模型增量、偏好学习成功、独立验证收益或生产可用性。此前 R/K 选择路线维持封存，不重启。
+
+## 状态记录
+
+- DRAFT：历史 runner 修复续行执行单；曾因跨任务发送能力不可用未能转发。
+- APPROVED（2026-09-22）：当前用户活动目标启动本地 `luna_worker` 闭环；主代理与执行者职责已分离。先归档执行单，再允许修复和条件续行。
+- 归档技术停止（2026-09-22 10:50 +08:00）：独立浅克隆成功，远端 main 为 `6aa16410b0e69aaceb7dee0b4d260eaf76d03e02`，目标进度分支未存在。按既有 SSH 签名配置提交时，当前任务的 `ssh-keygen -Y sign` 持续未返回；主代理停止了该任务独属签名子进程，Git 返回 `fatal: failed to write commit object`。未生成新提交，未 push。根因尚不能区分签名交互、代理或密钥可用性；不称为网络或权限确定故障。不关闭签名，不改全局配置；选择性暂存和本地证据保留，状态 `ARCHIVE_PENDING_SIGNATURE`。
+- APPROVED/RUNNING：执行者只读核验无冲突进程、无完成矩阵，21个原制品哈希匹配；原账本384上限、20已确认、unknown/pending=0、integrity=ok。已下发 runner 修复与条件续行执行单。主代理独立精确重算20条原奖励及合法动作、hidden摘要链均通过。
+- BLOCKED（2026-09-22，零环境步主审反例）：mask仅 action 0 和24合法、continuation为空、概率分别0.1/0.9时，冻结 guard 将原NOOP 24改为分配0，且没有任何任务被排除。原20条决策没有发生该覆盖，但后续矩阵可能混入额外“优先分配”干预。用户禁止修改guard，因此主代理停止新增执行，只继续runner修复和具体阻断交付。
+- 归档恢复（2026-09-22）：用户明确提供GitHub认证用于提交。主代理使用官方 `createCommitOnBranch`，未保存凭据、未关闭本机签名。执行单归档提交 [d230cb9fd6e0a30df014e6646d4cfb559c545195](https://github.com/Battleplus/GPPO_WORLD_9.20/commit/d230cb9fd6e0a30df014e6646d4cfb559c545195)，GitHub返回签名verified=true/reason=valid，8个文件逐一远端回读匹配。本机SSH提交失败仍作为历史记录保留。
+- 归档：当前提交为执行前归档；只有远端提交和文件回读核验后才能声称上传成功。验证记录保存在本地审查目录，后续状态追加，不改写历史报告。
+
+## 下一步与禁止事项
+
+完成 runner 修复、零环境步测试、独立证据审查和技术阻断报告。剩余22条不执行。是否允许修改guard以保留合法NOOP，属于超出本单“guard不变”的合同决定，须用户另行明确授权。不得通过临时跳过该反例或事后重定义规则续行。
+
+执行者不做 Git 操作。主代理仅在 `archive/research-progress` 归档文档、报告、最小修复 diff、索引和哈希；不修改 main、不 force push、不创建 Release、不上传权重或原始大制品。下一研究阶段需另立执行单。
+
+## 最终集中审查（2026-09-22）
+
+- 执行及审查完成：原制品21项、新证据21项哈希匹配；主代理独立回归27 passed。
+- 原账本保持384上限、reserved=verified=20、unknown=pending=0、integrity=ok；本单新增环境步、模型前向、全部更新和attempt均为0。历史R对照24条/299步未重跑。
+- 阻断一：guard在存在分配候选时排除合法NOOP，超出仅排除已知占用任务的干预合同。guard未修改，修复建议未应用。
+- 阻断二：原运行基础快照结束后hidden/cache摘要未记录，不能补成无污染证明。旧接口检查曾错误报告通过，已保留并更正为null / insufficient_evidence / passed=false。
+- runner增加核验与防重跑保护；动态resume_run禁用，未实现可运行续行循环。剩余22条不执行，无完整矩阵或效用结论。
+- [主代理最终审查](archive/H-20260922-ACKGUARD-RESUME-001/repair/final-review.md)、[执行报告](archive/H-20260922-ACKGUARD-RESUME-001/repair/final-report.md)、[权威接口勘误](archive/H-20260922-ACKGUARD-RESUME-001/repair/first-pair-interface-check-erratum.json)、[勘误说明](archive/H-20260922-ACKGUARD-RESUME-001/repair/review-erratum.md)。
+- [修复差异](archive/H-20260922-ACKGUARD-RESUME-001/repair/minimal-diff.patch)、[测试输出](archive/H-20260922-ACKGUARD-RESUME-001/repair/test-output.txt)、[归档文件索引](archive/H-20260922-ACKGUARD-RESUME-001/repair/archive-file-index.json)。
+- 前次技术停止提交：[40d9dff1bf95d9ced5d95eaedd90a3fae833466f](https://github.com/Battleplus/GPPO_WORLD_9.20/commit/40d9dff1bf95d9ced5d95eaedd90a3fae833466f)，4个文件远端核验及GitHub签名验证通过。最终归档提交在上传后独立记录于本地final-remote-verification.json。
+- 后续需另立执行单批准guard变更，并明确旧分支复用证据边界；不自动启动环境、新预算或训练。
+- 协作方式：子代理运行期间主代理等待完成，之后批量审查，不轮询实验文件、进程和预算。
+
+## 当前单：R control digest audit（H-20260922-R-CONTROL-DIGEST-AUDIT-004）
+
+- 状态：**CLOSED（零环境步审计完成）**。目标为 `parent-00|W1|seed-1101|prefix-0|repeat-0|mode-R` 的历史 R 初态摘要溯源；未 reset、replay、环境步、模型前向、参数更新或正式 attempt。
+- 根因分类：**A，schema-only**。同一保存的初始公开观测按两个原始摘要合同重算，pilot 摘要 `029fdda5e21097ca33a4fdf738f9a0a5ada2a80d35440e4d3ea9e95100e25a87` 与 historical 摘要 `969682e664ab722f982fd6e10af98291705ed2c311e155ae894d71733918e64f` 均分别复现；identity mismatch 为空，观测和 label-before 为 `2.0`，label-after 为 `3.0`。
+- 兼容性必须分开报告：原严格字符串门为 **23/24**，目标对仍保留为 strict insufficient；仅对该保存观测使用带身份/时间校验的 schema bridge 后为 **24/24 bridge-qualified R-control reuse**。这不证明 hidden/cache 无污染、corrected guard 轨迹或算法收益。
+- 本单源码差异仅为 corrected runner bridge hook、`r_control_digest_schema_20260922.py` 及其纯测试；真实补丁和独立复算证据均在本单归档目录。当前 runner SHA-256 为 `ef823c2329b9aed8e7422248083e95775d3f5763cc60d7cd98f5e556a723beb5`，补丁 SHA-256 为 `2c46fc2fc18d83d1b3a9de7db7a963833525f81c2f40a52bafbc260a7e2c0603`。
+- 纯测试记录为 schema `5 passed`、corrected protocol `49 passed`；正式账本只读保持 `20/384`，`unknown=0`、`pending=0`、`integrity=ok`，授权仍 pending，404 预算提案未应用。
+- 本单选择性归档仅包含报告、兼容性摘要、bridge/身份/验证、真实源码补丁和研究进度；不上传权重、pickle、SQLite 或大型原始账本。远端提交和逐文件回读记录另存于本地审查目录，不能把本地完成称为远端完成。
+
+- H-004 集中审查修订：桥接证据现绑定本次读取的 first label、branch identity、snapshot/interface 摘要与时间；过期桥接不能放行已变化记录。新增集成回归后共 54 passed。原归档 e0c30557a8d0608b47fd492f23a46ec8e01d7b7f 保留为前版，本修订远端回读记录独立保存。
+
+## H-005 修正规则配对评价：执行前冻结
+
+目标为 H-20260922-ACKGUARD-PAIRED-RESULT-005。固定8个parent×3个外生repeat，24条新规则分支配对24条历史R，旧两条guard不复用。当前状态为等待明确404步扩额批准，未执行新分支，不能形成研究结果。
+
+动态授权入口已接通 H-004 的当前保存观测/身份/时间桥接重算；历史严格23/24与桥接24/24分开保留。执行前检查63项及分析器10项合成测试通过；原SQLite仍20/384，unknown/pending=0，新增环境步、模型前向和全部更新均0。原账本扩至404（保留20、新矩阵最多384）的提案尚未批准。
+
+主分析固定偏好(0.8,0.2)、任务/能耗尺度(0.5,1.0)、gamma=0.99；先3repeat均值再8parent等权；父级10000次bootstrap、seed20260922、95%区间。规则仅排除公开已知占用任务，不删除合法NOOP。未完成/异常结果不得作为负结果。
+
+[执行授权申请](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/pre-execution/authorization-request.md)；[冻结分析规则](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/pre-execution/analysis-and-stop-rules.json)；[审查记录](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/pre-execution/parent-review.json)。此处归档的是执行前资料，最终结果仍未完成。
+
+## H-005 最终结果：固定简单公开执行状态基线
+
+24/24新规则分支完成，24/24历史R按身份复用，旧两guard不计入处理组。主偏好效用guard−R=+0.055815245，父场景bootstrap95%CI=[+0.011451750,+0.095693801]，8parent中6正2负。task_unavailable从109降至0、拒绝139降至56、全部任务完成120增至130；配对已登记48项任务按时物理到达与主机确认均30增至48。能耗138.919078增至145.003675（约+4.38%）。
+
+研究决策：在冻结历史M10 25-action/W1/seed-1101开发合同内，将规则固定为后续模型必须比较并超越的简单基线；不宣称GPPO或世界模型独立收益，不外推heldout/生产或当前有限通信环境。保留两个父场景退化及能耗增加。
+
+用户批准同库扩额后，新矩阵279步全部verified，原20步保留，总账本299/404，unknown=pending=0。actor/world各279次，optimizer/world/offline updates全0；原R299步未重跑。运行24条均native terminated，guard触发/动作变化120次，合法NOOP未删除，无非法动作或状态污染证据。
+
+分析勘误：首轮分析把步骤写入时reserved_pending_finalization误当最终pending。279条均已在finalization和原SQLite verified；只读逐reservation/branch/step关联后，由不变冻结统计脚本得到完整结果。原始数据、首次失败分析与所有预算记录保留；无环境重跑、奖励补填或样本变更。新关联器9项测试通过，独立原始奖励与父级CI复算一致。
+
+[最终报告](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/report.md) · [24对完整结果](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/paired-results.csv) · [逐父场景结果](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/parent-results.csv) · [机器结果与决策](archive/H-20260922-ACKGUARD-PAIRED-RESULT-005/final/result-summary.json)。剩余105步不继续使用，任务完成后停止。

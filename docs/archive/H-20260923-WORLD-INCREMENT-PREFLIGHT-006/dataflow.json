@@ -1,0 +1,100 @@
+{
+  "architecture": "native historical M10 25-action joint preference policy; frozen P_train seed-1101 checkpoint",
+  "candidate_column_layout": {
+    "0:8": "policy_feature",
+    "10:12": "task_consequence",
+    "12:17": "sigmoid(event_logits)",
+    "8:10": "vector_reward"
+  },
+  "classification": {
+    "auxiliary_training": "world heads/losses are training concerns; H-005 runtime was frozen eval-only with world_updates=0",
+    "candidate_wise_consequence": "yes, native world outputs are action-conditioned and candidate rows enter candidate_actor logits",
+    "global_latent_actor_residual": "not used by this native H-005 joint path; do not substitute T-05 adapter evidence",
+    "world_state_progression": "yes, selected by_action hidden is carried to the next decision"
+  },
+  "non_actor_outputs": "next_state is not in the17feature row; state vector critic does not take candidate rows; selected by_action hidden advances future recurrent state",
+  "public_provenance": "native m10_environment._observation:796-864 constructs nodes from bridge.observe public view; graph relations use public positions, visibility, public mask and public task field. Event rows are received public records. Private assignment/lease/future schedule must not enter intervention or guard.",
+  "saved_evidence_limit": "H-005 stores probabilities and selected hidden digests, but not candidate feature rows or per-component candidate logits; old rows cannot identify the world contribution numerically.",
+  "schema": "world-increment-dataflow/1.0.0",
+  "steps": [
+    {
+      "direct_actor_use": "features and pair_messages enter policy logits",
+      "inputs": [
+        "public observation tensor",
+        "policy hidden"
+      ],
+      "outputs": [
+        "features",
+        "pair_messages",
+        "next_policy_hidden"
+      ],
+      "source": "source-snapshot/gppo_world/joint_gppo.py:100-101,125-128",
+      "stage": "public_policy_encode"
+    },
+    {
+      "direct_actor_use": "candidate feature row is assembled for each of 25 actions",
+      "inputs": [
+        "policy features",
+        "world hidden",
+        "public graph relations",
+        "public action mask"
+      ],
+      "outputs": [
+        "policy_feature",
+        "vector_reward",
+        "task_consequence",
+        "event probabilities",
+        "by_action hidden"
+      ],
+      "source": "source-snapshot/gppo_world/joint_gppo.py:131-185",
+      "stage": "world_candidate_prediction"
+    },
+    {
+      "direct_actor_use": "candidate_actor(candidate_features) is added directly to logits before masking",
+      "inputs": [
+        "candidate features [B,25,17]",
+        "policy features",
+        "pair messages",
+        "preference",
+        "public mask"
+      ],
+      "outputs": [
+        "masked action distribution",
+        "state value"
+      ],
+      "source": "source-snapshot/gppo_world/joint_gppo.py:103-120",
+      "stage": "candidate_actor_logit_path"
+    },
+    {
+      "direct_actor_use": "deterministic action is argmax of evaluation distribution",
+      "inputs": [
+        "frozen policy",
+        "frozen world",
+        "saved public observation",
+        "policy/world hidden"
+      ],
+      "outputs": [
+        "all-action probabilities",
+        "original action",
+        "by_action",
+        "next policy hidden"
+      ],
+      "source": "tools/run_replan_value_experiment.py:205-215",
+      "stage": "native_runner_probe"
+    },
+    {
+      "direct_actor_use": "future decision state only; not a second same-step action score",
+      "inputs": [
+        "selected action",
+        "by_action hidden"
+      ],
+      "outputs": [
+        "next policy hidden",
+        "next world hidden"
+      ],
+      "source": "tools/run_replan_value_experiment.py:218-222; tools/run_ack_known_task_guard_corrected_20260922.py:2221-2222",
+      "stage": "selected_action_state_progression"
+    }
+  ],
+  "training_limit": "inference feature suppression cannot remove historical shared representation or auxiliary-loss training effects"
+}
