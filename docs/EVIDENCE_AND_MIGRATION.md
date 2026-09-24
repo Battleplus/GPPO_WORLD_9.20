@@ -1,3 +1,18 @@
+# 2026-09-24 更新：最新比较与路线
+
+最新本地证据目录：
+`E:\Z博士\9.2日\WORLD-GPPO_9.11-replan-value-20260919-wt\runs\finite-communication-ack-lease-fix-20260920\model-rule-stage1-cli-recovery-run-v1`
+
+关键文件：report.md、analysis.json、run-status.json、runtime-costs.json、completion-audit.json、research-decision.json、final-hashes.json。
+
+原正式数据库仍在上述 runs 根目录的 `ack-known-task-guard-baseline-v1/budget.sqlite3`；最近报告 1411/1625，剩余 214。这是原阶段余额，不是下一阶段授权。
+
+当前文档更新只迁移五阶段路线、研究状态与下一目标，不迁移源码、checkpoint、SQLite 或大型原始制品。不修改实验工作树或旧归档分支。执行 AI 应先核对实际源码、模型、协议和 SQLite 身份。
+
+以下为旧证据索引，路径用于定位历史；其中“当前预算”“下一步”及迁移状态以各历史日期为准，不能当作新的执行授权。
+
+---
+
 # 证据位置与迁移边界
 
 ## 当前源码位置
