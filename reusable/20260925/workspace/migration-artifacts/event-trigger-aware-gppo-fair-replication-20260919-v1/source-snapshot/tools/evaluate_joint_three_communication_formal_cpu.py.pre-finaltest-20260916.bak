@@ -1,0 +1,195 @@
+"""Evaluate the frozen final A-D x I/W1/W2 matrix without selection."""
+
+from __future__ import annotations
+
+from collections import Counter
+import hashlib
+import json
+import argparse
+from pathlib import Path
+import sys
+import time
+
+import numpy as np
+import torch
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from gppo_world.joint_gppo import EVENT_NAMES, JointTrainConfig, masked_normalized_preference
+from gppo_world.joint_training import GROUPS, _vector_reward
+from gppo_world.m10_environment import M10Config, M10Environment, scenario_from_dict
+from tools.evaluate_joint_four_group_pilot import _episode, _load_policy, _summarize
+from tools.run_m10_baseline_comparison import traditional_action
+
+
+RUN_NAME = "joint-four-module-three-communication-formal-cpu-20260916-v1"
+CONDITIONS = ("I", "W1", "W2")
+GROUPS_TO_EVAL = ("A", "B", "C", "D")
+PREFERENCES = ((0.2, 0.8), (0.5, 0.5), (0.8, 0.2))
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1 << 20), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def write_json(path: Path, value: object) -> None:
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True, default=str) + "\n", encoding="utf-8")
+
+
+def final_transaction(run_dir: Path, *, steps: int = 16384, updates: int = 128) -> Path:
+    matches = sorted((run_dir / "transactions").glob(f"txn-step-{steps:08d}-policy-{updates:06d}-world-*.pt"))
+    if len(matches) != 1:
+        raise FileNotFoundError(f"expected one final transaction in {run_dir}, found {len(matches)}")
+    return matches[0]
+
+
+def average_precision(prob: list[float], label: list[float], valid: list[bool]) -> float | None:
+    pairs = [(float(p), int(y)) for p, y, m in zip(prob, label, valid) if m]
+    positives = sum(y for _, y in pairs)
+    if not pairs or positives == 0 or positives == len(pairs):
+        return None
+    pairs.sort(key=lambda item: (-item[0], item[1]))
+    seen = hits = 0
+    area = 0.0
+    for _, y in pairs:
+        seen += 1
+        if y:
+            hits += 1
+            area += hits / seen
+    return area / positives
+
+
+def rule_episode(scenario, env_config: M10Config) -> dict[str, object]:
+    env = M10Environment(env_config, scenario)
+    obs = env.reset()
+    done = False
+    steps = 0
+    total_reward = task_return = energy_return = 0.0
+    previous_counts = {"completed": 0, "expired": 0}
+    previous_energy = float(env_config.uav_count * env_config.initial_energy)
+    feedback = Counter()
+    full_latency: list[float] = []
+    proxy_messages = proxy_bytes = 0
+    while not done and steps < int(env_config.horizon / env_config.decision_interval) + 2:
+        started = time.perf_counter()
+        action = int(traditional_action(obs))
+        if not bool(np.asarray(obs["mask"], dtype=bool)[action]):
+            raise RuntimeError("frozen rule emitted an illegal action")
+        obs, reward, done, info = env.step(action)
+        full_latency.append((time.perf_counter() - started) * 1000.0)
+        total_reward += float(reward)
+        vector_reward, _, previous_counts, previous_energy = _vector_reward(
+            info, previous_counts, previous_energy, env_config,
+        )
+        task_return += float(vector_reward[0])
+        energy_return += float(vector_reward[1])
+        feedback[str(info.get("feedback", "unknown"))] += 1
+        for item in info.get("communication_delta", []):
+            proxy_messages += 1
+            proxy_bytes += len(json.dumps(item, sort_keys=True, separators=(",", ":"), default=str).encode("utf-8"))
+        steps += 1
+    counts = info.get("counts", {})
+    records = info.get("completion_records", {})
+    completed = int(counts.get("completed", 0))
+    expired = int(counts.get("expired", 0))
+    return {
+        "tape_id": scenario.tape_id, "tasks_total": len(scenario.tasks),
+        "physical_on_time": completed, "deadline_failed": expired,
+        "unresolved": max(0, len(scenario.tasks) - completed - expired),
+        "host_confirmed_final": sum(item.get("host_confirmation_time") is not None for item in records.values()),
+        "host_on_time": sum(item.get("host_confirmation_before_deadline") is True for item in records.values()),
+        "scalar_environment_return": total_reward, "task_objective_return": task_return,
+        "energy_objective_return": energy_return,
+        "energy_used": env_config.uav_count * env_config.initial_energy - sum(float(v) for v in info.get("energy", {}).values()),
+        "correct_rejections_by_feedback": dict(feedback), "illegal_action_count": 0,
+        "explicit_safety_violations_recorded": 0,
+        "decision_metrics": {"steps": steps, "actor_calls": steps, "world_forward_calls": 0,
+                              "candidate_predictions_computed": 0, "candidate_predictions_consumed": 0,
+                              "world_latency_ms": [], "actor_critic_latency_ms": [],
+                              "complete_decision_latency_ms": full_latency,
+                              "communication_proxy_messages": proxy_messages, "communication_proxy_bytes": proxy_bytes},
+    }
+
+
+def enrich_event_summary(summary: dict[str, object]) -> None:
+    for block in (summary.get("event_heads") or {}).values():
+        if not isinstance(block, dict):
+            continue
+        # _summarize intentionally emits aggregate scalar metrics.  PR-AUC is
+        # computed from the same valid samples here, without using test labels
+        # for model selection.
+        block["pr_auc"] = block.get("pr_auc")
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--run-name", default=RUN_NAME)
+    parser.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
+    args = parser.parse_args()
+    root = ROOT / "runs" / args.run_name
+    training_summary_path = root / "training-summary.json"
+    if not training_summary_path.is_file():
+        raise SystemExit("formal training summary missing; final test is not started")
+    training_summary = json.loads(training_summary_path.read_text(encoding="utf-8"))
+    if training_summary.get("status") != "completed":
+        raise SystemExit("formal training is incomplete; refusing final-test evaluation")
+    tapes = json.loads((root / "formal-tapes.json").read_text(encoding="utf-8"))
+    env_config = M10Config(task_completion_mode="arrival_to_region", deadline_basis="physical_arrival")
+    train_config = JointTrainConfig(seed=1101, rollout_steps=128)
+    device = torch.device(args.device)
+    torch.set_num_threads(4)
+    torch.set_num_interop_threads(1)
+    torch.use_deterministic_algorithms(True)
+    results: dict[str, object] = {
+        "schema": "world-gppo-9.11-three-communication-formal-evaluation/1.0.0",
+        "run_root": str(root), "formal_tapes_sha256": sha256(root / "formal-tapes.json"),
+        "scope": "fixed 64 final-test parents per condition; no checkpoint selection or tuning",
+        "conditions": CONDITIONS, "groups": {}, "rule": {}, "evaluation_started_at": time.time(),
+    }
+    for condition in CONDITIONS:
+        test_scenarios = [scenario_from_dict(item) for item in tapes["final_test"][condition]]
+        rule_rows = [rule_episode(scenario, env_config) for scenario in test_scenarios]
+        results["rule"][condition] = {"episodes": rule_rows, "summary": _summarize(rule_rows)}
+        for seed in (1101, 2203, 3307):
+            for group in GROUPS_TO_EVAL:
+                checkpoint = final_transaction(root / "training" / f"seed-{seed}" / condition / group)
+                policy, world = _load_policy(group, checkpoint, env_config, device)
+                prefs = (None,) if group == "A" else PREFERENCES
+                blocks = {}
+                for pref in prefs:
+                    key = "not_applicable" if pref is None else "(" + ",".join(f"{x:.1f}" for x in pref) + ")"
+                    rows = [_episode(group, policy, world, scenario, env_config, train_config, device, (0.5, 0.5) if pref is None else pref) for scenario in test_scenarios]
+                    block = {"preference": pref, "episodes": rows, "summary": _summarize(rows)}
+                    # Preserve per-episode raw event arrays so PR-AUC can be
+                    # recomputed independently from the published artifact.
+                    summary = block["summary"]
+                    if isinstance(summary, dict):
+                        for name in EVENT_NAMES:
+                            probs: list[float] = []; labels: list[float] = []; valid: list[bool] = []
+                            for row in rows:
+                                event = row.get("event_predictions", {}).get(name, {})
+                                probs.extend(event.get("prob", [])); labels.extend(event.get("label", [])); valid.extend(event.get("valid", []))
+                            if "event_heads" in summary and name in summary["event_heads"]:
+                                summary["event_heads"][name]["pr_auc"] = average_precision(probs, labels, valid)
+                    blocks[key] = block
+                results["groups"].setdefault(condition, {}).setdefault(str(seed), {})[group] = {
+                    "checkpoint": str(checkpoint.relative_to(root)),
+                    "checkpoint_sha256": sha256(checkpoint), "preferences": blocks,
+                }
+    results["evaluation_finished_at"] = time.time()
+    results["evaluation_wall_seconds"] = results["evaluation_finished_at"] - results["evaluation_started_at"]
+    results["latency_scope"] = "server CPU, four intra-op threads, deterministic evaluation; complete decision includes environment step and excludes artifact writes"
+    output = root / "final-test-results.json"
+    write_json(output, results)
+    print(json.dumps({"output": str(output), "wall_seconds": results["evaluation_wall_seconds"], "conditions": list(results["groups"].keys())}, ensure_ascii=False, indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
