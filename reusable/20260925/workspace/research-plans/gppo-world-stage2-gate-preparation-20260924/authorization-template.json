@@ -1,0 +1,19 @@
+{
+  "approved": false,
+  "stage": "technical_gate",
+  "limits": {
+    "environment_steps": 72,
+    "policy_encode": 36,
+    "world_candidate_batch": 36,
+    "actor_readout": 36
+  },
+  "updates": 0,
+  "binding_sha256": "b792ce559ad6f8a6c44179eb103e14e5deb3b561d830da4208f63f81fffb2d70",
+  "user_approval_reference": "",
+  "user_approval_text": "",
+  "output_directory": "E:\\Z博士\\research-plans\\gppo-world-stage2-gate-preparation-20260924\\runs\\technical-gate-v1",
+  "formal_stage_authorized": false,
+  "wall_seconds_max": 3600,
+  "rss_bytes_max": 4294967296,
+  "artifact_bytes_max": 1073741824
+}

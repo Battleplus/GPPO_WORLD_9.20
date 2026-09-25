@@ -1,0 +1,21 @@
+{
+  "approved": true,
+  "stage": "technical_gate",
+  "limits": {
+    "environment_steps": 72,
+    "policy_encode": 36,
+    "world_candidate_batch": 36,
+    "actor_readout": 36
+  },
+  "updates": 0,
+  "binding_sha256": "b792ce559ad6f8a6c44179eb103e14e5deb3b561d830da4208f63f81fffb2d70",
+  "user_approval_reference": "Current task 01a0b4e9-29bb-7083-9ecb-3ca04326d690: user approval immediately following the explicit 72-step technical-gate request.",
+  "user_approval_text": "批准",
+  "output_directory": "E:\\Z博士\\research-plans\\gppo-world-stage2-gate-preparation-20260924\\runs\\technical-gate-v1",
+  "formal_stage_authorized": false,
+  "wall_seconds_max": 3600,
+  "rss_bytes_max": 4294967296,
+  "artifact_bytes_max": 1073741824,
+  "recorded_at_utc": "2026-09-24T02:42:15.876339+00:00",
+  "approved_scope": "One technical-gate attempt; at most 72 environment steps, 36 encode/world/actor calls each, zero updates, CPU wall at most one hour. Stop on completion or technical failure; no automatic retry or formal matrix."
+}

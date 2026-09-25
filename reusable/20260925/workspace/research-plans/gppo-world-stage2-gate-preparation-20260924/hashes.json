@@ -1,0 +1,12 @@
+{
+  "authorization-template.json": "aaacbdb1b15828c439dae33d3d50a123c881932bb407e148c1aab085d7f7ef38",
+  "bind_preparation.py": "7c3df55ec062e9cc693eee0c31594195df196b2cdf5c82dd1c303b7333cd588c",
+  "binding.json": "b792ce559ad6f8a6c44179eb103e14e5deb3b561d830da4208f63f81fffb2d70",
+  "no-authorization-output.txt": "68bc0592bc43f83e0360ce87bee0700564c4bae4b77d633ba1f3624a1188378e",
+  "public_controller.py": "d796ec67e6c62f9f297f4f48fe09ea1d16a160bc13b15c3c102674ae02263d8f",
+  "readiness.md": "c7bbbba7222c2a665695261487eeaa40ddbe590ebeb6d79783e0b4e31eaa2c8c",
+  "run_gate.py": "e69f1dbe45c0c590cfbbfd5426e8f86a64e9f837e8590c541858371a965c0cbd",
+  "status.json": "892301a026a6226980b8786bbb2c2a68fb5f9f0bc50753c59488ed3aa6e120ab",
+  "test-output.txt": "08f7814a257c6d70e012a84ef6e2a7efde1bb359078d5e8bc5e50ca5e9bd50bb",
+  "test_preparation.py": "a895d9c3158485e610383df1bc9585ed201231062bd0ef324420f12a5932ac4e"
+}
