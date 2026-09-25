@@ -1,0 +1,28 @@
+test_implementation_does_not_call_world_or_candidate_head (test_plan.DecisionTests.test_implementation_does_not_call_world_or_candidate_head) ... ok
+test_nonfinite_or_negative_results_fail (test_plan.DecisionTests.test_nonfinite_or_negative_results_fail) ... ok
+test_ood_loss_does_not_prove_world (test_plan.DecisionTests.test_ood_loss_does_not_prove_world) ... ok
+test_retention_and_actual_cost_required (test_plan.DecisionTests.test_retention_and_actual_cost_required) ... ok
+test_task_guard_cannot_be_bought_with_cpu (test_plan.DecisionTests.test_task_guard_cannot_be_bought_with_cpu) ... ok
+test_uncertain_and_boundary_not_pass (test_plan.DecisionTests.test_uncertain_and_boundary_not_pass) ... ok
+test_A_exact_count_and_all_batches (test_runner.RunnerTests.test_A_exact_count_and_all_batches) ... ok
+test_A_mismatch_stops_first_batch (test_runner.RunnerTests.test_A_mismatch_stops_first_batch) ... ok
+test_B_with_synthetic_worker_records_and_verifies (test_runner.RunnerTests.test_B_with_synthetic_worker_records_and_verifies) ... ok
+test_analysis_rejects_partial_or_nonfinite_matrix_before_statistics (test_runner.RunnerTests.test_analysis_rejects_partial_or_nonfinite_matrix_before_statistics) ... ok
+test_budget_cannot_borrow_stages (test_runner.RunnerTests.test_budget_cannot_borrow_stages) ... ok
+test_full_frozen_matrix_and_initial_pairing (test_runner.RunnerTests.test_full_frozen_matrix_and_initial_pairing) ... ok
+test_no_actual_model_import (test_runner.RunnerTests.test_no_actual_model_import) ... ok
+test_no_authorization_no_runs_or_ledger (test_runner.RunnerTests.test_no_authorization_no_runs_or_ledger) ... ok
+test_real_historical_snapshot_schema_and_nonzero_totals (test_runner.RunnerTests.test_real_historical_snapshot_schema_and_nonzero_totals) ... ok
+test_step_rejects_illegal_action_and_false_reward (test_runner.RunnerTests.test_step_rejects_illegal_action_and_false_reward) ... ok
+test_unexpected_world_forward_counter_fails (test_runner.RunnerTests.test_unexpected_world_forward_counter_fails) ... ok
+test_candidate_environment_path_rejects_world_hash_fabrication (test_runtime_worker_static.RuntimeWorkerStaticTests.test_candidate_environment_path_rejects_world_hash_fabrication) ... ok
+test_full_world_path_and_no_world_paths_are_explicit (test_runtime_worker_static.RuntimeWorkerStaticTests.test_full_world_path_and_no_world_paths_are_explicit) ... ok
+test_no_forbidden_model_imports (test_runtime_worker_static.RuntimeWorkerStaticTests.test_no_forbidden_model_imports) ... ok
+test_replay_is_single_pass_and_has_parent_schema (test_runtime_worker_static.RuntimeWorkerStaticTests.test_replay_is_single_pass_and_has_parent_schema) ... ok
+test_source_compiles_without_execution (test_runtime_worker_static.RuntimeWorkerStaticTests.test_source_compiles_without_execution) ... ok
+test_worker_subclasses_base_and_exposes_bounded_commands (test_runtime_worker_static.RuntimeWorkerStaticTests.test_worker_subclasses_base_and_exposes_bounded_commands) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 1.269s
+
+OK

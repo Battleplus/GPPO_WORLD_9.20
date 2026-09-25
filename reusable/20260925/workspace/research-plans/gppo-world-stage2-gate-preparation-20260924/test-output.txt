@@ -1,0 +1,30 @@
+test_ack_resolves_pending_to_known_busy (test_preparation.GuardTests.test_ack_resolves_pending_to_known_busy) ... ok
+test_both_arms_have_isolated_identical_logic (test_preparation.GuardTests.test_both_arms_have_isolated_identical_logic) ... ok
+test_both_new_measurements_required (test_preparation.GuardTests.test_both_new_measurements_required) ... ok
+test_expiry_not_acceptance_or_permission (test_preparation.GuardTests.test_expiry_not_acceptance_or_permission) ... ok
+test_future_and_undelivered_rejected (test_preparation.GuardTests.test_future_and_undelivered_rejected) ... ok
+test_handle_removal_releases_without_hidden_lease (test_preparation.GuardTests.test_handle_removal_releases_without_hidden_lease) ... ok
+test_noop_never_added_if_illegal (test_preparation.GuardTests.test_noop_never_added_if_illegal) ... ok
+test_pending_not_ack_and_old_receipts_do_not_release (test_preparation.GuardTests.test_pending_not_ack_and_old_receipts_do_not_release) ... ok
+test_private_keys_not_forwarded (test_preparation.GuardTests.test_private_keys_not_forwarded) ... ok
+test_shared_ack_filter_task_and_resource (test_preparation.GuardTests.test_shared_ack_filter_task_and_resource) ... ok
+test_completion_at_deadline_and_energy_bound (test_preparation.PlannerTests.test_completion_at_deadline_and_energy_bound) ... ok
+test_current_mask_cannot_be_revived_by_prediction (test_preparation.PlannerTests.test_current_mask_cannot_be_revived_by_prediction) ... ok
+test_finite_search_deterministic_and_state_unchanged (test_preparation.PlannerTests.test_finite_search_deterministic_and_state_unchanged) ... ok
+test_known_busy_prediction_not_free_now (test_preparation.PlannerTests.test_known_busy_prediction_not_free_now) ... ok
+test_public_age_changes_estimate_not_mask (test_preparation.PlannerTests.test_public_age_changes_estimate_not_mask) ... ok
+test_travel_energy_not_double_idle_and_capped (test_preparation.PlannerTests.test_travel_energy_not_double_idle_and_capped) ... ok
+test_unserved_deadline_is_failure_not_missing (test_preparation.PlannerTests.test_unserved_deadline_is_failure_not_missing) ... ok
+test_call_failure_unknown_once_no_retry (test_preparation.RunnerTests.test_call_failure_unknown_once_no_retry) ... ok
+test_call_success_reserved_then_verified (test_preparation.RunnerTests.test_call_success_reserved_then_verified) ... ok
+test_durable_log_failure_marks_call_unknown (test_preparation.RunnerTests.test_durable_log_failure_marks_call_unknown) ... ok
+test_independent_reward_contract_detects_mismatch (test_preparation.RunnerTests.test_independent_reward_contract_detects_mismatch) ... ok
+test_missing_authorization_no_native_import (test_preparation.RunnerTests.test_missing_authorization_no_native_import) ... ok
+test_native_time_limit_is_not_termination (test_preparation.RunnerTests.test_native_time_limit_is_not_termination) ... ok
+test_no_top_level_native_or_sqlite_import (test_preparation.RunnerTests.test_no_top_level_native_or_sqlite_import) ... ok
+test_pending_template_not_approval (test_preparation.RunnerTests.test_pending_template_not_approval) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.020s
+
+OK

@@ -1,0 +1,75 @@
+{
+  "status": "zero_step_preparation_pass",
+  "python_sources_compiled": 18,
+  "test_command": [
+    "C:\\Python314\\python.exe",
+    "-B",
+    "-X",
+    "utf8",
+    "-m",
+    "unittest",
+    "-v",
+    "test_plan",
+    "test_runner",
+    "test_runtime_worker_static"
+  ],
+  "test_output_sha256": "6999c90f0638b60e388f7262d028b8e08ec51e1f341b4cab6d98f2707f700139",
+  "experimental_environment_steps": 0,
+  "model_forwards": 0,
+  "environment_resets": 0,
+  "checkpoint_loads": 0,
+  "optimizer_updates": 0,
+  "world_updates": 0,
+  "offline_updates": 0,
+  "new_formal_attempts": 0,
+  "formal_budget_created": false,
+  "reused_sources": {
+    "base_worker.py": {
+      "source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\local-recovery2-preparation-20260925\\stage_worker.py",
+      "sha256": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55",
+      "byte_identical": true
+    },
+    "decision_only_inference.py": {
+      "source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\local-recovery2-preparation-20260925\\decision_only_inference.py",
+      "sha256": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80",
+      "byte_identical": true
+    },
+    "safe_observer.py": {
+      "source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\local-recovery2-preparation-20260925\\safe_observer.py",
+      "sha256": "096033227f62e9d90ed3c4890369f6c8098640facc53d07b5c31235a2f6aed66",
+      "byte_identical": true
+    },
+    "session_budget.py": {
+      "source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\local-recovery2-preparation-20260925\\session_budget.py",
+      "sha256": "7afe52bb52206c0a78416dddc30cee309a1d2c4845d551d7f6b939e2b69615ae",
+      "byte_identical": true
+    },
+    "sqlite_diagnostics.py": {
+      "source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\local-recovery2-preparation-20260925\\sqlite_diagnostics.py",
+      "sha256": "a1623172b4aee6c82c7dd40b872c0fed2b25bc594fc7b5a4b9fc129c7ba3453d",
+      "byte_identical": true
+    }
+  },
+  "old_ledgers_unchanged": [
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\runs\\consolidated-v1\\budget.sqlite3",
+      "sha256": "16b0151eaaa02cbbcdf7ff5ccdc1f6e5d5dea80dd0a85c202ee80bcee1a61847",
+      "matches_readonly_audit": true
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runs\\consolidated-v1\\budget.sqlite3",
+      "sha256": "7e31f887410deab0c9e393272f2f2026def97f6a49c3f8bbe0347257f7d431c0",
+      "matches_readonly_audit": true
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\local-recovery2-preparation-20260925\\runs\\consolidated-v1\\budget.sqlite3",
+      "sha256": "23b443b4d89d10b3fdf4b957b36e1509e6a3a7c9b2befd9db2ed3b01fe72ddda",
+      "matches_readonly_audit": true
+    }
+  ],
+  "technical_seeds_vs_bound_historical_seed_index_collision": [],
+  "frozen_files_verified": 88,
+  "dynamic_A_B_pass_claimed": false,
+  "manifest_sha256": "dbfddd98d6660f44c4047dc977df9153e49c664b546a60f46ce9d59b2f153418",
+  "budget_sha256": "7cb86432b466a239520845d133a47e7e1ecd31d08e0d70a3bc5b43f360ea0806"
+}

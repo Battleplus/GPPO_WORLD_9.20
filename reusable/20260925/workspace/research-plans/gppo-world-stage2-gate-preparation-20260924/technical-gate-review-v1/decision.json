@@ -1,0 +1,10 @@
+{
+  "stage": "stage2_technical_gate",
+  "functional_gate": "passed",
+  "cost_evidence": "incomplete_with_observed_cpu_exceedance",
+  "recommendation": "hold_formal_matrix_pending_cost_measurement_resolution",
+  "formal_authorized": false,
+  "automatic_retry": false,
+  "additional_environment_steps": 0,
+  "remaining_gate_steps_reusable": false
+}

@@ -1,0 +1,32 @@
+{
+  "repo": "Battleplus/GPPO_WORLD_9.20",
+  "branch": "docs/results-first-roadmap-20260924",
+  "commit": "7395b3e985a94a12156d5ea5f54d6c47d1536c72",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "git_blob": "4cbebcf2ce9061c7b1e2bf68e57ed04d00d0e18d",
+      "bytes": 2090
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "git_blob": "ee7b9377831fa22ada1810abf3d0ec16539834b5",
+      "bytes": 3875
+    },
+    {
+      "path": "docs/RESEARCH_STATE.md",
+      "git_blob": "ce0497feb2f66d3799fee718cbf13059fd099fd2",
+      "bytes": 3288
+    },
+    {
+      "path": "docs/NEXT_EXECUTION.md",
+      "git_blob": "a2ddfe44310d4e9f30dcc09e2ab5118449d56bc5",
+      "bytes": 3752
+    },
+    {
+      "path": "docs/EVIDENCE_AND_MIGRATION.md",
+      "git_blob": "cd36df86d9b8e2bd1f36c346ff99e3f4f12f89c2",
+      "bytes": 3699
+    }
+  ]
+}

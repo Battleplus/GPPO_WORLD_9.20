@@ -1,0 +1,58 @@
+{
+  "approved": true,
+  "attempt": "independent-task-benefit-20260925-once",
+  "caps": {
+    "environment_steps": 14436,
+    "environment_resets": 802,
+    "policy_encode": 14436,
+    "actor_readout": 14436,
+    "world_candidate_batch": 0,
+    "rule_decisions": 0,
+    "model_loads": 2,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "wall_seconds": 11400,
+    "total_process_cpu_seconds": 45600,
+    "resident_process_rss_sum_bytes": 4294967296,
+    "artifact_bytes": 3758096384
+  },
+  "stage_caps": {
+    "B": {
+      "environment_steps": 36,
+      "environment_resets": 2,
+      "policy_encode": 36,
+      "actor_readout": 36,
+      "world_candidate_batch": 0,
+      "rule_decisions": 0,
+      "model_loads": 1,
+      "optimizer_updates": 0,
+      "world_updates": 0,
+      "offline_updates": 0,
+      "wall_seconds": 600,
+      "cpu_seconds": 2400,
+      "artifact_bytes": 536870912
+    },
+    "C": {
+      "environment_steps": 14400,
+      "environment_resets": 800,
+      "policy_encode": 14400,
+      "actor_readout": 14400,
+      "world_candidate_batch": 0,
+      "rule_decisions": 0,
+      "model_loads": 1,
+      "optimizer_updates": 0,
+      "world_updates": 0,
+      "offline_updates": 0,
+      "wall_seconds": 10800,
+      "cpu_seconds": 43200,
+      "artifact_bytes": 3221225472
+    }
+  },
+  "manifest_sha256": "3c5f66c334fcc9537ce67e21f0c1b241ca05e2e2df96c059ed42efa41cc4be2f",
+  "budget_sha256": "0ec93b8db5456d1ea7e9f83e6739a9869df45acf102898e3e1e1305c62f335a8",
+  "user_approval_text": "批准审计报告提出的独立任务收益诊断，授权必要零步实现、测试、身份冻结、B/C条件执行、完整分析和报告。固定800父场景各唯一repeat，只新增N。上限环境步14436、reset802、encode/actor各14436、world/规则0、加载2、wall3小时10分、CPU12小时40分、RSS4GiB、制品3.5GiB、更新0。遵守B/C分项及关机预留，不借用。B技术通过自动C。保留原A成本门失败及全部消耗，不修改阈值、不重试A；10ms失败不作为本次任务诊断中途停止条件。技术或资源异常即停、不重试；不授权训练、后续实验或Git发布。",
+  "approval_text_is_faithful_summary": true,
+  "user_approval_reference": "Current task: explicit approval immediately following timing-comparability audit; subsequent 继续 confirms continuation",
+  "prior_A_failed_not_reauthorized": true
+}

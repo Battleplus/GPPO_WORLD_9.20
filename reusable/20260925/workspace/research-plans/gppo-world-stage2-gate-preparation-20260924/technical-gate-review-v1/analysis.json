@@ -1,0 +1,237 @@
+{
+  "status": "functional_gate_passed_cost_evidence_limited",
+  "episodes": [
+    {
+      "parent": "gate-000",
+      "repeat": 0,
+      "arm": "M",
+      "environment_steps": 12,
+      "utility": 0.3437876650237988,
+      "energy_used": 6.123722861163699,
+      "task_counts": {
+        "completed": 6,
+        "expired": 0
+      },
+      "terminated": true,
+      "truncated": false,
+      "on_time_physical_observed": 6,
+      "on_time_host_observed": 5,
+      "total_tasks": 6,
+      "physically_completed_without_host_observed_at_native_stop": 1,
+      "host_metric_scope": "Observed by native episode end; no post-terminal delivery extrapolation."
+    },
+    {
+      "parent": "gate-000",
+      "repeat": 0,
+      "arm": "R",
+      "environment_steps": 15,
+      "utility": 0.3387926655774687,
+      "energy_used": 6.012161761365874,
+      "task_counts": {
+        "completed": 6,
+        "expired": 0
+      },
+      "terminated": true,
+      "truncated": false,
+      "on_time_physical_observed": 6,
+      "on_time_host_observed": 5,
+      "total_tasks": 6,
+      "physically_completed_without_host_observed_at_native_stop": 1,
+      "host_metric_scope": "Observed by native episode end; no post-terminal delivery extrapolation."
+    },
+    {
+      "parent": "gate-001",
+      "repeat": 0,
+      "arm": "R",
+      "environment_steps": 16,
+      "utility": 0.2185343932580432,
+      "energy_used": 5.618012965344718,
+      "task_counts": {
+        "completed": 5,
+        "expired": 1
+      },
+      "terminated": true,
+      "truncated": false,
+      "on_time_physical_observed": 5,
+      "on_time_host_observed": 4,
+      "total_tasks": 6,
+      "physically_completed_without_host_observed_at_native_stop": 1,
+      "host_metric_scope": "Observed by native episode end; no post-terminal delivery extrapolation."
+    },
+    {
+      "parent": "gate-001",
+      "repeat": 0,
+      "arm": "M",
+      "environment_steps": 13,
+      "utility": 0.21506329621501824,
+      "energy_used": 6.767929428372312,
+      "task_counts": {
+        "completed": 5,
+        "expired": 1
+      },
+      "terminated": true,
+      "truncated": false,
+      "on_time_physical_observed": 5,
+      "on_time_host_observed": 4,
+      "total_tasks": 6,
+      "physically_completed_without_host_observed_at_native_stop": 1,
+      "host_metric_scope": "Observed by native episode end; no post-terminal delivery extrapolation."
+    }
+  ],
+  "budget": {
+    "actor_readout": {
+      "pending": 0,
+      "reserved": 25,
+      "unknown": 0,
+      "verified": 25
+    },
+    "environment_steps": {
+      "pending": 0,
+      "reserved": 56,
+      "unknown": 0,
+      "verified": 56
+    },
+    "policy_encode": {
+      "pending": 0,
+      "reserved": 25,
+      "unknown": 0,
+      "verified": 25
+    },
+    "world_candidate_batch": {
+      "pending": 0,
+      "reserved": 25,
+      "unknown": 0,
+      "verified": 25
+    }
+  },
+  "sqlite_integrity": "ok",
+  "single_attempt": true,
+  "public_guard_reconstruction_passed": 56,
+  "reward_recomputation_passed": 56,
+  "durable_forward_pairs": 75,
+  "native_weights_unchanged_runtime_check": true,
+  "input_files_unchanged_after_review": true,
+  "controller_cost": {
+    "M": {
+      "decisions": 25,
+      "mean_cpu_ms": 33.75,
+      "mean_wall_ms": 6.794332002173178,
+      "wall_p95_ms": 7.822360002319324,
+      "totals_seconds": {
+        "controller_cpu_seconds": 0.84375,
+        "controller_wall_seconds": 0.16985830005432945,
+        "excluded_audit_cpu_seconds": 4.484375,
+        "excluded_audit_wall_seconds": 1.4051007998932619,
+        "raw_controller_cpu_with_audit": 5.328125,
+        "raw_controller_wall_with_audit": 1.5749590999475913
+      },
+      "zero_recorded_cpu_decisions": 9,
+      "first_decisions": [
+        {
+          "controller_cpu_seconds": 0.15625,
+          "controller_wall_seconds": 0.03944680003041867,
+          "excluded_audit_cpu_seconds": 0.125,
+          "excluded_audit_wall_seconds": 0.05338599997048732,
+          "raw_controller_cpu_with_audit": 0.28125,
+          "raw_controller_wall_with_audit": 0.09283280000090599
+        },
+        {
+          "controller_cpu_seconds": 0.0,
+          "controller_wall_seconds": 0.005715399980545044,
+          "excluded_audit_cpu_seconds": 0.171875,
+          "excluded_audit_wall_seconds": 0.05985150001652073,
+          "raw_controller_cpu_with_audit": 0.171875,
+          "raw_controller_wall_with_audit": 0.06556689999706578
+        }
+      ]
+    },
+    "R": {
+      "decisions": 31,
+      "mean_cpu_ms": 18.649193548387096,
+      "mean_wall_ms": 13.464225804425714,
+      "wall_p95_ms": 46.90495000249939,
+      "totals_seconds": {
+        "controller_cpu_seconds": 0.578125,
+        "controller_wall_seconds": 0.4173909999371972,
+        "excluded_audit_cpu_seconds": 0.0,
+        "excluded_audit_wall_seconds": 0.0,
+        "raw_controller_cpu_with_audit": 0.578125,
+        "raw_controller_wall_with_audit": 0.4173909999371972
+      },
+      "zero_recorded_cpu_decisions": 15,
+      "first_decisions": [
+        {
+          "controller_cpu_seconds": 0.0,
+          "controller_wall_seconds": 0.00156309999874793,
+          "excluded_audit_cpu_seconds": 0.0,
+          "excluded_audit_wall_seconds": 0.0,
+          "raw_controller_cpu_with_audit": 0.0,
+          "raw_controller_wall_with_audit": 0.00156309999874793
+        },
+        {
+          "controller_cpu_seconds": 0.015625,
+          "controller_wall_seconds": 0.0014424999972106889,
+          "excluded_audit_cpu_seconds": 0.0,
+          "excluded_audit_wall_seconds": 0.0,
+          "raw_controller_cpu_with_audit": 0.015625,
+          "raw_controller_wall_with_audit": 0.0014424999972106889
+        }
+      ]
+    }
+  },
+  "peak_process_rss_bytes": 237539328,
+  "runner_wall_seconds": 7.782169399986742,
+  "model_load_seconds": 0.03998650000721682,
+  "feedback_counts": {
+    "M": {
+      "noop": 12,
+      "accepted": 13
+    },
+    "R": {
+      "noop": 18,
+      "accepted": 12,
+      "resource_unavailable": 1
+    }
+  },
+  "communication_delta_event_counts": {
+    "M": {
+      "command/sent": 53,
+      "telemetry/sent": 1563,
+      "telemetry/received": 1497,
+      "ack/received": 40,
+      "command/received": 28,
+      "command/dropped": 9,
+      "ack/dropped": 1
+    },
+    "R": {
+      "command/sent": 54,
+      "telemetry/sent": 1995,
+      "telemetry/received": 1929,
+      "ack/received": 35,
+      "command/received": 23
+    }
+  },
+  "descriptive_only_parent_differences": [
+    {
+      "parent": "gate-000",
+      "utility_M_minus_R": 0.0049949994463301395
+    },
+    {
+      "parent": "gate-001",
+      "utility_M_minus_R": -0.003471097043024951
+    }
+  ],
+  "descriptive_only_mean_difference": 0.0007619512016525942,
+  "observed_model_cpu_threshold_satisfied": false,
+  "observed_model_wall_threshold_satisfied": true,
+  "formal_stage_authorized": false,
+  "algorithm_adoption_decision": "not_established",
+  "limits": [
+    "Two technical parents do not establish benefit or broad runtime cost.",
+    "Windows GetProcessTimes increments show 15.625ms quantization in these records; zero entries do not imply zero CPU.",
+    "Shared process includes Torch thread pool for both arms; arm-isolated deployment CPU/RSS is not measured.",
+    "Total process CPU and separate environment/logging CPU were not recorded; do not invent them.",
+    "Native termination leaves one physical completion per episode without observed host confirmation; eventual receipt is unknown.",
+    "No rerun, tuning, new samples, or formal matrix is authorized."
+  ]
+}

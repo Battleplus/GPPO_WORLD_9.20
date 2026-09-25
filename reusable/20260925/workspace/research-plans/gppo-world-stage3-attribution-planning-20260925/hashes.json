@@ -1,0 +1,148 @@
+{
+  "files": [
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\analysis_contract.py",
+      "sha256": "62fcbbd240547c78b535cb80238b47022458e88b4d7a1adb16d78e4584aa6214"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\analyze_runtime_necessity.py",
+      "sha256": "4a5c15c29f365150ac978d26cfb787ad7278955f61585aa765f76b7666fa57df"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\attribution_contract.py",
+      "sha256": "227e6d09fc3a3f73a5ee08fa35ce117ff57c35dd25dcc67dd424a60a31c10806"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\authorization-template.json",
+      "sha256": "b36dc844c99075294ad87a547126535a992d546b612e34824bc3576d88e8dee7"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\base_worker.py",
+      "sha256": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\BUDGET_REQUEST.json",
+      "sha256": "7cb86432b466a239520845d133a47e7e1ecd31d08e0d70a3bc5b43f360ea0806"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\decision_only_inference.py",
+      "sha256": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\execution-manifest.json",
+      "sha256": "dbfddd98d6660f44c4047dc977df9153e49c664b546a60f46ce9d59b2f153418"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\historical-comparator-metadata.json",
+      "sha256": "adb278612e616f1beebe8a27a8b3aefda4d09d127488ae64ceb459cec25b7ac5"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\no_online_world.py",
+      "sha256": "b5ad5f9611ed991de3a13405592dfb277db8275d5cdb836e885f77ce6d0940ca"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\prepare_package.py",
+      "sha256": "e9f822c1161e7e9c18c12ec89be11b2c7edc88d51cc634e6f111d681ee6130ec"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\process_support.py",
+      "sha256": "57cd65ed45391e58083254440e9dfe269f2ef05d5a11e637ab729bdd3d1e96b8"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\protocol.md",
+      "sha256": "7d71e39857645fc5bddc0ba798206eb4078ef67aea4cff79e3b3e2f3ffee6359"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\remote\\AGENTS.md",
+      "sha256": "3826d0cae6b8431a47e6ee4eaec8f1d80ee1e1074350c15ce45e9e39c2870f54"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\remote\\docs\\EVIDENCE_AND_MIGRATION.md",
+      "sha256": "ca4d9f89728a1dba9f121957f8672983c897baed2ab4e34dc1536799e4e31830"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\remote\\docs\\NEXT_EXECUTION.md",
+      "sha256": "9a7d000a271a8cf898cb19cd913f752073a5ee5241ddb0e32e93a2eb9d2f15d6"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\remote\\docs\\RESEARCH_STATE.md",
+      "sha256": "566fec179c5c3c609fd38ec79586667ca06153e73f1e3e922878717cf3090b6b"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\remote\\docs\\ROADMAP.md",
+      "sha256": "954396fe54aa4622690ba4ae76a23328cd6c631b47beac38b9cca08067c40cfa"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\remote-readback.json",
+      "sha256": "15a87c470bc21ef756d072d1523d16ef4409c90b62801a37d97a88c97d88769a"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\report.md",
+      "sha256": "ae5d7dd90eb413b7dc19939486edf86eef5ef1d9c528406152fbac730eaefe98"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\reviewer-resolutions.md",
+      "sha256": "4f8942e58c81acae3d1f388aa0310706dd634d8e530ee1a8b0ad386206315dcb"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\run_diagnostic.py",
+      "sha256": "42a5542107ec5390cd2b55f18028fc43b50d26215ebdc39794623049a454d98b"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\runtime_support.py",
+      "sha256": "e46e81f3b2407bfdb0b19b8eb634320dbc106c2fdaab670a81ee8faf56c37547"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\runtime_worker.py",
+      "sha256": "138463eaa34634177c6c966b609febaa7ad4154a3d0cb24da6ec9b725c0bab1e"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\safe_observer.py",
+      "sha256": "096033227f62e9d90ed3c4890369f6c8098640facc53d07b5c31235a2f6aed66"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\sample-manifest.json",
+      "sha256": "b11bec67d6fabc35aa65734f6d8fc8d6e91bfd98a11bd9378ff31ca586f5dca0"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\session_budget.py",
+      "sha256": "7afe52bb52206c0a78416dddc30cee309a1d2c4845d551d7f6b939e2b69615ae"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\source-differences.md",
+      "sha256": "ffb8fbbfb5d7fb73aa3977bff3204abfa15ce1d9b9bacbae740d63c7adb84235"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\sqlite_diagnostics.py",
+      "sha256": "a1623172b4aee6c82c7dd40b872c0fed2b25bc594fc7b5a4b9fc129c7ba3453d"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\stage2-budget-readonly.json",
+      "sha256": "ab62af4feba7e3809256eafa5f86cd53758b4a8b5915f622a80d5c71492d2484"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\test-output.txt",
+      "sha256": "6999c90f0638b60e388f7262d028b8e08ec51e1f341b4cab6d98f2707f700139"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\test_plan.py",
+      "sha256": "bc2354e8fd4bfde394c045f38812a0f2525b8051eb915c9bc4d33538573c50d4"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\test_runner.py",
+      "sha256": "ce7a2835d51a68b7926a12c907017a81688b57fb9ab87a3997aab4c1a94034d5"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\test_runtime_worker_static.py",
+      "sha256": "d8dc8ad21213f02e660bd6a8f0837ef0f38515060ecffd9db27c5ca0a31936f0"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\validate_package.py",
+      "sha256": "ecabd8097e1f0c420f2a85fd552367f757b10b32b3fe7a9f868a63a2da47963b"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\zero-step-validation.json",
+      "sha256": "ae0d66637507d49155ae64743c62bc1c892b48dc101c452a17767b45af76f612"
+    }
+  ]
+}
