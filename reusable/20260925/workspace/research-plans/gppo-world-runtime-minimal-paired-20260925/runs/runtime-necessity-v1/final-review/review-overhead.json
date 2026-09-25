@@ -1,0 +1,8 @@
+{
+  "wall_seconds": 0.883012400008738,
+  "CPU_seconds": 0.359375,
+  "environment_steps": 0,
+  "model_forwards": 0,
+  "updates": 0,
+  "scope": "post-exit read-only audit and report generation, separate from experimental timing"
+}

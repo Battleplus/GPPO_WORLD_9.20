@@ -1,0 +1,70 @@
+{
+  "audit_type": "static_code_and_saved_timing_only",
+  "new_activity": {
+    "environment_steps": 0,
+    "model_forwards": 0,
+    "model_loads": 0,
+    "training_updates": 0,
+    "experiment_attempts": 0
+  },
+  "threshold": {
+    "cpu_ms": 10,
+    "wall_p95_ms": 50,
+    "kind": "predeclared_research_practical_standard_not_field_SLA",
+    "source_line": 117,
+    "changed": false
+  },
+  "stage2_formal_controller_cost": {
+    "M": {
+      "decisions": 62979,
+      "mean_cpu_ms": 9.105217612219947,
+      "wall_p95_ms": 5.922250010189599
+    },
+    "R": {
+      "decisions": 70624,
+      "mean_cpu_ms": 15.32809314114182,
+      "wall_p95_ms": 57.136415007698574
+    }
+  },
+  "stage2_formal_cost_guard_pass": true,
+  "current_A": {
+    "N_mean_cpu_ms": 10.386904761904763,
+    "N_wall_p95_ms": 3.5344599920790634,
+    "paired_replay_cpu_ratio": 0.7931818181818182,
+    "bitwise_reference_candidate_match": true,
+    "full_historical_match": true
+  },
+  "all21_cpu_ms": {
+    "candidate": 10.386904761904763,
+    "full": 13.095238095238095,
+    "reference": 10.68452380952381
+  },
+  "warm20_cpu_ms_descriptive_not_new_gate": {
+    "candidate": 10.375,
+    "full": 12.875,
+    "reference": 10.625
+  },
+  "old_stage2_A_full_all21_cpu_ms_descriptive": 8.958333333333334,
+  "byte_identical": [
+    "current base_worker vs stage2 original/recovery stage_worker",
+    "decision_only_inference"
+  ],
+  "configured_threads": {
+    "intra": 4,
+    "inter": 1
+  },
+  "direct_timing_comparability": false,
+  "differences": [
+    "closed-loop formal workload vs 25 saved inputs",
+    "per-decision CPU vs whole-batch CPU",
+    "extra checks and scalar extraction inside choose",
+    "worker residency/request scheduling"
+  ],
+  "hashing_inside_controller_timer": false,
+  "overhead_quantified": false,
+  "cost_failure_preserved": true,
+  "research_decision": "propose_separate_task_benefit_diagnostic_not_recovery",
+  "future_execution_authorized_by_this_audit": false,
+  "retry": false,
+  "inputs_unchanged_during_audit": true
+}

@@ -1,0 +1,292 @@
+{
+  "files": [
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\authorization-approved.json",
+      "sha256": "d7d70751ce5cf2004b7b6a9fe2bc96576986487ecdeceec9c32f69802ec7792b"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\BUDGET_REQUEST.json",
+      "sha256": "e564d340d139d1106758927e2961724493c69c9f6bbc1efe43cd63c980165c3d"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\execution-manifest.json",
+      "sha256": "2848c9dedc1d14755b177baac3a5c1be9b433f581b6fb9f2baebf0ed6dfaafef"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\technical-stop.json",
+      "sha256": "dc9a7b762f9905664718885815bd4daa93b36d62f250cfe1c362cb72a3deb35f"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\result.json",
+      "sha256": "d064040a699c070f7662e152eb8eedd06d95fe805dabcab0ab92ab9d04a18b9c"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\budget.sqlite3",
+      "sha256": "7a643ac1db1c2b26c0ef6c5f6d36452c6dc46a422411e977c9c69940aa215c81"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\00-candidate.json",
+      "sha256": "f0138ea8696513429bb61db96a4ffbc5b4370fe456a749ca59b24dccd4e2f689"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\00-full.json",
+      "sha256": "8208a2b77b8633766a15215bd76f1eb3f12c161cc326efcb8ca4cbdc927c8446"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\00-reference.json",
+      "sha256": "61a09869c5566295f84512ef262e15f28037487a9f50fc4ba5028c8313458c7d"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\01-candidate.json",
+      "sha256": "e584be9d6957e13797285bfb0e68453e01a677ccbf316bf3c5e13ffdc9cf3d0a"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\01-full.json",
+      "sha256": "32d829b9cad88389268c3bc31396d305b0a77514943933c9622c26b3663cc6bf"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\01-reference.json",
+      "sha256": "5cc194682534dbe485ee77719e299b3edbfd21c96d3ab2159e08ced89d9a969b"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\02-candidate.json",
+      "sha256": "761bfbb774e6c7473a59f7018ddd1f9b3237a27747b0d06259d4aab5fc7ed529"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\02-full.json",
+      "sha256": "53f5be51cf19f54e6dde40bc78a7848ef51f677b50a784d0a75c9695a611e1e6"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\02-reference.json",
+      "sha256": "25c5719fc7a87c8b1d7f70be3d1e9fb0a84285f787b4b814d5adfd5e045e5f52"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\03-candidate.json",
+      "sha256": "396510df3a5ea996ada7cebc3ca8f7e1ff24886152affb60e583d4ac780d968a"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\03-full.json",
+      "sha256": "6d20e3f206bb580d7fb89cc19f7f4e597a8ee6a511b24bf1783319311a08c81c"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\03-reference.json",
+      "sha256": "3090c3ca95567e28e2c85b5fe227585485672e913edec7fff6a30c2bd49b0b3c"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\04-candidate.json",
+      "sha256": "b8079526e6f55c82e4864fbed9560a94cab0fe4a44a8a348235e72ac8a3657bf"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\04-full.json",
+      "sha256": "a20d65d2594a016f414b7e24e5f4ddd14d60da779b5a7088f3022bf7affdbf56"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\04-reference.json",
+      "sha256": "b66301c861c8872bbe3fd235de6dd87c28aee7f3da376d54784e2abad1812f8d"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\05-candidate.json",
+      "sha256": "202345f9d33cd665d5b05422967eb7fe7cdbc1b3dcbf80a52132a0ad90bd577a"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\05-full.json",
+      "sha256": "85c3121e311da8535c028ca1cdf53a85248aa5f50511b1319d033452eb1a35c9"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\05-reference.json",
+      "sha256": "aed50be5d02e2b68444c480417311e2780da98e2d348d2130a2a4beceaca16bf"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\06-candidate.json",
+      "sha256": "18e28e3cc18bd7fd55c6b2d9b8f696b5948ae167c12ece5fc890badf108dfee2"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\06-full.json",
+      "sha256": "5f1128b46041203d08b5c8e3f28e7d8c8cae02379e33259acdaa883ee7943adc"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\06-reference.json",
+      "sha256": "cb2824b58ca86e3c671754e7740d6e0a4742207f33d313c881cc9418bf068788"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\07-candidate.json",
+      "sha256": "7d72d3a60df6fd29833d5f4d45ac07b1c218bd7e26581f07a410e3198fe676a2"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\07-full.json",
+      "sha256": "966552d3c94ea14fe7b410d6dde561c716ba9a937a309fab6d81092103f81a1c"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\07-reference.json",
+      "sha256": "ec06618bff10c104ff3c863df7d7f355479d4870f8f37e8aba37177e7e4b19aa"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\08-candidate.json",
+      "sha256": "0154c99773dadadcbd97d68ef211ce4ee887d5fbd34e896669b4784cd6e8603d"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\08-full.json",
+      "sha256": "1a55724cff31c36823d208e67765b43a7d54ca4d3e964f0eec0c6e66fdcbe750"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\08-reference.json",
+      "sha256": "6a2311dc0e85fb00fcf96924ad94946ab167f1394535c65e46a4262ffc43488c"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\09-candidate.json",
+      "sha256": "9f5d237101d18729162ec351c13bf39d5ffd1ac55456a0ebb74ec9c61d46ba59"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\09-full.json",
+      "sha256": "0bc9a6e0dc498b102c18430c6aa91ddadf4120d2497a31c22dcb5d528b7c0040"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\09-reference.json",
+      "sha256": "3f281fec5a11f01c843dbad0b4c99b3320db5124a01bba6d70b16af5525df40b"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\10-candidate.json",
+      "sha256": "a68cb20b8bb9077d827211d1288daa28703c6a37911df29bd3da0cdab1e71ed1"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\10-full.json",
+      "sha256": "cc973911c795293d49b2566e6f75ef1426058d75af259b4dc31dda0b59975e48"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\10-reference.json",
+      "sha256": "f54b3f75880704e0277bf7698aa8b947ebcc04ab69ec296d74af4c03c867f57c"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\11-candidate.json",
+      "sha256": "b49687092d31203feb8180bc4f5051503dc457f83de96448e6da81c3081b0d31"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\11-full.json",
+      "sha256": "de92ac2f58a9fcf1cf989f06fd9e343a7a1b658476cbe6020db349d3b0031823"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\11-reference.json",
+      "sha256": "a16325d3e18990209d93ef093435c63b6274bcdbf50f86bd4bd820a1a708a997"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\12-candidate.json",
+      "sha256": "5a186b595561c36491435416a716086f6f4869389cebb3e708979c4ba1ff5031"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\12-full.json",
+      "sha256": "95595545ef23fe8fe1fe8004412ac51c7279f9b0940d1d6feeaded6f7eea0df5"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\12-reference.json",
+      "sha256": "cb53ce27231f6aee67b051fd9cd9e253363223ce99bad877c0c70a12d3d9b948"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\13-candidate.json",
+      "sha256": "b8d449b6db912b961ee7bba10ff7733f863f069ddb76104db5e129142eadb5ab"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\13-full.json",
+      "sha256": "dbc92e1bb1b96cc491f26d62cbab4bf55ce268af634184bba23c227ba8d13548"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\13-reference.json",
+      "sha256": "82300e98f1b25a00924b7f8c191435fee5accbc89d21c5134f9d418380010c44"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\14-candidate.json",
+      "sha256": "a3865aa517f34e4c85182f04a712698f34bbc400dde1e910582e36631f27433c"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\14-full.json",
+      "sha256": "d45b2d7ec92d9f1c79e7567c2168b9fbdaa91e8cd0e54123630e14cb777ece30"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\14-reference.json",
+      "sha256": "ad97cc1aa6880f42db57a2df582174a13dcc9fe725b5bf3b3bed034740d41921"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\15-candidate.json",
+      "sha256": "ef725112db2f60b697afec76dbb0beed3ff5496f06e2a360b35212ce9d5ab3e0"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\15-full.json",
+      "sha256": "acad6e1897038f2d2bf3f34e9f39ed2a9b064fe32ab5e46dec8b30aebc301438"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\15-reference.json",
+      "sha256": "8fc295c9bc54a2336e04143b8086c072df1a3cb1dbba62856eec41a9361dd57a"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\16-candidate.json",
+      "sha256": "80e5f724de313e1035ef3911dea4cb5172039658bfa06f0e8d3c436fe410f16f"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\16-full.json",
+      "sha256": "6066c8c5ac21230c1309ffabd209b7b0c1d2a58dfda2752f2b427b4bf0cffea3"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\16-reference.json",
+      "sha256": "0cbf331d8f45ac2164be16c1d7a6a9020270dbb1e0a08c81a514848aa9e2ef3f"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\17-candidate.json",
+      "sha256": "707bacf0bb37545dd7139efa7bd5a13396a029b256ca9d2a92154b1d3e1964bd"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\17-full.json",
+      "sha256": "c68e67c030b03c2429bbb41eea6c94fcdca29898bcbf6093063b50fdc89d415d"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\17-reference.json",
+      "sha256": "09a85100c38640dfce3a9b5e002e88dab68384910c10fa6378e427ec41f91d13"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\18-candidate.json",
+      "sha256": "0c23c7009235b50700a3b3e48cb0f0000e6939539c480f735ff515e07c371bea"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\18-full.json",
+      "sha256": "b01074ee2015eab05bc99c5ae1a40e7c9b5ff15fa24f5a23fa86b599577a6e41"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\18-reference.json",
+      "sha256": "f164c0d294d16025277aeb36f3a589c36d3d24b9916be676b3820cf15146e549"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\19-candidate.json",
+      "sha256": "ed338211ff17d77b12dc1964798893b530690798f0af81909e9fcf718a08e48a"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\19-full.json",
+      "sha256": "4627722a5630f1a55e4c1639527937477607c081f073775102c03257f2b4583c"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\19-reference.json",
+      "sha256": "d2ff3e38f07e1a0d79e13e689bdba193d489ac1e706088bed8fffd213f78b3e1"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\20-candidate.json",
+      "sha256": "80421dca0e8b3de8a1376befb16d761a9bc3363e4c982e51372255af34c0936a"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\20-full.json",
+      "sha256": "6a4bb17715474d99b95d442b4dd112432a1ba2a3778fc51cf425fcc441166bfa"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\A\\20-reference.json",
+      "sha256": "695d9965ad58a841001821d87c47af584dfb93a2e4606fbd28ead72cfe0b2ab7"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\final-review\\decision.json",
+      "sha256": "9354dd5beee420f0dcd8b069cd7bc374c96663e43d9da589f7e80998e2fa7c94"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\final-review\\report.md",
+      "sha256": "dabf5cf2217ee76d1b066e10386c58afbebf5b5535741332e5409c4b8ee57ef0"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runs\\runtime-necessity-v1\\final-review\\review-overhead.json",
+      "sha256": "c0840f48930431887b99fe1659838c499f6bce527591824bcd8464c53c7b961d"
+    }
+  ]
+}
