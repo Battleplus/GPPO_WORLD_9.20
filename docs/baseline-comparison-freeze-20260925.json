@@ -1,0 +1,27 @@
+{
+  "id": "allocation-baseline-comparison-scope-v1-20260925",
+  "status": "comparison_scope_frozen",
+  "document": "BASELINE_COMPARISON_FREEZE_20260925.md",
+  "execution_authorized": false,
+  "budget_created": false,
+  "calendar_deadline": null,
+  "required_baselines": [
+    {"id": "G-ND", "method": "nearest_distance_greedy", "same_protocol_result_verified": false},
+    {"id": "G-EDF", "method": "earliest_deadline_greedy", "same_protocol_result_verified": false},
+    {"id": "H-ROLL", "method": "rolling_hungarian_assignment", "same_protocol_result_verified": false},
+    {"id": "R-SEARCH", "method": "public_history_bounded_search_5000", "same_protocol_result_verified": true},
+    {"id": "PPO-STD", "method": "standard_ppo_with_public_history", "same_protocol_result_verified": false},
+    {"id": "GPPO-NOWORLD", "method": "gppo_trained_without_world_model", "same_protocol_result_verified": false},
+    {"id": "GPPO-WORLD", "method": "full_gppo_world_preference_system", "same_protocol_result_verified": true}
+  ],
+  "online_world_removal_is_standard_ppo": false,
+  "optional_not_in_required_matrix": ["rolling_milp_or_cp_sat"],
+  "reference_contract": "historical_native_m10_25_action_W1",
+  "preference": [0.8, 0.2],
+  "objective_scales": [0.5, 1.0],
+  "gamma": 0.99,
+  "practical_utility_margin": 0.01,
+  "reference_cost_limits": {"mean_controller_cpu_ms": 10, "wall_p95_ms": 50, "rss_gib": 4, "field_sla": false},
+  "pending_before_execution": ["implementation_identity", "hungarian_scoring_and_serialization", "ppo_architecture_and_hyperparameters", "training_lineage_and_budget_parity", "independent_parent_manifest", "training_seed_manifest", "sample_size", "primary_comparison_and_multiplicity", "resource_budget_authorization"],
+  "this_change_resources": {"env_steps": 0, "model_forwards": 0, "training_updates": 0, "new_attempts": 0}
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "archive_path": "docs/archive/RESEARCH-SYNC-20260925/stage2/report.md",
+    "source_workspace_relative": "research-plans/gppo-world-stage2-consolidated-20260924/local-recovery2-preparation-20260925/final-review/report.md",
+    "sha256": "01497e63eddab3cd1d28684a9c5ecf430141a7b3a6df3041e7499ffb4f94d39b",
+    "bytes": 4972
+  },
+  {
+    "archive_path": "docs/archive/RESEARCH-SYNC-20260925/stage2/verification.json",
+    "source_workspace_relative": "research-plans/gppo-world-stage2-consolidated-20260924/local-recovery2-preparation-20260925/final-review/verification.json",
+    "sha256": "06f772da1671062d6259ed6e312b03e3d13577adfdaef62a95002cc282213de6",
+    "bytes": 16625
+  },
+  {
+    "archive_path": "docs/archive/RESEARCH-SYNC-20260925/stage2/analysis.json",
+    "source_workspace_relative": "research-plans/gppo-world-stage2-consolidated-20260924/local-recovery2-preparation-20260925/runs/consolidated-v1/C/analysis.json",
+    "sha256": "bbef5fde69a5fc967fe024d665c76f311ae81ff912ff8d848a0e59478d53ed52",
+    "bytes": 756589
+  },
+  {
+    "archive_path": "docs/archive/RESEARCH-SYNC-20260925/stage2/original-protocol.md",
+    "source_workspace_relative": "research-plans/gppo-world-decision-freeze-20260924/protocol.md",
+    "sha256": "c6dfb020189d8abe6e538fe5f10ae4fbfd306f7982a7ed81365b52232438de10",
+    "bytes": 18431
+  },
+  {
+    "archive_path": "docs/archive/RESEARCH-SYNC-20260925/cost-audit/report.md",
+    "source_workspace_relative": "research-plans/gppo-world-runtime-minimal-paired-20260925/runs/runtime-necessity-v1/timing-comparability-audit/report.md",
+    "sha256": "6d53858e12a7d3a8e5c49dda1dfce93e034f4da1d46a493bea86120f67471e20",
+    "bytes": 8460
+  },
+  {
+    "archive_path": "docs/archive/RESEARCH-SYNC-20260925/task-diagnostic/report.md",
+    "source_workspace_relative": "research-plans/gppo-world-task-benefit-diagnostic-20260925/runs/task-benefit-v1/final-review/report.md",
+    "sha256": "c284191061d8e145d05f8a4557d1f2d1d190ddfad567ff8773c47cf06fec1e1e",
+    "bytes": 3134
+  },
+  {
+    "archive_path": "docs/archive/RESEARCH-SYNC-20260925/task-diagnostic/verification.json",
+    "source_workspace_relative": "research-plans/gppo-world-task-benefit-diagnostic-20260925/runs/task-benefit-v1/final-review/verification.json",
+    "sha256": "eb88e3c1ea44e92b587bec394b4463a5db02bfd340bb2acdf500a539bbe7c59b",
+    "bytes": 23571
+  }
+]
