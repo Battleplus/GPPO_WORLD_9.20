@@ -1,0 +1,44 @@
+{
+  "protocol": "world-gppo-9.11-energy-residual/0.1.0",
+  "parent_protocol": "world-gppo-9.11-consequence/0.2.0-feasibility-h6",
+  "status": "plan_and_no_update_audit_only",
+  "task_semantics": "continuous_service_until_deadline",
+  "observation_contract": "m10-graph5-5type-25action-global27",
+  "prediction_horizon_steps": 6,
+  "post_branch_control": "selected legal action once, then five periodic NOOP decisions while accepted leases continue",
+  "targets": {
+    "travel_time": "public_physics_estimate_only_in_first residual experiment",
+    "service_progress": "public_physics_estimate_only_in_first residual experiment",
+    "energy_delta": "learn residual from public system-energy estimate",
+    "deadline_risk": "excluded from fusion until an independent development gate passes"
+  },
+  "energy_contract": {
+    "label_scope": "sum of all UAV resource energy consumed during the six-step branch window",
+    "candidate_local_energy": false,
+    "units": "simulator energy units over six decision intervals",
+    "zero_residual_baseline": "public_physics energy estimate",
+    "learned_target": "energy_delta - public_physics energy estimate"
+  },
+  "selection": {
+    "fit_splits": ["train", "validation"],
+    "evaluation_splits_after_freeze": ["test", "ood"],
+    "grouping": "parent_episode_id + prefix_id",
+    "candidate_pairs_are_not_independent_episodes": true
+  },
+  "proposed_new_training_budget": {
+    "model_seed": 1101,
+    "train_records": 694,
+    "validation_records": 659,
+    "max_epochs": 8,
+    "patience": 3,
+    "max_optimizer_updates": 4096,
+    "max_wall_seconds": 3600,
+    "candidate_branch_cap": 25,
+    "note": "not started in this stage; explicit authorization boundary for a future residual run"
+  },
+  "policy": {
+    "environment_reward_unchanged": true,
+    "event_trigger": false,
+    "fusion": "candidate-specific energy residual only after prediction and ranking gates"
+  }
+}

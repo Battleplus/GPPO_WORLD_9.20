@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Battleplus/WORLD-GPPO_9.11/schemas/m10-joint-consequence-v1.schema.json",
+  "title": "M-10 candidate joint task-set consequence record",
+  "type": "object",
+  "required": [
+    "schema",
+    "parent_episode_id",
+    "prefix_id",
+    "repeat_id",
+    "graph5_t",
+    "joint_task_set",
+    "joint_task_outcomes",
+    "target",
+    "exogenous_key",
+    "label_provenance"
+  ],
+  "properties": {
+    "schema": {"const": "gppo-arrival-joint-consequence/v1"},
+    "parent_episode_id": {"type": "string", "minLength": 1},
+    "prefix_id": {"type": "string", "minLength": 1},
+    "repeat_id": {"type": "string", "minLength": 1},
+    "joint_task_set": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "joint_task_outcomes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["task_id", "deadline", "physical_arrival_time", "arrival_before_deadline_physical", "deadline_observed", "failure_class", "label_source"],
+        "properties": {
+          "task_id": {"type": "string", "minLength": 1},
+          "deadline": {"type": "number"},
+          "physical_arrival_time": {"type": ["number", "null"]},
+          "arrival_before_deadline_physical": {"type": ["boolean", "null"]},
+          "deadline_observed": {"type": "boolean"},
+          "failure_class": {"type": ["string", "null"]},
+          "label_source": {"const": "M10Environment.counterfactual_simulator"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "target": {
+      "type": "object",
+      "required": ["action", "prediction_horizon_steps", "reference_policy"],
+      "properties": {
+        "action": {"type": "integer", "minimum": 0, "maximum": 24},
+        "prediction_horizon_steps": {"type": "integer", "minimum": 1},
+        "reference_policy": {"const": "traditional_public_controller_v1"}
+      },
+      "additionalProperties": true
+    },
+    "exogenous_key": {"type": "string", "minLength": 1},
+    "graph5_t": {"type": "object"},
+    "label_provenance": {
+      "type": "object",
+      "required": ["label_source", "hidden_state_online", "shared_exogenous_randomness", "scenario_tape_id", "scenario_seed", "post_branch_control"],
+      "properties": {
+        "label_source": {"const": "M10Environment.counterfactual_simulator"},
+        "hidden_state_online": {"const": false},
+        "shared_exogenous_randomness": {"const": true},
+        "scenario_tape_id": {"type": "string"},
+        "scenario_seed": {"type": "integer"},
+        "post_branch_control": {"const": "frozen_public_controller_v1"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

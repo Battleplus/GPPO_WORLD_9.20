@@ -1,0 +1,8 @@
+# Preserve the exact bytes of imported, SHA-256-linked server evidence.
+nodes/T-05/evidence/server-*.json -text
+nodes/T-05/evidence/four-group-ablation.json -text
+nodes/T-05/evidence/release-assets-sha256.txt -text
+# NVIDIA-SMI output contains intentional trailing spaces; retain the signed original.
+nodes/T-05/evidence/server-environment-preflight.txt -text -whitespace
+nodes/D-02/protocol.json text eol=lf
+nodes/D-02/evidence/*.json -text

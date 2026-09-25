@@ -1,0 +1,16 @@
+{
+  "protocol": "world-gppo-9.11-consequence/0.1.1-dev-window6",
+  "parent_protocol": "world-gppo-9.11-consequence/0.1.0",
+  "observation_contract": "m10-graph5-5type-25action",
+  "task_semantics": "continuous_service_until_deadline",
+  "arrival_is_completion": false,
+  "decision_mode": "periodic",
+  "prediction_horizon_steps": 6,
+  "consequence_targets": ["travel_time", "service_progress", "energy_delta", "deadline_risk"],
+  "splits": "episode-disjoint train/validation/test/OOD",
+  "world_model_pretrain_epochs_max": 30,
+  "world_model_pretrain_patience": 5,
+  "world_model_max_optimizer_updates": 10000,
+  "world_model_max_wall_seconds": 7200,
+  "status": "development_window_candidate_not_formal_frozen"
+}

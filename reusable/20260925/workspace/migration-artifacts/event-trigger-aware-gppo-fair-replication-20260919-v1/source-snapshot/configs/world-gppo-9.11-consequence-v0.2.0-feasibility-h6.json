@@ -1,0 +1,40 @@
+{
+  "protocol": "world-gppo-9.11-consequence/0.2.0-feasibility-h6",
+  "parent_protocol": "world-gppo-9.11-consequence/0.1.1-dev-window6",
+  "observation_contract": "m10-graph5-5type-25action-global27",
+  "task_semantics": "continuous_service_until_deadline",
+  "arrival_is_completion": false,
+  "deadline_basis": "simulator task lifecycle at the end of the six-step observation window",
+  "decision_mode": "periodic",
+  "prediction_horizon_steps": 6,
+  "post_branch_control": "selected legal action once, then five periodic NOOP decisions while accepted leases continue",
+  "consequence_targets": ["travel_time", "service_progress", "energy_delta", "deadline_risk"],
+  "censoring": "travel/deadline labels outside the observed window are masked, never imputed as zero or success",
+  "noop_labels": "task-specific travel/service/deadline masked; observed total-system energy retained",
+  "history_contract": "no separate history vector in consequence feasibility model; public Graph-5 snapshot only",
+  "splits": "parent-episode-disjoint train/validation/test; OOD uses energy_insufficient scenario family",
+  "data_plan": {
+    "count_per_split": 32,
+    "base_seed": 92001,
+    "prefix_steps": [1, 2, 4, 6],
+    "prefix_policy": "public-hash-legal",
+    "max_candidates_per_prefix": 25,
+    "in_distribution_scenario": "mixed",
+    "ood_scenario": "energy_insufficient"
+  },
+  "world_model_seed": 1101,
+  "world_model_pretrain_epochs_max": 30,
+  "world_model_pretrain_patience": 5,
+  "world_model_max_optimizer_updates": 10000,
+  "world_model_max_wall_seconds": 14400,
+  "selection_splits": ["train", "validation"],
+  "evaluation_splits_after_freeze": ["test", "ood"],
+  "prediction_gate": {
+    "continuous_heads_beating_best_simple_baseline_min": 2,
+    "deadline_brier_better_than_train_event_rate": true,
+    "ranking_heads_with_pairwise_accuracy_at_least": 2,
+    "pairwise_accuracy_threshold": 0.55,
+    "required_for_policy_fusion": "all three conditions"
+  },
+  "status": "frozen_local_feasibility_protocol"
+}

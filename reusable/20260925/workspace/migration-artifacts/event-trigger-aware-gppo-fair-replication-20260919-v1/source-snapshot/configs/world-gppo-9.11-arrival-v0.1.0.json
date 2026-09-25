@@ -1,0 +1,34 @@
+{
+  "protocol": "world-gppo-9.11-arrival/0.1.0",
+  "parent_protocol": "world-gppo-9.11-consequence/0.2.0-feasibility-h6",
+  "status": "new_task_semantics_functional_validation",
+  "task_semantics": "arrival_to_region",
+  "arrival_region": {
+    "shape": "circle",
+    "radius": 0.0,
+    "completion_event": "physical_entry_into_target_region"
+  },
+  "observation_contract": "m10-graph5-5type-25action-global27",
+  "action_contract": "24_uav_task_plus_noop",
+  "deadline_basis_options": {
+    "physical_arrival_before_deadline": "task succeeds when physical target-region entry is at or before deadline",
+    "host_confirmation_before_deadline": "task succeeds only when the completion message is legally received and confirmed at or before deadline"
+  },
+  "records": {
+    "physical_arrival_time": "simulator clock time of target-region entry",
+    "completion_message_send_time": "time the public completion notice is sent; null message id means transport drop",
+    "host_confirmation_time": "time the host legally receives the completion notice; null is unknown/not received",
+    "deadline_classification": "computed only under the explicitly selected deadline_basis",
+    "failure_classes": ["not_arrived_before_deadline", "energy_insufficient", "resource_or_link_failure", "rejected", "noop", "censored_window"]
+  },
+  "invariants": {
+    "communication_and_safety_gates_unchanged": true,
+    "hidden_state_online": false,
+    "old_continuous_service_protocol_unchanged": true,
+    "arrival_and_host_deadline_results_must_not_be_mixed": true
+  },
+  "world_model_targets": ["arrival_before_deadline", "arrival_time", "execution_or_energy_failure"],
+  "system_energy_role": "auxiliary_only",
+  "policy_fusion": "candidate-specific prior or auxiliary score with unchanged environment reward",
+  "training_status": "not_started_until_functional_and_rule_baseline_review"
+}

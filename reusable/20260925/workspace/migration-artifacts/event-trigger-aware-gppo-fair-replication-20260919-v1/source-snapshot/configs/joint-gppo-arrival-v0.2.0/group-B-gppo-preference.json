@@ -1,0 +1,16 @@
+{
+  "protocol": "world-gppo-9.11-arrival-joint-pref-wm-event/0.2.0",
+  "group": "B",
+  "label": "GPPO-Preference",
+  "runner": "joint",
+  "history": true,
+  "preference_learning": true,
+  "vector_reward": true,
+  "world_model": false,
+  "event_auxiliary": false,
+  "preco": true,
+  "preference_objectives": ["on_time_physical_arrival", "negative_energy_consumption"],
+  "preference_sampling": "one Dirichlet(1,1) vector per episode; held across rollout boundaries",
+  "formal_budget": null,
+  "notes": "No model prediction input; same vector reward and preference contract as C/D."
+}

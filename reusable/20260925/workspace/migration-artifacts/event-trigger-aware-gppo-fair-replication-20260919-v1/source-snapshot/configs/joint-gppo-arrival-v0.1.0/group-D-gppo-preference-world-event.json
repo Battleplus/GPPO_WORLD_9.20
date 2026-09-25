@@ -1,0 +1,15 @@
+{
+  "protocol": "world-gppo-9.11-arrival-joint-pref-wm-event/0.1.0",
+  "group": "D",
+  "label": "GPPO-Preference-World-Event",
+  "runner": "joint",
+  "history": true,
+  "preference_learning": true,
+  "vector_reward": true,
+  "world_model": true,
+  "event_auxiliary": true,
+  "preco": true,
+  "preference_objectives": ["on_time_physical_arrival", "negative_energy_consumption"],
+  "formal_budget": null,
+  "notes": "Candidate-specific temporal predictions plus masked observed-event auxiliary loss."
+}

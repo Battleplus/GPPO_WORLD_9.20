@@ -1,0 +1,14 @@
+{
+  "protocol": "world-gppo-9.11-arrival-joint-pref-wm-event/0.2.0",
+  "group": "A",
+  "label": "GPPO",
+  "runner": "legacy_scalar_gppo",
+  "history": true,
+  "preference_learning": false,
+  "vector_reward": false,
+  "world_model": false,
+  "event_auxiliary": false,
+  "preco": false,
+  "formal_budget": null,
+  "notes": "Original scalar-reward arrival Graph-5 GPPO reference; reward-protocol difference from B/C/D must be reported."
+}

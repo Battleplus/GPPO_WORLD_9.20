@@ -1,0 +1,159 @@
+{
+  "absolute_deadline": 1789818878.8489296,
+  "conditions": [
+    "I",
+    "W1",
+    "W2"
+  ],
+  "configurations": [
+    [
+      "A",
+      "P_train",
+      "periodic"
+    ],
+    [
+      "B",
+      "P_train",
+      "triggered"
+    ],
+    [
+      "C",
+      "T_train",
+      "triggered"
+    ]
+  ],
+  "deadline_hours": 8,
+  "environment": {
+    "ack_latency": 0.0,
+    "arrival_radius": 0.0,
+    "command_ttl": 0.5,
+    "completion_notice_max_retries": 0,
+    "completion_notice_mode": "single_shot",
+    "completion_notice_retention": 3.0,
+    "completion_notice_retry_interval": 1.0,
+    "deadline_basis": "physical_arrival",
+    "decision_interval": 1.0,
+    "energy_cost_weight": 0.08,
+    "event_capacity": 4,
+    "horizon": 18.0,
+    "idle_power": 0.05,
+    "initial_energy": 9.0,
+    "lease_ttl": 2.0,
+    "penalty_expired": 4.0,
+    "penalty_rejected": 0.25,
+    "region_count": 3,
+    "relation_width": 4,
+    "reward_completion": 10.0,
+    "reward_priority_scale": 2.0,
+    "seed": 0,
+    "service_power": 1.0,
+    "service_rate": 1.0,
+    "target_count": 4,
+    "task_capacity": 6,
+    "task_completion_mode": "arrival_to_region",
+    "telemetry_delay": 0.0,
+    "telemetry_max_age": 2.5,
+    "travel_power": 0.35,
+    "travel_speed": 1.0,
+    "uav_count": 4
+  },
+  "evaluation_limits": {
+    "environment_steps_max": 48000,
+    "episodes": 1728,
+    "optimizer_calls": 0
+  },
+  "evaluation_order": "parent index, seed, condition, A/B/C interleaving; unique episode_key",
+  "evaluation_tape_sha256": "c10f6e5c9430dc473145c7af0aadd944e23ae3cb6603d19936972b763c30f84d",
+  "experiment_id": "event-trigger-aware-gppo-fair-replication-20260919-v1",
+  "fairness_axis": "environment interaction budget; actor/window/update counts need not match",
+  "historical_exclusions": [
+    "formal-run-v1",
+    "frozen-validation-20260919-v1",
+    "budget-sqlite-v2-20260918"
+  ],
+  "identity": {
+    "checkpoints": {
+      "1101": {
+        "bytes": 5967195,
+        "path": "E:\\Z博士\\migration-artifacts\\preference-weighted-wm-event-cpu-20260917\\final\\run\\training\\seed-1101\\WD\\last-recovery.pt",
+        "sha256": "5b010a2f7eed0af0e3c64333b5c7846f18ffd0e72aff5705719003e1791b5930"
+      },
+      "2203": {
+        "bytes": 5651995,
+        "path": "E:\\Z博士\\migration-artifacts\\preference-weighted-wm-event-cpu-20260917\\final\\run\\training\\seed-2203\\WD\\last-recovery.pt",
+        "sha256": "f1e12262bb548f5a8329fbcf993fcf7238abd50c8fe892adc1b7ef29c4763af2"
+      },
+      "3307": {
+        "bytes": 5809243,
+        "path": "E:\\Z博士\\migration-artifacts\\preference-weighted-wm-event-cpu-20260917\\final\\run\\training\\seed-3307\\WD\\last-recovery.pt",
+        "sha256": "548b848a776dc31a4ffa96be7e50daf1f6f27929e2f314f272bf141a69063941"
+      }
+    },
+    "config": {
+      "ack_latency": 0.0,
+      "arrival_radius": 0.0,
+      "command_ttl": 0.5,
+      "completion_notice_max_retries": 0,
+      "completion_notice_mode": "single_shot",
+      "completion_notice_retention": 3.0,
+      "completion_notice_retry_interval": 1.0,
+      "deadline_basis": "physical_arrival",
+      "decision_interval": 1.0,
+      "energy_cost_weight": 0.08,
+      "event_capacity": 4,
+      "horizon": 18.0,
+      "idle_power": 0.05,
+      "initial_energy": 9.0,
+      "lease_ttl": 2.0,
+      "penalty_expired": 4.0,
+      "penalty_rejected": 0.25,
+      "region_count": 3,
+      "relation_width": 4,
+      "reward_completion": 10.0,
+      "reward_priority_scale": 2.0,
+      "seed": 0,
+      "service_power": 1.0,
+      "service_rate": 1.0,
+      "target_count": 4,
+      "task_capacity": 6,
+      "task_completion_mode": "arrival_to_region",
+      "telemetry_delay": 0.0,
+      "telemetry_max_age": 2.5,
+      "travel_power": 0.35,
+      "travel_speed": 1.0,
+      "uav_count": 4
+    },
+    "config_source": "E:\\Z博士\\migration-artifacts\\wd-event-trigger-aware-gppo-20260918\\window-budget-fix-v1\\source\\tools\\run_event_trigger_aware_gppo.py"
+  },
+  "numpy": "2.5.0",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "preference": [
+    0.8,
+    0.2
+  ],
+  "python": "3.14.4 (tags/v3.14.4:23116f9, Apr  7 2026, 14:10:54) [MSC v.1944 64 bit (AMD64)]",
+  "schema": "event-trigger-aware-gppo-fair-replication/1.0.0",
+  "seeds": [
+    1101,
+    2203,
+    3307
+  ],
+  "source": "E:\\Z博士\\migration-artifacts\\wd-event-trigger-aware-gppo-20260918\\window-budget-fix-v1\\source",
+  "source_manifest": "e46d665ce0edbdf09de1de13206bb0dabbbbd298c15a5bce5b2bf1d2c447ff1f",
+  "started_at": 1789790078.8489296,
+  "status": "registered",
+  "threads": {
+    "inter_op": 1,
+    "intra_op": 4
+  },
+  "torch": "2.13.0+cpu",
+  "training_limits": {
+    "environment_steps_each": 8192,
+    "environment_steps_total": 49152,
+    "groups": 6,
+    "policy_optimizer_calls_each_max": 64,
+    "policy_optimizer_calls_total": 384,
+    "world_updates": 0
+  },
+  "training_tape_sha256": "436d39bdc85fa43f40cc5d804cd3a11d74842814f93399ff472be6e5dbc9f671"
+}
