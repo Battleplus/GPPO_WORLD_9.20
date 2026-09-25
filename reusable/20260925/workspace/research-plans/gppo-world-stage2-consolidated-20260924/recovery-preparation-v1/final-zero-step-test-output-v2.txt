@@ -1,0 +1,28 @@
+test_abnormal_observer_exit_releases_reader_handle (test_safe_observer.SafeObserverTests.test_abnormal_observer_exit_releases_reader_handle) ... ok
+test_abnormal_subprocess_exit_releases_os_handle (test_safe_observer.SafeObserverTests.test_abnormal_subprocess_exit_releases_os_handle) ... ok
+test_actual_progress_publisher_appends_while_reader_holds_file (test_safe_observer.SafeObserverTests.test_actual_progress_publisher_appends_while_reader_holds_file) ... ok
+test_context_manager_calls_close_even_when_read_raises (test_safe_observer.SafeObserverTests.test_context_manager_calls_close_even_when_read_raises) ... ok
+test_create_file_shares_read_write_and_delete (test_safe_observer.SafeObserverTests.test_create_file_shares_read_write_and_delete) ... ok
+test_import_has_no_environment_model_or_project_native_dependency (test_safe_observer.SafeObserverTests.test_import_has_no_environment_model_or_project_native_dependency) ... ok
+test_multiple_readers_can_hold_shared_handles (test_safe_observer.SafeObserverTests.test_multiple_readers_can_hold_shared_handles) ... ok
+test_observation_failure_is_returned_without_raising (test_safe_observer.SafeObserverTests.test_observation_failure_is_returned_without_raising) ... ok
+test_partial_json_tail_is_safe_and_retryable (test_safe_observer.SafeObserverTests.test_partial_json_tail_is_safe_and_retryable) ... ok
+test_read_exception_closes_handle_and_writer_can_reopen (test_safe_observer.SafeObserverTests.test_read_exception_closes_handle_and_writer_can_reopen) ... ok
+test_actual_recovery_loop_visits_only_5566_suffix_keys_with_stubs (test_recovery_preparation.RecoveryPreparationTests.test_actual_recovery_loop_visits_only_5566_suffix_keys_with_stubs) ... ok
+test_cost_merge_keeps_all_old_and_new_timings (test_recovery_preparation.RecoveryPreparationTests.test_cost_merge_keeps_all_old_and_new_timings) ... ok
+test_cumulative_never_refunds_history_and_load_extension_explicit (test_recovery_preparation.RecoveryPreparationTests.test_cumulative_never_refunds_history_and_load_extension_explicit) ... ok
+test_no_dynamic_imports (test_recovery_preparation.RecoveryPreparationTests.test_no_dynamic_imports) ... ok
+test_original_frozen_pair_order (test_recovery_preparation.RecoveryPreparationTests.test_original_frozen_pair_order) ... ok
+test_progress_failure_does_not_abort_simulation (test_recovery_preparation.RecoveryPreparationTests.test_progress_failure_does_not_abort_simulation) ... ok
+test_reset_assignments_clear_episode_state_using_stub_only (test_recovery_preparation.RecoveryPreparationTests.test_reset_assignments_clear_episode_state_using_stub_only) ... ok
+test_resource_caps_fit_remaining_stage_and_total (test_recovery_preparation.RecoveryPreparationTests.test_resource_caps_fit_remaining_stage_and_total) ... ok
+test_rss_counts_suspended_workers (test_recovery_preparation.RecoveryPreparationTests.test_rss_counts_suspended_workers) ... ok
+test_source_payload_recomputes_all_fields (test_recovery_preparation.RecoveryPreparationTests.test_source_payload_recomputes_all_fields) ... ok
+test_suffix_is_exact_and_disjoint (test_recovery_preparation.RecoveryPreparationTests.test_suffix_is_exact_and_disjoint) ... ok
+test_unauthorized_cannot_create_budget_or_worker (test_recovery_preparation.RecoveryPreparationTests.test_unauthorized_cannot_create_budget_or_worker) ... ok
+test_worker_and_decision_code_unchanged (test_recovery_preparation.RecoveryPreparationTests.test_worker_and_decision_code_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 1.739s
+
+OK

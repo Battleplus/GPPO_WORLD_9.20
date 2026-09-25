@@ -1,0 +1,24 @@
+test_abnormal_observer_exit_releases_reader_handle (test_safe_observer.SafeObserverTests.test_abnormal_observer_exit_releases_reader_handle) ... ok
+test_abnormal_subprocess_exit_releases_os_handle (test_safe_observer.SafeObserverTests.test_abnormal_subprocess_exit_releases_os_handle) ... ok
+test_atomic_progress_replace_while_reader_holds_file (test_safe_observer.SafeObserverTests.test_atomic_progress_replace_while_reader_holds_file) ... ERROR
+test_context_manager_calls_close_even_when_read_raises (test_safe_observer.SafeObserverTests.test_context_manager_calls_close_even_when_read_raises) ... ok
+test_create_file_shares_read_write_and_delete (test_safe_observer.SafeObserverTests.test_create_file_shares_read_write_and_delete) ... ok
+test_import_has_no_environment_model_or_project_native_dependency (test_safe_observer.SafeObserverTests.test_import_has_no_environment_model_or_project_native_dependency) ... ok
+test_multiple_readers_can_hold_shared_handles (test_safe_observer.SafeObserverTests.test_multiple_readers_can_hold_shared_handles) ... ok
+test_observation_failure_is_returned_without_raising (test_safe_observer.SafeObserverTests.test_observation_failure_is_returned_without_raising) ... ok
+test_partial_json_tail_is_safe_and_retryable (test_safe_observer.SafeObserverTests.test_partial_json_tail_is_safe_and_retryable) ... ok
+test_read_exception_closes_handle_and_writer_can_reopen (test_safe_observer.SafeObserverTests.test_read_exception_closes_handle_and_writer_can_reopen) ... ok
+
+======================================================================
+ERROR: test_atomic_progress_replace_while_reader_holds_file (test_safe_observer.SafeObserverTests.test_atomic_progress_replace_while_reader_holds_file)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Z博士\research-plans\gppo-world-stage2-consolidated-20260924\recovery-preparation-v1\test_safe_observer.py", line 204, in test_atomic_progress_replace_while_reader_holds_file
+    os.replace(other, path)
+    ~~~~~~~~~~^^^^^^^^^^^^^
+PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\safe-observer-ha31krrd\\progress.tmp' -> 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\safe-observer-ha31krrd\\progress.json'
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.846s
+
+FAILED (errors=1)

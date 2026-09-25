@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "original": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\run_pipeline.py",
+      "recovery": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\run_recovery.py",
+      "original_sha256": "65fcd7be25724abfdaa989c1b8a078a84a7bf63ed8080a4c8ad87dc6b515a9bd",
+      "recovery_sha256": "e4420273f13c5303bc3c43afef9e0b00ce366a84b78fc3ef5d46d03d973025b0",
+      "byte_identical": false
+    },
+    {
+      "original": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\runtime_support.py",
+      "recovery": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runtime_support.py",
+      "original_sha256": "0d6e4144ffe5154a333539d3f1d28cf51269449276868a3809f3aaf4199a2fb8",
+      "recovery_sha256": "8340b763a967ccfa54da04cb5ac0a0bb4fed52fb7f2d02468cc5a3a51ef0924e",
+      "byte_identical": false
+    },
+    {
+      "original": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\stage_worker.py",
+      "recovery": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\stage_worker.py",
+      "original_sha256": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55",
+      "recovery_sha256": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55",
+      "byte_identical": true
+    },
+    {
+      "original": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\decision_only_inference.py",
+      "recovery": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\decision_only_inference.py",
+      "original_sha256": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80",
+      "recovery_sha256": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80",
+      "byte_identical": true
+    },
+    {
+      "original": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\analyze_formal.py",
+      "recovery": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\analyze_formal.py",
+      "original_sha256": "5ccb36e9179cbe84264f86e223693b11503a16272949280ff2463e1b5f8f9fbf",
+      "recovery_sha256": "5ccb36e9179cbe84264f86e223693b11503a16272949280ff2463e1b5f8f9fbf",
+      "byte_identical": true
+    }
+  ],
+  "new_modules": [
+    "recovery_contract.py",
+    "safe_observer.py"
+  ],
+  "original_files_modified": false
+}

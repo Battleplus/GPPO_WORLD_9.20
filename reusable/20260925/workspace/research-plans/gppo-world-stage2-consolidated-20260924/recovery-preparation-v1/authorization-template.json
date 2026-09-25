@@ -1,0 +1,24 @@
+{
+  "approved": false,
+  "recovery_manifest_sha256": "f3a1521f5c2d9329c60cb99a4625768b788577f2ceb03e85438b51fdd414bb64",
+  "budget_request_sha256": "8fa1dbee2476ea863f1ec0ce93d0fb66f9460d24ec97eac077bec70da93bd04a",
+  "caps": {
+    "environment_steps": 100188,
+    "environment_resets": 5566,
+    "policy_encode": 50094,
+    "world_candidate_batch": 50094,
+    "actor_readout": 50094,
+    "rule_decisions": 50094,
+    "model_loads": 1,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "gpu_hours": 0,
+    "wall_seconds": 118800,
+    "total_process_cpu_seconds": 507600,
+    "resident_process_rss_sum_bytes": 4294967296,
+    "artifact_bytes": 40802189312
+  },
+  "user_approval_reference": "",
+  "user_approval_text": ""
+}

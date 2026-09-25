@@ -1,0 +1,187 @@
+{
+  "attempt": "consolidated-v1-recovery-1-once",
+  "status": "technical_stop",
+  "error": "OperationalError: disk I/O error",
+  "original_completed_retained": 4034,
+  "recovery_complete_with_summary": 4603,
+  "recovery_complete_missing_summary": 0,
+  "complete_total": 8637,
+  "planned": 9600,
+  "recovery_started": 4604,
+  "incomplete_episode_count": 1,
+  "not_started": 962,
+  "remaining_not_complete": 963,
+  "last_completed": {
+    "parent": "eval-1439",
+    "repeat": 1,
+    "arm": "M"
+  },
+  "last_record": {
+    "parent": "eval-1439",
+    "repeat": 1,
+    "arm": "R",
+    "step": 6,
+    "done": false
+  },
+  "paired_initial_hash_checks": 4319,
+  "new_steps_by_arm": {
+    "R": 33755,
+    "M": 30075
+  },
+  "new_environment_steps": 63830,
+  "last_worker_counters": {
+    "R": {
+      "actor_readout": 0,
+      "environment_resets": 2302,
+      "environment_steps": 33755,
+      "model_loads": 0,
+      "policy_encode": 0,
+      "rule_decisions": 33755,
+      "world_candidate_batch": 0
+    },
+    "M": {
+      "actor_readout": 30075,
+      "environment_resets": 2302,
+      "environment_steps": 30075,
+      "model_loads": 1,
+      "policy_encode": 30075,
+      "rule_decisions": 0,
+      "world_candidate_batch": 30075
+    }
+  },
+  "gzip_crc_and_complete_stream": "pass",
+  "uncompressed_sha256": "e820ea054518c8a18bf31745b3288c863013b59215c71361d6a3230f145dcc58",
+  "sqlite_integrity": [
+    "ok"
+  ],
+  "reservation_statuses": {
+    "verified": 192415
+  },
+  "sqlite_sha256_unchanged_by_audit": "7e31f887410deab0c9e393272f2f2026def97f6a49c3f8bbe0347257f7d431c0",
+  "stages": {
+    "C/policy_encode": {
+      "limit": 50094,
+      "reserved": 30075,
+      "verified": 30075,
+      "unknown": 0,
+      "pending": 0
+    },
+    "C/world_candidate_batch": {
+      "limit": 50094,
+      "reserved": 30075,
+      "verified": 30075,
+      "unknown": 0,
+      "pending": 0
+    },
+    "C/actor_readout": {
+      "limit": 50094,
+      "reserved": 30075,
+      "verified": 30075,
+      "unknown": 0,
+      "pending": 0
+    },
+    "C/environment_steps": {
+      "limit": 100188,
+      "reserved": 63830,
+      "verified": 63830,
+      "unknown": 0,
+      "pending": 0
+    },
+    "C/rule_decisions": {
+      "limit": 50094,
+      "reserved": 33755,
+      "verified": 33755,
+      "unknown": 0,
+      "pending": 0
+    },
+    "C/environment_resets": {
+      "limit": 5566,
+      "reserved": 4604,
+      "verified": 4604,
+      "unknown": 0,
+      "pending": 0
+    },
+    "C/model_loads": {
+      "limit": 1,
+      "reserved": 1,
+      "verified": 1,
+      "unknown": 0,
+      "pending": 0
+    },
+    "C/optimizer_updates": {
+      "limit": 0,
+      "reserved": 0,
+      "verified": 0,
+      "unknown": 0,
+      "pending": 0
+    },
+    "C/world_updates": {
+      "limit": 0,
+      "reserved": 0,
+      "verified": 0,
+      "unknown": 0,
+      "pending": 0
+    },
+    "C/offline_updates": {
+      "limit": 0,
+      "reserved": 0,
+      "verified": 0,
+      "unknown": 0,
+      "pending": 0
+    }
+  },
+  "last_ledger_events": [
+    {
+      "amount": 1,
+      "attempt_id": "consolidated-v1-recovery-1-once",
+      "event": "reserve",
+      "pid": 55912,
+      "reservation_id": "07a4056ab3cb4175a85dcd1d5d95a024",
+      "reservation_index": null,
+      "run_id": "consolidated-v1-recovery-1",
+      "stage": "C/environment_steps"
+    },
+    {
+      "amount": 1,
+      "attempt_id": "consolidated-v1-recovery-1-once",
+      "event": "reserve",
+      "pid": 55912,
+      "reservation_id": "7df648ac49e54a7ba13faa617a4328a2",
+      "reservation_index": null,
+      "run_id": "consolidated-v1-recovery-1",
+      "stage": "C/rule_decisions"
+    },
+    {
+      "amount": 1,
+      "attempt_id": "consolidated-v1-recovery-1-once",
+      "event": "verified",
+      "pid": 55912,
+      "reservation_id": "07a4056ab3cb4175a85dcd1d5d95a024",
+      "reservation_index": 384827,
+      "run_id": "consolidated-v1-recovery-1",
+      "stage": "C/environment_steps"
+    },
+    {
+      "amount": 1,
+      "attempt_id": "consolidated-v1-recovery-1-once",
+      "event": "verified",
+      "pid": 55912,
+      "reservation_id": "7df648ac49e54a7ba13faa617a4328a2",
+      "reservation_index": 384828,
+      "run_id": "consolidated-v1-recovery-1",
+      "stage": "C/rule_decisions"
+    }
+  ],
+  "frozen_bound_files": 91,
+  "bound_identity_mismatches": 0,
+  "formal_analysis_exists": false,
+  "partial_effect_computed": false,
+  "controller_cost_gate_evaluated": false,
+  "new_environment_steps_during_audit": 0,
+  "model_forwards_during_audit": 0,
+  "updates": 0,
+  "retry_authorized": false,
+  "verification_wall_seconds": 183.65158879999944,
+  "verification_cpu_seconds": 179.4375,
+  "verification_cost_scope": "Separate post-stop stdlib audit process, not included in frozen experiment process snapshot."
+}

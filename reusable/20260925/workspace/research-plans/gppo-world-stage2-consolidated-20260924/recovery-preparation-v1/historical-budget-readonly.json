@@ -1,0 +1,182 @@
+{
+  "A/policy_encode": {
+    "limit": 1050,
+    "reserved": 1050,
+    "verified": 1050,
+    "unknown": 0
+  },
+  "A/world_candidate_batch": {
+    "limit": 1050,
+    "reserved": 1050,
+    "verified": 1050,
+    "unknown": 0
+  },
+  "A/actor_readout": {
+    "limit": 1050,
+    "reserved": 1050,
+    "verified": 1050,
+    "unknown": 0
+  },
+  "A/environment_steps": {
+    "limit": 0,
+    "reserved": 0,
+    "verified": 0,
+    "unknown": 0
+  },
+  "A/rule_decisions": {
+    "limit": 0,
+    "reserved": 0,
+    "verified": 0,
+    "unknown": 0
+  },
+  "A/environment_resets": {
+    "limit": 0,
+    "reserved": 0,
+    "verified": 0,
+    "unknown": 0
+  },
+  "A/model_loads": {
+    "limit": 2,
+    "reserved": 2,
+    "verified": 2,
+    "unknown": 0
+  },
+  "A/optimizer_updates": {
+    "limit": 0,
+    "reserved": 0,
+    "verified": 0,
+    "unknown": 0
+  },
+  "A/world_updates": {
+    "limit": 0,
+    "reserved": 0,
+    "verified": 0,
+    "unknown": 0
+  },
+  "A/offline_updates": {
+    "limit": 0,
+    "reserved": 0,
+    "verified": 0,
+    "unknown": 0
+  },
+  "B/policy_encode": {
+    "limit": 36,
+    "reserved": 22,
+    "verified": 22,
+    "unknown": 0
+  },
+  "B/world_candidate_batch": {
+    "limit": 36,
+    "reserved": 22,
+    "verified": 22,
+    "unknown": 0
+  },
+  "B/actor_readout": {
+    "limit": 36,
+    "reserved": 22,
+    "verified": 22,
+    "unknown": 0
+  },
+  "B/environment_steps": {
+    "limit": 72,
+    "reserved": 52,
+    "verified": 52,
+    "unknown": 0
+  },
+  "B/rule_decisions": {
+    "limit": 36,
+    "reserved": 30,
+    "verified": 30,
+    "unknown": 0
+  },
+  "B/environment_resets": {
+    "limit": 4,
+    "reserved": 4,
+    "verified": 4,
+    "unknown": 0
+  },
+  "B/model_loads": {
+    "limit": 1,
+    "reserved": 1,
+    "verified": 1,
+    "unknown": 0
+  },
+  "B/optimizer_updates": {
+    "limit": 0,
+    "reserved": 0,
+    "verified": 0,
+    "unknown": 0
+  },
+  "B/world_updates": {
+    "limit": 0,
+    "reserved": 0,
+    "verified": 0,
+    "unknown": 0
+  },
+  "B/offline_updates": {
+    "limit": 0,
+    "reserved": 0,
+    "verified": 0,
+    "unknown": 0
+  },
+  "C/policy_encode": {
+    "limit": 86400,
+    "reserved": 26575,
+    "verified": 26575,
+    "unknown": 0
+  },
+  "C/world_candidate_batch": {
+    "limit": 86400,
+    "reserved": 26575,
+    "verified": 26575,
+    "unknown": 0
+  },
+  "C/actor_readout": {
+    "limit": 86400,
+    "reserved": 26575,
+    "verified": 26575,
+    "unknown": 0
+  },
+  "C/environment_steps": {
+    "limit": 172800,
+    "reserved": 56381,
+    "verified": 56381,
+    "unknown": 0
+  },
+  "C/rule_decisions": {
+    "limit": 86400,
+    "reserved": 29806,
+    "verified": 29806,
+    "unknown": 0
+  },
+  "C/environment_resets": {
+    "limit": 9600,
+    "reserved": 4034,
+    "verified": 4034,
+    "unknown": 0
+  },
+  "C/model_loads": {
+    "limit": 1,
+    "reserved": 1,
+    "verified": 1,
+    "unknown": 0
+  },
+  "C/optimizer_updates": {
+    "limit": 0,
+    "reserved": 0,
+    "verified": 0,
+    "unknown": 0
+  },
+  "C/world_updates": {
+    "limit": 0,
+    "reserved": 0,
+    "verified": 0,
+    "unknown": 0
+  },
+  "C/offline_updates": {
+    "limit": 0,
+    "reserved": 0,
+    "verified": 0,
+    "unknown": 0
+  }
+}

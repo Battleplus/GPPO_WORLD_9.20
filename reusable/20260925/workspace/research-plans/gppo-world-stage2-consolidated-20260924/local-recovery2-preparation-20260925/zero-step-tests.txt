@@ -1,0 +1,24 @@
+Command: C:\Python314\python.exe -B -X utf8 -m unittest -v test_recovery2 test_sqlite_diagnostics
+Exit code: 0
+Ran 14 tests in 15.414s
+OK
+
+Passed:
+test_exact_prefix_behavior_but_not_timing
+test_exact_suffix_and_envelopes
+test_explicit_amendments_and_hash_binding
+test_timing_merge_never_selects_faster_replay
+test_unauthorized_never_creates_run_or_worker
+test_abrupt_exit_preserves_committed_pending
+test_original_session_equivalence_caps_and_unknown
+test_rollback_on_exception_and_cross_thread_rejected
+test_full_suffix_using_stubs_only
+test_prefix_mismatch_stops_before_next_episode
+test_diagnostic_failure_does_not_replace_primary
+test_original_budget_on_disposable_database
+test_primary_error_extended_fields_no_retry
+test_success_result_passes_through_without_diagnostics
+
+No environment/model imports or execution. Temporary SQLite fixtures only.
+The abrupt-exit child intentionally returned 19; its parent test passed.
+This is a consolidated transcription of the tool output, not a native stdout artifact.

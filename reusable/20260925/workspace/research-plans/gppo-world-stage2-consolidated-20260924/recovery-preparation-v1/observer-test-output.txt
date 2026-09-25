@@ -1,0 +1,13 @@
+test_abnormal_subprocess_exit_releases_os_handle (test_safe_observer.SafeObserverTests.test_abnormal_subprocess_exit_releases_os_handle) ... ok
+test_context_manager_calls_close_even_when_read_raises (test_safe_observer.SafeObserverTests.test_context_manager_calls_close_even_when_read_raises) ... ok
+test_create_file_shares_read_write_and_delete (test_safe_observer.SafeObserverTests.test_create_file_shares_read_write_and_delete) ... ok
+test_import_has_no_environment_model_or_project_native_dependency (test_safe_observer.SafeObserverTests.test_import_has_no_environment_model_or_project_native_dependency) ... ok
+test_multiple_readers_can_hold_shared_handles (test_safe_observer.SafeObserverTests.test_multiple_readers_can_hold_shared_handles) ... ok
+test_observation_failure_is_returned_without_raising (test_safe_observer.SafeObserverTests.test_observation_failure_is_returned_without_raising) ... ok
+test_partial_json_tail_is_safe_and_retryable (test_safe_observer.SafeObserverTests.test_partial_json_tail_is_safe_and_retryable) ... ok
+test_read_exception_closes_handle_and_writer_can_reopen (test_safe_observer.SafeObserverTests.test_read_exception_closes_handle_and_writer_can_reopen) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.643s
+
+OK

@@ -1,0 +1,15 @@
+[
+  {
+    "parent": "eval-0672",
+    "repeat": 0,
+    "arm": "R",
+    "ordinal": 4033,
+    "tape_index": 672,
+    "tape_hash": "ed03b8ba96118ceb1361a865626fac74f7bfd8bb39d68ed476aabb11aa416205",
+    "random_key": "frozen-native-public-history-allocation-v1|eval-0672|repeat-0",
+    "steps": 12,
+    "summary_source": "derived_from_complete_steps_not_original_summary",
+    "line_start": 56370,
+    "line_end": 56381
+  }
+]

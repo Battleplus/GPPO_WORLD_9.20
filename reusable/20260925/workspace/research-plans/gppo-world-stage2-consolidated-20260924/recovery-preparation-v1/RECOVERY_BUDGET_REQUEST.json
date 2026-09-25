@@ -1,0 +1,86 @@
+{
+  "schema": "stage2-fixed-matrix-recovery-request-v1",
+  "approved": false,
+  "original_attempt": "consolidated-v1-once",
+  "new_attempt_if_authorized": "consolidated-v1-recovery-1-once",
+  "retain_episodes": 4034,
+  "remaining_episodes": 5566,
+  "caps": {
+    "environment_steps": 100188,
+    "environment_resets": 5566,
+    "policy_encode": 50094,
+    "world_candidate_batch": 50094,
+    "actor_readout": 50094,
+    "rule_decisions": 50094,
+    "model_loads": 1,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "gpu_hours": 0,
+    "wall_seconds": 118800,
+    "total_process_cpu_seconds": 507600,
+    "resident_process_rss_sum_bytes": 4294967296,
+    "artifact_bytes": 40802189312
+  },
+  "stage_caps": {
+    "C": {
+      "environment_steps": 100188,
+      "each_model_forward": 50094,
+      "rule_decisions": 50094,
+      "wall_seconds": 118800,
+      "cpu_seconds": 507600
+    }
+  },
+  "historical_resources": {
+    "total_wall_seconds": 9572.717620299998,
+    "total_cpu_seconds": 8649.34375,
+    "C_wall_seconds": 9554.473701900002,
+    "C_cpu_seconds": 8622.4375,
+    "peak_conservative_rss_sum": 352681984,
+    "artifact_bytes_conservative": 1260904191
+  },
+  "shutdown_holdback": {
+    "wall_seconds": 30,
+    "cpu_seconds": 600,
+    "reason": "Prior terminal sampling precedes final status serialization and process exit. Actual final shutdown tail was not measured; reserve 30 seconds wall and 20 logical CPUs times 30 seconds. This is a budgeting allowance, not fabricated measured CPU; exact historical lifecycle cannot be reconstructed."
+  },
+  "additional_model_load_authorization": {
+    "previous_total": 4,
+    "original_total_limit": 4,
+    "requested_additional": 1,
+    "new_cumulative_limit": 5
+  },
+  "historical_C_used": {
+    "environment_steps": 56381,
+    "policy_encode": 26575,
+    "world_candidate_batch": 26575,
+    "actor_readout": 26575,
+    "rule_decisions": 29806,
+    "environment_resets": 4034,
+    "model_loads": 1
+  },
+  "original_C_limits": {
+    "environment_steps": 172800,
+    "policy_encode": 86400,
+    "world_candidate_batch": 86400,
+    "actor_readout": 86400,
+    "rule_decisions": 86400,
+    "environment_resets": 9600,
+    "model_loads": 1,
+    "wall_seconds": 129600,
+    "total_process_cpu_seconds": 518400,
+    "artifact_bytes": 42949672960
+  },
+  "no_A_B_repeat": true,
+  "no_quota_transfer": true,
+  "no_automatic_retry": true,
+  "no_training": true,
+  "partial_effect_unblinded": false,
+  "recovery_preparation_is_not_authorization": true,
+  "recovery_shutdown_holdback": {
+    "wall_seconds": 30,
+    "cpu_seconds": 600,
+    "within_requested_recovery_caps": true,
+    "reason": "Stop software workload below new caps to reserve shutdown/status-writing headroom. Report sampled lifecycle and explicit unmeasured tail, never fabricate exact cost."
+  }
+}

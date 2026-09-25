@@ -1,0 +1,17 @@
+test_cost_merge_keeps_all_old_and_new_timings (test_recovery_preparation.RecoveryPreparationTests.test_cost_merge_keeps_all_old_and_new_timings) ... ok
+test_cumulative_never_refunds_history_and_load_extension_explicit (test_recovery_preparation.RecoveryPreparationTests.test_cumulative_never_refunds_history_and_load_extension_explicit) ... ok
+test_no_dynamic_imports (test_recovery_preparation.RecoveryPreparationTests.test_no_dynamic_imports) ... ok
+test_original_frozen_pair_order (test_recovery_preparation.RecoveryPreparationTests.test_original_frozen_pair_order) ... ok
+test_progress_failure_does_not_abort_simulation (test_recovery_preparation.RecoveryPreparationTests.test_progress_failure_does_not_abort_simulation) ... ok
+test_reset_assignments_clear_episode_state_using_stub_only (test_recovery_preparation.RecoveryPreparationTests.test_reset_assignments_clear_episode_state_using_stub_only) ... ok
+test_resource_caps_fit_remaining_stage_and_total (test_recovery_preparation.RecoveryPreparationTests.test_resource_caps_fit_remaining_stage_and_total) ... ok
+test_rss_counts_suspended_workers (test_recovery_preparation.RecoveryPreparationTests.test_rss_counts_suspended_workers) ... ok
+test_source_payload_recomputes_all_fields (test_recovery_preparation.RecoveryPreparationTests.test_source_payload_recomputes_all_fields) ... ok
+test_suffix_is_exact_and_disjoint (test_recovery_preparation.RecoveryPreparationTests.test_suffix_is_exact_and_disjoint) ... ok
+test_unauthorized_cannot_create_budget_or_worker (test_recovery_preparation.RecoveryPreparationTests.test_unauthorized_cannot_create_budget_or_worker) ... ok
+test_worker_and_decision_code_unchanged (test_recovery_preparation.RecoveryPreparationTests.test_worker_and_decision_code_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.108s
+
+OK

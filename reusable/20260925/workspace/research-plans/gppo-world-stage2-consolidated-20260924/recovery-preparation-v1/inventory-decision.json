@@ -1,0 +1,27 @@
+{
+  "retained": 4034,
+  "original_summaries": 4033,
+  "derived_summaries": 1,
+  "remaining": 5566,
+  "next_key": {
+    "parent": "eval-0672",
+    "repeat": 1,
+    "arm": "R",
+    "ordinal": 4034,
+    "tape_index": 672,
+    "tape_hash": "ed03b8ba96118ceb1361a865626fac74f7bfd8bb39d68ed476aabb11aa416205",
+    "random_key": "frozen-native-public-history-allocation-v1|eval-0672|repeat-1"
+  },
+  "remaining_by_arm": {
+    "R": 2783,
+    "M": 2783
+  },
+  "remaining_step_upper_bound": 100188,
+  "completed_step_rows": 56381,
+  "all_started_episodes_terminated": true,
+  "pairs_verified": 2017,
+  "source_sha256_unchanged": true,
+  "prior_crc_reused": true,
+  "model_or_environment_imported": false,
+  "partial_effect_computed": false
+}

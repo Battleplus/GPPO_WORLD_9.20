@@ -1,0 +1,9 @@
+test_diagnostic_failure_does_not_replace_primary (test_sqlite_diagnostics.DiagnosticsTests.test_diagnostic_failure_does_not_replace_primary) ... ok
+test_original_budget_on_disposable_database (test_sqlite_diagnostics.DiagnosticsTests.test_original_budget_on_disposable_database) ... ok
+test_primary_error_extended_fields_no_retry (test_sqlite_diagnostics.DiagnosticsTests.test_primary_error_extended_fields_no_retry) ... ok
+test_success_result_passes_through_without_diagnostics (test_sqlite_diagnostics.DiagnosticsTests.test_success_result_passes_through_without_diagnostics) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 7.763s
+
+OK

@@ -1,0 +1,135 @@
+{
+  "syntax": true,
+  "top_level_native_imports": false,
+  "environment_or_update_calls": false,
+  "native_source_identity_matches": true,
+  "numerical_equivalence_verified": false,
+  "cost_improvement_verified": false,
+  "new_env_steps": 0,
+  "new_model_forwards": 0,
+  "updates": 0,
+  "new_attempts": 0,
+  "native_source": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_gppo.py",
+  "native_sha256": "3c799cfe12050971e1b11da6b2c04fa6a7c244a36935578861c5db533396f55e",
+  "finding": "Native candidate prediction already batched; candidate excludes unused next-state/value heads and unused output slices only.",
+  "ledger_checks": [
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-gate-preparation-20260924\\runs\\technical-gate-v1\\budget.sqlite3",
+      "sha256": "e6c127d525a4aa5e7f740bb5ba9531b3738979fed490bb6c59ec60001fccb0d4",
+      "integrity": "ok",
+      "pending_reservations": 0,
+      "stages": [
+        {
+          "stage": "environment_steps",
+          "limit": 72,
+          "reserved": 56,
+          "verified": 56,
+          "unknown": 0
+        },
+        {
+          "stage": "policy_encode",
+          "limit": 36,
+          "reserved": 25,
+          "verified": 25,
+          "unknown": 0
+        },
+        {
+          "stage": "world_candidate_batch",
+          "limit": 36,
+          "reserved": 25,
+          "verified": 25,
+          "unknown": 0
+        },
+        {
+          "stage": "actor_readout",
+          "limit": 36,
+          "reserved": 25,
+          "verified": 25,
+          "unknown": 0
+        }
+      ],
+      "available_for_new_proposal": false
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-cost-replay-preparation-20260924\\runs\\cost-diagnostic-v1\\budget.sqlite3",
+      "sha256": "bc0726266d2389d39c822e0095cc56f3e8fe4dee2067b9f5aa34ac1fff8e2a89",
+      "integrity": "ok",
+      "pending_reservations": 0,
+      "stages": [
+        {
+          "stage": "environment_steps",
+          "limit": 0,
+          "reserved": 0,
+          "verified": 0,
+          "unknown": 0
+        },
+        {
+          "stage": "policy_encode",
+          "limit": 525,
+          "reserved": 525,
+          "verified": 525,
+          "unknown": 0
+        },
+        {
+          "stage": "world_candidate_batch",
+          "limit": 525,
+          "reserved": 525,
+          "verified": 525,
+          "unknown": 0
+        },
+        {
+          "stage": "actor_readout",
+          "limit": 525,
+          "reserved": 525,
+          "verified": 525,
+          "unknown": 0
+        },
+        {
+          "stage": "rule_decisions",
+          "limit": 651,
+          "reserved": 651,
+          "verified": 651,
+          "unknown": 0
+        }
+      ],
+      "available_for_new_proposal": false
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\ack-known-task-guard-baseline-v1\\budget.sqlite3",
+      "sha256": "8471f75288a12b1d04fe10e13912fdfad4a2cb0745933895094cc57c5b3f647c",
+      "integrity": "ok",
+      "pending_reservations": 0,
+      "stages": [
+        {
+          "stage": "environment_steps",
+          "limit": 1625,
+          "reserved": 1411,
+          "verified": 1411,
+          "unknown": 0
+        },
+        {
+          "stage": "optimizer_calls",
+          "limit": 0,
+          "reserved": 0,
+          "verified": 0,
+          "unknown": 0
+        },
+        {
+          "stage": "world_updates",
+          "limit": 0,
+          "reserved": 0,
+          "verified": 0,
+          "unknown": 0
+        },
+        {
+          "stage": "offline_updates",
+          "limit": 0,
+          "reserved": 0,
+          "verified": 0,
+          "unknown": 0
+        }
+      ],
+      "available_for_new_proposal": false
+    }
+  ]
+}

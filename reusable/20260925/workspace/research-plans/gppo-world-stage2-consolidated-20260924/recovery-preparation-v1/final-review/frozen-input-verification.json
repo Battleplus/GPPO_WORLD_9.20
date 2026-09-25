@@ -1,0 +1,457 @@
+[
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\decision_only_inference.py",
+    "expected": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80",
+    "actual": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\runtime_support.py",
+    "expected": "0d6e4144ffe5154a333539d3f1d28cf51269449276868a3809f3aaf4199a2fb8",
+    "actual": "0d6e4144ffe5154a333539d3f1d28cf51269449276868a3809f3aaf4199a2fb8"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\stage_worker.py",
+    "expected": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55",
+    "actual": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\run_pipeline.py",
+    "expected": "65fcd7be25724abfdaa989c1b8a078a84a7bf63ed8080a4c8ad87dc6b515a9bd",
+    "actual": "65fcd7be25724abfdaa989c1b8a078a84a7bf63ed8080a4c8ad87dc6b515a9bd"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\analyze_formal.py",
+    "expected": "5ccb36e9179cbe84264f86e223693b11503a16272949280ff2463e1b5f8f9fbf",
+    "actual": "5ccb36e9179cbe84264f86e223693b11503a16272949280ff2463e1b5f8f9fbf"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\PROTOCOL.md",
+    "expected": "e9f6643b3c80c6a1b176158245ccd2786eb911965e9db50c9231b66899d4d5f4",
+    "actual": "e9f6643b3c80c6a1b176158245ccd2786eb911965e9db50c9231b66899d4d5f4"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\BUDGET_REQUEST.json",
+    "expected": "03b24d7772db5d5f2a396226fc83451288662ba6df1b425a7d790ba3cc3e551d",
+    "actual": "03b24d7772db5d5f2a396226fc83451288662ba6df1b425a7d790ba3cc3e551d"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\__init__.py",
+    "expected": "3883a8ec3d5294cc9348d9cbfa4af625b543def57a0381ba2115e8a4847dfb00",
+    "actual": "3883a8ec3d5294cc9348d9cbfa4af625b543def57a0381ba2115e8a4847dfb00"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\adapter_probe.py",
+    "expected": "07d71d87bb04703bb1fb017808956398b59cfd535b75b13270864133d74fe268",
+    "actual": "07d71d87bb04703bb1fb017808956398b59cfd535b75b13270864133d74fe268"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\arrival_consequence_data.py",
+    "expected": "d4d97ee7a07f7fcb2a5ab4e8fada89001b4f88eb845085b5fa3aa0aca31e21ab",
+    "actual": "d4d97ee7a07f7fcb2a5ab4e8fada89001b4f88eb845085b5fa3aa0aca31e21ab"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\arrival_consequence_model.py",
+    "expected": "0ebfce661f6348e64cfddcdd56fc837de984287a511c1bdb8c8ec1746f69b3a2",
+    "actual": "0ebfce661f6348e64cfddcdd56fc837de984287a511c1bdb8c8ec1746f69b3a2"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\arrival_gppo_fusion.py",
+    "expected": "6ea9d60955afd55be818172457a45b74bdb77519382651e389fc4e2f0ba28059",
+    "actual": "6ea9d60955afd55be818172457a45b74bdb77519382651e389fc4e2f0ba28059"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\budget_executor.py",
+    "expected": "5a2a7536a0ebb0078638a1fd45491a5d13cd9a719c9f012f158b74f5050fd29b",
+    "actual": "5a2a7536a0ebb0078638a1fd45491a5d13cd9a719c9f012f158b74f5050fd29b"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\calibration.py",
+    "expected": "6955676756f8ec2ff1bb937f3f3ded9a037cc38151122a7bfa58d5625ff0e57c",
+    "actual": "6955676756f8ec2ff1bb937f3f3ded9a037cc38151122a7bfa58d5625ff0e57c"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\consequence_data.py",
+    "expected": "6bf909c4da3242cafb2af04437be6df6518d195088e407f33c164362b49edfb7",
+    "actual": "6bf909c4da3242cafb2af04437be6df6518d195088e407f33c164362b49edfb7"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\consequence_model.py",
+    "expected": "cdec5ff9b33ec3fc8202c2ebd8f9cc01ac418e4b9b5af349d9a3f97a3e230f12",
+    "actual": "cdec5ff9b33ec3fc8202c2ebd8f9cc01ac418e4b9b5af349d9a3f97a3e230f12"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\contracts.py",
+    "expected": "c7a66851e2513524ac17be33a7f96f61b18dca6d7840fdcefda5ac3f6cfbe290",
+    "actual": "c7a66851e2513524ac17be33a7f96f61b18dca6d7840fdcefda5ac3f6cfbe290"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\data.py",
+    "expected": "ed45cfab16e08b66bee55839e5c55a1dd711faa5380f4f5643fbd01a86e4b807",
+    "actual": "ed45cfab16e08b66bee55839e5c55a1dd711faa5380f4f5643fbd01a86e4b807"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\dataset.py",
+    "expected": "b296d8ce8aec9a4fff83cd2686d2e147b972a1255f51174479abda53230f4664",
+    "actual": "b296d8ce8aec9a4fff83cd2686d2e147b972a1255f51174479abda53230f4664"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\event_training.py",
+    "expected": "5f613d40c34fa8381ccd27a36b7048cdb92b53692bb58eebc6f24efb523e2afc",
+    "actual": "5f613d40c34fa8381ccd27a36b7048cdb92b53692bb58eebc6f24efb523e2afc"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\event_trigger_semimarkov.py",
+    "expected": "f348db4e865c945cae90d848bf2d859c443cfdea188f6a9db325a22aa33a25e8",
+    "actual": "f348db4e865c945cae90d848bf2d859c443cfdea188f6a9db325a22aa33a25e8"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\events.py",
+    "expected": "84cc0e1850d2ddb62967df4b96d23def57bf58dad5ab41308bae7167c438b077",
+    "actual": "84cc0e1850d2ddb62967df4b96d23def57bf58dad5ab41308bae7167c438b077"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\gppo_adapter.py",
+    "expected": "ea0b763106cb8c1a45c8cd16fe52307d0a8de4023c69aa550aa14273c62993e3",
+    "actual": "ea0b763106cb8c1a45c8cd16fe52307d0a8de4023c69aa550aa14273c62993e3"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\gppo_shadow_env.py",
+    "expected": "426aeefcbf9f5275dceb8f36959c65d46c17b83d28a4134ee9ec228553ab6bab",
+    "actual": "426aeefcbf9f5275dceb8f36959c65d46c17b83d28a4134ee9ec228553ab6bab"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\gppo_trainer.py",
+    "expected": "ec2c6f0fb8038b9e6ada5247b3b51da5c2eeabd670acabcd6a518ad24e4db2ab",
+    "actual": "ec2c6f0fb8038b9e6ada5247b3b51da5c2eeabd670acabcd6a518ad24e4db2ab"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\graph5.py",
+    "expected": "a4a2c701d8a36306b4e57eb3d24930bae985dea7d11d95afbcdc08968231af09",
+    "actual": "a4a2c701d8a36306b4e57eb3d24930bae985dea7d11d95afbcdc08968231af09"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\jepa.py",
+    "expected": "3c3ce3cc995c1b2a80be2c37107dadd922531116cb8aaaad0f8511760fcfeb54",
+    "actual": "3c3ce3cc995c1b2a80be2c37107dadd922531116cb8aaaad0f8511760fcfeb54"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\jepa_two_stage.py",
+    "expected": "15064c42882a37f6e339cbb98a8e18fbac0b81d6ad688cedf28011059d69b0b2",
+    "actual": "15064c42882a37f6e339cbb98a8e18fbac0b81d6ad688cedf28011059d69b0b2"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_consequence.py",
+    "expected": "34f377abdc5957125727fd71d870243ff273ac9988817beacd6cde6fcfde34ba",
+    "actual": "34f377abdc5957125727fd71d870243ff273ac9988817beacd6cde6fcfde34ba"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_consequence_baseline.py",
+    "expected": "38f6740baabcc856c37c3757797b341b4c22b9d94ebafefa24688293e99b2c37",
+    "actual": "38f6740baabcc856c37c3757797b341b4c22b9d94ebafefa24688293e99b2c37"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_consequence_data.py",
+    "expected": "9e87b21b6cac74e441a0cfafbaffff5eee9085e605e97323fd126ffd902ee5e9",
+    "actual": "9e87b21b6cac74e441a0cfafbaffff5eee9085e605e97323fd126ffd902ee5e9"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_consequence_model.py",
+    "expected": "7588fa49333a3bcf5dcce30cd3411ed7197bde0efae63d3123080e32316a0241",
+    "actual": "7588fa49333a3bcf5dcce30cd3411ed7197bde0efae63d3123080e32316a0241"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_gppo.py",
+    "expected": "3c799cfe12050971e1b11da6b2c04fa6a7c244a36935578861c5db533396f55e",
+    "actual": "3c799cfe12050971e1b11da6b2c04fa6a7c244a36935578861c5db533396f55e"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_training.py",
+    "expected": "808b1de65e676ad45480843c152874248be1fe91c1ce56e1a015fddf81bfd4d1",
+    "actual": "808b1de65e676ad45480843c152874248be1fe91c1ce56e1a015fddf81bfd4d1"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_communication.py",
+    "expected": "fcaada4fea48446aae509fb97f4b6b8275d5b6b9dda3bcdef00c5c392e6011ce",
+    "actual": "fcaada4fea48446aae509fb97f4b6b8275d5b6b9dda3bcdef00c5c392e6011ce"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_environment.py",
+    "expected": "083b4ad3e47d8a44a18e7a25f429bb7c4bba4a6899249404c0842dfdc0f71132",
+    "actual": "083b4ad3e47d8a44a18e7a25f429bb7c4bba4a6899249404c0842dfdc0f71132"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_training.py",
+    "expected": "20642fde3349692d5f0d48750a04c53a7b4df29f1e1f2830f7fc6bfefae45941",
+    "actual": "20642fde3349692d5f0d48750a04c53a7b4df29f1e1f2830f7fc6bfefae45941"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\model.py",
+    "expected": "4bfd4deb85165e7eeeb0338beab17d2a1c76582248cb893f76cfd4db73a19ce7",
+    "actual": "4bfd4deb85165e7eeeb0338beab17d2a1c76582248cb893f76cfd4db73a19ce7"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\phase_data.py",
+    "expected": "42bf58bcad83e1480ccff80459978a690412175880651e63f58ce7d96b6c35d8",
+    "actual": "42bf58bcad83e1480ccff80459978a690412175880651e63f58ce7d96b6c35d8"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\phase_learning.py",
+    "expected": "bce4203320d7b8e184200f78bdb83084bd37d9f1cfcb0cba7800c6f2707d4e20",
+    "actual": "bce4203320d7b8e184200f78bdb83084bd37d9f1cfcb0cba7800c6f2707d4e20"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\recorder.py",
+    "expected": "cea67089e9ca7b9d9c5a2415c912840bf33f4cf7c01ccb8857efea8267108023",
+    "actual": "cea67089e9ca7b9d9c5a2415c912840bf33f4cf7c01ccb8857efea8267108023"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\registry.py",
+    "expected": "516af07f6a7b013f463d0aac4c5606c3925a6089c71327c5f6be478c51940db6",
+    "actual": "516af07f6a7b013f463d0aac4c5606c3925a6089c71327c5f6be478c51940db6"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\s1_r_contracts.py",
+    "expected": "772f8ba385d3c6ed8dccf8431d1019e506259350b40f40c8dc5970ddca9db719",
+    "actual": "772f8ba385d3c6ed8dccf8431d1019e506259350b40f40c8dc5970ddca9db719"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\service_clock.py",
+    "expected": "c5699bd117b442534725a88a0805704a0477217e8b918069152665f4bd1538f3",
+    "actual": "c5699bd117b442534725a88a0805704a0477217e8b918069152665f4bd1538f3"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\shadow.py",
+    "expected": "bd81fd1a6289186f0a6c57697159a88c2d0bae07e455fddff9d21c97ec1f970a",
+    "actual": "bd81fd1a6289186f0a6c57697159a88c2d0bae07e455fddff9d21c97ec1f970a"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_decision_bridge.py",
+    "expected": "dd066a4e1be16607e5005e66eed5b90b1b97b485e57d7c7236b46eb171f8b1fd",
+    "actual": "dd066a4e1be16607e5005e66eed5b90b1b97b485e57d7c7236b46eb171f8b1fd"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_execution.py",
+    "expected": "87285ac5a20e761dc9e7c754c0701ba0d2d36725e70ea258343e8e6f7d2dc3ca",
+    "actual": "87285ac5a20e761dc9e7c754c0701ba0d2d36725e70ea258343e8e6f7d2dc3ca"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_lifecycle.py",
+    "expected": "50248afa519fd18dbc5995ba0bbf7e58adc0833ae501760ea032ab91fca5ed89",
+    "actual": "50248afa519fd18dbc5995ba0bbf7e58adc0833ae501760ea032ab91fca5ed89"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_policy_view.py",
+    "expected": "f5877b6582a02a5bb6c9c39b469dd222e9f5727390fd8080c01e160cd7b23317",
+    "actual": "f5877b6582a02a5bb6c9c39b469dd222e9f5727390fd8080c01e160cd7b23317"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\telemetry.py",
+    "expected": "c52f2367c06625dc670f08211dc8e514caf2e005cce7d3b82c2ab1bd7cc556bc",
+    "actual": "c52f2367c06625dc670f08211dc8e514caf2e005cce7d3b82c2ab1bd7cc556bc"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\training.py",
+    "expected": "6b358fc686118aaf29b9686ba23871c9565ad783849a012c19bc941ddc700f70",
+    "actual": "6b358fc686118aaf29b9686ba23871c9565ad783849a012c19bc941ddc700f70"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\preference-weighted-wm-event-cpu-20260917\\final\\run\\training\\seed-1101\\WD\\resolved-config.json",
+    "expected": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27",
+    "actual": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\training\\seed-1101\\P_train\\last-recovery.pt",
+    "expected": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a",
+    "actual": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a"
+  },
+  {
+    "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\native-source-manifest.json",
+    "expected": "febbaede7c191b2e1a901de5f2314e3ed9d590ae2f65d508cc482107296da976",
+    "actual": "febbaede7c191b2e1a901de5f2314e3ed9d590ae2f65d508cc482107296da976"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\tapes\\training-tapes.json",
+    "expected": "436d39bdc85fa43f40cc5d804cd3a11d74842814f93399ff472be6e5dbc9f671",
+    "actual": "436d39bdc85fa43f40cc5d804cd3a11d74842814f93399ff472be6e5dbc9f671"
+  },
+  {
+    "path": "E:\\Z博士\\migration-artifacts\\replan-value-feature-collection-20260919-v1\\protocol.json",
+    "expected": "41efc541873053b79142293eeb85a30122b53d462c0b7cdd452c14a6a6356e42",
+    "actual": "41efc541873053b79142293eeb85a30122b53d462c0b7cdd452c14a6a6356e42"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-gate-preparation-20260924\\public_controller.py",
+    "expected": "d796ec67e6c62f9f297f4f48fe09ea1d16a160bc13b15c3c102674ae02263d8f",
+    "actual": "d796ec67e6c62f9f297f4f48fe09ea1d16a160bc13b15c3c102674ae02263d8f"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-gate-preparation-20260924\\run_gate.py",
+    "expected": "e69f1dbe45c0c590cfbbfd5426e8f86a64e9f837e8590c541858371a965c0cbd",
+    "actual": "e69f1dbe45c0c590cfbbfd5426e8f86a64e9f837e8590c541858371a965c0cbd"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-decision-freeze-20260924\\report.md",
+    "expected": "1f1e4a60461bdff3fef0a48085be706d075e219757fbeb666a8189dccf4d123c",
+    "actual": "1f1e4a60461bdff3fef0a48085be706d075e219757fbeb666a8189dccf4d123c"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-decision-freeze-20260924\\protocol.md",
+    "expected": "c6dfb020189d8abe6e538fe5f10ae4fbfd306f7982a7ed81365b52232438de10",
+    "actual": "c6dfb020189d8abe6e538fe5f10ae4fbfd306f7982a7ed81365b52232438de10"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-decision-freeze-20260924\\decision.json",
+    "expected": "3fcfda6607cb9442300a4f9d6194525c2799f2f8e2527ac66baba45bef5e93da",
+    "actual": "3fcfda6607cb9442300a4f9d6194525c2799f2f8e2527ac66baba45bef5e93da"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-decision-freeze-20260924\\evidence-index.json",
+    "expected": "4cef9ec5321127f2d7c9ffb672e1b5847c821debf5597e8c574c679b6fb16dc7",
+    "actual": "4cef9ec5321127f2d7c9ffb672e1b5847c821debf5597e8c574c679b6fb16dc7"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-decision-freeze-20260924\\planned-parent-manifest.json",
+    "expected": "09e6f5208e9196d3a17ba41da5f8ddc8a63511121efa9a29601c53e660da198d",
+    "actual": "09e6f5208e9196d3a17ba41da5f8ddc8a63511121efa9a29601c53e660da198d"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-gate-preparation-20260924\\binding.json",
+    "expected": "b792ce559ad6f8a6c44179eb103e14e5deb3b561d830da4208f63f81fffb2d70",
+    "actual": "b792ce559ad6f8a6c44179eb103e14e5deb3b561d830da4208f63f81fffb2d70"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-gate-preparation-20260924\\runs\\technical-gate-v1\\decisions.jsonl",
+    "expected": "64fb6982ed1b2f16e1399910b73c52a9e360edddcd91a77b6f5f2cc5559b0831",
+    "actual": "64fb6982ed1b2f16e1399910b73c52a9e360edddcd91a77b6f5f2cc5559b0831"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-cost-replay-preparation-20260924\\cost_replay.py",
+    "expected": "fa21804de940ca34efed50296522fcffd9ff71e71eb9089663018b384b27a172",
+    "actual": "fa21804de940ca34efed50296522fcffd9ff71e71eb9089663018b384b27a172"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\runs\\consolidated-v1\\C\\steps.jsonl.gz",
+    "expected": "c121ea21708b5a30fa09add68abde26e02b93f76bddbf24d1190d388e8afe805",
+    "actual": "c121ea21708b5a30fa09add68abde26e02b93f76bddbf24d1190d388e8afe805"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\runs\\consolidated-v1\\C\\episodes.jsonl",
+    "expected": "3174cf3cf33e86aa97e76c487e66265887fcf672085a87bc70240f6e71b19743",
+    "actual": "3174cf3cf33e86aa97e76c487e66265887fcf672085a87bc70240f6e71b19743"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\runs\\consolidated-v1\\C\\episode-starts.jsonl",
+    "expected": "999161f99c51c79603b955d76c51082ae99ce0735ec59c6f1aeea03980cd2307",
+    "actual": "999161f99c51c79603b955d76c51082ae99ce0735ec59c6f1aeea03980cd2307"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\runs\\consolidated-v1\\C\\scenario-manifest.json",
+    "expected": "b16c1ecca597ac766b321f89b2c4380d9e2d23ff6c747c996af4af7cfe1129e5",
+    "actual": "b16c1ecca597ac766b321f89b2c4380d9e2d23ff6c747c996af4af7cfe1129e5"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\runs\\consolidated-v1\\budget.sqlite3",
+    "expected": "16b0151eaaa02cbbcdf7ff5ccdc1f6e5d5dea80dd0a85c202ee80bcee1a61847",
+    "actual": "16b0151eaaa02cbbcdf7ff5ccdc1f6e5d5dea80dd0a85c202ee80bcee1a61847"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\runs\\consolidated-v1\\status.json",
+    "expected": "af61c0431b21f13c358be932fedd85d56dc256795532aaa200752ce0626ca23d",
+    "actual": "af61c0431b21f13c358be932fedd85d56dc256795532aaa200752ce0626ca23d"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\run_recovery.py",
+    "expected": "e4420273f13c5303bc3c43afef9e0b00ce366a84b78fc3ef5d46d03d973025b0",
+    "actual": "e4420273f13c5303bc3c43afef9e0b00ce366a84b78fc3ef5d46d03d973025b0"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runtime_support.py",
+    "expected": "8340b763a967ccfa54da04cb5ac0a0bb4fed52fb7f2d02468cc5a3a51ef0924e",
+    "actual": "8340b763a967ccfa54da04cb5ac0a0bb4fed52fb7f2d02468cc5a3a51ef0924e"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\stage_worker.py",
+    "expected": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55",
+    "actual": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\decision_only_inference.py",
+    "expected": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80",
+    "actual": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\analyze_formal.py",
+    "expected": "5ccb36e9179cbe84264f86e223693b11503a16272949280ff2463e1b5f8f9fbf",
+    "actual": "5ccb36e9179cbe84264f86e223693b11503a16272949280ff2463e1b5f8f9fbf"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\recovery_contract.py",
+    "expected": "fa153267cfa5f4dc9b2023759a8ccbb6fb2471e5e29b673d081a0853b49fb804",
+    "actual": "fa153267cfa5f4dc9b2023759a8ccbb6fb2471e5e29b673d081a0853b49fb804"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\safe_observer.py",
+    "expected": "096033227f62e9d90ed3c4890369f6c8098640facc53d07b5c31235a2f6aed66",
+    "actual": "096033227f62e9d90ed3c4890369f6c8098640facc53d07b5c31235a2f6aed66"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\RECOVERY_PROTOCOL.md",
+    "expected": "d5f41113d25189afde6ac3cbac56a8b93b43390da748bba99a45a5567c8cc085",
+    "actual": "d5f41113d25189afde6ac3cbac56a8b93b43390da748bba99a45a5567c8cc085"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\RECOVERY_BUDGET_REQUEST.json",
+    "expected": "8fa1dbee2476ea863f1ec0ce93d0fb66f9460d24ec97eac077bec70da93bd04a",
+    "actual": "8fa1dbee2476ea863f1ec0ce93d0fb66f9460d24ec97eac077bec70da93bd04a"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\frozen-matrix.json",
+    "expected": "d8793659d3ed9b9efbab8c77c054a943862fea7e8ffa2cd25a9adfd1558f4b0d",
+    "actual": "d8793659d3ed9b9efbab8c77c054a943862fea7e8ffa2cd25a9adfd1558f4b0d"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\completed-with-summary.json",
+    "expected": "d6d3ef4d9a9846ff2656ec36f8d19fe7930bc831c78be6f1e362a4d42d2129f2",
+    "actual": "d6d3ef4d9a9846ff2656ec36f8d19fe7930bc831c78be6f1e362a4d42d2129f2"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\completed-missing-summary.json",
+    "expected": "f88fa24d116de7e97d989f37622063929aa8c529f26ea2fec2acc0e4edb1f661",
+    "actual": "f88fa24d116de7e97d989f37622063929aa8c529f26ea2fec2acc0e4edb1f661"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\not-executed.json",
+    "expected": "89dfca746c42904253bec65894c63c4fd448588c355468e403c05d5a310c51db",
+    "actual": "89dfca746c42904253bec65894c63c4fd448588c355468e403c05d5a310c51db"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\retained-episodes.json",
+    "expected": "24537583214165498dd132fcbc923f68b527fab6b57a01188e42eb0f19c47772",
+    "actual": "24537583214165498dd132fcbc923f68b527fab6b57a01188e42eb0f19c47772"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\retained-cost-inputs.json",
+    "expected": "ac2693b5ba5aaa623de83a5425972ab39efba63c60e1cfa97c048e9a9da0f18a",
+    "actual": "ac2693b5ba5aaa623de83a5425972ab39efba63c60e1cfa97c048e9a9da0f18a"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\historical-budget-readonly.json",
+    "expected": "dc880f4d2245cd239bdeafc97b8f5eaa9d0218e84f3cf96e92010c1b0030140d",
+    "actual": "dc880f4d2245cd239bdeafc97b8f5eaa9d0218e84f3cf96e92010c1b0030140d"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\derived-summary-provenance.json",
+    "expected": "4409b51f69be0237fba00e15e9542039700f8ab26ae785ce33dabd8b763dac93",
+    "actual": "4409b51f69be0237fba00e15e9542039700f8ab26ae785ce33dabd8b763dac93"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\inventory-decision.json",
+    "expected": "023a8b8e54723aa30021d3ef32d922d8da7bc4371650a65a84b4c6c4dae29978",
+    "actual": "023a8b8e54723aa30021d3ef32d922d8da7bc4371650a65a84b4c6c4dae29978"
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\continuation-boundary.md",
+    "expected": "2b3732c6aacdd91465585cfc7daaa2a703608e1cd73a22525e451715f2618be6",
+    "actual": "2b3732c6aacdd91465585cfc7daaa2a703608e1cd73a22525e451715f2618be6"
+  }
+]
