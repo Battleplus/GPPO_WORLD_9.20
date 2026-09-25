@@ -1,0 +1,32 @@
+{
+  "checkpoint": {
+    "bytes": 2914437,
+    "path": "transactions/txn-step-00008192-policy-000063-world-000000.pt",
+    "sha256": "ff71bea9c7e854488f8279e99cb568e81653764569652344cd14601094df3de6"
+  },
+  "counters": {
+    "actor_calls": 7466,
+    "continuation_steps": 726,
+    "environment_steps": 8192,
+    "last_committed_step": 8191,
+    "pending_window_k": 1,
+    "policy_optimizer_steps": 63,
+    "replay_forward_calls": 370,
+    "replay_seconds": 0.5815507999905094,
+    "world_forward_calls": 8250,
+    "world_optimizer_steps": 0
+  },
+  "last_committed_policy_update": 63,
+  "last_committed_step": 8191,
+  "last_committed_world_update": 0,
+  "ledger": {
+    "first_step": 8064,
+    "last_step": 8191,
+    "ledger_bytes": 247681932,
+    "ledger_sha256": "322fba9df76959d2ee44cf83416cb3b11ca7a800f5e162308c0cc58d931b7b1d",
+    "path": "training-ledger.jsonl"
+  },
+  "run_id": "event-trigger-aware-T_train-seed-3307-event-trigger-aware-gppo-fair-replication-20260919-v1-T_train/seed-3307-window-v3",
+  "schema": "joint-training-transaction/1.0.0",
+  "transaction_id": "txn-step-00008192-policy-000063-world-000000"
+}
