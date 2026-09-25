@@ -1,0 +1,350 @@
+[
+  {
+    "path": "recovery-preparation/analyze_formal.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\analyze_formal.py",
+    "sha256": "5ccb36e9179cbe84264f86e223693b11503a16272949280ff2463e1b5f8f9fbf",
+    "bytes": 3441
+  },
+  {
+    "path": "recovery-preparation/authorization-approved.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\authorization-approved.json",
+    "sha256": "76678d30aebd98a4d469fb69a6c8d0073b7009851f113a476806b306e8c01097",
+    "bytes": 1961
+  },
+  {
+    "path": "recovery-preparation/authorization-template.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\authorization-template.json",
+    "sha256": "ca22819f19feb595634b08f57fd7f82f6088370e63b1de335d780ca1b4078835",
+    "bytes": 778
+  },
+  {
+    "path": "recovery-preparation/build_recovery_inventory.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\build_recovery_inventory.py",
+    "sha256": "e7a4ab1422faedb85243c88ad71b15f3d3db6190ec69d60a49051846ec20d174",
+    "bytes": 9423
+  },
+  {
+    "path": "recovery-preparation/completed-missing-summary.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\completed-missing-summary.json",
+    "sha256": "f88fa24d116de7e97d989f37622063929aa8c529f26ea2fec2acc0e4edb1f661",
+    "bytes": 437
+  },
+  {
+    "path": "recovery-preparation/completed-with-summary.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\completed-with-summary.json",
+    "sha256": "d6d3ef4d9a9846ff2656ec36f8d19fe7930bc831c78be6f1e362a4d42d2129f2",
+    "bytes": 1642083
+  },
+  {
+    "path": "recovery-preparation/continuation-boundary.md",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\continuation-boundary.md",
+    "sha256": "2b3732c6aacdd91465585cfc7daaa2a703608e1cd73a22525e451715f2618be6",
+    "bytes": 4032
+  },
+  {
+    "path": "recovery-preparation/decision_only_inference.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\decision_only_inference.py",
+    "sha256": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80",
+    "bytes": 2981
+  },
+  {
+    "path": "recovery-preparation/derived-summary-provenance.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\derived-summary-provenance.json",
+    "sha256": "4409b51f69be0237fba00e15e9542039700f8ab26ae785ce33dabd8b763dac93",
+    "bytes": 4940568
+  },
+  {
+    "path": "recovery-preparation/final-verification.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\final-verification.json",
+    "sha256": "43e33edc2ab10891d896303a8cda685510b5f8930fc954fa5c5e00fd4672c366",
+    "bytes": 253
+  },
+  {
+    "path": "recovery-preparation/final-zero-step-test-output-v2.txt",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\final-zero-step-test-output-v2.txt",
+    "sha256": "3ee2c41f5edb6f46708e9eed4f35e7349a5a5564ba1fab335e6b9f3b112811ec",
+    "bytes": 3605
+  },
+  {
+    "path": "recovery-preparation/final-zero-step-test-output.txt",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\final-zero-step-test-output.txt",
+    "sha256": "623cfb67e6fa19c813c2e5b83fbb76cdbc2aa63b9d4aa7aaf62aa684badf2969",
+    "bytes": 3412
+  },
+  {
+    "path": "recovery-preparation/final-zero-step-tests.txt",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\final-zero-step-tests.txt",
+    "sha256": "00845bcc81010ebe8a2dbd56354780db941fe400980d8456bc2ffe7b7e59a8de",
+    "bytes": 3605
+  },
+  {
+    "path": "recovery-preparation/freeze_recovery.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\freeze_recovery.py",
+    "sha256": "e3f5a7f36c89e2c092c3110390c86d4c4c5e8059af8ebb7d6bff6b6bb4cd5893",
+    "bytes": 2574
+  },
+  {
+    "path": "recovery-preparation/frozen-matrix.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\frozen-matrix.json",
+    "sha256": "d8793659d3ed9b9efbab8c77c054a943862fea7e8ffa2cd25a9adfd1558f4b0d",
+    "bytes": 2776235
+  },
+  {
+    "path": "recovery-preparation/hashes.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\hashes.json",
+    "sha256": "c5404ae633eeb2cf4abd8a25e165d882e2bf6dbf14beb9ee487219a12d7504ee",
+    "bytes": 4129
+  },
+  {
+    "path": "recovery-preparation/historical-budget-readonly.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\historical-budget-readonly.json",
+    "sha256": "dc880f4d2245cd239bdeafc97b8f5eaa9d0218e84f3cf96e92010c1b0030140d",
+    "bytes": 3333
+  },
+  {
+    "path": "recovery-preparation/identity-differences.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\identity-differences.json",
+    "sha256": "b8bfa99ac221481634728d5f906e3f51afe3bb264b53c0942f67e8bebfea8843",
+    "bytes": 2544
+  },
+  {
+    "path": "recovery-preparation/inventory-decision.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\inventory-decision.json",
+    "sha256": "023a8b8e54723aa30021d3ef32d922d8da7bc4371650a65a84b4c6c4dae29978",
+    "bytes": 759
+  },
+  {
+    "path": "recovery-preparation/missing-episode-source-steps.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\missing-episode-source-steps.json",
+    "sha256": "afbe8f8760dc0145ed7b7c9d57d4c8de20dac721a68c1238db1b554e74af08d3",
+    "bytes": 2701503
+  },
+  {
+    "path": "recovery-preparation/not-executed.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\not-executed.json",
+    "sha256": "89dfca746c42904253bec65894c63c4fd448588c355468e403c05d5a310c51db",
+    "bytes": 1612179
+  },
+  {
+    "path": "recovery-preparation/observer-repair.md",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\observer-repair.md",
+    "sha256": "73b93a581e4bea241f401f56d4ba7910c8f572dddbe7ef1a4c2d9e3a2590c4da",
+    "bytes": 3784
+  },
+  {
+    "path": "recovery-preparation/observer-test-output-final.txt",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\observer-test-output-final.txt",
+    "sha256": "bdd76e499ed6990e68804369616e8affbf20b5c36ffbd5457f49d6cf890a2cb3",
+    "bytes": 2422
+  },
+  {
+    "path": "recovery-preparation/observer-test-output.txt",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\observer-test-output.txt",
+    "sha256": "2dbaf16317aab4a94b25aa0e0d36f8c899e4dae67376dd42f4a52db50fe56d5f",
+    "bytes": 1311
+  },
+  {
+    "path": "recovery-preparation/prior-current-research-state.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\prior-current-research-state.json",
+    "sha256": "4cf7302c4d24c006696881a1d09ff80539a937256fd579655e532e7d7f940362",
+    "bytes": 2495
+  },
+  {
+    "path": "recovery-preparation/prior-current-research-state.md",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\prior-current-research-state.md",
+    "sha256": "ca7f75cdca678537de94d5bb04fa5bf8ff1e1f91a593abeac674954e5d83dad4",
+    "bytes": 1218
+  },
+  {
+    "path": "recovery-preparation/recovery-manifest.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\recovery-manifest.json",
+    "sha256": "f3a1521f5c2d9329c60cb99a4625768b788577f2ceb03e85438b51fdd414bb64",
+    "bytes": 22241
+  },
+  {
+    "path": "recovery-preparation/recovery-test-output.txt",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\recovery-test-output.txt",
+    "sha256": "87822984740d64d4345153556834e5647ebd31db38c4570091687340b41c2608",
+    "bytes": 1882
+  },
+  {
+    "path": "recovery-preparation/RECOVERY_BUDGET_REQUEST.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\RECOVERY_BUDGET_REQUEST.json",
+    "sha256": "8fa1dbee2476ea863f1ec0ce93d0fb66f9460d24ec97eac077bec70da93bd04a",
+    "bytes": 2930
+  },
+  {
+    "path": "recovery-preparation/recovery_contract.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\recovery_contract.py",
+    "sha256": "fa153267cfa5f4dc9b2023759a8ccbb6fb2471e5e29b673d081a0853b49fb804",
+    "bytes": 2191
+  },
+  {
+    "path": "recovery-preparation/RECOVERY_PROTOCOL.md",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\RECOVERY_PROTOCOL.md",
+    "sha256": "d5f41113d25189afde6ac3cbac56a8b93b43390da748bba99a45a5567c8cc085",
+    "bytes": 3970
+  },
+  {
+    "path": "recovery-preparation/report.md",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\report.md",
+    "sha256": "110597ab3d6b2c47c3f5339db37a0a6c2c38014550268b401b207dc0770bbb7d",
+    "bytes": 6693
+  },
+  {
+    "path": "recovery-preparation/retained-cost-inputs.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\retained-cost-inputs.json",
+    "sha256": "ac2693b5ba5aaa623de83a5425972ab39efba63c60e1cfa97c048e9a9da0f18a",
+    "bytes": 4511368
+  },
+  {
+    "path": "recovery-preparation/retained-episodes.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\retained-episodes.json",
+    "sha256": "24537583214165498dd132fcbc923f68b527fab6b57a01188e42eb0f19c47772",
+    "bytes": 2266345
+  },
+  {
+    "path": "recovery-preparation/run_recovery.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\run_recovery.py",
+    "sha256": "e4420273f13c5303bc3c43afef9e0b00ce366a84b78fc3ef5d46d03d973025b0",
+    "bytes": 19670
+  },
+  {
+    "path": "recovery-preparation/runtime_support.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runtime_support.py",
+    "sha256": "8340b763a967ccfa54da04cb5ac0a0bb4fed52fb7f2d02468cc5a3a51ef0924e",
+    "bytes": 5590
+  },
+  {
+    "path": "recovery-preparation/safe_observer.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\safe_observer.py",
+    "sha256": "096033227f62e9d90ed3c4890369f6c8098640facc53d07b5c31235a2f6aed66",
+    "bytes": 13023
+  },
+  {
+    "path": "recovery-preparation/source-diff.patch",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\source-diff.patch",
+    "sha256": "4d4db72c56fdfe1aa8ce1717d4e80c655cfa82a1d13c0b27b07655450d544590",
+    "bytes": 19255
+  },
+  {
+    "path": "recovery-preparation/source-hashes.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\source-hashes.json",
+    "sha256": "50772e5d43d748dfce602d2f21f8f8a1ca8389ea8f54f4dde5351ee81bf0891c",
+    "bytes": 1120
+  },
+  {
+    "path": "recovery-preparation/stage_worker.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\stage_worker.py",
+    "sha256": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55",
+    "bytes": 11546
+  },
+  {
+    "path": "recovery-preparation/status.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\status.json",
+    "sha256": "c53bc4dd1ad52c04fb071ace2232b3080c09c22ac2466966a6b889ce8bf7c226",
+    "bytes": 1022
+  },
+  {
+    "path": "recovery-preparation/test_recovery_preparation.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\test_recovery_preparation.py",
+    "sha256": "97fe3608ab461b54e77bc6b3b625075841a8cedb02481438225ea164207a7150",
+    "bytes": 11104
+  },
+  {
+    "path": "recovery-preparation/test_safe_observer.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\test_safe_observer.py",
+    "sha256": "1d4de55a1837b2a8f29b33d22e75b4ac29f7697cd77153c627a2ef012904a756",
+    "bytes": 9997
+  },
+  {
+    "path": "recovery-preparation/unauthorized-smoke.txt",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\unauthorized-smoke.txt",
+    "sha256": "002d56423e0e2db306dd433b0a67ea8e8fdbd2249006c5c58d6116211a089b96",
+    "bytes": 84
+  },
+  {
+    "path": "original-consolidated/PROTOCOL.md",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\PROTOCOL.md",
+    "sha256": "e9f6643b3c80c6a1b176158245ccd2786eb911965e9db50c9231b66899d4d5f4",
+    "bytes": 13103
+  },
+  {
+    "path": "original-consolidated/BUDGET_REQUEST.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\BUDGET_REQUEST.json",
+    "sha256": "03b24d7772db5d5f2a396226fc83451288662ba6df1b425a7d790ba3cc3e551d",
+    "bytes": 1799
+  },
+  {
+    "path": "original-consolidated/authorization-approved.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\authorization-approved.json",
+    "sha256": "56d7efde28676b69174cd10d58e04a4cc7398c4ee8f035ac2a3a33aa0f1cd513",
+    "bytes": 2359
+  },
+  {
+    "path": "original-consolidated/execution-manifest.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\execution-manifest.json",
+    "sha256": "ea9da5400abb0d714dadbf920f6fd39bc747bcb865764555d196b8388616a839",
+    "bytes": 16113
+  },
+  {
+    "path": "original-consolidated/REPORT.md",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\REPORT.md",
+    "sha256": "0ffa952338b34985b5958446bc650524acb25cdaa44409fda50a2e2fda8de802",
+    "bytes": 5439
+  },
+  {
+    "path": "original-consolidated/run_pipeline.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\run_pipeline.py",
+    "sha256": "65fcd7be25724abfdaa989c1b8a078a84a7bf63ed8080a4c8ad87dc6b515a9bd",
+    "bytes": 17472
+  },
+  {
+    "path": "original-consolidated/runtime_support.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\runtime_support.py",
+    "sha256": "0d6e4144ffe5154a333539d3f1d28cf51269449276868a3809f3aaf4199a2fb8",
+    "bytes": 6234
+  },
+  {
+    "path": "original-consolidated/stage_worker.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\stage_worker.py",
+    "sha256": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55",
+    "bytes": 11546
+  },
+  {
+    "path": "original-consolidated/analyze_formal.py",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\analyze_formal.py",
+    "sha256": "5ccb36e9179cbe84264f86e223693b11503a16272949280ff2463e1b5f8f9fbf",
+    "bytes": 3441
+  },
+  {
+    "path": "original-technical-stop/decision.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\final-review\\decision.json",
+    "sha256": "09c1bcf72924114471d85ad55ffca24e96a1d4c05d4a657e897c56f685381228",
+    "bytes": 25588
+  },
+  {
+    "path": "original-technical-stop/file-sharing-causality.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\final-review\\file-sharing-causality.json",
+    "sha256": "3144df4726b5f55ad0fcdb539e92872b45079b1a671872a5ab8d04ad0c28e7aa",
+    "bytes": 1057
+  },
+  {
+    "path": "original-technical-stop/hashes.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\final-review\\hashes.json",
+    "sha256": "def7ee854ec2d739b9db0303d26573cbbd7cbddd0316d03e04d4f3ecebccc71f",
+    "bytes": 4876
+  },
+  {
+    "path": "original-technical-stop/partial-step-integrity.json",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\final-review\\partial-step-integrity.json",
+    "sha256": "a6b3727079e0694ff5001d116ebc0942a942fdd9ed165419153e1eaed09621af",
+    "bytes": 1182
+  },
+  {
+    "path": "original-technical-stop/report.md",
+    "local_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\final-review\\report.md",
+    "sha256": "5ac6132ccd999fa72f2e4b5cce43497afa4e27b465c3bce8462823f833c3a1ca",
+    "bytes": 3259
+  }
+]

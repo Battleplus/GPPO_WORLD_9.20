@@ -1,0 +1,67 @@
+[
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\authorization-approved.json",
+    "sha256": "76678d30aebd98a4d469fb69a6c8d0073b7009851f113a476806b306e8c01097",
+    "bytes": 1961
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\RECOVERY_BUDGET_REQUEST.json",
+    "sha256": "8fa1dbee2476ea863f1ec0ce93d0fb66f9460d24ec97eac077bec70da93bd04a",
+    "bytes": 2930
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\recovery-manifest.json",
+    "sha256": "f3a1521f5c2d9329c60cb99a4625768b788577f2ceb03e85438b51fdd414bb64",
+    "bytes": 22241
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\retained-episodes.json",
+    "sha256": "24537583214165498dd132fcbc923f68b527fab6b57a01188e42eb0f19c47772",
+    "bytes": 2266345
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\derived-summary-provenance.json",
+    "sha256": "4409b51f69be0237fba00e15e9542039700f8ab26ae785ce33dabd8b763dac93",
+    "bytes": 4940568
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runs\\consolidated-v1\\status.json",
+    "sha256": "a71706fde478d9b5fb4394c861c88d4903136e3fd8a2b29f800a67c2c5c069c0",
+    "bytes": 90538726
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runs\\consolidated-v1\\budget.sqlite3",
+    "sha256": "7e31f887410deab0c9e393272f2f2026def97f6a49c3f8bbe0347257f7d431c0",
+    "bytes": 133513216
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runs\\consolidated-v1\\ledger-lineage.json",
+    "sha256": "4e877c52f4eea1910ac2c610f61fb1e0c22e38d239061f679a09470bbbe84f06",
+    "bytes": 2530
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runs\\consolidated-v1\\C\\episodes.jsonl",
+    "sha256": "c97144e2e957de4b5d7930a8e4aa440f0d5115730e11ac04998d99408a981b43",
+    "bytes": 1994377
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runs\\consolidated-v1\\C\\episode-starts.jsonl",
+    "sha256": "c6ee001ea063945db71184baa01e595c3930c15e13559d3003cb581a58de9dd0",
+    "bytes": 38730962
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runs\\consolidated-v1\\C\\steps.jsonl.gz",
+    "sha256": "05ec7f5c43a1ece111df52e677de6ccb3568ca3934d4f428b9b11d4af95181f9",
+    "bytes": 1193097522
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runs\\consolidated-v1\\C\\scenario-manifest.json",
+    "sha256": "b16c1ecca597ac766b321f89b2c4380d9e2d23ff6c747c996af4af7cfe1129e5",
+    "bytes": 3129023
+  },
+  {
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runs\\consolidated-v1\\observer-progress.jsonl",
+    "sha256": "48ed1ae502b0f4a69b29728a6d212f9db11f6fa2ac4ca9310d05261a0133e851",
+    "bytes": 449987
+  }
+]
