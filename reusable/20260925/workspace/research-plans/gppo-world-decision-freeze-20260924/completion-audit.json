@@ -1,0 +1,63 @@
+{
+  "objective": "Problem closure and reviewable frozen experiment design; no experiment execution.",
+  "checks": [
+    {
+      "requirement": "Five specified remote documents read at current branch commit",
+      "status": "verified",
+      "evidence": "remote copies, EVIDENCE_AND_MIGRATION.md, evidence-index remote commit and hashes"
+    },
+    {
+      "requirement": "One meaningful hypothesis, lawful signals, real choices and evidence for/against",
+      "status": "verified",
+      "evidence": "report sections hypothesis and evidence; protocol sections 2-5"
+    },
+    {
+      "requirement": "Actual native model output, weights identity and actor interface checked",
+      "status": "verified",
+      "evidence": "evidence-index model_interface, native source hash checks, checkpoint byte hash, historical completed call records"
+    },
+    {
+      "requirement": "Strong public-history baseline and same execution/information constraints",
+      "status": "specified_not_executed",
+      "evidence": "protocol sections 3 and 5, shared resource/task continuation guard"
+    },
+    {
+      "requirement": "Independent parents and untouched final blind test",
+      "status": "specified_no_data_generated",
+      "evidence": "planned-parent-manifest, protocol section 2; no pickle/model/test load"
+    },
+    {
+      "requirement": "Primary utility, threshold, full costs, statistical scale and resource caps",
+      "status": "verified_plan_and_arithmetic",
+      "evidence": "protocol sections 7-9, analysis planning, decision resources"
+    },
+    {
+      "requirement": "Technical stops, failure accounting, no automatic retry/extra samples",
+      "status": "specified",
+      "evidence": "protocol sections 6 and 9; decision technical_stop"
+    },
+    {
+      "requirement": "Exactly one A/B/C decision and conditional next action",
+      "status": "verified",
+      "evidence": "decision.json decision=A; experiment authorization=none"
+    },
+    {
+      "requirement": "Five required deliverables",
+      "status": "verified_on_finalize",
+      "evidence": "report/protocol/decision/evidence-index/hashes"
+    },
+    {
+      "requirement": "Authorized zero-step boundary respected",
+      "status": "verified_script_scope",
+      "evidence": "stdlib-only analysis/finalizer, raw text/JSON/hash reads, no environment/model import or SQLite access; all mutations within this planning directory"
+    }
+  ],
+  "not_claimed_complete": [
+    "runner_implementation",
+    "technical_gate",
+    "formal_experiment",
+    "world_attribution",
+    "research_general_goal"
+  ],
+  "current_planning_goal_complete": true
+}

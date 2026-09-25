@@ -1,0 +1,17 @@
+{
+  "analysis.json": "b7e8c2199286eeae333d907da4c63641f6b20be3be9114da8220ffcda7f56b02",
+  "analyze_decision.py": "cb57750bcbed1123c1aeaaeadda83c051edf2276d5fd01e93042c28c34c2a478",
+  "completion-audit.json": "2ad10f2cef105a8dbab5e7e8f7a9e67579bd7667d858e420a21937a3dc616690",
+  "decision.json": "3fcfda6607cb9442300a4f9d6194525c2799f2f8e2527ac66baba45bef5e93da",
+  "evidence-index.json": "4cef9ec5321127f2d7c9ffb672e1b5847c821debf5597e8c574c679b6fb16dc7",
+  "EVIDENCE_AND_MIGRATION.md": "ca4d9f89728a1dba9f121957f8672983c897baed2ab4e34dc1536799e4e31830",
+  "finalize_package.py": "c2dd84793994655df9385990159aee4eb248c606568a2e45c7d85a1382e621e2",
+  "planned-parent-manifest.json": "09e6f5208e9196d3a17ba41da5f8ddc8a63511121efa9a29601c53e660da198d",
+  "proposed-mask-index.patch": "7fe9a3ced02119fe6c5e37fa23198ce6c9da784f4e5cfd3ff3a420557ade835c",
+  "protocol.md": "c6dfb020189d8abe6e538fe5f10ae4fbfd306f7982a7ed81365b52232438de10",
+  "remote/AGENTS.md": "3826d0cae6b8431a47e6ee4eaec8f1d80ee1e1074350c15ce45e9e39c2870f54",
+  "remote/docs/NEXT_EXECUTION.md": "9a7d000a271a8cf898cb19cd913f752073a5ee5241ddb0e32e93a2eb9d2f15d6",
+  "remote/docs/RESEARCH_STATE.md": "566fec179c5c3c609fd38ec79586667ca06153e73f1e3e922878717cf3090b6b",
+  "remote/docs/ROADMAP.md": "954396fe54aa4622690ba4ae76a23328cd6c631b47beac38b9cca08067c40cfa",
+  "report.md": "1f1e4a60461bdff3fef0a48085be706d075e219757fbeb666a8189dccf4d123c"
+}

@@ -1,0 +1,72 @@
+{
+  "approved": true,
+  "attempt": "stage3-runtime-minimal-paired-v2-once",
+  "caps": {
+    "environment_steps": 14436,
+    "environment_resets": 802,
+    "policy_encode": 16011,
+    "actor_readout": 16011,
+    "world_candidate_batch": 525,
+    "rule_decisions": 0,
+    "model_loads": 5,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "wall_seconds": 12600,
+    "total_process_cpu_seconds": 49200,
+    "resident_process_rss_sum_bytes": 4294967296,
+    "artifact_bytes": 4294967296
+  },
+  "stage_caps": {
+    "A": {
+      "environment_steps": 0,
+      "environment_resets": 0,
+      "policy_encode": 1575,
+      "actor_readout": 1575,
+      "world_candidate_batch": 525,
+      "rule_decisions": 0,
+      "model_loads": 3,
+      "optimizer_updates": 0,
+      "world_updates": 0,
+      "offline_updates": 0,
+      "wall_seconds": 1200,
+      "cpu_seconds": 3600,
+      "artifact_bytes": 536870912
+    },
+    "B": {
+      "environment_steps": 36,
+      "environment_resets": 2,
+      "policy_encode": 36,
+      "actor_readout": 36,
+      "world_candidate_batch": 0,
+      "rule_decisions": 0,
+      "model_loads": 1,
+      "optimizer_updates": 0,
+      "world_updates": 0,
+      "offline_updates": 0,
+      "wall_seconds": 600,
+      "cpu_seconds": 2400,
+      "artifact_bytes": 536870912
+    },
+    "C": {
+      "environment_steps": 14400,
+      "environment_resets": 800,
+      "policy_encode": 14400,
+      "actor_readout": 14400,
+      "world_candidate_batch": 0,
+      "rule_decisions": 0,
+      "model_loads": 1,
+      "optimizer_updates": 0,
+      "world_updates": 0,
+      "offline_updates": 0,
+      "wall_seconds": 10800,
+      "cpu_seconds": 43200,
+      "artifact_bytes": 3221225472
+    }
+  },
+  "manifest_sha256": "2848c9dedc1d14755b177baac3a5c1be9b433f581b6fb9f2baebf0ed6dfaafef",
+  "budget_sha256": "e564d340d139d1106758927e2961724493c69c9f6bbc1efe43cd63c980165c3d",
+  "user_approval_text": "继续继续",
+  "user_approval_reference": "Current user reply following the concrete stage3-runtime-minimal-paired-v2-once budget request; interpreted as approval of that exact proposal, not previous4800 plan",
+  "recorded_at": "2026-09-25T06:00:16.994008+00:00"
+}

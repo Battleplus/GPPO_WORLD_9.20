@@ -1,0 +1,177 @@
+{
+  "repository": "Battleplus/GPPO_WORLD_9.20",
+  "branch": "docs/results-first-roadmap-20260924",
+  "commit": "7395b3e985a94a12156d5ea5f54d6c47d1536c72",
+  "remote_branch_head_rechecked_this_turn": true,
+  "inputs": [
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-decision-freeze-20260924\\remote\\AGENTS.md",
+      "sha256": "3826d0cae6b8431a47e6ee4eaec8f1d80ee1e1074350c15ce45e9e39c2870f54",
+      "git_path": "AGENTS.md",
+      "git_blob": "4cbebcf2ce9061c7b1e2bf68e57ed04d00d0e18d",
+      "role": "specified_remote_instruction"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-decision-freeze-20260924\\remote\\docs\\ROADMAP.md",
+      "sha256": "954396fe54aa4622690ba4ae76a23328cd6c631b47beac38b9cca08067c40cfa",
+      "git_path": "docs/ROADMAP.md",
+      "git_blob": "ee7b9377831fa22ada1810abf3d0ec16539834b5",
+      "role": "specified_remote_instruction"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-decision-freeze-20260924\\remote\\docs\\RESEARCH_STATE.md",
+      "sha256": "566fec179c5c3c609fd38ec79586667ca06153e73f1e3e922878717cf3090b6b",
+      "git_path": "docs/RESEARCH_STATE.md",
+      "git_blob": "ce0497feb2f66d3799fee718cbf13059fd099fd2",
+      "role": "specified_remote_instruction"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-decision-freeze-20260924\\remote\\docs\\NEXT_EXECUTION.md",
+      "sha256": "9a7d000a271a8cf898cb19cd913f752073a5ee5241ddb0e32e93a2eb9d2f15d6",
+      "git_path": "docs/NEXT_EXECUTION.md",
+      "git_blob": "a2ddfe44310d4e9f30dcc09e2ab5118449d56bc5",
+      "role": "specified_remote_instruction"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-decision-freeze-20260924\\EVIDENCE_AND_MIGRATION.md",
+      "sha256": "ca4d9f89728a1dba9f121957f8672983c897baed2ab4e34dc1536799e4e31830",
+      "git_path": "docs/EVIDENCE_AND_MIGRATION.md",
+      "git_blob": "cd36df86d9b8e2bd1f36c346ff99e3f4f12f89c2",
+      "role": "specified_remote_evidence_index"
+    },
+    {
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_gppo.py",
+      "sha256": "3c799cfe12050971e1b11da6b2c04fa6a7c244a36935578861c5db533396f55e",
+      "role": "native_source_inspected",
+      "matches_historical_native_manifest": true
+    },
+    {
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_training.py",
+      "sha256": "808b1de65e676ad45480843c152874248be1fe91c1ce56e1a015fddf81bfd4d1",
+      "role": "native_source_inspected",
+      "matches_historical_native_manifest": true
+    },
+    {
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_environment.py",
+      "sha256": "083b4ad3e47d8a44a18e7a25f429bb7c4bba4a6899249404c0842dfdc0f71132",
+      "role": "native_source_inspected",
+      "matches_historical_native_manifest": true
+    },
+    {
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_communication.py",
+      "sha256": "fcaada4fea48446aae509fb97f4b6b8275d5b6b9dda3bcdef00c5c392e6011ce",
+      "role": "native_source_inspected",
+      "matches_historical_native_manifest": true
+    },
+    {
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_policy_view.py",
+      "sha256": "f5877b6582a02a5bb6c9c39b469dd222e9f5727390fd8080c01e160cd7b23317",
+      "role": "native_source_inspected",
+      "matches_historical_native_manifest": true
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-cli-recovery-run-v1\\report.md",
+      "sha256": "2f5eec00d433f776630e69808d85600496f629037cb0de9ecdcaabe22247edac",
+      "role": "completed_comparison_report"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-cli-recovery-run-v1\\analysis.json",
+      "sha256": "c617a385dae8e5f8e489cbe63e02c077522705a129f98e5f45e9a498a4306dc8",
+      "role": "observed_development_only_statistics"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-cli-recovery-run-v1\\run-status.json",
+      "sha256": "81128f0681938bbe96e0746e52b95779c56f32fb7633d32bb4b9137e448d1ed9",
+      "role": "completed_runtime_call_evidence"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-cli-recovery-run-v1\\research-decision.json",
+      "sha256": "eea7cfb2b3f528eb646cbd05723b4407a5292ea4f459611dc7c9d85f5b139615",
+      "role": "historical_decision"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\protocol.json",
+      "sha256": "8dc914333d080e65ae9081a1f4cd56ab383a8f8f99fc1c62467b757b85c8e843",
+      "role": "prior_frozen_contract"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\runtime-source.py",
+      "sha256": "319512abec3a88fde40f265e86e4ee1e364d020ef3ffff0ff678aa9b804edcf8",
+      "role": "prior_native_runtime_call_path"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\runs\\finite-communication-ack-lease-fix-20260920\\model-rule-stage1-execution-package-v1\\native-source-manifest.json",
+      "sha256": "febbaede7c191b2e1a901de5f2314e3ed9d590ae2f65d508cc482107296da976",
+      "role": "native_identity_reference"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\tools\\run_replan_value_experiment.py",
+      "sha256": "a9ccf1711790c472ededd7666c54c28ca34abffc4a0095d35b300f1297afa965",
+      "role": "actual_strict_model_loader_source"
+    },
+    {
+      "path": "E:\\Z博士\\9.2日\\WORLD-GPPO_9.11-replan-value-20260919-wt\\gppo_world\\ack_known_task_guard.py",
+      "sha256": "2bc314ff9e3d4f78ec871c1a2e739a92669b1f9bd573aabce6a8be5b3e9e808a",
+      "role": "prior_public_guard_definition"
+    },
+    {
+      "path": "E:\\Z博士\\migration-artifacts\\preference-weighted-wm-event-cpu-20260917\\final\\run\\training\\seed-1101\\WD\\resolved-config.json",
+      "sha256": "f57f91878d161855cfd58a28db7943d2341ebbfdfd5053f8c2185afbfe6cbc27",
+      "role": "resolved_inherited_config"
+    },
+    {
+      "path": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\training\\seed-1101\\P_train\\last-recovery.pt",
+      "sha256": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a",
+      "role": "checkpoint_bytes_hash_only_not_deserialized"
+    }
+  ],
+  "model_interface": {
+    "policy_class": "JointGraphPreferencePolicy",
+    "world_class": "ActionConditionedTemporalWorldModel",
+    "candidate_shape": [
+      1,
+      25,
+      17
+    ],
+    "features": {
+      "policy_feature": 8,
+      "next_vector_reward": 2,
+      "next_completed_expired_increments": 2,
+      "public_event_probabilities": 5
+    },
+    "actor_consumes_candidate_features": true,
+    "recursive_rollout_used_in_frozen_probe": false,
+    "calibrated_arrival_probability_claim": false,
+    "not_the_D02_global_latent_adapter": true,
+    "citations": {
+      "joint_gppo.py": [
+        74,
+        103,
+        131,
+        146,
+        167,
+        187,
+        207
+      ],
+      "joint_training.py": [
+        368,
+        766,
+        772,
+        781
+      ],
+      "runtime-source.py": [
+        2571,
+        2592,
+        2610,
+        2620
+      ]
+    }
+  },
+  "scope": {
+    "no_checkpoint_deserialization": true,
+    "no_env_reset_or_step": true,
+    "no_model_forward": true,
+    "no_sqlite_access": true,
+    "no_unpublished_validation_heldout_test_results": true
+  }
+}

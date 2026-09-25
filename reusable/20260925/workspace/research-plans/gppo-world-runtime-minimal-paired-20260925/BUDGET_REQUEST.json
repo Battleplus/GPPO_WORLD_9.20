@@ -1,0 +1,358 @@
+{
+  "attempt": "stage3-runtime-minimal-paired-v2-once",
+  "approved": false,
+  "purpose": "minimum fixed paired frozen runtime simplification diagnostic",
+  "caps": {
+    "environment_steps": 14436,
+    "environment_resets": 802,
+    "policy_encode": 16011,
+    "actor_readout": 16011,
+    "world_candidate_batch": 525,
+    "rule_decisions": 0,
+    "model_loads": 5,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "wall_seconds": 12600,
+    "total_process_cpu_seconds": 49200,
+    "resident_process_rss_sum_bytes": 4294967296,
+    "artifact_bytes": 4294967296
+  },
+  "stage_caps": {
+    "A": {
+      "environment_steps": 0,
+      "environment_resets": 0,
+      "policy_encode": 1575,
+      "actor_readout": 1575,
+      "world_candidate_batch": 525,
+      "rule_decisions": 0,
+      "model_loads": 3,
+      "optimizer_updates": 0,
+      "world_updates": 0,
+      "offline_updates": 0,
+      "wall_seconds": 1200,
+      "cpu_seconds": 3600,
+      "artifact_bytes": 536870912
+    },
+    "B": {
+      "environment_steps": 36,
+      "environment_resets": 2,
+      "policy_encode": 36,
+      "actor_readout": 36,
+      "world_candidate_batch": 0,
+      "rule_decisions": 0,
+      "model_loads": 1,
+      "optimizer_updates": 0,
+      "world_updates": 0,
+      "offline_updates": 0,
+      "wall_seconds": 600,
+      "cpu_seconds": 2400,
+      "artifact_bytes": 536870912
+    },
+    "C": {
+      "environment_steps": 14400,
+      "environment_resets": 800,
+      "policy_encode": 14400,
+      "actor_readout": 14400,
+      "world_candidate_batch": 0,
+      "rule_decisions": 0,
+      "model_loads": 1,
+      "optimizer_updates": 0,
+      "world_updates": 0,
+      "offline_updates": 0,
+      "wall_seconds": 10800,
+      "cpu_seconds": 43200,
+      "artifact_bytes": 3221225472
+    }
+  },
+  "recovery_shutdown_holdback": {
+    "wall_seconds": 30,
+    "cpu_seconds": 600
+  },
+  "inputs": {
+    "baseline_episodes": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\local-recovery2-preparation-20260925\\runs\\consolidated-v1\\C\\combined-episodes.json",
+    "baseline_analysis": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\local-recovery2-preparation-20260925\\runs\\consolidated-v1\\C\\analysis.json",
+    "historical_verification": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\local-recovery2-preparation-20260925\\final-review\\verification.json",
+    "historical_status": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\local-recovery2-preparation-20260925\\runs\\consolidated-v1\\status.json",
+    "scenario_manifest": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\runs\\consolidated-v1\\C\\scenario-manifest.json",
+    "replay_decisions": "E:\\Z博士\\research-plans\\gppo-world-stage2-gate-preparation-20260924\\runs\\technical-gate-v1\\decisions.jsonl",
+    "baseline_cost": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\local-recovery2-preparation-20260925\\runs\\consolidated-v1\\C\\combined-cost.json"
+  },
+  "history_counters": [
+    "environment_steps",
+    "environment_resets",
+    "policy_encode",
+    "actor_readout",
+    "world_candidate_batch",
+    "rule_decisions",
+    "model_loads",
+    "optimizer_updates",
+    "world_updates",
+    "offline_updates"
+  ],
+  "stage2_historical_consumed": {
+    "environment_steps": 133662,
+    "environment_resets": 9605,
+    "policy_encode": 64051,
+    "world_candidate_batch": 64051,
+    "actor_readout": 64051,
+    "rule_decisions": 70661,
+    "model_loads": 6,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0
+  },
+  "historical_cost": {
+    "bytes": 3066791219,
+    "current_stage": "C",
+    "guard_charged_cpu_seconds": 22517.890625,
+    "guard_charged_wall_seconds": 22837.921123000007,
+    "guard_holdback_cpu_seconds": 1800,
+    "guard_holdback_wall_seconds": 90,
+    "historical_shutdown_unmeasured": true,
+    "not_exact_whole_os_lifecycle_measurement": true,
+    "parent_cpu_seconds": 525.125,
+    "parent_timed_parts": {
+      "C/ledger": {
+        "cpu": 290.34375,
+        "wall": 381.56617810446187
+      },
+      "C/logging": {
+        "cpu": 130.03125,
+        "wall": 188.1544809009938
+      }
+    },
+    "peak_conservative_rss_sum": 360116224,
+    "recovery_segment": {
+      "bytes": 322889141,
+      "current_stage": "C",
+      "parent_cpu_seconds": 525.125,
+      "parent_timed_parts": {
+        "C/ledger": {
+          "cpu": 290.34375,
+          "wall": 381.56617810446187
+        },
+        "C/logging": {
+          "cpu": 130.03125,
+          "wall": 188.1544809009938
+        }
+      },
+      "peak_conservative_rss_sum": 346570752,
+      "rss_scope": "parent plus all resident workers, including suspended; sum of individual peaks",
+      "stage_cpu_seconds": 1138.09375,
+      "stage_parent_cpu_seconds": 522.109375,
+      "stage_wall_seconds": 1000.2364290999831,
+      "total_cpu_seconds": 1141.109375,
+      "wall_seconds": 1004.9205261000025,
+      "workers": [
+        {
+          "cpu_seconds": 194.25,
+          "exit_code": 0,
+          "final": {
+            "counts": {
+              "actor_readout": 0,
+              "environment_resets": 482,
+              "environment_steps": 7070,
+              "model_loads": 0,
+              "policy_encode": 0,
+              "rule_decisions": 7070,
+              "world_candidate_batch": 0
+            },
+            "peak_rss": 46776320,
+            "weights_unchanged": true
+          },
+          "name": "C-R",
+          "ready": {
+            "counts": {
+              "actor_readout": 0,
+              "environment_resets": 0,
+              "environment_steps": 0,
+              "model_loads": 0,
+              "policy_encode": 0,
+              "rule_decisions": 0,
+              "world_candidate_batch": 0
+            },
+            "initializer": "export-only shim",
+            "ok": true,
+            "ready": true,
+            "sources": {
+              "gppo_world": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\__init__.py",
+              "gppo_world.m10_communication": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_communication.py",
+              "gppo_world.m10_environment": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_environment.py",
+              "gppo_world.service_clock": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\service_clock.py",
+              "gppo_world.task_decision_bridge": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_decision_bridge.py",
+              "gppo_world.task_execution": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_execution.py",
+              "gppo_world.task_lifecycle": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_lifecycle.py",
+              "gppo_world.task_policy_view": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_policy_view.py",
+              "gppo_world.telemetry": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\telemetry.py"
+            },
+            "startup_cpu": 3.453125,
+            "torch_loaded": false
+          }
+        },
+        {
+          "cpu_seconds": 421.734375,
+          "exit_code": 0,
+          "final": {
+            "counts": {
+              "actor_readout": 6329,
+              "environment_resets": 481,
+              "environment_steps": 6329,
+              "model_loads": 1,
+              "policy_encode": 6329,
+              "rule_decisions": 0,
+              "world_candidate_batch": 6329
+            },
+            "peak_rss": 227680256,
+            "weights_unchanged": true
+          },
+          "name": "C-M",
+          "ready": {
+            "counts": {
+              "actor_readout": 0,
+              "environment_resets": 0,
+              "environment_steps": 0,
+              "model_loads": 1,
+              "policy_encode": 0,
+              "rule_decisions": 0,
+              "world_candidate_batch": 0
+            },
+            "initializer": "export-only shim",
+            "ok": true,
+            "ready": true,
+            "sources": {
+              "gppo_world": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\__init__.py",
+              "gppo_world.joint_gppo": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_gppo.py",
+              "gppo_world.m10_communication": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_communication.py",
+              "gppo_world.m10_environment": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_environment.py",
+              "gppo_world.m10_training": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_training.py",
+              "gppo_world.service_clock": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\service_clock.py",
+              "gppo_world.task_decision_bridge": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_decision_bridge.py",
+              "gppo_world.task_execution": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_execution.py",
+              "gppo_world.task_lifecycle": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_lifecycle.py",
+              "gppo_world.task_policy_view": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_policy_view.py",
+              "gppo_world.telemetry": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\telemetry.py"
+            },
+            "startup_cpu": 9.84375,
+            "torch_loaded": true
+          }
+        }
+      ]
+    },
+    "rss_scope": "parent plus all resident workers, including suspended; sum of individual peaks",
+    "stage_cpu_seconds": 1138.09375,
+    "stage_parent_cpu_seconds": 522.109375,
+    "stage_wall_seconds": 1000.2364290999831,
+    "total_cpu_seconds": 20717.890625,
+    "wall_seconds": 22747.921123000007,
+    "workers": [
+      {
+        "cpu_seconds": 194.25,
+        "exit_code": 0,
+        "final": {
+          "counts": {
+            "actor_readout": 0,
+            "environment_resets": 482,
+            "environment_steps": 7070,
+            "model_loads": 0,
+            "policy_encode": 0,
+            "rule_decisions": 7070,
+            "world_candidate_batch": 0
+          },
+          "peak_rss": 46776320,
+          "weights_unchanged": true
+        },
+        "name": "C-R",
+        "ready": {
+          "counts": {
+            "actor_readout": 0,
+            "environment_resets": 0,
+            "environment_steps": 0,
+            "model_loads": 0,
+            "policy_encode": 0,
+            "rule_decisions": 0,
+            "world_candidate_batch": 0
+          },
+          "initializer": "export-only shim",
+          "ok": true,
+          "ready": true,
+          "sources": {
+            "gppo_world": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\__init__.py",
+            "gppo_world.m10_communication": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_communication.py",
+            "gppo_world.m10_environment": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_environment.py",
+            "gppo_world.service_clock": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\service_clock.py",
+            "gppo_world.task_decision_bridge": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_decision_bridge.py",
+            "gppo_world.task_execution": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_execution.py",
+            "gppo_world.task_lifecycle": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_lifecycle.py",
+            "gppo_world.task_policy_view": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_policy_view.py",
+            "gppo_world.telemetry": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\telemetry.py"
+          },
+          "startup_cpu": 3.453125,
+          "torch_loaded": false
+        }
+      },
+      {
+        "cpu_seconds": 421.734375,
+        "exit_code": 0,
+        "final": {
+          "counts": {
+            "actor_readout": 6329,
+            "environment_resets": 481,
+            "environment_steps": 6329,
+            "model_loads": 1,
+            "policy_encode": 6329,
+            "rule_decisions": 0,
+            "world_candidate_batch": 6329
+          },
+          "peak_rss": 227680256,
+          "weights_unchanged": true
+        },
+        "name": "C-M",
+        "ready": {
+          "counts": {
+            "actor_readout": 0,
+            "environment_resets": 0,
+            "environment_steps": 0,
+            "model_loads": 1,
+            "policy_encode": 0,
+            "rule_decisions": 0,
+            "world_candidate_batch": 0
+          },
+          "initializer": "export-only shim",
+          "ok": true,
+          "ready": true,
+          "sources": {
+            "gppo_world": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\__init__.py",
+            "gppo_world.joint_gppo": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\joint_gppo.py",
+            "gppo_world.m10_communication": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_communication.py",
+            "gppo_world.m10_environment": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_environment.py",
+            "gppo_world.m10_training": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\m10_training.py",
+            "gppo_world.service_clock": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\service_clock.py",
+            "gppo_world.task_decision_bridge": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_decision_bridge.py",
+            "gppo_world.task_execution": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_execution.py",
+            "gppo_world.task_lifecycle": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_lifecycle.py",
+            "gppo_world.task_policy_view": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\task_policy_view.py",
+            "gppo_world.telemetry": "E:\\Z博士\\migration-artifacts\\event-trigger-aware-gppo-fair-replication-20260919-v1\\source-snapshot\\gppo_world\\telemetry.py"
+          },
+          "startup_cpu": 9.84375,
+          "torch_loaded": true
+        }
+      }
+    ]
+  },
+  "old_request": "E:\\Z博士\\research-plans\\gppo-world-stage3-attribution-planning-20260925\\BUDGET_REQUEST.json",
+  "old_request_authorized": false,
+  "historical_balance_reuse": false,
+  "interstage_borrowing": false,
+  "sequence": [
+    "A fixed trace reference equivalence and costs",
+    "B 2 normal-reset technical episodes",
+    "C 800 fixed parent/exogenous pairs"
+  ],
+  "automatic_retry": false,
+  "automatic_sample_extension": false,
+  "training_updates": 0,
+  "git_publication": false,
+  "scope": "historical native M10/W1, seed1101, public-history frozen policy trained WITH world",
+  "cost_caps_are_limits_not_duration_predictions": true
+}

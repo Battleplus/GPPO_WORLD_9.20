@@ -1,0 +1,54 @@
+--- old/analysis_contract.py
++++ new/analysis_contract.py
+@@ -1,29 +1,25 @@
+-"""Frozen decision logic only; no runtime, files or model dependencies."""
++"""Three scientific conclusions; clear loss separated from uncertainty."""
+ import math
+ 
+-def decide(*, n_minus_m_ci, n_minus_r_ci, physical_difference, host_difference,
+-           n_cpu_ms, n_wall_p95_ms, rss_sum_bytes,
+-           paired_replay_cpu_ratio, historical_formal_cpu_ratio):
+-    values=[*n_minus_m_ci,*n_minus_r_ci,physical_difference,host_difference,n_cpu_ms,n_wall_p95_ms,
+-            rss_sum_bytes,paired_replay_cpu_ratio,historical_formal_cpu_ratio]
+-    if not all(math.isfinite(v) for v in values):raise ValueError('Nonfinite result')
+-    if len(n_minus_m_ci)!=2 or len(n_minus_r_ci)!=2 or n_minus_m_ci[0]>n_minus_m_ci[1] or n_minus_r_ci[0]>n_minus_r_ci[1]:
+-        raise ValueError('Invalid confidence interval')
+-    if min(n_cpu_ms,n_wall_p95_ms,rss_sum_bytes,paired_replay_cpu_ratio,historical_formal_cpu_ratio)<0:
+-        raise ValueError('Negative cost')
+-    retained = n_minus_m_ci[0] > -0.01
+-    practical = n_minus_r_ci[0] > 0.01
+-    tasks = physical_difference >= 0 and host_difference >= 0
+-    absolute_cost = n_cpu_ms <= 10 and n_wall_p95_ms <= 50 and rss_sum_bytes <= 4*1024**3
+-    savings = paired_replay_cpu_ratio <= 0.8 and historical_formal_cpu_ratio <= 0.8
+-    if retained and practical and tasks and absolute_cost and savings:
+-        result = 'frozen_online_world_removal_supported_prepare_simplified_candidate'
+-    elif n_minus_m_ci[1] < -0.01 or not tasks:
+-        result = 'direct_removal_not_supported_no_independent_world_claim'
+-    elif retained and practical and tasks and not (absolute_cost and savings):
+-        result = 'task_retention_supported_cost_saving_not_accepted'
++def decide(*,utility_ci,rule_ci,physical_ci,host_ci,loss_family_ci,
++           n_cpu_ms,n_wall_p95_ms,rss_sum_bytes,replay_ratio,formal_decision_ratio,formal_episode_ratio):
++    cis=[utility_ci,rule_ci,physical_ci,host_ci,*loss_family_ci]
++    if any(len(c)!=2 or c[0]>c[1] or not all(math.isfinite(x) for x in c) for c in cis):raise ValueError('Invalid CI')
++    costs=[n_cpu_ms,n_wall_p95_ms,rss_sum_bytes,replay_ratio,formal_decision_ratio,formal_episode_ratio]
++    if not all(math.isfinite(x) and x>=0 for x in costs):raise ValueError('Invalid cost')
++    retained=utility_ci[0]>-.01
++    practical=rule_ci[0]>.01
++    tasks=physical_ci[0]>-.02 and host_ci[0]>-.02
++    absolute=n_cpu_ms<=10 and n_wall_p95_ms<=50 and rss_sum_bytes<=4*1024**3
++    saving=replay_ratio<=.8 and formal_decision_ratio<=.8 and formal_episode_ratio<=.8
++    clear_loss=any(ci[1]<-margin for ci,margin in zip(loss_family_ci,[.01,.02,.02]))
++    if retained and practical and tasks and absolute and saving:
++        result='support_simplification_of_frozen_inference'
++    elif clear_loss:
++        result='clear_loss_direct_removal_not_supported'
+     else:
+-        result = 'uncertain_stop_without_more_samples_or_training'
+-    return {'decision':result,'noninferiority_pass':retained,'increment_vs_rule_pass':practical,
+-            'task_guard_pass':tasks,'absolute_cost_pass':absolute_cost,'saving_pass':savings,
+-            'world_independent_contribution_proven':False,'automatic_training':False}
++        result='uncertain_or_practical_gate_not_met_stop'
++    return {'decision':result,'utility_retention_pass':retained,'increment_vs_rule_pass':practical,
++        'task_guard_pass':tasks,'absolute_cost_pass':absolute,'cpu_saving_pass':saving,
++        'clear_loss_family_pass':clear_loss,'world_training_contribution_proven':False,
++        'automatic_training':False,'automatic_more_samples':False}

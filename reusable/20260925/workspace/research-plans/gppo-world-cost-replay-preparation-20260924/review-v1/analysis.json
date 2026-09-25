@@ -1,0 +1,133 @@
+{
+  "result": "cost_threshold_exceeded_on_fixed_traces",
+  "arms": {
+    "M": {
+      "cold": {
+        "decisions": 25,
+        "cpu_seconds": 0.421875,
+        "wall_seconds": 0.11988420000125188,
+        "cpu_ms_per_decision": 16.875,
+        "wall_ms_per_decision": 4.795368000050075,
+        "decision_wall_p95_ms": 4.473680001683532,
+        "batch_cpu_ms_min": 16.875,
+        "batch_cpu_ms_max": 16.875
+      },
+      "warm": {
+        "decisions": 500,
+        "cpu_seconds": 6.8125,
+        "wall_seconds": 1.7423390000039944,
+        "cpu_ms_per_decision": 13.625,
+        "wall_ms_per_decision": 3.484678000007989,
+        "decision_wall_p95_ms": 4.759345004276838,
+        "batch_cpu_ms_min": 10.0,
+        "batch_cpu_ms_max": 17.5
+      },
+      "all": {
+        "decisions": 525,
+        "cpu_seconds": 7.234375,
+        "wall_seconds": 1.8622232000052463,
+        "cpu_ms_per_decision": 13.779761904761905,
+        "wall_ms_per_decision": 3.5470918095338027,
+        "decision_wall_p95_ms": 4.75898000295274,
+        "batch_cpu_ms_min": 10.0,
+        "batch_cpu_ms_max": 17.5
+      },
+      "complete_process_cpu_seconds": 11.53125,
+      "complete_process_wall_seconds": 6.12349909999466,
+      "setup_wall_seconds": 3.6428109999978915,
+      "peak_rss_bytes": 230899712,
+      "action_reproduction": true,
+      "hidden_reproduction": true
+    },
+    "R": {
+      "cold": {
+        "decisions": 31,
+        "cpu_seconds": 0.359375,
+        "wall_seconds": 0.37577489999239333,
+        "cpu_ms_per_decision": 11.59274193548387,
+        "wall_ms_per_decision": 12.121770967496559,
+        "decision_wall_p95_ms": 37.69240000110585,
+        "batch_cpu_ms_min": 11.592741935483872,
+        "batch_cpu_ms_max": 11.592741935483872
+      },
+      "warm": {
+        "decisions": 620,
+        "cpu_seconds": 7.421875,
+        "wall_seconds": 7.462019799961126,
+        "cpu_ms_per_decision": 11.970766129032258,
+        "wall_ms_per_decision": 12.035515806388913,
+        "decision_wall_p95_ms": 38.41930500275339,
+        "batch_cpu_ms_min": 11.088709677419356,
+        "batch_cpu_ms_max": 13.10483870967742
+      },
+      "all": {
+        "decisions": 651,
+        "cpu_seconds": 7.78125,
+        "wall_seconds": 7.83779469995352,
+        "cpu_ms_per_decision": 11.952764976958525,
+        "wall_ms_per_decision": 12.039623195013087,
+        "decision_wall_p95_ms": 38.42294999776641,
+        "batch_cpu_ms_min": 11.088709677419356,
+        "batch_cpu_ms_max": 13.10483870967742
+      },
+      "complete_process_cpu_seconds": 7.9375,
+      "complete_process_wall_seconds": 8.274857800002792,
+      "setup_wall_seconds": 0.013402700002188794,
+      "peak_rss_bytes": 29184000,
+      "action_reproduction": true,
+      "hidden_reproduction": false
+    }
+  },
+  "actual_counts": {
+    "environment_steps": 0,
+    "policy_encode": 525,
+    "world_candidate_batch": 525,
+    "actor_readout": 525,
+    "rule_decisions": 651
+  },
+  "budget": {
+    "actor_readout": {
+      "reserved": 525,
+      "verified": 525,
+      "unknown": 0,
+      "pending": 0
+    },
+    "environment_steps": {
+      "reserved": 0,
+      "verified": 0,
+      "unknown": 0,
+      "pending": 0
+    },
+    "policy_encode": {
+      "reserved": 525,
+      "verified": 525,
+      "unknown": 0,
+      "pending": 0
+    },
+    "rule_decisions": {
+      "reserved": 651,
+      "verified": 651,
+      "unknown": 0,
+      "pending": 0
+    },
+    "world_candidate_batch": {
+      "reserved": 525,
+      "verified": 525,
+      "unknown": 0,
+      "pending": 0
+    }
+  },
+  "sqlite_integrity": "ok",
+  "single_attempt": true,
+  "model_cpu_threshold_ms": 10,
+  "model_warm_cpu_pass": false,
+  "no_new_environment_steps": true,
+  "updates": 0,
+  "new_training": false,
+  "formal_matrix_executed": false,
+  "decision": "pause_current_frozen_configuration_before_formal_matrix",
+  "scope": "One hardware/runtime configuration and two already observed technical parents; replay repeats are not independent scenarios.",
+  "task_gain": "not_established",
+  "world_attribution": "not_started",
+  "automatic_tuning_or_resampling": false
+}

@@ -1,0 +1,55 @@
+--- old/run_diagnostic.py
++++ new/run_diagnostic.py
+@@ -84,19 +84,19 @@
+     return result
+ 
+ def validate_matrix(rows,baseline,tapes):
+-    expected=[(f'eval-{p:04d}',r,'N') for p in range(1600) for r in range(3)]
+-    if [(r['parent'],r['repeat'],r['arm']) for r in rows]!=expected:raise RuntimeError('Frozen N matrix order mismatch')
++    from prepare_minimal import selected_keys
++    expected=[(p,r,'N') for p,r in selected_keys()]
++    if [(r['parent'],r['repeat'],r['arm']) for r in rows]!=expected:raise RuntimeError('Fixed selected matrix mismatch')
+     old={(r['parent'],r['repeat'],r['arm']):r for r in baseline}
+-    if len(old)!=9600 or len(baseline)!=9600 or set(old)!={(p,r,a) for p,r,_ in expected for a in ('M','R')}:
+-        raise RuntimeError('Historical matrix mismatch')
++    original={(f'eval-{p:04d}',r,a) for p in range(1600) for r in range(3) for a in ('M','R')}
++    if len(old)!=9600 or len(baseline)!=9600 or set(old)!=original:raise RuntimeError('Historical matrix mismatch')
+     if len(tapes['tapes'])!=1600 or len(tapes['hashes'])!=1600:raise RuntimeError('Tape count mismatch')
+     if [digest(t) for t in tapes['tapes']]!=tapes['hashes']:raise RuntimeError('Tape identity mismatch')
+-    for index,row in enumerate(rows):
+-        p,r,_=expected[index]
+-        if row['tape_index']!=index//3 or row['tape_hash']!=tapes['hashes'][index//3]:raise RuntimeError('Wrong tape mapping')
++    for row in rows:
++        p,r=row['parent'],row['repeat'];index=int(p.split('-')[1])
++        if row['tape_index']!=index or row['tape_hash']!=tapes['hashes'][index]:raise RuntimeError('Wrong tape mapping')
+         if row['exogenous_key']!=f'frozen-native-public-history-allocation-v1|{p}|repeat-{r}':raise RuntimeError('Wrong exogenous key')
+-        if not row['initial_public_hash']==old[(p,r,'M')]['initial_public_hash']==old[(p,r,'R')]['initial_public_hash']:
+-            raise RuntimeError('Historical initial pairing mismatch')
++        if not row['initial_public_hash']==old[(p,r,'M')]['initial_public_hash']==old[(p,r,'R')]['initial_public_hash']:raise RuntimeError('Historical pairing mismatch')
+ 
+ def validate_step(row,step,memory,previous,energy):
+     if row['step']!=step or row['submit_command'] is not True:raise RuntimeError('Step contract mismatch')
+@@ -191,10 +191,11 @@
+         a=replay_gate(args.authorization,monitor,reservations)
+         environments('B',args.authorization,monitor,reservations,request['inputs'])
+         episodes,cost=environments('C',args.authorization,monitor,reservations,request['inputs'])
+-        old=read(request['inputs']['baseline_episodes']);prior=read(request['inputs']['baseline_analysis'])
+-        cost['historical_M_mean_cpu_ms']=prior['controller_cost']['M']['mean_cpu_ms']
++        selection=read(ROOT/'sample-manifest.json');selected={(r['parent'],r['repeat']) for r in selection}
++        old=[r for r in read(request['inputs']['baseline_episodes']) if (r['parent'],r['repeat']) in selected]
++        historical_cost=read(ROOT/'selected-historical-M-cost.json')
+         resources=monitor.snapshot()
+-        result=analyze(old,episodes,cost,a,resources,check=lambda:monitor.check())
++        result=analyze(old,episodes,cost,a,resources,selection,historical_cost,check=lambda:monitor.check())
+         write(out/'C/analysis.json',result);write(out/'C/complete-N-episodes.json',episodes)
+         snapshot=call_once('snapshot',budget.snapshot,diagnostic_dir=out/'diagnostics',db_path=budget.db_path)
+         new_totals=verified_totals(snapshot,request['history_counters'])
+@@ -212,7 +213,7 @@
+             'resource_scope':'stage2 plus this diagnostic only; earlier research not reset or refunded',
+             'updates':0,'automatic_retry':False,'further_experiments_authorized':False,
+             'observer_publish_errors':getattr(monitor,'observer_publish_errors',0)}
+-        report=f"# Frozen runtime diagnostic\n\nDecision: `{result['decision']}`.\n\n4800 new N episodes; 9600 historical M/R episodes reused.\n\nUtility contrasts: {canonical(result['summary'])}\n\nCosts: {canonical(result['N_controller_cost'])}\n\nWorld-independent contribution is not established by this removal test. No automatic training or follow-up. Full process costs and historical lineage are in status.json.\n"
++        report=f"# Frozen runtime diagnostic\n\nDecision: `{result['decision']}`.\n\n800 new N episodes; 1600 corresponding historical M/R episodes reused. Stage2 full9600 conclusion unchanged.\n\nUtility contrasts: {canonical(result['summary'])}\n\nCosts: {canonical(result['N_controller_cost'])}\n\nWorld-independent contribution is not established by this removal test. No automatic training or follow-up. Full process costs and historical lineage are in status.json.\n"
+         (out/'report.md').write_text(report,encoding='utf-8');monitor.check(disk=True)
+         status['new_resources']=monitor.snapshot()
+         status['final_parent_tail_bound']=request['recovery_shutdown_holdback']

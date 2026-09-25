@@ -1,0 +1,13 @@
+test_batch_uses_aggregate_cpu_and_isolates_episodes (test_cost_preparation.PreparationTests.test_batch_uses_aggregate_cpu_and_isolates_episodes) ... ok
+test_caps_include_first_pass (test_cost_preparation.PreparationTests.test_caps_include_first_pass) ... ok
+test_hidden_mismatch_stops (test_cost_preparation.PreparationTests.test_hidden_mismatch_stops) ... ok
+test_incomplete_trace_denies (test_cost_preparation.PreparationTests.test_incomplete_trace_denies) ... ok
+test_mismatch_not_silently_accepted (test_cost_preparation.PreparationTests.test_mismatch_not_silently_accepted) ... ok
+test_missing_approval_denies (test_cost_preparation.PreparationTests.test_missing_approval_denies) ... ok
+test_no_environment_calls_or_optimizers_in_ast (test_cost_preparation.PreparationTests.test_no_environment_calls_or_optimizers_in_ast) ... ok
+test_pending_template_denies (test_cost_preparation.PreparationTests.test_pending_template_denies) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.006s
+
+OK

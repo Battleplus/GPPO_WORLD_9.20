@@ -1,0 +1,93 @@
+{
+  "decision": "A",
+  "meaning": "Recommend bounded formal validation after explicit stage-specific authorization.",
+  "single_hypothesis": "Frozen public-history and action-conditional world features yield worthwhile task utility over a reasonable public-history planner.",
+  "why_not_B_or_C": "Model interface matches a falsifiable hypothesis; weak-rule advantage and independent task benefit are questions for the experiment, not required advance proofs. The discovered bounded_retry-only mask fixture is not reachable in frozen single_shot.",
+  "unproven": [
+    "independent task increment",
+    "world-specific contribution",
+    "forecast calibration",
+    "multi-training-seed generalization",
+    "deployment economics"
+  ],
+  "primary_comparison": "M_minus_R",
+  "practical_margin_native_utility": 0.01,
+  "primary_ci": "single_comparison_parent_percentile_bootstrap_95pct_10000_seed20260924",
+  "resource_proposal": {
+    "technical_gate": {
+      "parents": 2,
+      "repeats": 1,
+      "arms": 2,
+      "episodes": 4,
+      "max_steps_per_episode": 18,
+      "environment_steps": 72,
+      "policy_encode": 36,
+      "world_candidate_batch": 36,
+      "actor_readout": 36,
+      "wall_hours": 1,
+      "artifact_gib": 1
+    },
+    "formal": {
+      "parents": 1600,
+      "repeats": 3,
+      "arms": 2,
+      "episodes": 9600,
+      "max_steps_per_episode": 18,
+      "environment_steps": 172800,
+      "policy_encode": 86400,
+      "world_candidate_batch": 86400,
+      "actor_readout": 86400,
+      "wall_hours": 36,
+      "artifact_gib": 40
+    },
+    "all_stages": {
+      "environment_steps": 172872,
+      "policy_encode": 86436,
+      "world_candidate_batch": 86436,
+      "actor_readout": 86436,
+      "all_three_forward_total": 259308,
+      "updates": 0,
+      "gpu_hours": 0
+    },
+    "authorization": "none_for_execution_or_budget_mutation",
+    "separate_approval_for_technical_gate_and_formal": true,
+    "all_failure_calls_included": true,
+    "no_auto_retry_or_sample_expansion": true,
+    "historical_balance_use": false
+  },
+  "cost_gate": {
+    "controller_mean_cpu_ms_max": 10,
+    "controller_wall_p95_ms_max": 50,
+    "process_peak_rss_gib_max": 4
+  },
+  "adoption_guardrails": "Parent macro on-time physical and on-time host confirmation means must not fall; not a noninferiority proof.",
+  "decisions_after_authorized_run": {
+    "worthwhile": "CI lower>.01, task and cost gates pass: separately budget world attribution.",
+    "insufficient": "CI upper<=.01 or task/cost gate fails: simplify/stop this frozen scheme.",
+    "uncertain": "CI straddles .01 or evidence not comparable: state gap and stop without added samples/training."
+  },
+  "technical_stop": [
+    "identity_or_contract_mismatch",
+    "information_leak",
+    "illegal_action",
+    "reward_or_hidden_mismatch",
+    "budget_pending_unknown_or_duplicate",
+    "missing_labels",
+    "non_native_truncation",
+    "resource_cap",
+    "first_gate_failure"
+  ],
+  "prior_plan_disposition": "v1/v2 preserved, their proof-before-experiment gate and 64-parent formal budget superseded.",
+  "unapplied_mask_patch_disposition": "Do not apply; outside the frozen single_shot execution path.",
+  "current_turn": {
+    "env_step": 0,
+    "model_forward": 0,
+    "updates": 0,
+    "new_attempt": 0,
+    "sqlite_writes": 0
+  },
+  "no_progress_audit": {
+    "classification": "progress",
+    "evidence": "Actual interface inspected, power recalculated, scoped defect reachability resolved, one decision and executable protocol created."
+  }
+}

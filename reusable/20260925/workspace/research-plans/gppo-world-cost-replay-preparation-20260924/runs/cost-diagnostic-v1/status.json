@@ -1,0 +1,177 @@
+{
+  "status": "completed",
+  "workers": [
+    {
+      "arm": "M",
+      "process_cpu_seconds": 11.53125,
+      "lifetime_wall_seconds": 6.12349909999466,
+      "exit_code": 0
+    },
+    {
+      "arm": "R",
+      "process_cpu_seconds": 7.9375,
+      "lifetime_wall_seconds": 8.274857800002792,
+      "exit_code": 0
+    }
+  ],
+  "budget": {
+    "schema": "persistent-budget/2.0.0",
+    "db_schema": "persistent-budget-sqlite/1.0.0",
+    "db_path": "E:\\Z博士\\research-plans\\gppo-world-cost-replay-preparation-20260924\\runs\\cost-diagnostic-v1\\budget.sqlite3",
+    "limits": {
+      "actor_readout": 525,
+      "environment_steps": 0,
+      "policy_encode": 525,
+      "rule_decisions": 651,
+      "world_candidate_batch": 525
+    },
+    "stages": {
+      "actor_readout": {
+        "reserved": 525,
+        "verified": 525,
+        "unknown": 0,
+        "pending": 0
+      },
+      "environment_steps": {
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      "policy_encode": {
+        "reserved": 525,
+        "verified": 525,
+        "unknown": 0,
+        "pending": 0
+      },
+      "rule_decisions": {
+        "reserved": 651,
+        "verified": 651,
+        "unknown": 0,
+        "pending": 0
+      },
+      "world_candidate_batch": {
+        "reserved": 525,
+        "verified": 525,
+        "unknown": 0,
+        "pending": 0
+      }
+    },
+    "attempts": {
+      "cost-diagnostic-v1-once": {
+        "actor_readout": {
+          "reserved": 525,
+          "verified": 525,
+          "unknown": 0,
+          "pending": 0,
+          "run_id": "cost-diagnostic-v1"
+        },
+        "policy_encode": {
+          "reserved": 525,
+          "verified": 525,
+          "unknown": 0,
+          "pending": 0,
+          "run_id": "cost-diagnostic-v1"
+        },
+        "rule_decisions": {
+          "reserved": 651,
+          "verified": 651,
+          "unknown": 0,
+          "pending": 0,
+          "run_id": "cost-diagnostic-v1"
+        },
+        "world_candidate_batch": {
+          "reserved": 525,
+          "verified": 525,
+          "unknown": 0,
+          "pending": 0,
+          "run_id": "cost-diagnostic-v1"
+        }
+      }
+    },
+    "history": [
+      {
+        "event": "reserve",
+        "stage": "policy_encode",
+        "amount": 525,
+        "attempt_id": "cost-diagnostic-v1-once",
+        "reservation_id": "5fad024b6ca1456daa5d718f653870ff",
+        "reservation_index": null,
+        "pid": 53636,
+        "run_id": "cost-diagnostic-v1"
+      },
+      {
+        "event": "reserve",
+        "stage": "world_candidate_batch",
+        "amount": 525,
+        "attempt_id": "cost-diagnostic-v1-once",
+        "reservation_id": "71809966600741ba929924c93a9349ae",
+        "reservation_index": null,
+        "pid": 53636,
+        "run_id": "cost-diagnostic-v1"
+      },
+      {
+        "event": "reserve",
+        "stage": "actor_readout",
+        "amount": 525,
+        "attempt_id": "cost-diagnostic-v1-once",
+        "reservation_id": "faa196d2338c459f9aa6810351c6e1a6",
+        "reservation_index": null,
+        "pid": 53636,
+        "run_id": "cost-diagnostic-v1"
+      },
+      {
+        "event": "verified",
+        "stage": "policy_encode",
+        "amount": 525,
+        "attempt_id": "cost-diagnostic-v1-once",
+        "reservation_id": "5fad024b6ca1456daa5d718f653870ff",
+        "reservation_index": 1,
+        "pid": 53636,
+        "run_id": "cost-diagnostic-v1"
+      },
+      {
+        "event": "verified",
+        "stage": "world_candidate_batch",
+        "amount": 525,
+        "attempt_id": "cost-diagnostic-v1-once",
+        "reservation_id": "71809966600741ba929924c93a9349ae",
+        "reservation_index": 2,
+        "pid": 53636,
+        "run_id": "cost-diagnostic-v1"
+      },
+      {
+        "event": "verified",
+        "stage": "actor_readout",
+        "amount": 525,
+        "attempt_id": "cost-diagnostic-v1-once",
+        "reservation_id": "faa196d2338c459f9aa6810351c6e1a6",
+        "reservation_index": 3,
+        "pid": 53636,
+        "run_id": "cost-diagnostic-v1"
+      },
+      {
+        "event": "reserve",
+        "stage": "rule_decisions",
+        "amount": 651,
+        "attempt_id": "cost-diagnostic-v1-once",
+        "reservation_id": "3a3ad423aee3456dbc321d89c6c076ff",
+        "reservation_index": null,
+        "pid": 53636,
+        "run_id": "cost-diagnostic-v1"
+      },
+      {
+        "event": "verified",
+        "stage": "rule_decisions",
+        "amount": 651,
+        "attempt_id": "cost-diagnostic-v1-once",
+        "reservation_id": "3a3ad423aee3456dbc321d89c6c076ff",
+        "reservation_index": 7,
+        "pid": 53636,
+        "run_id": "cost-diagnostic-v1"
+      }
+    ]
+  },
+  "formal_stage_authorized": false,
+  "updates": 0
+}

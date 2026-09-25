@@ -1,0 +1,15 @@
+{
+  "status": "prepared_not_authorized",
+  "pure_tests_passed": 8,
+  "unauthorized_cli_exit_code": 2,
+  "environment_steps": 0,
+  "environment_resets": 0,
+  "new_model_forwards": 0,
+  "updates": 0,
+  "new_experimental_attempts": 0,
+  "new_experimental_sqlite": 0,
+  "native_runtime_verified": false,
+  "formal_matrix_authorized": false,
+  "proposed_model_forwards_each": 525,
+  "proposed_rule_decisions": 651
+}

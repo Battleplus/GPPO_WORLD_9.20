@@ -1,0 +1,12 @@
+{
+  "stage1": "planning_complete",
+  "stage2": "paused_current_configuration_cost_threshold_exceeded",
+  "task_benefit_established": false,
+  "world_contribution_established": false,
+  "stages3_to5": "not_started",
+  "formal_matrix_authorized": false,
+  "current_threshold_ms": 10,
+  "observed_warm_model_cpu_ms": 13.625,
+  "automatic_training_tuning_resampling": false,
+  "scope": "Frozen hardware/runtime/controller on saved two-parent technical traces."
+}

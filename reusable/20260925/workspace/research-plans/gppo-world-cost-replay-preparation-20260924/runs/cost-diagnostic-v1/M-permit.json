@@ -1,0 +1,26 @@
+{
+  "arm": "M",
+  "reservations": [
+    {
+      "stage": "policy_encode",
+      "amount": 525,
+      "attempt_id": "cost-diagnostic-v1-once",
+      "reservation_id": "5fad024b6ca1456daa5d718f653870ff",
+      "reservation_index": 1
+    },
+    {
+      "stage": "world_candidate_batch",
+      "amount": 525,
+      "attempt_id": "cost-diagnostic-v1-once",
+      "reservation_id": "71809966600741ba929924c93a9349ae",
+      "reservation_index": 2
+    },
+    {
+      "stage": "actor_readout",
+      "amount": 525,
+      "attempt_id": "cost-diagnostic-v1-once",
+      "reservation_id": "faa196d2338c459f9aa6810351c6e1a6",
+      "reservation_index": 3
+    }
+  ]
+}

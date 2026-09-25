@@ -1,0 +1,12 @@
+{
+  "arm": "R",
+  "reservations": [
+    {
+      "stage": "rule_decisions",
+      "amount": 651,
+      "attempt_id": "cost-diagnostic-v1-once",
+      "reservation_id": "3a3ad423aee3456dbc321d89c6c076ff",
+      "reservation_index": 7
+    }
+  ]
+}

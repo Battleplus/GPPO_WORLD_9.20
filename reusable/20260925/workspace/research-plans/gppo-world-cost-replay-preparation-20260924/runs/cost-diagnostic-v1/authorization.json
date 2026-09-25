@@ -1,0 +1,20 @@
+{
+  "approved": true,
+  "stage": "fixed_trace_cost_diagnostic",
+  "limits": {
+    "environment_steps": 0,
+    "policy_encode": 525,
+    "world_candidate_batch": 525,
+    "actor_readout": 525,
+    "rule_decisions": 651
+  },
+  "updates": 0,
+  "binding_sha256": "7c2e1c1fd8461c0b08e89bc748f4ec1c03fa12332db6561c2c6c952326db0d59",
+  "user_approval_reference": "Current task 01a0b4e9-29bb-7083-9ecb-3ca04326d690: direct user continuation following explicit fixed-trace cost-diagnostic authorization request (zero environment steps, 525 calls each model kind, 651 rule decisions, zero updates, 600 seconds).",
+  "user_approval_text": "继续吧",
+  "formal_stage_authorized": false,
+  "wall_seconds_max": 600,
+  "rss_bytes_max": 4294967296,
+  "artifact_bytes_max": 536870912,
+  "recorded_at_utc": "2026-09-24T03:16:17.313011+00:00"
+}

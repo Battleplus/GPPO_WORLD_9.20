@@ -1,0 +1,19 @@
+{
+  "approved": false,
+  "stage": "fixed_trace_cost_diagnostic",
+  "limits": {
+    "environment_steps": 0,
+    "policy_encode": 525,
+    "world_candidate_batch": 525,
+    "actor_readout": 525,
+    "rule_decisions": 651
+  },
+  "updates": 0,
+  "binding_sha256": "7c2e1c1fd8461c0b08e89bc748f4ec1c03fa12332db6561c2c6c952326db0d59",
+  "user_approval_reference": "",
+  "user_approval_text": "",
+  "formal_stage_authorized": false,
+  "wall_seconds_max": 600,
+  "rss_bytes_max": 4294967296,
+  "artifact_bytes_max": 536870912
+}

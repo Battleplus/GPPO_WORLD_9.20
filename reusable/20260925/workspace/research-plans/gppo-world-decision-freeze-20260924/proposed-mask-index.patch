@@ -1,0 +1,11 @@
+--- a/gppo_world/task_policy_view.py
++++ b/gppo_world/task_policy_view.py
+@@ -116,7 +116,7 @@
+         for uav in uv:
+             u_ok = (all(v['valid'] for v in uav.values()) and uav['energy']['value'] > 0
+                     and all(uav[f]['value'] == 1 for f in ('alive', 'connected', 'idle')))
+-            for task in tv:
++            for i, task in enumerate(tv):
+                 t_ok = (not self._tasks[i] in self._completed_tasks if i < len(self._tasks) else True) and (bool(task) and all(task[field]['valid'] for field in TASK_REQUIRED_FIELDS)
+                         and task['pending']['value'] == 1 and task['deadline']['value'] > now
+                         and task['remaining_service']['value'] > 0)

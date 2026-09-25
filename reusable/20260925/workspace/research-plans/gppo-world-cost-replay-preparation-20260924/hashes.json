@@ -1,0 +1,11 @@
+{
+  "authorization-template.json": "3c35bd611ec50030fb39163e4ab20c5d24e1e54a07b1c0895fa2835b73f68791",
+  "binding.json": "7c2e1c1fd8461c0b08e89bc748f4ec1c03fa12332db6561c2c6c952326db0d59",
+  "bind_preparation.py": "3ca3fec9fb585c7c44e39abc091d72df2ceb6ed83bf38fb2b54402ac296c313e",
+  "cost_replay.py": "fa21804de940ca34efed50296522fcffd9ff71e71eb9089663018b384b27a172",
+  "no-authorization-output.txt": "9679809e9865e435010c42d9c69e7637d06a33651101ded4752eec156158167b",
+  "protocol.md": "ec2c6a8828a3c1b5bb4f687bdb3f09168a4f215592c6fd52b5158a236e4891dc",
+  "status.json": "3a7c01d19b621cd5950f0da5601c164ed5b4dacdd980761b802dc98684db78c1",
+  "test-output.txt": "1f2454c1eeac1cd78462d0826ea4b9e1fe11511deab48544ee7e648ca38055bc",
+  "test_cost_preparation.py": "6995bba4fb7783cf80b36c6b50d2390e880a08d2c14091bae4fc3a1d4cc40c2d"
+}

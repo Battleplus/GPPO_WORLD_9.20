@@ -1,0 +1,136 @@
+{
+  "files": [
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\analysis_contract.py",
+      "sha256": "73796c2b024ea7da0de2507be78f10bcdb479dd8cbd52098bf28be16a8bb7d72"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\analysis_contract.py.diff",
+      "sha256": "b536f2e8d12094a2814e79442575f720ec3390412cdaf2eae0b2d1287ba49397"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\analyze_runtime_necessity.py",
+      "sha256": "f0af95031aa92cdd940ee81f09a4ec004145ec3719bf40355568f286ef0ad22c"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\analyze_runtime_necessity.py.diff",
+      "sha256": "38e03b24e914627cd2c20f3682501616b167a6616d6f933f3aad5b50c85b816c"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\attribution_contract.py",
+      "sha256": "518651e97d99a3b4e851e8d4f98418a1458db83dc2b8819c8103ae7003423729"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\attribution_contract.py.diff",
+      "sha256": "d65fef7b5038809d368f670a96568229498508fece7d82c07b3c67cd50761b8a"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\authorization-template.json",
+      "sha256": "1c05e4c3cbefe99c841a45cd7e2b88c1da97a33f6e028d7b5660aa3562bfcbea"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\base_worker.py",
+      "sha256": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\BUDGET_REQUEST.json",
+      "sha256": "e564d340d139d1106758927e2961724493c69c9f6bbc1efe43cd63c980165c3d"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\decision_only_inference.py",
+      "sha256": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\execution-manifest.json",
+      "sha256": "2848c9dedc1d14755b177baac3a5c1be9b433f581b6fb9f2baebf0ed6dfaafef"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\freeze_plan.py",
+      "sha256": "dd46ee18bbdf84d1903347c8de1ea456298e9720cfd65f25929b40afeafd9d84"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\historical-M-timing-manifest.json",
+      "sha256": "42428187e176ddb9200ffdcf6733fe1a96cad1c81ad8c40cd8189e04d94c45cd"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\no_online_world.py",
+      "sha256": "b5ad5f9611ed991de3a13405592dfb277db8275d5cdb836e885f77ce6d0940ca"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\prepare_minimal.py",
+      "sha256": "e785993a5f8e593f8320b0686bd551a6843d5fa3a26f735214b5fae24b9ed3f5"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\process_support.py",
+      "sha256": "57cd65ed45391e58083254440e9dfe269f2ef05d5a11e637ab729bdd3d1e96b8"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\protocol.md",
+      "sha256": "c8977b64409a60a033f38fbdde8ea45ece76513f3cb3d341ee3c561a92614c91"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\report.md",
+      "sha256": "06fbd751a089cee3d2df2ddaef4409fc2ecd176a774fa8a968b288844bf3bc73"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\review-and-reuse.md",
+      "sha256": "8c56387855e424093d2717585cc7cd054a62658302bca446782375d133ce84e7"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\run_diagnostic.py",
+      "sha256": "f6d7291c998ddc81abcf5a0bc0a471436882168698b58e76eddeb8fd01a584c8"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\run_diagnostic.py.diff",
+      "sha256": "675702e5aa88c7e808baed64a97cd084131da1bf3abf4e4a0aeb69bba23b33c0"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runtime_support.py",
+      "sha256": "e46e81f3b2407bfdb0b19b8eb634320dbc106c2fdaab670a81ee8faf56c37547"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\runtime_worker.py",
+      "sha256": "138463eaa34634177c6c966b609febaa7ad4154a3d0cb24da6ec9b725c0bab1e"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\safe_observer.py",
+      "sha256": "096033227f62e9d90ed3c4890369f6c8098640facc53d07b5c31235a2f6aed66"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\sample-manifest.json",
+      "sha256": "c02989e7a77a34ee8a7a11f6585f2d73dabb98fe4e4b3b125f4f7dd0c5d615c3"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\sample-size-evidence.json",
+      "sha256": "b8c415cc0fd8c43bdbb856c282b517e068a9c27689345b817bf6fc92aea885c0"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\selected-historical-M-cost.json",
+      "sha256": "bcfb911146f0d255368941c80b19947b799cf978ed5b1f141dd221590c398b64"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\selection-contract.json",
+      "sha256": "d2e198a9986d8510f52e6f6980ff404524aa3cf92da5a35e2587cd88dbe636ee"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\session_budget.py",
+      "sha256": "7afe52bb52206c0a78416dddc30cee309a1d2c4845d551d7f6b939e2b69615ae"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\sqlite_diagnostics.py",
+      "sha256": "a1623172b4aee6c82c7dd40b872c0fed2b25bc594fc7b5a4b9fc129c7ba3453d"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\test-summary.json",
+      "sha256": "1cf55e948c1bbfbe265163a816d14a5722f546cf88748ffc9e0d83448f76976f"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\test_minimal.py",
+      "sha256": "8c8487889bbc941174f3f683d60d9b7e6ef9d21ef4ed56bea8258fb5a3032dd4"
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-runtime-minimal-paired-20260925\\validation.json",
+      "sha256": "eeecb7fc725b82a66c7ad97d1a116cd71b4b69aaced4acc7ee028f18d79107a4"
+    }
+  ]
+}
