@@ -1,0 +1,30 @@
+{
+  "status": "prepared_not_authorized_stop",
+  "retained_episodes": 4034,
+  "remaining_episodes": 5566,
+  "next_key": {
+    "parent": "eval-0672",
+    "repeat": 1,
+    "arm": "R",
+    "ordinal": 4034,
+    "tape_index": 672,
+    "tape_hash": "ed03b8ba96118ceb1361a865626fac74f7bfd8bb39d68ed476aabb11aa416205",
+    "random_key": "frozen-native-public-history-allocation-v1|eval-0672|repeat-1"
+  },
+  "derived_summary_count": 1,
+  "source_identity_preserved": true,
+  "runtime_numerical_revalidation_performed": false,
+  "A_B_reused": true,
+  "tests_passed": 23,
+  "new_environment_steps": 0,
+  "new_model_forwards": 0,
+  "new_optimizer_updates": 0,
+  "new_world_updates": 0,
+  "new_offline_updates": 0,
+  "new_environment_attempts": 0,
+  "new_experimental_sqlite_created": false,
+  "recovery_authorized": false,
+  "decision_effects_unblinded": false,
+  "cost_scope": "segmented total with retained historical shutdown-tail measurement limitation",
+  "additional_model_loads_to_authorize": 1
+}

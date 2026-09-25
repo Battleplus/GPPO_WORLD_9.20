@@ -1,0 +1,15 @@
+test_candidate_and_runner_compile_without_native (test_pipeline_preparation.PreparationTests.test_candidate_and_runner_compile_without_native) ... ok
+test_cost_failure_stops_before_environment_stages (test_pipeline_preparation.PreparationTests.test_cost_failure_stops_before_environment_stages) ... ok
+test_exact_boundary_and_no_faster_subset_selection (test_pipeline_preparation.PreparationTests.test_exact_boundary_and_no_faster_subset_selection) ... ok
+test_formal_decisions_and_parent_unit (test_pipeline_preparation.PreparationTests.test_formal_decisions_and_parent_unit) ... ok
+test_limits_sum_to_requested_caps (test_pipeline_preparation.PreparationTests.test_limits_sum_to_requested_caps) ... ok
+test_lossless_compressed_public_and_truth_records (test_pipeline_preparation.PreparationTests.test_lossless_compressed_public_and_truth_records) ... ok
+test_no_authorization_before_budget_or_worker (test_pipeline_preparation.PreparationTests.test_no_authorization_before_budget_or_worker) ... ok
+test_partial_reservation_remains_unknown_not_refunded (test_pipeline_preparation.PreparationTests.test_partial_reservation_remains_unknown_not_refunded) ... ok
+test_rss_includes_paused_workers_and_parent (test_pipeline_preparation.PreparationTests.test_rss_includes_paused_workers_and_parent) ... ok
+test_shutdown_does_not_suspend_exiting_process (test_pipeline_preparation.PreparationTests.test_shutdown_does_not_suspend_exiting_process) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.049s
+
+OK

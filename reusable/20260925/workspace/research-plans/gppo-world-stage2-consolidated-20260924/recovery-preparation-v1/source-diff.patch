@@ -1,0 +1,275 @@
+--- original/run_pipeline.py
++++ recovery/run_recovery.py
+@@ -6,27 +6,23 @@
+ 
+ from runtime_support import *
+ PROGRAM_STARTED=time.perf_counter()
++from recovery_contract import cumulative_snapshot, reject_duplicate_or_wrong_order
++OLD=ROOT.parent
++OLD_RUN=OLD/'runs/consolidated-v1'
+ 
+ MODEL_KEYS=('policy_encode','world_candidate_batch','actor_readout')
+ 
+ def limits_for(request):
+-    limits={}
+-    for s,row in request['stage_caps'].items():
+-        for k in MODEL_KEYS:limits[s+'/'+k]=row['each_model_forward']
+-        limits[s+'/environment_steps']=row['environment_steps']
+-        limits[s+'/rule_decisions']=row.get('rule_decisions',0)
+-        limits[s+'/environment_resets']={'A':0,'B':4,'C':9600}[s]
+-        limits[s+'/model_loads']=2 if s=='A' else 1
+-        for k in ['optimizer_updates','world_updates','offline_updates']:limits[s+'/'+k]=0
+-    return limits
++    return {'C/'+k:request['caps'][k] for k in [*MODEL_KEYS,'environment_steps','rule_decisions','environment_resets','model_loads','optimizer_updates','world_updates','offline_updates']}
++
+ 
+ class Monitor:
+     def __init__(self,request,out):
+         self.request=request;self.out=out;self.children=[];self.started=PROGRAM_STARTED;self.parent_start=0.
+-        self.parent_parts={};self.peak_sum=0;self.enter('A');self.stage_cpu_start=0.
++        self.parent_parts={};self.peak_sum=0;self.enter('C');self.stage_cpu_start=0.
+     def enter(self,stage):
+         self.stage=stage;self.stage_start=time.perf_counter();self.stage_cpu_start=self.total_cpu();self.stage_parent_cpu_start=time.process_time();self.stage_disk_start=self.disk()
+-    def disk(self):return sum(p.stat().st_size for p in self.out.rglob('*') if p.is_file())
++    def disk(self):return sum(p.stat().st_size for p in ROOT.rglob('*') if p.is_file())
+     def total_cpu(self):return time.process_time()-self.parent_start+sum(process_cpu(c.p._handle) for c in self.children)
+     def measure(self,category,fn,*args,**kwargs):
+         value,elapsed=timed(fn,*args,**kwargs)
+@@ -34,9 +30,9 @@
+         for k,v in elapsed.items():part[k]+=v
+         return value
+     def check(self,disk=False):
+-        cap=self.request['stage_caps'][self.stage];cpu=self.total_cpu()
+-        if time.perf_counter()-self.started>self.request['caps']['wall_seconds'] or time.perf_counter()-self.stage_start>cap['wall_seconds']:raise RuntimeError('Wall cap')
+-        if cpu>self.request['caps']['total_process_cpu_seconds'] or cpu-self.stage_cpu_start>cap['cpu_seconds']:raise RuntimeError('CPU cap')
++        cap=self.request['stage_caps'][self.stage];cpu=self.total_cpu();hold=self.request['recovery_shutdown_holdback']
++        if time.perf_counter()-self.started>self.request['caps']['wall_seconds']-hold['wall_seconds'] or time.perf_counter()-self.stage_start>cap['wall_seconds']-hold['wall_seconds']:raise RuntimeError('Wall cap')
++        if cpu>self.request['caps']['total_process_cpu_seconds']-hold['cpu_seconds'] or cpu-self.stage_cpu_start>cap['cpu_seconds']-hold['cpu_seconds']:raise RuntimeError('CPU cap')
+         # Conservative sum: parent peak plus every resident child peak, including suspended workers.
+         rss=peak_rss()
+         for c in self.children:
+@@ -47,8 +43,8 @@
+         self.peak_sum=max(self.peak_sum,rss)
+         if rss>self.request['caps']['resident_process_rss_sum_bytes']:raise RuntimeError('Combined RSS cap')
+         if disk:
+-            size=self.disk();stage_cap=(1 if self.stage in ('A','B') else 40)*1024**3
+-            if size>self.request['caps']['artifact_bytes'] or size-self.stage_disk_start>stage_cap:raise RuntimeError('Artifact cap')
++            size=self.disk();stage_cap=38*1024**3
++            if size>self.request['caps']['artifact_bytes'] or size>stage_cap:raise RuntimeError('Artifact cap')
+     def snapshot(self):
+         return {'wall_seconds':time.perf_counter()-self.started,'total_cpu_seconds':self.total_cpu(),
+             'current_stage':self.stage,'stage_wall_seconds':time.perf_counter()-self.stage_start,
+@@ -112,36 +108,19 @@
+             try:self.budget.unknown(token,str(error))
+             except Exception:pass
+ 
+-def summarize_replay(result):
+-    warm=result['batches'][1:];latencies=sorted(t for b in warm for t in b['decision_wall_seconds'])
+-    p=(len(latencies)-1)*.95;i=int(p);q=latencies[i]+(latencies[min(i+1,len(latencies)-1)]-latencies[i])*(p-i)
+-    cpu=sum(b['cpu_seconds'] for b in warm)/sum(b['decisions'] for b in warm)
+-    return {'warm_cpu_seconds_per_decision':cpu,'warm_wall_p95_seconds':q,
+-        'passed':bool(result['equivalence'] and result['weights_unchanged'] and cpu<=.010 and q<=.050 and result['peak_rss']<=4*1024**3)}
+-
+-def stage_a(auth,monitor,reservations):
+-    (monitor.out/'A').mkdir()
+-    results={}
+-    for kind in ['reference','candidate']:
+-        reservations.reserve({'model_loads':1});worker=OwnedWorker('A-'+kind,'A',kind,auth,monitor)
+-        if worker.ready['counts']['model_loads']!=1:raise RuntimeError('Model load accounting mismatch')
+-        reservations.complete();reservations.reserve({k:525 for k in MODEL_KEYS})
+-        result=worker.call('replay')
+-        if any(result['counts'][k]!=525 for k in MODEL_KEYS):raise RuntimeError('Replay forward count mismatch')
+-        monitor.measure('logging',write,monitor.out/('A/'+kind+'-summary.json'),summarize_replay(result))
+-        reservations.complete();worker.close();monitor.check(disk=True);results[kind]=summarize_replay(result)
+-    write(monitor.out/'A/decision.json',results)
+-    return results['candidate']['passed']
+-
+ def stages_environment(stage,auth,monitor,reservations,native):
+     monitor.enter(stage);folder=monitor.out/stage;folder.mkdir()
+-    count=2 if stage=='B' else 1600;seed=924110000 if stage=='B' else 924200000;repeats=1 if stage=='B' else 3
+-    rules=OwnedWorker(stage+'-R',stage,'rule',auth,monitor)
++    if stage!='C':raise RuntimeError('Recovery only resumes C; A/B are evidence, not rerun')
++    count=1600;repeats=3
++    retained=read(ROOT/'retained-episodes.json');remaining=read(ROOT/'not-executed.json');matrix=read(ROOT/'frozen-matrix.json')
++    reject_duplicate_or_wrong_order(retained,remaining,matrix)
++    completed={(r['parent'],r['repeat'],r['arm']) for r in retained}
++    old_initials={(r['parent'],r['repeat'],r['arm']):r['initial_public_hash'] for r in retained}
++    remaining_keys=[(r['parent'],r['repeat'],r['arm']) for r in remaining];executed=[]
++    rules=OwnedWorker('C-R',stage,'rule',auth,monitor)
+     if rules.ready['torch_loaded']:raise RuntimeError('Rule process has Torch')
+-    tapes=rules.call('generate',count=count,seed=seed)
+-    if len(tapes['tapes'])!=count or any(digest(t)!=h for t,h in zip(tapes['tapes'],tapes['hashes'])):raise RuntimeError('Scenario manifest mismatch')
+-    if any(t['seed'] in set(native['historical_seed_ids']) for t in tapes['tapes']):raise RuntimeError('Historical seed collision')
+-    if [t['seed'] for t in tapes['tapes']]!=list(range(seed,seed+count)):raise RuntimeError('Wrong planned seeds')
++    tapes=read(OLD_RUN/'C/scenario-manifest.json')
++    if len(tapes['tapes'])!=1600 or any(digest(t)!=h for t,h in zip(tapes['tapes'],tapes['hashes'])):raise RuntimeError('Scenario identity mismatch')
+     write(folder/'scenario-manifest.json',tapes)
+     reservations.reserve({'model_loads':1});models=OwnedWorker(stage+'-M',stage,'candidate',auth,monitor)
+     if models.ready['counts']['model_loads']!=1:raise RuntimeError('Model load accounting mismatch')
+@@ -149,12 +128,15 @@
+     logger=CompressedRecords(folder/'steps.jsonl.gz');episodes=[];latencies={'M':[],'R':[]};part_totals={};message_counts={};interface=0
+     try:
+         for index,tape in enumerate(tapes['tapes']):
+-            parent=(f'new-gate-{index:03d}' if stage=='B' else f'eval-{index:04d}')
++            parent=f'eval-{index:04d}'
+             for repeat in range(repeats):
+-                initials={}
++                initials={a:old_initials[(parent,repeat,a)] for a in ['M','R'] if (parent,repeat,a) in completed}
+                 key=(f'stage2-decision-only-v1|{parent}|repeat-{repeat}' if stage=='B'
+                     else f'frozen-native-public-history-allocation-v1|{parent}|repeat-{repeat}')
+                 for arm in (['M','R'] if (index+repeat)%2==0 else ['R','M']):
++                    episode_key=(parent,repeat,arm)
++                    if episode_key in completed:continue
++                    if episode_key!=remaining_keys[len(executed)]:raise RuntimeError('Recovery order changed')
+                     worker=models if arm=='M' else rules;before=worker.ready['counts'].copy() if not hasattr(worker,'last_counts') else worker.last_counts.copy()
+                     reservations.reserve({'environment_resets':1});reset=worker.call('reset',tape=tape,key=key)
+                     if reset['counts']['environment_resets']!=before['environment_resets']+1:raise RuntimeError('Reset count mismatch')
+@@ -187,7 +169,7 @@
+                         if row['done']:
+                             ep=row['episode'];ep.update(parent=parent,repeat=repeat,arm=arm,initial_public_hash=reset['initial_hash'])
+                             if abs(ep['utility']-uc)>1e-12:raise RuntimeError('Episode utility mismatch')
+-                            monitor.measure('logging',append,folder/'episodes.jsonl',ep);episodes.append(ep);break
++                            monitor.measure('logging',append,folder/'episodes.jsonl',ep);episodes.append(ep);executed.append(episode_key);publish_progress(monitor,len(executed),episode_key);break
+                     else:raise RuntimeError('No native episode end')
+                     monitor.check(disk=True)
+                 if initials['M']!=initials['R']:raise RuntimeError('Paired reset mismatch')
+@@ -204,39 +186,92 @@
+             runtime['unclassified_worker_cpu'][arm]=max(0.,residual)
+         if not all(sum(t['cpu'] for t in latencies[a])>0 for a in ['M','R']):raise RuntimeError('Insufficient aggregate controller CPU recording')
+         write(folder/'cost-and-interface.json',runtime);monitor.check(disk=True)
+-        if len(episodes)!=count*repeats*2:raise RuntimeError('Incomplete matrix')
++        if executed!=remaining_keys or len(episodes)!=5566:raise RuntimeError('Incomplete recovery suffix')
+         write(folder/'status.json',{'status':'completed','episodes':len(episodes),'updates':0,'cost_recording':'controller/environment/labels + parent ledger/logging + complete process CPU; residual explicitly unclassified'})
+         return episodes,runtime
+     finally:
+         if not logger.raw.closed:logger.close()
++
++def publish_progress(monitor, completed, key):
++    # Observers only read this disposable status file, never live experiment logs.
++    # Their failure cannot make an otherwise valid episode fail.
++    path=monitor.out/'observer-progress.jsonl'
++    try:
++        with path.open('a',encoding='utf-8') as f:
++            f.write(canonical({'recovery_completed':completed,'total_completed':4034+completed,'planned':9600,'last_key':key})+'\n')
++            f.flush()
++    except OSError:
++        monitor.observer_publish_errors=getattr(monitor,'observer_publish_errors',0)+1
++
++def merge_cost(old,new,resources):
++    result={'latencies':{},'worker_parts':{},'communication_events':{},'resources':resources,
++            'segmented_execution':True,'old_resources':old['resources'],'recovery_resources':new['resources']}
++    for arm in ['M','R']:result['latencies'][arm]=old['latencies'][arm]+new['latencies'][arm]
++    for source in [old,new]:
++        for name,value in source['worker_parts'].items():
++            target=result['worker_parts'].setdefault(name,{'cpu':0.,'wall':0.})
++            for k,v in value.items():target[k]+=v
++        for k,v in source['communication_events'].items():result['communication_events'][k]=result['communication_events'].get(k,0)+v
++    return result
++
++def cumulative_resources(monitor,request):
++    value=monitor.snapshot();old=request['historical_resources']
++    value['recovery_segment']=dict(value)
++    value['wall_seconds']+=old['total_wall_seconds']
++    value['total_cpu_seconds']+=old['total_cpu_seconds']
++    value['peak_conservative_rss_sum']=max(value['peak_conservative_rss_sum'],old['peak_conservative_rss_sum'])
++    value['bytes']+=old['artifact_bytes_conservative']
++    value['historical_shutdown_unmeasured']=True
++    value['guard_holdback_wall_seconds']=request['shutdown_holdback']['wall_seconds']+request['recovery_shutdown_holdback']['wall_seconds']
++    value['guard_holdback_cpu_seconds']=request['shutdown_holdback']['cpu_seconds']+request['recovery_shutdown_holdback']['cpu_seconds']
++    value['guard_charged_wall_seconds']=value['wall_seconds']+value['guard_holdback_wall_seconds']
++    value['guard_charged_cpu_seconds']=value['total_cpu_seconds']+value['guard_holdback_cpu_seconds']
++    value['not_exact_whole_os_lifecycle_measurement']=True
++    return value
+ 
+ def main(argv=None):
+     parser=argparse.ArgumentParser();parser.add_argument('--authorization',type=Path);args=parser.parse_args(argv)
+     authorization,binding,request=authorize(args.authorization)
+     if os.name!='nt':raise RuntimeError('Frozen Windows runtime required')
+     out=ROOT/'runs/consolidated-v1';out.mkdir(parents=True,exist_ok=False)
+-    write(out/'authorization.json',authorization);write(out/'execution-manifest.json',binding)
++    write(out/'authorization.json',authorization);write(out/'recovery-manifest.json',binding)
+     native=read(PREP/'binding.json');monitor=Monitor(request,out)
+-    budget=budget_class(native)(out/'budget.sqlite3',limits=limits_for(request),run_limits=limits_for(request),attempt_id='consolidated-v1-once',run_id='consolidated-v1')
++    old_stages=read(ROOT/'historical-budget-readonly.json')
++    write(out/'ledger-lineage.json',{'origin_sqlite':str(OLD_RUN/'budget.sqlite3'),
++        'origin_sha256':sha(OLD_RUN/'budget.sqlite3'),'historical_stages':old_stages,
++        'additional_model_loads_explicitly_authorized':1,'cannot_refund_history':True})
++    limits=limits_for(request)
++    budget=budget_class(native)(out/'budget.sqlite3',limits=limits,run_limits=limits,
++        attempt_id='consolidated-v1-recovery-1-once',run_id='consolidated-v1-recovery-1')
+     reservations=Reservations(budget,monitor)
+     try:
+-        if not stage_a(args.authorization,monitor,reservations):
+-            write(out/'status.json',{'status':'research_stop_A_cost','budget':budget.snapshot(),'resources':monitor.snapshot(),'B_and_C_not_started':True});return
+-        stages_environment('B',args.authorization,monitor,reservations,native)
+-        # The new scenario manifests and stage accounting remain separately identified.
+         episodes,cost=stages_environment('C',args.authorization,monitor,reservations,native)
++        retained=read(ROOT/'retained-episodes.json');combined=retained+episodes
++        if len(combined)!=9600:raise RuntimeError('Original matrix incomplete')
++        original_cost=read(ROOT/'retained-cost-inputs.json')
++        resources=cumulative_resources(monitor,request)
++        merged=merge_cost(original_cost,cost,resources)
+         from analyze_formal import analyze
+-        result=analyze(episodes,cost);write(out/'C/analysis.json',result)
+-        snapshot=budget.snapshot()
+-        if any(v['pending'] or v['unknown'] for v in snapshot['stages'].values()):raise RuntimeError('Unresolved budget')
++        result=analyze(combined,merged)
++        write(out/'C/combined-episodes.json',combined);write(out/'C/combined-cost.json',merged)
++        write(out/'C/analysis.json',result)
++        snapshot=budget.snapshot();cumulative=cumulative_snapshot(old_stages,snapshot)
++        if any(v['pending'] or v['unknown'] for v in cumulative.values()):raise RuntimeError('Unresolved cumulative budget')
+         authorize(args.authorization);monitor.check(disk=True)
+-        write(out/'status.json',{'status':'completed','decision':result['decision'],'budget':snapshot,'resources':monitor.snapshot(),'updates':0,'stages3_to5_authorized':False})
++        write(out/'status.json',{'status':'completed','decision':result['decision'],
++            'segment_budget':snapshot,'cumulative_stages':cumulative,
++            'resources':cumulative_resources(monitor,request),'updates':0,
++            'observer_publish_errors':getattr(monitor,'observer_publish_errors',0),
++            'stage3_to5_authorized':False,'automatic_retry':False})
+     except BaseException as exc:
+         reservations.unknown(exc)
+-        for c in monitor.children:
+-            try:c.kill()
++        for child in monitor.children:
++            try:child.kill()
+             except Exception:pass
+-        write(out/'status.json',{'status':'technical_stop','error':f'{type(exc).__name__}: {exc}','budget':budget.snapshot(),'resources':monitor.snapshot(),'automatic_retry':False})
++        snapshot=budget.snapshot()
++        write(out/'status.json',{'status':'technical_stop','error':f'{type(exc).__name__}: {exc}',
++            'segment_budget':snapshot,'cumulative_stages':cumulative_snapshot(old_stages,snapshot),
++            'resources':cumulative_resources(monitor,request),'automatic_retry':False})
+         raise
+ 
+ if __name__=='__main__':
+--- original/runtime_support.py
++++ recovery/runtime_support.py
+@@ -12,8 +12,8 @@
+ import types
+ 
+ ROOT=Path(__file__).resolve().parent
+-PREP=ROOT.parent/'gppo-world-stage2-gate-preparation-20260924'
+-COST=ROOT.parent/'gppo-world-cost-replay-preparation-20260924'
++PREP=ROOT.parent.parent/'gppo-world-stage2-gate-preparation-20260924'
++COST=ROOT.parent.parent/'gppo-world-cost-replay-preparation-20260924'
+ sys.path.insert(0,str(PREP));sys.path.insert(0,str(COST))
+ from run_gate import primitive,canonical,digest,sha,peak_rss,verify_vector,ending
+ from public_controller import PublicMemory,PublicPlanner,public_copy
+@@ -25,17 +25,8 @@
+ def append(path,obj):
+     with Path(path).open('a',encoding='utf-8') as f:
+         f.write(canonical(obj)+'\n');f.flush();os.fsync(f.fileno())
+-def authorize(path):
+-    if not path or not Path(path).is_file():raise PermissionError('Explicit consolidated budget approval required')
+-    a=read(path);b=read(ROOT/'execution-manifest.json');r=read(ROOT/'BUDGET_REQUEST.json')
+-    if (a.get('approved') is not True or a.get('execution_manifest_sha256')!=sha(ROOT/'execution-manifest.json')
+-        or a.get('budget_request_sha256')!=sha(ROOT/'BUDGET_REQUEST.json')
+-        or a.get('caps')!=r['caps'] or a.get('stage_caps')!=r['stage_caps']
+-        or not a.get('user_approval_reference') or not a.get('user_approval_text')):
+-        raise PermissionError('Approval does not bind the complete conditional chain')
+-    for row in b['files']:
+-        if sha(row['path'])!=row['sha256']:raise RuntimeError('Bound input changed: '+row['path'])
+-    return a,b,r
++from recovery_contract import authorize
++
+ 
+ def native_package(binding):
+     """Import submodules without eager model re-exports in native __init__.py.
