@@ -1,0 +1,35 @@
+{
+  "checkpoint": {
+    "bytes": 5967195,
+    "path": "transactions/txn-step-00016384-policy-000128-world-001024.pt",
+    "sha256": "5b010a2f7eed0af0e3c64333b5c7846f18ffd0e72aff5705719003e1791b5930"
+  },
+  "counters": {
+    "actor_calls": 16384,
+    "environment_steps": 16384,
+    "episode_index": 1175,
+    "event_valid_elements": 76235,
+    "last_committed_policy_update": 128,
+    "last_committed_step": 16383,
+    "policy_optimizer_steps": 128,
+    "policy_version": 128,
+    "world_candidate_predictions_computed": 422125,
+    "world_candidate_predictions_consumed": 58529,
+    "world_forward_calls": 16885,
+    "world_optimizer_steps": 1024,
+    "world_version": 128
+  },
+  "last_committed_policy_update": 128,
+  "last_committed_step": 16383,
+  "last_committed_world_update": 1024,
+  "ledger": {
+    "first_step": 16256,
+    "last_step": 16383,
+    "ledger_bytes": 995568276,
+    "ledger_sha256": "f388d3c6a2ecbb8b6f63b601a26b48360e86751a59fe54a9e1e94f7fd23e9ecc",
+    "path": "training-ledger.jsonl"
+  },
+  "run_id": "weighted-wm-event-WD-seed-1101-v1",
+  "schema": "joint-training-transaction/1.0.0",
+  "transaction_id": "txn-step-00016384-policy-000128-world-001024"
+}

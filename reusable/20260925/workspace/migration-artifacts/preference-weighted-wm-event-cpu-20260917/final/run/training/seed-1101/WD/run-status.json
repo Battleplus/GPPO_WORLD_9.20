@@ -1,0 +1,12 @@
+{
+  "environment_steps": 16384,
+  "finished_at": 1789600686.5194988,
+  "group": "WD",
+  "last_committed_policy_update": 128,
+  "last_committed_step": 16383,
+  "policy_optimizer_steps": 128,
+  "run_id": "weighted-wm-event-WD-seed-1101-v1",
+  "status": "completed",
+  "stop_reason": "environment_step_budget",
+  "world_optimizer_steps": 1024
+}
