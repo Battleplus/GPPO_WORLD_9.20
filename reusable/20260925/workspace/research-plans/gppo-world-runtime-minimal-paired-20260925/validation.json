@@ -1,0 +1,92 @@
+{
+  "status": "minimum_fixed_plan_prepared_not_executed",
+  "reused_components": [
+    {
+      "name": "base_worker.py",
+      "sha256": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55",
+      "old_sha256": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55",
+      "byte_identical": true
+    },
+    {
+      "name": "decision_only_inference.py",
+      "sha256": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80",
+      "old_sha256": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80",
+      "byte_identical": true
+    },
+    {
+      "name": "safe_observer.py",
+      "sha256": "096033227f62e9d90ed3c4890369f6c8098640facc53d07b5c31235a2f6aed66",
+      "old_sha256": "096033227f62e9d90ed3c4890369f6c8098640facc53d07b5c31235a2f6aed66",
+      "byte_identical": true
+    },
+    {
+      "name": "session_budget.py",
+      "sha256": "7afe52bb52206c0a78416dddc30cee309a1d2c4845d551d7f6b939e2b69615ae",
+      "old_sha256": "7afe52bb52206c0a78416dddc30cee309a1d2c4845d551d7f6b939e2b69615ae",
+      "byte_identical": true
+    },
+    {
+      "name": "sqlite_diagnostics.py",
+      "sha256": "a1623172b4aee6c82c7dd40b872c0fed2b25bc594fc7b5a4b9fc129c7ba3453d",
+      "old_sha256": "a1623172b4aee6c82c7dd40b872c0fed2b25bc594fc7b5a4b9fc129c7ba3453d",
+      "byte_identical": true
+    },
+    {
+      "name": "runtime_support.py",
+      "sha256": "e46e81f3b2407bfdb0b19b8eb634320dbc106c2fdaab670a81ee8faf56c37547",
+      "old_sha256": "e46e81f3b2407bfdb0b19b8eb634320dbc106c2fdaab670a81ee8faf56c37547",
+      "byte_identical": true
+    },
+    {
+      "name": "runtime_worker.py",
+      "sha256": "138463eaa34634177c6c966b609febaa7ad4154a3d0cb24da6ec9b725c0bab1e",
+      "old_sha256": "138463eaa34634177c6c966b609febaa7ad4154a3d0cb24da6ec9b725c0bab1e",
+      "byte_identical": true
+    },
+    {
+      "name": "no_online_world.py",
+      "sha256": "b5ad5f9611ed991de3a13405592dfb277db8275d5cdb836e885f77ce6d0940ca",
+      "old_sha256": "b5ad5f9611ed991de3a13405592dfb277db8275d5cdb836e885f77ce6d0940ca",
+      "byte_identical": true
+    },
+    {
+      "name": "process_support.py",
+      "sha256": "57cd65ed45391e58083254440e9dfe269f2ef05d5a11e637ab729bdd3d1e96b8",
+      "old_sha256": "57cd65ed45391e58083254440e9dfe269f2ef05d5a11e637ab729bdd3d1e96b8",
+      "byte_identical": true
+    }
+  ],
+  "prior_interface_and_ledger_tests_reused_not_rerun": true,
+  "old_ledgers_unchanged": [
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\runs\\consolidated-v1\\budget.sqlite3",
+      "sha256": "16b0151eaaa02cbbcdf7ff5ccdc1f6e5d5dea80dd0a85c202ee80bcee1a61847",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runs\\consolidated-v1\\budget.sqlite3",
+      "sha256": "7e31f887410deab0c9e393272f2f2026def97f6a49c3f8bbe0347257f7d431c0",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\local-recovery2-preparation-20260925\\runs\\consolidated-v1\\budget.sqlite3",
+      "sha256": "23b443b4d89d10b3fdf4b957b36e1509e6a3a7c9b2befd9db2ed3b01fe72ddda",
+      "unchanged": true
+    }
+  ],
+  "new_environment_steps": 0,
+  "new_environment_resets": 0,
+  "new_model_forwards": 0,
+  "checkpoint_deserializations": 0,
+  "optimizer_updates": 0,
+  "world_updates": 0,
+  "offline_updates": 0,
+  "new_experimental_attempts": 0,
+  "formal_sqlite_created": false,
+  "selected_parent_count": 800,
+  "new_formal_episode_plan": 800,
+  "manifest_sha256": "2848c9dedc1d14755b177baac3a5c1be9b433f581b6fb9f2baebf0ed6dfaafef",
+  "budget_sha256": "e564d340d139d1106758927e2961724493c69c9f6bbc1efe43cd63c980165c3d",
+  "dynamic_N_interfaces_not_yet_verified": true,
+  "incremental_tests": "test-summary.json"
+}

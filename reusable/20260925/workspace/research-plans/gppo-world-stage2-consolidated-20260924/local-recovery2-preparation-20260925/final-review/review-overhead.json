@@ -1,0 +1,9 @@
+{
+  "wall_seconds_before_final_small_writes": 8.32311130000744,
+  "cpu_seconds_before_final_small_writes": 6.578125,
+  "scope": "this read-only post-run review process; small final metadata writes excluded",
+  "total_directory_bytes_before_final_small_writes": 342895219,
+  "environment_steps": 0,
+  "model_forwards": 0,
+  "training_updates": 0
+}

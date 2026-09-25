@@ -1,0 +1,18 @@
+{
+  "namespace": "runtime-necessity-minimal-v2-20260925",
+  "algorithm": "SHA256(namespace|parent|parent_id) ascending first800; one repeat argmin SHA256(namespace|repeat-r|parent_id); execute parent ascending",
+  "frame": 1600,
+  "selected": 800,
+  "repeats_per_parent": 1,
+  "input_fields_used": [
+    "parent_id",
+    "repeat_id"
+  ],
+  "repeat_counts": {
+    "0": 276,
+    "1": 266,
+    "2": 258
+  },
+  "no_reroll_no_replacement": true,
+  "old_4800_request_superseded_not_approved": true
+}

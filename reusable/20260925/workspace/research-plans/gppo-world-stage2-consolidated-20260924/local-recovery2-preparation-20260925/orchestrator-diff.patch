@@ -1,0 +1,210 @@
+--- recovery1/run_recovery.py
++++ recovery2/run_recovery.py
+@@ -6,7 +6,10 @@
+ 
+ from runtime_support import *
+ PROGRAM_STARTED=time.perf_counter()
+-from recovery_contract import cumulative_snapshot, reject_duplicate_or_wrong_order
++from recovery_contract import cumulative_snapshot, reject_duplicate_or_wrong_order, verify_prefix_step
++from sqlite_diagnostics import call_once
++from session_budget import single_writer_budget
++import traceback
+ OLD=ROOT.parent
+ OLD_RUN=OLD/'runs/consolidated-v1'
+ 
+@@ -43,7 +46,7 @@
+         self.peak_sum=max(self.peak_sum,rss)
+         if rss>self.request['caps']['resident_process_rss_sum_bytes']:raise RuntimeError('Combined RSS cap')
+         if disk:
+-            size=self.disk();stage_cap=38*1024**3
++            size=self.disk();stage_cap=self.request['caps']['artifact_bytes']
+             if size>self.request['caps']['artifact_bytes'] or size>stage_cap:raise RuntimeError('Artifact cap')
+     def snapshot(self):
+         return {'wall_seconds':time.perf_counter()-self.started,'total_cpu_seconds':self.total_cpu(),
+@@ -100,13 +103,15 @@
+     def reserve(self,amounts):
+         if self.pending:raise RuntimeError('Unresolved prior reservation')
+         for key,amount in amounts.items():
+-            if amount:self.pending.append(self.monitor.measure('ledger',self.budget.reserve,self.monitor.stage+'/'+key,amount))
++            if amount:self.pending.append(self.monitor.measure('ledger',call_once,'reserve',self.budget.reserve,self.monitor.stage+'/'+key,amount,diagnostic_dir=self.monitor.out/'diagnostics',db_path=self.budget.db_path))
+     def complete(self):
+-        for token in list(self.pending):self.monitor.measure('ledger',self.budget.complete,token);self.pending.remove(token)
++        for token in list(self.pending):
++            self.monitor.measure('ledger',call_once,'complete',self.budget.complete,token,diagnostic_dir=self.monitor.out/'diagnostics',db_path=self.budget.db_path)
++            self.pending.remove(token)
+     def unknown(self,error):
+         for token in list(self.pending):
+-            try:self.budget.unknown(token,str(error))
+-            except Exception:pass
++            try:call_once('mark_unknown',self.budget.unknown,token,str(error),diagnostic_dir=self.monitor.out/'diagnostics',db_path=self.budget.db_path)
++            except Exception as secondary:error.add_note('Unable to mark pending reservation unknown: '+repr(secondary))
+ 
+ def stages_environment(stage,auth,monitor,reservations,native):
+     monitor.enter(stage);folder=monitor.out/stage;folder.mkdir()
+@@ -117,6 +122,8 @@
+     completed={(r['parent'],r['repeat'],r['arm']) for r in retained}
+     old_initials={(r['parent'],r['repeat'],r['arm']):r['initial_public_hash'] for r in retained}
+     remaining_keys=[(r['parent'],r['repeat'],r['arm']) for r in remaining];executed=[]
++    prefix=read(ROOT/'partial-prefix.json');prefix_key=tuple(prefix['key']);prefix_verified=0
++    if prefix_key!=remaining_keys[0] or len(prefix['steps'])!=7:raise RuntimeError('Wrong partial prefix identity')
+     rules=OwnedWorker('C-R',stage,'rule',auth,monitor)
+     if rules.ready['torch_loaded']:raise RuntimeError('Rule process has Torch')
+     tapes=read(OLD_RUN/'C/scenario-manifest.json')
+@@ -125,7 +132,7 @@
+     reservations.reserve({'model_loads':1});models=OwnedWorker(stage+'-M',stage,'candidate',auth,monitor)
+     if models.ready['counts']['model_loads']!=1:raise RuntimeError('Model load accounting mismatch')
+     reservations.complete()
+-    logger=CompressedRecords(folder/'steps.jsonl.gz');episodes=[];latencies={'M':[],'R':[]};part_totals={};message_counts={};interface=0
++    logger=CompressedRecords(folder/'steps.jsonl.gz');episodes=[];latencies={'M':[],'R':[]};replay_latencies=[];part_totals={};message_counts={};interface=0
+     try:
+         for index,tape in enumerate(tapes['tapes']):
+             parent=f'eval-{index:04d}'
+@@ -141,6 +148,7 @@
+                     reservations.reserve({'environment_resets':1});reset=worker.call('reset',tape=tape,key=key)
+                     if reset['counts']['environment_resets']!=before['environment_resets']+1:raise RuntimeError('Reset count mismatch')
+                     worker.last_counts=reset['counts'];initials[arm]=reset['initial_hash'];memory=PublicMemory()
++                    if episode_key==prefix_key and reset['initial_hash']!=prefix['reset']['reset']['initial_hash']:raise RuntimeError('Partial reset identity mismatch')
+                     monitor.measure('logging',append,folder/'episode-starts.jsonl',{'parent':parent,'repeat':repeat,'arm':arm,'random_key':key,'tape_hash':digest(tape),'reset':reset})
+                     reservations.complete();uc=0.;prevcounts={'completed':0,'expired':0};energy=36.
+                     for step in range(18):
+@@ -160,7 +168,10 @@
+                         prevcounts,energy=info['counts'],en;uc+=.99**step*(.4*vec[0]+.2*vec[1]);ending(row['done'],info)
+                         row.update(parent=parent,repeat=repeat,arm=arm,reservations=list(reservations.pending))
+                         monitor.measure('logging',logger.add,row);reservations.complete();interface+=1
+-                        latencies[arm].append(row['controller'])
++                        if episode_key==prefix_key and step<7:
++                            verify_prefix_step(row,prefix['steps'][step]);prefix_verified+=1;replay_latencies.append(row['controller'])
++                            if prefix_verified==7:write(folder/'prefix-reproduction.json',{'key':prefix['key'],'verified_steps':7,'exact_behavior_match':True,'counts_charged':True,'new_statistical_samples':0})
++                        else:latencies[arm].append(row['controller'])
+                         for label in ['controller','environment','labels']:
+                             d=part_totals.setdefault(arm+'/'+label,{'cpu':0.,'wall':0.})
+                             for k,v in row[label].items():d[k]+=v
+@@ -175,7 +186,8 @@
+                 if initials['M']!=initials['R']:raise RuntimeError('Paired reset mismatch')
+         logger.close();verify_compressed(folder/'steps.jsonl.gz',logger.digest.hexdigest(),logger.rows)
+         models.close();rules.close()
+-        runtime={'latencies':latencies,'worker_parts':part_totals,'communication_events':message_counts,
++        if prefix_verified!=7:raise RuntimeError('Partial prefix not fully reproduced')
++        runtime={'latencies':latencies,'replay_overhead_latencies':replay_latencies,'replayed_steps':7,'worker_parts':part_totals,'communication_events':message_counts,
+             'compressed_digest':logger.digest.hexdigest(),'compressed_rows':logger.rows,'interface_steps':interface,'resources':monitor.snapshot()}
+         runtime['unclassified_worker_cpu']={}
+         for arm in ['M','R']:
+@@ -186,7 +198,7 @@
+             runtime['unclassified_worker_cpu'][arm]=max(0.,residual)
+         if not all(sum(t['cpu'] for t in latencies[a])>0 for a in ['M','R']):raise RuntimeError('Insufficient aggregate controller CPU recording')
+         write(folder/'cost-and-interface.json',runtime);monitor.check(disk=True)
+-        if executed!=remaining_keys or len(episodes)!=5566:raise RuntimeError('Incomplete recovery suffix')
++        if executed!=remaining_keys or len(episodes)!=963:raise RuntimeError('Incomplete recovery suffix')
+         write(folder/'status.json',{'status':'completed','episodes':len(episodes),'updates':0,'cost_recording':'controller/environment/labels + parent ledger/logging + complete process CPU; residual explicitly unclassified'})
+         return episodes,runtime
+     finally:
+@@ -198,14 +210,16 @@
+     path=monitor.out/'observer-progress.jsonl'
+     try:
+         with path.open('a',encoding='utf-8') as f:
+-            f.write(canonical({'recovery_completed':completed,'total_completed':4034+completed,'planned':9600,'last_key':key})+'\n')
++            f.write(canonical({'recovery_completed':completed,'total_completed':8637+completed,'planned':9600,'last_key':key})+'\n')
+             f.flush()
+     except OSError:
+         monitor.observer_publish_errors=getattr(monitor,'observer_publish_errors',0)+1
+ 
+ def merge_cost(old,new,resources):
+     result={'latencies':{},'worker_parts':{},'communication_events':{},'resources':resources,
+-            'segmented_execution':True,'old_resources':old['resources'],'recovery_resources':new['resources']}
++            'segmented_execution':True,'old_resources':old['resources'],'recovery_resources':new['resources'],
++            'replay_overhead_latencies':new['replay_overhead_latencies'],'replayed_steps':7,
++            'latency_rule':'Original 7 prefix timings retained; re-executed 7 timings reported as charged replay overhead'}
+     for arm in ['M','R']:result['latencies'][arm]=old['latencies'][arm]+new['latencies'][arm]
+     for source in [old,new]:
+         for name,value in source['worker_parts'].items():
+@@ -222,8 +236,8 @@
+     value['peak_conservative_rss_sum']=max(value['peak_conservative_rss_sum'],old['peak_conservative_rss_sum'])
+     value['bytes']+=old['artifact_bytes_conservative']
+     value['historical_shutdown_unmeasured']=True
+-    value['guard_holdback_wall_seconds']=request['shutdown_holdback']['wall_seconds']+request['recovery_shutdown_holdback']['wall_seconds']
+-    value['guard_holdback_cpu_seconds']=request['shutdown_holdback']['cpu_seconds']+request['recovery_shutdown_holdback']['cpu_seconds']
++    value['guard_holdback_wall_seconds']=request['historical_shutdown_holdback']['wall_seconds']+request['recovery_shutdown_holdback']['wall_seconds']
++    value['guard_holdback_cpu_seconds']=request['historical_shutdown_holdback']['cpu_seconds']+request['recovery_shutdown_holdback']['cpu_seconds']
+     value['guard_charged_wall_seconds']=value['wall_seconds']+value['guard_holdback_wall_seconds']
+     value['guard_charged_cpu_seconds']=value['total_cpu_seconds']+value['guard_holdback_cpu_seconds']
+     value['not_exact_whole_os_lifecycle_measurement']=True
+@@ -237,41 +251,62 @@
+     write(out/'authorization.json',authorization);write(out/'recovery-manifest.json',binding)
+     native=read(PREP/'binding.json');monitor=Monitor(request,out)
+     old_stages=read(ROOT/'historical-budget-readonly.json')
+-    write(out/'ledger-lineage.json',{'origin_sqlite':str(OLD_RUN/'budget.sqlite3'),
+-        'origin_sha256':sha(OLD_RUN/'budget.sqlite3'),'historical_stages':old_stages,
+-        'additional_model_loads_explicitly_authorized':1,'cannot_refund_history':True})
+-    limits=limits_for(request)
+-    budget=budget_class(native)(out/'budget.sqlite3',limits=limits,run_limits=limits,
+-        attempt_id='consolidated-v1-recovery-1-once',run_id='consolidated-v1-recovery-1')
+-    reservations=Reservations(budget,monitor)
++    histories=read(ROOT/'historical-ledgers-readonly.json')
++    write(out/'ledger-lineage.json',{'prior_segments':histories,'historical_stages':old_stages,
++        'additional_model_loads_explicitly_authorized':1,'additional_C_reset_explicitly_authorized':1,
++        'historical_io_cause_unresolved':True,'approved_mitigation':'single-owned-connection-with-full-diagnostics',
++        'cannot_refund_history':True})
++    limits=limits_for(request);budget=None;reservations=None;snapshot=None;cumulative=None;ledger_closed=False
+     try:
++        Budget=single_writer_budget(budget_class(native))
++        budget=call_once('initialize',Budget,out/'budget.sqlite3',limits=limits,run_limits=limits,
++            attempt_id='consolidated-v1-recovery-2-local-once',run_id='consolidated-v1-recovery-2-local',
++            diagnostic_dir=out/'diagnostics',db_path=out/'budget.sqlite3')
++        reservations=Reservations(budget,monitor)
+         episodes,cost=stages_environment('C',args.authorization,monitor,reservations,native)
+-        retained=read(ROOT/'retained-episodes.json');combined=retained+episodes
++        combined=read(ROOT/'retained-episodes.json')+episodes
+         if len(combined)!=9600:raise RuntimeError('Original matrix incomplete')
+-        original_cost=read(ROOT/'retained-cost-inputs.json')
+         resources=cumulative_resources(monitor,request)
+-        merged=merge_cost(original_cost,cost,resources)
++        merged=merge_cost(read(ROOT/'retained-cost-inputs.json'),cost,resources)
+         from analyze_formal import analyze
+         result=analyze(combined,merged)
+         write(out/'C/combined-episodes.json',combined);write(out/'C/combined-cost.json',merged)
+         write(out/'C/analysis.json',result)
+-        snapshot=budget.snapshot();cumulative=cumulative_snapshot(old_stages,snapshot)
++        snapshot=call_once('snapshot',budget.snapshot,diagnostic_dir=out/'diagnostics',db_path=budget.db_path)
++        cumulative=cumulative_snapshot(old_stages,snapshot)
+         if any(v['pending'] or v['unknown'] for v in cumulative.values()):raise RuntimeError('Unresolved cumulative budget')
++        call_once('close',budget.close,diagnostic_dir=out/'diagnostics',db_path=budget.db_path)
++        ledger_closed=True
+         authorize(args.authorization);monitor.check(disk=True)
+         write(out/'status.json',{'status':'completed','decision':result['decision'],
+             'segment_budget':snapshot,'cumulative_stages':cumulative,
+             'resources':cumulative_resources(monitor,request),'updates':0,
+             'observer_publish_errors':getattr(monitor,'observer_publish_errors',0),
+-            'stage3_to5_authorized':False,'automatic_retry':False})
++            'replayed_steps':7,'ledger_connections':budget.connection_open_count,
++            'historical_io_cause_unresolved':True,'stage3_to5_authorized':False,'automatic_retry':False})
+     except BaseException as exc:
+-        reservations.unknown(exc)
++        primary_trace=traceback.format_exc()
++        if reservations is not None:reservations.unknown(exc)
+         for child in monitor.children:
+             try:child.kill()
+             except Exception:pass
+-        snapshot=budget.snapshot()
+-        write(out/'status.json',{'status':'technical_stop','error':f'{type(exc).__name__}: {exc}',
+-            'segment_budget':snapshot,'cumulative_stages':cumulative_snapshot(old_stages,snapshot),
+-            'resources':cumulative_resources(monitor,request),'automatic_retry':False})
++        snapshot_error=None
++        if budget is not None and not ledger_closed:
++            try:
++                snapshot=call_once('terminal_snapshot',budget.snapshot,diagnostic_dir=out/'diagnostics',db_path=budget.db_path)
++                cumulative=cumulative_snapshot(old_stages,snapshot)
++            except BaseException as secondary:snapshot_error=repr(secondary)
++            try:call_once('close',budget.close,diagnostic_dir=out/'diagnostics',db_path=budget.db_path)
++            except BaseException:pass
++        terminal={'status':'technical_stop','error':repr(exc),'traceback':primary_trace,
++            'sqlite_errorcode':getattr(exc,'sqlite_errorcode',None),'sqlite_errorname':getattr(exc,'sqlite_errorname',None),
++            'segment_budget':snapshot,'cumulative_stages':cumulative,'snapshot_error':snapshot_error,
++            'snapshot_from_final_close':ledger_closed,
++            'budget_state_unresolved':snapshot is None,'automatic_retry':False}
++        try:terminal['resources']=cumulative_resources(monitor,request)
++        except BaseException as secondary:terminal['resources_error']=repr(secondary)
++        try:write(out/'status.json',terminal)
++        except BaseException as secondary:exc.add_note('Terminal status write failed: '+repr(secondary))
+         raise
+ 
+ if __name__=='__main__':

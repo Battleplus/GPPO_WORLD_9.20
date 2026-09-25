@@ -1,0 +1,20 @@
+{
+  "window": "2026-09-24T20:18:00+08:00/2026-09-24T20:20:00+08:00",
+  "total_warning_error_events": 36,
+  "grouped": [
+    {
+      "Name": "hcmon, 0",
+      "Count": 2
+    },
+    {
+      "Name": "Service Control Manager, 7023",
+      "Count": 15
+    },
+    {
+      "Name": "Service Control Manager, 7031",
+      "Count": 19
+    }
+  ],
+  "storage_or_resource_events": [],
+  "interpretation": "No causal attribution from co-occurrence alone; absence is not evidence of no transient I/O failure."
+}

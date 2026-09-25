@@ -1,0 +1,40 @@
+{
+  "stage": 2,
+  "result": "practical_increment_pass_in_frozen_scope",
+  "next_action": "prepare_world_model_contribution_protocol",
+  "next_experiment_authorized": false,
+  "training_authorized": false,
+  "git_publication_authorized": false,
+  "scope": "Frozen native historical M10/W1, one model seed; no training-seed or deployment-generalization claim.",
+  "utility": {
+    "M_mean": 0.24416116821863354,
+    "R_mean": 0.17814274121582507,
+    "ci95": [
+      0.06234128410487139,
+      0.06974212708090609
+    ],
+    "mean_difference": 0.06601842700280847
+  },
+  "controller_cost": {
+    "M": {
+      "decisions": 62979,
+      "mean_cpu_ms": 9.105217612219947,
+      "wall_p95_ms": 5.922250010189599
+    },
+    "R": {
+      "decisions": 70624,
+      "mean_cpu_ms": 15.32809314114182,
+      "wall_p95_ms": 57.136415007698574
+    }
+  },
+  "task_guard_pass": true,
+  "cost_guard_pass": true,
+  "not_yet_proven": [
+    "world_model_independent_contribution",
+    "preference_control",
+    "event_cost_savings",
+    "other_training_seeds",
+    "finite_communication_generalization",
+    "deployment_readiness"
+  ]
+}

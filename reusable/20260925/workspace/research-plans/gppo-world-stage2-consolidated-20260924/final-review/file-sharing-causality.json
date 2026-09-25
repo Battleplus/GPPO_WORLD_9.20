@@ -1,0 +1,18 @@
+{
+  "classification": "technical_execution_failure_not_algorithm_negative",
+  "observed_error": "PermissionError errno 13 opening C/episodes.jsonl for append",
+  "monitor_read_api": "System.IO.File.ReadLines(path).GetEnumerator()",
+  "concurrent_monitor_read_used_in_this_run": true,
+  "zero_environment_step_reproduction": {
+    "temporary_file_only": true,
+    "reader_open_python_append": "PermissionError errno 13",
+    "reader_disposed_python_append": "success",
+    "environment_steps": 0,
+    "model_forwards": 0
+  },
+  "causal_assessment": "Progress monitor used an incompatible Windows file sharing mode. Its ability to block the runner append is reproduced and matches the observed failure; no kernel handle trace was captured at failure to exclude every alternative file holder. Treat monitoring as an execution defect, not a model result.",
+  "responsibility": "assistant progress observer implementation",
+  "automatic_retry": false,
+  "frozen_runner_modified_after_start": false,
+  "raw_episode_summary_not_repaired": true
+}

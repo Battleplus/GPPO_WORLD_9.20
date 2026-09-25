@@ -1,0 +1,588 @@
+{
+  "historical_sd_M_minus_R_only": {
+    "utility": {
+      "parent_mean_of_3_sd": 0.07706922501556103,
+      "single_repeat_across_parent_sd": [
+        0.09419730431698173,
+        0.09516451556873781,
+        0.09573317420508241
+      ]
+    },
+    "physical_on_time": {
+      "parent_mean_of_3_sd": 0.10508645291465625,
+      "single_repeat_across_parent_sd": [
+        0.12992666793911944,
+        0.13079125044022266,
+        0.13153059858284138
+      ]
+    },
+    "host_on_time_observed": {
+      "parent_mean_of_3_sd": 0.12834811820784206,
+      "single_repeat_across_parent_sd": [
+        0.1507282889640067,
+        0.15079396917055865,
+        0.15287075268998848
+      ]
+    }
+  },
+  "N_minus_M_variance_known": false,
+  "method": "large-n normal approximation to paired-parent mean CI; sensitivity, not exact bootstrap power",
+  "alpha_per_CI": 0.05,
+  "bootstrap_future": 10000,
+  "target_power_reference": 0.8,
+  "margins": {
+    "utility": 0.01,
+    "physical_rate": 0.02,
+    "host_rate": 0.02
+  },
+  "sensitivity": [
+    {
+      "independent_parents": 128,
+      "assumed_sd_of_parent_paired_difference": 0.04,
+      "approx_95ci_halfwidth": 0.006929519121748387,
+      "approx_power_NI_at_true_difference_zero": 0.8074295788138213,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.6680181809638532,
+      "approx_80pct_distance_from_decision_boundary": 0.009905099528998361
+    },
+    {
+      "independent_parents": 128,
+      "assumed_sd_of_parent_paired_difference": 0.06,
+      "approx_95ci_halfwidth": 0.01039427868262258,
+      "approx_power_NI_at_true_difference_zero": 0.4703675770240627,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.30559984780252486,
+      "approx_80pct_distance_from_decision_boundary": 0.014857649293497541
+    },
+    {
+      "independent_parents": 128,
+      "assumed_sd_of_parent_paired_difference": 0.08,
+      "approx_95ci_halfwidth": 0.013859038243496774,
+      "approx_power_NI_at_true_difference_zero": 0.29261875345420985,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.16360076075325722,
+      "approx_80pct_distance_from_decision_boundary": 0.019810199057996723
+    },
+    {
+      "independent_parents": 128,
+      "assumed_sd_of_parent_paired_difference": 0.1,
+      "approx_95ci_halfwidth": 0.017323797804370968,
+      "approx_power_NI_at_true_difference_zero": 0.20366733706541393,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.10336487493740133,
+      "approx_80pct_distance_from_decision_boundary": 0.024762748822495906
+    },
+    {
+      "independent_parents": 128,
+      "assumed_sd_of_parent_paired_difference": 0.12,
+      "approx_95ci_halfwidth": 0.02078855736524516,
+      "approx_power_NI_at_true_difference_zero": 0.15453986324693475,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.0733661586420707,
+      "approx_80pct_distance_from_decision_boundary": 0.029715298586995082
+    },
+    {
+      "independent_parents": 128,
+      "assumed_sd_of_parent_paired_difference": 0.15,
+      "approx_95ci_halfwidth": 0.025985696706556448,
+      "approx_power_NI_at_true_difference_zero": 0.11396336191298313,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.0505303922457552,
+      "approx_80pct_distance_from_decision_boundary": 0.03714412323374385
+    },
+    {
+      "independent_parents": 128,
+      "assumed_sd_of_parent_paired_difference": 0.2,
+      "approx_95ci_halfwidth": 0.034647595608741935,
+      "approx_power_NI_at_true_difference_zero": 0.08161675140053358,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.03375269179968075,
+      "approx_80pct_distance_from_decision_boundary": 0.04952549764499181
+    },
+    {
+      "independent_parents": 256,
+      "assumed_sd_of_parent_paired_difference": 0.04,
+      "approx_95ci_halfwidth": 0.004899909961350134,
+      "approx_power_NI_at_true_difference_zero": 0.979326630641108,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.9458652641599754,
+      "approx_80pct_distance_from_decision_boundary": 0.0070039630452824195
+    },
+    {
+      "independent_parents": 256,
+      "assumed_sd_of_parent_paired_difference": 0.06,
+      "approx_95ci_halfwidth": 0.007349864942025201,
+      "approx_power_NI_at_true_difference_zero": 0.7601243687825439,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.6074530345062339,
+      "approx_80pct_distance_from_decision_boundary": 0.01050594456792363
+    },
+    {
+      "independent_parents": 256,
+      "assumed_sd_of_parent_paired_difference": 0.08,
+      "approx_95ci_halfwidth": 0.009799819922700268,
+      "approx_power_NI_at_true_difference_zero": 0.515967793442332,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.34679797651193406,
+      "approx_80pct_distance_from_decision_boundary": 0.014007926090564839
+    },
+    {
+      "independent_parents": 256,
+      "assumed_sd_of_parent_paired_difference": 0.1,
+      "approx_95ci_halfwidth": 0.012249774903375336,
+      "approx_power_NI_at_true_difference_zero": 0.3594370334317383,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.21360359559390296,
+      "approx_80pct_distance_from_decision_boundary": 0.01750990761320605
+    },
+    {
+      "independent_parents": 256,
+      "assumed_sd_of_parent_paired_difference": 0.12,
+      "approx_95ci_halfwidth": 0.014699729884050402,
+      "approx_power_NI_at_true_difference_zero": 0.26545068579733977,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.14442529855270816,
+      "approx_80pct_distance_from_decision_boundary": 0.02101188913584726
+    },
+    {
+      "independent_parents": 256,
+      "assumed_sd_of_parent_paired_difference": 0.15,
+      "approx_95ci_halfwidth": 0.018374662355063003,
+      "approx_power_NI_at_true_difference_zero": 0.18584898697339464,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.09220256062201672,
+      "approx_80pct_distance_from_decision_boundary": 0.026264861419809073
+    },
+    {
+      "independent_parents": 256,
+      "assumed_sd_of_parent_paired_difference": 0.2,
+      "approx_95ci_halfwidth": 0.024499549806750672,
+      "approx_power_NI_at_true_difference_zero": 0.12303173492167713,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.05547027968296172,
+      "approx_80pct_distance_from_decision_boundary": 0.0350198152264121
+    },
+    {
+      "independent_parents": 384,
+      "assumed_sd_of_parent_paired_difference": 0.04,
+      "approx_95ci_halfwidth": 0.004000759730296091,
+      "approx_power_NI_at_true_difference_zero": 0.9983537169681758,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.9938774248909374,
+      "approx_80pct_distance_from_decision_boundary": 0.00571871187941724
+    },
+    {
+      "independent_parents": 384,
+      "assumed_sd_of_parent_paired_difference": 0.06,
+      "approx_95ci_halfwidth": 0.006001139595444136,
+      "approx_power_NI_at_true_difference_zero": 0.9042275195785461,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.8083975907341127,
+      "approx_80pct_distance_from_decision_boundary": 0.00857806781912586
+    },
+    {
+      "independent_parents": 384,
+      "assumed_sd_of_parent_paired_difference": 0.08,
+      "approx_95ci_halfwidth": 0.008001519460592183,
+      "approx_power_NI_at_true_difference_zero": 0.6877652384915076,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.5221338955875554,
+      "approx_80pct_distance_from_decision_boundary": 0.01143742375883448
+    },
+    {
+      "independent_parents": 384,
+      "assumed_sd_of_parent_paired_difference": 0.1,
+      "approx_95ci_halfwidth": 0.010001899325740228,
+      "approx_power_NI_at_true_difference_zero": 0.4998515175510126,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.3320033531298233,
+      "approx_80pct_distance_from_decision_boundary": 0.014296779698543101
+    },
+    {
+      "independent_parents": 384,
+      "assumed_sd_of_parent_paired_difference": 0.12,
+      "approx_95ci_halfwidth": 0.012002279190888272,
+      "approx_power_NI_at_true_difference_zero": 0.3718449767376283,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.2233325241528352,
+      "approx_80pct_distance_from_decision_boundary": 0.01715613563825172
+    },
+    {
+      "independent_parents": 384,
+      "assumed_sd_of_parent_paired_difference": 0.15,
+      "approx_95ci_halfwidth": 0.01500284898861034,
+      "approx_power_NI_at_true_difference_zero": 0.2566946142668932,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.13838911811300628,
+      "approx_80pct_distance_from_decision_boundary": 0.02144516954781465
+    },
+    {
+      "independent_parents": 384,
+      "assumed_sd_of_parent_paired_difference": 0.2,
+      "approx_95ci_halfwidth": 0.020003798651480456,
+      "approx_power_NI_at_true_difference_zero": 0.1635015771723947,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.0786539565482787,
+      "approx_80pct_distance_from_decision_boundary": 0.028593559397086202
+    },
+    {
+      "independent_parents": 512,
+      "assumed_sd_of_parent_paired_difference": 0.04,
+      "approx_95ci_halfwidth": 0.0034647595608741934,
+      "approx_power_NI_at_true_difference_zero": 0.9998908716858828,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.9994485581625039,
+      "approx_80pct_distance_from_decision_boundary": 0.004952549764499181
+    },
+    {
+      "independent_parents": 512,
+      "assumed_sd_of_parent_paired_difference": 0.06,
+      "approx_95ci_halfwidth": 0.00519713934131129,
+      "approx_power_NI_at_true_difference_zero": 0.9649506352013126,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.9157834998247768,
+      "approx_80pct_distance_from_decision_boundary": 0.0074288246467487705
+    },
+    {
+      "independent_parents": 512,
+      "assumed_sd_of_parent_paired_difference": 0.08,
+      "approx_95ci_halfwidth": 0.006929519121748387,
+      "approx_power_NI_at_true_difference_zero": 0.8074295788138213,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.6680181809638532,
+      "approx_80pct_distance_from_decision_boundary": 0.009905099528998361
+    },
+    {
+      "independent_parents": 512,
+      "assumed_sd_of_parent_paired_difference": 0.1,
+      "approx_95ci_halfwidth": 0.008661898902185484,
+      "approx_power_NI_at_true_difference_zero": 0.6189703663026572,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.4477934785656939,
+      "approx_80pct_distance_from_decision_boundary": 0.012381374411247953
+    },
+    {
+      "independent_parents": 512,
+      "assumed_sd_of_parent_paired_difference": 0.12,
+      "approx_95ci_halfwidth": 0.01039427868262258,
+      "approx_power_NI_at_true_difference_zero": 0.4703675770240627,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.30559984780252486,
+      "approx_80pct_distance_from_decision_boundary": 0.014857649293497541
+    },
+    {
+      "independent_parents": 512,
+      "assumed_sd_of_parent_paired_difference": 0.15,
+      "approx_95ci_halfwidth": 0.012992848353278224,
+      "approx_power_NI_at_true_difference_zero": 0.3258255947501031,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.18794746327413644,
+      "approx_80pct_distance_from_decision_boundary": 0.018572061616871926
+    },
+    {
+      "independent_parents": 512,
+      "assumed_sd_of_parent_paired_difference": 0.2,
+      "approx_95ci_halfwidth": 0.017323797804370968,
+      "approx_power_NI_at_true_difference_zero": 0.20366733706541393,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.10336487493740133,
+      "approx_80pct_distance_from_decision_boundary": 0.024762748822495906
+    },
+    {
+      "independent_parents": 800,
+      "assumed_sd_of_parent_paired_difference": 0.04,
+      "approx_95ci_halfwidth": 0.002771807648699355,
+      "approx_power_NI_at_true_difference_zero": 0.9999998398590553,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.99999854511304,
+      "approx_80pct_distance_from_decision_boundary": 0.003962039811599345
+    },
+    {
+      "independent_parents": 800,
+      "assumed_sd_of_parent_paired_difference": 0.06,
+      "approx_95ci_halfwidth": 0.004157711473049032,
+      "approx_power_NI_at_true_difference_zero": 0.9970571420339751,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.9898313303616317,
+      "approx_80pct_distance_from_decision_boundary": 0.005943059717399017
+    },
+    {
+      "independent_parents": 800,
+      "assumed_sd_of_parent_paired_difference": 0.08,
+      "approx_95ci_halfwidth": 0.00554361529739871,
+      "approx_power_NI_at_true_difference_zero": 0.9424375237070284,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.8731802951112205,
+      "approx_80pct_distance_from_decision_boundary": 0.00792407962319869
+    },
+    {
+      "independent_parents": 800,
+      "assumed_sd_of_parent_paired_difference": 0.1,
+      "approx_95ci_halfwidth": 0.006929519121748388,
+      "approx_power_NI_at_true_difference_zero": 0.8074295788138213,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.6680181809638532,
+      "approx_80pct_distance_from_decision_boundary": 0.009905099528998363
+    },
+    {
+      "independent_parents": 800,
+      "assumed_sd_of_parent_paired_difference": 0.12,
+      "approx_95ci_halfwidth": 0.008315422946098064,
+      "approx_power_NI_at_true_difference_zero": 0.6543378830489772,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.4852595675794858,
+      "approx_80pct_distance_from_decision_boundary": 0.011886119434798033
+    },
+    {
+      "independent_parents": 800,
+      "assumed_sd_of_parent_paired_difference": 0.15,
+      "approx_95ci_halfwidth": 0.01039427868262258,
+      "approx_power_NI_at_true_difference_zero": 0.4703675770240627,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.30559984780252486,
+      "approx_80pct_distance_from_decision_boundary": 0.014857649293497541
+    },
+    {
+      "independent_parents": 800,
+      "assumed_sd_of_parent_paired_difference": 0.2,
+      "approx_95ci_halfwidth": 0.013859038243496775,
+      "approx_power_NI_at_true_difference_zero": 0.29261875345420985,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.16360076075325722,
+      "approx_80pct_distance_from_decision_boundary": 0.019810199057996726
+    },
+    {
+      "independent_parents": 1600,
+      "assumed_sd_of_parent_paired_difference": 0.04,
+      "approx_95ci_halfwidth": 0.0019599639845400535,
+      "approx_power_NI_at_true_difference_zero": 0.9999999999999996,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.9999999999999858,
+      "approx_80pct_distance_from_decision_boundary": 0.002801585218112968
+    },
+    {
+      "independent_parents": 1600,
+      "assumed_sd_of_parent_paired_difference": 0.06,
+      "approx_95ci_halfwidth": 0.0029399459768100805,
+      "approx_power_NI_at_true_difference_zero": 0.9999987412216533,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.9999903434208751,
+      "approx_80pct_distance_from_decision_boundary": 0.004202377827169452
+    },
+    {
+      "independent_parents": 1600,
+      "assumed_sd_of_parent_paired_difference": 0.08,
+      "approx_95ci_halfwidth": 0.003919927969080107,
+      "approx_power_NI_at_true_difference_zero": 0.9988172507018027,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.9954199470375056,
+      "approx_80pct_distance_from_decision_boundary": 0.005603170436225936
+    },
+    {
+      "independent_parents": 1600,
+      "assumed_sd_of_parent_paired_difference": 0.1,
+      "approx_95ci_halfwidth": 0.004899909961350134,
+      "approx_power_NI_at_true_difference_zero": 0.979326630641108,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.9458652641599754,
+      "approx_80pct_distance_from_decision_boundary": 0.0070039630452824195
+    },
+    {
+      "independent_parents": 1600,
+      "assumed_sd_of_parent_paired_difference": 0.12,
+      "approx_95ci_halfwidth": 0.005879891953620161,
+      "approx_power_NI_at_true_difference_zero": 0.9151812232366409,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.8262253691898906,
+      "approx_80pct_distance_from_decision_boundary": 0.008404755654338904
+    },
+    {
+      "independent_parents": 1600,
+      "assumed_sd_of_parent_paired_difference": 0.15,
+      "approx_95ci_halfwidth": 0.007349864942025201,
+      "approx_power_NI_at_true_difference_zero": 0.7601243687825439,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.6074530345062339,
+      "approx_80pct_distance_from_decision_boundary": 0.01050594456792363
+    },
+    {
+      "independent_parents": 1600,
+      "assumed_sd_of_parent_paired_difference": 0.2,
+      "approx_95ci_halfwidth": 0.009799819922700268,
+      "approx_power_NI_at_true_difference_zero": 0.515967793442332,
+      "approx_power_clear_loss_at_true_difference_minus_002_family_adjusted": 0.34679797651193406,
+      "approx_80pct_distance_from_decision_boundary": 0.014007926090564839
+    }
+  ],
+  "near_boundary_sensitivity": [
+    {
+      "n": 800,
+      "assumed_sd": 0.08,
+      "assumed_true_N_minus_M": 0.0,
+      "NI_probability_normal_approx": 0.9424375237070284,
+      "clear_loss_probability_normal_approx_family_adjusted": 1.519165761513476e-09
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.08,
+      "assumed_true_N_minus_M": -0.005,
+      "NI_probability_normal_approx": 0.42379393550961886,
+      "clear_loss_probability_normal_approx_family_adjusted": 1.5791124328866835e-05
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.08,
+      "assumed_true_N_minus_M": -0.01,
+      "NI_probability_normal_approx": 0.025000000000000036,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.008333333333333318
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.08,
+      "assumed_true_N_minus_M": -0.015,
+      "NI_probability_normal_approx": 9.660574480668574e-05,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.2655876709616495
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.08,
+      "assumed_true_N_minus_M": -0.02,
+      "NI_probability_normal_approx": 1.9480480081063515e-08,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.8731802951112205
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.08,
+      "assumed_true_N_minus_M": -0.03,
+      "NI_probability_normal_approx": 8.503033295562932e-20,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.99999854511304
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.1,
+      "assumed_true_N_minus_M": 0.0,
+      "NI_probability_normal_approx": 0.8074295788138213,
+      "clear_loss_probability_normal_approx_family_adjusted": 8.830616677190923e-08
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.1,
+      "assumed_true_N_minus_M": -0.005,
+      "NI_probability_normal_approx": 0.29261875345420985,
+      "clear_loss_probability_normal_approx_family_adjusted": 6.999289730636046e-05
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.1,
+      "assumed_true_N_minus_M": -0.01,
+      "NI_probability_normal_approx": 0.025000000000000036,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.008333333333333318
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.1,
+      "assumed_true_N_minus_M": -0.015,
+      "NI_probability_normal_approx": 0.00037018299377763623,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.1636007607532572
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.1,
+      "assumed_true_N_minus_M": -0.02,
+      "NI_probability_normal_approx": 8.406187359742998e-07,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.6680181809638532
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.1,
+      "assumed_true_N_minus_M": -0.03,
+      "NI_probability_normal_approx": 1.3000253033796818e-14,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.9994485581625039
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.12,
+      "assumed_true_N_minus_M": 0.0,
+      "NI_probability_normal_approx": 0.6543378830489772,
+      "clear_loss_probability_normal_approx_family_adjusted": 1.0120536298724895e-06
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.12,
+      "assumed_true_N_minus_M": -0.005,
+      "NI_probability_normal_approx": 0.2172681480762016,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.00017680075084918254
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.12,
+      "assumed_true_N_minus_M": -0.01,
+      "NI_probability_normal_approx": 0.025000000000000036,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.008333333333333318
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.12,
+      "assumed_true_N_minus_M": -0.015,
+      "NI_probability_normal_approx": 0.0008491462767564018,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.11209372833498987
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.12,
+      "assumed_true_N_minus_M": -0.02,
+      "NI_probability_normal_approx": 7.908688247736273e-06,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.4852595675794858
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.12,
+      "assumed_true_N_minus_M": -0.03,
+      "NI_probability_normal_approx": 1.2445400770325602e-11,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.9898313303616317
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.15,
+      "assumed_true_N_minus_M": 0.0,
+      "NI_probability_normal_approx": 0.4703675770240627,
+      "clear_loss_probability_normal_approx_family_adjusted": 9.361564096625324e-06
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.15,
+      "assumed_true_N_minus_M": -0.005,
+      "NI_probability_normal_approx": 0.15453986324693475,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.0004237615614229521
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.15,
+      "assumed_true_N_minus_M": -0.01,
+      "NI_probability_normal_approx": 0.025000000000000036,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.008333333333333318
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.15,
+      "assumed_true_N_minus_M": -0.015,
+      "NI_probability_normal_approx": 0.0018493729868607309,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.07336615864207065
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.15,
+      "assumed_true_N_minus_M": -0.02,
+      "NI_probability_normal_approx": 6.013330110240003e-05,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.30559984780252486
+    },
+    {
+      "n": 800,
+      "assumed_sd": 0.15,
+      "assumed_true_N_minus_M": -0.03,
+      "NI_probability_normal_approx": 4.986125492040713e-09,
+      "clear_loss_probability_normal_approx_family_adjusted": 0.9157834998247767
+    }
+  ],
+  "task_guard_sensitivity": [
+    {
+      "n": 800,
+      "assumed_task_difference_sd": 0.1,
+      "margin": 0.02,
+      "approx_95ci_halfwidth": 0.006929519121748388,
+      "approx_noninferiority_power_at_true_zero": 0.9998908716858828
+    },
+    {
+      "n": 800,
+      "assumed_task_difference_sd": 0.15,
+      "margin": 0.02,
+      "approx_95ci_halfwidth": 0.010394278682622582,
+      "approx_noninferiority_power_at_true_zero": 0.9649506352013126
+    },
+    {
+      "n": 800,
+      "assumed_task_difference_sd": 0.2,
+      "margin": 0.02,
+      "approx_95ci_halfwidth": 0.013859038243496775,
+      "approx_noninferiority_power_at_true_zero": 0.8074295788138212
+    },
+    {
+      "n": 800,
+      "assumed_task_difference_sd": 0.25,
+      "margin": 0.02,
+      "approx_95ci_halfwidth": 0.017323797804370968,
+      "approx_noninferiority_power_at_true_zero": 0.6189703663026572
+    },
+    {
+      "n": 800,
+      "assumed_task_difference_sd": 0.3,
+      "margin": 0.02,
+      "approx_95ci_halfwidth": 0.020788557365245163,
+      "approx_noninferiority_power_at_true_zero": 0.47036757702406257
+    }
+  ],
+  "minimum_n_at_assumed_SD_010_true_delta_0_normal_formula": 785,
+  "not_a_guaranteed_minimum": true,
+  "joint_success_power_unknown": true,
+  "no_finite_population_correction": true,
+  "no_new_outcomes_or_observed_power_computed": true
+}

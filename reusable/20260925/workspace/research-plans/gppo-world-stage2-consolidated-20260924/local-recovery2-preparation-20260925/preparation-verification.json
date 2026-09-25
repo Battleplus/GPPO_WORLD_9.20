@@ -1,0 +1,44 @@
+{
+  "prior_manifest_files_verified": 91,
+  "historical_databases_unchanged": 2,
+  "unchanged_execution_and_analysis": {
+    "stage_worker.py": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55",
+    "decision_only_inference.py": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80",
+    "analyze_formal.py": "5ccb36e9179cbe84264f86e223693b11503a16272949280ff2463e1b5f8f9fbf",
+    "runtime_support.py": "8340b763a967ccfa54da04cb5ac0a0bb4fed52fb7f2d02468cc5a3a51ef0924e",
+    "safe_observer.py": "096033227f62e9d90ed3c4890369f6c8098640facc53d07b5c31235a2f6aed66"
+  },
+  "retained_complete": 8637,
+  "remaining": 963,
+  "matrix": 9600,
+  "first_remaining": {
+    "parent": "eval-1439",
+    "repeat": 1,
+    "arm": "R",
+    "ordinal": 8637,
+    "tape_index": 1439,
+    "tape_hash": "69fb7f719dbcb2c669486375a552e5a823703b06212a887b338d51c62a1dd88c",
+    "random_key": "frozen-native-public-history-allocation-v1|eval-1439|repeat-1"
+  },
+  "C_before": {
+    "C/actor_readout": 56650,
+    "C/environment_resets": 8638,
+    "C/environment_steps": 120211,
+    "C/model_loads": 2,
+    "C/offline_updates": 0,
+    "C/optimizer_updates": 0,
+    "C/policy_encode": 56650,
+    "C/rule_decisions": 63561,
+    "C/world_candidate_batch": 56650,
+    "C/world_updates": 0
+  },
+  "projected_C_env_steps": 137545,
+  "projected_C_resets": 9601,
+  "cumulative_resource_envelope_pass": true,
+  "partial_effect_analysis": false,
+  "environment_steps": 0,
+  "model_forwards": 0,
+  "training_updates": 0,
+  "formal_attempts": 0,
+  "execution_authorized": false
+}

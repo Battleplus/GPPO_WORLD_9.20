@@ -1,0 +1,336 @@
+[
+  {
+    "segment": "original",
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\runs\\consolidated-v1\\budget.sqlite3",
+    "sha256": "16b0151eaaa02cbbcdf7ff5ccdc1f6e5d5dea80dd0a85c202ee80bcee1a61847",
+    "stages": [
+      {
+        "stage": "A/actor_readout",
+        "limit": 1050,
+        "reserved": 1050,
+        "verified": 1050,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "A/environment_resets",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "A/environment_steps",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "A/model_loads",
+        "limit": 2,
+        "reserved": 2,
+        "verified": 2,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "A/offline_updates",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "A/optimizer_updates",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "A/policy_encode",
+        "limit": 1050,
+        "reserved": 1050,
+        "verified": 1050,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "A/rule_decisions",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "A/world_candidate_batch",
+        "limit": 1050,
+        "reserved": 1050,
+        "verified": 1050,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "A/world_updates",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "B/actor_readout",
+        "limit": 36,
+        "reserved": 22,
+        "verified": 22,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "B/environment_resets",
+        "limit": 4,
+        "reserved": 4,
+        "verified": 4,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "B/environment_steps",
+        "limit": 72,
+        "reserved": 52,
+        "verified": 52,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "B/model_loads",
+        "limit": 1,
+        "reserved": 1,
+        "verified": 1,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "B/offline_updates",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "B/optimizer_updates",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "B/policy_encode",
+        "limit": 36,
+        "reserved": 22,
+        "verified": 22,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "B/rule_decisions",
+        "limit": 36,
+        "reserved": 30,
+        "verified": 30,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "B/world_candidate_batch",
+        "limit": 36,
+        "reserved": 22,
+        "verified": 22,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "B/world_updates",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/actor_readout",
+        "limit": 86400,
+        "reserved": 26575,
+        "verified": 26575,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/environment_resets",
+        "limit": 9600,
+        "reserved": 4034,
+        "verified": 4034,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/environment_steps",
+        "limit": 172800,
+        "reserved": 56381,
+        "verified": 56381,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/model_loads",
+        "limit": 1,
+        "reserved": 1,
+        "verified": 1,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/offline_updates",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/optimizer_updates",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/policy_encode",
+        "limit": 86400,
+        "reserved": 26575,
+        "verified": 26575,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/rule_decisions",
+        "limit": 86400,
+        "reserved": 29806,
+        "verified": 29806,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/world_candidate_batch",
+        "limit": 86400,
+        "reserved": 26575,
+        "verified": 26575,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/world_updates",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      }
+    ]
+  },
+  {
+    "segment": "recovery1",
+    "path": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runs\\consolidated-v1\\budget.sqlite3",
+    "sha256": "7e31f887410deab0c9e393272f2f2026def97f6a49c3f8bbe0347257f7d431c0",
+    "stages": [
+      {
+        "stage": "C/actor_readout",
+        "limit": 50094,
+        "reserved": 30075,
+        "verified": 30075,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/environment_resets",
+        "limit": 5566,
+        "reserved": 4604,
+        "verified": 4604,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/environment_steps",
+        "limit": 100188,
+        "reserved": 63830,
+        "verified": 63830,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/model_loads",
+        "limit": 1,
+        "reserved": 1,
+        "verified": 1,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/offline_updates",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/optimizer_updates",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/policy_encode",
+        "limit": 50094,
+        "reserved": 30075,
+        "verified": 30075,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/rule_decisions",
+        "limit": 50094,
+        "reserved": 33755,
+        "verified": 33755,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/world_candidate_batch",
+        "limit": 50094,
+        "reserved": 30075,
+        "verified": 30075,
+        "unknown": 0,
+        "pending": 0
+      },
+      {
+        "stage": "C/world_updates",
+        "limit": 0,
+        "reserved": 0,
+        "verified": 0,
+        "unknown": 0,
+        "pending": 0
+      }
+    ]
+  }
+]

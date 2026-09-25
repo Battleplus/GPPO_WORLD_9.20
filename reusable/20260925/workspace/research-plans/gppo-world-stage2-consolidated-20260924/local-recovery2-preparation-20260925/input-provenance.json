@@ -1,0 +1,18 @@
+{
+  "partial_source": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\runs\\consolidated-v1\\C\\steps.jsonl.gz",
+  "partial_gzip_sha256": "05ec7f5c43a1ece111df52e677de6ccb3568ca3934d4f428b9b11d4af95181f9",
+  "uncompressed_sha256": "e820ea054518c8a18bf31745b3288c863013b59215c71361d6a3230f145dcc58",
+  "last_seven_records": true,
+  "record_count": 63830,
+  "all_previous_inputs_bound_by": "E:\\Z博士\\research-plans\\gppo-world-stage2-consolidated-20260924\\recovery-preparation-v1\\recovery-manifest.json",
+  "historical_episode_counts": [
+    4034,
+    4603
+  ],
+  "retained_complete": 8637,
+  "remaining": 963,
+  "new_environment_steps": 0,
+  "new_model_forwards": 0,
+  "updates": 0,
+  "partial_effect_computed": false
+}

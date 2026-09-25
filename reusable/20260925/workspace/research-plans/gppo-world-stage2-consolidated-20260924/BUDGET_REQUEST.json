@@ -1,0 +1,54 @@
+{
+  "schema": "stage2-consolidated-conditional-request-v1",
+  "approved": true,
+  "scope": "Single decision-only inference candidate, conditional equivalence/cost then native gate then independent-development comparison",
+  "protocol_sha256": "e9f6643b3c80c6a1b176158245ccd2786eb911965e9db50c9231b66899d4d5f4",
+  "candidate_sha256": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80",
+  "caps": {
+    "environment_steps": 172872,
+    "environment_resets": 9604,
+    "policy_encode": 87486,
+    "world_candidate_batch": 87486,
+    "actor_readout": 87486,
+    "rule_decisions": 86436,
+    "model_loads": 4,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "gpu_hours": 0,
+    "wall_seconds": 134400,
+    "total_process_cpu_seconds": 536400,
+    "resident_process_rss_sum_bytes": 4294967296,
+    "artifact_bytes": 45097156608
+  },
+  "stage_caps": {
+    "A": {
+      "environment_steps": 0,
+      "each_model_forward": 1050,
+      "wall_seconds": 1200,
+      "cpu_seconds": 3600
+    },
+    "B": {
+      "environment_steps": 72,
+      "each_model_forward": 36,
+      "rule_decisions": 36,
+      "wall_seconds": 3600,
+      "cpu_seconds": 14400
+    },
+    "C": {
+      "environment_steps": 172800,
+      "each_model_forward": 86400,
+      "rule_decisions": 86400,
+      "wall_seconds": 129600,
+      "cpu_seconds": 518400
+    }
+  },
+  "advance_only_if_prerequisite_passed": true,
+  "automatic_retry": false,
+  "training_authorized": false,
+  "component_experiments_authorized": false,
+  "formal_runner_assembled": true,
+  "numerical_equivalence_verified": false,
+  "new_model_forwards_so_far": 0,
+  "rss_scope": "parent scheduler plus all simultaneously resident workers including suspended workers"
+}

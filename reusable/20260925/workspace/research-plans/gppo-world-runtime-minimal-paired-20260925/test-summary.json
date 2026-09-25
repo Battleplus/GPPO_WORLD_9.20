@@ -1,0 +1,12 @@
+{
+  "command": "C:\\Python314\\python.exe -B -X utf8 -m unittest -v test_minimal",
+  "result": "11 tests passed",
+  "recorded_test_seconds": 6.221,
+  "exit_code": 0,
+  "evidence": "Executed in Codex tool command; test output reported Ran 11 tests and OK.",
+  "scope": "Incremental sample selection, pairing, decision margins, resource totals, cost identity and synthetic full analysis; old 23-test suite not repeated.",
+  "synthetic_bootstrap_is_not_experimental_outcome": true,
+  "environment_steps": 0,
+  "model_forwards": 0,
+  "checkpoint_loads": 0
+}

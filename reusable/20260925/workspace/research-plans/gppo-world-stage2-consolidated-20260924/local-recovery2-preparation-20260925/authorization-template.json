@@ -1,0 +1,31 @@
+{
+  "approved": false,
+  "attempt": "consolidated-v1-recovery-2-local-once",
+  "recovery_manifest_sha256": "16224c388db4c129bc8866ea95e9e7030896d32cbb9a9d956001a42aae447a41",
+  "budget_request_sha256": "1eae5f1ee1ef0853afcfe6215995c6a38c89ae76442df4bca8bd9189c02b5ed1",
+  "caps": {
+    "environment_steps": 17334,
+    "environment_resets": 963,
+    "policy_encode": 8658,
+    "world_candidate_batch": 8658,
+    "actor_readout": 8658,
+    "rule_decisions": 8676,
+    "model_loads": 1,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "gpu_hours": 0,
+    "wall_seconds": 28800,
+    "total_process_cpu_seconds": 115200,
+    "resident_process_rss_sum_bytes": 4294967296,
+    "artifact_bytes": 8589934592
+  },
+  "accepted_amendments": {
+    "accept_unresolved_historical_io_cause_with_tested_mitigation": true,
+    "C_reset_cumulative_limit": 9601,
+    "C_model_load_cumulative_limit": 3,
+    "total_model_load_cumulative_limit": 6
+  },
+  "user_approval_reference": null,
+  "user_approval_text": null
+}

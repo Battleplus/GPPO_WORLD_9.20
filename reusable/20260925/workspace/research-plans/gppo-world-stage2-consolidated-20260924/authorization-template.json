@@ -1,0 +1,46 @@
+{
+  "approved": false,
+  "caps": {
+    "environment_steps": 172872,
+    "environment_resets": 9604,
+    "policy_encode": 87486,
+    "world_candidate_batch": 87486,
+    "actor_readout": 87486,
+    "rule_decisions": 86436,
+    "model_loads": 4,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "gpu_hours": 0,
+    "wall_seconds": 134400,
+    "total_process_cpu_seconds": 536400,
+    "resident_process_rss_sum_bytes": 4294967296,
+    "artifact_bytes": 45097156608
+  },
+  "stage_caps": {
+    "A": {
+      "environment_steps": 0,
+      "each_model_forward": 1050,
+      "wall_seconds": 1200,
+      "cpu_seconds": 3600
+    },
+    "B": {
+      "environment_steps": 72,
+      "each_model_forward": 36,
+      "rule_decisions": 36,
+      "wall_seconds": 3600,
+      "cpu_seconds": 14400
+    },
+    "C": {
+      "environment_steps": 172800,
+      "each_model_forward": 86400,
+      "rule_decisions": 86400,
+      "wall_seconds": 129600,
+      "cpu_seconds": 518400
+    }
+  },
+  "execution_manifest_sha256": "ea9da5400abb0d714dadbf920f6fd39bc747bcb865764555d196b8388616a839",
+  "budget_request_sha256": "03b24d7772db5d5f2a396226fc83451288662ba6df1b425a7d790ba3cc3e551d",
+  "user_approval_reference": "",
+  "user_approval_text": ""
+}

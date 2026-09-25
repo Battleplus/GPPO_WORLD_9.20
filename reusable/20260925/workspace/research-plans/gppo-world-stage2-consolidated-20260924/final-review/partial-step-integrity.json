@@ -1,0 +1,45 @@
+{
+  "step_rows_match_verified_budget": true,
+  "counts": {
+    "B/environment_steps": 52,
+    "B/M": 22,
+    "B/R": 30,
+    "C/environment_steps": 56381,
+    "C/M": 26575,
+    "C/R": 29806
+  },
+  "C_terminal_step_rows": 4034,
+  "last_step_identity": {
+    "parent": "eval-0672",
+    "repeat": 0,
+    "arm": "R",
+    "step": 11,
+    "done": true,
+    "counts": {
+      "actor_readout": 0,
+      "environment_resets": 2017,
+      "environment_steps": 29806,
+      "model_loads": 0,
+      "policy_encode": 0,
+      "rule_decisions": 29806,
+      "world_candidate_batch": 0
+    }
+  },
+  "partial_controller_cost": {
+    "M": {
+      "decisions": 26575,
+      "mean_cpu_ms": 9.394990592662277,
+      "wall_p95_ms": 6.255459989188239
+    },
+    "R": {
+      "decisions": 29806,
+      "mean_cpu_ms": 16.086316513453667,
+      "wall_p95_ms": 61.999524990824284
+    }
+  },
+  "partial_cost_is_not_formal_acceptance": true,
+  "gzip_read_to_eof_and_crc_pass": true,
+  "combined_uncompressed_sha256": "bdfd32503dd2de0e3bc9bd382b73488eb501a7314088b3de61666d54e6cc79a5",
+  "wall_seconds": 135.51880700000038,
+  "no_task_effect_estimate_computed": true
+}

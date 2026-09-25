@@ -1,0 +1,115 @@
+{
+  "schema": "local-original-matrix-recovery2-request-v1",
+  "approved": false,
+  "execution_ready": false,
+  "reason_not_ready": "Awaiting explicit one-time authorization including all listed amendments",
+  "retained_complete": 8637,
+  "matrix_total": 9600,
+  "remaining_episodes": 963,
+  "remaining_arms": {
+    "R": 482,
+    "M": 481
+  },
+  "partial_prefix_rule_steps_to_reproduce": 7,
+  "new_statistical_samples": 0,
+  "proposed_new_attempt": "consolidated-v1-recovery-2-local-once",
+  "caps": {
+    "environment_steps": 17334,
+    "environment_resets": 963,
+    "policy_encode": 8658,
+    "world_candidate_batch": 8658,
+    "actor_readout": 8658,
+    "rule_decisions": 8676,
+    "model_loads": 1,
+    "optimizer_updates": 0,
+    "world_updates": 0,
+    "offline_updates": 0,
+    "gpu_hours": 0,
+    "wall_seconds": 28800,
+    "total_process_cpu_seconds": 115200,
+    "resident_process_rss_sum_bytes": 4294967296,
+    "artifact_bytes": 8589934592
+  },
+  "counting": {
+    "actual_A_B_C_environment_steps_before": 120263,
+    "projected_A_B_C_step_upper": 137597,
+    "C_environment_steps_before": 120211,
+    "projected_C_step_upper": 137545,
+    "additional_resets": 963,
+    "projected_C_reset_calls": 9601,
+    "original_C_reset_cap": 9600,
+    "explicit_extra_replay_reset_needed": 1,
+    "loads_before": 5,
+    "loads_after_upper": 6,
+    "all_replayed_prefix_work_charged": true,
+    "no_budget_transfer": true
+  },
+  "conditions": [
+    "Execution requires explicit acceptance of unresolved historical I/O cause with tested mitigation, plus listed reset/load cap amendments",
+    "Complete isolated I/O mitigation, full error diagnostics and temporary-file tests before execution authorization",
+    "Verify exact saved 7-step R prefix during authorized replay; mismatch stops without a second replay",
+    "Freeze candidate runner/ledger implementation and source diff before final approval request",
+    "Keep native historical M10/W1, checkpoint, CPU threads, common guard, order, labels, threshold and analysis unchanged",
+    "Do not combine two records of the replayed prefix as distinct observations",
+    "No A/B rerun or completed-episode rerun; no automatic retry",
+    "Stop on any identity, prefix, accounting, I/O or resource failure; no automatic retry"
+  ],
+  "shutdown_holdback": {
+    "new_wall_seconds": 30,
+    "new_cpu_seconds": 600,
+    "included_in_new_caps": true,
+    "preserve_prior_unmeasured_tails": true
+  },
+  "not_an_authorization_request_yet": false,
+  "preparation_ready": true,
+  "required_authorization_amendments": {
+    "accept_unresolved_historical_io_cause_with_tested_mitigation": true,
+    "C_reset_cumulative_limit": 9601,
+    "C_model_load_cumulative_limit": 3,
+    "total_model_load_cumulative_limit": 6
+  },
+  "historical_resources": {
+    "total_wall_seconds": 21743.000596900005,
+    "total_cpu_seconds": 19576.78125,
+    "C_wall_seconds": 21724.75667850001,
+    "C_cpu_seconds": 19549.875,
+    "peak_conservative_rss_sum": 360116224,
+    "artifact_bytes_conservative": 2743902078
+  },
+  "historical_shutdown_holdback": {
+    "wall_seconds": 60,
+    "cpu_seconds": 1200
+  },
+  "recovery_shutdown_holdback": {
+    "wall_seconds": 30,
+    "cpu_seconds": 600
+  },
+  "stage_caps": {
+    "C": {
+      "environment_steps": 17334,
+      "each_model_forward": 8658,
+      "rule_decisions": 8676,
+      "wall_seconds": 28800,
+      "cpu_seconds": 115200
+    }
+  },
+  "original_C_limits": {
+    "environment_steps": 172800,
+    "policy_encode": 86400,
+    "world_candidate_batch": 86400,
+    "actor_readout": 86400,
+    "rule_decisions": 86400,
+    "environment_resets": 9600,
+    "model_loads": 1,
+    "wall_seconds": 129600,
+    "total_process_cpu_seconds": 518400,
+    "artifact_bytes": 42949672960
+  },
+  "test_result": {
+    "passed": 14,
+    "environment_steps": 0,
+    "model_forwards": 0,
+    "formal_attempts_created": 0
+  },
+  "prior_authorized_C_model_load_limit": 2
+}

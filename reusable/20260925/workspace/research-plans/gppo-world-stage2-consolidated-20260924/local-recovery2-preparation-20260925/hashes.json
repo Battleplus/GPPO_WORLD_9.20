@@ -1,0 +1,141 @@
+{
+  "schema": "recovery2-output-hashes-v1",
+  "files": [
+    {
+      "path": "analyze_formal.py",
+      "sha256": "5ccb36e9179cbe84264f86e223693b11503a16272949280ff2463e1b5f8f9fbf"
+    },
+    {
+      "path": "authorization-template.json",
+      "sha256": "aa92e9481708c0575aa522df612a235e31d7abca5626ac239db89373c5ab961f"
+    },
+    {
+      "path": "budget-draft.json",
+      "sha256": "72f34c30947caae61a2f800e83ab2dcb3fed16c5d901c7de7b167c36769b9a14"
+    },
+    {
+      "path": "build_inputs.py",
+      "sha256": "340356258f2a1cfaca3583e332af9e530b80c61d3cf483bb198f422fdbfe7197"
+    },
+    {
+      "path": "decision_only_inference.py",
+      "sha256": "1521daaf8eed1350e49da6466bed5267142364773343bd094a361e4fa3d28e80"
+    },
+    {
+      "path": "freeze_preparation.py",
+      "sha256": "7ec0982cada211792aee03dcceaf4ad9f0f55c920ab7cd5a2e6f110709b097f1"
+    },
+    {
+      "path": "frozen-matrix.json",
+      "sha256": "d8793659d3ed9b9efbab8c77c054a943862fea7e8ffa2cd25a9adfd1558f4b0d"
+    },
+    {
+      "path": "historical-budget-readonly.json",
+      "sha256": "93e735da2e4ac9655008eb3840a30c19cc9fa3cd7e13c0a4e952513e52049bdd"
+    },
+    {
+      "path": "historical-ledgers-readonly.json",
+      "sha256": "16be74ac32d391f11abead70fd615d9006a4adadca5cfba7d9e28ee3a751bd9b"
+    },
+    {
+      "path": "input-provenance.json",
+      "sha256": "2b01ba5209567cc0fcb67d252855c33b2ebb56cf063954a96bb273f0087790e1"
+    },
+    {
+      "path": "not-executed.json",
+      "sha256": "99edd406cda20b22ee57abd1585715dcd306641ba6f387b943cd7454033733da"
+    },
+    {
+      "path": "orchestrator-diff.patch",
+      "sha256": "fa306eeeec007ba99ddb2d0bd3128c6ec7ad7664489ac0c061bc88f0adfba0be"
+    },
+    {
+      "path": "os-evidence.json",
+      "sha256": "eccb566f80ad6c645a2085e4a607da2901ebbb094e249ecf016c954df7acf73e"
+    },
+    {
+      "path": "partial-prefix.json",
+      "sha256": "f32529e80f19e93d825cad458c40a3ca45300f50bcb01f2b9198ec81b7bc624e"
+    },
+    {
+      "path": "preparation-verification.json",
+      "sha256": "c89bcd4c3b99d24c47e5ab85614ddf8879b84571b09054bf5486a3fda285c873"
+    },
+    {
+      "path": "recovery-manifest.json",
+      "sha256": "16224c388db4c129bc8866ea95e9e7030896d32cbb9a9d956001a42aae447a41"
+    },
+    {
+      "path": "RECOVERY_BUDGET_REQUEST.json",
+      "sha256": "1eae5f1ee1ef0853afcfe6215995c6a38c89ae76442df4bca8bd9189c02b5ed1"
+    },
+    {
+      "path": "recovery_contract.py",
+      "sha256": "4f1c50cb3f7a1178a00c494876a50d80f01dcf017bc96b21f3cbd7429994061a"
+    },
+    {
+      "path": "RECOVERY_PROTOCOL.md",
+      "sha256": "c65472bafe8bf8f7f8628131e0d2b4751f8d4eb809dc047650a95e4b1601e6a1"
+    },
+    {
+      "path": "remaining-keys.json",
+      "sha256": "9893215f6a82e994a982fb9758eb46f5a407ce188b0d07dd75bdfe88027745b1"
+    },
+    {
+      "path": "report.md",
+      "sha256": "2eeacb7edf0a2e2ac29e490fb6f8bb9c9bc1ffcad7ae4d99fe1ae8688c3a55ec"
+    },
+    {
+      "path": "retained-cost-inputs.json",
+      "sha256": "c39a03077c3a5da0c3245f102f8c8f4dffde8f47df628fb1343dbed73b074eab"
+    },
+    {
+      "path": "retained-episodes.json",
+      "sha256": "7d1c567d9ff0d635bec4f0d8a2a5306aaa3b99b0d09e2f4174148cb880338f56"
+    },
+    {
+      "path": "run_recovery.py",
+      "sha256": "a40d5bb5b4e958d0377e612bc9e2436f223fa51d8bd6afe29840e95845c3f316"
+    },
+    {
+      "path": "runtime_support.py",
+      "sha256": "8340b763a967ccfa54da04cb5ac0a0bb4fed52fb7f2d02468cc5a3a51ef0924e"
+    },
+    {
+      "path": "safe_observer.py",
+      "sha256": "096033227f62e9d90ed3c4890369f6c8098640facc53d07b5c31235a2f6aed66"
+    },
+    {
+      "path": "session_budget.py",
+      "sha256": "7afe52bb52206c0a78416dddc30cee309a1d2c4845d551d7f6b939e2b69615ae"
+    },
+    {
+      "path": "source-diff.patch",
+      "sha256": "7d73260b67efa9401f530ec5ab78728cb282f1f2304bd5a16401efa0f475b325"
+    },
+    {
+      "path": "sqlite_diagnostics.py",
+      "sha256": "a1623172b4aee6c82c7dd40b872c0fed2b25bc594fc7b5a4b9fc129c7ba3453d"
+    },
+    {
+      "path": "stage_worker.py",
+      "sha256": "adc9ebd6564b35f2eada8459bbb04fb6e3cb814170177fc198430200f0732a55"
+    },
+    {
+      "path": "test-output.txt",
+      "sha256": "2bb9ff2c91acad838b8a7a8cc7119b805f8cd40ee259b36503d713223a243d58"
+    },
+    {
+      "path": "test_recovery2.py",
+      "sha256": "61e80f0c9f8b1b9022e61c0454633b33a9abe931d51df401807d047c74e2f30a"
+    },
+    {
+      "path": "test_sqlite_diagnostics.py",
+      "sha256": "4ad9159bed5a26a514d957302c9113987e7b73e97f2a94734cdc17e166bf4d49"
+    },
+    {
+      "path": "zero-step-tests.txt",
+      "sha256": "b0c414726c2481658cf1ccc3b43c2e0ef797c65470133fac749e2763770fc30c"
+    }
+  ]
+}
