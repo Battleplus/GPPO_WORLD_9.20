@@ -1,0 +1,16 @@
+{
+  "status": "zero_step_checks_passed",
+  "unit_tests_passed": 12,
+  "command": "C:\\Python314\\python.exe -B -X utf8 -m unittest discover -s E:\\Z博士\\research-plans\\gppo-world-task-benefit-diagnostic-20260925 -p test_task_diagnostic.py -v",
+  "reported_test_wall_seconds": 0.304,
+  "environment_steps": 0,
+  "model_forwards": 0,
+  "model_loads": 0,
+  "training_updates": 0,
+  "sqlite_created": false,
+  "N_choose_and_step_AST_match_prior": true,
+  "original_selection_bytes_unchanged": true,
+  "A_execution_forbidden": true,
+  "prior_cost_failure_cannot_be_reversed_by_task_decision": true,
+  "note": "Reused tests were not rerun except where newly changed authorization/decision/monitor behavior needed validation."
+}

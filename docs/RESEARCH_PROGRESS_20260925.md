@@ -44,3 +44,7 @@ GPPO＋世界模型＋偏好条件策略保留为主研究候选。阶段2已经
 - 更早阶段参见[原进度归档分支](https://github.com/Battleplus/GPPO_WORLD_9.20/tree/archive/research-progress)、[R/K封存](https://github.com/Battleplus/GPPO_WORLD_9.20/tree/archive/preference-rk-route-closure-20260922)、[阶段2历史技术停止](https://github.com/Battleplus/GPPO_WORLD_9.20/tree/archive/stage2-recovery-technical-stop-20260925)。它们保留历史状态，不能取代本页最新判断。
 
 本包同步文档和关键机器可读结果；不包含完整源码、checkpoint、大体量逐步日志或SQLite，不是可独立重跑的完整部署包。原报告按字节保留，其中本地路径和“未发布”指其形成时状态。后续引用以相应归档路径及哈希为准。
+
+## 可复用资产补充归档
+
+[源码、基线、测试、配置及提交权重入口](REUSABLE_ASSETS_20260925.md)。新基线仍按已实现/待实现区分；完整原始日志和SQLite另列未上传清单，本次归档不启动实验。

@@ -1,0 +1,181 @@
+{
+  "not_a_full_raw_data_backup": true,
+  "files": [
+    {
+      "source": "research-plans/gppo-world-cost-replay-preparation-20260924/runs/cost-diagnostic-v1/budget.sqlite3",
+      "bytes": 53248,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-cost-replay-preparation-20260924/runs/cost-diagnostic-v1/budget.sqlite3-shm",
+      "bytes": 32768,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-cost-replay-preparation-20260924/runs/cost-diagnostic-v1/budget.sqlite3-wal",
+      "bytes": 0,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-runtime-minimal-paired-20260925/runs/runtime-necessity-v1/budget.sqlite3",
+      "bytes": 167936,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-runtime-minimal-paired-20260925/runs/runtime-necessity-v1/budget.sqlite3-shm",
+      "bytes": 32768,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-runtime-minimal-paired-20260925/runs/runtime-necessity-v1/budget.sqlite3-wal",
+      "bytes": 0,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-consolidated-20260924/runs/consolidated-v1/budget.sqlite3",
+      "bytes": 94883840,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-consolidated-20260924/runs/consolidated-v1/budget.sqlite3-shm",
+      "bytes": 32768,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-consolidated-20260924/runs/consolidated-v1/budget.sqlite3-wal",
+      "bytes": 0,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-consolidated-20260924/runs/consolidated-v1/B/steps.jsonl.gz",
+      "bytes": 980494,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-consolidated-20260924/runs/consolidated-v1/C/steps.jsonl.gz",
+      "bytes": 1052191387,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-consolidated-20260924/recovery-preparation-v1/runs/consolidated-v1/budget.sqlite3",
+      "bytes": 133513216,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-consolidated-20260924/recovery-preparation-v1/runs/consolidated-v1/budget.sqlite3-shm",
+      "bytes": 32768,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-consolidated-20260924/recovery-preparation-v1/runs/consolidated-v1/budget.sqlite3-wal",
+      "bytes": 0,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-consolidated-20260924/recovery-preparation-v1/runs/consolidated-v1/C/steps.jsonl.gz",
+      "bytes": 1193097522,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-consolidated-20260924/local-recovery2-preparation-20260925/runs/consolidated-v1/budget.sqlite3",
+      "bytes": 29876224,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-consolidated-20260924/local-recovery2-preparation-20260925/runs/consolidated-v1/C/steps.jsonl.gz",
+      "bytes": 250242283,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-gate-preparation-20260924/runs/technical-gate-v1/budget.sqlite3",
+      "bytes": 159744,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-gate-preparation-20260924/runs/technical-gate-v1/budget.sqlite3-shm",
+      "bytes": 32768,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-stage2-gate-preparation-20260924/runs/technical-gate-v1/budget.sqlite3-wal",
+      "bytes": 0,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-task-benefit-diagnostic-20260925/runs/task-benefit-v1/budget.sqlite3",
+      "bytes": 23859200,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-task-benefit-diagnostic-20260925/runs/task-benefit-v1/budget.sqlite3-shm",
+      "bytes": 32768,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-task-benefit-diagnostic-20260925/runs/task-benefit-v1/budget.sqlite3-wal",
+      "bytes": 0,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-task-benefit-diagnostic-20260925/runs/task-benefit-v1/B/steps.jsonl.gz",
+      "bytes": 507269,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "research-plans/gppo-world-task-benefit-diagnostic-20260925/runs/task-benefit-v1/C/steps.jsonl.gz",
+      "bytes": 196185965,
+      "reason": "raw_step_log_or_historical_database_not_in_reuse_package"
+    },
+    {
+      "source": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-1101/P_train/training-ledger.jsonl",
+      "bytes": 247557286,
+      "reason": "raw_training_ledger_not_in_reuse_package"
+    },
+    {
+      "source": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-1101/T_train/training-ledger.jsonl",
+      "bytes": 247635695,
+      "reason": "raw_training_ledger_not_in_reuse_package"
+    },
+    {
+      "source": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-2203/P_train/training-ledger.jsonl",
+      "bytes": 248045637,
+      "reason": "raw_training_ledger_not_in_reuse_package"
+    },
+    {
+      "source": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-2203/T_train/training-ledger.jsonl",
+      "bytes": 247754877,
+      "reason": "raw_training_ledger_not_in_reuse_package"
+    },
+    {
+      "source": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-3307/P_train/training-ledger.jsonl",
+      "bytes": 247188395,
+      "reason": "raw_training_ledger_not_in_reuse_package"
+    },
+    {
+      "source": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-3307/T_train/training-ledger.jsonl",
+      "bytes": 247681932,
+      "reason": "raw_training_ledger_not_in_reuse_package"
+    },
+    {
+      "source": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-1101/WD/training-ledger.jsonl",
+      "bytes": 995568276,
+      "reason": "raw_training_ledger_not_in_reuse_package"
+    },
+    {
+      "source": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-2203/WD/training-ledger.jsonl",
+      "bytes": 999558481,
+      "reason": "raw_training_ledger_not_in_reuse_package"
+    },
+    {
+      "source": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-3307/WD/training-ledger.jsonl",
+      "bytes": 995638919,
+      "reason": "raw_training_ledger_not_in_reuse_package"
+    }
+  ],
+  "also_excluded": [
+    "intermediate uncommitted/transaction checkpoints except each ledger-commit target",
+    "temporary caches and test directories",
+    "validation/heldout contents not needed for current reuse",
+    "unrelated workspace repositories and credentials"
+  ]
+}

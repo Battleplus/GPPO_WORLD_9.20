@@ -1,0 +1,92 @@
+[
+  {
+    "group": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-1101/P_train",
+    "committed_checkpoint": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-1101/P_train/transactions/txn-step-00008192-policy-000063-world-000000.pt",
+    "alias": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-1101/P_train/last-recovery.pt",
+    "sha256": "bf10d2685a4a3e9da036689f5028b022330e86e922e09c95a7dd0a929df9bb1a",
+    "commit_source": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-1101/P_train/ledger-commit.json",
+    "committed_path_file_present": true,
+    "alias_matches_committed_sha256": true,
+    "used_in_formal_stage2": true
+  },
+  {
+    "group": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-1101/T_train",
+    "committed_checkpoint": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-1101/T_train/transactions/txn-step-00008192-policy-000063-world-000000.pt",
+    "alias": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-1101/T_train/last-recovery.pt",
+    "sha256": "6b83852df093e853bcdf941dd29926d5d2f31aa1114c733dd2d02ef5345a55dd",
+    "commit_source": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-1101/T_train/ledger-commit.json",
+    "committed_path_file_present": true,
+    "alias_matches_committed_sha256": true,
+    "used_in_formal_stage2": false
+  },
+  {
+    "group": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-2203/P_train",
+    "committed_checkpoint": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-2203/P_train/transactions/txn-step-00008192-policy-000063-world-000000.pt",
+    "alias": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-2203/P_train/last-recovery.pt",
+    "sha256": "6276772fc3f5c7e4ebad78081fcdf129d1b19ed772aec57ab0574b57f5333560",
+    "commit_source": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-2203/P_train/ledger-commit.json",
+    "committed_path_file_present": true,
+    "alias_matches_committed_sha256": true,
+    "used_in_formal_stage2": false
+  },
+  {
+    "group": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-2203/T_train",
+    "committed_checkpoint": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-2203/T_train/transactions/txn-step-00008192-policy-000063-world-000000.pt",
+    "alias": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-2203/T_train/last-recovery.pt",
+    "sha256": "d05bb95b220f661645e9e131f0f6ccc72d1e3fbb42cb4e32f63b6124c82e7d03",
+    "commit_source": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-2203/T_train/ledger-commit.json",
+    "committed_path_file_present": true,
+    "alias_matches_committed_sha256": true,
+    "used_in_formal_stage2": false
+  },
+  {
+    "group": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-3307/P_train",
+    "committed_checkpoint": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-3307/P_train/transactions/txn-step-00008192-policy-000063-world-000000.pt",
+    "alias": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-3307/P_train/last-recovery.pt",
+    "sha256": "c8b0ad6972bca301fd19b35a6808e3881ba6601c0b3206af511104e3e543b79f",
+    "commit_source": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-3307/P_train/ledger-commit.json",
+    "committed_path_file_present": true,
+    "alias_matches_committed_sha256": true,
+    "used_in_formal_stage2": false
+  },
+  {
+    "group": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-3307/T_train",
+    "committed_checkpoint": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-3307/T_train/transactions/txn-step-00008192-policy-000063-world-000000.pt",
+    "alias": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-3307/T_train/last-recovery.pt",
+    "sha256": "ff71bea9c7e854488f8279e99cb568e81653764569652344cd14601094df3de6",
+    "commit_source": "migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/training/seed-3307/T_train/ledger-commit.json",
+    "committed_path_file_present": true,
+    "alias_matches_committed_sha256": true,
+    "used_in_formal_stage2": false
+  },
+  {
+    "group": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-1101/WD",
+    "committed_checkpoint": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-1101/WD/transactions/txn-step-00016384-policy-000128-world-001024.pt",
+    "alias": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-1101/WD/last-recovery.pt",
+    "sha256": "5b010a2f7eed0af0e3c64333b5c7846f18ffd0e72aff5705719003e1791b5930",
+    "commit_source": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-1101/WD/ledger-commit.json",
+    "committed_path_file_present": false,
+    "alias_matches_committed_sha256": true,
+    "used_in_formal_stage2": false
+  },
+  {
+    "group": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-2203/WD",
+    "committed_checkpoint": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-2203/WD/transactions/txn-step-00016384-policy-000128-world-001024.pt",
+    "alias": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-2203/WD/last-recovery.pt",
+    "sha256": "f1e12262bb548f5a8329fbcf993fcf7238abd50c8fe892adc1b7ef29c4763af2",
+    "commit_source": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-2203/WD/ledger-commit.json",
+    "committed_path_file_present": false,
+    "alias_matches_committed_sha256": true,
+    "used_in_formal_stage2": false
+  },
+  {
+    "group": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-3307/WD",
+    "committed_checkpoint": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-3307/WD/transactions/txn-step-00016384-policy-000128-world-001024.pt",
+    "alias": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-3307/WD/last-recovery.pt",
+    "sha256": "548b848a776dc31a4ffa96be7e50daf1f6f27929e2f314f272bf141a69063941",
+    "commit_source": "migration-artifacts/preference-weighted-wm-event-cpu-20260917/final/run/training/seed-3307/WD/ledger-commit.json",
+    "committed_path_file_present": false,
+    "alias_matches_committed_sha256": true,
+    "used_in_formal_stage2": false
+  }
+]

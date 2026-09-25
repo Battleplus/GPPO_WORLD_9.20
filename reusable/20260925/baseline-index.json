@@ -1,0 +1,29 @@
+{
+  "R-SEARCH": {
+    "state": "implemented_and_formally_compared",
+    "path": "workspace/research-plans/gppo-world-stage2-gate-preparation-20260924/public_controller.py"
+  },
+  "GPPO-WORLD": {
+    "state": "implemented_with_frozen_checkpoint_and_formal_results",
+    "path": "workspace/migration-artifacts/event-trigger-aware-gppo-fair-replication-20260919-v1/source-snapshot/gppo_world/joint_gppo.py"
+  },
+  "N-online-world-removal": {
+    "state": "implemented_diagnostic_not_standard_PPO_or_no_world_training",
+    "path": "workspace/research-plans/gppo-world-task-benefit-diagnostic-20260925/no_online_world.py"
+  },
+  "G-ND": {
+    "state": "scope_frozen_no_verified_same_protocol_implementation"
+  },
+  "G-EDF": {
+    "state": "scope_frozen_no_verified_same_protocol_implementation"
+  },
+  "H-ROLL": {
+    "state": "scope_frozen_no_verified_same_protocol_implementation"
+  },
+  "PPO-STD": {
+    "state": "scope_frozen_no_verified_same_protocol_comparison"
+  },
+  "GPPO-NOWORLD": {
+    "state": "scope_frozen_no_verified_from_scratch_comparison"
+  }
+}
