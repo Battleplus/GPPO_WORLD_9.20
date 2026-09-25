@@ -1,0 +1,10 @@
+{
+  "checkpoint_sha256": "f1e12262bb548f5a8329fbcf993fcf7238abd50c8fe892adc1b7ef29c4763af2",
+  "environment_steps": 16384,
+  "policy_optimizer_steps": 128,
+  "run_dir": "training/seed-2203/WD",
+  "status": "completed",
+  "stop_reason": "environment_step_budget",
+  "wall_seconds": 453.78632060810924,
+  "world_optimizer_steps": 1024
+}
