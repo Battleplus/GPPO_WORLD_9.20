@@ -51,9 +51,25 @@ The independent request remains `NOT_APPROVED`: at most 10,350 environment steps
 - Remaining-23 execution manifest SHA-256: `2bf84e49d151c0fa3be4a723df97eb5b41f1571bbd88def0c04c196c2e401843`
 - Remaining-23 package hashes SHA-256: `d0e0388174dce35787b18cc377e5455f6fc8874673b73b5e79a973147fb97ac1`
 
+## Completed 24-unit oracle result
+
+The separately authorized one-shot attempt executed only the remaining 23 units and reused `validation-0000/repeat-0` exactly once. The resulting matrix is complete: 24 of 24 units and 8 of 8 development parents had a qualifying opportunity. The run completed normally with no retry, worker relaunch, model call, or training update.
+
+The frozen materiality gate failed. The eight-parent macro mean hindsight gain was `0.013226693424422117`, but only `validation-0002` and `validation-0007` passed the parent gate. The protocol required at least 4 of 8 passing parents. A macro mean above `0.01` does not override that breadth requirement.
+
+The combined matrix contains 144 candidate branches and 864 candidate-branch task labels. There are 182 unknown host-confirmation labels. They remain unknown, are not physical failures or accounting unknowns, and do not enter the frozen utility calculation.
+
+This closes only the first qualifying public window with frozen Hungarian continuation on these development parents. It does not establish that every later window or every action-consequence target lacks value. The hindsight maximum may include unpredictable random luck and is not predictor performance. The result does not authorize predictor training or another experiment.
+
+The new attempt consumed 1,598 environment steps, 23 resets, 1,484 public-rule decisions, and 137 branches. All 3,586 accounted calls were verified. The controlled export listed 68 files, and an independent post-run check found zero missing or mismatched files.
+
+- Result reports and selected evidence: `remaining-23-result/`
+- Export manifest SHA-256: `efa772e6b26f1c764cd7f4c9063fa0ce352722220eb7f8061efba929310779b1`
+- Post-run report hashes SHA-256: `3401fbc6d4c5dc0cac14f1c6a2d3e34ab3d8845dd2e9424d471ea424c5f31736`
+
 ## Authorization boundary
 
-The single-unit request was separately authorized and has been consumed by the completed one-shot attempt. This archive does not authorize a retry, model use, training, oracle materiality analysis, or continuation to the remaining 23 units.
+The single-unit gate and remaining-23 requests were separately authorized and have both been consumed by their completed one-shot attempts. This archive does not authorize a retry, model use, training, expanded sampling, threshold changes, or a new experiment.
 
 ## Archive scope
 
