@@ -2,7 +2,7 @@
 
 Date: 2026-09-28
 
-This archive records the stopped oracle run, the offline root-cause audit, and the zero-call observer repair prepared for one future dynamic technical unit.
+This archive records the stopped oracle run, the offline root-cause audit, the zero-call observer repair, and the completed single-unit dynamic observer gate.
 
 ## Evidence status
 
@@ -27,12 +27,25 @@ On WSL native ext4 with Python 3.11.16 and the frozen runtime dependencies, 34 z
 - Package hashes SHA-256: `694e7fefabf7ac1139741b4cb742d520ac7ce6a5540ad3872b366a39e443bed4`
 - Root-cause audit hashes SHA-256: `24a12e8cf7582258e85d4a1c8764588450897754e7f505df0e2ba0f941eef911`
 
+## Dynamic observer gate
+
+The authorized one-shot gate ran only `validation-0000 / repeat-0`. The frozen rules recomputed seven branches (six non-NOOP assignments and one legal NOOP); no old action list was hard-coded. It did not run the other 23 units and did not calculate oracle materiality.
+
+The observer recorded 6,157 calls at the real communication primitive boundary: 5,778 telemetry, 89 command, 166 ACK, and 124 renewal calls. Exact semantic matching found 1,006 common call keys and 70 branch-specific keys. There were zero random-fate mismatches, parameter conflicts, multiplicity conflicts, or missing identities. This establishes that the repaired observer is connected to actual primitive calls and distinguishes exogenous fate from downstream execution outcomes for this unit.
+
+All seven branches terminated normally. Seven `task-5` records remain explicitly `unknown` for host confirmation because native termination occurred after physical completion and before confirmation arrived. These labels were not filled or dropped and limit any future reuse of the unit.
+
+The gate used 90 environment steps, one reset, 84 public-rule decisions, and seven branches. Model initialization, model forward calls, and training updates were all zero. The verified export contains 54 files and 26,389,006 bytes; its manifest SHA-256 is `c1124832a421c46283e9f45ed2c53c0569b53b552c5358f5aa606464e6d1f86b`.
+
+- Dynamic gate report hashes SHA-256: `403dd7d0eb62a84c4505eb390e9f8f4825d84ddae8bf9013e3322b78f0f56f60`
+- Native export status SHA-256: `9f27f06e83dba7902e7dfd7cf8312cbf427fc10c40ae6d22a58af97a07bec761`
+
 ## Authorization boundary
 
-The single-unit request is `NOT_APPROVED`. This archive does not authorize environment construction, reset/step calls, model use, training, creation of an attempt, or continuation to the remaining oracle matrix.
+The single-unit request was separately authorized and has been consumed by the completed one-shot attempt. This archive does not authorize a retry, model use, training, oracle materiality analysis, or continuation to the remaining 23 units.
 
 ## Archive scope
 
-This Git archive contains the root-cause reports, evidence indexes, minimal observer and runner changes, zero-call tests, frozen protocol, unapproved budget, and final hashes. It is not a full backup or deployable runtime. Large raw step and branch logs, SQLite ledgers, checkpoints, credentials, and the raw one-shot authorization token are not included. Their local paths, sizes, and hashes are listed in `artifact-index.json`.
+This Git archive contains the root-cause reports, evidence indexes, minimal observer and runner changes, zero-call tests, frozen protocol and budget, dynamic gate summaries, selected small execution evidence, and final hashes. It is not a full backup or deployable runtime. Large raw step and branch logs, SQLite ledgers, checkpoints, credentials, and the raw one-shot authorization token are not included. Their local paths, sizes, and hashes are listed in `artifact-index.json`.
 
 Historical 90 environment steps from the stopped oracle attempt, all earlier costs and negative results, and the 10 ms cost failure remain in force.
