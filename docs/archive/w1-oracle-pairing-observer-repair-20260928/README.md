@@ -40,6 +40,17 @@ The gate used 90 environment steps, one reset, 84 public-rule decisions, and sev
 - Dynamic gate report hashes SHA-256: `403dd7d0eb62a84c4505eb390e9f8f4825d84ddae8bf9013e3322b78f0f56f60`
 - Native export status SHA-256: `9f27f06e83dba7902e7dfd7cf8312cbf427fc10c40ae6d22a58af97a07bec761`
 
+## Remaining 23-unit preparation
+
+The completed gate unit is now frozen for one-sample reuse in a future 24-unit joint analysis. A zero-call audit independently reconstructed all seven branch utilities from the complete saved step sequence. Every saved scalar environment reward is finite, every branch ended at native termination without truncation, and the maximum utility recomputation error is `1.1102230246251565e-16`. The seven unknown host-confirmation labels remain unknown and do not enter the frozen utility formula.
+
+The prepared runner explicitly excludes `validation-0000 / repeat-0` and enumerates exactly the remaining 23 units. Joint analysis requires exactly one reused unit plus 23 new units; duplicates, missing units, incomplete labels, or reuse identity differences stop the run. Forty-one zero-call tests passed on the frozen WSL Python 3.11.16 stack, including a fail-before-environment-construction test for damaged reuse evidence.
+
+The independent request remains `NOT_APPROVED`: at most 10,350 environment steps, 23 resets, 9,798 public-rule decisions, and 575 branches, with all model and training counters zero. Preparation does not authorize an attempt or training.
+
+- Remaining-23 execution manifest SHA-256: `2bf84e49d151c0fa3be4a723df97eb5b41f1571bbd88def0c04c196c2e401843`
+- Remaining-23 package hashes SHA-256: `d0e0388174dce35787b18cc377e5455f6fc8874673b73b5e79a973147fb97ac1`
+
 ## Authorization boundary
 
 The single-unit request was separately authorized and has been consumed by the completed one-shot attempt. This archive does not authorize a retry, model use, training, oracle materiality analysis, or continuation to the remaining 23 units.
