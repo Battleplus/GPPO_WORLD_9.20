@@ -1,0 +1,4 @@
+﻿supervision_type,candidate_count,window_count,parent_count,bad_candidates_with_better_same_window,strictly_better_pair_count,unequal_global_pairs_involving_bad
+target_gain_other_expiry,3,3,3,3,17,20
+target_completed_to_expired,9,8,7,9,29,32
+global_delta_le_minus_0_1,25,17,14,25,80,88

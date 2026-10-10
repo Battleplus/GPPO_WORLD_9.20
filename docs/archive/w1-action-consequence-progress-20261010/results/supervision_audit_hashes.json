@@ -1,0 +1,207 @@
+{
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\analyze_saved_run.py": {
+    "bytes": 23266,
+    "sha256": "391374a19d6c49734cb709ae7f46554f68d3c637cb2ed7cd972e691170f17ed1"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\audit_training_supervision.py": {
+    "bytes": 25087,
+    "sha256": "38d4187b1f6445c519372927f7bf75d420f2d47d86bc6be0a4121eedaf759e50"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\complete_analysis.py": {
+    "bytes": 15189,
+    "sha256": "aebb6361b526fe516002193317a2435703793f8b579752e63ed380de0a3727f1"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\finalize_training_supervision_audit.py": {
+    "bytes": 14412,
+    "sha256": "d37185c365527375a9d8d44712a2aebd27376d029fe6ac7f7d69cd944a954e48"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\all_split_window_pairs.csv": {
+    "bytes": 39478,
+    "sha256": "9e742c7642ae74708c987dafc4cad53bc71b17def9c762bb511504face104ae9"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\analysis_summary.json": {
+    "bytes": 5357,
+    "sha256": "ad579f00cc5f5eeea2930ee2e545db5722ce645b4cbad054b244a5869733575e"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\decision_report_zh.md": {
+    "bytes": 7096,
+    "sha256": "bfe9dc693c4b76541dd2e4f335bfaa0e841ee4499e6c4d2aa74b32b7f036aa56"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\evaluation_major_loss_seed_votes.csv": {
+    "bytes": 1295,
+    "sha256": "4f79f0fe54b6cd32e560afe5ea1677555b0c626d29eba4de6b4035bf9822f41b"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\evaluation_parent_summary.csv": {
+    "bytes": 2603,
+    "sha256": "3f2190acc17f7e6babae8ace78f0fc2680a6ac49d82efc1dcebc9379347ffdd0"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\evaluation_time_summary.csv": {
+    "bytes": 633,
+    "sha256": "3c363dc49ff869cd5bef85be357bc9037c6e740fbbbb79bb0c747f15f0823e75"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\evaluation_window_pairs.csv": {
+    "bytes": 13475,
+    "sha256": "56567f6a07142727e797b14646f486c8660ceeda66197479091ace9bf5f8afb8"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\evidence_hashes.json": {
+    "bytes": 3134,
+    "sha256": "a69c9b9e0e3e4debdc8f4864952509ed3f04be6eb1a1117acf3df8159b2f4928"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\major_loss_cases.csv": {
+    "bytes": 10198,
+    "sha256": "58f3e4fc9fbd8dec1a420c5d972611cd13ba14a8a40bd0a7fa91454b0ca930e0"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\major_loss_mechanism_recurrence.csv": {
+    "bytes": 779,
+    "sha256": "51fe0be643ff84df2bc00c5dd6105a4a1b96af79f05ab1b3443d27db2d5e6c19"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\major_loss_seed_votes_all_splits.csv": {
+    "bytes": 2573,
+    "sha256": "2ca839de8a4becc01750a140da57949093a9f0b9ba67059c2d8e3d3a5b70ff0f"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\outcome_to_loss_mapping.csv": {
+    "bytes": 2590,
+    "sha256": "5be77f035f9ca403890ec696f1556757c6976174b1e86df7957734d1f0488455"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\split_metrics.csv": {
+    "bytes": 1603,
+    "sha256": "6d39431b3cc39e0962da62e5b403ac6dc3bce91e60671397ce96034ba1cfd769"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\training_binary_by_time.csv": {
+    "bytes": 479,
+    "sha256": "6d071d0d3bbdc4350af36eb3a1a59c2cfbe4a1f6a794368b0bb07c365db450f6"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\training_binary_supervision.csv": {
+    "bytes": 619,
+    "sha256": "35af06c0c597bfbda4f5be0abcd2f92377a07f699f9db454e039045e560213ed"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\training_candidate_weighting.csv": {
+    "bytes": 120,
+    "sha256": "8bab44d1ae6266f33a7219b001afed6666a4158e81745a024e1df30c2fcab36f"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\training_continuous_validity.csv": {
+    "bytes": 280,
+    "sha256": "fe85614dff355e5180189dfeddf2ee0f3270714c76e74b22ab503901dc0ecff8"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\training_coverage.csv": {
+    "bytes": 292,
+    "sha256": "8b8f893f9da662db443287db02bac68d1103ffb191620d90fbe4a59d2389b2a3"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\training_coverage_by_time_branch.csv": {
+    "bytes": 592,
+    "sha256": "50925977f471375de7e94ca3d2d8439cdbc081119c3dd7e81483d7ad4aedcc91"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\training_per_task_validity.csv": {
+    "bytes": 134,
+    "sha256": "c65de50a381caa5e170e3dd1062c588b22c6162240ae84c29a9c49eecd2c29e9"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\training_supervision_audit.json": {
+    "bytes": 13022,
+    "sha256": "d46920fbdd89196c687c8dc64b0eede0940944832e8e199665ea8cd11edb61b0"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\results\\training_supervision_loss_audit_zh.md": {
+    "bytes": 6669,
+    "sha256": "4d236b0540fdee5e84fd657d7d53f5c72cf4de285041606cbce372b3190e8400"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\source-run\\run-once\\head-metrics.json": {
+    "bytes": 514852,
+    "sha256": "3fdb2b1423c7dbad8d2b7e1a551c9e3c5dbd61ace59de5576fe7c05041399f9b"
+  },
+  "E:\\Z博士\\research-diagnostics\\w1-drone-consequence-v5-recovery-v3-offline-analysis-20261009\\source-run\\run-once\\lean-inputs.json": {
+    "bytes": 15174592,
+    "sha256": "5380db994da187a65b3f1ed6e33857f7ea02d422e16686f4fba9793512929ec6"
+  },
+  "E:\\Z博士\\research-plans\\w1-drone-action-consequence-world-model-v5-recovery-v1-linux-release-v3\\package\\candidate_keys.py": {
+    "bytes": 12799,
+    "sha256": "e799cddeaf6fafb206943d03fbd8886ec9badc109bdcc24885a9bd6c884615f2"
+  },
+  "E:\\Z博士\\research-plans\\w1-drone-action-consequence-world-model-v5-recovery-v1-linux-release-v3\\package\\consequence_collection.py": {
+    "bytes": 14561,
+    "sha256": "615e73f34a2143a7010974253ccf7fbbf32140178a6a6c08418b12b5f64d0522"
+  },
+  "E:\\Z博士\\research-plans\\w1-drone-action-consequence-world-model-v5-recovery-v1-linux-release-v3\\package\\consequence_contract.py": {
+    "bytes": 11512,
+    "sha256": "9fd4da2353faea0677f79117d0d0a2f0980a6ee140e66b086d8c73d9dd40f79d"
+  },
+  "E:\\Z博士\\research-plans\\w1-drone-action-consequence-world-model-v5-recovery-v1-linux-release-v3\\package\\consequence_model.py": {
+    "bytes": 6951,
+    "sha256": "eb62cef01e4e1da32a04468c138691a82c679397199f086281cffd3b76ad2d5f"
+  },
+  "E:\\Z博士\\research-plans\\w1-drone-action-consequence-world-model-v5-recovery-v1-linux-release-v3\\package\\consequence_training.py": {
+    "bytes": 11294,
+    "sha256": "6c3801628a261afc133cfa5caed90cdb3ea57cce9611f1acb106bdbcf3ff47b4"
+  },
+  "E:\\Z博士\\research-plans\\w1-drone-action-consequence-world-model-v5-recovery-v1-linux-release-v3\\package\\native\\gppo_world\\joint_training.py": {
+    "bytes": 114181,
+    "sha256": "39d202d0c590875af25764001c99e39af7d4cc82d4f7689f6b12c3cc6213874e"
+  },
+  "E:\\Z博士\\research-plans\\w1-drone-action-consequence-world-model-v5-recovery-v1-linux-release-v3\\package\\offline_metrics.py": {
+    "bytes": 4055,
+    "sha256": "e28d7cd3c9bd8d8cb161939a47898a11c45da3a841745f79fa79118ad3983438"
+  },
+  "E:\\Z博士\\research-plans\\w1-drone-action-consequence-world-model-v5-recovery-v1-linux-release-v3\\package\\recovery-inputs\\window-cache-manifest.json": {
+    "bytes": 113081,
+    "sha256": "d7f61c59c6d90a1b92c0aedf55ede1d58c0dc517255cb639a6ba8b817fcab81a"
+  },
+  "scope": "offline train-label/trace and frozen-source audit only; no checkpoint access or model execution",
+  "train_source_windows": {
+    "consequence-v1-world_and_policy_train-000--time-2.json.gz": "e37db2b56d3ecd3abc91170b6d5dff79bbb4b0aad6793262ed42df2279aa7905",
+    "consequence-v1-world_and_policy_train-000--time-4.json.gz": "dc32a279e4045cd198e087e5acc92085150de552fd380813bcbacd1bdeb0e944",
+    "consequence-v1-world_and_policy_train-000--time-8.json.gz": "a7f27760a8779a396dd3eaf74c115fb265037dd2763676fb6a8ef5d172e0282b",
+    "consequence-v1-world_and_policy_train-001--time-4.json.gz": "ff02288617202871538bd2c7ce8030e64404583bd682cb3f3822357690066c0c",
+    "consequence-v1-world_and_policy_train-001--time-8.json.gz": "41e5e7a87c064beb9d13d1094756b13dc7343b978cc72441f2ef0ebee0258b67",
+    "consequence-v1-world_and_policy_train-002--time-2.json.gz": "09ecb8656b18b65ccccaf76608e0b3c92a49fcc882fa91ed37141839864ad12e",
+    "consequence-v1-world_and_policy_train-002--time-4.json.gz": "081360b100e52d8711de60e383f4d6fe029bd9be3f7b72dd74cbba7be139a853",
+    "consequence-v1-world_and_policy_train-002--time-8.json.gz": "251009b1d498820116da7bbcb4caa4f3261b3fdc46800344ce677c209c893309",
+    "consequence-v1-world_and_policy_train-003--time-2.json.gz": "2cba0ad4faa5dba3b074dfcb863bee8e84d8057df167e0131daa7251ca772072",
+    "consequence-v1-world_and_policy_train-004--time-2.json.gz": "dc08e6a5633a661e7072f0782aa00514827cf5c032ca22e2d6097cd452631ea3",
+    "consequence-v1-world_and_policy_train-005--time-2.json.gz": "acf90d656c0c2382771456d1a06351eb0174a99ee192d097308c13db77cece16",
+    "consequence-v1-world_and_policy_train-005--time-4.json.gz": "6de042f6160482cf018b1f622c2e2214f928973d0501cb52deacc42648b1ea30",
+    "consequence-v1-world_and_policy_train-005--time-8.json.gz": "ce6ac4694c128c3c0eabd325a760aed535367df5289e229d6e72422ea8f11112",
+    "consequence-v1-world_and_policy_train-006--time-2.json.gz": "18b070718260df3d530896ff64968416ba47162d251de50bdf9a8734c1569ec4",
+    "consequence-v1-world_and_policy_train-006--time-4.json.gz": "ea5ad3bffa16b807391fbab56b4cc37228df24f6e2d3b22eb03e2cd944c30702",
+    "consequence-v1-world_and_policy_train-007--time-2.json.gz": "501f774178c6afd40e56d59c4952e67b30ac2e02f5cf207573d33880bb6a4cc8",
+    "consequence-v1-world_and_policy_train-007--time-4.json.gz": "fbc7dce4557a9c750c44f3968c4ab23f1b5245f9de7418eb827e6e2d78357543",
+    "consequence-v1-world_and_policy_train-007--time-8.json.gz": "9bf949e7d77d9cff988cf3443a1e77750e82e92f89da6966b7d408d7afef1134",
+    "consequence-v1-world_and_policy_train-008--time-2.json.gz": "88db9bad9ad36e9747461a604fb676083ea65167ca8e726b82497522b2453090",
+    "consequence-v1-world_and_policy_train-008--time-4.json.gz": "4556902cdc5426df354368b1f7c38bf9679172359e95a41f77bef4080a538988",
+    "consequence-v1-world_and_policy_train-008--time-8.json.gz": "96e5a179e285e621d6734615882f46efdae0859e0a681599430118201a68dce4",
+    "consequence-v1-world_and_policy_train-009--time-2.json.gz": "8f8904214cfb0dc43d764ca6eb12a8d17271a19f9fcb471ab9d95c0735f73d9b",
+    "consequence-v1-world_and_policy_train-009--time-4.json.gz": "e6a6c2c0cbb7b966304d68226cd8ceb328d3d6909896311e97c4bcc89c576fae",
+    "consequence-v1-world_and_policy_train-009--time-8.json.gz": "b8061c91a7abf2133b28d2dc17034eecb25df15c7015468c46bbc0556fd8c180",
+    "consequence-v1-world_and_policy_train-010--time-2.json.gz": "65d91d50bac2695f4aa269269081bf8b7f8ccb52f8a4275ccae1c7f19b1e23df",
+    "consequence-v1-world_and_policy_train-010--time-4.json.gz": "02eef2e5506342d8f3dc68e96a2ea355f4ffa3b6064b5570968ac01f6a3891fd",
+    "consequence-v1-world_and_policy_train-010--time-8.json.gz": "9f9a00716c61278feeb735932e6b5e9a92631b39e4c41e1894d8c45811c073f2",
+    "consequence-v1-world_and_policy_train-011--time-2.json.gz": "01d645910d9b1f19bd21fc5a4890ff1752f4a0ce531be726044efb06cc8ef8bb",
+    "consequence-v1-world_and_policy_train-011--time-8.json.gz": "a0ac018f94f669a5a368d386d7c6e1ed39b4ad416f2ad7ade0d4aa23fc530a4c",
+    "consequence-v1-world_and_policy_train-012--time-2.json.gz": "b8d5fde9a853f63dd587dc5b9af3fd6a3476f10bb9ac0c35c4f7bf179b10650b",
+    "consequence-v1-world_and_policy_train-012--time-4.json.gz": "b6d714890005baa450be45b1c63fb4a6bd563a8d8608fbe6005a7d35b7e17f6c",
+    "consequence-v1-world_and_policy_train-012--time-8.json.gz": "e1c03f300576e5653cc15d710dbb290d7ce5a093c48c4f6893b936e9966f605a",
+    "consequence-v1-world_and_policy_train-013--time-2.json.gz": "0435b919d70910265e387e7bbe2d4dee8cba4125d85086e910db1f4feb6ad008",
+    "consequence-v1-world_and_policy_train-013--time-4.json.gz": "0eb69589b3087e6e4bcacdff47a1fa1e23d288e9ccb2e7749d7485d7b771f7ec",
+    "consequence-v1-world_and_policy_train-013--time-8.json.gz": "26e5e0be8360efee04ad89c910d5a10b92c688331775988d9924e46a7e675b1c",
+    "consequence-v1-world_and_policy_train-014--time-2.json.gz": "c83999e22678b5516e4ebba4d7125afd3ecdb3d2bf1dcefef8aac3943a6ac08f",
+    "consequence-v1-world_and_policy_train-014--time-4.json.gz": "fb806935b70a66a231d001f3573974e59fe08e67100d27922233c5f18d5d545d",
+    "consequence-v1-world_and_policy_train-015--time-2.json.gz": "13d6ef052b4e378cf6eb1a4550263e11f2ece4e6096a9e41a506b653d72db7e5",
+    "consequence-v1-world_and_policy_train-015--time-4.json.gz": "2af9d6fdcee96e3e6c164235a9f3b6cf3a7af7944538b7a04050e4c705473499",
+    "consequence-v1-world_and_policy_train-015--time-8.json.gz": "01363642076fe135e06ab048aa801ac6fda4d3cae919f82c4a3ac66434bffbf4",
+    "consequence-v1-world_and_policy_train-016--time-2.json.gz": "c17c7876c1bdd93c3ae9fb227e658d3cdbfdf604a7c9d80a0cef129d88c45695",
+    "consequence-v1-world_and_policy_train-016--time-4.json.gz": "14a6b6755e38fc3e59c0122d8340da6fc8301555bd22412824f067fa03d7d3b2",
+    "consequence-v1-world_and_policy_train-017--time-2.json.gz": "99b407b5de3df0f4ebe55eec4e620487ebaf902ff73c33e4b5a61df1f46a6248",
+    "consequence-v1-world_and_policy_train-017--time-4.json.gz": "a2d25aec39a9cc045faee0c515fabd4549b8270fe1f29e17d6282a7cd624305f",
+    "consequence-v1-world_and_policy_train-017--time-8.json.gz": "f5365d164f684be4d830431d834034eccd65777cce8be13887dd6a6b43cef678",
+    "consequence-v1-world_and_policy_train-018--time-2.json.gz": "6e6b5164928dc94eca131eca9222eaea58633ec547286e58054eb20ae439c48f",
+    "consequence-v1-world_and_policy_train-018--time-4.json.gz": "6313a91373dada6a2de655fa33f8eaeae97ea6f3e0d22b19573667537635b8ec",
+    "consequence-v1-world_and_policy_train-019--time-2.json.gz": "0db68402f1f7e609e4863c4708a9e37d142431111e00f948a4fc4d55206dae6c",
+    "consequence-v1-world_and_policy_train-019--time-4.json.gz": "ad1849a434b07eca37313cf177ca1ee54a574db02eef07224065e753f4046ef9",
+    "consequence-v1-world_and_policy_train-020--time-2.json.gz": "7e1b10bc8887422d117128e577d352645e1fbc758f24195b00f53d8280d19c52",
+    "consequence-v1-world_and_policy_train-020--time-4.json.gz": "b438d8a0c4f4ee2f7fc62b2aaa1c90bad71253b3392c8fa996ae6a9590279644",
+    "consequence-v1-world_and_policy_train-020--time-8.json.gz": "9cd4c65ee66b6d36c36630daac49134753a12aaa5574c7d3c32fe5974ae83201",
+    "consequence-v1-world_and_policy_train-021--time-2.json.gz": "a4f9e206862c7d41703032fb577bf5523d024102b3fc9bd97c8bfd11a2d192ec",
+    "consequence-v1-world_and_policy_train-021--time-4.json.gz": "1f39a2dbcb56b410a65db8ebd4f3655f4f6d00b6859c1d24f1e5f67d64ee816f",
+    "consequence-v1-world_and_policy_train-022--time-2.json.gz": "1292111039ca7d87c5670a81542d056a1a0e0161edb9a7e6d32f290370996bdd",
+    "consequence-v1-world_and_policy_train-022--time-8.json.gz": "891ae3ae268adab70cfad20a983c11f71b7d41ba60c77f4e4025ca3005e80516",
+    "consequence-v1-world_and_policy_train-023--time-2.json.gz": "62a24a10d966c4220d6a565752461b7d6d73591e0b7d83f021416d91169a8650",
+    "consequence-v1-world_and_policy_train-023--time-8.json.gz": "8dc38f0b8005176d334b833119d03734375856a46000b3baff4cb455cb080d22"
+  }
+}

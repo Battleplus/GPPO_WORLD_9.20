@@ -1,0 +1,254 @@
+{
+  "binary_parent_counts": {
+    "collision": {
+      "negative": 0,
+      "positive": 0,
+      "unknown": 24
+    },
+    "damaged": {
+      "negative": 9,
+      "positive": 24,
+      "unknown": 0
+    },
+    "expired": {
+      "negative": 24,
+      "positive": 10,
+      "unknown": 24
+    },
+    "host_confirmation": {
+      "negative": 0,
+      "positive": 24,
+      "unknown": 24
+    },
+    "on_time": {
+      "negative": 10,
+      "positive": 24,
+      "unknown": 24
+    },
+    "physical_arrival": {
+      "negative": 10,
+      "positive": 24,
+      "unknown": 24
+    }
+  },
+  "binary_supervision": {
+    "collision": {
+      "unknown": 257
+    },
+    "damaged": {
+      "negative": 36,
+      "positive": 221
+    },
+    "expired": {
+      "negative": 184,
+      "positive": 15,
+      "unknown": 58
+    },
+    "host_confirmation": {
+      "positive": 162,
+      "unknown": 95
+    },
+    "on_time": {
+      "negative": 15,
+      "positive": 184,
+      "unknown": 58
+    },
+    "physical_arrival": {
+      "negative": 15,
+      "positive": 184,
+      "unknown": 58
+    }
+  },
+  "candidate_counts_are_not_independent_sample_sizes": true,
+  "candidate_rows": 257,
+  "categories": {
+    "global_delta_le_minus_0_1": {
+      "bad_candidates_with_better_same_window": 25,
+      "candidates": 25,
+      "parents": 14,
+      "strictly_better_pair_count": 80,
+      "unequal_global_pairs_involving_bad": 88,
+      "windows": 17
+    },
+    "target_completed_to_expired": {
+      "bad_candidates_with_better_same_window": 9,
+      "candidates": 9,
+      "parents": 7,
+      "strictly_better_pair_count": 29,
+      "unequal_global_pairs_involving_bad": 32,
+      "windows": 8
+    },
+    "target_gain_other_expiry": {
+      "bad_candidates_with_better_same_window": 3,
+      "candidates": 3,
+      "parents": 3,
+      "strictly_better_pair_count": 17,
+      "unequal_global_pairs_involving_bad": 20,
+      "windows": 3
+    }
+  },
+  "continuous_validity": {
+    "battery_delta": {
+      "positive": 74,
+      "zero_or_negative": 183
+    },
+    "competition_delta": {
+      "zero_or_negative": 257
+    },
+    "damage_count_delta": {
+      "zero_or_negative": 257
+    },
+    "energy_delta": {
+      "positive": 109,
+      "zero_or_negative": 148
+    },
+    "global_utility_delta": {
+      "positive": 72,
+      "zero_or_negative": 185
+    },
+    "other_completed_delta": {
+      "positive": 12,
+      "zero_or_negative": 245
+    },
+    "other_expired_delta": {
+      "positive": 21,
+      "zero_or_negative": 236
+    }
+  },
+  "frozen_loss_weights": {
+    "anticollapse": 0.01,
+    "binary": 1.0,
+    "continuous": 1.0,
+    "latent": 1.0,
+    "per_task": 1.0,
+    "public": 0.1,
+    "ranking": 1.0
+  },
+  "input_sha256": {
+    "lean-inputs.json": "5380db994da187a65b3f1ed6e33857f7ea02d422e16686f4fba9793512929ec6"
+  },
+  "loss_reduction_contract": {
+    "binary": "valid scalar BCE mean over flattened candidates and six binary outputs; no class balancing",
+    "candidate_weights": "candidate regression losses scale linearly with candidates/window; ranking opportunities scale with unequal pairs/window",
+    "continuous": "valid scalar SmoothL1 beta=1 mean over flattened candidates and seven outputs",
+    "head_metrics_are_not_training_gradients": true,
+    "per_task": "valid scalar SmoothL1 beta=1 mean over flattened candidates, six task slots, two deltas",
+    "ranking": "mean softplus over all unequal valid global-utility candidate pairs sharing parent/window id"
+  },
+  "noop_label_validity": {
+    "candidate_count": 58,
+    "global_utility_valid": 58,
+    "other_expired_valid": 58,
+    "target_expired_unknown": 58,
+    "target_on_time_unknown": 58
+  },
+  "other_expiry_positive": {
+    "candidates": 21,
+    "parents": 13,
+    "windows": 14
+  },
+  "pair_integrity_counts": {
+    "fixed_continuation": 58,
+    "pair_identity_fields_present": 464,
+    "public_context_hash_agrees": 58
+  },
+  "parent_window_repeat_duplicates": 0,
+  "ranking_pairs": {
+    "actual_unequal_pairs_max_per_window": 36,
+    "actual_unequal_pairs_min_per_window": 1,
+    "all_unequal_pairs": 499,
+    "pairs_by_candidate_count": {
+      "2": 3,
+      "3": 35,
+      "4": 142,
+      "5": 68,
+      "7": 145,
+      "9": 106
+    },
+    "windows_with_pairs": 58
+  },
+  "raw_branch_integrity_counts": {
+    "baseline_trace_sha_matches_label": 257,
+    "branch_complete_termination": 257,
+    "branch_restore_verified": 257,
+    "branch_source_trace_sha_matches_label": 257,
+    "branch_trace_utility_recomputed": 257,
+    "candidate_branch_count": 257,
+    "global_label_recomputed": 257,
+    "source_windows_hashed": 58
+  },
+  "source": "saved lean-inputs.json and frozen v5 source only; no checkpoint opened, model forward, collection, or training",
+  "train_parents": 24,
+  "train_windows": 58,
+  "training_source_window_sha256": {
+    "consequence-v1-world_and_policy_train-000--time-2.json.gz": "e37db2b56d3ecd3abc91170b6d5dff79bbb4b0aad6793262ed42df2279aa7905",
+    "consequence-v1-world_and_policy_train-000--time-4.json.gz": "dc32a279e4045cd198e087e5acc92085150de552fd380813bcbacd1bdeb0e944",
+    "consequence-v1-world_and_policy_train-000--time-8.json.gz": "a7f27760a8779a396dd3eaf74c115fb265037dd2763676fb6a8ef5d172e0282b",
+    "consequence-v1-world_and_policy_train-001--time-4.json.gz": "ff02288617202871538bd2c7ce8030e64404583bd682cb3f3822357690066c0c",
+    "consequence-v1-world_and_policy_train-001--time-8.json.gz": "41e5e7a87c064beb9d13d1094756b13dc7343b978cc72441f2ef0ebee0258b67",
+    "consequence-v1-world_and_policy_train-002--time-2.json.gz": "09ecb8656b18b65ccccaf76608e0b3c92a49fcc882fa91ed37141839864ad12e",
+    "consequence-v1-world_and_policy_train-002--time-4.json.gz": "081360b100e52d8711de60e383f4d6fe029bd9be3f7b72dd74cbba7be139a853",
+    "consequence-v1-world_and_policy_train-002--time-8.json.gz": "251009b1d498820116da7bbcb4caa4f3261b3fdc46800344ce677c209c893309",
+    "consequence-v1-world_and_policy_train-003--time-2.json.gz": "2cba0ad4faa5dba3b074dfcb863bee8e84d8057df167e0131daa7251ca772072",
+    "consequence-v1-world_and_policy_train-004--time-2.json.gz": "dc08e6a5633a661e7072f0782aa00514827cf5c032ca22e2d6097cd452631ea3",
+    "consequence-v1-world_and_policy_train-005--time-2.json.gz": "acf90d656c0c2382771456d1a06351eb0174a99ee192d097308c13db77cece16",
+    "consequence-v1-world_and_policy_train-005--time-4.json.gz": "6de042f6160482cf018b1f622c2e2214f928973d0501cb52deacc42648b1ea30",
+    "consequence-v1-world_and_policy_train-005--time-8.json.gz": "ce6ac4694c128c3c0eabd325a760aed535367df5289e229d6e72422ea8f11112",
+    "consequence-v1-world_and_policy_train-006--time-2.json.gz": "18b070718260df3d530896ff64968416ba47162d251de50bdf9a8734c1569ec4",
+    "consequence-v1-world_and_policy_train-006--time-4.json.gz": "ea5ad3bffa16b807391fbab56b4cc37228df24f6e2d3b22eb03e2cd944c30702",
+    "consequence-v1-world_and_policy_train-007--time-2.json.gz": "501f774178c6afd40e56d59c4952e67b30ac2e02f5cf207573d33880bb6a4cc8",
+    "consequence-v1-world_and_policy_train-007--time-4.json.gz": "fbc7dce4557a9c750c44f3968c4ab23f1b5245f9de7418eb827e6e2d78357543",
+    "consequence-v1-world_and_policy_train-007--time-8.json.gz": "9bf949e7d77d9cff988cf3443a1e77750e82e92f89da6966b7d408d7afef1134",
+    "consequence-v1-world_and_policy_train-008--time-2.json.gz": "88db9bad9ad36e9747461a604fb676083ea65167ca8e726b82497522b2453090",
+    "consequence-v1-world_and_policy_train-008--time-4.json.gz": "4556902cdc5426df354368b1f7c38bf9679172359e95a41f77bef4080a538988",
+    "consequence-v1-world_and_policy_train-008--time-8.json.gz": "96e5a179e285e621d6734615882f46efdae0859e0a681599430118201a68dce4",
+    "consequence-v1-world_and_policy_train-009--time-2.json.gz": "8f8904214cfb0dc43d764ca6eb12a8d17271a19f9fcb471ab9d95c0735f73d9b",
+    "consequence-v1-world_and_policy_train-009--time-4.json.gz": "e6a6c2c0cbb7b966304d68226cd8ceb328d3d6909896311e97c4bcc89c576fae",
+    "consequence-v1-world_and_policy_train-009--time-8.json.gz": "b8061c91a7abf2133b28d2dc17034eecb25df15c7015468c46bbc0556fd8c180",
+    "consequence-v1-world_and_policy_train-010--time-2.json.gz": "65d91d50bac2695f4aa269269081bf8b7f8ccb52f8a4275ccae1c7f19b1e23df",
+    "consequence-v1-world_and_policy_train-010--time-4.json.gz": "02eef2e5506342d8f3dc68e96a2ea355f4ffa3b6064b5570968ac01f6a3891fd",
+    "consequence-v1-world_and_policy_train-010--time-8.json.gz": "9f9a00716c61278feeb735932e6b5e9a92631b39e4c41e1894d8c45811c073f2",
+    "consequence-v1-world_and_policy_train-011--time-2.json.gz": "01d645910d9b1f19bd21fc5a4890ff1752f4a0ce531be726044efb06cc8ef8bb",
+    "consequence-v1-world_and_policy_train-011--time-8.json.gz": "a0ac018f94f669a5a368d386d7c6e1ed39b4ad416f2ad7ade0d4aa23fc530a4c",
+    "consequence-v1-world_and_policy_train-012--time-2.json.gz": "b8d5fde9a853f63dd587dc5b9af3fd6a3476f10bb9ac0c35c4f7bf179b10650b",
+    "consequence-v1-world_and_policy_train-012--time-4.json.gz": "b6d714890005baa450be45b1c63fb4a6bd563a8d8608fbe6005a7d35b7e17f6c",
+    "consequence-v1-world_and_policy_train-012--time-8.json.gz": "e1c03f300576e5653cc15d710dbb290d7ce5a093c48c4f6893b936e9966f605a",
+    "consequence-v1-world_and_policy_train-013--time-2.json.gz": "0435b919d70910265e387e7bbe2d4dee8cba4125d85086e910db1f4feb6ad008",
+    "consequence-v1-world_and_policy_train-013--time-4.json.gz": "0eb69589b3087e6e4bcacdff47a1fa1e23d288e9ccb2e7749d7485d7b771f7ec",
+    "consequence-v1-world_and_policy_train-013--time-8.json.gz": "26e5e0be8360efee04ad89c910d5a10b92c688331775988d9924e46a7e675b1c",
+    "consequence-v1-world_and_policy_train-014--time-2.json.gz": "c83999e22678b5516e4ebba4d7125afd3ecdb3d2bf1dcefef8aac3943a6ac08f",
+    "consequence-v1-world_and_policy_train-014--time-4.json.gz": "fb806935b70a66a231d001f3573974e59fe08e67100d27922233c5f18d5d545d",
+    "consequence-v1-world_and_policy_train-015--time-2.json.gz": "13d6ef052b4e378cf6eb1a4550263e11f2ece4e6096a9e41a506b653d72db7e5",
+    "consequence-v1-world_and_policy_train-015--time-4.json.gz": "2af9d6fdcee96e3e6c164235a9f3b6cf3a7af7944538b7a04050e4c705473499",
+    "consequence-v1-world_and_policy_train-015--time-8.json.gz": "01363642076fe135e06ab048aa801ac6fda4d3cae919f82c4a3ac66434bffbf4",
+    "consequence-v1-world_and_policy_train-016--time-2.json.gz": "c17c7876c1bdd93c3ae9fb227e658d3cdbfdf604a7c9d80a0cef129d88c45695",
+    "consequence-v1-world_and_policy_train-016--time-4.json.gz": "14a6b6755e38fc3e59c0122d8340da6fc8301555bd22412824f067fa03d7d3b2",
+    "consequence-v1-world_and_policy_train-017--time-2.json.gz": "99b407b5de3df0f4ebe55eec4e620487ebaf902ff73c33e4b5a61df1f46a6248",
+    "consequence-v1-world_and_policy_train-017--time-4.json.gz": "a2d25aec39a9cc045faee0c515fabd4549b8270fe1f29e17d6282a7cd624305f",
+    "consequence-v1-world_and_policy_train-017--time-8.json.gz": "f5365d164f684be4d830431d834034eccd65777cce8be13887dd6a6b43cef678",
+    "consequence-v1-world_and_policy_train-018--time-2.json.gz": "6e6b5164928dc94eca131eca9222eaea58633ec547286e58054eb20ae439c48f",
+    "consequence-v1-world_and_policy_train-018--time-4.json.gz": "6313a91373dada6a2de655fa33f8eaeae97ea6f3e0d22b19573667537635b8ec",
+    "consequence-v1-world_and_policy_train-019--time-2.json.gz": "0db68402f1f7e609e4863c4708a9e37d142431111e00f948a4fc4d55206dae6c",
+    "consequence-v1-world_and_policy_train-019--time-4.json.gz": "ad1849a434b07eca37313cf177ca1ee54a574db02eef07224065e753f4046ef9",
+    "consequence-v1-world_and_policy_train-020--time-2.json.gz": "7e1b10bc8887422d117128e577d352645e1fbc758f24195b00f53d8280d19c52",
+    "consequence-v1-world_and_policy_train-020--time-4.json.gz": "b438d8a0c4f4ee2f7fc62b2aaa1c90bad71253b3392c8fa996ae6a9590279644",
+    "consequence-v1-world_and_policy_train-020--time-8.json.gz": "9cd4c65ee66b6d36c36630daac49134753a12aaa5574c7d3c32fe5974ae83201",
+    "consequence-v1-world_and_policy_train-021--time-2.json.gz": "a4f9e206862c7d41703032fb577bf5523d024102b3fc9bd97c8bfd11a2d192ec",
+    "consequence-v1-world_and_policy_train-021--time-4.json.gz": "1f39a2dbcb56b410a65db8ebd4f3655f4f6d00b6859c1d24f1e5f67d64ee816f",
+    "consequence-v1-world_and_policy_train-022--time-2.json.gz": "1292111039ca7d87c5670a81542d056a1a0e0161edb9a7e6d32f290370996bdd",
+    "consequence-v1-world_and_policy_train-022--time-8.json.gz": "891ae3ae268adab70cfad20a983c11f71b7d41ba60c77f4e4025ca3005e80516",
+    "consequence-v1-world_and_policy_train-023--time-2.json.gz": "62a24a10d966c4220d6a565752461b7d6d73591e0b7d83f021416d91169a8650",
+    "consequence-v1-world_and_policy_train-023--time-8.json.gz": "8dc38f0b8005176d334b833119d03734375856a46000b3baff4cb455cb080d22"
+  },
+  "window_candidate_count_distribution": {
+    "2": 3,
+    "3": 12,
+    "4": 26,
+    "5": 7,
+    "7": 7,
+    "9": 3
+  },
+  "window_candidate_count_max": 9,
+  "window_candidate_count_mean": 4.431034482758621,
+  "window_candidate_count_min": 2
+}

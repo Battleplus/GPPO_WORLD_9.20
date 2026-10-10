@@ -1,0 +1,6 @@
+﻿split,parent,window_id,time,baseline_action,ensemble_action,seed_8201_action,seed_8202_action,seed_8203_action,matching_seed_votes_of_3,unanimous_same_action,true_delta,predicted_delta,global_prediction_error,source_window_sha256
+evaluation,consequence-v1-offline_prediction_gate-003,time-4,4.0,8,20,20,14,20,2,False,-0.1183647773228586,0.6598722338676453,0.7782370111905039,e638afb365932c636cc392f8d22a56cf236ed5fcca43d5fc6e83bdfaab80711f
+evaluation,consequence-v1-offline_prediction_gate-004,time-2,2.0,7,19,7,19,19,2,False,-0.13615749618038533,-0.0012439340353012085,0.13491356214508413,ade0b1f2d9c31a56f0cdea2c88a71877afc924a7fe2a03c54a9355ca4a9128b2
+evaluation,consequence-v1-offline_prediction_gate-013,time-4,4.0,2,14,14,14,14,3,True,-0.12395576648414139,0.926157534122467,1.0501133006066083,3846dbfb808a2b147a910005f58d3ce6eb3403ffdede9a7bc302a967b7f6ed9a
+evaluation,consequence-v1-offline_prediction_gate-019,time-2,2.0,7,24,24,7,24,2,False,-0.11604669005610047,0.05443193390965462,0.17047862396575508,12b21c03d35e0105f8fcb61b3daf3b57b1b505c9394474bee00bc7da216d9981
+evaluation,consequence-v1-offline_prediction_gate-019,time-8,8.0,10,24,24,24,24,3,True,-0.121894377656281,0.2532852590084076,0.37517963666468856,e1d9f5b23a2e30a38561dce6540ed173613d72948da86e2943875db4db5d1d9e

@@ -1,0 +1,176 @@
+{
+  "evaluation": {
+    "all_evaluation_windows_including_no_opportunity": 96,
+    "better_than_transparent_count": 17,
+    "complete_opportunity_windows": 58,
+    "equal_to_transparent_count": 20,
+    "improvement_parent_cluster_bootstrap_95pct": [
+      -0.012644805576484138,
+      0.016576385681077627
+    ],
+    "improvement_parent_macro": 0.0012589303204246455,
+    "improvement_window_weighted": -0.003870570195581896,
+    "major_loss_parent_macro_equivalent_numerator_over_24": 1.6666666666666665,
+    "major_loss_parent_macro_rate": 0.06944444444444443,
+    "major_loss_seed_action_votes": {
+      "consequence-v1-mechanism_diagnostics_only-000|time-4": {
+        "ensemble_action": 24,
+        "seed_actions": {
+          "8201": 24,
+          "8202": 24,
+          "8203": 24
+        },
+        "seed_votes_same": 3
+      },
+      "consequence-v1-mechanism_diagnostics_only-009|time-2": {
+        "ensemble_action": 7,
+        "seed_actions": {
+          "8201": 7,
+          "8202": 7,
+          "8203": 7
+        },
+        "seed_votes_same": 3
+      },
+      "consequence-v1-offline_prediction_gate-003|time-4": {
+        "ensemble_action": 20,
+        "seed_actions": {
+          "8201": 20,
+          "8202": 14,
+          "8203": 20
+        },
+        "seed_votes_same": 2
+      },
+      "consequence-v1-offline_prediction_gate-004|time-2": {
+        "ensemble_action": 19,
+        "seed_actions": {
+          "8201": 7,
+          "8202": 19,
+          "8203": 19
+        },
+        "seed_votes_same": 2
+      },
+      "consequence-v1-offline_prediction_gate-013|time-4": {
+        "ensemble_action": 14,
+        "seed_actions": {
+          "8201": 14,
+          "8202": 14,
+          "8203": 14
+        },
+        "seed_votes_same": 3
+      },
+      "consequence-v1-offline_prediction_gate-019|time-2": {
+        "ensemble_action": 24,
+        "seed_actions": {
+          "8201": 24,
+          "8202": 7,
+          "8203": 24
+        },
+        "seed_votes_same": 2
+      },
+      "consequence-v1-offline_prediction_gate-019|time-8": {
+        "ensemble_action": 24,
+        "seed_actions": {
+          "8201": 24,
+          "8202": 24,
+          "8203": 24
+        },
+        "seed_votes_same": 3
+      },
+      "consequence-v1-uncertainty_diagnostics_only-000|time-8": {
+        "ensemble_action": 24,
+        "seed_actions": {
+          "8201": 24,
+          "8202": 24,
+          "8203": 3
+        },
+        "seed_votes_same": 2
+      },
+      "consequence-v1-uncertainty_diagnostics_only-008|time-2": {
+        "ensemble_action": 6,
+        "seed_actions": {
+          "8201": 6,
+          "8202": 6,
+          "8203": 6
+        },
+        "seed_votes_same": 3
+      },
+      "consequence-v1-uncertainty_diagnostics_only-010|time-8": {
+        "ensemble_action": 24,
+        "seed_actions": {
+          "8201": 24,
+          "8202": 24,
+          "8203": 2
+        },
+        "seed_votes_same": 2
+      },
+      "consequence-v1-world_and_policy_train-023|time-2": {
+        "ensemble_action": 7,
+        "seed_actions": {
+          "8201": 7,
+          "8202": 7,
+          "8203": 7
+        },
+        "seed_votes_same": 3
+      }
+    },
+    "major_loss_threshold": "true paired global utility increment <= -0.1",
+    "major_loss_window_count_of_58": 5,
+    "major_loss_window_weighted_rate": 0.08620689655172414,
+    "no_opportunity_windows": 38,
+    "non_noop_parent_macro_coverage": 0.8194444444444445,
+    "non_noop_selected_count_of_58": 46,
+    "non_noop_window_coverage": 0.7931034482758621,
+    "parents": 24,
+    "selected_different_from_transparent": 38,
+    "selected_same_as_transparent": 20,
+    "transparent_baseline_regret_parent_macro": 0.017219077578111964,
+    "transparent_baseline_regret_window_weighted": 0.013052577128762313,
+    "worse_than_transparent_count": 21
+  },
+  "frozen_gate_result_unchanged": {
+    "conditions": {
+      "all_three_seeds": true,
+      "identity_complete": true,
+      "independent_evaluation": true,
+      "major_loss_not_increased": false,
+      "nonzero_non_noop": true,
+      "opportunity_coverage": true,
+      "regret_improved": true,
+      "two_seeds_improve": true,
+      "valid_utility_labels": true
+    },
+    "major_loss_rule": "any ensemble-selected paired delta<=-0.1 stops; not a general safety guarantee",
+    "pass": false,
+    "practical_cost_report_only": {
+      "cpu_mean_ms": null,
+      "pass": false,
+      "wall_p95_ms": null
+    },
+    "risk_certification": false,
+    "stop": "offline_prediction_gate_stop"
+  },
+  "gate_identity": {
+    "controlled": false,
+    "mode": "multihead_ranking_critic_combination"
+  },
+  "scientific_scope": "The gate evaluation parents are now viewed error-analysis/development material; no independent confirmation remains from them.",
+  "source": "saved v3 run artifacts only; no checkpoint load/forward/retraining",
+  "split_window_counts": {
+    "calibration": {
+      "complete": 31,
+      "no_opportunity": 17
+    },
+    "development": {
+      "complete": 27,
+      "no_opportunity": 21
+    },
+    "evaluation": {
+      "complete": 58,
+      "no_opportunity": 38
+    },
+    "train": {
+      "complete": 58,
+      "no_opportunity": 38
+    }
+  }
+}

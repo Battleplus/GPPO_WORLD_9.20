@@ -1,0 +1,60 @@
+{
+  "evaluation_source_windows_used": {
+    "consequence-v1-mechanism_diagnostics_only-000--time-4.json.gz": "a52344b0148cc77fcf60acc7b93c342e7ca1f18444df8477a5977560a43d3522",
+    "consequence-v1-mechanism_diagnostics_only-009--time-2.json.gz": "ecdafd7c882069c0cd82a5a5784d9b98b48fe9ee1de05880f3e81f038bb4a7b2",
+    "consequence-v1-offline_prediction_gate-003--time-4.json.gz": "e638afb365932c636cc392f8d22a56cf236ed5fcca43d5fc6e83bdfaab80711f",
+    "consequence-v1-offline_prediction_gate-004--time-2.json.gz": "ade0b1f2d9c31a56f0cdea2c88a71877afc924a7fe2a03c54a9355ca4a9128b2",
+    "consequence-v1-offline_prediction_gate-013--time-4.json.gz": "3846dbfb808a2b147a910005f58d3ce6eb3403ffdede9a7bc302a967b7f6ed9a",
+    "consequence-v1-offline_prediction_gate-019--time-2.json.gz": "12b21c03d35e0105f8fcb61b3daf3b57b1b505c9394474bee00bc7da216d9981",
+    "consequence-v1-offline_prediction_gate-019--time-8.json.gz": "e1d9f5b23a2e30a38561dce6540ed173613d72948da86e2943875db4db5d1d9e",
+    "consequence-v1-uncertainty_diagnostics_only-000--time-8.json.gz": "df1a88ac24e50dc880472e9310557e62ef635ac9b2aa4840de2dc4724b5d648d",
+    "consequence-v1-uncertainty_diagnostics_only-008--time-2.json.gz": "a23ca25b3f88261cfbba6c38833f3363545c82f17cb348ef8fd740619000f3d0",
+    "consequence-v1-uncertainty_diagnostics_only-010--time-8.json.gz": "e0d44edb370bb3405b0ff54728f8bb16aa484b08b0bc0d39042980e59797c5c9",
+    "consequence-v1-world_and_policy_train-023--time-2.json.gz": "62a24a10d966c4220d6a565752461b7d6d73591e0b7d83f021416d91169a8650"
+  },
+  "excluded_from_analysis": [
+    "world-model checkpoints (not opened or loaded)",
+    "large raw collection JSONL",
+    "formal environment, model forward and training"
+  ],
+  "lean-inputs.json": {
+    "bytes": 15174592,
+    "sha256": "5380db994da187a65b3f1ed6e33857f7ea02d422e16686f4fba9793512929ec6"
+  },
+  "offline-per-parent.json": {
+    "bytes": 71832,
+    "sha256": "c60705aff095c397a94a01bd518ecb72c1a8535156fcb744738873a446ac8c13"
+  },
+  "offline-per-window.json": {
+    "bytes": 201528,
+    "sha256": "b7ebe03dc2de3147e7f327f695559cd3a5054bb8d5a9f7c7a49e3ef785672844"
+  },
+  "offline_metrics.py": {
+    "bytes": 4055,
+    "sha256": "e28d7cd3c9bd8d8cb161939a47898a11c45da3a841745f79fa79118ad3983438"
+  },
+  "parent-split.json": {
+    "bytes": 282629,
+    "sha256": "ec79640aceeca84e2c71f1f16bce8998e9b68ea138ecfe48f8c95cd790a35211"
+  },
+  "prediction-cache.json": {
+    "bytes": 6139646,
+    "sha256": "8ba16d3a4c7812ca1a2c99d7fb00a96c7b78e31aef6b2cc9554131998fe34e85"
+  },
+  "prediction-gate.json": {
+    "bytes": 515,
+    "sha256": "0a6e57720e127a57113d4690ce7830c0c0b3f05dff36a2b9e08b69ce8ba68f58"
+  },
+  "resource-settlement.json": {
+    "bytes": 829,
+    "sha256": "dfff4a7bc6717a38bdc710855a4c4b3c656c9db9af9afba45844f5d5e1ef0fee"
+  },
+  "three-world-restore-audit.json": {
+    "bytes": 123,
+    "sha256": "a4e94eef6d448adff3cb092a9c685c3cdd057948a9d1a74b81a42cb330255a65"
+  },
+  "window-cache-manifest.json": {
+    "bytes": 113081,
+    "sha256": "d7f61c59c6d90a1b92c0aedf55ede1d58c0dc517255cb639a6ba8b817fcab81a"
+  }
+}

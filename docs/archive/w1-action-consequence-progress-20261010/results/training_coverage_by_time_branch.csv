@@ -1,0 +1,11 @@
+﻿supervision_type,time,branch,candidate_count,window_count,parent_count,bad_candidates_with_better_same_window
+global_delta_le_minus_0_1,2.0,NOOP,3,3,3,3
+global_delta_le_minus_0_1,2.0,non_NOOP,11,8,8,11
+global_delta_le_minus_0_1,4.0,NOOP,3,3,3,3
+global_delta_le_minus_0_1,4.0,non_NOOP,5,4,4,5
+global_delta_le_minus_0_1,8.0,non_NOOP,3,3,3,3
+target_completed_to_expired,2.0,non_NOOP,3,3,3,3
+target_completed_to_expired,4.0,non_NOOP,5,4,4,5
+target_completed_to_expired,8.0,non_NOOP,1,1,1,1
+target_gain_other_expiry,2.0,non_NOOP,1,1,1,1
+target_gain_other_expiry,4.0,non_NOOP,2,2,2,2

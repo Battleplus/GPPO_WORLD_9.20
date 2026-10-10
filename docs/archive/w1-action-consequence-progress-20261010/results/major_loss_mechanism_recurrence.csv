@@ -1,0 +1,15 @@
+﻿split,major_loss_cases,descriptive_tag,case_count
+train,1,global_utility_overprediction_gt_0.1,1
+train,1,predicted_target_gain_and_other_expiry_tension,1
+train,1,target_task_readout_sign_disagreement,1
+calibration,3,global_utility_overprediction_gt_0.1,3
+calibration,3,other_expiry_readout_sign_disagreement,2
+development,2,global_utility_overprediction_gt_0.1,2
+development,2,higher_energy_use,1
+development,2,other_expiry_readout_sign_disagreement,2
+development,2,predicted_target_gain_and_other_expiry_tension,1
+development,2,target_task_readout_sign_disagreement,1
+evaluation,5,global_utility_overprediction_gt_0.1,5
+evaluation,5,higher_energy_use,1
+evaluation,5,other_expiry_readout_sign_disagreement,4
+evaluation,5,target_task_readout_sign_disagreement,2

@@ -1,0 +1,8 @@
+﻿label,positive,zero_or_negative,unknown,valid_total
+battery_delta,74,183,0,257
+competition_delta,0,257,0,257
+damage_count_delta,0,257,0,257
+energy_delta,109,148,0,257
+global_utility_delta,72,185,0,257
+other_completed_delta,12,245,0,257
+other_expired_delta,21,236,0,257
